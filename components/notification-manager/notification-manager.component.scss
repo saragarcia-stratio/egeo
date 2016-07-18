@@ -1,0 +1,22 @@
+@import '../../../styles/require';
+
+$st-notification---margin-top: 15px;
+
+$st-notification-manager---top: 0;
+$st-notification-manager---right: 15px;
+$st-notification-manager---z-index: 99999;
+$st-notification-manager---width: 300px;
+
+
+.notification {
+  margin-top: $st-notification---margin-top;
+  display: block;
+}
+
+.notification-manager {
+  width: $st-notification-manager---width;
+  position: fixed;
+  right: $st-notification-manager---right;
+  top: $st-notification-manager---top;
+  z-index: $st-notification-manager---z-index;
+}

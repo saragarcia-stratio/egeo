@@ -1,0 +1,11 @@
+<div class="message-modal">
+  <div class="message">
+    {{modal.message}}
+  </div>
+  <footer class="footer">
+    <button *ngFor="let button of modal.buttons.reverse()"
+    (click)="doAction(button)"
+    class="buttons egeo-c-button"
+    [ngClass]="getButtonClass(button)">{{button.title}}</button>
+  </footer>
+</div>

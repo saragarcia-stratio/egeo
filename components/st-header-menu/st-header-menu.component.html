@@ -1,0 +1,44 @@
+<section class="st-header">
+  <div class="st-header__menu">
+    <div class="st-header__options-bar">
+      <div class="st-header__options-bar-inside">
+        <div class="st-header__options-bar-inside-container">
+          <st-user-menu [userName]="username"></st-user-menu>
+          <div class="st-header__button st-header__apps"><i class="icon-grid-dots"></i></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <span class="st-header__logo"><img src="../../../assets/images/logogosec.png"></span>
+      <div class="st-header__list">
+        <ul>
+          <li id="{{menu.id}}" class="st-header__list-element ico-text-element ico-text-element--regular" *ngFor="let menu of menuOptions" (click)="navigate(menu.id)">
+            <span class="ico-text-element__icon" [ngClass]="{active: menu === activeMenu}">
+                     <i class="{{menu.icon}}"></i>
+                  </span>
+            <span class="ico-text-element__text" [ngClass]="{active: menu === activeMenu}">{{menu.title | translate}}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="st-header__help" (click)="goToExternalURL()">
+      <div class="ico-text-element">
+        <span class="ico-text-element__icon"><i class="icon-help2"></i></span>
+        <span class="ico-text-element__text">Help</span>
+      </div>
+    </div>
+  </div>
+  <div class="st-header__submenu closed" *ngIf="!activeMenu || !activeMenu.subMenu">
+  </div>
+  <div class="st-header__submenu" *ngIf="activeMenu && activeMenu.subMenu && activeMenu.subMenu.length > 0">
+    <div class="st-header__submenu-pack" [ngStyle]="{left: submenuOffset}">
+      <div class="st-header__triangle"></div>
+      <div *ngFor="let subMenu of activeMenu.subMenu; let last = last" class="st-header__submenu-element">
+        <div class="st-header__submenu-text" (click)="navigate(subMenu.id)" [ngClass]="{active: activeSubMenu === subMenu}">
+          {{subMenu.title | translate}}
+        </div>
+        <div class="st-header__submenu-separator" *ngIf="!last">|</div>
+      </div>
+    </div>
+  </div>
+</section>

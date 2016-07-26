@@ -57,16 +57,39 @@ export class StModalService {
     }
   }
 
+  createConfigAndShow(config: ModalConfig, component: any, title: ModalTitle, inputs?: Object, outputs?: Object): void {
+    inputs = inputs !== undefined ? inputs : {};
+    outputs = outputs !== undefined ? outputs : {};
+
+    this._config = config;
+    this.create(component, title, inputs, outputs).then(
+      () => this.show()
+    );
+  }
+
+  createAndShow(component: any, title: ModalTitle, inputs?: Object, outputs?: Object): void {
+    inputs = inputs !== undefined ? inputs : {};
+    outputs = outputs !== undefined ? outputs : {};
+
+    this.create(component, title, inputs, outputs).then(
+      () => this.show()
+    );
+  }
+
+  hideAndDestroy(): void {
+    this.hide();
+    this.destroy();
+  }
+
   /**
    * Example of method to call delete window
    *
    * constructor(private _stModal: StModalService) {  // Injection of modal service
-   *    let acceptNotify: Subject<BUTTON_TYPES> = new Subject<BUTTON_TYPES>();
-   *    let cancelNotify: Subject<BUTTON_TYPES> = new Subject<BUTTON_TYPES>();
+   *    let notify: Subject<BUTTON_TYPES> = new Subject<BUTTON_TYPES>();
    *
    *    // Creation of buttons
-   *    let buttonAccept: Buttons = { type: BUTTON_TYPES.ACCEPT, title: 'Delete', notify: acceptNotify };
-   *    let buttonCancel: Buttons = { type: BUTTON_TYPES.CANCEL, title: 'Cancel', notify: cancelNotify };
+   *    let buttonAccept: Buttons = { type: BUTTON_TYPES.ACCEPT, title: 'Delete', notify: notify };
+   *    let buttonCancel: Buttons = { type: BUTTON_TYPES.CANCEL, title: 'Cancel', notify: notify };
    *
    *    // Creation of modal info
    *    let messageModal: MessageModal = {
@@ -77,8 +100,7 @@ export class StModalService {
    *
    *    // Create modal and suscribe button click
    *    _stModal.createMessageModal(messageModal);
-   *    acceptNotify.subscribe((type: BUTTON_TYPES) => this.showMessageType(type));
-   *    cancelNotify.subscribe((type: BUTTON_TYPES) => this.showMessageType(type));
+   *    notify.subscribe((type: BUTTON_TYPES) => this.showMessageType(type));
    * }
    *
    * // Next event

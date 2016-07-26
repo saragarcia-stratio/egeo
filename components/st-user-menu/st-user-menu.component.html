@@ -1,0 +1,25 @@
+<div (click)="changeMenuState($event)">
+  <div class="st-user-menu">
+    <div class="ico-text-element ico-text-element--bold">
+      <div class="st-user-menu-left">
+        <span class="ico-text-element__icon"><i class="icon-head"></i></span>
+        <span class="user__text">{{userName}}</span>
+      </div>
+      <div class="st-user-menu-right">
+        <span class="arrow-dropdown">
+        <i class="icon-arrow2_down"></i>
+      </span>
+      </div>
+    </div>
+  </div>
+  <div id="menulist" class="menu-list" [ngClass]="{active: showUserMenu}">
+    <span class="direction"></span>
+    <ul>
+      <li class="menu-element">
+        <a class="menu-element__element" href="/logout">
+          <span>{{'HEADER.LOGOUT' | translate}}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

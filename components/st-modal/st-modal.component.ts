@@ -53,6 +53,10 @@ export class StModal implements OnInit {
     }
   }
 
+  closeModal(): void {
+    this.visibleChange.emit(true);
+  }
+
   bindModalInputs(componentRef: ComponentRef<any>): void {
     for (let key in this.componentInputs) {
       if (this.componentInputs.hasOwnProperty(key)) {

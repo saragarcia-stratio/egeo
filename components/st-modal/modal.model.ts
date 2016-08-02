@@ -1,6 +1,7 @@
 export interface ModalConfig {
   modalSize: SizeConfig;
   title: TitleConfig;
+  destroyOnCLose?: boolean;
 }
 
 interface SizeConfig {

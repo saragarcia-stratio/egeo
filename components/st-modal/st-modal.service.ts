@@ -8,7 +8,8 @@ import { ModalConfig, ModalTitle } from './modal.model';
 const MODAL_ID: string = 'stratio-modal-component';
 const DEFAULT_CONFIG: ModalConfig = {
   modalSize: { height: 524, width: 970 },
-  title: { backgroundColor: '#f3f3f3', fontSize: 24 }
+  title: { backgroundColor: '#f3f3f3', fontSize: 24 },
+  destroyOnCLose: true
 };
 
 @Injectable()
@@ -29,6 +30,8 @@ export class StModalService {
     outputs = outputs ? outputs : {};
 
     if (!this.modal) {
+      this._config = this._config ? this._config : DEFAULT_CONFIG;
+      this._config.destroyOnCLose = this._config.destroyOnCLose !== undefined ? this._config.destroyOnCLose : true;
       this.header = title;
       this.createModalContainer();
       return this._dcl.loadAsRoot(StModal, `#${MODAL_ID}`, this._injector).then(componentRef => this.onLoad(componentRef, component, inputs, outputs));
@@ -60,6 +63,7 @@ export class StModalService {
   createConfigAndShow(config: ModalConfig, component: any, title: ModalTitle, inputs?: Object, outputs?: Object): void {
     inputs = inputs !== undefined ? inputs : {};
     outputs = outputs !== undefined ? outputs : {};
+    config = config !== undefined ? config : DEFAULT_CONFIG;
 
     this._config = config;
     this.create(component, title, inputs, outputs).then(
@@ -70,6 +74,7 @@ export class StModalService {
   createAndShow(component: any, title: ModalTitle, inputs?: Object, outputs?: Object): void {
     inputs = inputs !== undefined ? inputs : {};
     outputs = outputs !== undefined ? outputs : {};
+    this._config = DEFAULT_CONFIG;
 
     this.create(component, title, inputs, outputs).then(
       () => this.show()
@@ -121,7 +126,8 @@ export class StModalService {
   createMessageModal(modal: MessageModal): Promise<void> {
     let config: ModalConfig = {
       modalSize: { height: 200, width: 600 },
-      title: { backgroundColor: '#f3f3f3', fontSize: 24 }
+      title: { backgroundColor: '#f3f3f3', fontSize: 24 },
+      destroyOnCLose: true
     };
 
 
@@ -131,8 +137,8 @@ export class StModalService {
 
   createMessageModalAndShow(modal: MessageModal): void {
     this.createMessageModal(modal)
-    .then(() => this.show())
-    .catch((e) => console.error(e));
+      .then(() => this.show())
+      .catch((e) => console.error(e));
   }
 
   private createModalContainer(): void {
@@ -160,7 +166,10 @@ export class StModalService {
   }
 
   private onChangeVisibility(visibility: boolean): void {
-    this.modal.instance.visible = visibility;
-    this.modal.changeDetectorRef.detectChanges();
+    if (this._config && this._config.destroyOnCLose) {
+      this.hideAndDestroy();
+    } else if (this._config) {
+      this.hide();
+    }
   }
 }

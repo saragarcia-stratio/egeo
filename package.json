@@ -1,0 +1,42 @@
+{
+  "name": "egeo.angular2.components",
+  "version": "0.2.0-rc.1",
+  "description": "Egeo Angular 2 Components Library.",
+  "main": "src/index.scss",
+  "scripts": {
+    "watch": "grunt watch",
+    "dev": "grunt dev",
+    "dist": "grunt dist",
+    "test": "mocha tests/test-sass.js --reporter mocha-junit-reporter --reporter-options mochaFile=./surefire-reports/test-results.xml"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-connect": "^0.11.2",
+    "mocha": "^2.3.3",
+    "mocha-junit-reporter": "1.11.1",
+    "pre-commit": "^1.1.2",
+    "sass-true": "^2.0.2",
+    "time-grunt": "^1.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Stratio/egeo.angular2.components"
+  },
+  "dependencies": {
+    "egeo.website.template": "https://github.com/Stratio/egeo.website.template.git#v0.2.0-rc.0",
+    "grunt-batch": "^0.2.4",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-copy": "^0.8.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-sass": "^1.1.0",
+    "kss": "^2.3.1",
+    "node-sass": "^3.5.3"
+  },
+  "pre-commit": {
+    "run": [
+      "test"
+    ]
+  }
+}

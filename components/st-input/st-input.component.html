@@ -1,0 +1,26 @@
+<div class="st-input">
+  <div class="input-container" [ngClass]="{disabled: disabled, error: showError()}">
+    <label class="title" [ngClass]="{error: showError(), active: focus, disabled: disabled}" [attr.for]="name">{{label}}</label>
+    <input
+      (focus)="onFocus($event)"
+      (focusout)="onFocusOut($event)"
+      (blur)="onFocusOut($event)"
+      [formControl]="internalControl"
+      class="remove-default-style"
+      [ngClass]="{disabled: disabled}"
+      [ngModel]="ngModel"
+      (ngModelChange)="changeModel($event)"
+      [placeholder]="placeholder"
+      [name]="name"
+      [type]="internalType"
+      [disabled]="isDisabled"
+      [attr.maxlength]="maxLength">
+
+    <span class="bar" [ngClass]="getBarType()"></span>
+  </div>
+  <div class="error-layout">
+    <div *ngIf="showError()">
+      <span class="error-message">{{errorMessage}}</span>
+    </div>
+  </div>
+</div>

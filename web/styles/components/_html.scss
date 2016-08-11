@@ -1,0 +1,15 @@
+$c-html: $c-print !default;
+$body---margin: 0 !default;
+$font: egeo-get-font(open-sans) !default;
+
+@if $c-html {
+  html {
+     @include egeo-c-app;
+     font-size: $html---base-font-size;
+  }
+  body{
+    margin: $body---margin;
+    overflow-x: hidden;
+    font-family: $font;
+  }
+}

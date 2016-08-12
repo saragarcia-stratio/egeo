@@ -12,5 +12,6 @@ surefire-reports
 dist
 
 .idea
+.vscode
 
 typings

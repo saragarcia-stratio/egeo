@@ -59,7 +59,27 @@
             <phase>generate-sources</phase>
             <configuration>
               <npmRegistryURL>${customnpmRegistryURL}</npmRegistryURL>
-              <arguments>install --no-optional</arguments>
+              <arguments>install --no-optional --loglevel=error --depth=0</arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>typings postinstall</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <phase>generate-sources</phase>
+            <configuration>
+              <arguments>run-script postinstall</arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>webpack build</id>
+            <goals>
+              <goal>webpack</goal>
+            </goals>
+            <phase>compile</phase>
+            <configuration>
+              <arguments>--config config-web/webpack.prod.js  --no-color --bail</arguments>
             </configuration>
           </execution>
           <execution>

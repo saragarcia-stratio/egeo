@@ -1,16 +1,15 @@
-@import '../egeo.ui/utils.typography';
-@import '../egeo.ui/utils.colors';
+@import '../st-egeo';
+@import '../egeo2/sass.utils/utils.typography';
+@import '../egeo2/sass.utils/utils.colors';
 
 $st-print---modal: true !default;
 
-$st-modal---dp: $html---dp !default;
-$st-modal---padding: $html---dp !default;
+$st-modal---dp: 30px;
+$st-modal---padding: 30px !default;
 $st-modal--header---font-family: egeo-get-font(brandon-grotesque) !default;
 $st-modal--header---color: get-color(n8) !default;
 
 @mixin st-modal() {
-  @include component;
-
   position: fixed;
   z-index: 9999;
   padding-top: 100px;

@@ -13,17 +13,19 @@ import { APP_LANGUAGE_PROVIDERS } from './app.config';
 import { LayoutModule } from './layout/layout.module';
 import { routing } from './app.routing';
 
+import { EgeoModule } from '../../components';
 
 @NgModule({
   imports: [
     BrowserModule,
     LayoutModule,
     HttpModule,
-    routing
+    routing,
+    EgeoModule.forRoot()
   ],
   declarations: [ AppComponent],
   providers: [ TranslateService, APP_LANGUAGE_PROVIDERS ],
-  bootstrap:    [ AppComponent ],
+  bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
 

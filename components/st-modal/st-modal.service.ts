@@ -1,7 +1,8 @@
-import { Injectable, DynamicComponentLoader, Injector, ComponentRef, ChangeDetectorRef } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { ComponentRef, Compiler, ViewChild, ViewContainerRef, ComponentFactory} from '@angular/core';
+import { Observable } from 'rxjs';
 import { StModal } from './st-modal.component';
 import { MessageModal, StMessageModalComponent } from './shared';
-import { Observable } from 'rxjs';
 import { ModalConfig, ModalTitle } from './modal.model';
 
 
@@ -18,14 +19,17 @@ export class StModalService {
   private header: ModalTitle = { title: 'Default', icon: 'icon-rocket' };
   private modal: ComponentRef<StModal>;
   private _config: ModalConfig = DEFAULT_CONFIG;
+  private _containerRef: ViewContainerRef;
 
-  constructor(private _dcl: DynamicComponentLoader, private _injector: Injector, private _cd: ChangeDetectorRef) { }
+  constructor(private _compiler: Compiler) {
+
+  }
 
   set config(config: ModalConfig) {
     this._config = config;
   }
 
-  create(component: any, title: ModalTitle, inputs?: Object, outputs?: Object): Promise<void> {
+  create(target: ViewContainerRef, component: any, title: ModalTitle, inputs?: Object, outputs?: Object): Promise<void> {
     inputs = inputs ? inputs : {};
     outputs = outputs ? outputs : {};
 
@@ -33,8 +37,10 @@ export class StModalService {
       this._config = this._config ? this._config : DEFAULT_CONFIG;
       this._config.destroyOnCLose = this._config.destroyOnCLose !== undefined ? this._config.destroyOnCLose : true;
       this.header = title;
-      this.createModalContainer();
-      return this._dcl.loadAsRoot(StModal, `#${MODAL_ID}`, this._injector).then(componentRef => this.onLoad(componentRef, component, inputs, outputs));
+      return this._compiler.compileComponentAsync(StModal).then((factory: ComponentFactory<any>) => {
+        this.modal = target.createComponent(factory);
+        this.onLoad(component, inputs, outputs);
+      });
     }
     return undefined;
   }
@@ -60,23 +66,23 @@ export class StModalService {
     }
   }
 
-  createConfigAndShow(config: ModalConfig, component: any, title: ModalTitle, inputs?: Object, outputs?: Object): void {
+  createConfigAndShow(target: ViewContainerRef, config: ModalConfig, component: any, title: ModalTitle, inputs?: Object, outputs?: Object): void {
     inputs = inputs !== undefined ? inputs : {};
     outputs = outputs !== undefined ? outputs : {};
     config = config !== undefined ? config : DEFAULT_CONFIG;
 
     this._config = config;
-    this.create(component, title, inputs, outputs).then(
+    this.create(target, component, title, inputs, outputs).then(
       () => this.show()
     );
   }
 
-  createAndShow(component: any, title: ModalTitle, inputs?: Object, outputs?: Object): void {
+  createAndShow(target: ViewContainerRef, component: any, title: ModalTitle, inputs?: Object, outputs?: Object): void {
     inputs = inputs !== undefined ? inputs : {};
     outputs = outputs !== undefined ? outputs : {};
     this._config = DEFAULT_CONFIG;
 
-    this.create(component, title, inputs, outputs).then(
+    this.create(target, component, title, inputs, outputs).then(
       () => this.show()
     );
   }
@@ -86,44 +92,7 @@ export class StModalService {
     this.destroy();
   }
 
-  /**
-   * Example of method to call delete window
-   *
-   * constructor(private _stModal: StModalService) {  // Injection of modal service
-   *    let notify: Subject<BUTTON_TYPES> = new Subject<BUTTON_TYPES>();
-   *
-   *    // Creation of buttons
-   *    let buttonAccept: Buttons = { type: BUTTON_TYPES.ACCEPT, title: 'Delete', notify: notify };
-   *    let buttonCancel: Buttons = { type: BUTTON_TYPES.CANCEL, title: 'Cancel', notify: notify };
-   *
-   *    // Creation of modal info
-   *    let messageModal: MessageModal = {
-   *    message: 'Are you sure of delete the id 10',
-   *      title: {title: 'ARE YOU SURE?', icon: 'icon-info2'},
-   *      buttons: [buttonAccept, buttonCancel]
-   *    };
-   *
-   *    // Create modal and suscribe button click
-   *    _stModal.createMessageModal(messageModal);
-   *    notify.subscribe((type: BUTTON_TYPES) => this.showMessageType(type));
-   * }
-   *
-   * // Next event
-   * showMessageType(type: BUTTON_TYPES): void {
-   *    switch (type) {
-   *      case BUTTON_TYPES.ACCEPT: console.log('ACCEPT'); break;
-   *      case BUTTON_TYPES.CANCEL: console.log('CANCEL'); break;
-   *      default: console.log('error**************'); break;
-   *    }
-   * }
-   *
-   * // Show modal after creation
-   * showModal(): void {
-   *    this._stModal.show();
-   * }
-   *
-   */
-  createMessageModal(modal: MessageModal): Promise<void> {
+  createMessageModal(target: ViewContainerRef, modal: MessageModal): Promise<void> {
     let config: ModalConfig = {
       modalSize: { height: 200, width: 600 },
       title: { backgroundColor: '#f3f3f3', fontSize: 24 },
@@ -132,37 +101,32 @@ export class StModalService {
 
 
     this.config = config;
-    return this.create(StMessageModalComponent, modal.title, { modal: modal });
+    return this.create(target, StMessageModalComponent, modal.title, { modal: modal });
   }
 
-  createMessageModalAndShow(modal: MessageModal): void {
-    this.createMessageModal(modal)
+  createMessageModalAndShow(target: ViewContainerRef, modal: MessageModal): void {
+    this.createMessageModal(target, modal)
       .then(() => this.show())
       .catch((e) => console.error(e));
   }
 
-  private createModalContainer(): void {
-    let body: HTMLBodyElement = document.getElementsByTagName('body')[0];
-    let div: HTMLDivElement = document.createElement('div');
-    div.id = MODAL_ID;
-
-    body.appendChild(div);
+  set viewContainterRef(containerRef: ViewContainerRef) {
+    this._containerRef = containerRef;
   }
 
-  private onLoad(componentRef: ComponentRef<StModal>, component: any, inputs: Object, outputs: Object): void {
-    this.modal = componentRef;
-    componentRef.instance.header = this.header;
-    componentRef.instance.visible = false;
+  private onLoad(component: any, inputs: Object, outputs: Object): void {
+    this.modal.instance.header = this.header;
+    this.modal.instance.visible = false;
 
-    componentRef.instance.component = component;
+    this.modal.instance.component = component;
 
-    componentRef.instance.visibleChange.subscribe((visibility: boolean) => this.onChangeVisibility(visibility));
-    componentRef.instance.componentInputs = inputs;
-    componentRef.instance.componentOutputs = outputs;
+    this.modal.instance.visibleChange.subscribe((visibility: boolean) => this.onChangeVisibility(visibility));
+    this.modal.instance.componentInputs = inputs;
+    this.modal.instance.componentOutputs = outputs;
 
-    componentRef.instance.config = this._config;
+    this.modal.instance.config = this._config;
 
-    componentRef.changeDetectorRef.detectChanges();
+    this.modal.changeDetectorRef.detectChanges();
   }
 
   private onChangeVisibility(visibility: boolean): void {

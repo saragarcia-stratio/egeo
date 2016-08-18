@@ -2,7 +2,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MessageModal, Buttons, BUTTON_TYPES } from '../message-modal.model';
 
 @Component({
-  moduleId: module.id,
   selector: 'stratio-message-modal',
   template: require('./message-modal.component.html'),
   styles: [require('./message-modal.component.scss')]
@@ -15,7 +14,6 @@ export class StMessageModalComponent {
 
   doAction(button: Buttons): void {
     button.notify.next(button.type);
-    button.notify.complete();
   }
 
   getButtonClass(button: Buttons): string {

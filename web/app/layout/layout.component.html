@@ -1,5 +1,35 @@
-<div class="container-fluid">
-  <div class="content">
-    <router-outlet></router-outlet>
+<div id="wrapper">
+
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper">
+    <img class="text-center logo" src="../../assets/images/egeo_logo_w.png">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <a routerLink="/main">Egeo components</a>
+      </li>
+      <li>
+        <a routerLink="/main">Dashboard</a>
+      </li>
+      <li>
+        <a routerLink="/input">Inputs</a>
+      </li>
+      <li>
+        <a routerLink="/modal">Modals</a>
+      </li>
+    </ul>
   </div>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /#page-content-wrapper -->
+
 </div>

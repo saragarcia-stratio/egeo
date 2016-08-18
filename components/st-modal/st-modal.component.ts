@@ -1,4 +1,5 @@
-import {Component, Input, Output, EventEmitter, DynamicComponentLoader, Injector, OnInit, ComponentRef} from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnDestroy, OnInit } from '@angular/core';
+import { ComponentRef, Compiler, ViewChild, ViewContainerRef, ComponentFactory} from '@angular/core';
 import { ModalConfig, ModalTitle } from './modal.model';
 
 @Component({
@@ -6,7 +7,7 @@ import { ModalConfig, ModalTitle } from './modal.model';
   template: require('./st-modal.component.html'),
   styles: [require('./st-modal.component.scss')]
 })
-export class StModal implements OnInit {
+export class StModal implements OnDestroy, OnInit {
   @Input() config: ModalConfig;
   @Input() header: ModalTitle;
   @Input() visible: boolean;
@@ -16,17 +17,16 @@ export class StModal implements OnInit {
   @Input() componentInputs: Object;
   @Input() componentOutputs: Object;
 
-  constructor(private _dcl: DynamicComponentLoader, private _injector: Injector) { }
+  @ViewChild('stModalBody', { read: ViewContainerRef }) target: any;
+  private componentRef: ComponentRef<any>;
+
+  constructor(private compiler: Compiler) { }
 
   get ngClassConfig(): { [className: string]: boolean } {
     return {
       'st-modal--visible': this.visible,
       'st-modal--invisible': !this.visible
     };
-  }
-
-  ngOnInit(): void {
-    this._dcl.loadAsRoot(this.component, '#st-modal--body', this._injector).then(componentRef => this.bindModalInputs(componentRef));
   }
 
   getModalSize(): Object {
@@ -46,7 +46,7 @@ export class StModal implements OnInit {
   }
 
   getIconLineHeight(): Object {
-     if (this.config) {
+    if (this.config) {
       return { 'line-height': this.config.title.fontSize + 'px' };
     } else {
       return {};
@@ -57,18 +57,39 @@ export class StModal implements OnInit {
     this.visibleChange.emit(true);
   }
 
-  bindModalInputs(componentRef: ComponentRef<any>): void {
+  bindModalInputs(): void {
     for (let key in this.componentInputs) {
       if (this.componentInputs.hasOwnProperty(key)) {
-        componentRef.instance[key] = this.componentInputs[key];
+        this.componentRef.instance[key] = this.componentInputs[key];
       }
     }
 
     for (let key in this.componentOutputs) {
       if (this.componentOutputs.hasOwnProperty(key)) {
-        componentRef.instance[key].subscribe(this.componentOutputs[key]);
+        this.componentRef.instance[key].subscribe(this.componentOutputs[key]);
       }
     }
-    componentRef.changeDetectorRef.detectChanges();
+    this.componentRef.changeDetectorRef.detectChanges();
+  }
+
+  ngOnInit(): void {
+    this.createModal();
+  }
+
+  ngOnDestroy(): void {
+    if (this.componentRef) {
+      this.componentRef.destroy();
+    }
+  }
+
+  private createModal(): void {
+    if (!this.componentRef) {
+      this.compiler.compileComponentAsync(this.component).then(
+        factory => {
+          this.componentRef = this.target.createComponent(factory);
+          this.bindModalInputs();
+        }
+      );
+    }
   }
 }

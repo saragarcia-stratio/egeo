@@ -90,12 +90,10 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
   }
 
   private showError(): boolean {
-    console.log(this.errorMessage !== undefined, ' && (', !this.internalControl.pristine, ' || ', this.forceValidations, ' ) && ', !this.isDisabled, ' && ', !this.focus);
     return this.errorMessage !== undefined && (!this.internalControl.pristine || this.forceValidations) && !this.isDisabled && !this.focus;
   }
 
   private getErrorMessage(errors: { [key: string]: any }): string {
-    console.log(errors);
     if (!errors) {
       return undefined;
     }

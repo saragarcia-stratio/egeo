@@ -5,7 +5,7 @@ var helpers = require('./helpers');
 
 module.exports = {
   entry: {
-    'stratio-libs': './components/main.ts'
+    'stratio-libs': './components/egeo.module.ts'
   },
 
   resolve: {

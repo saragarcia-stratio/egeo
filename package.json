@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Egeo Angular 2 Components Library.",
   "scripts": {
-    "start": "webpack-dev-server --inline --progress --port 8080 --host 0.0.0.0",
+    "start": "webpack-dashboard -- webpack-dev-server --inline --quiet --port 8080 --host 0.0.0.0",
     "test": "karma start",
     "build": "rm -rf target/generated-web && webpack --config config/webpack.prod.js --no-color --bail",
     "build:components": "rm -rf target/components && webpack --config config-components/webpack.prod.js --no-color --bail",
@@ -19,8 +19,8 @@
     "@angular/common": "2.0.0-rc.5",
     "@angular/compiler": "2.0.0-rc.5",
     "@angular/core": "2.0.0-rc.5",
-    "@angular/http": "2.0.0-rc.5",
     "@angular/forms": "0.3.0",
+    "@angular/http": "2.0.0-rc.5",
     "@angular/platform-browser": "2.0.0-rc.5",
     "@angular/platform-browser-dynamic": "2.0.0-rc.5",
     "@angular/router": "3.0.0-rc.1",
@@ -28,6 +28,7 @@
     "egeo.ui.base": "*",
     "es6-shim": "0.35.1",
     "ng2-translate": "2.2.2",
+    "prismjs": "1.5.1",
     "reflect-metadata": "0.1.3",
     "rxjs": "5.0.0-beta.6",
     "zone.js": "0.6.12"
@@ -49,6 +50,7 @@
     "node-sass": "3.8.0",
     "null-loader": "0.1.1",
     "phantomjs-prebuilt": "2.1.11",
+    "prismjs-loader": "0.0.3",
     "raw-loader": "0.5.1",
     "sass-loader": "4.0.0",
     "style-loader": "0.13.1",
@@ -58,6 +60,7 @@
     "typescript": "1.8.10",
     "typings": "1.3.2",
     "webpack": "1.13.1",
+    "webpack-dashboard": "^0.1.1",
     "webpack-dev-server": "1.14.1",
     "webpack-merge": "0.14.1"
   }

@@ -3,12 +3,25 @@ import { CommonModule }       from '@angular/common';
 import { FormsModule }        from '@angular/forms';
 
 import { LayoutComponent } from './layout.component';
-import { LibsComponent } from '../libs/libs.component';
+import {
+  ModalComponent,
+  MainComponent,
+  InputComponent
+} from '../+examples';
 import { routing } from './layout.routing';
-import { EgeoModule } from '../../../components/main';
+
+import { LoadCodeComponent } from '../shared';
+
+import { EgeoModule } from '../../../components';
 
 @NgModule({
-  imports: [ CommonModule, routing, EgeoModule, FormsModule ],
-  declarations: [ LayoutComponent, LibsComponent ],
+  imports: [ CommonModule, routing, FormsModule, EgeoModule ],
+  declarations: [
+    LayoutComponent,
+    LoadCodeComponent,
+    ModalComponent,
+    MainComponent,
+    InputComponent
+  ]
 })
 export class LayoutModule { }

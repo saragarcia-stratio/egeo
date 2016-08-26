@@ -128,7 +128,7 @@ $font-family---open-sans: egeo-get-font(open-sans) !default;
     font-weight: $input---font-weight;
     color: $input__normal---color;
     padding-left: $input---padding-left;
-
+    background-color: transparent;
     &.disabled {
       color: $input__disabled---color;
     }

@@ -16,3 +16,26 @@ body{
 img {
    max-width: 100%;
 }
+
+h1 {
+   margin: $base-separation 0 ($base-separation - 10);
+}
+
+p {
+   line-height: 1.5;
+   margin-bottom: $base-separation;
+}
+
+ul {
+   list-style: circle;
+   padding-left: 25px;
+}
+
+li {
+   line-height: 1.5;
+}
+
+a {
+   color: get-color(a1);
+   text-decoration: underline;
+}

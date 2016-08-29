@@ -1,0 +1,15 @@
+@import '../../../styles/require';
+@import 'page-footer';
+
+.page-title {
+  font-size: get-font-size(head_large);
+  text-transform: uppercase;
+
+  &::after {
+    border-bottom: 1px solid;
+    content: ' ';
+    display: block;
+    height: 15px;
+    width: 120px;
+  }
+}

@@ -1,4 +1,24 @@
+/* TODO: move these placeholders to a better place */
+%remove-list-style {
+  &,
+  & ul {
+    list-style: none;
+    padding: 0;
+  }
+}
+
+%remove-link-style {
+  &,
+  & a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
 .tmp-dropdown-menu {
+  @extend %remove-list-style;
+  @extend %remove-link-style;
+
   &-item {
     border-bottom: 1px solid get-color(a2_dark);
     color: get-color(a2_dark);
@@ -29,6 +49,9 @@
 }
 
 .tmp-dropdown-submenu {
+  @extend %remove-list-style;
+  @extend %remove-link-style;
+
   font-size: get-font-size(body_xsmall);
   margin-top: $base-separation;
   text-transform: none;

@@ -1,7 +1,7 @@
 $sidebar---padding: $base-separation;
 $sidebar---width: 350px;
 
-$sidebar-intro---margin-bottom: $double-separation;
+$sidebar-intro---margin-bottom: $base-separation;
 
 .sidebar {
   background: get-color(b3);
@@ -23,7 +23,7 @@ $sidebar-intro---margin-bottom: $double-separation;
 
   &--open + .page-content-wrapper {
     margin-left: $sidebar---width;
-    width: calc(100% - $sidebar---width);
+    width: calc(100% - #{$sidebar---width});
   }
 
   &-intro {

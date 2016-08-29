@@ -1,6 +1,6 @@
 <div class="st-input">
-  <div class="input-container" [ngClass]="{disabled: disabled, error: showError()}">
-    <label class="title" [ngClass]="{error: showError(), active: focus, disabled: disabled}" [attr.for]="name">{{label}}</label>
+  <div class="input-container" [ngClass]="{disabled: isDisabled, error: showError()}">
+    <label class="title" [ngClass]="{error: showError(), active: focus, disabled: isDisabled}" [attr.for]="name">{{label}}</label>
     <input
       (focus)="onFocus($event)"
       (focusout)="onFocusOut($event)"

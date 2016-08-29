@@ -6,8 +6,13 @@ $body---margin: 0 !default;
 html{
    font-size: $html---base-font-size;
 }
+
 body{
    margin: $body---margin;
    overflow-x: hidden;
    font-family: $body---font-family;
+}
+
+img {
+   max-width: 100%;
 }

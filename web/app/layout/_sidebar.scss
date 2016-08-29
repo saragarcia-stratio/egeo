@@ -1,0 +1,41 @@
+$sidebar---padding: $base-separation;
+$sidebar---width: 350px;
+
+$sidebar-intro---margin-bottom: $double-separation;
+
+.sidebar {
+  background: get-color(b3);
+  height: 100%;
+  margin-left: -$sidebar---width;
+  overflow-y: auto;
+  padding: $sidebar---padding;
+  position: fixed;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  width: $sidebar---width;
+  z-index: get-layer(ontop);
+
+  &--open {
+      margin-left: 0;
+  }
+
+  &--open + .page-content-wrapper {
+    margin-left: $sidebar---width;
+    width: calc(100% - $sidebar---width);
+  }
+
+  &-intro {
+    margin-bottom: $sidebar-intro---margin-bottom;
+    text-align: center;
+
+    .logo {
+      max-width: 70%;
+    }
+
+    .version {
+      font-size: get-font-size(head_xxsmall);
+    }
+  }
+}

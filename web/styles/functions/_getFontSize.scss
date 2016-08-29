@@ -1,0 +1,9 @@
+/**
+ * getFontSize wrapper
+ *
+ * @param  {text} $font-size
+ * @return {color}
+ */
+@function get-font-size($font-size) {
+   @return egeo-get-font-size($font-size);
+}

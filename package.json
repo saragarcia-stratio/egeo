@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Egeo Angular 2 Components Library.",
   "scripts": {
-    "start": "webpack-dashboard -- webpack-dev-server --inline --quiet --port 8080",
+    "start": "webpack-dev-server --inline --quiet --port 8080",
     "test": "karma start",
     "build": "rm -rf target/generated-web && webpack --config config/webpack.prod.js --no-color --bail",
     "build:components": "rm -rf target/components && webpack --config config-components/webpack.prod.js --no-color --bail",

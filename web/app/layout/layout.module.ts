@@ -6,7 +6,8 @@ import { LayoutComponent } from './layout.component';
 import {
   ModalComponent,
   MainComponent,
-  InputComponent
+  InputComponent,
+  InfoBoxComponent
 } from '../+examples';
 import { routing } from './layout.routing';
 
@@ -21,7 +22,8 @@ import { EgeoModule } from '../../../components';
     LoadCodeComponent,
     ModalComponent,
     MainComponent,
-    InputComponent
+    InputComponent,
+    InfoBoxComponent
   ]
 })
 export class LayoutModule { }

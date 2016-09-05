@@ -16,5 +16,5 @@ import '../node_modules/bootstrap/dist/css/bootstrap.css';
 // import 'prismjs/components/prism-typescript.js';
 // import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
 
-import 'prismjs/themes/prism-okaidia.css';
+import 'prismjs/themes/prism-coy.css';
 // import 'prismjs/plugins/line-numbers/prism-line-numbers.css';

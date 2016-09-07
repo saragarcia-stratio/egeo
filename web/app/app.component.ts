@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { TranslateService} from 'ng2-translate/ng2-translate';
+// import { TranslateService} from 'ng2-translate/ng2-translate';
 
 @Component({
   selector: 'app',
@@ -9,12 +9,14 @@ import { TranslateService} from 'ng2-translate/ng2-translate';
 })
 export class AppComponent {
 
-  constructor(translate: TranslateService) {
-    let userLang = navigator.language.split('-')[0];
-    userLang = /(es|en)/gi.test(userLang) ? userLang : 'en';
-
-    translate.setDefaultLang('en');
-    translate.use(userLang);
+  constructor() {
   }
+  // constructor(translate: TranslateService) {
+  //   let userLang = navigator.language.split('-')[0];
+  //   userLang = /(es|en)/gi.test(userLang) ? userLang : 'en';
+
+  //   translate.setDefaultLang('en');
+  //   translate.use(userLang);
+  // }
 
 }

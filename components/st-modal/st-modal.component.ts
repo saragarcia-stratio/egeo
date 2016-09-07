@@ -84,12 +84,13 @@ export class StModal implements OnDestroy, OnInit {
 
   private createModal(): void {
     if (!this.componentRef) {
-      this.compiler.compileComponentAsync(this.component).then(
+      // TODO: Find alternative way to compile dinamically with RC6
+      /*this.compiler.compileComponentAsync(this.component).then(
         factory => {
           this.componentRef = this.target.createComponent(factory);
           this.bindModalInputs();
         }
-      );
+      );*/
     }
   }
 }

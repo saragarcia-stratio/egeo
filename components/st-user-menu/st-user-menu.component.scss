@@ -1,4 +1,6 @@
-@import '../../../styles/require';
+@import '../st-egeo';
+@import '../egeo2/sass.utils/utils.typography';
+@import '../egeo2/sass.utils/utils.colors';
 
  $st-user-menu---margin-left:40px;
  $st-user-menu-info-right---padding:2px 10px;
@@ -29,12 +31,12 @@ $st-font-family---brandon:  egeo-get-font(brandon-grotesque) !default;
   overflow: hidden;
 
   & .ico-text-element {
-    @include egeo-c-button-modifier('bold',
+    /*@include egeo-c-button-modifier('bold',
             (background: none, margin:0px, font-weight:$st-header__user-info---font-weight, font-size:$st-header__user-info---font-size, color: $ico-text-element--regular-hover---color), // Sass map that includes the styles to be placed in the modifier
             (background: none, margin:0px, font-weight:$st-header__user-info---font-weight, font-size:$st-header__user-info---font-size, color: $ico-text-element--regular-hover2---color), // Sass map that includes the styles to be placed in the modifier on hover
             (background: none, margin:0px, font-weight:$st-header__user-info---font-weight, font-size:$st-header__user-info---font-size, color: $ico-text-element--regular-focus---color)  // Sass map that includes the styles to be placed in the modifier on focus
     );
-    transition: $transition-all-ease;
+    transition: $transition-all-ease;*/
   }
 
   & .ico-text-element{
@@ -63,7 +65,7 @@ $st-font-family---brandon:  egeo-get-font(brandon-grotesque) !default;
 
   .user__text {
     @extend .ico-text-element__text;
-    font-family: $st-font-family---open-sans;
+    //font-family: $st-font-family---open-sans;
     font-weight: $user__text---font-weight;
   }
 }

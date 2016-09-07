@@ -1,14 +1,9 @@
 import { Component, Input, Output, EventEmitter, OnInit, ElementRef } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Menu, SubMenu } from './shared';
-import { TranslatePipe } from 'ng2-translate/ng2-translate';
-import { StUserMenuComponent } from '../st-user-menu/st-user-menu.component';
 
 @Component({
-  moduleId: module.id,
   selector: 'st-header-menu',
-  pipes: [TranslatePipe],
-  directives: [StUserMenuComponent],
   styles: [require('./st-header-menu.component.scss')],
   template: require('./st-header-menu.component.html')
 })

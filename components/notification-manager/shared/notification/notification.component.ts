@@ -3,7 +3,6 @@ import { StNotification, SEVERITY } from '../notification.model';
 import { Subject } from 'rxjs';
 
 @Component({
-  moduleId: module.id,
   selector: 'st-notification',
   template: require('./notification.component.html'),
   styles: [require('./notification.component.scss')]

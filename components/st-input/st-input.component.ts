@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, forwardRef, Input, OnChanges, Provider, OnInit } from '@angular/core';
-import { FormControl, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Validators, ValidatorFn, REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
+import { FormControl, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Validators, ValidatorFn } from '@angular/forms';
 import { STVALIDATIONS } from '../st-validations';
 import { StInputError } from './shared';
 
@@ -7,7 +7,6 @@ import { StInputError } from './shared';
   selector: 'st-input',
   template: require('./st-input.component.html'),
   styles: [require('./st-input.component.scss')],
-  directives: [REACTIVE_FORM_DIRECTIVES],
   providers: [
     { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => StInputComponent), multi: true },
     { provide: NG_VALIDATORS, useExisting: forwardRef(() => StInputComponent), multi: true }

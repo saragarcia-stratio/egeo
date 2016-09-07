@@ -37,10 +37,11 @@ export class StModalService {
       this._config = this._config ? this._config : DEFAULT_CONFIG;
       this._config.destroyOnCLose = this._config.destroyOnCLose !== undefined ? this._config.destroyOnCLose : true;
       this.header = title;
-      return this._compiler.compileComponentAsync(StModal).then((factory: ComponentFactory<any>) => {
-        this.modal = target.createComponent(factory);
-        this.onLoad(component, inputs, outputs);
-      });
+      // TODO: Find alternative way to compile dinamically with RC6
+      // return this._compiler.compileComponentAsync(StModal).then((factory: ComponentFactory<any>) => {
+      //   this.modal = target.createComponent(factory);
+      //   this.onLoad(component, inputs, outputs);
+      // });
     }
     return undefined;
   }

@@ -1,10 +1,7 @@
 import { Component, Input, Injectable, ElementRef} from '@angular/core';
-import { TranslatePipe } from 'ng2-translate/ng2-translate';
 
 @Component({
-  moduleId: module.id,
   selector: 'st-user-menu',
-  pipes: [TranslatePipe],
   template: require('./st-user-menu.component.html'),
   styles: [require('./st-user-menu.component.scss')]
 })

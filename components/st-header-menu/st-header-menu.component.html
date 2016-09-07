@@ -16,7 +16,7 @@
             <span class="ico-text-element__icon" [ngClass]="{active: menu === activeMenu}">
                      <i class="{{menu.icon}}"></i>
                   </span>
-            <span class="ico-text-element__text" [ngClass]="{active: menu === activeMenu}">{{menu.title | translate}}</span>
+            <span class="ico-text-element__text" [ngClass]="{active: menu === activeMenu}">{{menu.title}}</span>
           </li>
         </ul>
       </div>
@@ -35,7 +35,7 @@
       <div class="st-header__triangle"></div>
       <div *ngFor="let subMenu of activeMenu.subMenu; let last = last" class="st-header__submenu-element">
         <div class="st-header__submenu-text" (click)="navigate(subMenu.id)" [ngClass]="{active: activeSubMenu === subMenu}">
-          {{subMenu.title | translate}}
+          {{subMenu.title}}
         </div>
         <div class="st-header__submenu-separator" *ngIf="!last">|</div>
       </div>

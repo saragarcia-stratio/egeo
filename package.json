@@ -1,6 +1,6 @@
 {
   "name": "egeo.angular2.components",
-  "version": "2.0.0-rc.6",
+  "version": "0.2.0-SNAPSHOT",
   "description": "Egeo Angular 2 Components Library.",
   "scripts": {
     "start": "webpack-dev-server --inline --quiet --port 8080",
@@ -8,7 +8,8 @@
     "build": "rm -rf target/generated-web && webpack --config config/webpack.prod.js --no-color --bail",
     "build:components": "rm -rf target/components && webpack --config config-components/webpack.prod.js --no-color --bail",
     "build:components-dev": "rm -rf target/components && webpack --config config-components/webpack.dev.js --pogress --bail",
-    "postinstall": "typings install"
+    "postinstall": "typings install",
+    "replace": "json -I -f package.json -e"
   },
   "author": "Stratio",
   "repository": {
@@ -62,6 +63,7 @@
     "webpack": "1.13.2",
     "webpack-dashboard": "0.1.8",
     "webpack-dev-server": "1.15.1",
-    "webpack-merge": "0.14.1"
+    "webpack-merge": "0.14.1",
+    "json": "9.0.4"
   }
 }

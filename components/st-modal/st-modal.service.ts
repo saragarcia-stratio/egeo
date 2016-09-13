@@ -1,9 +1,21 @@
 import { Injectable } from '@angular/core';
-import { ComponentRef, Compiler, ViewChild, ViewContainerRef, ComponentFactory} from '@angular/core';
+import {
+  ComponentRef,
+  Compiler,
+  ViewChild,
+  ViewContainerRef,
+  ComponentFactory,
+  NgModule,
+  NgModuleMetadataType,
+  Type,
+  ReflectiveInjector,
+  Inject
+} from '@angular/core';
 import { Observable } from 'rxjs';
 import { StModal } from './st-modal.component';
 import { MessageModal, StMessageModalComponent } from './shared';
 import { ModalConfig, ModalTitle } from './modal.model';
+import { COMPONENT_OUTLET_MODULE } from './provider';
 
 
 const MODAL_ID: string = 'stratio-modal-component';
@@ -21,15 +33,18 @@ export class StModalService {
   private _config: ModalConfig = DEFAULT_CONFIG;
   private _containerRef: ViewContainerRef;
 
-  constructor(private _compiler: Compiler) {
+  private moduleType: any;
 
-  }
+  constructor(
+    @Inject(COMPONENT_OUTLET_MODULE) private moduleMeta: NgModuleMetadataType,
+    private _compiler: Compiler
+  ) { }
 
   set config(config: ModalConfig) {
     this._config = config;
   }
 
-  create(target: ViewContainerRef, component: any, title: ModalTitle, inputs?: Object, outputs?: Object): Promise<void> {
+  create(target: ViewContainerRef, component: any, componentSelector: string, title: ModalTitle, inputs?: Object, outputs?: Object): Promise<void> {
     inputs = inputs ? inputs : {};
     outputs = outputs ? outputs : {};
 
@@ -37,11 +52,20 @@ export class StModalService {
       this._config = this._config ? this._config : DEFAULT_CONFIG;
       this._config.destroyOnCLose = this._config.destroyOnCLose !== undefined ? this._config.destroyOnCLose : true;
       this.header = title;
-      // TODO: Find alternative way to compile dinamically with RC6
-      // return this._compiler.compileComponentAsync(StModal).then((factory: ComponentFactory<any>) => {
-      //   this.modal = target.createComponent(factory);
-      //   this.onLoad(component, inputs, outputs);
-      // });
+
+      this.moduleType = this._createDynamicModule(StModal, component);
+      const injector = ReflectiveInjector.fromResolvedProviders([], target.parentInjector);
+      return this._compiler.compileModuleAndAllComponentsAsync<any>(this.moduleType)
+        .then(moduleFactory => {
+          let factories: ComponentFactory<any>[] = moduleFactory.componentFactories;
+          let stModalFactory: ComponentFactory<StModal> = factories.find(factory => factory.selector === 'st-modal');
+          let otherFactory: ComponentFactory<any> = factories.find(factory => factory.selector === componentSelector);
+          if (stModalFactory) {
+            target.clear();
+            this.modal = target.createComponent<StModal>(stModalFactory, 0, injector);
+            this.onLoad(component, inputs, outputs, otherFactory, injector);
+          }
+        });
     }
     return undefined;
   }
@@ -67,23 +91,25 @@ export class StModalService {
     }
   }
 
-  createConfigAndShow(target: ViewContainerRef, config: ModalConfig, component: any, title: ModalTitle, inputs?: Object, outputs?: Object): void {
+  createConfigAndShow(
+    target: ViewContainerRef, config: ModalConfig, component: any, componentSelector: string, title: ModalTitle, inputs?: Object, outputs?: Object
+  ): void {
     inputs = inputs !== undefined ? inputs : {};
     outputs = outputs !== undefined ? outputs : {};
     config = config !== undefined ? config : DEFAULT_CONFIG;
 
     this._config = config;
-    this.create(target, component, title, inputs, outputs).then(
+    this.create(target, component, componentSelector, title, inputs, outputs).then(
       () => this.show()
     );
   }
 
-  createAndShow(target: ViewContainerRef, component: any, title: ModalTitle, inputs?: Object, outputs?: Object): void {
+  createAndShow(target: ViewContainerRef, component: any, componentSelector: string, title: ModalTitle, inputs?: Object, outputs?: Object): void {
     inputs = inputs !== undefined ? inputs : {};
     outputs = outputs !== undefined ? outputs : {};
     this._config = DEFAULT_CONFIG;
 
-    this.create(target, component, title, inputs, outputs).then(
+    this.create(target, component, componentSelector, title, inputs, outputs).then(
       () => this.show()
     );
   }
@@ -102,7 +128,7 @@ export class StModalService {
 
 
     this.config = config;
-    return this.create(target, StMessageModalComponent, modal.title, { modal: modal });
+    return this.create(target, StMessageModalComponent, 'stratio-message-modal', modal.title, { modal: modal });
   }
 
   createMessageModalAndShow(target: ViewContainerRef, modal: MessageModal): void {
@@ -115,15 +141,18 @@ export class StModalService {
     this._containerRef = containerRef;
   }
 
-  private onLoad(component: any, inputs: Object, outputs: Object): void {
+  private onLoad(component: any, inputs: Object, outputs: Object, otherFactory: ComponentFactory<any>, injector: ReflectiveInjector): void {
     this.modal.instance.header = this.header;
     this.modal.instance.visible = false;
 
     this.modal.instance.component = component;
+    this.modal.instance.componentFactory = otherFactory;
+    this.modal.instance.componentInjector = injector;
 
     this.modal.instance.visibleChange.subscribe((visibility: boolean) => this.onChangeVisibility(visibility));
     this.modal.instance.componentInputs = inputs;
     this.modal.instance.componentOutputs = outputs;
+
 
     this.modal.instance.config = this._config;
 
@@ -136,5 +165,17 @@ export class StModalService {
     } else if (this._config) {
       this.hide();
     }
+  }
+
+  private _createDynamicModule(componentStModalType: Type<any>, componentType: Type<any>): NgModuleMetadataType {
+    const declarations = this.moduleMeta.declarations || [];
+    declarations.push(componentStModalType);
+    declarations.push(componentType);
+    const moduleMeta: NgModuleMetadataType = {
+      imports: this.moduleMeta.imports,
+      providers: this.moduleMeta.providers,
+      declarations: declarations
+    };
+    return NgModule(moduleMeta)(class _ { });
   }
 }

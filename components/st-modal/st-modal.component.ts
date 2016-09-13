@@ -1,5 +1,16 @@
-import { Component, Input, Output, EventEmitter, OnDestroy, OnInit } from '@angular/core';
-import { ComponentRef, Compiler, ViewChild, ViewContainerRef, ComponentFactory} from '@angular/core';
+import {
+  Component,
+  ComponentRef,
+  Input,
+  ViewContainerRef,
+  ReflectiveInjector,
+  Output,
+  EventEmitter,
+  ViewChild,
+  OnDestroy,
+  OnInit
+} from '@angular/core';
+
 import { ModalConfig, ModalTitle } from './modal.model';
 
 @Component({
@@ -16,11 +27,16 @@ export class StModal implements OnDestroy, OnInit {
   @Input() component: any;
   @Input() componentInputs: Object;
   @Input() componentOutputs: Object;
+  @Input() componentSelector: String;
 
-  @ViewChild('stModalBody', { read: ViewContainerRef }) target: any;
+  @Input() componentFactory: any;
+  @Input() componentInjector: ReflectiveInjector;
+
+  @ViewChild('stModalBody', { read: ViewContainerRef }) target: ViewContainerRef;
   private componentRef: ComponentRef<any>;
+  private moduleType: any;
 
-  constructor(private compiler: Compiler) { }
+  constructor() { }
 
   get ngClassConfig(): { [className: string]: boolean } {
     return {
@@ -84,13 +100,9 @@ export class StModal implements OnDestroy, OnInit {
 
   private createModal(): void {
     if (!this.componentRef) {
-      // TODO: Find alternative way to compile dinamically with RC6
-      /*this.compiler.compileComponentAsync(this.component).then(
-        factory => {
-          this.componentRef = this.target.createComponent(factory);
-          this.bindModalInputs();
-        }
-      );*/
+      this.target.clear();
+      this.componentRef = this.target.createComponent(this.componentFactory, 0, this.componentInjector);
+      this.bindModalInputs();
     }
   }
 }

@@ -17,6 +17,7 @@ $placeholder---font-size: egeo-get-font-size(body_large) !default;
 $placeholder---padding-left: 3px !default;
 
 $focus-bar---width: 100% !default;
+$focus-bar---left: 0 !default;
 $focus-bar---bottom: -2px !default;
 
 $focus-bar__before-after---content: '' !default;
@@ -34,6 +35,7 @@ $input---width: 100% !default;
 $input---font-size: egeo-get-font-size(body_large) !default;
 $input---font-weight: egeo-get-font-weight(normal) !default;
 $input---padding-left: 3px;
+$input---height: 25px;
 
 $error---font-size: egeo-get-font-size(body_xsmall) !default;
 $error---font-weight: egeo-get-font-weight(normal) !default;
@@ -73,6 +75,7 @@ $font-family---open-sans: egeo-get-font(open-sans) !default;
 @mixin selection($color) {
   position: absolute;
   width: $focus-bar---width;
+  left: $focus-bar---left;
   bottom: $focus-bar---bottom;
 
   &::before, &::after {
@@ -129,6 +132,7 @@ $font-family---open-sans: egeo-get-font(open-sans) !default;
     color: $input__normal---color;
     padding-left: $input---padding-left;
     background-color: transparent;
+    height: $input---height;
     &.disabled {
       color: $input__disabled---color;
     }

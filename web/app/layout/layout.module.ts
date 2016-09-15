@@ -4,7 +4,7 @@ import { FormsModule }        from '@angular/forms';
 
 import { LayoutComponent } from './layout.component';
 import {
-  ModalComponent,
+  // ModalComponent,
   MainComponent,
   InputComponent,
   InfoBoxComponent
@@ -20,7 +20,7 @@ import { EgeoModule } from '../../../components';
   declarations: [
     LayoutComponent,
     LoadCodeComponent,
-    ModalComponent,
+    // ModalComponent,
     MainComponent,
     InputComponent,
     InfoBoxComponent

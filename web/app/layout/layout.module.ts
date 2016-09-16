@@ -7,7 +7,8 @@ import {
   ModalComponent,
   MainComponent,
   InputComponent,
-  InfoBoxComponent
+  InfoBoxComponent,
+  InfoCardComponent
 } from '../+examples';
 import { routing } from './layout.routing';
 
@@ -23,7 +24,8 @@ import { EgeoModule } from '../../../components';
     ModalComponent,
     MainComponent,
     InputComponent,
-    InfoBoxComponent
+    InfoBoxComponent,
+    InfoCardComponent
   ]
 })
 export class LayoutModule { }

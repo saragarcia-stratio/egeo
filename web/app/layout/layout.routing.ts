@@ -6,6 +6,7 @@ import {
   InputComponent,
   InfoBoxComponent
 } from '../+examples';
+import {InfoCardComponent} from '../+examples/info-card/info-card.component';
 
 export const routing = RouterModule.forChild([
   {
@@ -14,7 +15,8 @@ export const routing = RouterModule.forChild([
     { path: 'main', component: MainComponent },
     { path: 'modal', component: ModalComponent },
     { path: 'input', component: InputComponent },
-    { path: 'info-box', component: InfoBoxComponent }
+    { path: 'info-box', component: InfoBoxComponent },
+    { path: 'info-card', component: InfoCardComponent }
   ]
   }
 ]);

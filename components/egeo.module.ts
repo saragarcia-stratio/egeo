@@ -7,6 +7,7 @@ import { StModalService, MessageModal, StModal, StMessageModalComponent, provide
 import { StInfoBoxComponent }  from './st-info-box';
 import { StUserMenuComponent } from './st-user-menu/st-user-menu.component';
 import { StNotificationComponent } from './notification-manager/shared/';
+import {StInfoCardComponent} from './st-info-card';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
@@ -15,8 +16,8 @@ import { StNotificationComponent } from './notification-manager/shared/';
       imports: [CommonModule]
     })
   ],
-  declarations: [StInputComponent, StUserMenuComponent, StNotificationComponent, StInfoBoxComponent],
-  exports: [StInputComponent, StInfoBoxComponent]
+  declarations: [StInputComponent, StUserMenuComponent, StNotificationComponent, StInfoBoxComponent, StInfoCardComponent],
+  exports: [StInputComponent, StInfoBoxComponent, StInfoCardComponent]
 })
 export class EgeoModule {
   static forRoot(): ModuleWithProviders {

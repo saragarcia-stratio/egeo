@@ -8,6 +8,9 @@ import {
   MainComponent,
   InputComponent,
   InfoBoxComponent,
+  SpinnerComponent,
+  ModificableListComponent,
+  FooterComponent,
   InfoCardComponent
 } from '../+examples';
 import { routing } from './layout.routing';
@@ -25,6 +28,9 @@ import { EgeoModule } from '../../../components';
     MainComponent,
     InputComponent,
     InfoBoxComponent,
+    SpinnerComponent,
+    ModificableListComponent,
+    FooterComponent,
     InfoCardComponent
   ]
 })

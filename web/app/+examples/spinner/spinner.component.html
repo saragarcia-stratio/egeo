@@ -1,0 +1,13 @@
+<section class="container-fluid">
+  <button class="btn btn-default" (click)="changeLoading()">{{loading ? 'Loaded' : 'Loading'}}</button>
+  <div class="loading-content" *ngIf="loading == true">
+    <st-spinner></st-spinner>
+  </div>
+  <div class="content" *ngIf="loading == false">
+    <p *ngFor="let number of [0,1,2,3,4,5]">Content has been loaded!!</p>
+  </div>
+</section>
+
+<!--{{code}}-->
+<st-load-code file="spinner/example-code/spinner.ts.txt"></st-load-code>
+<st-load-code file="spinner/example-code/spinner.html.txt"></st-load-code>

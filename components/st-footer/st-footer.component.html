@@ -1,0 +1,12 @@
+<section class="st-footer">
+  <div class="st-footer__text">
+    <span>{{ rightsText }}</span>
+    <span *ngFor="let link of links; let index = index">
+      <span class="st-footer__separator">|</span>
+      <span class="st-footer__clickable" (click)="goToExternalURL(link.url)" [attr.id]="qaTag + '-link-' + index">{{ link.title }}</span>
+    </span>
+  </div>
+  <div class="st-footer__logo">
+    <img src="./shared/assets/logostratio.png">
+  </div>
+</section>

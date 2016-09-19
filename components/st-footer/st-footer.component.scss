@@ -1,0 +1,37 @@
+@import '../st-egeo';
+@import '../egeo2/sass.utils/utils.typography';
+@import '../egeo2/sass.utils/utils.colors';
+
+$st-footer---width: 100% !default;
+$st-footer---height: 129px !default;
+$st-footer---background-color: egeo-get-color(a2_dark) !default;
+$st-footer---padding: 25px 30px !default;
+
+$st-footer__text---color: egeo-get-color(n0) !default;
+$st-footer__text---font-family: egeo-get-font-family('open-sans') !default;
+$st-footer__text---font-size: egeo-get-font-size('body_xsmall') !default;
+
+$st-footer__separator---margin: 0 5px;
+
+$st-footer__logo---margin: 25px 0;
+
+.st-footer {
+  width: $st-footer---width;
+  height: $st-footer---height;
+  background-color: $st-footer---background-color;
+  padding: $st-footer---padding;
+  &__text{
+    color: $st-footer__text---color;
+    font-family: $st-footer__text---font-family;
+    font-size: $st-footer__text---font-size;
+  }
+  &__separator{
+    margin: $st-footer__separator---margin;
+  }
+  &__clickable{
+    cursor: pointer;
+  }
+  &__logo{
+    margin: $st-footer__logo---margin;
+  }
+}

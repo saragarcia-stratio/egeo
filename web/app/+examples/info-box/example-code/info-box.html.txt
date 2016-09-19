@@ -6,7 +6,3 @@
     <p>You can put any content here</p>
   </st-info-box>
 </section>
-
-<!--{{code}}-->
-<st-load-code file="info-box/example-code/info-box.ts.txt"></st-load-code>
-<st-load-code file="info-box/example-code/info-box.html.txt"></st-load-code>

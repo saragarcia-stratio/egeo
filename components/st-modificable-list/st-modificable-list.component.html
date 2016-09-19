@@ -1,0 +1,58 @@
+<div class="st-modificable-list">
+  <div class="row">
+    <div *ngIf="editable === true">
+      <div class="st-modificable-list__list-container col-md-4">
+        <div class="st-modificable-list__search-filtercriteria">
+          <input class="st-modificable-list__search-input" [ngModel]="completeSearchText" (ngModelChange)="searchInCompleteList($event)"
+            type="text" placeholder="{{ searchButtonLabel }}" [attr.id]="qaTag + '-input1'">
+          <span class="icon-search st-modificable-list__search-icon"></span>
+        </div>
+        <div class="st-modificable-list__title">{{ completeListTitle }} ({{ completeList.length }})</div>
+        <div class="st-container st-container--overflow-wrapper st-modificable-list__container-outside">
+          <div class="st-modificable-list__container-inside">
+            <div *ngFor="let row of completeList; let index = index">
+              <div class="st-modificable-list__row" [attr.id]="qaTag + '-list1-elem-' + index">
+                <label>
+                    <input *ngIf="editable === true" type="checkbox" (change)="markElement(row, true)"/>
+                    {{row.name}}
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="st-modificable-list__separator-bottom"></div>
+        </div>
+      </div>
+      <div class="st-modificable-list__adder col-md-1">
+        <div class="st-modificable-list__arrows">
+          <div class="st-modificable-list__arrow" (click)="modifyList(true)" [attr.id]="qaTag + '-arrow-add'" [ngClass]="{'st-modificable-list__arrow--selected': listToAdd.length > 0}">
+            <i class="icon-arrow2_right"></i>
+          </div>
+          <div class="st-modificable-list__arrow" (click)="modifyList(false)" [attr.id]="qaTag + '-arrow-remove'" [ngClass]="{'st-modificable-list__arrow--selected': listToRemove.length > 0}">
+            <i class="icon-arrow2_left"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="st-modificable-list__list-container col-md-4" [ngClass]="{'st-modificable-list__list-container--modificable': editable === true}">
+      <div class="st-modificable-list__search-filtercriteria">
+        <input class="st-modificable-list__search-input" [ngModel]="selectedSearchText" (ngModelChange)="searchInSelectedList($event)"
+          type="text" placeholder="{{ searchButtonLabel }}" [attr.id]="qaTag + '-input2'">
+        <span class="icon-search st-modificable-list__search-icon"></span>
+      </div>
+      <div class="st-modificable-list__title">{{ selectedListTitle }} ({{ selectedList.length }})</div>
+      <div class="st-container st-container--overflow-wrapper st-modificable-list__container-outside">
+        <div class="st-modificable-list__container-inside">
+          <div *ngFor="let row of selectedList; let index = index">
+            <div class="st-modificable-list__row" [attr.id]="qaTag + '-list2-elem-' + index">
+              <label>
+                    <input *ngIf="editable === true" type="checkbox" (change)="markElement(row, false)"/>
+                    {{row.name}}
+                </label>
+            </div>
+          </div>
+        </div>
+        <div class="st-modificable-list__separator-bottom"></div>
+      </div>
+    </div>
+  </div>
+</div>

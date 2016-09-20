@@ -12,7 +12,8 @@ import {
   ModificableListComponent,
   FooterComponent,
   InfoCardComponent,
-  RegexpComponent
+  RegexpComponent,
+  VerticalMenuComponent
 } from '../+examples';
 import { routing } from './layout.routing';
 
@@ -33,7 +34,8 @@ import { EgeoModule } from '../../../components';
     ModificableListComponent,
     FooterComponent,
     InfoCardComponent,
-    RegexpComponent
+    RegexpComponent,
+    VerticalMenuComponent
   ]
 })
 export class LayoutModule { }

@@ -1,0 +1,15 @@
+<section class="st-vertical-menu">
+  <ul class="st-vertical-menu__list">
+    <li *ngFor="let option of options; let i = index;" class="st-vertical-menu__option">
+      <a class="st-vertical-menu__option__text" (click)="activateOption(option, i)"
+         [ngClass]="{'st-vertical-menu__option--active': isActive(option)}"
+         [attr.id]="qaTag + '-tab-' + i">{{option | translate}}</a>
+    </li>
+  </ul>
+
+  <div class="st-vertical-menu__line">
+    <span class="st-vertical-menu__line__arrow"
+          [style.margin-top]="activeOptionIndex * arrowMovement + 'px'">
+    </span>
+  </div>
+</section>

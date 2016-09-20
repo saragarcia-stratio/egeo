@@ -8,6 +8,8 @@
 * Input component bugs and improvements
 * Info card component
 * Update to Angular2 final release
+* Regular expression utils
++ Vertical menu component
 
 ## 0.2.0
 

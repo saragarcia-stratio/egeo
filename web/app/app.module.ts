@@ -3,7 +3,7 @@ import { BrowserModule }    from '@angular/platform-browser';
 import { HttpModule, Http }    from '@angular/http';
 
 /* External libs */
-// import { TranslateService, TranslateModule, TranslateLoader, TranslateStaticLoader, TranslatePipe } from 'ng2-translate/ng2-translate';
+import { TranslateService, TranslateModule, TranslateLoader, TranslateStaticLoader, TranslatePipe } from 'ng2-translate/ng2-translate';
 
 /* App Root */
 import { AppComponent }       from './app.component';
@@ -20,12 +20,12 @@ import { EgeoModule } from '../../components';
     LayoutModule,
     HttpModule,
     routing,
-    EgeoModule.forRoot()
-    // TranslateModule.forRoot({
-    //   provide: TranslateLoader,
-    //   useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/langs', '.json'),
-    //   deps: [Http]
-    // })
+    EgeoModule.forRoot(),
+    TranslateModule.forRoot({
+      provide: TranslateLoader,
+      useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/langs', '.json'),
+      deps: [Http]
+    })
   ],
   declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ]

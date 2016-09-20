@@ -1,0 +1,6 @@
+<section class="container-fluid">
+  <div class="col-sm-12">
+    <st-vertical-menu class="vertical-menu" [options]="options" qaTag="{{qaTag}}">
+    </st-vertical-menu>
+  </div>
+</section>

@@ -9,7 +9,8 @@ import {
   SpinnerComponent,
   FooterComponent,
   InfoCardComponent,
-  RegexpComponent
+  RegexpComponent,
+  VerticalMenuComponent
 } from '../+examples';
 
 export const routing = RouterModule.forChild([
@@ -24,7 +25,8 @@ export const routing = RouterModule.forChild([
     { path: 'modificable-list', component: ModificableListComponent },
     { path: 'footer', component: FooterComponent },
     { path: 'info-card', component: InfoCardComponent },
-    { path: 'regexp', component: RegexpComponent }
+    { path: 'regexp', component: RegexpComponent },
+    { path: 'vertical-menu', component: VerticalMenuComponent }
   ]
   }
 ]);

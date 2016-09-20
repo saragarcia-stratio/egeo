@@ -1,0 +1,18 @@
+<section class="container-fluid">
+  <div class="page-header">
+    <h1>Template-driven Form Example:</h1>
+  </div>
+  <form #myForm="ngForm" class="form-group" novalidate>
+    <div class="form-group">
+
+      <st-input label="Email" [placeholder]="emailPlaceholder" [(ngModel)]="model.email" [accept]="emailRegExp" [forceValidations]="forceValidations"
+        [errors]="errors" name="email"></st-input>
+
+    </div>
+    <button type="submit" class="btn btn-default" (click)="checkValidations()">Submit</button>
+  </form>
+</section>
+
+<!--{{code}}-->
+<!--<st-load-code file="regexp/example-code/regexp.ts.txt"></st-load-code>
+<st-load-code file="input/example-code/regexp.html.txt"></st-load-code>-->

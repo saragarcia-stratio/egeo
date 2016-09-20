@@ -4,3 +4,4 @@ export { StModificableListElement, StListModifierObject } from './st-modificable
 export { StFooterLink } from './st-footer';
 export { BUTTON_TYPES, Buttons, StModalService, MessageModal } from './st-modal';
 export { EgeoModule } from './egeo.module';
+export * from './utils';

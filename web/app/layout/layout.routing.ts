@@ -7,9 +7,10 @@ import {
   InfoBoxComponent,
   ModificableListComponent,
   SpinnerComponent,
-  FooterComponent
+  FooterComponent,
+  InfoCardComponent,
+  RegexpComponent
 } from '../+examples';
-import {InfoCardComponent} from '../+examples/info-card/info-card.component';
 
 export const routing = RouterModule.forChild([
   {
@@ -22,7 +23,8 @@ export const routing = RouterModule.forChild([
     { path: 'spinner', component: SpinnerComponent },
     { path: 'modificable-list', component: ModificableListComponent },
     { path: 'footer', component: FooterComponent },
-    { path: 'info-card', component: InfoCardComponent }
+    { path: 'info-card', component: InfoCardComponent },
+    { path: 'regexp', component: RegexpComponent }
   ]
   }
 ]);

@@ -11,7 +11,8 @@ import {
   SpinnerComponent,
   ModificableListComponent,
   FooterComponent,
-  InfoCardComponent
+  InfoCardComponent,
+  RegexpComponent
 } from '../+examples';
 import { routing } from './layout.routing';
 
@@ -31,7 +32,8 @@ import { EgeoModule } from '../../../components';
     SpinnerComponent,
     ModificableListComponent,
     FooterComponent,
-    InfoCardComponent
+    InfoCardComponent,
+    RegexpComponent
   ]
 })
 export class LayoutModule { }

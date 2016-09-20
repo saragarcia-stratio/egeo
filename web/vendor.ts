@@ -9,6 +9,8 @@ import '@angular/forms';
 // RxJS
 import 'rxjs';
 
+import 'lodash';
+
 // You can import js, ts, css, sass, ...
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 

@@ -1,0 +1,10 @@
+ 
+ <st-list     [data]="dataToShow"
+              [metadata]="fieldsMetaData"
+              [order]="order"
+              [hasDetail]="hasDetail"
+              [pagination]="pagination"
+              [totalElements]="totalElements"
+              (changePage)="onChangePage($event)"
+              (onOrderChange)="onOrderChange($event)"
+  ></st-list>

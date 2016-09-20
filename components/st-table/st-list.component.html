@@ -1,0 +1,20 @@
+<div class="gosec-list">
+  <div class="row">
+    <div class="col-md-12">
+      <gosec-list-header [headerList]="metadata" [order]="order" (onOrderChange)="orderChange($event)"></gosec-list-header>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <gosec-list-body [headerList]="metadata" [data]="data" (openDetail)="showDetail($event)" [hasDetail]="hasDetail"></gosec-list-body>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <gosec-pagination [pagination]="pagination" [totalElements]="totalElements" (changePage)="onChangePage($event)"></gosec-pagination>
+    </div>
+  </div>
+</div>
+<div class="loading-content" *ngIf="loading == true">
+    <!--<st-spinner data-size="45"></st-spinner>-->
+</div>

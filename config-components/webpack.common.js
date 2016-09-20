@@ -5,7 +5,8 @@ var helpers = require('./helpers');
 
 module.exports = {
   entry: {
-    'stratio-libs': './components/egeo.module.ts'
+    'stratio-libs': './components/egeo.module.ts',
+    'vendor-component' : './components/vendor.ts'
   },
 
   resolve: {
@@ -46,7 +47,7 @@ module.exports = {
 
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-      name: ['stratio-libs']
+      name: ['stratio-libs', 'vendor-component']
     }),
     new CopyWebpackPlugin([
       { from: 'components/assets', to: 'assets'}

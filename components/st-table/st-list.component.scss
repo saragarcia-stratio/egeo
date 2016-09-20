@@ -1,0 +1,13 @@
+@import '../st-egeo';
+@import '../egeo2/sass.utils/utils.typography';
+@import '../egeo2/sass.utils/utils.colors';
+
+$gosec-list-body---padding-top: 10px !default;
+
+.gosec-list{
+  padding-top: $gosec-list-body---padding-top;
+}
+
+.gosec-pagination{
+  padding-top: $gosec-list-body---padding-top;
+}

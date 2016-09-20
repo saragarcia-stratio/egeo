@@ -7,7 +7,7 @@ var helpers = require('./helpers');
 module.exports = {
   entry: {
     'polyfills': './web/polyfills.ts',
-    'vendor': './web/vendor.ts',
+    'vendor-web': './web/vendor.ts',
     'app': './web/main.ts'
   },
 
@@ -49,7 +49,7 @@ module.exports = {
 
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-      name: ['app', 'vendor', 'polyfills']
+      name: ['app', 'vendor-web', 'polyfills']
     }),
     new CopyWebpackPlugin([
       { from: 'web/assets', to: 'assets'},

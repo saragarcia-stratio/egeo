@@ -30,7 +30,6 @@ export class LoadCodeComponent implements OnInit {
     } else {
       result = require(`!!prismjs?lang=javascript!../../+examples/${value}`);
     }
-    console.log(result);
     return result;
   }
 

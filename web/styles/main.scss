@@ -5,3 +5,45 @@
 
 // Common
 @import './common';
+
+h1, h2, h3, h4, h5, h6{
+    color: #30B6E5;
+}
+
+h1{
+    margin-top: 20px;
+    font-size: 30px;
+    font-weight: bold;      
+}
+
+h2{
+    margin-top: 15px;
+    font-size: 25px;
+    font-weight: bold;   
+}
+
+h3{
+    margin: 15px 0px 15px 0px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.docs{
+    margin-top: 40px;
+}
+
+//Table
+
+table{
+    width: 100%;
+    line-height: 25px;
+}
+
+table td{
+    border: 1px solid lightgray;
+    padding: 10px;
+}
+
+tr:nth-child(even) {
+    background-color: #EFF2F3;
+}

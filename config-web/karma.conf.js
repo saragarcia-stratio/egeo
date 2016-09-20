@@ -24,6 +24,10 @@ module.exports = function(config) {
       noInfo: true
     },
 
+    phantomJsLauncher: {
+      exitOnResourceError: true
+    },
+
     reporters: ['progress'],
     port: 9876,
     colors: true,

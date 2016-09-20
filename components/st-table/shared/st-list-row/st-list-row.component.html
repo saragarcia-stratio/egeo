@@ -1,0 +1,18 @@
+<li class="gosec-list-row__row row" (click)="showDetail(rowData.getValue('id'))">
+  <div class="col-md-12">
+    <div *ngFor='let field of metadata' class="gosec-list-row__col" [ngStyle]="{'width':getColPercentage(field.type)}">
+      <div *ngIf='field.type === "text" || field.type === "number"' class="gosec-list-row__row-text" class="gosec-list-row__text--type{{field.type}}" title="{{ rowData.getValue(field.id) }}">
+        <div class="overflow-points">{{ rowData.getValue(field.id) }}</div>
+      </div>
+      <div *ngIf='field.type === "icotext"' class="gosec-list-row__row-text" class="gosec-list-row__text--typetext" title="{{ 'LIST.' + rowData.getValue(field.id) }}">
+        <div class="overflow-points"> <i class="gosec-list-row__sysico" [ngClass]="getIcon(field)"></i>{{ 'LIST.' + rowData.getValue(field.id) }} </div>
+      </div>
+      <div *ngIf='field.type === "ico"'>
+        <div class="overflow-points"><i [ngStyle]="getColor(field)" [ngClass]="getIcon(field)"></i></div>
+      </div>
+    </div>
+    <span *ngIf="hasDetail" class="ico-text-element__icon gosec-list-row__ico">
+      <i class="icon-arrow2_right"></i>
+    </span>
+  </div>
+</li>

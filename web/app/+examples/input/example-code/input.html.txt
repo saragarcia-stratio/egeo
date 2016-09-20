@@ -16,7 +16,20 @@
         [errors]="errors"
         name="description"
       ></st-input>
+
+      <st-input
+        label="Disabled example"
+        [placeholder]="disabledPlaceholder"
+        [(ngModel)]="model.name"
+        isRequired
+        [forceValidations]="forceValidations"
+        [errors]="errors"
+        [isDisabled]="isDisabled"
+        name="disabled"
+      ></st-input>
     </div>
     <button type="submit" class="btn btn-default" (click)="checkValidations()">Submit</button>
   </form>
 </section>
+
+<button type="button" class="btn btn-info" (click)="changeDisabled()">Change Disabled</button>

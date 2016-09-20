@@ -9,7 +9,7 @@ import { StInputError } from 'egeo.angular2.components/components'; // For decla
 
 export class InputComponent {
 
-  model: Object = {
+ model: Object = {
     name: 'Egeo',
     description: '',
     components: 10,
@@ -23,6 +23,8 @@ export class InputComponent {
   textWithoutSpaces: string = '[a-z]*';
   numberWithoutSpaces: string = '[0-9]*';
   descriptionPlaceholder: string = 'Module description';
+  disabledPlaceholder: string = 'Field disabled';
+  isDisabled: boolean = true;
 
   forceValidations: boolean = false;
 
@@ -41,5 +43,9 @@ export class InputComponent {
 
   checkValidations(): void {
     this.forceValidations = true;
+  }
+
+  changeDisabled(): void {
+    this.isDisabled = !this.isDisabled;
   }
 }

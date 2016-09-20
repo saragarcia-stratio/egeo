@@ -57,6 +57,7 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
 
   ngOnChanges(): void {
     this.validateFn = this.validateFn;
+    this.checkDisabled();
   }
 
   ngOnInit(): void {
@@ -64,6 +65,7 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
     this.isRequired = this.isRequired !== undefined && this.isRequired !== false;
     this.isDisabled = this.isDisabled !== undefined && this.isDisabled !== false;
     this.internalType = this.fieldType === 'password' ? 'password' : 'text';
+    this.checkDisabled();
   }
 
   writeValue(value: any): void {
@@ -120,6 +122,14 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
       return this.errors.max || this.errors.generic || '';
     }
     return '';
+  }
+
+  private checkDisabled(): void {
+    if (this.isDisabled && this.internalControl && this.internalControl.enabled) {
+      this.internalControl.disable();
+    } else if (this.internalControl && this.internalControl.disabled) {
+      this.internalControl.enable();
+    }
   }
 
   private updateModel(): void {

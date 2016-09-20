@@ -23,7 +23,3 @@
   <st-info-card photo="/assets/images/stratio.png" title="Appdecision" description="1.0.1">
   </st-info-card>
 </section>
-
-<!--{{code}}-->
-<st-load-code file="info-card/example-code/info-card.ts.txt"></st-load-code>
-<st-load-code file="info-card/example-code/info-card.html.txt"></st-load-code>

@@ -12,6 +12,7 @@ export class StHeaderMenuComponent implements OnInit {
   @Input() menuOptions: Array<Menu> = [];
   @Input() username: string;
   @Input() helpUrl: string;
+  @Input() qaTag: string;
   @Output() notifyHasSubMenu: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() selectOption: EventEmitter<string> = new EventEmitter<string>();
 

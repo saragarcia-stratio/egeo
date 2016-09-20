@@ -28,6 +28,7 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
 
   @Input() forceValidations: boolean = false;
   @Input() errors: StInputError;
+  @Input() qaTag: string;
 
   // Model
   @Input() ngModel: string;

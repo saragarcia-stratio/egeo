@@ -15,8 +15,9 @@
         [forceValidations]="forceValidations"
         [errors]="errors"
         name="description"
+        qaTag="input-description"
       ></st-input>
-
+      <br>
       <st-input
         label="Disabled example"
         [placeholder]="disabledPlaceholder"
@@ -26,6 +27,7 @@
         [errors]="errors"
         [isDisabled]="isDisabled"
         name="disabled"
+        qaTag="input-disabled"
       ></st-input>
     </div>
     <button type="submit" class="btn btn-default" (click)="checkValidations()">Submit</button>

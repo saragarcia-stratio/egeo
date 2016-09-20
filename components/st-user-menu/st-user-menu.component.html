@@ -1,4 +1,4 @@
-<div (click)="changeMenuState($event)">
+<div (click)="changeMenuState($event)" [attr.id]="qaTag + '-button-expand'">
   <div class="st-user-menu">
     <div class="ico-text-element ico-text-element--bold">
       <div class="st-user-menu-left">
@@ -16,7 +16,7 @@
     <span class="direction"></span>
     <ul>
       <li class="menu-element">
-        <a class="menu-element__element" href="/logout">
+        <a class="menu-element__element" href="/logout" [attr.id]="qaTag + '-button-logout'">
           <span>{{'HEADER.LOGOUT'}}</span>
         </a>
       </li>

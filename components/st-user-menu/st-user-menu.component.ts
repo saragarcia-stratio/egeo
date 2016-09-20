@@ -8,6 +8,7 @@ import { Component, Input, Injectable, ElementRef} from '@angular/core';
 @Injectable()
 export class StUserMenuComponent {
   @Input() userName: string;
+  @Input() qaTag: string;
 
   showUserMenu: boolean = false;
 

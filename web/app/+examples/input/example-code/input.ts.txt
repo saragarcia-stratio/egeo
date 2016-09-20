@@ -9,7 +9,7 @@ import { StInputError } from 'egeo.angular2.components/components'; // For decla
 
 export class InputComponent {
 
- model: Object = {
+  model: Object = {
     name: 'Egeo',
     description: '',
     components: 10,

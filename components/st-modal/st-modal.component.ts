@@ -31,6 +31,7 @@ export class StModal implements OnDestroy, OnInit {
 
   @Input() componentFactory: any;
   @Input() componentInjector: ReflectiveInjector;
+  @Input() qaTag: string;
 
   @ViewChild('stModalBody', { read: ViewContainerRef }) target: ViewContainerRef;
   private componentRef: ComponentRef<any>;

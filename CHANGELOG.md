@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.3.0 (upcoming)
+## 0.3.0 (September 21, 2016)
 
 * Spinner component
 * Modificable List component

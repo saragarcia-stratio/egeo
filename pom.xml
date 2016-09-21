@@ -9,7 +9,7 @@
 
   <groupId>com.stratio.egeo-angular2-components</groupId>
   <artifactId>egeo-angular2-components</artifactId>
-  <version>0.3.0-RC2-SNAPSHOT</version>
+  <version>0.3.0</version>
 
   <name>Egeo Angular2 Components</name>
 

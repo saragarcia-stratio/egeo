@@ -1,6 +1,6 @@
 {
   "name": "egeo.angular2.components",
-  "version": "0.2.0-RC2",
+  "version": "0.2.0",
   "description": "Egeo Angular 2 Components Library.",
   "scripts": {
     "start": "webpack-dev-server --inline --quiet --port 8080",

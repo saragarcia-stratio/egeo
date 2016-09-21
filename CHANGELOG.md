@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.2.0 (upcoming)
+## 0.2.0 (September 21, 2016)
 
 * Pending changelog
 

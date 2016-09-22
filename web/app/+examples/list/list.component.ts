@@ -31,15 +31,16 @@ export class ListComponent {
 
   private refreshElementToShow(action='order'):void{
     if(action === 'paginate'){
-      this.usersToShow = this.users.paginateDataList(this.pagination); 
+      this.usersToShow = this.users.paginateDataList(this.pagination);
     }else if(action === 'order'){
         this.usersToShow = this.users.orderDataList(this.order)
-                            .paginateDataList(this.pagination); 
-    }                                     
-  }   
+                            .paginateDataList(this.pagination);
+    }
+  }
 
   onChangePage(pageNumber:number):void{
     this.pagination.currentPage = pageNumber;
+    this.pagination = _.clone(this.pagination);
     this.refreshElementToShow('paginate');
   }
 
@@ -52,4 +53,4 @@ export class ListComponent {
     console.log(id);
   }
 }
-          
+

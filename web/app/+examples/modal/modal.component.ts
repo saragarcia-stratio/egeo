@@ -1,6 +1,8 @@
 import { Component, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
-import { StModalService, MessageModal, Buttons, BUTTON_TYPES } from '../../../../components';
+import { StModalService, MessageModal, Buttons, BUTTON_TYPES, ModalConfig, ModalTitle } from '../../../../components';
+import { Component1 } from './shared/component1/component1';
+import { Component2 } from './shared/component2/component2';
 
 @Component({
   selector: 'modal-example',
@@ -31,6 +33,21 @@ export class ModalComponent {
     // Create modal and suscribe button click
     this._modalService.createMessageModalAndShow(this.target, messageModal);
     notify.subscribe((type: BUTTON_TYPES) => this.showMessageType(type));
+  }
+
+  showModalMultipleComponents(): void {
+     let title: ModalTitle = { icon: '', title: 'PLUGIN INFO' };
+    let config: ModalConfig = {
+      title: { backgroundColor: 'rgb(243, 243, 243)', fontSize: 20 },
+      modalSize: { height: 300, width: 600 }
+    };
+    this._modalService.createConfigAndShow(
+      this.target,
+      config,
+      [Component1, Component2],
+      'component1',
+      title
+    );
   }
 
   private showMessageType(type: BUTTON_TYPES): void {

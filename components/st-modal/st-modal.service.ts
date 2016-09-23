@@ -15,6 +15,7 @@ import { StModal } from './st-modal.component';
 import { MessageModal, StMessageModalComponent } from './shared';
 import { ModalConfig, ModalTitle } from './modal.model';
 import { COMPONENT_OUTLET_MODULE } from './provider';
+import { MainComponent } from './../../web/app/+examples/main/main.component';
 
 
 const MODAL_ID: string = 'stratio-modal-component';
@@ -43,7 +44,15 @@ export class StModalService {
       this._config = config;
    }
 
-   create(target: ViewContainerRef, component: any, componentSelector: string, title: ModalTitle, inputs?: Object, outputs?: Object): Promise<void> {
+   create(
+      target: ViewContainerRef,
+      components: Type<any>[],
+      componentSelector: string,
+      title: ModalTitle,
+      inputs?: Object,
+      outputs?: Object
+   ): Promise<void> {
+
       inputs = inputs ? inputs : {};
       outputs = outputs ? outputs : {};
 
@@ -51,8 +60,7 @@ export class StModalService {
          this._config = this._config ? this._config : DEFAULT_CONFIG;
          this._config.destroyOnCLose = this._config.destroyOnCLose !== undefined ? this._config.destroyOnCLose : true;
          this.header = title;
-
-         this.moduleType = this._createDynamicModule(StModal, component);
+         this.moduleType = this._createDynamicModule(StModal, components);
          const injector = ReflectiveInjector.fromResolvedProviders([], target.parentInjector);
          return this._compiler.compileModuleAndAllComponentsAsync<any>(this.moduleType)
             .then(moduleFactory => {
@@ -62,7 +70,7 @@ export class StModalService {
                if (stModalFactory) {
                   target.clear();
                   this.modal = target.createComponent<StModal>(stModalFactory, 0, injector);
-                  this.onLoad(component, inputs, outputs, otherFactory, injector);
+                  this.onLoad(components[0], inputs, outputs, otherFactory, injector);
                }
             });
       }
@@ -94,24 +102,37 @@ export class StModalService {
    }
 
    createConfigAndShow(
-      target: ViewContainerRef, config: ModalConfig, component: any, componentSelector: string, title: ModalTitle, inputs?: Object, outputs?: Object
+      target: ViewContainerRef,
+      config: ModalConfig,
+      components: Type<any>[],
+      componentSelector: string,
+      title: ModalTitle,
+      inputs?: Object,
+      outputs?: Object
    ): void {
       inputs = inputs !== undefined ? inputs : {};
       outputs = outputs !== undefined ? outputs : {};
       config = config !== undefined ? config : DEFAULT_CONFIG;
 
       this._config = config;
-      this.create(target, component, componentSelector, title, inputs, outputs).then(
+      this.create(target, components, componentSelector, title, inputs, outputs).then(
          () => this.show()
       );
    }
 
-   createAndShow(target: ViewContainerRef, component: any, componentSelector: string, title: ModalTitle, inputs?: Object, outputs?: Object): void {
+   createAndShow(
+      target: ViewContainerRef,
+      components: Type<any>[],
+      componentSelector: string,
+      title: ModalTitle,
+      inputs?: Object,
+      outputs?: Object
+   ): void {
       inputs = inputs !== undefined ? inputs : {};
       outputs = outputs !== undefined ? outputs : {};
       this._config = DEFAULT_CONFIG;
 
-      this.create(target, component, componentSelector, title, inputs, outputs).then(
+      this.create(target, components, componentSelector, title, inputs, outputs).then(
          () => this.show()
       );
    }
@@ -130,7 +151,7 @@ export class StModalService {
 
 
       this.config = config;
-      return this.create(target, StMessageModalComponent, 'stratio-message-modal', modal.title, { modal: modal });
+      return this.create(target, [StMessageModalComponent], 'stratio-message-modal', modal.title, { modal: modal });
    }
 
    createMessageModalAndShow(target: ViewContainerRef, modal: MessageModal): void {
@@ -169,10 +190,12 @@ export class StModalService {
       }
    }
 
-   private _createDynamicModule(componentStModalType: Type<any>, componentType: Type<any>): any {
+   private _createDynamicModule(componentStModalType: Type<any>, componentType: Type<any>[]): any {
       const declarations = this.moduleMeta.declarations || [];
       declarations.push(componentStModalType);
-      declarations.push(componentType);
+      for (let i = 0; i < componentType.length; i++) {
+         declarations.push(componentType[i]);
+      }
       const moduleMeta: NgModule = {
          imports: this.moduleMeta.imports,
          providers: this.moduleMeta.providers,

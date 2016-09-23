@@ -13,6 +13,7 @@ import {
   ModificableListComponent,
   FooterComponent,
   InfoCardComponent,
+  TooltipComponent,
   RegexpComponent,
   VerticalMenuComponent
 } from '../+examples';
@@ -36,6 +37,7 @@ import { EgeoModule } from '../../../components';
     ModificableListComponent,
     FooterComponent,
     InfoCardComponent,
+    TooltipComponent,
     RegexpComponent,
     VerticalMenuComponent
   ]

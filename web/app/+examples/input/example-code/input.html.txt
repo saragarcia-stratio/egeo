@@ -16,6 +16,7 @@
         [errors]="errors"
         name="description"
         qaTag="input-description"
+        contextualHelp="This is the contextual help of the description"
       ></st-input>
       <br>
       <st-input

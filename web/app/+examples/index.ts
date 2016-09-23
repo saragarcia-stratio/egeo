@@ -5,6 +5,7 @@ export * from './info-box';
 export * from './list';
 export * from './vertical-menu';
 export * from './spinner';
+export * from './tooltip';
 export * from './modificable-list';
 export * from './footer';
 export * from './info-card';

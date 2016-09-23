@@ -1,0 +1,6 @@
+<span class="st-tooltip">
+   <span class="tooltip-content" [ngClass]="{'on-hover':!showOnClick, 'on-click':showOnClick && clicked}">
+      <a (click)="changeTooltipState($event)" [attr.id]="qaTag"><ng-content></ng-content></a>
+      <span>{{text}}</span>
+   </span>
+</span>

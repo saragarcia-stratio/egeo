@@ -1,0 +1,64 @@
+$egeo-font-families: (
+	brandon-grotesque: 'Brandon Grotesque',
+	open-sans: 'Open Sans',
+	droid-sans: 'DroidSansMonoRegular',
+	stratio-iconfont: 'ico_stratio',
+	heading: 'Brandon Grotesque',
+	body: 'Open Sans',
+	code: 'DroidSansMonoRegular',
+	icon: 'ico_stratio'
+) !default;
+
+$egeo-font-weights: (
+	bolder: 900,
+	bold: 700,
+	semibold: 500,
+	normal: 400,
+	light: 200,
+) !default;
+
+$egeo-head-font-sizes: (
+	head_giant: 2.75rem,
+	head_xxxlarge: 2.12rem,
+	head_xxlarge: 1.88rem,
+	head_xlarge: 1.75rem,
+	head_large: 1.5rem,
+	head_medium: 1.38rem,
+	head_small: 1.13rem,
+	head_xsmall: 1rem,
+	head_xxsmall: .94rem,
+	head_xxxsmall: .82rem,
+	head_mini: .75rem
+) !default;
+
+$egeo-icon-font-sizes: (
+	icon_xxlarge: 1.88rem,
+	icon_xlarge: 1.63rem,
+	icon_large: 1.38rem,
+	icon_medium: 1.2rem,
+	icon_small: 1.1rem,
+	icon_xsmall: .94rem,
+	icon_xxsmall: .82rem,
+	icon_xxxsmall: .7rem,
+) !default;
+
+$egeo-body-font-sizes: (
+	body_xxxlarge: 1.38rem,
+	body_xxlarge: 1.19rem,
+	body_xlarge: 1.1rem,
+	body_large: 1rem,
+	body_medium: .94rem,
+	body_small: .84rem,
+	body_xsmall: .82rem,
+	body_xxsmall: .75rem,
+	body_xxxsmall: .69rem,
+) !default;
+
+$egeo-font-sizes: map-merge(map-merge($egeo-head-font-sizes, $egeo-icon-font-sizes), $egeo-body-font-sizes) !default;
+
+$egeo-line-heights: (
+	double: 2em,
+	normal: 1.5em,
+	stretch: 1.2em,
+	single: 1em,
+) !default;

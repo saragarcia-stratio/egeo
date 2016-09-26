@@ -1,9 +1,10 @@
-import {Component, Input, Output, OnInit, EventEmitter} from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'st-vertical-menu',
   template: require('./st-vertical-menu.component.html'),
-  styles: [require('./st-vertical-menu.component.scss')]
+  styles: [require('./st-vertical-menu.component.scss')],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class StVerticalMenuComponent implements OnInit {

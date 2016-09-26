@@ -1,11 +1,12 @@
-import { Component, Input, Output, EventEmitter, OnInit, ElementRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, ElementRef, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Menu, SubMenu } from './shared';
 
 @Component({
   selector: 'st-header-menu',
   styles: [require('./st-header-menu.component.scss')],
-  template: require('./st-header-menu.component.html')
+  template: require('./st-header-menu.component.html'),
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StHeaderMenuComponent implements OnInit {
   @Input() externalNavigation: BehaviorSubject<string>;

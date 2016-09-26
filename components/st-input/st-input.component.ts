@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, forwardRef, Input, OnChanges, Provider, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, forwardRef, Input, OnChanges, Provider, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Validators, ValidatorFn } from '@angular/forms';
 import { STVALIDATIONS } from '../st-validations';
 import { StInputError } from './shared';
@@ -10,7 +10,8 @@ import { StInputError } from './shared';
   providers: [
     { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => StInputComponent), multi: true },
     { provide: NG_VALIDATORS, useExisting: forwardRef(() => StInputComponent), multi: true }
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit {
   @Input() placeholder: string = '';

@@ -1,9 +1,10 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'st-info-box',
   template: require('./st-info-box.component.html'),
-  styles: [require('./st-info-box.component.scss')]
+  styles: [require('./st-info-box.component.scss')],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class StInfoBoxComponent {

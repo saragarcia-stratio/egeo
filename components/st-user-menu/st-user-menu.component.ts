@@ -1,9 +1,10 @@
-import { Component, Input, Injectable, ElementRef} from '@angular/core';
+import { Component, Input, Injectable, ElementRef, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'st-user-menu',
   template: require('./st-user-menu.component.html'),
-  styles: [require('./st-user-menu.component.scss')]
+  styles: [require('./st-user-menu.component.scss')],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 @Injectable()
 export class StUserMenuComponent {

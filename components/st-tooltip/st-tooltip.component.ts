@@ -1,9 +1,10 @@
-import { Component, Input, ElementRef, Renderer } from '@angular/core';
+import { Component, Input, ElementRef, Renderer, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
    selector: 'st-tooltip',
    template: require('./st-tooltip.component.html'),
-   styles: [require('./st-tooltip.component.scss')]
+   styles: [require('./st-tooltip.component.scss')],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StTooltip {
 
@@ -14,7 +15,7 @@ export class StTooltip {
    private globalListener: any;
    private clicked: boolean = false;
 
-   constructor(private _elementRef: ElementRef, private renderer: Renderer) {
+   constructor(private _elementRef: ElementRef, private renderer: Renderer, private cd: ChangeDetectorRef) {
   }
 
   changeTooltipState($event: Event): void {
@@ -24,7 +25,7 @@ export class StTooltip {
 
    openTooltip(): void {
     this.clicked = true;
-    if (this.clicked) this.globalListener = this.renderer.listenGlobal('document', 'click', this.closeTooltip.bind(this));
+    this.globalListener = this.renderer.listenGlobal('document', 'click', this.closeTooltip.bind(this));
   }
 
   closeTooltip(): void {
@@ -35,5 +36,6 @@ export class StTooltip {
     if (this.globalListener) {
       this.globalListener();
     }
+    this.cd.markForCheck();
   }
 }

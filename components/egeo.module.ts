@@ -13,7 +13,8 @@ import { StUserMenuComponent } from './st-user-menu/st-user-menu.component';
 import { StNotificationComponent } from './notification-manager/shared/';
 import { StInfoCardComponent } from './st-info-card';
 import { StTooltip } from './st-tooltip';
-import {StVerticalMenuComponent} from './st-vertical-menu/st-vertical-menu.component';
+import { StVerticalMenuComponent } from './st-vertical-menu/st-vertical-menu.component';
+import { StHorizontalTabComponent } from './st-horizontal-tab/st-horizontal-tab.component';
 import {    GosecListRowComponent,
             GosecListBodyComponent,
             GosecListHeaderComponent,
@@ -45,10 +46,15 @@ import {
     }),
     TranslateService
   ],
-  declarations: [StInputComponent, StUserMenuComponent, StNotificationComponent, StSpinnerComponent, StTooltip, StModificableListComponent, StFooterComponent,
-    StInfoBoxComponent, StInfoCardComponent, StVerticalMenuComponent, GosecListRowComponent, GosecListBodyComponent, GosecListHeaderComponent, GosecListComponent,
-                    GosecPaginationComponent],
-  exports: [StInputComponent, StInfoBoxComponent, StSpinnerComponent, StTooltip, StModificableListComponent, StFooterComponent, StInfoCardComponent, StVerticalMenuComponent, GosecListComponent]
+  declarations: [
+    StInputComponent, StUserMenuComponent, StNotificationComponent, StSpinnerComponent, StTooltip, StModificableListComponent, StFooterComponent,
+    StInfoBoxComponent, StInfoCardComponent, StVerticalMenuComponent, GosecListRowComponent, GosecListBodyComponent, GosecListHeaderComponent,
+    GosecListComponent, GosecPaginationComponent, StHorizontalTabComponent
+  ],
+  exports: [
+    StInputComponent, StInfoBoxComponent, StSpinnerComponent, StTooltip, StModificableListComponent, StFooterComponent, StInfoCardComponent, 
+    StVerticalMenuComponent, GosecListComponent, StHorizontalTabComponent
+  ]
 })
 export class EgeoModule {
   static forRoot(): ModuleWithProviders {

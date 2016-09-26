@@ -1,0 +1,16 @@
+<section class="st-horizontal-tab">
+  <div *ngIf="description" class="st-horizontal-tab__description">
+    {{description}}
+  </div>
+  <div class="st-horizontal-tab__tabs">
+    <span
+      *ngFor="let tab of tabs; let i = index;"
+      (click)="onClick(tab)"
+      class="st-horizontal-tab__tab"
+      [attr.id]="qaTag + '-' + tab.label"
+      [class.st-horizontal-tab__tab--active]="tab.active">
+      {{tab.label}}
+      <span *ngIf="tab.number?.toFixed">({{tab.number}})</span>
+    </span>
+  </div>
+</section>

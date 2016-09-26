@@ -1,0 +1,5 @@
+<section class="container-fluid">
+  <div style="margin: 20px 0">
+    <st-horizontal-tab [tabs]="tabs" [description]="description" (select)="onSelectTab($event)" qaTag="horizontal-tab"></st-horizontal-tab>
+  </div>
+</section>

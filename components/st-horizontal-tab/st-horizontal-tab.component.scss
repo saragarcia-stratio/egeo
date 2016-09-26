@@ -1,0 +1,36 @@
+@import '../st-egeo';
+@import '../egeo2/sass.utils/utils.typography';
+@import '../egeo2/sass.utils/utils.colors';
+
+$st-horizontal-tab---font-size: egeo-get-font-size('body_xsmall') !default;
+$st-horizontal-tab__description---height: 35px !default;
+
+.st-horizontal-tab {
+  
+  &__description {
+    float: left;
+    height: $st-horizontal-tab__description---height;
+    line-height: $st-horizontal-tab__description---height;
+    font-size: $st-horizontal-tab---font-size;
+    padding-right: 10px;
+  }
+  &__tab {
+    display: inline-block;
+    padding: 11px 14px;
+    color: egeo-get-color(n7);
+    background: egeo-get-color(n2);
+    cursor: pointer;
+    font-size: $st-horizontal-tab---font-size;
+    
+    &:hover {
+      background: egeo-get-color(n3);
+    }
+
+    &--active,
+    &--active:hover {
+      color: egeo-get-color(n0);
+      background: egeo-get-color(n6);
+      cursor: default;
+    }
+  }
+}

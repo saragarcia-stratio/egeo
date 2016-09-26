@@ -5,3 +5,4 @@ export { StFooterLink } from './st-footer';
 export { BUTTON_TYPES, Buttons, StModalService, MessageModal, ModalConfig, ModalTitle } from './st-modal';
 export { EgeoModule } from './egeo.module';
 export * from './utils';
+export * from './st-horizontal-tab/st-horizontal-tab.interface';

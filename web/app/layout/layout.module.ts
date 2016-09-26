@@ -15,7 +15,8 @@ import {
   InfoCardComponent,
   TooltipComponent,
   RegexpComponent,
-  VerticalMenuComponent
+  VerticalMenuComponent,
+  HorizontalTabComponent
 } from '../+examples';
 import { routing } from './layout.routing';
 
@@ -39,7 +40,8 @@ import { EgeoModule } from '../../../components';
     InfoCardComponent,
     TooltipComponent,
     RegexpComponent,
-    VerticalMenuComponent
+    VerticalMenuComponent,
+    HorizontalTabComponent
   ]
 })
 export class LayoutModule { }

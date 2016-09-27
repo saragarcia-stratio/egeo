@@ -12,13 +12,11 @@ import {
 } from '@angular/core';
 
 import { ModalConfig, ModalTitle } from './modal.model';
-import { ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'st-modal',
   template: require('./st-modal.component.html'),
-  styles: [require('./st-modal.component.scss')],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styles: [require('./st-modal.component.scss')]
 })
 export class StModal implements OnDestroy, OnInit {
   @Input() config: ModalConfig;

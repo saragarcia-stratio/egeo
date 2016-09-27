@@ -1,3 +1,9 @@
+## TYPE
+- [ ] Bugfix
+- [ ] New component
+- [ ] New service
+- [ ] Utils
+
 ## Description
 
 Add a description of your changes here.

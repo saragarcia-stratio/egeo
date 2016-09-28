@@ -9,7 +9,7 @@ $st-modal---padding: 30px !default;
 $st-modal--header---font-family: egeo-get-font(brandon-grotesque) !default;
 $st-modal--header---color: get-color(n8) !default;
 
-@mixin st-modal() {
+.st-modal {
   position: fixed;
   z-index: 9999;
   padding-top: 100px;
@@ -17,8 +17,8 @@ $st-modal--header---color: get-color(n8) !default;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 
   &--content {
     position: relative;
@@ -26,13 +26,8 @@ $st-modal--header---color: get-color(n8) !default;
     margin: auto;
     border: 1px solid #888;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    animation-name: animatetop;
-    animation-duration: 0.6s;
-
-    @keyframes animatetop {
-      from {top: -300px; opacity: 0;}
-      to {top: 0; opacity: 1;}
-    }
+    animation-name: fadeIn;
+    animation-duration: 0.4s;
   }
   &--body {
     padding: $st-modal---padding;
@@ -46,7 +41,7 @@ $st-modal--header---color: get-color(n8) !default;
   &--title {
     margin-left: 10px;
   }
-  &---header-ico {
+  &--header-ico {
     vertical-align: middle;
   }
   &--icon {
@@ -62,13 +57,13 @@ $st-modal--header---color: get-color(n8) !default;
   &--invisible {
     display: none;
   }
-}
 
-@if ($st-print---modal) {
-  :host {
-    display: block;
-  }
-  .st-modal {
-    @include st-modal;
-  }
+   @keyframes fadeIn {
+      from {
+         opacity: 0;
+      }
+      to {
+         opacity: 1;
+      }
+   }
 }

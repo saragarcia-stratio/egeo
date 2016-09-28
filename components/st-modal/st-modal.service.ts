@@ -1,206 +1,170 @@
-import { Injectable } from '@angular/core';
 import {
-   ComponentRef,
    Compiler,
-   ViewChild,
+   Injectable,
    ViewContainerRef,
-   ComponentFactory,
-   NgModule,
    Type,
+   NgModule,
+   ComponentRef,
    ReflectiveInjector,
-   Inject
+   ComponentFactory,
+   ModuleWithComponentFactories
 } from '@angular/core';
-import { Observable } from 'rxjs';
+
+import { CommonModule } from '@angular/common';
+
+/* local dependencies */
+import { StModalConfiguration } from './modal.model';
 import { StModal } from './st-modal.component';
-import { MessageModal, StMessageModalComponent } from './shared';
-import { ModalConfig, ModalTitle } from './modal.model';
-import { COMPONENT_OUTLET_MODULE } from './provider';
-import { MainComponent } from './../../web/app/+examples/main/main.component';
-
-
-const MODAL_ID: string = 'stratio-modal-component';
-const DEFAULT_CONFIG: ModalConfig = {
-   modalSize: { height: 524, width: 970 },
-   title: { backgroundColor: '#f3f3f3', fontSize: 24 },
-   destroyOnCLose: true
-};
+import { StMessageModalComponent, MessageModal } from './shared';
 
 @Injectable()
 export class StModalService {
 
-   private header: ModalTitle = { title: 'Default', icon: 'icon-rocket' };
-   private modal: ComponentRef<StModal>;
-   private _config: ModalConfig = DEFAULT_CONFIG;
-   private _containerRef: ViewContainerRef;
+   private _containerRef: ViewContainerRef = undefined;
+   private _config: StModalConfiguration = new StModalConfiguration();
 
-   private moduleType: any;
 
-   constructor(
-      @Inject(COMPONENT_OUTLET_MODULE) private moduleMeta: any,
-      private _compiler: Compiler
-   ) { }
+   private dynamicModal: ComponentRef<StModal> = undefined;
+   private dynamicModule: Type<any>;
 
-   set config(config: ModalConfig) {
+   constructor(private _compiler: Compiler) { }
+
+   /* External API */
+   set container(container: ViewContainerRef) {
+      this._containerRef = container;
+   }
+
+   set configuration(config: StModalConfiguration) {
       this._config = config;
    }
 
-   create(
-      target: ViewContainerRef,
-      components: Type<any>[],
-      componentSelector: string,
-      title: ModalTitle,
-      inputs?: Object,
-      outputs?: Object
-   ): Promise<void> {
+   // - Generic methods
+   show(components: Type<any>[], modules: Type<any>[], mainComponent?: Type<any>, mainModule?: Type<any>): Promise<void> {
+      return this.createModal(components, modules, mainComponent, mainModule);
+   }
 
-      inputs = inputs ? inputs : {};
-      outputs = outputs ? outputs : {};
+   close(): void {
+      this.destroy();
+   }
 
-      if (!this.modal) {
-         this._config = this._config ? this._config : DEFAULT_CONFIG;
-         this._config.destroyOnCLose = this._config.destroyOnCLose !== undefined ? this._config.destroyOnCLose : true;
-         this.header = title;
-         this.moduleType = this._createDynamicModule(StModal, components);
-         const injector = ReflectiveInjector.fromResolvedProviders([], target.parentInjector);
-         return this._compiler.compileModuleAndAllComponentsAsync<any>(this.moduleType)
+   // - Message modal simplified methods
+   showMessage(messageModal: MessageModal): Promise<void> {
+      this._config = new StModalConfiguration();
+      this._config.setTitle(messageModal.title);
+      this._config.modalHeight = 200;
+      this._config.modalWidth = 600;
+      this._config.setTitleConfig({fontSize: 24, backgroundColor: '#f3f3f3'});
+      this._config.inputs = { modal: messageModal };
+
+      return this.createModal([StMessageModalComponent], []);
+   }
+
+   /* INTERNAL METHODS FOR WORK WITH MODALS */
+
+   private createModal(components: Type<any>[], modules: Type<any>[], mainComponent?: Type<any>, mainModule?: Type<any>): Promise<void> {
+      let mainCom: Type<any> = this.getMainComponent(components, mainComponent);
+
+      if (this.canCreateModal(mainCom)) {
+
+         this.dynamicModule = mainModule ? mainModule : this.createInternalModule(components, modules);
+         const injector: ReflectiveInjector = ReflectiveInjector.fromResolvedProviders([], this._containerRef.parentInjector);
+
+         return this._compiler.compileModuleAndAllComponentsAsync<any>(this.dynamicModule)
             .then(moduleFactory => {
                let factories: ComponentFactory<any>[] = moduleFactory.componentFactories;
-               let stModalFactory: ComponentFactory<StModal> = factories.find(factory => factory.selector === 'st-modal');
-               let otherFactory: ComponentFactory<any> = factories.find(factory => factory.selector === componentSelector);
+               let stModalFactory: ComponentFactory<StModal> = factories.find(factory => factory.componentType === StModal);
+               let otherFactory: ComponentFactory<any> = factories.find(factory => factory.componentType === mainCom);
                if (stModalFactory) {
-                  target.clear();
-                  this.modal = target.createComponent<StModal>(stModalFactory, 0, injector);
-                  this.onLoad(components[0], inputs, outputs, otherFactory, injector);
+                  this._containerRef.clear();
+                  this.dynamicModal = this._containerRef.createComponent<StModal>(stModalFactory, 0, injector);
+                  this.bindVars(mainCom, otherFactory, injector);
                }
             });
       }
-      return undefined;
+      return new Promise<void>((resolve, reject) => {
+         reject(new Error('Can\'t create modal'));
+      });
    }
 
-   show(): void {
-      if (this.modal) {
-         this.modal.instance.visible = true;
-         this.modal.changeDetectorRef.detectChanges();
+   private getMainComponent(components: Type<any>[], mainComponent?: Type<any>): Type<any> {
+      let main: Type<any> = undefined;
+
+      if (mainComponent) {
+         main = mainComponent;
+      } else if (components && components.length > 0) {
+         main = components[0];
       }
+      return main;
    }
 
-   hide(): void {
-      if (this.modal) {
-         this.modal.instance.visible = false;
-         this.modal.changeDetectorRef.detectChanges();
-      }
-   }
-
-   destroy(): void {
-      if (this.modal) {
-         this.modal.destroy();
-         this.modal = undefined;
+   private destroy(): void {
+      if (this.dynamicModal) {
+         this.dynamicModal.destroy();
+         this.dynamicModal = undefined;
       }
       if (this._compiler) {
          this._compiler.clearCache();
       }
    }
 
-   createConfigAndShow(
-      target: ViewContainerRef,
-      config: ModalConfig,
-      components: Type<any>[],
-      componentSelector: string,
-      title: ModalTitle,
-      inputs?: Object,
-      outputs?: Object
-   ): void {
-      inputs = inputs !== undefined ? inputs : {};
-      outputs = outputs !== undefined ? outputs : {};
-      config = config !== undefined ? config : DEFAULT_CONFIG;
-
-      this._config = config;
-      this.create(target, components, componentSelector, title, inputs, outputs).then(
-         () => this.show()
-      );
+   private createInternalModule(components: Type<any>[], modules: Type<any>[]): Type<any> {
+      const moduleMeta: NgModule = {
+         imports: this.buildList(modules, CommonModule),
+         declarations: this.buildList(components, StModal),
+         providers: []
+      };
+      return NgModule(moduleMeta)(class _ { });
    }
 
-   createAndShow(
-      target: ViewContainerRef,
-      components: Type<any>[],
-      componentSelector: string,
-      title: ModalTitle,
-      inputs?: Object,
-      outputs?: Object
-   ): void {
-      inputs = inputs !== undefined ? inputs : {};
-      outputs = outputs !== undefined ? outputs : {};
-      this._config = DEFAULT_CONFIG;
-
-      this.create(target, components, componentSelector, title, inputs, outputs).then(
-         () => this.show()
-      );
+   private buildList(typeArray: Type<any>[], element: Type<any>): Type<any>[] {
+      let final: Type<any>[] = [element];
+      for (let i = 0; i < typeArray.length; i++) {
+         final.push(typeArray[i]);
+      }
+      return final;
    }
 
-   hideAndDestroy(): void {
-      this.hide();
+   private bindVars(component: Type<any>, otherFactory: ComponentFactory<any>, injector: ReflectiveInjector): void {
+      this.dynamicModal.instance.component = component;
+      this.dynamicModal.instance.componentFactory = otherFactory;
+      this.dynamicModal.instance.componentInjector = injector;
+
+      this.dynamicModal.instance.visibleChange.subscribe((close: boolean) => this.onModalClose(close));
+      this.dynamicModal.instance.componentInputs = this._config.inputs;
+      this.dynamicModal.instance.componentOutputs = this._config.outputs;
+
+
+      this.dynamicModal.instance.config = this._config;
+
+      this.dynamicModal.changeDetectorRef.detectChanges();
+   }
+
+   private onModalClose(close: boolean): void {
       this.destroy();
    }
 
-   createMessageModal(target: ViewContainerRef, modal: MessageModal): Promise<void> {
-      let config: ModalConfig = {
-         modalSize: { height: 200, width: 600 },
-         title: { backgroundColor: '#f3f3f3', fontSize: 24 },
-         destroyOnCLose: true
-      };
-
-
-      this.config = config;
-      return this.create(target, [StMessageModalComponent], 'stratio-message-modal', modal.title, { modal: modal });
-   }
-
-   createMessageModalAndShow(target: ViewContainerRef, modal: MessageModal): void {
-      this.createMessageModal(target, modal)
-         .then(() => this.show())
-         .catch((e) => console.error(e));
-   }
-
-   set viewContainterRef(containerRef: ViewContainerRef) {
-      this._containerRef = containerRef;
-   }
-
-   private onLoad(component: any, inputs: Object, outputs: Object, otherFactory: ComponentFactory<any>, injector: ReflectiveInjector): void {
-      this.modal.instance.header = this.header;
-      this.modal.instance.visible = false;
-
-      this.modal.instance.component = component;
-      this.modal.instance.componentFactory = otherFactory;
-      this.modal.instance.componentInjector = injector;
-
-      this.modal.instance.visibleChange.subscribe((visibility: boolean) => this.onChangeVisibility(visibility));
-      this.modal.instance.componentInputs = inputs;
-      this.modal.instance.componentOutputs = outputs;
-
-
-      this.modal.instance.config = this._config;
-
-      this.modal.changeDetectorRef.detectChanges();
-   }
-
-   private onChangeVisibility(visibility: boolean): void {
-      if (this._config && this._config.destroyOnCLose) {
-         this.hideAndDestroy();
-      } else if (this._config) {
-         this.hide();
+   private canCreateModal(mainComponent: Type<any>): boolean {
+      if (!this._containerRef) {
+         console.error('cant find container, are you sure you declarate in app main component?');
       }
-   }
 
-   private _createDynamicModule(componentStModalType: Type<any>, componentType: Type<any>[]): any {
-      const declarations = this.moduleMeta.declarations || [];
-      declarations.push(componentStModalType);
-      for (let i = 0; i < componentType.length; i++) {
-         declarations.push(componentType[i]);
+      if (!this._config) {
+         console.error('cant find modal configuration');
       }
-      const moduleMeta: NgModule = {
-         imports: this.moduleMeta.imports,
-         providers: this.moduleMeta.providers,
-         declarations: declarations
-      };
-      return NgModule(moduleMeta)(class _ { });
+
+      if (this.dynamicModal !== undefined) {
+         console.error('can\'t create modal beacause already exists');
+      }
+
+      if (!this._compiler) {
+         console.error('can\'t find compiler');
+      }
+
+      if (!mainComponent) {
+         console.error('can\'t find main component');
+      }
+
+      return this._containerRef !== undefined && this._config !== undefined &&
+      this.dynamicModal === undefined && this._compiler !== undefined && mainComponent !== undefined;
    }
 }

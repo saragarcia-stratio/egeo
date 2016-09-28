@@ -1,6 +1,5 @@
-
-<!--show simple confirmation modal-->
+....
 <button class="btn btn-default" (click)="showModal()">Show Modal</button>
 <button class="btn btn-default" (click)="showModalMultipleComponents()">Show Modal complex component</button>
-<div #loadModal></div>
-<!--end-->
+<button class="btn btn-default" (click)="showModalMultipleComponentsWithModules()">Show Modal complex component With module load</button>
+<button class="btn btn-default" (click)="showModalOnlyModal()">Show Modal complex with module load</button>

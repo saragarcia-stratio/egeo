@@ -1,0 +1,17 @@
+....
+import { StModalService } from 'egeo.angular2.components/components';
+
+....
+export class AppComponent implements OnInit {
+
+   @ViewChild('loadModal', { read: ViewContainerRef }) target: any;
+
+  constructor(private _modalService: StModalService) {
+   ....
+  }
+
+  ngOnInit(): void {
+      this._modalService.container = this.target;
+   }
+
+}

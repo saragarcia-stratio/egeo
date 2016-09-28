@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule }        from '@angular/forms';
 import { HttpModule, Http } from '@angular/http';
 
 import { StInputComponent }  from './st-input';
-import { StModalService, MessageModal, StModal, StMessageModalComponent, provideComponentOutletModule } from './st-modal';
+import { StModalService } from './st-modal';
 import { StInfoBoxComponent }  from './st-info-box';
 import { StSpinnerComponent } from './st-spinner';
 import { StModificableListComponent } from './st-modificable-list';
@@ -41,9 +41,6 @@ import {
     })
   ],
   providers: [
-    provideComponentOutletModule({
-      imports: [CommonModule]
-    }),
     TranslateService
   ],
   declarations: [
@@ -52,7 +49,7 @@ import {
     GosecListComponent, GosecPaginationComponent, StHorizontalTabComponent
   ],
   exports: [
-    StInputComponent, StInfoBoxComponent, StSpinnerComponent, StTooltip, StModificableListComponent, StFooterComponent, StInfoCardComponent, 
+    StInputComponent, StInfoBoxComponent, StSpinnerComponent, StTooltip, StModificableListComponent, StFooterComponent, StInfoCardComponent,
     StVerticalMenuComponent, GosecListComponent, StHorizontalTabComponent
   ]
 })

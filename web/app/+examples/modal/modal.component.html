@@ -3,10 +3,15 @@
 <p>Important: Main component must be the first in the array</p>
 <button class="btn btn-default" (click)="showModal()">Show Modal</button>
 <button class="btn btn-default" (click)="showModalMultipleComponents()">Show Modal complex component</button>
-<div #loadModal qaTag="modal-example"></div>
+<button class="btn btn-default" (click)="showModalMultipleComponentsWithModules()">Show Modal complex component With module load</button>
+<button class="btn btn-default" (click)="showModalOnlyModal()">Show Modal complex with module load</button>
 <!--end-->
 
 
 <!--show code examples-->
+<p>Main App: </p>
+<st-load-code file="modal/example-code/app.ts.txt"></st-load-code>
+<st-load-code file="modal/example-code/app.html.txt"></st-load-code>
+<p>Component that launch modal: </p>
 <st-load-code file="modal/example-code/modal.ts.txt"></st-load-code>
 <st-load-code file="modal/example-code/modal.html.txt"></st-load-code>

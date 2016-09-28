@@ -1,11 +1,11 @@
-<div class="st-modal" [ngClass]="ngClassConfig">
+<div class="st-modal st-modal--visible">
   <div class="st-modal--content" [ngStyle]="getModalSize()">
     <div class="st-modal--header" [ngStyle]="getTitleStyles()">
       <div [ngStyle]="getIconLineHeight()">
-        <span *ngIf="header.icon" class="st-modal---header-ico">
-          <i [ngClass]="header.icon"></i>
+        <span *ngIf="hasIcon()" class="st-modal--header-ico">
+          <i [ngClass]="config.title.icon"></i>
           </span>
-        <span class="st-modal--title">{{header.title}}</span>
+        <span class="st-modal--title">{{config.title.title}}</span>
       </div>
       <span class="st-modal--icon" (click)="closeModal()" [attr.id]="'button-close-modal'">
         <i class="icon-circle-cross"></i>

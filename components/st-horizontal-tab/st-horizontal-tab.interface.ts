@@ -1,5 +1,5 @@
 export interface StHorizontalTab {
-  label: string;
-  number?: number;
-  active?: boolean;
+   label: string;
+   number?: number;
+   active?: boolean;
 }

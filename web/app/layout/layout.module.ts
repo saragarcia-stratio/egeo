@@ -16,7 +16,8 @@ import {
   TooltipComponent,
   RegexpComponent,
   VerticalMenuComponent,
-  HorizontalTabComponent
+  HorizontalTabComponent,
+  TabBoxComponent
 } from '../+examples';
 import { routing } from './layout.routing';
 
@@ -41,7 +42,8 @@ import { EgeoModule } from '../../../components';
     TooltipComponent,
     RegexpComponent,
     VerticalMenuComponent,
-    HorizontalTabComponent
+    HorizontalTabComponent,
+    TabBoxComponent
   ]
 })
 export class LayoutModule { }

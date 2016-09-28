@@ -1,0 +1,40 @@
+@import '../st-egeo';
+@import '../egeo2/sass.utils/utils.typography';
+@import '../egeo2/sass.utils/utils.colors';
+
+$st-tab-box---font-size: egeo-get-font-size('body_xsmall') !default;
+$st-tab-box__description---height: 35px !default;
+
+.st-tab-box {
+  width: 100%;
+  height: 100%;
+  color: egeo-get-color(n7);
+  background: egeo-get-color(n1);
+  
+  &__tab {
+    float: left;
+    padding: 14px 18px;
+    font-family: egeo-get-font(brandon-grotesque);
+    text-transform: uppercase;
+    color: egeo-get-color(n9);
+    background: egeo-get-color(n4);
+    cursor: pointer;
+    font-size: $st-tab-box---font-size;
+    
+    &:hover {
+      color: egeo-get-color(n0);
+      background: egeo-get-color(n5);
+    }
+
+    &--active,
+    &--active:hover {
+      color: egeo-get-color(n7);
+      background: egeo-get-color(n2);
+      cursor: default;
+    }
+  }
+  &__content {
+    float: left;
+    padding: 22px;
+  }
+}

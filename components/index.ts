@@ -7,3 +7,4 @@ export { BUTTON_TYPES, Buttons, StModalService, MessageModal, ModalTitle, StModa
 export { EgeoModule } from './egeo.module';
 export * from './utils';
 export * from './st-horizontal-tab/st-horizontal-tab.interface';
+export * from './st-tab-box/st-tab-box.interface';

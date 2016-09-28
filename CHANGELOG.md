@@ -2,9 +2,10 @@
 
 ## 0.4.0 (upcoming)
 
-* Pending changelog
+* New horizontal tab component
+* New tab box component
 
-## 0.3.0 (upcoming)
+## 0.3.0
 
 * Spinner component
 * Modificable List component

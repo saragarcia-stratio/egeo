@@ -13,7 +13,8 @@ import {
   VerticalMenuComponent,
   ListComponent,
   TooltipComponent,
-  HorizontalTabComponent
+  HorizontalTabComponent,
+  TabBoxComponent
 } from '../+examples';
 
 export const routing = RouterModule.forChild([
@@ -32,7 +33,8 @@ export const routing = RouterModule.forChild([
       { path: 'vertical-menu', component: VerticalMenuComponent },
       { path: 'list', component: ListComponent },
       { path: 'tooltip', component: TooltipComponent },
-      { path: 'horizontal-tab', component: HorizontalTabComponent }
+      { path: 'horizontal-tab', component: HorizontalTabComponent },
+      { path: 'tab-box', component: TabBoxComponent }
     ]
   }
 ]);

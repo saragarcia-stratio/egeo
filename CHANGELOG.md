@@ -15,6 +15,7 @@
 * Update to Angular2 final release
 * Regular expression utils
 + Vertical menu component
+* Close tooltip with click, keydown or mouse wheel
 
 ## 0.2.0
 

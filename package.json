@@ -6,7 +6,7 @@
     "start": "webpack-dev-server --inline --quiet --port 8080",
     "test": "karma start",
     "test:watch": "karma start --auto-watch --no-single-run",
-    "build": "rm -rf target/generated-web && webpack --config config/webpack.prod.js --no-color --bail",
+    "build": "rm -rf target/generated-web && webpack --config config-web/webpack.prod.js --no-color --bail",
     "build:components": "rm -rf target/components && webpack --config config-components/webpack.prod.js --no-color --bail",
     "build:components-dev": "rm -rf target/components && webpack --config config-components/webpack.dev.js --pogress --bail",
     "postinstall": "typings install",

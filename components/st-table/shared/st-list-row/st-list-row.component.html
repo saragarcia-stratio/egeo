@@ -10,6 +10,9 @@
       <div *ngIf='field.type === "ico"'>
         <div class="overflow-points"><i [ngStyle]="getColor(field)" [ngClass]="getIcon(field)"></i></div>
       </div>
+      <div *ngIf='field.type === "boolean"'>
+        <div class="overflow-points" [ngClass]="getBooleanClass(field)">{{ getBooleanText(field) }} </div>
+      </div>
     </div>
     <span *ngIf="hasDetail" class="ico-text-element__icon gosec-list-row__ico">
       <i class="icon-arrow2_right"></i>

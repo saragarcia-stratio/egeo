@@ -3,6 +3,7 @@
 @import '../../../egeo2/sass.utils/utils.colors';
 @import '../../../egeo2/sass.settings/settings.extends';
 @import '../../../egeo2/sass.utils/utils.transitions';
+@import '../../../egeo2/sass.utils/utils.colors';
 
 
 $gosec-list-row__row__separator---color: egeo-get-color(n3) !default;
@@ -125,5 +126,13 @@ $ico-text-element__text---font-family: 'ico_stratio' !default;
    overflow: hidden;
    cursor:default;
    pointer-events: none;
+}
+
+.st-table-positive-cell{
+  color: egeo-get-color("s1");
+}
+
+.st-table-negative-cell{
+  color: egeo-get-color("s2");
 }
 

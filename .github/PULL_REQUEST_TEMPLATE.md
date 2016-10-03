@@ -1,11 +1,7 @@
 ## TYPE
-- [ ] Bugfix
-- [ ] New component
-- [ ] New service
-- [ ] Utils
+- Bugfix, New component, New service, Utils, etc.
 
 ## Description
-
 Add a description of your changes here.
 
 ### Documentation
@@ -22,10 +18,13 @@ Add a description of your changes here.
 ### Tests
 - [ ] Have Tests
 
+### Other observations
+- Add other information you consider important
+
 ### ui-base
-- [ ] Launch "npm run check-ui-base" for check sass compile
+- Remember Launch "npm run check-ui-base" for check sass compile if modify ui-base
 
 ### Post-review reminder
+- Remember reviewer do shipit without +1, it is understood 
 - Squash commits
 - Release version in case of breaking changes and notify of all front
-

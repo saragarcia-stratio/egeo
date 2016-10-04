@@ -4,6 +4,7 @@
 
 * New horizontal tab component
 * New tab box component
+* Spinner in modificable list while input is undefined
 
 ## 0.3.0
 

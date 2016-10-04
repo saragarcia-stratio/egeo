@@ -9,6 +9,7 @@
         </div>
         <div class="st-modificable-list__title">{{ completeListTitle }} ({{ completeList.length }})</div>
         <div class="st-container st-container--overflow-wrapper st-modificable-list__container-outside">
+          <st-spinner style="display:block; margin-top:40%;" *ngIf="!completeList"></st-spinner>
           <div class="st-modificable-list__container-inside">
             <div *ngFor="let row of completeList; let index = index">
               <div class="st-modificable-list__row" [attr.id]="qaTag + '-list1-elem-' + index">
@@ -41,6 +42,7 @@
       </div>
       <div class="st-modificable-list__title">{{ selectedListTitle }} ({{ selectedList.length }})</div>
       <div class="st-container st-container--overflow-wrapper st-modificable-list__container-outside">
+        <st-spinner style="display:block; margin-top:40%;" *ngIf="!selectedList"></st-spinner>
         <div class="st-modificable-list__container-inside">
           <div *ngFor="let row of selectedList; let index = index">
             <div class="st-modificable-list__row" [attr.id]="qaTag + '-list2-elem-' + index">

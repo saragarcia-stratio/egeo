@@ -14,7 +14,8 @@ import {
   ListComponent,
   TooltipComponent,
   HorizontalTabComponent,
-  TabBoxComponent
+  TabBoxComponent,
+  ApiDocExample
 } from '../+examples';
 
 export const routing = RouterModule.forChild([
@@ -34,7 +35,8 @@ export const routing = RouterModule.forChild([
       { path: 'list', component: ListComponent },
       { path: 'tooltip', component: TooltipComponent },
       { path: 'horizontal-tab', component: HorizontalTabComponent },
-      { path: 'tab-box', component: TabBoxComponent }
+      { path: 'tab-box', component: TabBoxComponent },
+      { path: 'api-doc', component: ApiDocExample }
     ]
   }
 ]);

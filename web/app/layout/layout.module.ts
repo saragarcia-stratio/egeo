@@ -17,11 +17,12 @@ import {
   RegexpComponent,
   VerticalMenuComponent,
   HorizontalTabComponent,
-  TabBoxComponent
+  TabBoxComponent,
+  ApiDocExample
 } from '../+examples';
 import { routing } from './layout.routing';
 
-import { LoadCodeComponent } from '../shared';
+import { LoadCodeComponent, ApiDocComponent, ParametersTableComponent } from '../shared';
 
 import { EgeoModule } from '../../../components';
 
@@ -30,6 +31,7 @@ import { EgeoModule } from '../../../components';
   declarations: [
     LayoutComponent,
     LoadCodeComponent,
+    ParametersTableComponent, ApiDocComponent, // For api doc in examples.
     ModalComponent,
     MainComponent,
     InputComponent,
@@ -43,7 +45,8 @@ import { EgeoModule } from '../../../components';
     RegexpComponent,
     VerticalMenuComponent,
     HorizontalTabComponent,
-    TabBoxComponent
+    TabBoxComponent,
+    ApiDocExample
   ]
 })
 export class LayoutModule { }

@@ -1,0 +1,11 @@
+<st-api-doc [doc]="apiDoc">
+   <div class="example-run">
+      <button type="button" class="btn btn-info">Button 1</button>
+      <button type="button" class="btn btn-warn">Button 2</button>
+   </div>
+   <div class="example-code">
+      <!--{{code}}-->
+      <st-load-code file="api-doc/example-code/api.ts.txt"></st-load-code>
+      <st-load-code file="api-doc/example-code/api.html.txt"></st-load-code>
+   </div>
+</st-api-doc>

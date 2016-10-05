@@ -7,7 +7,7 @@ var DashboardPlugin = require('webpack-dashboard/plugin');
 var dashboard = new Dashboard();
 
 module.exports = webpackMerge(commonConfig, {
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
 
   output: {
     path: helpers.root('dist'),
@@ -29,12 +29,6 @@ module.exports = webpackMerge(commonConfig, {
 
   devServer: {
     historyApiFallback: true,
-    stats: 'minimal',
-    proxy: {
-      '/api*': {
-        target: 'http://localhost:3005/',
-        secure: false
-      }
-    }
+    stats: 'minimal'
   }
 });

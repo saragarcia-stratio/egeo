@@ -12,3 +12,4 @@ export * from './info-card';
 export * from './regexp';
 export * from './horizontal-tab';
 export * from './tab-box';
+export * from './api-doc';

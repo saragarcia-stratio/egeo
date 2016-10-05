@@ -7,7 +7,7 @@
             type="text" placeholder="{{ searchButtonLabel }}" [attr.id]="qaTag + '-input1'">
           <span class="icon-search st-modificable-list__search-icon"></span>
         </div>
-        <div class="st-modificable-list__title">{{ completeListTitle }} ({{ completeList.length }})</div>
+        <div class="st-modificable-list__title">{{ completeListTitle }} ({{ completeList.length ? completeList.length : 0 }})</div>
         <div class="st-container st-container--overflow-wrapper st-modificable-list__container-outside">
           <st-spinner style="display:block; margin-top:40%;" *ngIf="!completeList"></st-spinner>
           <div class="st-modificable-list__container-inside">
@@ -40,7 +40,7 @@
           type="text" placeholder="{{ searchButtonLabel }}" [attr.id]="qaTag + '-input2'">
         <span class="icon-search st-modificable-list__search-icon"></span>
       </div>
-      <div class="st-modificable-list__title">{{ selectedListTitle }} ({{ selectedList.length }})</div>
+      <div class="st-modificable-list__title">{{ selectedListTitle }} ({{ selectedList ? selectedList.length : 0 }})</div>
       <div class="st-container st-container--overflow-wrapper st-modificable-list__container-outside">
         <st-spinner style="display:block; margin-top:40%;" *ngIf="!selectedList"></st-spinner>
         <div class="st-modificable-list__container-inside">

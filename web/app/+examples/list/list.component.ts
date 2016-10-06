@@ -18,6 +18,7 @@ export class ListComponent {
    hasDetail: boolean;
    pagination: Page;
    elementsPerPage: number = 10;
+   actionClass: string = 'onHover st-action-red';
    totalElements: number = usersListExample.length;
 
    constructor() {

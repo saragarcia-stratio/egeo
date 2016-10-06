@@ -11,10 +11,15 @@ import { getColPercent } from '../utils';
 export class GosecListRowComponent<T> {
    @Input() rowData: Model<T>;
    @Input() metadata: Array<FieldsMetadata>;
-   @Output() openDetail: EventEmitter<string> = new EventEmitter<string>();
    @Input() hasDetail: boolean = true;
+   @Input() detailText: string = '';
+   @Input() actionClass: string = '';
+   @Output() openDetail: EventEmitter<string> = new EventEmitter<string>();
+   @Output() clickAction: EventEmitter<string> = new EventEmitter<string>();
+
+
    // All values against which you consider truthy for boolean types
-   TRUTHY_VALUES = [true, 'true', 1, '1'];
+   TRUTHY_VALUES: Array<any> = [true, 'true', 1, '1'];
 
    RIGHT_MARGIN: number = 5;
    rowLength: number = 100;
@@ -61,13 +66,17 @@ export class GosecListRowComponent<T> {
       }
    }
 
-   getBoolean(x:any):boolean {
-      return this.TRUTHY_VALUES.some(function (value) {
+   getBoolean(x: any): boolean {
+      return this.TRUTHY_VALUES.some(function (value: any) {
          return x === value;
       });
    }
 
    showDetail(id: string): void {
       this.openDetail.emit(id);
+   }
+
+   clickOnAction(id: string): void {
+      this.clickAction.emit(id);
    }
 }

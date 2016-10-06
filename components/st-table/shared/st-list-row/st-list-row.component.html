@@ -14,8 +14,8 @@
         <div class="overflow-points" [ngClass]="getBooleanClass(field)">{{ getBooleanText(field) }} </div>
       </div>
     </div>
-    <span *ngIf="hasDetail" class="ico-text-element__icon gosec-list-row__ico">
-      <i class="icon-arrow2_right"></i>
-    </span>
+    <div *ngIf="hasDetail" [ngClass]="actionClass" class="ico-text-element__icon gosec-list-row__ico gosec-list-row__action" (click)="clickOnAction(rowData.getValue('id'))">
+      {{ detailText }}<i class="icon-arrow2_right"></i>
+    </div>
   </div>
 </li>

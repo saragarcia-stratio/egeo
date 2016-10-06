@@ -15,6 +15,7 @@ export class GosecListComponent<T> {
    @Input() metadata: Array<FieldsMetadata>;
    @Input() data: DataList<T>;
    @Output() openDetail: EventEmitter<string> = new EventEmitter<string>();
+   @Output() clickAction:  EventEmitter<string> = new EventEmitter<string>();
 
    // Order Fields
    @Input() order: Order;
@@ -22,6 +23,9 @@ export class GosecListComponent<T> {
 
    // Configuration
    @Input() hasDetail: boolean = true;
+   @Input() detailText: string = '';
+   @Input() actionClass: string = '';
+
 
    // Pagination Fields
    @Input() pagination: Page;
@@ -38,6 +42,10 @@ export class GosecListComponent<T> {
 
    showDetail(id: string): void {
       this.openDetail.emit(id);
+   }
+
+   clickOnAction(id: string): void {
+      this.clickAction.emit(id);
    }
 
 }

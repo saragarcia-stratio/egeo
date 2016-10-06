@@ -1,6 +1,6 @@
-import {GosecListRowComponent} from './';
-import { Model } from '../';
-import { FieldsMetadata, ORDER_TYPE, DataList, Order, GosecListHeaderComponent, GosecListBodyComponent} from '../';
+import { GosecListComponent } from './';
+import { Model } from './shared';
+import { FieldsMetadata, ORDER_TYPE, DataList, Order, GosecListHeaderComponent, GosecListBodyComponent} from './';
 
 class Hero extends Model<HeroeInterface> {
 
@@ -54,7 +54,7 @@ interface HeroeInterface {
    age: number;
    magician: number;
    alive: boolean;
-}
+};
 
 let heroes = [
    { name: 'Caramon Majere', 'city': 'Solamnia', age: 22, 'magician': 0, 'alive': false },
@@ -102,73 +102,25 @@ let heroesMetadata = [
 ];
 
 let heroesDatalist = heroes.map((hero) => new Hero(hero));
-let componentRow: GosecListRowComponent<HeroeInterface>;
+let tableComponent: GosecListComponent<HeroeInterface>;
 
-describe(('st-list-row'), () => {
+describe(('st-list'), () => {
 
    beforeEach(() => {
-      componentRow = new GosecListRowComponent<HeroeInterface>();
-      componentRow.metadata = heroesMetadata;
+      tableComponent = new GosecListComponent<HeroeInterface>();
+      tableComponent.metadata = heroesMetadata;
    });
 
-   it('should has a detailText', () => {
-      componentRow.rowData = heroesDatalist[1];
-      expect(componentRow.detailText).toBeDefined();
-
-   });
-
-   it('should get positive text for boolean values', () => {
-      componentRow.rowData = heroesDatalist[1];
-      let text = componentRow.getBooleanText(heroesMetadata[3]);
-      expect(text).toEqual('Yes!');
-   });
-
-   it('should get positive text for numbers values', () => {
-      componentRow.rowData = heroesDatalist[1];
-      let text = componentRow.getBooleanText(heroesMetadata[4]);
-      expect(text).toEqual('Yep');
-   });
-
-   it('should get negative text for boolean values', () => {
-      componentRow.rowData = heroesDatalist[0];
-      let text = componentRow.getBooleanText(heroesMetadata[3]);
-      expect(text).toEqual('Nope');
-   });
-
-   it('should get negative text for numbers values', () => {
-      componentRow.rowData = heroesDatalist[0];
-      let text = componentRow.getBooleanText(heroesMetadata[4]);
-      expect(text).toEqual('nein');
-   });
-
-   it('should get the css class for true cases', () => {
-      componentRow.rowData = heroesDatalist[1];
-      let cssCass = componentRow.getBooleanClass(heroesMetadata[3]);
-      expect(cssCass).toEqual('true-class');
-   });
-
-   it('should get the boolean css class for false cases', () => {
-      componentRow.rowData = heroesDatalist[0];
-      let cssCass = componentRow.getBooleanClass(heroesMetadata[3]);
-      expect(cssCass).toEqual('st-table-negative-cell');
-   });
-
-   it('should emit openDetail event', (done) => {
-      componentRow.rowData = heroesDatalist[0];
-      componentRow.openDetail.subscribe((eventData: string) => {
-         expect(eventData).toEqual('myId');
-         done();
-      });
-      componentRow.showDetail('myId');
+   it('should has defined detailText', () => {
+      expect(tableComponent.detailText).toBeDefined();
    });
 
    it('should emit clickAction event', (done) => {
-      componentRow.rowData = heroesDatalist[0];
-      componentRow.clickAction.subscribe((eventData: string) => {
+      tableComponent.clickAction.subscribe((eventData: string) => {
          expect(eventData).toEqual('myId');
          done();
       });
-      componentRow.clickOnAction('myId');
+      tableComponent.clickOnAction('myId');
    });
 });
 

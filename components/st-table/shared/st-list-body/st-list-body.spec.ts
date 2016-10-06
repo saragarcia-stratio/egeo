@@ -1,10 +1,10 @@
 import {GosecListBodyComponent} from './';
-import { Model } from '../'
+import { Model } from '../';
 import { FieldsMetadata, ORDER_TYPE, DataList, Order, GosecListHeaderComponent, GosecListRowComponent } from '../';
 
-class Hero extends Model<heroeInterface> {
+class Hero extends Model<HeroeInterface> {
 
-   constructor(data: heroeInterface) {
+   constructor(data: HeroeInterface) {
       super(data);
    };
 
@@ -12,11 +12,11 @@ class Hero extends Model<heroeInterface> {
       return this.toString(this.data[key]);
    }
 
-   createModel(data: heroeInterface): Model<heroeInterface> {
+   createModel(data: HeroeInterface): Model<HeroeInterface> {
       return new Hero(data);
    }
 
-   compare(b: Model<heroeInterface>, order: Order): number {
+   compare(b: Model<HeroeInterface>, order: Order): number {
       let comparation: number;
       comparation = this.compareNumbersAndString(this.data[order.orderBy], b.data[order.orderBy]);
       return order.type === ORDER_TYPE.ASC ? comparation : (comparation * -1);
@@ -46,17 +46,17 @@ class Hero extends Model<heroeInterface> {
          return '';
       }
    }
-} //end class Hero
+} // end class Hero
 
-interface heroeInterface {
-   name: string,
-   city: string,
-   age: number,
-   magician: number,
-   alive: boolean
+interface HeroeInterface {
+   name: string;
+   city: string;
+   age: number;
+   magician: number;
+   alive: boolean;
 }
 
-let heroes: Array<heroeInterface> = [
+let heroes: Array<HeroeInterface> = [
    { name: 'Caramon Majere', 'city': 'Solamnia', age: 22, 'magician': 0, 'alive': false },
    { name: 'Raistlin Majere', 'city': 'Istar', age: 984, 'magician': 1, 'alive': true },
    { name: 'Alhana Starbreeze', 'city': 'Qualinesti', age: 18, 'magician': 0, 'alive': false },
@@ -84,7 +84,7 @@ let heroesMetadata = [
          },
          falseText: 'Nope'
       },
-      link: false,
+      link: false
    },
    {
       id: 'alive',
@@ -97,24 +97,30 @@ let heroesMetadata = [
             cssClass: 'false-class'
          }
       },
-      link: false,
+      link: false
    }
 ];
 
 let heroesDatalist = heroes.map((hero) => new Hero(hero));
-let componentRow: GosecListRowComponent<heroeInterface>;
+let componentRow: GosecListRowComponent<HeroeInterface>;
 
 describe(('st-list-row'), () => {
 
-   let componentRow: GosecListRowComponent<heroeInterface>;
-
    beforeEach(() => {
-      componentRow = new GosecListRowComponent<heroeInterface>();
+      componentRow = new GosecListRowComponent<HeroeInterface>();
       componentRow.metadata = heroesMetadata;
+      componentRow.rowData = heroesDatalist[0];
+   });
+
+   it('should be defined detailText', () => {
+      expect(componentRow.detailText).toBeDefined();
+   });
+
+   it('should be defined actionClass', () => {
+      expect(componentRow.actionClass).toBeDefined();
    });
 
    it('should emit openDetail event', (done) => {
-      componentRow.rowData = heroesDatalist[0];
       componentRow.openDetail.subscribe((eventData: string) => {
          expect(eventData).toEqual('myId');
          done();

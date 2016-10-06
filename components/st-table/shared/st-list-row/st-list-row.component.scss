@@ -91,16 +91,11 @@ $ico-text-element__text---font-family: 'ico_stratio' !default;
 
     &:hover{
       background: $gosec-list-row__row---hover-background-color;
-    }
 
-    &:hover .gosec-list-row__text--typetext{
-        color: $gosec-list-row__row---hover-color;
+      .gosec-list-row__action{
+         opacity: 1;
+      }
     }
-
-    &:hover .gosec-list-row__ico{
-        color: $gosec-list-row__row---hover-color;
-    }
-
   }
 
     &__col {
@@ -117,6 +112,24 @@ $ico-text-element__text---font-family: 'ico_stratio' !default;
     }
 
     }
+}
+
+.gosec-list-row__action{
+   font-size: inherit;
+
+   i{
+      float:right;
+      margin-left: 5px;
+      line-height: 0.8;
+   }
+
+   &.onHover{
+      opacity: 0;
+   }
+
+   &.st-action-red{
+      color: egeo-get-color("s3");
+   }
 }
 
 .overflow-points {

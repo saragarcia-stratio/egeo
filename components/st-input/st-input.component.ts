@@ -130,7 +130,7 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
   private checkDisabled(): void {
     if (this.isDisabled && this.internalControl && this.internalControl.enabled) {
       this.internalControl.disable();
-    } else if (this.internalControl && this.internalControl.disabled) {
+    } else if (!this.isDisabled && this.internalControl && this.internalControl.disabled) {
       this.internalControl.enable();
     }
   }

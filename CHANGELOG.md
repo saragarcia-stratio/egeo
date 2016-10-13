@@ -1,9 +1,5 @@
 # Changelog
 
-## 0.5.0.0 (upcoming)
-
-* Pending changelog
-
 ## 0.4.0 (upcoming)
 
 * New horizontal tab component

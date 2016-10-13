@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.0 (upcoming)
+
+* Pending changelog
+
 ## 0.5.0.0 (upcoming)
 
 * Pending changelog

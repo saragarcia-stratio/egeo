@@ -2,7 +2,7 @@
 
 ## 0.5.0 (upcoming)
 
-* Pending changelog
+* Fix bad URL imports in the new UI-Base Sass files.
 
 ## 0.4.0 (upcoming)
 

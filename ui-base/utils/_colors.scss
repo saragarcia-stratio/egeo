@@ -34,47 +34,47 @@
 // @import './sass.utils/settings.log';
 
 @mixin egeo-is-coloured($colors, $type: color) {
-	@if type-of($colors) == 'map' {
-		@each $key, $value in $colors {
-			&--#{$key} {
-				@if $type == color {
-					color: $value;
-				} @else if $type == background {
-					background-color: $value;
-				} @else {
-					@if function-exists(egeo-log) {
-						@if egeo-log('@egeo-is-coloured::The second param #{type} is not a valid value. Only color or background are valid ones.', $egeo-log-warn) {}
-					}
-				}
-			}
-		}
-	} @else {
-		@if egeo-log('@egeo-is-coloured::The first param is not a valid Sass map.', $egeo-log-warn) {}
-	}
+   @if type-of($colors) == 'map' {
+      @each $key, $value in $colors {
+         &--#{$key} {
+            @if $type == color {
+               color: $value;
+            } @else if $type == background {
+               background-color: $value;
+            } @else {
+               @if function-exists(egeo-log) {
+                  @if egeo-log('@egeo-is-coloured::The second param #{type} is not a valid value. Only color or background are valid ones.', $egeo-log-warn) {}
+               }
+            }
+         }
+      }
+   } @else {
+      @if egeo-log('@egeo-is-coloured::The first param is not a valid Sass map.', $egeo-log-warn) {}
+   }
 }
 
 @function egeo-get-color($color) {
-	$result: #000;
+   $result: #000;
 
-	@if global-variable-exists(egeo-colors) {
-		@if type-of($egeo-colors) == 'map' {
-			@if map-has-key($egeo-colors, $color) {
-				$result: map-get($egeo-colors, $color);
-			} @else {
-				@if function-exists(egeo-log) {
-					@if egeo-log('@egeo-get-color::The color #{color} not exist in $egeo-colors.', $egeo-log-warn) {}
-				}
-			}
-		} @else {
-			@if function-exists(egeo-log) {
-				@if egeo-log('@egeo-get-color::The $egeo-colors variable is not a Sass map.', $egeo-log-warn) {}
-			}
-		}
-	} @else {
-		@if function-exists(egeo-log) {
-			@if egeo-log('@egeo-get-color::The Sass map $egeo-colors is not defined.', $egeo-log-warn) {}
-		}
-	}
+   @if global-variable-exists(egeo-colors) {
+      @if type-of($egeo-colors) == 'map' {
+         @if map-has-key($egeo-colors, $color) {
+            $result: map-get($egeo-colors, $color);
+         } @else {
+            @if function-exists(egeo-log) {
+               @if egeo-log('@egeo-get-color::The color #{color} not exist in $egeo-colors.', $egeo-log-warn) {}
+            }
+         }
+      } @else {
+         @if function-exists(egeo-log) {
+            @if egeo-log('@egeo-get-color::The $egeo-colors variable is not a Sass map.', $egeo-log-warn) {}
+         }
+      }
+   } @else {
+      @if function-exists(egeo-log) {
+         @if egeo-log('@egeo-get-color::The Sass map $egeo-colors is not defined.', $egeo-log-warn) {}
+      }
+   }
 
-	@return $result;
+   @return $result;
 }

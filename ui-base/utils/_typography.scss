@@ -15,21 +15,21 @@
 // #### Usage
 // ```
 // .test {
-//		font-family: egeo-get-font();
+//      font-family: egeo-get-font();
 // }
 //
 // .test-2 {
-//		font-family: egeo-get-font(brandon-grotesque);
+//      font-family: egeo-get-font(brandon-grotesque);
 // }
 // ```
 // This code will generate:
 // ```
 // .test {
-//		font-family: 'Open Sans';
+//      font-family: 'Open Sans';
 // }
 //
 // .test-2 {
-//		font-family: 'Brandon Grotesque';
+//      font-family: 'Brandon Grotesque';
 // }
 // ```
 //
@@ -47,21 +47,21 @@
 // #### Usage
 // ```
 // .test {
-//		font-size: egeo-get-font-size();
+//      font-size: egeo-get-font-size();
 // }
 //
 // .test-2 {
-//		font-size: egeo-get-font-size(small);
+//      font-size: egeo-get-font-size(small);
 // }
 // ```
 // This code will generate:
 // ```
 // .test {
-//		font-size: 1rem;
+//      font-size: 1rem;
 // }
 //
 // .test-2 {
-//		font-size: .8rem;
+//      font-size: .8rem;
 // }
 // ```
 //
@@ -79,21 +79,21 @@
 // #### Usage
 // ```
 // .test {
-//		font-weight: egeo-get-font-weight();
+//      font-weight: egeo-get-font-weight();
 // }
 //
 // .test-2 {
-//		font-weight: egeo-get-font-weight(bold);
+//      font-weight: egeo-get-font-weight(bold);
 // }
 // ```
 // This code will generate:
 // ```
 // .test {
-//		font-weight: 400;
+//      font-weight: 400;
 // }
 //
 // .test-2 {
-//		font-weight: 700;
+//      font-weight: 700;
 // }
 // ```
 //
@@ -111,21 +111,21 @@
 // #### Usage
 // ```
 // .test {
-//		line-height: egeo-get-line-height();
+//      line-height: egeo-get-line-height();
 // }
 //
 // .test-2 {
-//		line-height: egeo-get-line-height(double);
+//      line-height: egeo-get-line-height(double);
 // }
 // ```
 // This code will generate:
 // ```
 // .test {
-//		line-height: 1em;
+//      line-height: 1em;
 // }
 //
 // .test-2 {
-//		line-height: 2em;
+//      line-height: 2em;
 // }
 // ```
 //
@@ -141,22 +141,22 @@
 // #### Usage
 // ```
 // .test {
-//		@include egeo-set-font-families;
+//      @include egeo-set-font-families;
 // }
 // ```
 // This code will generate:
 // ```
-//	...
+//   ...
 //
-//	.test--brandon-grotesque {
-//		font-family: "Brandon Grotesque";
-//	}
+//   .test--brandon-grotesque {
+//      font-family: "Brandon Grotesque";
+//   }
 //
-//	.test--open-sans {
-//		font-family: "Open Sans";
-//	}
+//   .test--open-sans {
+//      font-family: "Open Sans";
+//   }
 //
-//	...
+//   ...
 // ```
 //
 // <div class="compatibility">Compatibility untested.</div>
@@ -171,26 +171,26 @@
 // #### Usage
 // ```
 // .test {
-//		@include egeo-set-font-sizes;
+//      @include egeo-set-font-sizes;
 // }
 // ```
 // This code will generate:
 // ```
-//	...
+//   ...
 //
-//	.test--large {
-//		font-size: 1.2rem;
-//	}
+//   .test--large {
+//      font-size: 1.2rem;
+//   }
 //
-//	.test--medium {
-//		font-size: 1rem;
-//	}
+//   .test--medium {
+//      font-size: 1rem;
+//   }
 //
-//	.test--small {
-//		font-size: 0.8rem;
-//	}
+//   .test--small {
+//      font-size: 0.8rem;
+//   }
 //
-//	...
+//   ...
 // ```
 //
 // <div class="compatibility">Compatibility untested.</div>
@@ -205,26 +205,26 @@
 // #### Usage
 // ```
 // .test {
-//		@include egeo-set-font-weights;
+//      @include egeo-set-font-weights;
 // }
 // ```
 // This code will generate:
 // ```
-//	...
+//   ...
 //
-//	.test--bold {
-//		font-weight: 700;
-//	}
+//   .test--bold {
+//      font-weight: 700;
+//   }
 //
-//	.test--semibold {
-//		font-weight: 500;
-//	}
+//   .test--semibold {
+//      font-weight: 500;
+//   }
 //
-//	.test--normal {
-//		font-weight: 400;
-//	}
+//   .test--normal {
+//      font-weight: 400;
+//   }
 //
-//	...
+//   ...
 // ```
 //
 // <div class="compatibility">Compatibility untested.</div>
@@ -239,22 +239,22 @@
 // #### Usage
 // ```
 // .test {
-//		@include egeo-set-line-heights;
+//      @include egeo-set-line-heights;
 // }
 // ```
 // This code will generate:
 // ```
-//	...
+//   ...
 //
-//	.test--double {
-//		line-height: 2em;
-//	}
+//   .test--double {
+//      line-height: 2em;
+//   }
 //
-//	.test--normal {
-//		line-height: 1.5em;
-//	}
+//   .test--normal {
+//      line-height: 1.5em;
+//   }
 //
-//	...
+//   ...
 // ```
 //
 // <div class="compatibility">Compatibility untested.</div>
@@ -272,33 +272,33 @@
 // @import './utils/log';
 
 @mixin egeo-set-font-families() {
-	@include egeo-bem-modifiers-from-map($egeo-font-families, font-family);
+   @include egeo-bem-modifiers-from-map($egeo-font-families, font-family);
 }
 
 @mixin egeo-set-font-sizes() {
-	@include egeo-bem-modifiers-from-map($egeo-font-sizes, font-size);
+   @include egeo-bem-modifiers-from-map($egeo-font-sizes, font-size);
 }
 
 @mixin egeo-set-font-weights() {
-	@include egeo-bem-modifiers-from-map($egeo-font-weights, font-weight);
+   @include egeo-bem-modifiers-from-map($egeo-font-weights, font-weight);
 }
 
 @mixin egeo-set-line-heights() {
-	@include egeo-bem-modifiers-from-map($egeo-line-heights, line-height);
+   @include egeo-bem-modifiers-from-map($egeo-line-heights, line-height);
 }
 
 @function egeo-get-font($font-family: open-sans) {
-	@return map-get($egeo-font-families, $font-family);
+   @return map-get($egeo-font-families, $font-family);
 }
 
 @function egeo-get-font-weight($weight: normal) {
-	@return map-get($egeo-font-weights, $weight);
+   @return map-get($egeo-font-weights, $weight);
 }
 
 @function egeo-get-font-size($size: medium) {
-	@return map-get($egeo-font-sizes, $size);
+   @return map-get($egeo-font-sizes, $size);
 }
 
 @function egeo-get-line-height($height: normal) {
-	@return map-get($egeo-line-heights, $height);
+   @return map-get($egeo-line-heights, $height);
 }

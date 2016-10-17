@@ -14,11 +14,11 @@
 //
 // ## Variables
 //
-// | var 				| default 	| desc 																														|
+// | var             | default    | desc                                                                                           |
 // | ------------------ | --------- | ------------------------------------------------------------------------------------------------------------------------- |
-// | $egeo-log-debug 	| No 		| A constant value used by the log methods to say to the log method that we want to show a debug message in the console. 	|
-// | $egeo-log-warn 	| No 		| A constant value used by the log methods to say to the log method that we want to show a warn message in the console. 	|
-// | $egeo-log-error 	| No 		| A constant value used by the log methods to say to the log method that we want to show an error message in the console. 	|
+// | $egeo-log-debug    | No       | A constant value used by the log methods to say to the log method that we want to show a debug message in the console.    |
+// | $egeo-log-warn    | No       | A constant value used by the log methods to say to the log method that we want to show a warn message in the console.    |
+// | $egeo-log-error    | No       | A constant value used by the log methods to say to the log method that we want to show an error message in the console.    |
 //
 // ## Functions
 //
@@ -30,10 +30,10 @@
 // the parameter `$type` passed to the function. It detects if the directive
 // @error is supported (Sass 3.3+) and provides an alternative for lower versions.
 //
-// | parameters	| default value 	| desc 																																									|
+// | parameters   | default value    | desc                                                                                                                            |
 // | ---------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-// | $message 	| No 				| The message we want to show in the console.																															|
-// | $type 		| `$egeo-log-debug`	| The type of message we want to show in the console. It could be have the value of one of the variables pre-defined: `$egeo-log-debug`, `@log-warn` or `@log-error`. 	|
+// | $message    | No             | The message we want to show in the console.                                                                                             |
+// | $type       | `$egeo-log-debug`   | The type of message we want to show in the console. It could be have the value of one of the variables pre-defined: `$egeo-log-debug`, `@log-warn` or `@log-error`.    |
 //
 // #### Usage
 //
@@ -42,10 +42,10 @@
 // code like the one below:
 //
 // ```
-//	@function myFunction() {
-//		...
-//		@if @log('My log message', $egeo-log-error) {}
-//		...
+//   @function myFunction() {
+//      ...
+//      @if @log('My log message', $egeo-log-error) {}
+//      ...
 // }
 // ```
 //
@@ -58,7 +58,7 @@
 // Does exactly the same than the function but you can call it
 // like showed in the Usage section.
 //
-// | parameters		| default value 	| desc 																																									|
+// | parameters      | default value    | desc    																																								|
 // |--------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 // | $message 		| No 				| The message we want to show in the console. 																															|
 // | $type 			| $egeo-log-debug	| The type of message we want to show in the console. It could be have the value of one of the variables pre-defined: `$egeo-log-debug`, `@log-warn` or `@log-error`. 	|
@@ -78,30 +78,30 @@
 @import '../settings/log';
 
 @function egeo-log($message, $type: $egeo-log-debug) {
-	@if $type == $egeo-log-debug {
-		@debug $message;
-	} @else if $type == $egeo-log-warn {
-		@warn $message;
-	} @else if $type == $egeo-log-error {
-		@if feature-exists('at-error') == true {
-			@error $message;
-		} @else {
-			@warn $message;
+   @if $type == $egeo-log-debug {
+      @debug $message;
+   } @else if $type == $egeo-log-warn {
+      @warn $message;
+   } @else if $type == $egeo-log-error {
+      @if feature-exists('at-error') == true {
+         @error $message;
+      } @else {
+         @warn $message;
 
-			// Because functions cannot be called anywhere in Sass,
-			// we need to hack the call in a dummy condition.
-			@if noop() {}
-		}
-	} @else {
-		@warn 'The type #{type} not exist in the log library.';
-	}
+         // Because functions cannot be called anywhere in Sass,
+         // we need to hack the call in a dummy condition.
+         @if noop() {}
+      }
+   } @else {
+      @warn 'The type #{type} not exist in the log library.';
+   }
 
-	@return true;
+   @return true;
 }
 
 @mixin egeo-log($message, $type: $egeo-log-debug) {
-  // Because functions cannot be called anywhere in Sass,
-  // we need to hack the call in a dummy condition.
-  // There are other ways to do this, such as `log: log(..)`.
-  @if egeo-log($message, $type) {}
+   // Because functions cannot be called anywhere in Sass,
+   // we need to hack the call in a dummy condition.
+   // There are other ways to do this, such as `log: log(..)`.
+   @if egeo-log($message, $type) {}
 }

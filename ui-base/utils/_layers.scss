@@ -13,18 +13,18 @@
 // #### Usage
 // ```
 // .test {
-//		@include egeo-get-layer(ontop);
+//      @include egeo-get-layer(ontop);
 // }
 // ```
 // This code will generate:
 // ```
-//	...
+//   ...
 //
-//	.test {
-//		z-index: 10;
-//	}
+//   .test {
+//      z-index: 10;
+//   }
 //
-//	...
+//   ...
 // ```
 //
 // <div class="compatibility">Compatibility untested.</div>
@@ -37,32 +37,32 @@
 // Styleguide 3.4
 
 @import '../settings/log';
-@import '..settings/layers';
+@import '../settings/layers';
 
-@import './utils/log';
-
+@import '../utils/log';
+      
 @function egeo-get-layer($layer: base) {
-	$result: 0;
+   $result: 0;
 
-	@if global-variable-exists(egeo-layers) {
-		@if type-of($egeo-layers) == 'map' {
-			@if map-has-key($egeo-layers, $layer) {
-				$result: map-get($egeo-layers, $layer);
-			} @else {
-				@if function-exists(egeo-log) {
-					@if egeo-log('@egeo-get-layer::The layer #{layer} not exist in $egeo-layers.', $egeo-log-warn) {}
-				}
-			}
-		} @else {
-			@if function-exists(egeo-log) {
-				@if egeo-log('@egeo-get-layer::The variable $egeo-layers is not a map.', $egeo-log-warn) {}
-			}
-		}
-	} @else {
-		@if function-exists(egeo-log) {
-			@if egeo-log('@egeo-get-layer::The Sass map $egeo-layers is not defined.', $egeo-log-warn) {}
-		}
-	}
+   @if global-variable-exists(egeo-layers) {
+      @if type-of($egeo-layers) == 'map' {
+         @if map-has-key($egeo-layers, $layer) {
+            $result: map-get($egeo-layers, $layer);
+         } @else {
+            @if function-exists(egeo-log) {
+               @if egeo-log('@egeo-get-layer::The layer #{layer} not exist in $egeo-layers.', $egeo-log-warn) {}
+            }
+         }
+      } @else {
+         @if function-exists(egeo-log) {
+            @if egeo-log('@egeo-get-layer::The variable $egeo-layers is not a map.', $egeo-log-warn) {}
+         }
+      }
+   } @else {
+      @if function-exists(egeo-log) {
+         @if egeo-log('@egeo-get-layer::The Sass map $egeo-layers is not defined.', $egeo-log-warn) {}
+      }
+   }
 
-	@return $result;
+   @return $result;
 }

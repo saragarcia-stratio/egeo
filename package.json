@@ -3,16 +3,17 @@
   "version": "0.3.0-SNAPSHOT",
   "description": "Egeo Angular 2 Components Library.",
   "scripts": {
-    "start": "webpack-dev-server --inline --quiet --port 8080",
+    "start": "npm run ui-fonts && webpack-dev-server --inline --quiet --port 8080",
     "test": "karma start",
     "test:watch": "karma start --auto-watch --no-single-run",
     "build": "rm -rf target/generated-web && webpack --config config-web/webpack.prod.js --no-color --bail",
     "build:components": "rm -rf target/components && webpack --config config-components/webpack.prod.js --no-color --bail",
-    "build:components-dev": "rm -rf target/components && webpack --config config-components/webpack.dev.js --pogress --bail",
+    "build:components-dev": "rm -rf target/components && webpack --config config-components/webpack.dev.js --progress --bail",
     "postinstall": "typings install",
     "replace": "json -I -f package.json -e",
     "sass-lint": "sass-lint -c .sass-lint.yml ui-base/**/*.scss -v -q",
-    "check-ui-base": "node-sass --include-path scss ui-base/index.scss   public/main.css"
+    "check-ui-base": "node-sass --include-path scss ui-base/index.scss   public/main.css",
+    "ui-fonts": "node-sass --include-path scss ui-fonts/index.scss   ui-fonts/dist/ui-fonts.css"
   },
   "author": "Stratio",
   "repository": {
@@ -29,7 +30,6 @@
     "@angular/platform-browser-dynamic": "2.0.0",
     "@angular/router": "3.0.0",
     "bootstrap": "3.3.7",
-    "egeo.ui.base": "*",
     "core-js": "2.4.1",
     "ng2-translate": "2.4.4",
     "prismjs": "1.5.1",
@@ -51,6 +51,7 @@
     "karma-phantomjs-launcher": "1.0.2",
     "karma-sourcemap-loader": "0.3.7",
     "karma-webpack": "1.8.0",
+    "lodash": "4.16.4",
     "node-sass": "3.10.0",
     "null-loader": "0.1.1",
     "phantomjs-prebuilt": "2.1.12",

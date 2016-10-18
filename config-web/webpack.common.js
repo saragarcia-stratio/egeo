@@ -52,9 +52,8 @@ module.exports = {
       name: ['app', 'vendor-web', 'polyfills']
     }),
     new CopyWebpackPlugin([
-      { from: 'web/assets', to: 'assets'},
-      { from: 'node_modules/egeo.ui.base/src/vendors/fonts', to: 'assets/fonts'}
-      ]),
+      { from: 'web/assets', to: 'assets'}
+    ]),
 
     new HtmlWebpackPlugin({
       template: 'web/index.html'

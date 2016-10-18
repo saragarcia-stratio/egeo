@@ -13,6 +13,7 @@ import 'lodash';
 
 // You can import js, ts, css, sass, ...
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
+import '../ui-fonts/dist/ui-fonts.css';
 
 // import 'prismjs/prism.js';
 // import 'prismjs/components/prism-typescript.js';

@@ -4,7 +4,6 @@ $font: egeo-get-font(open-sans) !default;
 
 @if $c-html {
   html {
-     @include egeo-c-app;
      font-size: $html---base-font-size;
   }
   body{

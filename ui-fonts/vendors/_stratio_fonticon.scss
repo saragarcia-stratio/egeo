@@ -18,26 +18,21 @@
 
 $egeo-stratio-icons: true !default;
 
-@if not global-variable-exists(egeo-fontface-src) {
-	@if mixin-exists(egeo-log) {
-		@include egeo-log('The variable $egeo-fontface-src should be defined in _settings.scss. The compilation will assume the root folder as the folder which contains the font folders.', $egeo-log-error);
-	}
-}
-
 @if $egeo-stratio-icons {
     @font-face {
         font-family: 'ico_stratio';
-        src:url($egeo-fontface-src + '/stratio-fonticon/ico_stratio.eot?du19jz');
-        src:url($egeo-fontface-src + '/stratio-fonticon/ico_stratio.eot?du19jz#iefix') format('embedded-opentype'),
-        url($egeo-fontface-src + '/stratio-fonticon/ico_stratio.ttf?du19jz') format('truetype'),
-        url($egeo-fontface-src + '/stratio-fonticon/ico_stratio.woff?du19jz') format('woff'),
-        url($egeo-fontface-src + '/stratio-fonticon/ico_stratio.svg?du19jz#ico_stratio') format('svg');
+        src:url('../vendors/fonts/stratio-fonticon/ico_stratio.eot');
+        src:url('../vendors/fonts/stratio-fonticon/ico_stratio.eot') format('embedded-opentype'),
+        url('../vendors/fonts/stratio-fonticon/ico_stratio.ttf') format('truetype'),
+        url('../vendors/fonts/stratio-fonticon/ico_stratio.woff') format('woff'),
+        url('../vendors/fonts/stratio-fonticon/ico_stratio.svg') format('svg');
         font-weight: normal;
         font-style: normal;
     }
 
     [class^="icon-"], [class*=" icon-"] {
-        font-family: 'ico_stratio';
+        /* use !important to prevent issues with browser extensions that change fonts */
+        font-family: 'ico_stratio' !important;
         speak: none;
         font-style: normal;
         font-weight: normal;
@@ -587,6 +582,9 @@ $egeo-stratio-icons: true !default;
     .icon-globe:before {
         content: "\e078";
     }
+    .icon-geo:before {
+        content: "\e078";
+    }
     .icon-box:before {
         content: "\e079";
     }
@@ -827,4 +825,5 @@ $egeo-stratio-icons: true !default;
     .icon-lego:before {
         content: "\e904";
     }
+
 }

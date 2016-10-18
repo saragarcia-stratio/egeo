@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 // Common
 $egeo-sanitize: false;
@@ -7,44 +7,50 @@ $egeo-sanitize: false;
 // Common
 @import './common';
 
-h1, h2, h3, h4, h5, h6{
-    color: #30B6E5;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: egeo-get-color(a1);
 }
 
-h1{
-    margin-top: 20px;
+h1 {
     font-size: 30px;
     font-weight: bold;      
+    margin-top: 20px;
 }
 
-h2{
-    margin-top: 15px;
+h2 {
     font-size: 25px;
     font-weight: bold;   
+    margin-top: 15px;
 }
 
-h3{
-    margin: 15px 0px 15px 0px;
+h3 {
     font-size: 20px;
     font-weight: bold;
+    margin: 15px 0;
 }
 
-.docs{
+.docs {
     margin-top: 40px;
 }
 
 //Table
 
-table{
-    width: 100%;
+table {
     line-height: 25px;
+    width: 100%;
+    
+    td {
+        border: 1px solid egeo-get-color(n4);
+        padding: 10px;
+    }
 }
 
-table td{
-    border: 1px solid lightgray;
-    padding: 10px;
-}
 
 tr:nth-child(even) {
-    background-color: #EFF2F3;
+    background-color: egeo-get-color(b3);
 }

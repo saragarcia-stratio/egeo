@@ -1,6 +1,6 @@
 @import '../st-egeo';
-@import '../egeo2/sass.utils/utils.typography';
-@import '../egeo2/sass.utils/utils.colors';
+@import '../../ui-base/utils/typography';
+@import '../../ui-base/utils/colors';
 
 $st-modificable-list---font-family: egeo-get-font('open-sans') !default;
 $st-modificable-list---font-size: egeo-get-font-size('body_medium') !default;
@@ -21,11 +21,11 @@ $st-modificable-list__container-outside---margin: 20px 0 0 0;
 $st-modificable-list---font-size: egeo-get-font-size('body_small') !default;
 $st-modificable-list___search-input---height: 30px !default;
 $st-modificable-list___search-input---width: 100% !default;
-$st-modificable-list___search-input---background-color: get-color(n1) !default;
+$st-modificable-list___search-input---background-color: egeo-get-color(n1) !default;
 $st-modificable-list___search-input---color: egeo-get-color(n8) !default;
 $st-modificable-list___search-input---border: 1px solid egeo-get-color(n3) !default;
 $st-modificable-list___search-input---padding: 0 35px 0 10px !default;
-$st-modificable-list___search-input-placeholder---color: #D1CCCE !default;
+$st-modificable-list___search-input-placeholder---color: #d1ccce !default;
 
 $st-modificable-list___search-filtercriteria---width: 100% !default;
 
@@ -52,7 +52,7 @@ $st-modificable-list__row---margin-right:20px !default;
 
 $st-container__check-element---margin-bottom: 3px !default;
 $st-container__check-element-text---font-size: egeo-get-font-size(body_xsmall) !default;
-$st-container__check-element-text---color: get-color(n7) !default;
+$st-container__check-element-text---color: egeo-get-color(n7) !default;
 
 
 .st-modificable-list{

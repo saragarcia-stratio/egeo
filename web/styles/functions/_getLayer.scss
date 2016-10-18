@@ -1,9 +1,0 @@
-/**
- * getLayer wrapper
- *
- * @param  {text} $layer-name
- * @return {layer}
- */
-@function get-layer($layer-name) {
-   @return egeo-get-layer($layer-name);
-}

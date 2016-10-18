@@ -1,42 +1,42 @@
 @import '../../../styles/require';
 
-$st-header---z-index:10 !default;
-$st-header---top:0 !default;
-$st-header---left:0 !default;
-$st-header---width:100% !default;
-$st-header__menu---height:100px !default;
-$st-header__menu---background-color:get-color(b2) !default;
-$st-header__options-bar---height:30px !default;
-$st-header__options-bar-inside---width:250px !default;
-$st-header__options-bar-inside---height:40px !default;
-$st-header__options-bar-inside---top:0px !default;
+$st-header---z-index: 10 !default;
+$st-header---top: 0 !default;
+$st-header---left: 0 !default;
+$st-header---width: 100% !default;
+$st-header__menu---height: 100px !default;
+$st-header__menu---background-color: egeo-get-color(b2) !default;
+$st-header__options-bar---height: 30px !default;
+$st-header__options-bar-inside---width: 250px !default;
+$st-header__options-bar-inside---height: 40px !default;
+$st-header__options-bar-inside---top: 0 !default;
 $st-header__options-bar-inside---right:-10px !default;
-$st-header__options-bar-inside---skewX:215deg !default;
+$st-header__options-bar-inside---skewX: 215deg !default;
 $st-header__options-bar-inside---z-index: 3 !default;
-$st-header__logo---height:40px !default;
-$st-header__list-ul---margin: 0px !default;
-$st-header__list-ul---padding: 0px !default;
+$st-header__logo---height: 40px !default;
+$st-header__list-ul---margin: 0 !default;
+$st-header__list-ul---padding: 0 !default;
 $st-header__list-element---height: 70px !default;
-$st-header__list-element---padding: 0px 20px 0px 20px !default;
+$st-header__list-element---padding: 0 20px !default;
 $st-header__logo---padding: 10px 20px 20px 30px !default;
-$st-header__triangle---left:22px !default;
-$st-header-top---background-color:get-color(b1) !default;
-$st-header__button---color: get-color(n0) !default;
-$st-header__button---top: 0px !default;
-$st-header__button---offset:40px !default;
-$st-header__button---separation:40px !default;
-$st-header__submenu---height:40px;
-$st-header__submenu---background-color: get-color(b3) !default;
-$st-header__submenu---selected-color: get-color(a1) !default;
-$st-header__submenu-element---height:35px !default;
-$st-header__submenu-element-separator---line-height:30px !default;
-$st-header__submenu-element---padding: 0px 10px 0px 10px !default;
+$st-header__triangle---left: 22px !default;
+$st-header-top---background-color: egeo-get-color(b1) !default;
+$st-header__button---color: egeo-get-color(n0) !default;
+$st-header__button---top: 0 !default;
+$st-header__button---offset: 40px !default;
+$st-header__button---separation: 40px !default;
+$st-header__submenu---height: 40px;
+$st-header__submenu---background-color: egeo-get-color(b3) !default;
+$st-header__submenu---selected-color: egeo-get-color(a1) !default;
+$st-header__submenu-element---height: 35px !default;
+$st-header__submenu-element-separator---line-height: 30px !default;
+$st-header__submenu-element---padding: 0 10px !default;
 $st-header__submenu-text---border-size: 3px !default;
-$st-header__submenu-text---color:get-color(n6);
-$st-header__submenu-text--active---color:get-color(n8);
+$st-header__submenu-text---color: egeo-get-color(n6);
+$st-header__submenu-text--active---color: egeo-get-color(n8);
 $st-header__submenu-text---font-size: egeo-get-font-size(head_xxsmall);
 $st-header__submenu-closed---height: 5px !default;
-$st-header__submenu-separator---color: get-color(n6) !default;
+$st-header__submenu-separator---color: egeo-get-color(n6) !default;
 $st-header__triangle---width: 0 !default;
 $st-header__triangle---height: 0 !default;
 $st-header__triangle---border-transparent: 5px solid transparent !default;
@@ -45,18 +45,18 @@ $st-header__triangle---line-height: 0 !default;
 $st-header__help---font-family: egeo-get-font(open-sans) !default;
 $st-header__help---font-size: egeo-get-font-size(body_xsmall) !default;
 $st-header__help---background-color: #236886 !default;
-$st-header__help--hover---background-color: #1A4D63 !default;
-$st-header__help---color: get-color(n0) !default;
-$st-header__help---padding: 8px 20px 8px 20px !default;
-$st-header__help---bottom: 0px !default;
+$st-header__help--hover---background-color: #1a4d63 !default;
+$st-header__help---color: egeo-get-color(n0) !default;
+$st-header__help---padding: 8px 20px !default;
+$st-header__help---bottom: 0 !default;
 $st-header__help---right: 30px !default;
 $st-header__help---height: 30px !default;
 
-$ico-text-element--regular---color:get-color(a2_dark) !default;
+$ico-text-element--regular---color: egeo-get-color(a2_dark) !default;
 $ico-text-element---font-size: egeo-get-font-size(head_xxsmall) !default;
-$ico-text-element--regular-hover---color:get-color(n0) !default;
-$ico-text-element--regular-hover2---color:get-color(n4) !default;
-$ico-text-element--regular-focus---color:get-color(n0) !default;
+$ico-text-element--regular-hover---color: egeo-get-color(n0) !default;
+$ico-text-element--regular-hover2---color: egeo-get-color(n4) !default;
+$ico-text-element--regular-focus---color: egeo-get-color(n0) !default;
 $ico-text-element__text---font-family: 'ico_stratio' !default;
 $ico-text-element__text---margin-left: 5px !default;
 
@@ -64,174 +64,195 @@ $ico-text-element__text---margin-left: 5px !default;
 .st-header {
    font-family: $st-font-family---brandon;
    height: $st-header__menu---height;
-   position:fixed;
-   z-index: $st-header---z-index;
-   top: $st-header---top;
    left: $st-header---left;
+   position: fixed;
+   top: $st-header---top;
    width: $st-header---width;
-   &__menu{
-      height:$st-header__menu---height;
+   z-index: $st-header---z-index;
+
+   &__menu {
       background-color: $st-header__menu---background-color;
+      height: $st-header__menu---height;
    }
+
    &__list {
-      height:$st-header__list-element---height;
-      float:left;
-      & ul {
+      float: left;
+      height: $st-header__list-element---height;
+      transition: $transition-all-ease; 
+
+      ul {
+         line-height: $st-header__logo---height * 2;
          margin: $st-header__list-ul---margin;
          padding: $st-header__list-ul---padding;
-         line-height: $st-header__logo---height*2;
       }
-      & .ico-text-element {
+
+      .ico-text-element {
         @include egeo-c-button-modifier('regular',
-                (background: none, margin:0px, color: $ico-text-element--regular---color, font-size: $ico-text-element---font-size), // Sass map that includes the styles to be placed in the modifier
-                (background: none, margin:0px, color: $ico-text-element--regular-hover---color), // Sass map that includes the styles to be placed in the modifier on hover
-                (background: none, margin:0px, color: $ico-text-element--regular-focus---color)  // Sass map that includes the styles to be placed in the modifier on focus
+                (background: none, margin:0, color: $ico-text-element--regular---color, font-size: $ico-text-element---font-size), // Sass map that includes the styles to be placed in the modifier
+                (background: none, margin:0, color: $ico-text-element--regular-hover---color), // Sass map that includes the styles to be placed in the modifier on hover
+                (background: none, margin:0, color: $ico-text-element--regular-focus---color)  // Sass map that includes the styles to be placed in the modifier on focus
         );
 
         &--regular .active {
             color: $ico-text-element--regular-focus---color;
         }
+      }
+   }
 
-        transition: $transition-all-ease;
+   .ico-text-element {
+      cursor: pointer;
+
+      &__icon {
+          font-family: $ico-text-element__text---font-family;
       }
 
-   }
-   & .ico-text-element{
-    &__icon{
-        font-family: $ico-text-element__text---font-family;
+      &__text {
+          margin-left: $ico-text-element__text---margin-left;
+      }
     }
-    &__text{
-        margin-left: $ico-text-element__text---margin-left;
-    }
-    cursor:pointer;
-  }
+
    &__list-element {
       display: inline;
       padding: $st-header__list-element---padding;
    }
-   &__options-bar{
-      height: $st-header__options-bar---height;
-      border-top:10px solid $st-header-top---background-color;
-      box-sizing: border-box;
+
+   &__options-bar {
+      border-top: 10px solid $st-header-top---background-color;
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      height: $st-header__options-bar---height;
    }
-   &__options-bar-inside{
-      width: $st-header__options-bar-inside---width;
-      height: $st-header__options-bar-inside---height;
-      top: $st-header__options-bar-inside---top;
-      right:$st-header__options-bar-inside---right;
-      position:absolute;
-      border: 1px $st-header-top---background-color solid;
+
+   &__options-bar-inside {
       background-color:$st-header-top---background-color;
-      transform:skewX($st-header__options-bar-inside---skewX);
-      -ms-transform:skewX($st-header__options-bar-inside---skewX);
-      -moz-transform:skewX($st-header__options-bar-inside---skewX);
-      -webkit-transform:skewX($st-header__options-bar-inside---skewX);
-      -o-transform:skewX($st-header__options-bar-inside---skewX);
+      border: 1px $st-header-top---background-color solid;
+      height: $st-header__options-bar-inside---height;
+      position: absolute;
+      right: $st-header__options-bar-inside---right;
+      -ms-transform: skewX($st-header__options-bar-inside---skewX);
+      -moz-transform: skewX($st-header__options-bar-inside---skewX);
+      -webkit-transform: skewX($st-header__options-bar-inside---skewX);
+      -o-transform: skewX($st-header__options-bar-inside---skewX);
+      transform: skewX($st-header__options-bar-inside---skewX);
+      top: $st-header__options-bar-inside---top;
+      width: $st-header__options-bar-inside---width;
       z-index: $st-header__options-bar-inside---z-index;
-      &-container{
-         position:relative;
-         transform:skewX(-$st-header__options-bar-inside---skewX);
-         -ms-transform:skewX(-$st-header__options-bar-inside---skewX);
-         -moz-transform:skewX(-$st-header__options-bar-inside---skewX);
-         -webkit-transform:skewX(-$st-header__options-bar-inside---skewX);
-         -o-transform:skewX(-$st-header__options-bar-inside---skewX);
+
+      &-container {
          height: $st-header__options-bar-inside---height;
          line-height: $st-header__options-bar-inside---height;
+         position: relative;
+         -ms-transform: skewX(-$st-header__options-bar-inside---skewX);
+         -moz-transform: skewX(-$st-header__options-bar-inside---skewX);
+         -webkit-transform: skewX(-$st-header__options-bar-inside---skewX);
+         -o-transform: skewX(-$st-header__options-bar-inside---skewX);
+         transform: skewX(-$st-header__options-bar-inside---skewX);
       }
    }
-   &__logo{
-      padding: $st-header__logo---padding;
+
+   &__logo {
+      float: left;
       height: $st-header__logo---height;
-      float:left;
+      padding: $st-header__logo---padding;
    }
-   &__help{
-      padding: $st-header__help---padding;
-      height: $st-header__help---height;
-      position: absolute;
-      bottom: $st-header__help---bottom;
-      right: $st-header__help---right;
-      color: $st-header__help---color;
+
+   &__help {
       background-color: $st-header__help---background-color;
+      bottom: $st-header__help---bottom;
+      color: $st-header__help---color;
       font-family: $st-header__help---font-family;
       font-size: $st-header__help---font-size;
+      height: $st-header__help---height;
+      padding: $st-header__help---padding;
+      position: absolute;
+      right: $st-header__help---right;
       transition: $transition-all-ease;
-      &:hover{
+
+      &:hover {
          background-color: $st-header__help--hover---background-color;
       }
 
-      & .ico-text-element{
-        &__icon{
+      .ico-text-element {
+        &__icon {
             font-family: $ico-text-element__text---font-family;
             pointer-events: none;
         }
-        &__text{
+
+        &__text {
             margin-left: $ico-text-element__text---margin-left;
             pointer-events: none;
         }
       }
    }
 
-   &__button{
+   &__button {
       color: $st-header__button---color;
-      position:absolute;
+      cursor: pointer;
+      position: absolute;
       top: $st-header__button---top;
-      cursor:pointer;
    }
-   &__apps{
+
+   &__apps {
       right: $st-header__button---offset;
    }
+
    &__submenu {
-      background-color:$st-header__submenu---background-color;
+      background-color: $st-header__submenu---background-color;
       height: $st-header__submenu---height;
-      position:relative;
-      &.closed{
+      position: relative;
+
+      &.closed {
          height: $st-header__submenu-closed---height;
       }
    }
+
    &__submenu-pack {
-      position:absolute;
+      position: absolute;
    }
-   &__triangle{
-      width: $st-header__triangle---width;
-      height: $st-header__triangle---height;
+
+   &__triangle {
       border-left: $st-header__triangle---border-transparent;
       border-right: $st-header__triangle---border-transparent;
       border-top: 5px solid $st-header__menu---background-color;
       font-size: $st-header__triangle---font-size;
-      line-height: $st-header__triangle---line-height;
-      position:relative;
+      height: $st-header__triangle---height;
       left: $st-header__triangle---left;
+      line-height: $st-header__triangle---line-height;
+      position: relative;
+      width: $st-header__triangle---width;
    }
+
    &__submenu-element {
-      background-color:$st-header__submenu---background-color;
+      background-color: $st-header__submenu---background-color;
+      cursor: pointer;
+      float: left;
       height: $st-header__submenu-element---height;
       line-height: $st-header__submenu-element---height;
-      float:left;
-      cursor: pointer;
    }
 
    &__submenu-text {
-      float:left;
-      padding:$st-header__submenu-element---padding;
-      margin:$st-header__submenu-element---padding;
-      line-height: $st-header__submenu-element---height - $st-header__submenu-text---border-size;
       color: $st-header__submenu-text---color;
+      float: left;
       font-size: $st-header__submenu-text---font-size;
+      line-height: $st-header__submenu-element---height - $st-header__submenu-text---border-size;
+      margin: $st-header__submenu-element---padding;
+      padding: $st-header__submenu-element---padding;
       transition: $transition-all-ease;
-      &:hover{
+
+      &:hover {
          color: $st-header__submenu-text--active---color;
       }
+
       &.active {
          border-bottom: $st-header__submenu-text---border-size solid $st-header__submenu---selected-color;
          color: $st-header__submenu-text--active---color;
       }
    }
 
-   &__submenu-separator{
-      float:left;
-      line-height: $st-header__submenu-element-separator---line-height;
+   &__submenu-separator {
       color: $st-header__submenu-separator---color;
+      float: left;
+      line-height: $st-header__submenu-element-separator---line-height;
    }
 }

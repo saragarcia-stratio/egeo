@@ -1,9 +1,9 @@
-@import '../../../egeo2/sass.utils/utils.transitions';
+@import '../../../../ui-base/settings/animation';
 
 $gosec-facelet__frame---width:100% !default;
 $gosec-facelet__frame---height:200px !default;
 $gosec-facelet__frame---padding:25px 20px !default;
-$gosec-facelet__frame---background-color:get-color(n3) !default;
+$gosec-facelet__frame---background-color: egeo-get-color(n3) !default;
 $gosec-facelet__block---width: 300px !default;
 $gosec-facelet__block-title---font-weight: 700 !default;
 $gosec-facelet__block-title---line-height: 30px !default;
@@ -11,18 +11,18 @@ $gosec-facelet__criteria---line-height: 25px !default;
 
 $gosec-facelet__triangle---border: 7px solid $gosec-facelet__frame---background-color !default;
 $gosec-facelet__triangle---border-side-color: transparent !default;
-$gosec-facelet__triangle---border-width: 0px 12px 12px !default;
+$gosec-facelet__triangle---border-width: 0 12px 12px !default;
 $gosec-facelet__triangle---top: -12px !default;
 $gosec-facelet__triangle---right: 85px !default;
 
-$gosec-facelet__button-remove---position:0px !default;
-$gosec-facelet__buton-remove---background: get-color(a1) !default;
+$gosec-facelet__button-remove---position:0 !default;
+$gosec-facelet__buton-remove---background: egeo-get-color(a1) !default;
 
 $gosec-circle-button---width: 30px !default;
 $gosec-circle-button---margin: 23px !default;
 $gosec-circle-button---font-size:15px !default;
 $gosec-circle-button---border-radius: 50% !default;
-$gosec-circle-button---background-color: get-color(n2) !default;
+$gosec-circle-button---background-color: egeo-get-color(n2) !default;
 
 
 .gosec-facelet{

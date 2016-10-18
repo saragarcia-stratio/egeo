@@ -3,6 +3,9 @@
 ## 0.5.0 (upcoming)
 
 * Fix bad URL imports in the new UI-Base Sass files.
+* Separate font faces and fonts in a separate CSS and process
+* Remove old implementations of egeo.ui.base and rewrite imports to the new /ui-base
+* Fix linting errors
 
 ## 0.4.0 (upcoming)
 

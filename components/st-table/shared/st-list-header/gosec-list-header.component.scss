@@ -1,7 +1,7 @@
 @import '../../../st-egeo';
-@import '../../../egeo2/sass.utils/utils.typography';
-@import '../../../egeo2/sass.utils/utils.colors';
-@import '../../../egeo2/sass.settings/settings.extends';
+@import '../../../../ui-base/utils/typography';
+@import '../../../../ui-base/utils/colors';
+@import '../../../../ui-base/settings/extends';
 
 $gosec-list-header---font-size: egeo-get-font-size(body_small) !default;
 $gosec-list-header__row__separator---color: egeo-get-color(n5) !default;

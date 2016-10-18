@@ -1,9 +1,9 @@
 @import '../../../st-egeo';
-@import '../../../egeo2/sass.utils/utils.typography';
-@import '../../../egeo2/sass.utils/utils.colors';
-@import '../../../egeo2/sass.settings/settings.extends';
-@import '../../../egeo2/sass.utils/utils.transitions';
-@import '../../../egeo2/sass.utils/utils.colors';
+@import '../../../../ui-base/utils/typography';
+@import '../../../../ui-base/utils/colors';
+@import '../../../../ui-base/settings/extends';
+@import '../../../../ui-base/settings/animation';
+@import '../../../../ui-base/utils/colors';
 
 
 $gosec-list-row__row__separator---color: egeo-get-color(n3) !default;

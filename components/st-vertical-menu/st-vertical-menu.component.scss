@@ -1,6 +1,6 @@
 @import '../st-egeo';
-@import '../egeo2/sass.utils/utils.typography';
-@import '../egeo2/sass.utils/utils.colors';
+@import '../../ui-base/utils/typography';
+@import '../../ui-base/utils/colors';
 
 $st-print---vertical-menu: true !default;
 
@@ -21,7 +21,7 @@ $st-vertical-menu__option---margin-top: -1px;
 $st-vertical-menu__option---line-height: 38px;
 $st-vertical-menu__option---box-sizing: border-box;
 $st-vertical-menu__option---border-style: solid;
-$st-vertical-menu__option---visible-border: 1.6px solid #E4E4E4;
+$st-vertical-menu__option---visible-border: 1.6px solid egeo-get-color(n3);
 $st-vertical-menu__option---invisible-border: 0;
 
 $st-vertical-menu--active---font-weight: bold;
@@ -30,7 +30,7 @@ $st-vertical-menu--active---color: rgb(102, 102, 102);
 $st-vertical-menu__text---margin-top: 2px;
 $st-vertical-menu__text---margin-left: 15px;
 $st-vertical-menu__text---cursor: pointer;
-$st-vertical-menu__text---color: #999999;
+$st-vertical-menu__text---color: egeo-get-color(n6);
 $st-vertical-menu__text---text-decoration: none;
 $st-vertical-menu__text---font-family: egeo-get-font(brandon-grotesque);
 $st-vertical-menu__text---font-weight: 400;
@@ -49,14 +49,14 @@ $st-vertical-menu__line---width: 10%;
 
 $st-vertical-menu__line__arrow---position: absolute;
 $st-vertical-menu__line__arrow---size: 13px;
-$st-vertical-menu__line__arrow---border: 1.6px solid #A1A1A1;
+$st-vertical-menu__line__arrow---border: 1.6px solid #a1a1a1;
 $st-vertical-menu__line__arrow---invisible-border: 0;
-$st-vertical-menu__line__arrow---background-color: white;
+$st-vertical-menu__line__arrow---background-color: egeo-get-color(n0);
 $st-vertical-menu__line__arrow---top: 14px;
 $st-vertical-menu__line__arrow---transform: rotate(45deg);
 $st-vertical-menu__line__arrow---float: left;
 $st-vertical-menu__line__arrow---margin-left: -7.1px;
-$st-vertical-menu__line__arrow---transition: margin-top 0.4s;
+$st-vertical-menu__line__arrow---transition: margin-top .4s;
 
 @mixin st-vertical-menu() {
   height: $st-vertical-menu---height;

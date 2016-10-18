@@ -1,6 +1,6 @@
 @import '../../../st-egeo';
-@import '../../../egeo2/sass.utils/utils.typography';
-@import '../../../egeo2/sass.utils/utils.colors';
+@import '../../../../ui-base/utils/typography';
+@import '../../../../ui-base/utils/colors';
 
 $st-message-modal__message--font-family: egeo-get-font(OpenSans) !default;
 $st-message-modal__message--font-size: egeo-get-font-size(body_large) !default;

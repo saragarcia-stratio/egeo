@@ -20,14 +20,14 @@
   @extend %remove-link-style;
 
   &-item {
-    border-bottom: 1px solid get-color(a2_dark);
-    color: get-color(a2_dark);
+    border-bottom: 1px solid egeo-get-color(a2_dark);
+    color: egeo-get-color(a2_dark);
     cursor: pointer;
     padding: 20px 0;
     text-transform: uppercase;
 
     &--active {
-      color: get-color(n9);
+      color: egeo-get-color(n9);
     }
 
     &--submenu {
@@ -52,16 +52,16 @@
   @extend %remove-list-style;
   @extend %remove-link-style;
 
-  font-size: get-font-size(body_xsmall);
+  font-size: egeo-get-font-size(body_xsmall);
   margin-top: $base-separation;
   text-transform: none;
 
   &-item {
-    border-left: 1px solid get-color(a2);
+    border-left: 1px solid egeo-get-color(a2);
     padding: 10px 20px;
 
     &--active {
-      border-left-color: get-color(a1);
+      border-left-color: egeo-get-color(a1);
     }
   }
 }

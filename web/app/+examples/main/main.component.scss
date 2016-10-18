@@ -2,7 +2,7 @@
 @import 'page-footer';
 
 .page-title {
-  font-size: get-font-size(head_large);
+  font-size: egeo-get-font-size(head_large);
   text-transform: uppercase;
 
   &::after {

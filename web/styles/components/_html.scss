@@ -6,9 +6,10 @@ $font: egeo-get-font(open-sans) !default;
   html {
      font-size: $html---base-font-size;
   }
-  body{
+
+  body {
+    font-family: $font;
     margin: $body---margin;
     overflow-x: hidden;
-    font-family: $font;
   }
 }

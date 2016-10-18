@@ -4,7 +4,7 @@ $sidebar---width: 350px;
 $sidebar-intro---margin-bottom: $base-separation;
 
 .sidebar {
-  background: get-color(b3);
+  background: egeo-get-color(b3);
   height: 100%;
   margin-left: -$sidebar---width;
   overflow-y: auto;
@@ -15,7 +15,7 @@ $sidebar-intro---margin-bottom: $base-separation;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
   width: $sidebar---width;
-  z-index: get-layer(ontop);
+  z-index: egeo-get-layer(ontop);
 
   &--open {
       margin-left: 0;
@@ -35,7 +35,7 @@ $sidebar-intro---margin-bottom: $base-separation;
     }
 
     .version {
-      font-size: get-font-size(head_xxsmall);
+      font-size: egeo-get-font-size(head_xxsmall);
     }
   }
 }

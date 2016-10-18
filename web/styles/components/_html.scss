@@ -3,13 +3,33 @@ $body---margin: 0 !default;
 $font: egeo-get-font(open-sans) !default;
 
 @if $c-html {
-  html {
-     font-size: $html---base-font-size;
-  }
+   html {
+      font-size: $html---base-font-size;
+   }
 
-  body {
-    font-family: $font;
-    margin: $body---margin;
-    overflow-x: hidden;
-  }
+   body {
+      font-family: $font;
+      line-height: 1.5;
+      margin: $body---margin;
+      overflow-x: hidden;
+   }
+
+   .egeo-documentation {
+      ul {
+         padding: 0 0 15px 25px;
+      }
+
+      p {
+         padding: 0 0 15px;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+         padding: 30px 0 25px;
+      }
+   }
 }

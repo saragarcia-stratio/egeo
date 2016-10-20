@@ -7,8 +7,6 @@
     "test": "karma start",
     "test:watch": "karma start --auto-watch --no-single-run",
     "build": "rm -rf target/generated-web && webpack --config config-web/webpack.prod.js --no-color --bail",
-    "build:components": "rm -rf target/components && webpack --config config-components/webpack.prod.js --no-color --bail",
-    "build:components-dev": "rm -rf target/components && webpack --config config-components/webpack.dev.js --progress --bail",
     "postinstall": "typings install",
     "replace": "json -I -f package.json -e",
     "sass-lint": "sass-lint -c .sass-lint.yml ui-base/**/*.scss -v -q",

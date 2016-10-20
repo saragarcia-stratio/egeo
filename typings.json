@@ -1,9 +1,0 @@
-{
-  "globalDependencies": {
-    "es6-shim": "registry:dt/es6-shim#0.31.2+20160602141504",
-    "jasmine": "registry:dt/jasmine#2.5.0+20161003201800",
-    "lodash": "registry:dt/lodash#4.14.0+20161004174455",
-    "node": "registry:dt/node#6.0.0+20161014191813",
-    "prism": "registry:dt/prism#1.4.4+20160321233308"
-  }
-}

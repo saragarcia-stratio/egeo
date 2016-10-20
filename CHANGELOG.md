@@ -7,6 +7,7 @@
 * Remove old implementations of egeo.ui.base and rewrite imports to the new /ui-base
 * Fix linting errors
 * Add postCSS support
+* Update to Angular 2.1.0 and Typescript 2.0.3 with types in npm
 
 ## 0.4.0 (upcoming)
 

@@ -37,7 +37,7 @@ module.exports = {
          {
             test: /\.css$/,
             include: helpers.root('web', 'app'),
-            loader: 'raw'
+            loader: 'to-string!css-loader!postcss-loader'
          },
          {
             test: /\.scss$/,

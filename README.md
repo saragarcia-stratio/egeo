@@ -8,7 +8,7 @@ For start:
 ```
 npm install
 
-npm run serve
+npm run start
 ```
 
 If you have problems with "ts2304", try to invoke manually the post install script:
@@ -16,5 +16,5 @@ If you have problems with "ts2304", try to invoke manually the post install scri
 ```
 npm run postinstall
 
-npm run serve
+npm run start
 ```

@@ -18,20 +18,18 @@ $st-info-card--hover---cursor: pointer;
 $st-info-card--hover__arrow---visibility: visible;
 $st-info-card--hover__arrow---margin-right: 0;
 
-$st-info-card__photo-div---width: 40%;
+$st-info-card__photo-div---width: 20%;
 $st-info-card__photo-div---border: 1px solid egeo-get-color(n3);
 $st-info-card__photo-div---display: inline-block;
 
-$st-info-card__photo---height: 100%;
 $st-info-card__photo---width: 100%;
 
 $st-info-card__text-div---padding-left: 12px;
 $st-info-card__text-div---line-height: 20px;
 $st-info-card__text-div---line-count: 2;
 $st-info-card__text-div---position: relative;
-$st-info-card__text-div---width: 56%;
+$st-info-card__text-div---width: 76%;
 $st-info-card__text-div---height: 100%;
-$st-info-card__text-div---top: 6px;
 $st-info-card__text-div---vertical-align: top;
 $st-info-card__text-div---display: inline-block;
 
@@ -39,7 +37,7 @@ $st-info-card__title---font-size: 1.24rem;
 $st-info-card__title---line-height: 30px;
 $st-info-card__title---color: egeo-get-color(n9);
 $st-info-card__title---font-weight: egeo-get-font-weight(light);
-$st-info-card__title---margin: 7px 0 6px 0;
+$st-info-card__title---margin: 0px 0 6px 0;
 $st-info-card__title---overflow: hidden;
 $st-info-card__title---text-overflow: ellipsis;
 
@@ -69,12 +67,13 @@ $st-info-card__arrow---visibility: hidden;
   padding: $st-info-card---padding;
   display: $st-info-card---display;
   position: $st-info-card---position;
-  @media (max-width: 1500px) {
-    min-height: 164px;
-  }
-  @media (min-width: 1500px) {
-    min-height: 137px;
-  }
+  min-height: 115px;
+  //@media (max-width: 1500px) {
+  //  min-height: 164px;
+  //}
+  //@media (min-width: 1500px) {
+  //  min-height: 137px;
+  //}
   &:hover {
     background-color: $st-info-card--hover---background-color;
     cursor: $st-info-card--hover---cursor;
@@ -91,7 +90,6 @@ $st-info-card__arrow---visibility: hidden;
   }
 
   &__photo {
-    height: $st-info-card__photo---height;
     width: $st-info-card__photo---width;
     max-height: 140px;
   }
@@ -102,10 +100,7 @@ $st-info-card__arrow---visibility: hidden;
     padding-left: $st-info-card__text-div---padding-left;
     position: $st-info-card__text-div---position;
     display: $st-info-card__text-div---display;
-    vertical-align: $st-info-card__text-div---vertical-align;
-    top: $st-info-card__text-div---top;
-
-
+    vertical-align: $st-info-card__text-div---vertical-align;;
   }
 
   &__title {
@@ -114,9 +109,9 @@ $st-info-card__arrow---visibility: hidden;
     max-height: $st-info-card__title---line-height;
     color: $st-info-card__title---color;
     font-weight: $st-info-card__title---font-weight;
-    margin: $st-info-card__title---margin;
     overflow: $st-info-card__title---overflow;
     text-overflow: $st-info-card__title---text-overflow;
+    margin: 0;
   }
 
   &__description {

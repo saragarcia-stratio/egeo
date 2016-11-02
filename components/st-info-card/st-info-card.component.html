@@ -1,6 +1,6 @@
 <section class="st-info-card">
   <div class="st-info-card__photo-div">
-    <img class="st-info-card__photo img-responsive" src="{{photo}}">
+    <img class="st-info-card__photo img-responsive" src="{{photo}}" (error)="onPhotoError()">
   </div>
   <div class="st-info-card__text-div">
     <h1 class="st-info-card__title">{{title}}</h1>

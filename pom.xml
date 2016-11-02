@@ -108,7 +108,6 @@
             </goals>
             <phase>deploy</phase>
             <configuration>
-              <npmRegistryURL>http://sodio.stratio.com/nexus/content/repositories/strationpmjs</npmRegistryURL>
               <arguments>publish</arguments>
             </configuration>
           </execution>

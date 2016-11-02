@@ -1,7 +1,7 @@
 {
   "name": "egeo.angular2.components",
   "version": "",
-  "private": true,
+  "license": "Apache-2.0",
   "description": "Egeo Angular 2 Components Library.",
   "scripts": {
     "start": "npm run ui-fonts && webpack-dev-server --inline --quiet --port 8080",

@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
 
 @Component({
   selector: 'st-info-card',
@@ -9,13 +9,15 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 export class StInfoCardComponent {
   @Input() photo: string;
+  @Input() defaultPhoto: string;
   @Input() title: string;
   @Input() description: string;
 
   constructor() {
   }
 
-  showArrow(): void {
-
+  onPhotoError(): boolean {
+    this.photo = this.defaultPhoto;
+    return true;
   }
 }

@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.4.0 (upcoming)
+## 0.4.0 (November 02, 2016)
 
 * New horizontal tab component
 * New tab box component

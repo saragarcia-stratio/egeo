@@ -115,7 +115,7 @@ amdefine@>=0.0.4:
   version "1.0.0"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/amdefine/-/amdefine-1.0.0.tgz#fd17474700cb5cc9c2b709f0be9d23ce3c198c33"
 
-angular2-template-loader@^0.5.0:
+angular2-template-loader@0.5.0:
   version "0.5.0"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/angular2-template-loader/-/angular2-template-loader-0.5.0.tgz#a16db190faaf9f8e8e9410f3c468370de75127a6"
   dependencies:
@@ -276,7 +276,7 @@ autoprefixer@^6.0.2, autoprefixer@^6.3.1:
     postcss "^5.2.4"
     postcss-value-parser "^3.2.3"
 
-awesome-typescript-loader@^2.2.4:
+awesome-typescript-loader@2.2.4:
   version "2.2.4"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/awesome-typescript-loader/-/awesome-typescript-loader-2.2.4.tgz#4185d60c035c25515f9c2a747fa5f69b2a001e9e"
   dependencies:

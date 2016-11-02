@@ -3,18 +3,16 @@
 
 Stratio common module of angular 2 components, directives and services.
 
+Before start you need to install yarn globally with:
+
+```
+sudo npm i -g yarn
+```
+
 For start:
 
 ```
-npm install
+yarn install
 
-npm run start
-```
-
-If you have problems with "ts2304", try to invoke manually the post install script:
-
-```
-npm run postinstall
-
-npm run start
+npm start
 ```

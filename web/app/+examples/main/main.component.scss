@@ -2,14 +2,50 @@
 @import 'page-footer';
 
 .page-title {
-  font-size: egeo-get-font-size(head_large);
-  text-transform: uppercase;
+   color: egeo-get-color(a3);
+   font-family: egeo-get-font(brandon-grotesque);
+   font-size: egeo-get-font-size(head_xxlarge);
+   font-weight: egeo-get-font-weight(normal);
+   margin-bottom: 10px;
+   text-transform: uppercase;
 
-  &::after {
-    border-bottom: 1px solid;
-    content: ' ';
-    display: block;
-    height: 15px;
-    width: 120px;
+   &::after {
+      border-bottom: 1px solid;
+      border-color: egeo-get-color(a1);
+      content: ' ';
+      display: block;
+      height: 15px;
+      width: 120px;
   }
+}
+
+main {
+   color: egeo-get-color(n8);
+   line-height: 1.5em;
+}
+
+ul {
+   list-style: none;
+   padding: 0 0 15px 25px;
+}
+
+li {
+   &:before {
+      content: '-';
+      margin-right: .5em;
+  }
+}
+
+p {
+   font-size: egeo-get-font-size(body_xlarge);
+   padding: 0 0 15px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+   padding: 30px 0 25px;
 }

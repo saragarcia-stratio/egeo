@@ -13,19 +13,21 @@ $header-underline: 1px solid $titles-color;
 $description---font-size: egeo-get-font-size(body_large) !default;
 $secundary-text-size: egeo-get-font-size(body_small) !default;
 
-.underline {
-   width: 114px;
-   height: 3px;
-   border-bottom: $header-underline;
-   margin-bottom: 8px;
-}
-
 .title {
    font-family: $brandon;
    font-size: $header---font-size;
    font-weight: $header---font-weight;
    color: $titles-color;
    margin-bottom: 10px;
+
+   &::after {
+      border-bottom: 1px solid;
+      border-color: egeo-get-color(a1);
+      content: ' ';
+      display: block;
+      height: 15px;
+      width: 120px;
+   }
 }
 
 .subtitle {

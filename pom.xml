@@ -17,7 +17,7 @@
 
   <properties>
     <nodeVer>v6.0.0</nodeVer>
-    <yarnVer>v0.16.1</yarnVer>
+    <npmVer>3.8.8</npmVer>
     <nodeURL>http://tools.stratio.com/buildtools</nodeURL>
   </properties>
 
@@ -38,46 +38,48 @@
         <version>1.2</version>
         <executions>
           <execution>
-            <id>install node and yarn</id>
+            <id>install node and npm</id>
             <goals>
-              <goal>install-node-and-yarn</goal>
+              <goal>install-node-and-npm</goal>
             </goals>
             <phase>validate</phase>
             <configuration>
               <nodeVersion>${nodeVer}</nodeVersion>
-              <yarnVersion>${yarnVer}</yarnVersion>
+              <npmVersion>${npmVer}</npmVersion>
               <nodeDownloadRoot>${customnodeDownloadRoot}</nodeDownloadRoot>
-              <yarnDownloadRoot>${customyarnDownloadRoot}</yarnDownloadRoot>
+              <npmDownloadRoot>${customnpmDownloadRoot}</npmDownloadRoot>
+              <skip.installnodenpm>${skip.installnodenpm}</skip.installnodenpm>
             </configuration>
           </execution>
           <execution>
-            <id>yarn install</id>
+            <id>npm install</id>
             <goals>
-              <goal>yarn</goal>
+              <goal>npm</goal>
             </goals>
             <phase>generate-sources</phase>
             <configuration>
-              <arguments>install</arguments>
+              <npmRegistryURL>${customnpmRegistryURL}</npmRegistryURL>
+              <arguments>install --no-optional --loglevel=error --depth=0</arguments>
             </configuration>
           </execution>
           <execution>
             <id>replace version</id>
             <goals>
-              <goal>yarn</goal>
+              <goal>npm</goal>
             </goals>
             <phase>generate-sources</phase>
             <configuration>
-              <arguments>run replace this.version=\"${VERSION}\"</arguments>
+              <arguments>run-script replace -- this.version="${VERSION}"</arguments>
             </configuration>
           </execution>
           <execution>
             <id>Build fonts</id>
             <goals>
-              <goal>yarn</goal>
+              <goal>npm</goal>
             </goals>
             <phase>generate-sources</phase>
             <configuration>
-              <arguments>run ui-fonts</arguments>
+              <arguments>run-script ui-fonts</arguments>
             </configuration>
           </execution>
           <execution>
@@ -91,23 +93,24 @@
             </configuration>
           </execution>
           <execution>
-            <id>yarn test</id>
+            <id>npm test</id>
             <goals>
-              <goal>yarn</goal>
+              <goal>npm</goal>
             </goals>
             <phase>test</phase>
             <configuration>
               <skipTests>${skipUTs}</skipTests>
-              <arguments>run test</arguments>
+              <arguments>run-script test</arguments>
             </configuration>
           </execution>
           <execution>
-            <id>yarn publish</id>
+            <id>npm publish</id>
             <goals>
-              <goal>yarn</goal>
+              <goal>npm</goal>
             </goals>
             <phase>deploy</phase>
             <configuration>
+              <npmRegistryURL>http://sodio.stratio.com/nexus/content/repositories/strationpmjs</npmRegistryURL>
               <arguments>publish</arguments>
             </configuration>
           </execution>
@@ -120,7 +123,8 @@
       <id>node</id>
       <properties>
         <customnodeDownloadRoot>${nodeURL}/node/</customnodeDownloadRoot>
-        <customyarnDownloadRoot>${nodeURL}/yarn/</customyarnDownloadRoot>
+        <customnpmDownloadRoot>${nodeURL}/npm/${npmVer}/</customnpmDownloadRoot>
+        <customnpmRegistryURL>http://sodio.stratio.com/nexus/content/groups/publicnpm/</customnpmRegistryURL>
       </properties>
     </profile>
   </profiles>

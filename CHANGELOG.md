@@ -8,6 +8,7 @@
 * Fix linting errors
 * Add postCSS support
 * Update to Angular 2.1.0 and Typescript 2.0.3 with types in npm
+* Add radio menu component
 
 ## 0.4.0 (upcoming)
 

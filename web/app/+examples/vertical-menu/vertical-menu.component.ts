@@ -15,6 +15,6 @@ export class VerticalMenuComponent implements OnInit {
   }
 
   ngOnInit (): void {
-    this.options = ['VERTICAL_MENU.SERVICE', 'VERTICAL_MENU.NODES', 'VERTICAL_MENU.CASSANDRA'];
+    this.options = ['MENU.SERVICE', 'MENU.NODES', 'MENU.CASSANDRA'];
   }
 }

@@ -18,7 +18,8 @@ import {
   VerticalMenuComponent,
   HorizontalTabComponent,
   TabBoxComponent,
-  ApiDocExample
+  ApiDocExample,
+  RadioMenuComponent
 } from '../+examples';
 import { routing } from './layout.routing';
 
@@ -46,7 +47,8 @@ import { EgeoModule } from '../../../components';
     VerticalMenuComponent,
     HorizontalTabComponent,
     TabBoxComponent,
-    ApiDocExample
+    ApiDocExample,
+    RadioMenuComponent
   ]
 })
 export class LayoutModule { }

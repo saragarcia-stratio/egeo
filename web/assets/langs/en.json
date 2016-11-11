@@ -1,6 +1,6 @@
 {
   "HELLO_WORLD": "HELLO WORLD",
-  "VERTICAL_MENU":{
+  "MENU":{
     "SERVICE": "Service",
     "NODES": "Nodes",
     "CASSANDRA": "Cassandra"

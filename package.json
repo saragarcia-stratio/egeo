@@ -1,8 +1,8 @@
 {
-  "name": "egeo.angular2.components",
+  "name": "egeo",
   "version": "",
   "license": "Apache-2.0",
-  "description": "Egeo Angular 2 Components Library.",
+  "description": "Egeo Library. Common components, styles, fonts and website",
   "scripts": {
     "start": "npm run ui-fonts && webpack-dev-server --inline --quiet --port 8080",
     "test": "karma start",
@@ -16,7 +16,7 @@
   "author": "Stratio",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Stratio/egeo.angular2.components"
+    "url": "https://github.com/Stratio/egeo"
   },
   "dependencies": {
     "@angular/common": "2.1.0",

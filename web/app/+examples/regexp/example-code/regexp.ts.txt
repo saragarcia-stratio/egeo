@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { StRegEx, StInputError } from 'egeo.angular2.components/components'; // For declare messages in case of error.
+import { StRegEx, StInputError } from 'egeo/components'; // For declare messages in case of error.
 
 @Component({
   selector: 'regexp-example',

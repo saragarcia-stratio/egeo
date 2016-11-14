@@ -1,5 +1,5 @@
 ....
-import { StModalService, MessageModal, Buttons, BUTTON_TYPES, ModalTitle, StModalConfiguration } from 'egeo.angular2.components/components';
+import { StModalService, MessageModal, Buttons, BUTTON_TYPES, ModalTitle, StModalConfiguration } from 'egeo/components';
 
 
 export class ModalComponent implements OnInit {

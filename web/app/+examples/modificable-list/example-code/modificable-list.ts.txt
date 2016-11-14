@@ -1,5 +1,5 @@
 import {Component, ViewEncapsulation, OnInit} from '@angular/core';
-import { ModificableListElement, ListModifierObject } from 'egeo.angular2.components/components';
+import { ModificableListElement, ListModifierObject } from 'egeo/components';
 
 @Component({
   selector: 'modificable-list-example',

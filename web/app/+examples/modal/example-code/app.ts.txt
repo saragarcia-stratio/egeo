@@ -1,5 +1,5 @@
 ....
-import { StModalService } from 'egeo.angular2.components/components';
+import { StModalService } from 'egeo/components';
 
 ....
 export class AppComponent implements OnInit {

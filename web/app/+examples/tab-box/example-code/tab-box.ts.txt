@@ -1,5 +1,5 @@
-import { StHorizontalTab } from 'egeo.angular2.components/components';
-import { StTab } from 'egeo.angular2.components/components';
+import { StHorizontalTab } from 'egeo/components';
+import { StTab } from 'egeo/components';
 
 @Component({
    selector: 'tab-box-example',

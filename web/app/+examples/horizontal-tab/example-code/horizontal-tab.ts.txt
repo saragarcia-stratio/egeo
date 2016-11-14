@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { StHorizontalTab } from 'egeo.angular2.components/components';
+import { StHorizontalTab } from 'egeo/components';
 
 @Component({
   selector: 'horizontal-tab-example',

@@ -1,5 +1,5 @@
 import {Component, ViewEncapsulation} from '@angular/core';
-import { StFooterLink } from  from 'egeo.angular2.components/components';
+import { StFooterLink } from  from 'egeo/components';
 
 @Component({
   selector: 'footer-example',

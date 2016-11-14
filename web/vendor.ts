@@ -12,7 +12,7 @@ import 'rxjs';
 import 'lodash';
 
 // You can import js, ts, css, sass, ...
-import '../node_modules/bootstrap/dist/css/bootstrap.css';
+import '../node_modules/flexboxgrid/css/flexboxgrid.min.css';
 import '../ui-fonts/dist/ui-fonts.css';
 
 // import 'prismjs/prism.js';

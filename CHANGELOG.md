@@ -2,6 +2,7 @@
 
 ## 0.5.0 (upcoming)
 
+* Change repository name for Egeo
 * Fix bad URL imports in the new UI-Base Sass files.
 * Separate font faces and fonts in a separate CSS and process
 * Remove old implementations of egeo.ui.base and rewrite imports to the new /ui-base
@@ -10,7 +11,7 @@
 * Update to Angular 2.1.0 and Typescript 2.0.3 with types in npm
 * Add radio menu component
 
-## 0.4.0 (upcoming)
+## 0.4.0 (November 02, 2016)
 
 * New horizontal tab component
 * New tab box component

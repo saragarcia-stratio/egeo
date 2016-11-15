@@ -3,6 +3,7 @@ import { usersListExample } from './data-user';
 import { User, DEFAULT_USER_METADATA } from './models/user.model';
 import { FieldsMetadata, Order, ORDER_TYPE, Page, DataList } from '../../../../components/st-table';
 import {UserModel} from "./models/user.model";
+import * as _ from "lodash";
 
 @Component({
    selector: 'list-example',

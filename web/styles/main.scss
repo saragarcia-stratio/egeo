@@ -1,8 +1,8 @@
 @charset 'UTF-8';
 
 // Common
-$egeo-sanitize: false;
-@import './vendors';
+$egeo-sanitize: true;
+@import 'vendors';
 
 // Common
 @import './common';

@@ -60,7 +60,9 @@
       }
    } @else {
       @if function-exists(egeo-log) {
-         @if egeo-log('@get-layer::The variable $map is not a map.', $egeo-log-warn) {}
+         @if egeo-log('@get-layer::The variable $map is not a map.', $egeo-log-warn) {
+            @return -1;
+         }
       }
    }
 }

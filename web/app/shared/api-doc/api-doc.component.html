@@ -1,13 +1,13 @@
 <section class="row">
-   <div class="col-md-12">
+   <div class="col-xs-12 col-md-12 col-lg-12">
       <div class="title">
          {{doc.title | uppercase}}
       </div>
    </div>
-   <div class="col-md-12 description">
+   <div class="col-xs-12 col-md-12 col-lg-12 description">
       {{doc.description}}
    </div>
-   <div class="col-md-12">
+   <div class="col-xs-12 col-md-12 col-lg-12">
       <div class="subtitle">Parameters</div>
       <div *ngIf="doc.apiSection.description !== undefined && doc.apiSection.description !== ''" class="secondary-text">{{doc.apiSection.description}}</div>
       <div *ngIf="doc.apiSection.inputs && doc.apiSection.inputs.length > 0">
@@ -17,20 +17,20 @@
          <st-parameters-table title="Output" [data]="doc.apiSection.outputs"></st-parameters-table>
       </div>
    </div>
-   <div class="col-md-12" *ngIf="doc.haveModel">
+   <div class="col-xs-12 col-md-12 col-lg-12" *ngIf="doc.haveModel">
       <div class="subtitle">Models</div>
       <div class="example">
          <ng-content select=".example-model"></ng-content>
       </div>
    </div>
-   <div class="col-md-12">
+   <div class="col-xs-12 col-md-12 col-lg-12">
       <div class="subtitle">Example</div>
       <div class="secondary-text">{{doc.exampleDesc}}</div>
       <div class="example">
          <ng-content select=".example-run"></ng-content>
       </div>
    </div>
-   <div class="col-md-12">
+   <div class="col-xs-12 col-md-12 col-lg-12">
       <div class="subtitle">Code</div>
       <div class="example">
          <ng-content select=".example-code"></ng-content>

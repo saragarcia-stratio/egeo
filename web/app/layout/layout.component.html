@@ -1,83 +1,88 @@
 <!-- Sidebar -->
-<aside class="sidebar sidebar--open col-lg-3">
-  <div class="sidebar-intro">
-    <img class="text-center logo" src="../../assets/images/egeo_logo_c.png">
-    <p class="version">Version 3.0</p>
-  </div>
+<div class="row">
+  <aside class="sidebar sidebar--open col-xs-3 col-md3 col-lg-3">
+    <div class="sidebar-intro">
+      <img class="text-center logo" src="../../assets/images/egeo_logo_c.png">
+      <p class="version">Version 3.0</p>
+    </div>
 
-  <nav class="tmp-dropdown-menu">
-    <ul>
-      <li routerLink="/main" class="tmp-dropdown-menu-item tmp-dropdown-menu-item--active">
-        Overview
-      </li>
-      <li class="tmp-dropdown-menu-item tmp-dropdown-menu-item--open tmp-dropdown-menu-item--submenu">
-        UI Elements
-        <i class="icon icon-arrow2_down"></i>
+    <nav class="tmp-dropdown-menu">
+      <ul>
+        <li routerLink="/main" class="tmp-dropdown-menu-item tmp-dropdown-menu-item--active">
+          Overview
+        </li>
+        <li class="tmp-dropdown-menu-item tmp-dropdown-menu-item--open tmp-dropdown-menu-item--submenu">
+          UI Elements
+          <i class="icon icon-arrow2_down"></i>
 
-        <ul class="tmp-dropdown-submenu">
-          <li class="tmp-dropdown-submenu-item tmp-dropdown-submenu-item--active">
-            <a routerLink="/main">Dashboard</a>
-          </li>
-          <li class="tmp-dropdown-submenu-item">
-            <a routerLink="/input">Inputs</a>
-          </li>
-          <li class="tmp-dropdown-submenu-item">
-            <a routerLink="/modal">Modals</a>
-          </li>
-          <li class="tmp-dropdown-submenu-item">
-            <a routerLink="/info-box">Info box</a>
-          </li>
-          <li class="tmp-dropdown-submenu-item">
-            <a routerLink="/spinner">Spinner</a>
-          </li>
-          <li class="tmp-dropdown-submenu-item">
-            <a routerLink="/modificable-list">Modificable List</a>
-          </li>
-          <li class="tmp-dropdown-submenu-item">
-            <a routerLink="/footer">Footer</a>
-          </li>
-          <li class="tmp-dropdown-submenu-item">
-            <a routerLink="/info-card">Info card</a>
-          </li>
-          <li class="tmp-dropdown-submenu-item">
-            <a routerLink="/regexp">Regular expresions</a>
-          </li>
-          <li class="tmp-dropdown-submenu-item">
-            <a routerLink="/vertical-menu">Vertical tabs</a>
-          </li>
-          <li class="tmp-dropdown-submenu-item">
-            <a routerLink="/radio-menu">Radio menu</a>
-          </li>
-          <li class="tmp-dropdown-submenu-item">
-            <a routerLink="/list">Table</a>
-          </li>
-          <li class="tmp-dropdown-submenu-item">
-            <a routerLink="/tooltip">Tooltip</a>
-          </li>
-          <li class="tmp-dropdown-submenu-item">
-            <a routerLink="/horizontal-tab">Toggle buttons</a>
-          </li>
-          <li class="tmp-dropdown-submenu-item">
-            <a routerLink="/tab-box">Tab Box</a>
-          </li>
-          <li class="tmp-dropdown-submenu-item">
-            <a routerLink="/api-doc">API Doc example</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
-</aside>
-<!-- /#sidebar-wrapper -->
+          <ul class="tmp-dropdown-submenu">
+            <li class="tmp-dropdown-submenu-item tmp-dropdown-submenu-item--active">
+              <a routerLink="/main">Dashboard</a>
+            </li>
+            <li class="tmp-dropdown-submenu-item">
+              <a routerLink="/input">Inputs</a>
+            </li>
+            <li class="tmp-dropdown-submenu-item">
+              <a routerLink="/modal">Modals</a>
+            </li>
+            <li class="tmp-dropdown-submenu-item">
+              <a routerLink="/info-box">Info box</a>
+            </li>
+            <li class="tmp-dropdown-submenu-item">
+              <a routerLink="/spinner">Spinner</a>
+            </li>
+            <li class="tmp-dropdown-submenu-item">
+              <a routerLink="/modificable-list">Modificable List</a>
+            </li>
+            <li class="tmp-dropdown-submenu-item">
+              <a routerLink="/footer">Footer</a>
+            </li>
+            <li class="tmp-dropdown-submenu-item">
+              <a routerLink="/info-card">Info card</a>
+            </li>
+            <li class="tmp-dropdown-submenu-item">
+              <a routerLink="/regexp">Regular expresions</a>
+            </li>
+            <li class="tmp-dropdown-submenu-item">
+              <a routerLink="/vertical-menu">Vertical tabs</a>
+            </li>
+            <li class="tmp-dropdown-submenu-item">
+              <a routerLink="/radio-menu">Radio menu</a>
+            </li>
+            <li class="tmp-dropdown-submenu-item">
+              <a routerLink="/list">Table</a>
+            </li>
+            <li class="tmp-dropdown-submenu-item">
+              <a routerLink="/tooltip">Tooltip</a>
+            </li>
+            <li class="tmp-dropdown-submenu-item">
+              <a routerLink="/horizontal-tab">Toggle buttons</a>
+            </li>
+            <li class="tmp-dropdown-submenu-item">
+              <a routerLink="/tab-box">Tab Box</a>
+            </li>
+            <li class="tmp-dropdown-submenu-item">
+              <a routerLink="/api-doc">API Doc example</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+  <!-- /#sidebar-wrapper 
+         Page Content -->
+  <div class="page-content-wrapper col-xs-9 col-md-9 col-lg-9">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <router-outlet></router-outlet>
 
-<!-- Page Content -->
-<div class="page-content-wrapper col-lg-9">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-12">
-        <router-outlet></router-outlet>
+          <footer class="page-footer">
+             Feedback? Create an issue on the <a href="https://github.com/Stratio/egeo">Github repository</a> or email us at <a href="mailto:egeo@stratio.com">egeo@stratio.com</a>.
+          </footer>          
+        </div>
       </div>
     </div>
   </div>
+  <!-- /#page-content-wrapper -->
 </div>
-<!-- /#page-content-wrapper -->

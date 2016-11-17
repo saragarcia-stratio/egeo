@@ -1,9 +1,10 @@
 <div class="row">
-   <div class="col-md-12 title">
+   <div class="row title">
       <span class="col-md-12 title-text">{{title | uppercase}}</span>
    </div>
+
    <div class="param-table">
-      <div class="col-md-12">
+      <div class="row">
          <div class="col-md-12 param-table-header">
             <div class="field-name">Param</div>
             <div class="field-type">Type</div>
@@ -11,11 +12,12 @@
             <div class="field-details">Details</div>
          </div>
       </div>
-      <div class="col-md-12">
+
+      <div class="row">
          <div *ngFor="let row of data" class="col-md-12 param-table-row">
             <div class="field-name">{{row.paramName}}</div>
             <div class="field-type">{{getType(row.type)}}</div>
-            <div class="field-required"><i [ngClass]="getRequired(row.required)">&nbsp;</i></div>
+            <div class="field-required"><i [ngClass]="getRequired(row.required)"></i></div>
             <div class="field-details">{{row.details}}</div>
          </div>
       </div>

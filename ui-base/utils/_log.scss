@@ -90,7 +90,9 @@
 
          // Because functions cannot be called anywhere in Sass,
          // we need to hack the call in a dummy condition.
-         @if noop() {}
+         @if noop() {
+            @return -1;
+         }
       }
    } @else {
       @warn 'The type #{type} not exist in the log library.';
@@ -103,5 +105,7 @@
    // Because functions cannot be called anywhere in Sass,
    // we need to hack the call in a dummy condition.
    // There are other ways to do this, such as `log: log(..)`.
-   @if egeo-log($message, $type) {}
+   @if egeo-log($message, $type) {
+      @return -1;
+   }
 }

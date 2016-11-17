@@ -43,13 +43,17 @@
                background-color: $value;
             } @else {
                @if function-exists(egeo-log) {
-                  @if egeo-log('@egeo-is-coloured::The second param #{type} is not a valid value. Only color or background are valid ones.', $egeo-log-warn) {}
+                  @if egeo-log('@egeo-is-coloured::The second param #{type} is not a valid value. Only color or background are valid ones.', $egeo-log-warn) {
+                     @return -1;
+                  }
                }
             }
          }
       }
    } @else {
-      @if egeo-log('@egeo-is-coloured::The first param is not a valid Sass map.', $egeo-log-warn) {}
+      @if egeo-log('@egeo-is-coloured::The first param is not a valid Sass map.', $egeo-log-warn) {
+         @return -1;
+      }
    }
 }
 
@@ -62,17 +66,23 @@
             $result: map-get($egeo-colors, $color);
          } @else {
             @if function-exists(egeo-log) {
-               @if egeo-log('@egeo-get-color::The color #{color} not exist in $egeo-colors.', $egeo-log-warn) {}
+               @if egeo-log('@egeo-get-color::The color #{color} not exist in $egeo-colors.', $egeo-log-warn) {
+                  @return -1;
+               }
             }
          }
       } @else {
          @if function-exists(egeo-log) {
-            @if egeo-log('@egeo-get-color::The $egeo-colors variable is not a Sass map.', $egeo-log-warn) {}
+            @if egeo-log('@egeo-get-color::The $egeo-colors variable is not a Sass map.', $egeo-log-warn) {
+               @return -1;
+            }
          }
       }
    } @else {
       @if function-exists(egeo-log) {
-         @if egeo-log('@egeo-get-color::The Sass map $egeo-colors is not defined.', $egeo-log-warn) {}
+         @if egeo-log('@egeo-get-color::The Sass map $egeo-colors is not defined.', $egeo-log-warn) {
+            @return -1;
+         }
       }
    }
 

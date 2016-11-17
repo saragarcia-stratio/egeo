@@ -9,7 +9,7 @@
       "test:watch": "karma start --auto-watch --no-single-run",
       "build": "rm -rf target/generated-web && webpack --config config-web/webpack.prod.js --no-color --bail",
       "replace": "json -I -f package.json -e",
-      "sass-lint": "sass-lint -c .sass-lint.yml ui-base/**/*.scss -v -q",
+      "sass-lint": "sass-lint -c .sass-lint.yml ui-base/**/*.scss -v -q -i ui-base/vendors/_sanitize.scss",
       "check-ui-base": "node-sass --include-path scss ui-base/index.scss public/main.css",
       "ui-fonts": "node-sass --include-path scss ui-fonts/index.scss ui-fonts/dist/ui-fonts.css",
       "generate-stats": "webpack --profile --json > stats.json"

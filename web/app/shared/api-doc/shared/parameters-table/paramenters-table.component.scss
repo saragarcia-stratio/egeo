@@ -7,6 +7,7 @@ $title-width: 100%;
 $opensans: egeo-get-font(open-sans) !default;
 $title-text-color: egeo-get-color(a3) !default;
 $title-text-size: egeo-get-font-size(body_xxlarge) !default;
+$title-padding: 0 1rem !default;
 $title-text-weight: egeo-get-font-weight(normal) !default;
 
 
@@ -32,7 +33,11 @@ $row-separator: 1px solid egeo-get-color(n4);
    &-required {
       float: left;
       width: 15%;
-      content: '&nbsp';
+
+      &:after {
+         content: ' ';
+         display: inline-block;
+      }
    }
    &-details {
       float: left;
@@ -53,6 +58,7 @@ $row-separator: 1px solid egeo-get-color(n4);
       font-weight: $title-text-weight;
       color: $title-text-color;
       line-height: $title-height;
+      padding: $title-padding;
    }
 }
 

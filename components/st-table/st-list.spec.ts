@@ -1,6 +1,7 @@
 import { GosecListComponent } from './';
 import { Model } from './shared';
 import { FieldsMetadata, ORDER_TYPE, DataList, Order, GosecListHeaderComponent, GosecListBodyComponent} from './';
+import * as _ from 'lodash';
 
 class Hero extends Model<HeroeInterface> {
 

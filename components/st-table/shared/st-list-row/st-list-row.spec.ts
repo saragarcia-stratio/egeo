@@ -1,6 +1,7 @@
 import {GosecListRowComponent} from './';
 import { Model } from '../';
 import { FieldsMetadata, ORDER_TYPE, DataList, Order, GosecListHeaderComponent, GosecListBodyComponent} from '../';
+import * as _ from 'lodash';
 
 class Hero extends Model<HeroeInterface> {
 

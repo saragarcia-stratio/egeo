@@ -6,6 +6,9 @@ import { LayoutComponent } from './layout.component';
 import {
   ModalComponent,
   MainComponent,
+  ColorsComponent,
+  TypographyComponent,
+  IconsComponent,
   InputComponent,
   InfoBoxComponent,
   ListComponent,
@@ -35,6 +38,9 @@ import { EgeoModule } from '../../../components';
     ParametersTableComponent, ApiDocComponent, // For api doc in examples.
     ModalComponent,
     MainComponent,
+    ColorsComponent,
+    TypographyComponent,
+    IconsComponent,
     InputComponent,
     InfoBoxComponent,
     ListComponent,

@@ -1,0 +1,19 @@
+@import '../../../styles/require';
+
+.page-title {
+   color: egeo-get-color(a3);
+   font-family: egeo-get-font(brandon-grotesque);
+   font-size: egeo-get-font-size(head_xxlarge);
+   font-weight: egeo-get-font-weight(normal);
+   margin-bottom: 10px;
+   text-transform: uppercase;
+
+   &::after {
+      border-bottom: 1px solid;
+      border-color: egeo-get-color(a1);
+      content: ' ';
+      display: block;
+      height: 15px;
+      width: 120px;
+  }
+}

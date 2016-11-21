@@ -57,8 +57,8 @@ $egeo-body-font-sizes: (
 $egeo-font-sizes: map-merge(map-merge($egeo-head-font-sizes, $egeo-icon-font-sizes), $egeo-body-font-sizes) !default;
 
 $egeo-line-heights: (
-   double: 2em,
-   normal: 1.5em,
-   stretch: 1.2em,
-   single: 1em,
+   double: 2,
+   normal: 1.5,
+   stretch: 1.2,
+   single: 1,
 ) !default;

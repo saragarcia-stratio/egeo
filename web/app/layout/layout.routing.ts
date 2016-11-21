@@ -3,6 +3,9 @@ import {LayoutComponent} from './layout.component';
 import {
   ModalComponent,
   MainComponent,
+  ColorsComponent,
+  TypographyComponent,
+  IconsComponent,
   InputComponent,
   InfoBoxComponent,
   ModificableListComponent,
@@ -24,6 +27,9 @@ export const routing = RouterModule.forChild([
     path: '', component: LayoutComponent, children: [
       { path: '', redirectTo: 'main' },
       { path: 'main', component: MainComponent },
+      { path: 'colors', component: ColorsComponent },
+      { path: 'typography', component: TypographyComponent },
+      { path: 'icons', component: IconsComponent },
       { path: 'modal', component: ModalComponent },
       { path: 'input', component: InputComponent },
       { path: 'info-box', component: InfoBoxComponent },

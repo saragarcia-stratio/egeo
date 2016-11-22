@@ -21,7 +21,7 @@ $body-text-weight: egeo-get-font-weight(normañ) !default;
 $row-separator: 1px solid egeo-get-color(n4);
 
 
-.field {
+/*.field {
    &-name {
       float: left;
       width: 25%;
@@ -43,7 +43,7 @@ $row-separator: 1px solid egeo-get-color(n4);
       float: left;
       width: 45%;
    }
-}
+}*/
 
 
 .title {
@@ -74,6 +74,7 @@ $row-separator: 1px solid egeo-get-color(n4);
       color: $text-color;
       border-bottom: $row-separator;
       padding-bottom: 10px;
+      padding-left: 10px;
    }
 
    &-row {
@@ -84,6 +85,7 @@ $row-separator: 1px solid egeo-get-color(n4);
       color: $text-color;
       border-bottom: $row-separator;
       padding-bottom: 20px;
+      padding-left: 10px;
    }
 
 }

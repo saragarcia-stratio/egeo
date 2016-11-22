@@ -1,0 +1,9 @@
+*.log
+node
+target
+Jenkinsfile
+.sass-lint.yml
+.htmlhintrc
+pom.xml
+tslint.json
+yarn.lock

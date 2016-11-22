@@ -1,4 +1,5 @@
 import {Component, ViewEncapsulation} from '@angular/core';
+import { ApiDoc } from '../../shared';
 
 @Component({
   selector: 'spinner-example',
@@ -9,7 +10,19 @@ import {Component, ViewEncapsulation} from '@angular/core';
 
 export class SpinnerComponent {
 
-  private loading: boolean;
+  public loading: boolean;
+
+ public apiDoc: ApiDoc = {
+      title: 'Spinner',
+      description: 'Create a spinner',
+      haveModel: false,
+      apiSection: {
+         inputs: [],
+         outputs: []
+      },
+      exampleDesc: ``
+   };
+
   constructor() {
     this.loading = true;
   }

@@ -25,7 +25,7 @@ $secundary-text-size: egeo-get-font-size(body_small) !default;
       border-color: egeo-get-color(a1);
       content: ' ';
       display: block;
-      height: 15px;
+      height: 8px;
       width: 120px;
    }
 }
@@ -52,6 +52,7 @@ $secundary-text-size: egeo-get-font-size(body_small) !default;
    font-weight: $opensans-normal-font-weight;
    color: $text-color;
    margin: 10px 0;
+   line-height: 22px;
 }
 
 .example {

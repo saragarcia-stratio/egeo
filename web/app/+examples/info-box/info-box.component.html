@@ -1,12 +1,18 @@
-<section class="container-fluid">
-  <st-info-box icon="icon-hdfs" title="HDFS">
-    <p>You can put any content here</p>
-  </st-info-box>
-  <st-info-box icon="icon-cassandra" title="CASSANDRA">
-    <p>You can put any content here</p>
-  </st-info-box>
-</section>
-
-<!--{{code}}-->
-<st-load-code file="info-box/example-code/info-box.ts.txt"></st-load-code>
-<st-load-code file="info-box/example-code/info-box.html.txt"></st-load-code>
+<st-api-doc [doc]="apiDoc">
+   <div class="example-run">
+      <!-- IS REQUIRED THIS CLASS FOR IDENTIFY THE EXAMPLE -->
+      <section class="container-fluid">
+         <st-info-box icon="icon-hdfs" title="HDFS">
+            <p>You can put any content here</p>
+         </st-info-box>
+         <st-info-box icon="icon-cassandra" title="CASSANDRA">
+            <p>You can put any content here</p>
+         </st-info-box>
+      </section>
+   </div>
+   <div class="example-code">
+      <!--{{code}}-->
+      <st-load-code file="info-box/example-code/info-box.ts.txt"></st-load-code>
+      <st-load-code file="info-box/example-code/info-box.html.txt"></st-load-code>
+   </div>
+</st-api-doc>

@@ -1,18 +1,23 @@
-<section class="container-fluid">
-  <div class="page-header">
-    <h1>Template-driven Form Example:</h1>
-  </div>
-  <form #myForm="ngForm" class="form-group" novalidate>
-    <div class="form-group">
+<st-api-doc [doc]="apiDoc">
+   <div class="example-model">
+      <st-load-code file="regexp/example-code/regexp.model.ts.txt"></st-load-code>
+   </div>
+   <div class="example-run">
+      <section class="container-fluid">
+         <form #myForm="ngForm" class="form-group" novalidate>
+            <div class="form-group">
 
-      <st-input label="Email" [placeholder]="emailPlaceholder" [(ngModel)]="model.email" [accept]="emailRegExp" [forceValidations]="forceValidations"
-        [errors]="errors" name="email"></st-input>
+               <st-input label="Email" [placeholder]="emailPlaceholder" [(ngModel)]="model.email" [accept]="emailRegExp" [forceValidations]="forceValidations"
+                  [errors]="errors" name="email"></st-input>
 
-    </div>
-    <button type="submit" class="btn btn-default" (click)="checkValidations()">Submit</button>
-  </form>
-</section>
-
-<!--{{code}}-->
-<!--<st-load-code file="regexp/example-code/regexp.ts.txt"></st-load-code>
-<st-load-code file="input/example-code/regexp.html.txt"></st-load-code>-->
+            </div>
+            <button type="submit" class="btn btn-default" (click)="checkValidations()">Submit</button>
+         </form>
+      </section>
+   </div>
+   <div class="example-code">
+      <!--{{code}}-->
+      <st-load-code file="regexp/example-code/regexp.ts.txt"></st-load-code>
+      <st-load-code file="regexp/example-code/regexp.html.txt"></st-load-code>
+   </div>
+</st-api-doc>

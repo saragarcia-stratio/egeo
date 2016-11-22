@@ -15,7 +15,7 @@ export interface Api {
 
 export interface ApiRow {
    paramName: string;
-   type: TYPES;
+   type: TYPES | string;
    required: boolean;
    details: string;
 }
@@ -25,4 +25,4 @@ export interface Models {
    models: Array<any>;
 }
 
-export enum TYPES {STR, NUM, OBJ}
+export enum TYPES {STR, NUM, OBJ, BOOL, ANY, ARRAY_STR, ARRAY_NUM, ARRAY_OBJ, ARRAY_BOOL, ARRAY_ANY}

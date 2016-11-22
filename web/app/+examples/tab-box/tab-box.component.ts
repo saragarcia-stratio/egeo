@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { StTab } from './../../../../components';
+import { ApiDoc, TYPES } from '../../shared';
 
 @Component({
    selector: 'tab-box-example',
@@ -11,6 +12,22 @@ import { StTab } from './../../../../components';
 export class TabBoxComponent {
    tabs: StTab[];
    selectedTab: StTab;
+
+   public apiDoc: ApiDoc = {
+      title: 'Tab Box',
+      description: 'Tab box component',
+      haveModel: true,  // True for show label False for hide
+      apiSection: {
+         inputs: [
+            { paramName: 'tabs', type: 'Array<StTab>', required: true, details: 'tabs' },
+            { paramName: 'qaTag', type: TYPES.STR, required: true, details: 'qaTag' }
+         ],
+         outputs: [
+            { paramName: 'select', type: 'StTab', required: true, details: 'Selected tab' }
+         ]
+      },
+      exampleDesc: `Example documentation text`
+   };
 
    constructor() {
       this.tabs = [

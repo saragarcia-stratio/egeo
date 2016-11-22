@@ -3,9 +3,9 @@ import { ApiRow, TYPES } from './../api-doc.model';
 
 
 @Component({
-  selector: 'st-parameters-table',
-  template: require('./paramenters-table.component.html'),
-  styles: [require('./paramenters-table.component.scss')]
+   selector: 'st-parameters-table',
+   template: require('./paramenters-table.component.html'),
+   styles: [require('./paramenters-table.component.scss')]
 })
 export class ParametersTableComponent {
    @Input() title: string;
@@ -15,16 +15,34 @@ export class ParametersTableComponent {
       return value ? 'icon-check' : '';
    }
 
-   getType(value: TYPES): string {
-      switch (value) {
-         case TYPES.OBJ:
-            return 'Object';
-         case TYPES.NUM:
-            return 'Number';
-         case TYPES.STR:
-            return 'String';
-         default:
-            return 'String';
+   getType(value: TYPES | string): string {
+      if (typeof value !== 'string') {
+         switch (value) {
+            case TYPES.OBJ:
+               return 'Object';
+            case TYPES.NUM:
+               return 'number';
+            case TYPES.STR:
+               return 'string';
+            case TYPES.BOOL:
+               return 'boolean';
+            case TYPES.ANY:
+               return 'any';
+            case TYPES.ARRAY_NUM:
+               return 'Array<number>';
+            case TYPES.ARRAY_STR:
+               return 'Array<string>';
+            case TYPES.ARRAY_OBJ:
+               return 'Array<Object>';
+            case TYPES.ARRAY_BOOL:
+               return 'Array<boolean>';
+            case TYPES.ARRAY_ANY:
+               return 'Array<any>';
+            default:
+               return 'String';
+         }
+      } else {
+         return value;
       }
    }
 }

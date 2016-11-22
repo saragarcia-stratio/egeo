@@ -8,4 +8,10 @@ import { ApiDoc } from './shared';
 })
 export class ApiDocComponent {
    @Input() doc: ApiDoc;
+
+   hasParameters(): boolean {
+      return (this.doc.apiSection.inputs && this.doc.apiSection.inputs.length > 0) ||
+      (this.doc.apiSection.outputs && this.doc.apiSection.outputs.length > 0) ||
+      (this.doc.apiSection.description && this.doc.apiSection.description.trim().length > 0);
+   }
 }

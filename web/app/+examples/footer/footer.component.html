@@ -1,9 +1,17 @@
-<section class="container-fluid">
-  <div style="margin: 20px 0">
-    <st-footer [rightsText]="rightsText" [links]="links" qaTag="footer"></st-footer>
-  </div>
-</section>
-
-<!--{{code}}-->
-<st-load-code file="footer/example-code/footer.ts.txt"></st-load-code>
-<st-load-code file="footer/example-code/footer.html.txt"></st-load-code>
+<st-api-doc [doc]="apiDoc">
+   <div class="example-model">
+      <st-load-code file="footer/example-code/footer.model.txt"></st-load-code>
+   </div>
+   <div class="example-run">
+      <section class="container-fluid">
+         <div style="margin: 20px 0">
+            <st-footer [rightsText]="rightsText" [links]="links" qaTag="footer"></st-footer>
+         </div>
+      </section>
+   </div>
+   <div class="example-code">
+      <!--{{code}}-->
+      <st-load-code file="footer/example-code/footer.ts.txt"></st-load-code>
+      <st-load-code file="footer/example-code/footer.html.txt"></st-load-code>
+   </div>
+</st-api-doc>

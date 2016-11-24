@@ -27,13 +27,21 @@ h1 {
 }
 
 p {
+   color: egeo-get-color(n7);
+   font-size: egeo-get-font-size(body_large);
    line-height: 1.5;
    margin-bottom: $base-separation;
+   padding: 0 0 15px;
 }
 
 ul {
    list-style: circle;
    padding-left: 25px;
+}
+
+.page-content-wrapper p,
+.page-content-wrapper ul {
+   font-size: egeo-get-font-size(body_large);
 }
 
 li {
@@ -43,10 +51,4 @@ li {
 a {
    color: egeo-get-color(a1);
    text-decoration: underline;
-}
-
-p {
-   color: egeo-get-color(n7);
-   font-size: egeo-get-font-size(body_large);
-   padding: 0 0 15px;
 }

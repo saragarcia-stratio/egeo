@@ -20,6 +20,7 @@
 
 main {
    color: egeo-get-color(n8);
+   font-size: egeo-get-font-size(body_large);
    line-height: 1.5em;
 }
 
@@ -94,9 +95,16 @@ $secundary-text-size: egeo-get-font-size(body_small) !default;
    letter-spacing: -1px;
 }
 
+.page-content-wrapper p,
+.page-content-wrapper ul,
+.description,
+.table-cell,
+.table-th {
+   font-size: $description---font-size;
+}
+
 .description {
    font-family: $opensans;
-   font-size: $description---font-size;
    font-weight: $opensans-normal-font-weight;
    color: $text-color;
    margin: 10px 0 21px 0;

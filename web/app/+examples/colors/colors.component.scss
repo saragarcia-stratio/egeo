@@ -8,6 +8,7 @@
 
       &__title {
          color: egeo-get-color(n0);
+         font-size: egeo-get-font-size(body_large);
          vertical-align: top;
 
          &--negative {

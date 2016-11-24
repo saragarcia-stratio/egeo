@@ -3,7 +3,7 @@
 $brandon: egeo-get-font(brandon-grotesque) !default;
 $opensans: egeo-get-font(open-sans) !default;
 $opensans-normal-font-weight: egeo-get-font-weight(normal) !default;
-$titles-color: egeo-get-color(a3) !default;
+$titles-color: egeo-get-color(n6) !default;
 $text-color: egeo-get-color(n8) !default;
 
 $header---font-weight: egeo-get-font-weight(normal) !default;
@@ -32,10 +32,11 @@ $secundary-text-size: egeo-get-font-size(body_small) !default;
 
 .subtitle {
    font-family: $opensans;
-   font-size: 26px;
+   font-size: egeo-get-font-size(head_xxxlarge);
    font-weight: $opensans-normal-font-weight;
    color: $titles-color;
    margin-bottom: 10px;
+   letter-spacing: -1px;
 }
 
 .description {

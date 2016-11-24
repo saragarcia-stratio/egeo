@@ -17,3 +17,4 @@ export * from './radio-menu';
 export * from './colors';
 export * from './typography';
 export * from './icons';
+export * from './logo';

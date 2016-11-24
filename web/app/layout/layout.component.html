@@ -12,6 +12,17 @@
           Overview
         </li>
 
+        <!-- Branding -->
+        <li class="tmp-dropdown-menu-item tmp-dropdown-menu-item--submenu" [ngClass]="{'tmp-dropdown-menu-item--open': isBrandingOpened}">
+          <div (click)="isBrandingOpened = !isBrandingOpened">Branding <i class="icon icon-arrow2_down"></i></div>
+
+          <ul class="tmp-dropdown-submenu" *ngIf="isBrandingOpened">
+            <li class="tmp-dropdown-submenu-item" [ngClass]="{'tmp-dropdown-submenu-item--active': currentUrl === '/logo'}">
+              <a routerLink="/logo">Logo</a>
+            </li>
+          </ul>
+        </li>
+
         <!-- Style -->
         <li class="tmp-dropdown-menu-item tmp-dropdown-menu-item--submenu" [ngClass]="{'tmp-dropdown-menu-item--open': isStyleOpened}">
           <div (click)="isStyleOpened = !isStyleOpened">Style <i class="icon icon-arrow2_down"></i></div>

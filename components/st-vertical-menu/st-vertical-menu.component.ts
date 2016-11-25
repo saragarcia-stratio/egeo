@@ -15,6 +15,7 @@ export class StVerticalMenuComponent implements OnInit {
 
   activeOptionIndex: number = 0;
   arrowMovement: number = 39;
+  arrowMargin: number = 10;
 
   constructor () {
   }

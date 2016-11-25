@@ -1,19 +1,19 @@
 import {Component, ViewEncapsulation, OnInit} from '@angular/core';
-import { ModificableListElement, ListModifierObject } from 'egeo/components';
+import { StTwoListSelectionElement, StListModifierObject } from '../../../../components';
 
 @Component({
-  selector: 'modificable-list-example',
-  template: require('./modificable-list.component.html'),
-  styles: [require('./modificable-list.component.scss')],
+  selector: 'two-list-selection-example',
+  template: require('./two-list-selection.component.html'),
+  styles: [require('./two-list-selection.component.scss')],
   encapsulation: ViewEncapsulation.None
 })
 
-export class ModificableListComponent implements OnInit {
+export class TwoListSelectionComponent implements OnInit {
 
-  completeUserList: Array<StModificableListElement> = new Array<StModificableListElement>();
-  selectedUserList: Array<StModificableListElement> = new Array<StModificableListElement>();
-  filteredCompleteUserList: Array<StModificableListElement> = new Array<StModificableListElement>();
-  filteredSelectedUserList: Array<StModificableListElement> = new Array<StModificableListElement>();
+  completeUserList: Array<StTwoListSelectionElement> = new Array<StTwoListSelectionElement>();
+  selectedUserList: Array<StTwoListSelectionElement> = new Array<StTwoListSelectionElement>();
+  filteredCompleteUserList: Array<StTwoListSelectionElement> = new Array<StTwoListSelectionElement>();
+  filteredSelectedUserList: Array<StTwoListSelectionElement> = new Array<StTwoListSelectionElement>();
 
   constructor() {
     for (let i = 0; i < 30; i++) {
@@ -48,7 +48,7 @@ export class ModificableListComponent implements OnInit {
     this.searchInSelectedUserList('');
   }
 
-  crossLists(completeList: Array<StModificableListElement>, selectedList: Array<StModificableListElement>): Array<StModificableListElement> {
+  crossLists(completeList: Array<StTwoListSelectionElement>, selectedList: Array<StTwoListSelectionElement>): Array<StTwoListSelectionElement> {
     return completeList.filter((row) => selectedList.filter((row2) => row.id.toString() === row2.id.toString()).length === 0);
   }
 

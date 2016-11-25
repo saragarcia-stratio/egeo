@@ -1,23 +1,17 @@
 <st-api-doc [doc]="apiDoc">
    <div class="example-run">
-      <section class="container-fluid">
-         <div class="col-md-12">
-            <label class="col-md-12">Label with icon (Showing on click)</label>
+      <section class="container-liquid">
+         <div class="col-sm-4 contains-tooltip">
+            <h3>Label with icon (Showing on click)</h3>
             <st-tooltip text="Ports 5666, 9042 and 9160 must be accessible from the Stratio Admin." [showOnClick]="true" [qaTag]="qaTag + '-example1-contextual-help'">
                <span>Port</span>
                <span class="icon-help2"></span>
             </st-tooltip>
          </div>
-         <div class="col-md-12">
-            <label class="col-md-12">Icon (Showing on hover)</label>
+         <div class="col-sm-4 contains-tooltip">
+            <h3>Icon (Showing on hover)</h3>
             <st-tooltip text="This is the tooltip activated on hover" [showOnClick]="false" [qaTag]="qaTag + '-example2-contextual-help'">
                <span class="icon-help1"></span>
-            </st-tooltip>
-         </div>
-         <div class="col-md-12">
-            <label class="col-md-12">Div (Showing on hover by default)</label>
-            <st-tooltip text="This is the tooltip activated on hover by default on a div" [qaTag]="qaTag + '-example3-contextual-help'">
-               <div class="div-example">Show the description</div>
             </st-tooltip>
          </div>
       </section>

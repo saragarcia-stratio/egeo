@@ -1,12 +1,12 @@
 <st-api-doc [doc]="apiDoc">
    <div class="example-run">
-      <section class="container-fluid">
-         <button class="btn btn-default" (click)="changeLoading()">{{loading ? 'Loaded' : 'Loading'}}</button>
+      <section class="container-liquid">
+         <button class="btn btn-default" (click)="changeLoading()">{{loading ? 'Set loading var to false' : 'Set loading var to true'}}</button>
          <div class="loading-content" *ngIf="loading == true">
             <st-spinner></st-spinner>
          </div>
          <div class="content" *ngIf="loading == false">
-            <p *ngFor="let number of [0,1,2,3,4,5]">Content has been loaded!!</p>
+            <h1>Content has been loaded!!</h1>
          </div>
       </section>
    </div>

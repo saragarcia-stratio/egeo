@@ -27,12 +27,12 @@ export class FooterComponent {
 
       this.apiDoc = {
          title: 'Footer',
-         description: 'Stratio footer component',
+         description: 'The footer component is used to create a consistent user experience across the whole applications of the Stratio Data Centric Suite. It beyonds to the layout family of components.',
          haveModel: true,
          apiSection: {
             inputs: [
-               { paramName: 'rightsText', type: TYPES.STR, required: true, details: 'Text of rights' },
-               { paramName: 'links', type: TYPES.ARRAY_OBJ, required: false, details: 'Array of StFooterLink' },
+               { paramName: 'rightsText', type: TYPES.STR, required: true, details: 'The text that appears at the beginning of the toolbar to show the rights and copyright declarations.' },
+               { paramName: 'links', type: TYPES.ARRAY_OBJ, required: false, details: 'An array of StFooterLink objects (see below) that defines the links that will appear in the toolbar.' },
                { paramName: 'qaTag', type: TYPES.STR, required: true, details: 'Id for qa search in automated test' }
             ],
             outputs: []

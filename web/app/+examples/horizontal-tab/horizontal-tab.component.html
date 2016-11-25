@@ -1,18 +1,10 @@
-<!--<section class="container-fluid">
-  <div style="margin: 20px 0">
-
-  </div>
-</section>
-
--->
-
 
 <st-api-doc [doc]="apiDoc">
    <div class="example-model">
       <st-load-code file="horizontal-tab/example-code/horizontal-tab.model.ts.txt"></st-load-code>
    </div>
    <div class="example-run">
-      <st-horizontal-tab [tabs]="tabs" [description]="description" (select)="onSelectTab($event)" qaTag="horizontal-tab"></st-horizontal-tab>
+      <st-horizontal-tab class="horizontal-tab" [tabs]="tabs" [description]="description" (select)="onSelectTab($event)" qaTag="horizontal-tab"></st-horizontal-tab>
    </div>
    <div class="example-code">
       <!--{{code}}-->

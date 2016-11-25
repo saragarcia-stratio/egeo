@@ -1,21 +1,15 @@
-<section class="container-fluid">
-   <div class="page-header">
-      <h1>ST-TOOLTIP</h1>
+<section class="container-liquid">
+   <div class="col-sm-4 contains-tooltip">
+      <h3>Label with icon (Showing on click)</h3>
+      <st-tooltip text="Ports 5666, 9042 and 9160 must be accessible from the Stratio Admin." [showOnClick]="true" [qaTag]="qaTag + '-example1-contextual-help'">
+         <span>Port</span>
+         <span class="icon-help2"></span>
+      </st-tooltip>
    </div>
-   <h3>Label with icon (Showing on click)</h3>
-   <st-tooltip text="Ports 5666, 9042 and 9160 must be accessible from the Stratio Admin." [showOnClick]="true" [qaTag]="qaTag + '-example1-contextual-help'">
-      <span>Port</span>
-      <span class="icon-help2"></span>
-   </st-tooltip>
-   <h3>Icon (Showing on hover)</h3>
-   <st-tooltip text="This is the tooltip activated on hover" [showOnClick]="false" [qaTag]="qaTag + '-example2-contextual-help'">
-      <span class="icon-help1"></span>
-   </st-tooltip>
-   <h3>Div (Showing on hover by default)</h3>
-   <st-tooltip text="This is the tooltip activated on hover by default on a div" [qaTag]="qaTag + '-example3-contextual-help'">
-      <div class="div-example">Show the description</div>
-   </st-tooltip>
-</section>
-<section class="container-fluid docs">
-   <h1> Docs </h1>
+   <div class="col-sm-4 contains-tooltip">
+      <h3>Icon (Showing on hover)</h3>
+      <st-tooltip text="This is the tooltip activated on hover" [showOnClick]="false" [qaTag]="qaTag + '-example2-contextual-help'">
+         <span class="icon-help1"></span>
+      </st-tooltip>
+   </div>
 </section>

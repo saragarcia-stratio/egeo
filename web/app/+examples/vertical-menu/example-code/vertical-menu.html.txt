@@ -1,6 +1,10 @@
-<section class="container-fluid">
-  <div class="col-sm-12">
-    <st-vertical-menu class="vertical-menu" [options]="options" qaTag="{{qaTag}}">
-    </st-vertical-menu>
-  </div>
+<section class="container-liquid">
+   <div class="row">
+      <div class="col-sm-12 contains-vertical-menu">
+         <st-vertical-menu class="vertical-menu" [options]="options" qaTag="{{qaTag}}">
+         </st-vertical-menu>
+         <st-info-box title="Info box component" class="info-box">
+         </st-info-box>
+      </div>
+   </div>
 </section>

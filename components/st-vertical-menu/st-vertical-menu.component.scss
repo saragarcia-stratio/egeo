@@ -14,7 +14,7 @@ $st-vertical-menu__list---position: relative;
 $st-vertical-menu__list---list-style: none;
 $st-vertical-menu__list---float: left;
 $st-vertical-menu__list---width: 90%;
-$st-vertical-menu__list---padding-right: 30px;
+$st-vertical-menu__list---padding: 10px 30px;
 
 $st-vertical-menu__option---height: 40px;
 $st-vertical-menu__option---margin-top: -1px;
@@ -43,13 +43,13 @@ $st-vertical-menu__text--hover---color: rgb(0, 0, 0);
 
 $st-vertical-menu__line---position: relative;
 $st-vertical-menu__line---height: 100%;
-$st-vertical-menu__line---border: 1.6px solid #A1A1A1;
+$st-vertical-menu__line---border: 1.6px solid egeo-get-color(n4);
 $st-vertical-menu__line---float: right;
 $st-vertical-menu__line---width: 10%;
 
 $st-vertical-menu__line__arrow---position: absolute;
 $st-vertical-menu__line__arrow---size: 13px;
-$st-vertical-menu__line__arrow---border: 1.6px solid #a1a1a1;
+$st-vertical-menu__line__arrow---border: 1.6px solid egeo-get-color(n6);
 $st-vertical-menu__line__arrow---invisible-border: 0;
 $st-vertical-menu__line__arrow---background-color: egeo-get-color(n0);
 $st-vertical-menu__line__arrow---top: 14px;
@@ -59,6 +59,7 @@ $st-vertical-menu__line__arrow---margin-left: -7.1px;
 $st-vertical-menu__line__arrow---transition: margin-top .4s;
 
 @mixin st-vertical-menu() {
+  height:100%;
   height: $st-vertical-menu---height;
   width: $st-vertical-menu---width;
   display: $st-vertical-menu---display;
@@ -70,7 +71,7 @@ $st-vertical-menu__line__arrow---transition: margin-top .4s;
     list-style: $st-vertical-menu__list---list-style;
     float: $st-vertical-menu__list---float;
     width: $st-vertical-menu__list---width;
-    padding-right: $st-vertical-menu__list---padding-right;
+    padding: $st-vertical-menu__list---padding;
   }
 
   &__option {
@@ -123,7 +124,7 @@ $st-vertical-menu__line__arrow---transition: margin-top .4s;
       -ms-transform: $st-vertical-menu__line__arrow---transform;
       -webkit-transform: $st-vertical-menu__line__arrow---transform;
       transform: $st-vertical-menu__line__arrow---transform;
-      border: $st-vertical-menu__line---border;
+      border: $st-vertical-menu__line__arrow---border;
       border-bottom-width: $st-vertical-menu__line__arrow---invisible-border;
       border-left-width: $st-vertical-menu__line__arrow---invisible-border;
       float: $st-vertical-menu__line__arrow---float;

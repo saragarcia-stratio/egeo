@@ -12,7 +12,7 @@ export class InfoCardComponent {
 
    public apiDoc: ApiDoc = {
       title: 'Info Card',
-      description: 'Info Card component',
+      description: 'Info card component is used to display a list of elements in a grid. These elements are shown with an identification logo and a short information.',
       haveModel: false,
       apiSection: {
          inputs: [

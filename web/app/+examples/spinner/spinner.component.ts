@@ -14,13 +14,13 @@ export class SpinnerComponent {
 
  public apiDoc: ApiDoc = {
       title: 'Spinner',
-      description: 'Create a spinner',
+      description: 'The spinner is the animated graphic used to be shown during loading processes.',
       haveModel: false,
       apiSection: {
          inputs: [],
          outputs: []
       },
-      exampleDesc: ``
+      exampleDesc: ''
    };
 
   constructor() {

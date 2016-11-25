@@ -3,36 +3,38 @@
 @import '../../ui-base/utils/colors';
 
 $st-print---info-box: true !default;
-$st-info-box---margin: 18px;
+$st-info-box---margin: 0;
 $st-info-box---background-color: egeo-get-color(n1);
 $st-info-box---height: 437px;
 $st-info-box---min-width: 415px;
 $st-info-box---float: left;
+$st-info-box---border-bottom: 1px solid egeo-get-color(n3);;
 
 $st-info-box__header---display: block;
 $st-info-box__header---width: 100%;
 $st-info-box__header---height: 50px;
 $st-info-box__header---background-color: egeo-get-color(n2);
 $st-info-box__header---line-height: 52px;
-$st-info-box__header---padding: 0 23px;
+$st-info-box__header---padding: 0 30px;
 $st-info-box__header__icon---width: 20px;
 $st-info-box__header__icon---height: 20px;
 $st-info-box__header__icon---font-family: egeo-get-font(stratio-iconfont);
 $st-info-box__header__icon---font-size: 20px;
 $st-info-box__header__icon---text-align: center;
 $st-info-box__header__icon---color: egeo-get-color(n7);
-$st-info-box__header__icon---margin-right: 18px;
-$st-info-box__header__text---font-family: egeo-get-font("Brandon Grotesque");
+$st-info-box__header__icon---margin-right: 10px;
+$st-info-box__header__text---font-family: egeo-get-font("brandon-grotesque");
 $st-info-box__header__text---font-size: 18px;
 $st-info-box__header__text---text-align: center;
 $st-info-box__header__text---color: egeo-get-color(n7);
 $st-info-box__header__text---text-transform: uppercase;
 
-$st-info-box__content---padding: 17px;
+$st-info-box__content---padding: 20px 30px 40px 30px;
 
 @mixin st-info-box() {
   margin: $st-info-box---margin;
   background-color: $st-info-box---background-color;
+  border-bottom: $st-info-box---border-bottom;
   height: $st-info-box---height;
   min-width: $st-info-box---min-width;
   overflow-x: auto;
@@ -44,6 +46,7 @@ $st-info-box__content---padding: 17px;
     background-color: $st-info-box__header---background-color;
     line-height: $st-info-box__header---line-height;
     padding: $st-info-box__header---padding;
+
     &__icon {
       width: $st-info-box__header__icon---width;
       height: $st-info-box__header__icon---height;
@@ -55,11 +58,11 @@ $st-info-box__content---padding: 17px;
     }
 
     &__text {
-      font-family: $st-info-box__header__text---font-family;
       font-size: $st-info-box__header__text---font-size;
       text-align: $st-info-box__header__text---text-align;
       color: $st-info-box__header__text---color;
       text-transform: $st-info-box__header__text---text-transform;
+      font-family: $st-info-box__header__text---font-family;
     }
   }
 
@@ -78,4 +81,5 @@ $st-info-box__content---padding: 17px;
   .st-info-box {
     @include st-info-box;
   }
+
 }

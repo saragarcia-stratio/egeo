@@ -12,7 +12,7 @@ export class TooltipComponent {
 
    public apiDoc: ApiDoc = {
       title: 'Tooltip',
-      description: 'Tooltip',
+      description: 'The tooltip component is a text box that appear floating over an other UI component to explain further information about something related to the content or the component itself. It could be shown on click or on hover.',
       haveModel: false,
       apiSection: {
          inputs: [

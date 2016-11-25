@@ -1,0 +1,20 @@
+<section class="container-fluid">
+  <div class="page-header">
+    <h1>Two list selection <span>EDITABLE:</span></h1>
+  </div>
+  <st-two-list-selection [completeList]="filteredCompleteUserList" [selectedList]="filteredSelectedUserList" (listModifier)="modifyUserList($event)"
+    [editable]="true" completeListTitle="All users" selectedListTitle="Users of the group" (changeCompleteSearch)="searchInCompleteUserList($event)"
+    (changeSelectedSearch)="searchInSelectedUserList($event)" searchButtonLabel="Search" qaTag="modificable-users">
+  </st-two-list-selection>
+  <div class="page-header">
+    <h1>Modificable list <span>NOT EDITABLE:</span></h1>
+  </div>
+  <st-two-list-selection [selectedList]="filteredSelectedUserList" [editable]="false" selectedListTitle="Users of the group" (changeSelectedSearch)="searchInSelectedUserList($event)"
+    searchButtonLabel="Search" qaTag="modificable-users">
+  </st-two-list-selection>
+</section>
+
+<!--{{code}}-->
+<st-load-code file="two-list-selection/example-code/two-list-selection.ts.txt"></st-load-code>
+<st-load-code file="two-list-selection/example-code/two-list-selection.html.txt"></st-load-code>
+

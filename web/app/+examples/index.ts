@@ -6,7 +6,7 @@ export * from './list';
 export * from './vertical-menu';
 export * from './spinner';
 export * from './tooltip';
-export * from './modificable-list';
+export * from './two-list-selection';
 export * from './footer';
 export * from './info-card';
 export * from './regexp';

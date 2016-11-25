@@ -14,7 +14,7 @@ export class VerticalMenuComponent implements OnInit {
 
    public apiDoc: ApiDoc = {
       title: 'Vertical tabs',
-      description: 'Vertical tab',
+      description: 'The vertical tabs is a component used for navigation purposes. It shows a set of links stacked like a vertical menu that can be used to put content at a side.',
       haveModel: false,
       apiSection: {
          inputs: [

@@ -7,7 +7,7 @@ import { StInputComponent }  from './st-input';
 import { StModalService } from './st-modal';
 import { StInfoBoxComponent }  from './st-info-box';
 import { StSpinnerComponent } from './st-spinner';
-import { StModificableListComponent } from './st-modificable-list';
+import { StTwoListSelectionComponent } from './st-two-list-selection';
 import { StFooterComponent }  from './st-footer';
 import { StUserMenuComponent } from './st-user-menu/st-user-menu.component';
 import { StNotificationComponent } from './notification-manager/shared/';
@@ -46,12 +46,12 @@ import {
     TranslateService
   ],
   declarations: [
-    StInputComponent, StUserMenuComponent, StNotificationComponent, StSpinnerComponent, StTooltip, StModificableListComponent, StFooterComponent,
+    StInputComponent, StUserMenuComponent, StNotificationComponent, StSpinnerComponent, StTooltip, StTwoListSelectionComponent, StFooterComponent,
     StInfoBoxComponent, StInfoCardComponent, StVerticalMenuComponent, GosecListRowComponent, GosecListBodyComponent, GosecListHeaderComponent,
     GosecListComponent, GosecPaginationComponent, StHorizontalTabComponent, StTabBoxComponent, StRadioMenuComponent
   ],
   exports: [
-    StInputComponent, StInfoBoxComponent, StSpinnerComponent, StTooltip, StModificableListComponent, StFooterComponent, StInfoCardComponent, 
+    StInputComponent, StInfoBoxComponent, StSpinnerComponent, StTooltip, StTwoListSelectionComponent, StFooterComponent, StInfoCardComponent,
     StVerticalMenuComponent, GosecListComponent, StHorizontalTabComponent, StTabBoxComponent, StRadioMenuComponent
   ]
 })

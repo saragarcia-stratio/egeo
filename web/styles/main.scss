@@ -54,3 +54,28 @@ table {
 tr:nth-child(even) {
    background-color: egeo-get-color(b3);
 }
+
+
+button{
+   font-size: 15px;
+   padding: 0 20px;
+   line-height: 35px;
+   height: 35px;
+   min-width: 150px;
+   color: egeo-get-color(n0);
+   background-color: egeo-get-color(a1);
+   cursor: pointer;
+   text-transform: uppercase;
+   font-family: egeo-get-font("brandon-grotesque");
+}
+
+button:before{
+   font-family: egeo-get-font('ico-stratio');
+   content: '\e048';
+   padding: 2px 6px 0 0;
+}
+
+button:hover{
+   background-color: egeo-get-color(a1_dark);
+   transition: all ease 0.4s;
+}

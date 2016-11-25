@@ -3,15 +3,19 @@
       <st-load-code file="regexp/example-code/regexp.model.ts.txt"></st-load-code>
    </div>
    <div class="example-run">
-      <section class="container-fluid">
+      <section class="container-liquid">
          <form #myForm="ngForm" class="form-group" novalidate>
-            <div class="form-group">
-
-               <st-input label="Email" [placeholder]="emailPlaceholder" [(ngModel)]="model.email" [accept]="emailRegExp" [forceValidations]="forceValidations"
-                  [errors]="errors" name="email"></st-input>
-
+            <div class="row">
+               <div class="form-group col-md-4">
+                  <st-input label="Email" [placeholder]="emailPlaceholder" [(ngModel)]="model.email" [accept]="emailRegExp" [forceValidations]="forceValidations"
+                     [errors]="errors" name="email" style="margin-bottom: 20px; display: inline-block"></st-input>
+               </div>
             </div>
-            <button type="submit" class="btn btn-default" (click)="checkValidations()">Submit</button>
+            <div class="row">
+               <div class="col-md-4">
+                  <button type="submit" class="btn btn-default" (click)="checkValidations()">Submit</button>
+               </div>
+            </div>
          </form>
       </section>
    </div>

@@ -1,17 +1,17 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { NgForm }    from '@angular/forms';
-import { StModificableListElement, StListModifierObject } from './shared/element.model';
+import { StTwoListSelectionElement, StListModifierObject } from './shared/element.model';
 
 @Component({
-  selector: 'st-modificable-list',
-  template: require('./st-modificable-list.component.html'),
-  styles: [require('./st-modificable-list.component.scss')],
+  selector: 'st-two-list-selection',
+  template: require('./st-two-list-selection.component.html'),
+  styles: [require('./st-two-list-selection.component.scss')],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StModificableListComponent {
+export class StTwoListSelectionComponent {
 
-  @Input() completeList: Array<StModificableListElement> = new Array<StModificableListElement>();
-  @Input() selectedList: Array<StModificableListElement> = new Array<StModificableListElement>();
+  @Input() completeList: Array<StTwoListSelectionElement> = new Array<StTwoListSelectionElement>();
+  @Input() selectedList: Array<StTwoListSelectionElement> = new Array<StTwoListSelectionElement>();
   @Output() listModifier: EventEmitter<StListModifierObject> = new EventEmitter<StListModifierObject>();
   @Output() changeCompleteSearch: EventEmitter<string> = new EventEmitter<string>();
   @Output() changeSelectedSearch: EventEmitter<string> = new EventEmitter<string>();
@@ -24,21 +24,21 @@ export class StModificableListComponent {
   private completeSearchText: string;
   private selectedSearchText: string;
 
-  private listToAdd: Array<StModificableListElement> = new Array<StModificableListElement>();
-  private listToRemove: Array<StModificableListElement> = new Array<StModificableListElement>();
+  private listToAdd: Array<StTwoListSelectionElement> = new Array<StTwoListSelectionElement>();
+  private listToRemove: Array<StTwoListSelectionElement> = new Array<StTwoListSelectionElement>();
 
   constructor() { }
 
-  markElement(row: StModificableListElement, toAdd: boolean): void {
+  markElement(row: StTwoListSelectionElement, toAdd: boolean): void {
     if (toAdd) {
-      let rowToFind: Array<StModificableListElement> = this.listToAdd.filter((rowOfArray) => row.id === rowOfArray.id);
+      let rowToFind: Array<StTwoListSelectionElement> = this.listToAdd.filter((rowOfArray) => row.id === rowOfArray.id);
       if (rowToFind.length > 0) {
         this.listToAdd = this.listToAdd.filter((rowOfArray) => rowOfArray.id !== rowToFind[0].id);
       } else {
         this.listToAdd.push(row);
       }
     } else {
-      let rowToFind: Array<StModificableListElement> = this.listToRemove.filter((rowOfArray) => row.id === rowOfArray.id);
+      let rowToFind: Array<StTwoListSelectionElement> = this.listToRemove.filter((rowOfArray) => row.id === rowOfArray.id);
       if (rowToFind.length > 0) {
         this.listToRemove = this.listToRemove.filter((rowOfArray) => rowOfArray.id !== rowToFind[0].id);
       } else {
@@ -48,7 +48,7 @@ export class StModificableListComponent {
   }
 
   modifyList(actionToAdd: boolean): void {
-    let list: Array<StModificableListElement>;
+    let list: Array<StTwoListSelectionElement>;
     if (actionToAdd) {
       list = this.listToAdd;
     } else {
@@ -58,9 +58,9 @@ export class StModificableListComponent {
       this.listModifier.emit({ actionToAdd: actionToAdd, list: list });
     }
     if (actionToAdd) {
-      this.listToAdd = new Array<StModificableListElement>();
+      this.listToAdd = new Array<StTwoListSelectionElement>();
     } else {
-      list = this.listToRemove = new Array<StModificableListElement>();
+      list = this.listToRemove = new Array<StTwoListSelectionElement>();
     }
     this.completeSearchText = '';
     this.selectedSearchText = '';

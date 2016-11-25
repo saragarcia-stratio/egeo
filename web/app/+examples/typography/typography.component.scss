@@ -86,6 +86,10 @@ $secundary-text-size: egeo-get-font-size(body_small) !default;
    }
 }
 
+.title3 {
+   color: egeo-get-color(n7);
+}
+
 .subtitle {
    font-family: $opensans;
    font-size: egeo-get-font-size(head_xxxlarge);

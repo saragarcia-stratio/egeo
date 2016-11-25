@@ -26,6 +26,15 @@ h1 {
    margin: $base-separation 0 ($base-separation - 10);
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6  {
+   color: egeo-get-color(n7);
+}
+
 p {
    color: egeo-get-color(n7);
    font-size: egeo-get-font-size(body_large);

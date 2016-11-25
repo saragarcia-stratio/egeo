@@ -52,7 +52,7 @@
   @extend %remove-list-style;
   @extend %remove-link-style;
 
-  font-size: egeo-get-font-size(body_xsmall);
+  font-size: egeo-get-font-size(body_large);
   margin-top: $base-separation;
   text-transform: none;
 

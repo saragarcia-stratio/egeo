@@ -10,13 +10,15 @@ import { Router } from '@angular/router';
 export class LayoutComponent {
    @Input() isBrandingOpened: boolean;
    @Input() isStyleOpened: boolean;
-   @Input() isElementsOpened: boolean;
+   @Input() isCatalogOpened: boolean;
+   @Input() isGettingStartedOpened: boolean;
    @Input() currentUrl: string;
 
    constructor(private router: Router) {
       this.isBrandingOpened = false;
       this.isStyleOpened = false;
-      this.isElementsOpened = false;
+      this.isCatalogOpened = false;
+      this.isGettingStartedOpened = false;
 
       router.events.subscribe((val) => {
          this.currentUrl = val.url;

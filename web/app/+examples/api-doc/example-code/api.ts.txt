@@ -10,8 +10,8 @@ import { ApiDoc, TYPES } from '../../shared';
 export class ApiDocExample {
 
    public apiDoc: ApiDoc = {
-      title: 'Buttons',
-      description: 'Create a button with a button or a element to retain the native click function. Use a disabled attribute when a button can’t be clicked.',
+      title: 'How to document with API Doc',
+      description: 'Using the ApiDoc documentation system you can document your Egeo components, services or whatever with ease.',
       haveModel: true,  // True for show label False for hide
       apiSection: {
          description: '(Optional) This table gives you a quick overview of the SLDS CSS classes that can be applied to create buttons.',

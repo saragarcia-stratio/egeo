@@ -12,16 +12,16 @@ export class InfoBoxComponent {
 
    public apiDoc: ApiDoc = {
       title: 'Info Box',
-      description: 'Info box component',
+      description: 'Info box component is used to content any kind of information like graphs, summary lists or texts',
       haveModel: false,
       apiSection: {
          inputs: [
-            { paramName: 'icon', type: TYPES.STR, required: false, details: 'Info Box header icon name' },
-            { paramName: 'title', type: TYPES.STR, required: true, details: 'Info Box title' }
+            { paramName: 'icon', type: TYPES.STR, required: false, details: 'Class of the header icon. If it is empty, no icon will be shown' },
+            { paramName: 'title', type: TYPES.STR, required: true, details: 'Header title' }
          ],
          outputs: []
       },
-      exampleDesc: ``
+      exampleDesc: `Next, you can see some examples of info boxes.`
    };
 
    constructor() {

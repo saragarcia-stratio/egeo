@@ -28,17 +28,17 @@ export class HorizontalTabComponent {
       ];
 
       this.apiDoc = {
-         title: 'Toogle buttons',
-         description: 'Toogle buttons component',
+         title: 'Toggle buttons',
+         description: 'Toggle buttons component is used to apply a specific filter according the selected tab. Each tab displays a number to indicate how many content fulfils its filter.',
          haveModel: true,
          apiSection: {
             inputs: [
-               { paramName: 'tabs', type: 'Array<StHorizontalTab>', required: true, details: 'Array of StHorizontalTab' },
-               { paramName: 'description', type: TYPES.STR, required: false, details: 'Description' },
+               { paramName: 'tabs', type: 'Array<StHorizontalTab>', required: true, details: 'List of tabs with a label, number and status (active or not active)' },
+               { paramName: 'description', type: TYPES.STR, required: false, details: 'Title displayed just before tabs to introduce them' },
                { paramName: 'qaTag', type: TYPES.STR, required: true, details: 'Id for qa search in automated test' }
             ],
             outputs: [
-               { paramName: 'select', type: 'StHorizontalTab', required: true, details: 'Type: StHorizontalTab' }
+               { paramName: 'select', type: 'StHorizontalTab', required: true, details: 'This event is emitted when selected tab has changed. This event has the selected tab as param' }
             ]
          },
          exampleDesc: ``

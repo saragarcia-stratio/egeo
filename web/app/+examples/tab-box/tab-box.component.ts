@@ -15,18 +15,18 @@ export class TabBoxComponent {
 
    public apiDoc: ApiDoc = {
       title: 'Tab Box',
-      description: 'Tab box component',
+      description: 'Tab box component is a useful component in order to divide information according a specific criteria',
       haveModel: true,  // True for show label False for hide
       apiSection: {
          inputs: [
-            { paramName: 'tabs', type: 'Array<StTab>', required: true, details: 'tabs' },
-            { paramName: 'qaTag', type: TYPES.STR, required: true, details: 'qaTag' }
+            { paramName: 'tabs', type: 'Array<StTab>', required: true, details: 'List of tabs with a name and status (active or not active)' },
+            { paramName: 'qaTag', type: TYPES.STR, required: true, details: 'Prefix used to generate the id values for qa tests' }
          ],
          outputs: [
-            { paramName: 'select', type: 'StTab', required: true, details: 'Selected tab' }
+            { paramName: 'select', type: 'StTab', required: true, details: 'This event is emitted when selected tab has changed. It has the selected tab as param' }
          ]
       },
-      exampleDesc: `Example documentation text`
+      exampleDesc: `Next, you can see an example of a tab box with two tabs.`
    };
 
    constructor() {

@@ -16,14 +16,14 @@ export class InfoCardComponent {
       haveModel: false,
       apiSection: {
          inputs: [
-            { paramName: 'photo', type: TYPES.STR, required: true, details: 'photo' },
-            { paramName: 'defaultPhoto', type: TYPES.STR, required: true, details: 'default photo' },
-            { paramName: 'title', type: TYPES.STR, required: true, details: 'title' },
-            { paramName: 'description', type: TYPES.STR, required: true, details: 'description' }
+            { paramName: 'photo', type: TYPES.STR, required: true, details: 'Photo url' },
+            { paramName: 'defaultPhoto', type: TYPES.STR, required: true, details: 'Default photo that will be displayed in case of photo url is broken' },
+            { paramName: 'title', type: TYPES.STR, required: true, details: 'Title of the info card' },
+            { paramName: 'description', type: TYPES.STR, required: true, details: 'A short description about the content.' }
          ],
          outputs: []
       },
-      exampleDesc: `This example show a info card component`
+      exampleDesc: `Next, you can see how info cards are shown in a grid.`
    };
 
    constructor() { }

@@ -18,15 +18,15 @@ export class VerticalMenuComponent implements OnInit {
       haveModel: false,
       apiSection: {
          inputs: [
-            { paramName: 'activeOption', type: TYPES.STR, required: false, details: 'Active option' },
-            { paramName: 'options', type: TYPES.ARRAY_STR, required: true, details: 'Menu options' },
-            { paramName: 'qaTag', type: TYPES.STR, required: true, details: 'Id value for qa test' }
+            { paramName: 'activeOption', type: TYPES.STR, required: false, details: 'Current active option name' },
+            { paramName: 'options', type: TYPES.ARRAY_STR, required: true, details: 'Menu option names' },
+            { paramName: 'qaTag', type: TYPES.STR, required: true, details: 'Prefix used to generate the id values for qa tests' }
          ],
          outputs: [
-            { paramName: 'changedOption', type: 'any', required: true, details: 'Notify when active an option' }
+            { paramName: 'changedOption', type: 'any', required: true, details: 'This event is emitted when active option has changed. It has the active option name as param' }
          ]
       },
-      exampleDesc: `example desc`
+      exampleDesc: `Next, you can see an example of vertical menu with three options.`
    };
 
    constructor() {

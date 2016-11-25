@@ -29,11 +29,11 @@ export class RegexpComponent {
    };
 
    public apiDoc: ApiDoc = {
-      title: 'Regular expresions',
-      description: 'Utility for regular expressions',
+      title: 'Regular expressions',
+      description: 'Utility lib with common regular expressions for general use. Next section named "MODELS" shows which regular expression we currently have',
       haveModel: true,
       apiSection: { inputs: [], outputs: [] },
-      exampleDesc: `This example use a email regular expresion for test input values.`
+      exampleDesc: `Next, you can see how to use a regular expression from this util lib for validating an email on a input field`
    };
 
    onSubmitTemplateBased(): void {

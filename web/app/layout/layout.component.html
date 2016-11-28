@@ -8,7 +8,7 @@
 
     <nav class="tmp-dropdown-menu">
       <ul>
-        <li routerLink="/main" class="tmp-dropdown-menu-item tmp-dropdown-menu-item--active">
+        <li routerLink="/main" class="tmp-dropdown-menu-item" [ngClass]="{'tmp-dropdown-menu-item--active': currentUrl === '/main'}">
           Overview
         </li>
 
@@ -24,7 +24,7 @@
         </li>
 
         <!-- Branding -->
-        <li class="tmp-dropdown-menu-item tmp-dropdown-menu-item--submenu" [ngClass]="{'tmp-dropdown-menu-item--open': isBrandingOpened}">
+        <li class="tmp-dropdown-menu-item tmp-dropdown-menu-item--submenu tmp-dropdown-menu-item--separation" [ngClass]="{'tmp-dropdown-menu-item--open': isBrandingOpened}">
           <div (click)="isBrandingOpened = !isBrandingOpened">Branding<i class="icon icon-arrow2_down"></i></div>
 
           <ul class="tmp-dropdown-submenu" *ngIf="isBrandingOpened">
@@ -52,7 +52,7 @@
         </li>
 
         <!-- UI Catalog -->
-        <li class="tmp-dropdown-menu-item tmp-dropdown-menu-item--submenu" [ngClass]="{'tmp-dropdown-menu-item--open': isCatalogOpened}">
+        <li class="tmp-dropdown-menu-item tmp-dropdown-menu-item--submenu tmp-dropdown-menu-item--separation" [ngClass]="{'tmp-dropdown-menu-item--open': isCatalogOpened}">
           <div (click)="isCatalogOpened = !isCatalogOpened">UI Catalog<i class="icon icon-arrow2_down"></i></div>
 
           <ul class="tmp-dropdown-submenu" *ngIf="isCatalogOpened">
@@ -112,7 +112,7 @@
           <router-outlet></router-outlet>
 
           <footer class="page-footer">
-             Feedback? Create an issue on the <a href="https://github.com/Stratio/egeo">Github repository</a> or email us at <a href="mailto:egeo@stratio.com">egeo@stratio.com</a>.
+             Feedback? email us at <a href="mailto:egeo@stratio.com">egeo@stratio.com</a>.
           </footer>
         </div>
       </div>

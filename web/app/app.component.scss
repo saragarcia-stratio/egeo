@@ -36,7 +36,6 @@ h6  {
 }
 
 p {
-   color: egeo-get-color(n7);
    font-size: egeo-get-font-size(body_large);
    line-height: 1.5;
    margin-bottom: $base-separation;
@@ -50,6 +49,7 @@ ul {
 
 .page-content-wrapper p,
 .page-content-wrapper ul {
+   color: egeo-get-color(n7);
    font-size: egeo-get-font-size(body_large);
 }
 

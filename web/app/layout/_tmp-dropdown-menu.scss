@@ -20,10 +20,9 @@
   @extend %remove-link-style;
 
   &-item {
-    border-bottom: 1px solid egeo-get-color(a2_dark);
     color: egeo-get-color(a2_dark);
     cursor: pointer;
-    padding: 20px 0;
+    padding: 0 0 20px;
     text-transform: uppercase;
 
     &--active {
@@ -36,6 +35,11 @@
       .icon {
         float: right;
       }
+    }
+
+    &--separation {
+      border-top: 1px solid egeo-get-color(n3);
+      padding: 20px 0;
     }
 
     &--open {

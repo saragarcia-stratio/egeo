@@ -68,12 +68,7 @@ $st-info-card__arrow---visibility: hidden;
   display: $st-info-card---display;
   position: $st-info-card---position;
   min-height: 115px;
-  //@media (max-width: 1500px) {
-  //  min-height: 164px;
-  //}
-  //@media (min-width: 1500px) {
-  //  min-height: 137px;
-  //}
+
   &:hover {
     background-color: $st-info-card--hover---background-color;
     cursor: $st-info-card--hover---cursor;
@@ -139,6 +134,7 @@ $st-info-card__arrow---visibility: hidden;
     visibility: $st-info-card__arrow---visibility;
     &:before {
       content: '\e605';
+      font-family: egeo-get-font(icon);
     }
   }
 

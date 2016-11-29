@@ -9,3 +9,4 @@ export * from './utils';
 export * from './st-horizontal-tab/st-horizontal-tab.interface';
 export * from './st-radio-menu/st-radio-menu-option.interface';
 export * from './st-tab-box/st-tab-box.interface';
+export * from './st-page-title';

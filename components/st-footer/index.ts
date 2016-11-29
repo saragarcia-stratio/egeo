@@ -1,2 +1,2 @@
-export * from './st-footer.component.ts';
+export * from './st-footer.component';
 export * from './shared';

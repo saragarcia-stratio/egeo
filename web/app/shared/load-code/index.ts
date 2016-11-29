@@ -1,1 +1,1 @@
-export * from './load-code.component.ts';
+export * from './load-code.component';

@@ -1,0 +1,8 @@
+<section class="container-fluid col-md-12">
+   <st-page-title [title]="title">
+      <div class="box-right">
+         <span class="box-content">Box with content</span>
+      </div>
+      <button>Button</button>
+   </st-page-title>
+</section>

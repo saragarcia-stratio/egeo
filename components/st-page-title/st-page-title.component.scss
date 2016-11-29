@@ -1,0 +1,29 @@
+@import '../st-egeo';
+@import '../../ui-base/utils/typography';
+@import '../../ui-base/utils/colors';
+
+
+$font-family: egeo-get-font(brandon-grotesque) !default;
+$font-size: egeo-get-font-size(head_xxxlarge) !default;
+$font-weight: egeo-get-font-weight(normal) !default;
+$font-color: egeo-get-color(a3_dark) !default;
+
+$border-color: egeo-get-color(n4) !default;
+
+.title {
+  font-family: $font-family;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  color: $font-color;
+  line-height: 25px;
+}
+
+.header {
+   height: 65px;
+   padding-bottom: 10px;
+}
+
+.divisor {
+   border-top: 2px solid $border-color;
+   height: 30px;
+}

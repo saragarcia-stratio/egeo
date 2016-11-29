@@ -1,0 +1,14 @@
+import { Component, ViewEncapsulation } from '@angular/core';
+
+@Component({
+   selector: 'page-title-example',
+   template: require('./page-title.component.html'),
+   styles: [require('./page-title.component.scss')],
+   encapsulation: ViewEncapsulation.None
+})
+
+export class PageTitleComponent {
+   private title: string = 'page title';
+
+   constructor() { }
+}

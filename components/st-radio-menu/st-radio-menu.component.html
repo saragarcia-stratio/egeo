@@ -7,7 +7,7 @@
            'st-radio-menu__option--no-active': !isActive(option) && activeOption}"
            [attr.id]="qaTag + '-option-' + i">
         <input type="radio" name="{{option.value}}"
-               [value]="option.value"
+               [value]="option"
                [(ngModel)]="activeOption"
         ><span class="st-radio-menu__option-text">{{option.label | translate}}</span>
       </div>

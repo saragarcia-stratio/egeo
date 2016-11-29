@@ -11,6 +11,7 @@ import {
    RouterTestingModule
 } from '@angular/router/testing';
 import {StRadioMenuComponent} from './st-radio-menu.component';
+import {StRadioMenuOption} from './st-radio-menu-option.interface';
 
 
 describe('StRadioMenuComponent', () => {
@@ -27,35 +28,37 @@ describe('StRadioMenuComponent', () => {
    });
 
    let stRadioMenuComponent: StRadioMenuComponent;
-
+   let activeOption: StRadioMenuOption;
    beforeEach(() => {
       stRadioMenuComponent = new StRadioMenuComponent();
+      activeOption = {
+      label: "active option name",
+      value: "active option value"};
+      stRadioMenuComponent.activeOption = activeOption;
    });
 
    it('should be able to return if an option is active', () => {
-      let activeOptionName = 'active option';
-
-      stRadioMenuComponent.activeOption = activeOptionName;
-
-      expect(stRadioMenuComponent.isActive('another option')).toBeFalsy();
-      expect(stRadioMenuComponent.isActive(activeOptionName)).toBeTruthy();
+      let anotherOption: StRadioMenuOption = {
+         label: "no active option name",
+         value: "no active option value"
+      };
+      expect(stRadioMenuComponent.isActive(anotherOption)).toBeFalsy();
+      expect(stRadioMenuComponent.isActive(activeOption)).toBeTruthy();
    });
 
    describe('should be able to activate an option', function() {
-      let activeOptionName = 'active option';
+      it('when active option is changed, it is updated', function() {
+         stRadioMenuComponent.activateOption(activeOption);
 
-      it('when active option is changed, its name are updated', function() {
-         stRadioMenuComponent.activateOption(activeOptionName);
-
-         expect(stRadioMenuComponent.activeOption).toBe(activeOptionName);
+         expect(stRadioMenuComponent.activeOption).toBe(activeOption);
       });
 
-      it('when active option is changed, an event is emitted with the active option name', function() {
+      it('when active option is changed, an event is emitted with the active option', function() {
          spyOn(stRadioMenuComponent.changedOption, 'emit');
 
-         stRadioMenuComponent.activateOption(activeOptionName);
+         stRadioMenuComponent.activateOption(activeOption);
 
-         expect(stRadioMenuComponent.changedOption.emit).toHaveBeenCalledWith(activeOptionName);
+         expect(stRadioMenuComponent.changedOption.emit).toHaveBeenCalledWith(activeOption);
       });
 
    });

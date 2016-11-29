@@ -1,5 +1,6 @@
 import {Component, ViewEncapsulation, OnInit} from '@angular/core';
 import {ApiDoc, TYPES} from '../../shared/api-doc/shared/api-doc.model';
+import {StRadioMenuOption} from '../../../../components/st-radio-menu/st-radio-menu-option.interface';
 
 @Component({
    selector: 'radio-menu-example',
@@ -9,13 +10,15 @@ import {ApiDoc, TYPES} from '../../shared/api-doc/shared/api-doc.model';
 })
 
 export class RadioMenuComponent {
-   options: Array<string>;
-   selectedOptionTheme1: string;
-   selectedOptionTheme2: string;
+   options: Array<StRadioMenuOption>;
+   selectedOptionTheme1: StRadioMenuOption;
+   selectedOptionTheme2: StRadioMenuOption;
    apiDoc: ApiDoc;
 
    constructor() {
-      this.options = ['MENU.SERVICE', 'MENU.NODES', 'MENU.CASSANDRA'];
+     
+      this.options = [{label: 'MENU.SERVICE', value: 'service'}, {label: 'MENU.NODES', value: 'nodes'}, {label: 'MENU.CASSANDRA', value: 'cassandra'}];
+      
       this.apiDoc = {
          title: 'Radio Menu',
          description: 'Radio Menu is composed of options with radios. Generally, It is used in forms in order to change' +
@@ -27,13 +30,13 @@ export class RadioMenuComponent {
             inputs: [
                {
                   paramName: 'activeOption',
-                  type: TYPES.STR,
+                  type: TYPES.OBJ,
                   required: false,
                   details: 'Current active option'
                },
                {
                   paramName: 'options',
-                  type: TYPES.OBJ,
+                  type: TYPES.ARRAY_OBJ,
                   required: true,
                   details: 'Array of string with options'
                },
@@ -49,7 +52,7 @@ export class RadioMenuComponent {
                   paramName: 'changedOption',
                   type: TYPES.OBJ,
                   required: true,
-                  details: 'Event emitted when the active option is changed. This event has the name of the selected option.'
+                  details: 'Event emitted when the active option is changed. This event has the selected option as param.'
                }
             ]
          },

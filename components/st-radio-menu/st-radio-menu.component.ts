@@ -1,4 +1,5 @@
 import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
+import {StRadioMenuOption} from './st-radio-menu-option.interface';
 @Component({
    selector: 'st-radio-menu',
    template: require('./st-radio-menu.component.html'),
@@ -7,20 +8,20 @@ import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy} from '@
 })
 
 export class StRadioMenuComponent {
-   @Input() activeOption: string;
-   @Input() options: Array<string>;
+   @Input() activeOption: StRadioMenuOption;
+   @Input() options: Array<StRadioMenuOption>;
    @Input() qaTag: string;
    @Output() changedOption: EventEmitter<any> = new EventEmitter<any>();
 
    constructor() {
    }
 
-   isActive(optionName: string): boolean {
-      return this.activeOption === optionName;
+   isActive(option: StRadioMenuOption): boolean {
+      return this.activeOption !== undefined && (this.activeOption.value === option.value);
    }
 
-   activateOption(optionName: string): void {
-      this.activeOption = optionName;
-      this.changedOption.emit(optionName);
+   activateOption(option: StRadioMenuOption): void {
+      this.activeOption = option;
+      this.changedOption.emit(option);
    }
 }

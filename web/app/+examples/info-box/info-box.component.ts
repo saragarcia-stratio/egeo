@@ -4,8 +4,7 @@ import { ApiDoc, TYPES } from '../../shared';
 @Component({
    selector: 'info-box-example',
    template: require('./info-box.component.html'),
-   styles: [require('./info-box.component.scss')],
-   encapsulation: ViewEncapsulation.None
+   styles: [require('./info-box.component.scss')]
 })
 
 export class InfoBoxComponent {

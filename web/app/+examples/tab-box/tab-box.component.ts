@@ -1,12 +1,11 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { StTab } from './../../../../components';
+import { StTab } from './../../../../egeo';
 import { ApiDoc, TYPES } from '../../shared';
 
 @Component({
    selector: 'tab-box-example',
    template: require('./tab-box.component.html'),
-   styles: [require('./tab-box.component.scss')],
-   encapsulation: ViewEncapsulation.None
+   styles: [require('./tab-box.component.scss')]
 })
 
 export class TabBoxComponent {

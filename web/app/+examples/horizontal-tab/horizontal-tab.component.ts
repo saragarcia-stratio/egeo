@@ -1,12 +1,11 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { StHorizontalTab } from './../../../../components/';
+import { StHorizontalTab } from './../../../../egeo';
 import { ApiDoc, TYPES } from '../../shared';
 
 @Component({
    selector: 'horizontal-tab-example',
    template: require('./horizontal-tab.component.html'),
-   styles: [require('./horizontal-tab.component.scss')],
-   encapsulation: ViewEncapsulation.None
+   styles: [require('./horizontal-tab.component.scss')]
 })
 
 export class HorizontalTabComponent {

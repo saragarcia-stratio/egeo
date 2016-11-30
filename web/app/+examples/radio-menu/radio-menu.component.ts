@@ -5,8 +5,7 @@ import {StRadioMenuOption} from '../../../../components/st-radio-menu/st-radio-m
 @Component({
    selector: 'radio-menu-example',
    template: require('./radio-menu.component.html'),
-   styles: [require('./radio-menu.component.scss')],
-   encapsulation: ViewEncapsulation.None
+   styles: [require('./radio-menu.component.scss')]
 })
 
 export class RadioMenuComponent {
@@ -16,9 +15,9 @@ export class RadioMenuComponent {
    apiDoc: ApiDoc;
 
    constructor() {
-     
+
       this.options = [{label: 'MENU.SERVICE', value: 'service'}, {label: 'MENU.NODES', value: 'nodes'}, {label: 'MENU.CASSANDRA', value: 'cassandra'}];
-      
+
       this.apiDoc = {
          title: 'Radio Menu',
          description: 'Radio Menu is composed of options with radios. Generally, It is used in forms in order to change' +

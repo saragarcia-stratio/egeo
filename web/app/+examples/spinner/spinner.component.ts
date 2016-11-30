@@ -4,8 +4,7 @@ import { ApiDoc } from '../../shared';
 @Component({
   selector: 'spinner-example',
   template: require('./spinner.component.html'),
-  styles: [require('./spinner.component.scss')],
-  encapsulation: ViewEncapsulation.None
+  styles: [require('./spinner.component.scss')]
 })
 
 export class SpinnerComponent {

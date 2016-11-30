@@ -4,8 +4,7 @@ import { StTwoListSelectionElement, StListModifierObject } from '../../../../com
 @Component({
   selector: 'two-list-selection-example',
   template: require('./two-list-selection.component.html'),
-  styles: [require('./two-list-selection.component.scss')],
-  encapsulation: ViewEncapsulation.None
+  styles: [require('./two-list-selection.component.scss')]
 })
 
 export class TwoListSelectionComponent implements OnInit {

@@ -4,8 +4,7 @@ import { ApiDoc, TYPES } from '../../shared';
 @Component({
    selector: 'vertical-menu-example',
    template: require('./vertical-menu.component.html'),
-   styles: [require('./vertical-menu.component.scss')],
-   encapsulation: ViewEncapsulation.None
+   styles: [require('./vertical-menu.component.scss')]
 })
 
 export class VerticalMenuComponent implements OnInit {

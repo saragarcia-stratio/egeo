@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { Component2 } from './component2/component2';
 import { Component1 } from './component1/component1';
-import { StModal } from './../../../../../components';
+import { StModal } from './../../../../../egeo';
 
 
 @NgModule({

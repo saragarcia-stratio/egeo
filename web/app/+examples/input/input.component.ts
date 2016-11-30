@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { StInputError } from '../../../../components'; // For declare messages in case of error.
+import { StInputError } from '../../../../egeo'; // For declare messages in case of error.
 
 @Component({
   selector: 'input-example',

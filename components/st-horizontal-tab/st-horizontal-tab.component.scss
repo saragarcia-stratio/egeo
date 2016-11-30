@@ -1,6 +1,5 @@
-@import '../st-egeo';
-@import '../../ui-base/utils/typography';
-@import '../../ui-base/utils/colors';
+@import '~ui-base/utils/typography';
+@import '~ui-base/utils/colors';
 
 $st-horizontal-tab---font-size: egeo-get-font-size('body_xsmall') !default;
 $st-horizontal-tab__description---height: 35px !default;

@@ -4,8 +4,7 @@ import { StTab } from 'egeo/components';
 @Component({
    selector: 'tab-box-example',
    template: require('./tab-box.component.html'),
-   styles: [require('./tab-box.component.scss')],
-   encapsulation: ViewEncapsulation.None
+   styles: [require('./tab-box.component.scss')]
 })
 
 export class TabBoxComponent {

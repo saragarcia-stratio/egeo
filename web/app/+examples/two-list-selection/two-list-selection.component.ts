@@ -1,11 +1,10 @@
 import {Component, ViewEncapsulation, OnInit} from '@angular/core';
-import { StTwoListSelectionElement, StListModifierObject } from '../../../../components';
+import { StTwoListSelectionElement, StListModifierObject } from '../../../../egeo';
 
 @Component({
   selector: 'two-list-selection-example',
   template: require('./two-list-selection.component.html'),
-  styles: [require('./two-list-selection.component.scss')],
-  encapsulation: ViewEncapsulation.None
+  styles: [require('./two-list-selection.component.scss')]
 })
 
 export class TwoListSelectionComponent implements OnInit {

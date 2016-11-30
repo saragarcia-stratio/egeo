@@ -30,7 +30,7 @@ import { routing } from './layout.routing';
 
 import { LoadCodeComponent, ApiDocComponent, ParametersTableComponent } from '../shared';
 
-import { EgeoModule } from '../../../components';
+import { EgeoModule } from '../../../egeo';
 
 @NgModule({
   imports: [ CommonModule, routing, FormsModule, EgeoModule ],

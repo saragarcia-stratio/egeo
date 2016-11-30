@@ -1,9 +1,8 @@
-@import '../../../st-egeo';
-@import '../../../../ui-base/utils/typography';
-@import '../../../../ui-base/utils/colors';
-@import '../../../../ui-base/settings/extends';
-@import '../../../../ui-base/settings/animation';
-@import '../../../../ui-base/utils/colors';
+@import '~ui-base/utils/typography';
+@import '~ui-base/utils/colors';
+@import '~ui-base/settings/extends';
+@import '~ui-base/settings/animation';
+@import '~ui-base/utils/colors';
 
 
 $gosec-list-row__row__separator---color: egeo-get-color(n3) !default;

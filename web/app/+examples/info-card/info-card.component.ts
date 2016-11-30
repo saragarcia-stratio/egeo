@@ -4,8 +4,7 @@ import { ApiDoc, TYPES } from '../../shared';
 @Component({
    selector: 'info-card-example',
    template: require('./info-card.component.html'),
-   styles: [require('./info-card.component.scss')],
-   encapsulation: ViewEncapsulation.None
+   styles: [require('./info-card.component.scss')]
 })
 
 export class InfoCardComponent {

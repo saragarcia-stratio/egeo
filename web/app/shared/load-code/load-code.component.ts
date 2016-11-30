@@ -24,11 +24,11 @@ export class LoadCodeComponent implements OnInit {
   getCode(value: string): string {
     let result: string;
     if (this.type === 'markup') {
-      result = require(`!!prismjs?lang=markup!../../+examples/${value}`);
+      result = require(`!!prismjs-loader?lang=markup!../../+examples/${value}`);
     } else if (this.type === 'typescript') {
-      result = require(`!!prismjs?lang=typescript!../../+examples/${value}`);
+      result = require(`!!prismjs-loader?lang=typescript!../../+examples/${value}`);
     } else {
-      result = require(`!!prismjs?lang=javascript!../../+examples/${value}`);
+      result = require(`!!prismjs-loader?lang=javascript!../../+examples/${value}`);
     }
     return result;
   }

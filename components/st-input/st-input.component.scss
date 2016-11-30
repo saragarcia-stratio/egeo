@@ -1,6 +1,5 @@
-@import '../st-egeo';
-@import '../../ui-base/utils/typography';
-@import '../../ui-base/utils/colors';
+@import '~ui-base/utils/typography';
+@import '~ui-base/utils/colors';
 
 $general__active---color: egeo-get-color(a1) !default;
 $general__warning---color: egeo-get-color(s2) !default;

@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef, OnChanges } from '@angular/core';
-import { Page } from './st-pagination.model.ts';
+import { Page } from './st-pagination.model';
 
 @Component({
    selector: 'gosec-pagination',

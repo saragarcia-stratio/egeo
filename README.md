@@ -14,5 +14,5 @@ For start:
 ```
 yarn install
 
-npm start
+yarn start
 ```

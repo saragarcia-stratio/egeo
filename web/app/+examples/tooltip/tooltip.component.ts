@@ -4,8 +4,7 @@ import { ApiDoc, TYPES } from '../../shared';
 @Component({
    selector: 'tooltip-example',
    template: require('./tooltip.component.html'),
-   styles: [require('./tooltip.component.scss')],
-   encapsulation: ViewEncapsulation.None
+   styles: [require('./tooltip.component.scss')]
 })
 
 export class TooltipComponent {

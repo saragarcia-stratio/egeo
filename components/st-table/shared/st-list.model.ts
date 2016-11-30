@@ -21,14 +21,14 @@ export interface FieldsMetadata {
    booleanRel?: booleanRelation;
 }
 
-type iconRelation = {
+export type iconRelation = {
    [name: string]: {
       iconName: string;
       color?: string;
    }
 };
 
-type booleanRelation = {
+export type booleanRelation = {
    trueText?: string,
    trueField?: {
       trueText: string,

@@ -1,4 +1,4 @@
-interface TitleConfig {
+export interface TitleConfig {
    fontSize: number;
    backgroundColor: string;
 }

@@ -1,12 +1,11 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { StFooterLink } from '../../../../components';
+import { StFooterLink } from '../../../../egeo';
 import { ApiDoc, TYPES } from '../../shared';
 
 @Component({
    selector: 'footer-example',
    template: require('./footer.component.html'),
-   styles: [require('./footer.component.scss')],
-   encapsulation: ViewEncapsulation.None
+   styles: [require('./footer.component.scss')]
 })
 
 export class FooterComponent {

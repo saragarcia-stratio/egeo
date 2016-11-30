@@ -73,26 +73,6 @@
             </configuration>
           </execution>
           <execution>
-            <id>Build fonts</id>
-            <goals>
-              <goal>npm</goal>
-            </goals>
-            <phase>generate-sources</phase>
-            <configuration>
-              <arguments>run-script ui-fonts</arguments>
-            </configuration>
-          </execution>
-          <execution>
-            <id>webpack build</id>
-            <goals>
-              <goal>webpack</goal>
-            </goals>
-            <phase>compile</phase>
-            <configuration>
-              <arguments>--config config-web/webpack.prod.js  --no-color --bail</arguments>
-            </configuration>
-          </execution>
-          <execution>
             <id>npm test</id>
             <goals>
               <goal>npm</goal>
@@ -101,6 +81,16 @@
             <configuration>
               <skipTests>${skipUTs}</skipTests>
               <arguments>run-script test</arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>generate declarations</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <phase>deploy</phase>
+            <configuration>
+              <arguments>run-script generate-declarations</arguments>
             </configuration>
           </execution>
           <execution>

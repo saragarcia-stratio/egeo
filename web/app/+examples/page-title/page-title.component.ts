@@ -4,8 +4,7 @@ import { ApiDoc, TYPES } from '../../shared';
 @Component({
    selector: 'page-title-example',
    template: require('./page-title.component.html'),
-   styles: [require('./page-title.component.scss')],
-   encapsulation: ViewEncapsulation.None
+   styles: [require('./page-title.component.scss')]
 })
 
 export class PageTitleComponent {

@@ -1,6 +1,5 @@
-@import '../st-egeo';
-@import '../../ui-base/utils/typography';
-@import '../../ui-base/utils/colors';
+@import '~ui-base/utils/typography';
+@import '~ui-base/utils/colors';
 
 $tooltip-content--span---width: 240px !default;
 $tooltip-content--span---font-size: egeo-get-font-size(body_xxsmall) !default;

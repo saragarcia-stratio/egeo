@@ -9,8 +9,6 @@ import { StInfoBoxComponent }  from './st-info-box';
 import { StSpinnerComponent } from './st-spinner';
 import { StTwoListSelectionComponent } from './st-two-list-selection';
 import { StFooterComponent }  from './st-footer';
-import { StUserMenuComponent } from './st-user-menu/st-user-menu.component';
-import { StNotificationComponent } from './notification-manager/shared/';
 import { StInfoCardComponent } from './st-info-card';
 import { StTooltip } from './st-tooltip';
 import { StVerticalMenuComponent } from './st-vertical-menu/st-vertical-menu.component';
@@ -47,7 +45,7 @@ import {
     TranslateService
   ],
   declarations: [
-    StInputComponent, StUserMenuComponent, StNotificationComponent, StSpinnerComponent, StTooltip, StTwoListSelectionComponent, StFooterComponent,
+    StInputComponent, StSpinnerComponent, StTooltip, StTwoListSelectionComponent, StFooterComponent,
     StInfoBoxComponent, StInfoCardComponent, StVerticalMenuComponent, GosecListRowComponent, GosecListBodyComponent, GosecListHeaderComponent,
     GosecListComponent, GosecPaginationComponent, StHorizontalTabComponent, StTabBoxComponent, StRadioMenuComponent, StPageTitleComponent
   ],

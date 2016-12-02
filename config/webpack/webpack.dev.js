@@ -1,4 +1,4 @@
-const helpers = require('./helpers');
+const helpers = require('../helpers');
 const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common.js'); // the settings that are common to prod and dev
 

@@ -1,21 +1,5 @@
 {
-  "name": "egeo",
-  "version": "",
-  "license": "Apache-2.0",
-  "description": "Egeo Library. Common components, styles, fonts and website",
-  "scripts": {
-    "start": "webpack-dev-server --config config/webpack.dev.js --progress --profile --watch --content-base src/",
-    "test": "karma start",
-    "test:watch": "karma start --auto-watch --no-single-run",
-    "build": "rm -rf target && webpack --config config/webpack.prod.js --no-color --bail",
-    "replace": "json -I -f package.json -e",
-    "generate-declarations": "tsc"
-  },
   "author": "Stratio",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Stratio/egeo"
-  },
   "dependencies": {
     "@angular/common": "2.2.4",
     "@angular/compiler": "2.2.4",
@@ -35,6 +19,7 @@
     "ui-fonts": "0.1.0-SNAPSHOT",
     "zone.js": "0.6.26"
   },
+  "description": "Egeo Library. Common components, styles, fonts and website",
   "devDependencies": {
     "@types/core-js": "0.9.34",
     "@types/jasmine": "2.5.38",
@@ -81,5 +66,20 @@
     "webpack-dev-server": "2.1.0-beta.12",
     "webpack-md5-hash": "0.0.5",
     "webpack-merge": "1.0.2"
-  }
+  },
+  "license": "Apache-2.0",
+  "name": "egeo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Stratio/egeo"
+  },
+  "scripts": {
+    "build": "NODE_ENV=production rm -rf target && webpack --no-color --bail",
+    "generate-declarations": "tsc",
+    "replace": "json -I -f package.json -e",
+    "start": "NODE_ENV=development webpack-dev-server --progress --profile --watch --content-base src/",
+    "test": "NODE_ENV=test karma start",
+    "test:watch": "NODE_ENV=test karma start --auto-watch --no-single-run"
+  },
+  "version": ""
 }

@@ -1,20 +1,23 @@
 {
+   "atom": {
+      "rewriteTsconfig": false
+   },
    "compilerOptions": {
-      "target": "es5",
-      "module": "commonjs",
-      "moduleResolution": "node",
-      "sourceMap": true,
+      "declaration": true,
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
-      "removeComments": false,
+      "module": "commonjs",
+      "moduleResolution": "node",
       "noImplicitAny": true,
+      "pretty": true,
+      "removeComments": false,
+      "sourceMap": true,
       "suppressImplicitAnyIndexErrors": true,
-      "declaration": true,
-      "pretty": true
+      "target": "es5"
    },
    "exclude": [
-      "node_modules",
       "**/*.spec.ts",
+      "node_modules",
       "web"
    ]
 }

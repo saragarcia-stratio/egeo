@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-const helpers = require('./helpers');
+const helpers = require('../helpers');
 
 const AssetsPlugin = require('assets-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -12,7 +12,6 @@ const StringReplacePlugin = require("string-replace-webpack-plugin");
 var CopyWebpackPlugin = (CopyWebpackPlugin = require('copy-webpack-plugin'), CopyWebpackPlugin.default || CopyWebpackPlugin);
 
 module.exports = function (options) {
-   isProd = options.env === 'production';
    return {
       entry: {
          'polyfills': './web/polyfills.ts',

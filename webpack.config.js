@@ -1,14 +1,13 @@
+let env = 'dev';
+
 switch (process.env.NODE_ENV) {
-  case 'prod':
-  case 'production':
-    module.exports = require('./config/webpack.prod')({env: 'production'});
-    break;
-  case 'test':
-  case 'testing':
-    module.exports = require('./config/webpack.test')({env: 'test'});
-    break;
-  case 'dev':
-  case 'development':
-  default:
-    module.exports = require('./config/webpack.dev')({env: 'development'});
+   case 'prod':
+   case 'production':
+      env = 'prod';
+      break;
+   case 'test':
+   case 'testing':
+      env = 'test';
 }
+
+module.exports = require('./config/webpack/webpack.'+env);

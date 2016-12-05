@@ -13,6 +13,7 @@
 * New component Title Page
 * Total refactor of repository
 * New search component
+* New button component
 
 ## 0.4.0 (November 02, 2016)
 

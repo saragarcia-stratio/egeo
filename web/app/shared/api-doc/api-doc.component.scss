@@ -42,6 +42,12 @@ $secundary-text-size: egeo-get-font-size(body_small) !default;
 
 .title3 {
    color: egeo-get-color(n7);
+   font-size: egeo-get-font-size(head_xxlarge);
+}
+
+.title4 {
+   color: egeo-get-color(n7);
+   font-size: egeo-get-font-size(head_large);
 }
 
 .description {

@@ -56,6 +56,9 @@
           <div (click)="isCatalogOpened = !isCatalogOpened">UI Catalog<i class="icon icon-arrow2_down"></i></div>
 
           <ul class="tmp-dropdown-submenu" *ngIf="isCatalogOpened">
+            <li class="tmp-dropdown-submenu-item" [ngClass]="{'tmp-dropdown-submenu-item--active': currentUrl === '/button'}">
+              <a routerLink="/button">Button</a>
+            </li>
             <li class="tmp-dropdown-submenu-item" [ngClass]="{'tmp-dropdown-submenu-item--active': currentUrl === '/footer'}">
               <a routerLink="/footer">Footer</a>
             </li>

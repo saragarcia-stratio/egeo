@@ -25,4 +25,4 @@ export interface Models {
    models: Array<any>;
 }
 
-export enum TYPES {STR, NUM, OBJ, BOOL, ANY, ARRAY_STR, ARRAY_NUM, ARRAY_OBJ, ARRAY_BOOL, ARRAY_ANY}
+export enum TYPES {STR, NUM, OBJ, BOOL, ANY, ARRAY_STR, ARRAY_NUM, ARRAY_OBJ, ARRAY_BOOL, ARRAY_ANY, FUNC}

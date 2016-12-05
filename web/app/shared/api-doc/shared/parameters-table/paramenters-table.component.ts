@@ -38,6 +38,8 @@ export class ParametersTableComponent {
                return 'Array<boolean>';
             case TYPES.ARRAY_ANY:
                return 'Array<any>';
+            case TYPES.FUNC:
+               return 'Function';
             default:
                return 'String';
          }

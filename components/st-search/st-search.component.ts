@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, OnChanges, OnDestroy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, OnChanges, OnDestroy, SimpleChanges, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class StSearchComponent implements OnChanges, OnDestroy {
+export class StSearchComponent implements OnChanges, OnDestroy, OnInit {
     @Input() qaTag: string;
     @Input() placeholder: string = 'Search';
     @Input() debounce: number = 0;
@@ -22,9 +22,7 @@ export class StSearchComponent implements OnChanges, OnDestroy {
 
     private lastEmited: string | undefined = undefined;
 
-    constructor() {
-        this.manageSubscription();
-    }
+    constructor() { }
 
     public launchSearch(): void {
         if (this.searchBox.value !== undefined && this.lastEmited !== this.searchBox.value && this.minLength <= this.searchBox.value.length) {
@@ -40,8 +38,12 @@ export class StSearchComponent implements OnChanges, OnDestroy {
         }
     }
 
-    public ngOnChanges(): void {
+    public ngOnChanges(changes: SimpleChanges): void {
         this.manageSubscription();
+    }
+
+    public ngOnInit(): void {
+       this.manageSubscription();
     }
 
     public ngOnDestroy(): void {

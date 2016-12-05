@@ -21,9 +21,6 @@ Add a description of your changes here.
 ### Other observations
 - Add other information you consider important
 
-### ui-base
-- Remember Launch "npm run check-ui-base" for check sass compile if modify ui-base
-
 ### Post-review reminder
 - Remember reviewer do shipit without +1, it is understood 
 - Squash commits

@@ -32,28 +32,28 @@ describe('StRadioMenuComponent', () => {
    beforeEach(() => {
       stRadioMenuComponent = new StRadioMenuComponent();
       activeOption = {
-      label: "active option name",
-      value: "active option value"};
+      label: 'active option name',
+      value: 'active option value'};
       stRadioMenuComponent.activeOption = activeOption;
    });
 
    it('should be able to return if an option is active', () => {
       let anotherOption: StRadioMenuOption = {
-         label: "no active option name",
-         value: "no active option value"
+         label: 'no active option name',
+         value: 'no active option value'
       };
       expect(stRadioMenuComponent.isActive(anotherOption)).toBeFalsy();
       expect(stRadioMenuComponent.isActive(activeOption)).toBeTruthy();
    });
 
-   describe('should be able to activate an option', function() {
-      it('when active option is changed, it is updated', function() {
+   describe('should be able to activate an option', () => {
+      it('when active option is changed, it is updated', () => {
          stRadioMenuComponent.activateOption(activeOption);
 
          expect(stRadioMenuComponent.activeOption).toBe(activeOption);
       });
 
-      it('when active option is changed, an event is emitted with the active option', function() {
+      it('when active option is changed, an event is emitted with the active option', () => {
          spyOn(stRadioMenuComponent.changedOption, 'emit');
 
          stRadioMenuComponent.activateOption(activeOption);

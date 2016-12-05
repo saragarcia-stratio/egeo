@@ -1,3 +1,4 @@
+import { ModuleWithProviders } from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {LayoutComponent} from './layout.component';
 import {
@@ -21,10 +22,11 @@ import {
   TabBoxComponent,
   ApiDocExample,
   RadioMenuComponent,
-  PageTitleComponent
+  PageTitleComponent,
+  SearchComponent
 } from '../+examples';
 
-export const routing = RouterModule.forChild([
+export const routing: ModuleWithProviders = RouterModule.forChild([
   {
     path: '', component: LayoutComponent, children: [
       { path: '', redirectTo: 'main' },
@@ -48,7 +50,8 @@ export const routing = RouterModule.forChild([
       { path: 'horizontal-tab', component: HorizontalTabComponent },
       { path: 'tab-box', component: TabBoxComponent },
       { path: 'api-doc', component: ApiDocExample },
-      { path: 'page-title', component: PageTitleComponent }
+      { path: 'page-title', component: PageTitleComponent },
+      { path: 'search', component: SearchComponent }
     ]
   }
 ]);

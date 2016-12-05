@@ -34,7 +34,7 @@ describe('StVerticalMenuComponent', () => {
   });
 
   describe('when it is initialized', () => {
-    it ('if active option is not defined, first option is activated', function(){
+    it ('if active option is not defined, first option is activated', () => {
       stVerticalMenuComponent.activeOption = undefined;
       stVerticalMenuComponent.options = fakeOptions;
       stVerticalMenuComponent.ngOnInit();
@@ -52,24 +52,24 @@ describe('StVerticalMenuComponent', () => {
     expect(stVerticalMenuComponent.isActive(activeOptionName)).toBeTruthy();
   });
 
-  describe('should be able to activate an option', function () {
+  describe('should be able to activate an option', () => {
     let activeOptionName = 'active option';
     let activeOptionIndex = 6;
 
-    it('when active option is changed, its position and name are updated', function () {
+    it('when active option is changed, its position and name are updated', () => {
       stVerticalMenuComponent.activateOption(activeOptionName, activeOptionIndex);
 
       expect(stVerticalMenuComponent.activeOption).toBe(activeOptionName);
       expect(stVerticalMenuComponent.activeOptionIndex).toBe(activeOptionIndex);
     });
 
-    it('when active option is changed, an event is emitted with the active option name', function () {
+    it('when active option is changed, an event is emitted with the active option name', () => {
       spyOn(stVerticalMenuComponent.changedOption, 'emit');
 
       stVerticalMenuComponent.activateOption(activeOptionName, activeOptionIndex);
 
       expect(stVerticalMenuComponent.changedOption.emit).toHaveBeenCalledWith(activeOptionName);
-    })
+    });
 
   });
 });

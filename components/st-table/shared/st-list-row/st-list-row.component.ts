@@ -67,7 +67,7 @@ export class GosecListRowComponent<T> {
    }
 
    getBoolean(x: any): boolean {
-      return this.TRUTHY_VALUES.some(function (value: any) {
+      return this.TRUTHY_VALUES.some(function (value: any): any {
          return x === value;
       });
    }

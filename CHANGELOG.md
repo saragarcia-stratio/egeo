@@ -12,6 +12,7 @@
 * Add radio menu component
 * New component Title Page
 * Total refactor of repository
+* New search component
 
 ## 0.4.0 (November 02, 2016)
 

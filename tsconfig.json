@@ -16,8 +16,7 @@
       "target": "es5"
    },
    "exclude": [
-      "**/*.spec.ts",
       "node_modules",
-      "web"
+      "dist"
    ]
 }

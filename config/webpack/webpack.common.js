@@ -51,7 +51,7 @@ module.exports = function (options) {
             {
                test: /\.scss$/,
                exclude: '/node_modules/',
-               use: ['raw-loader', 'sass-loader']
+               use: ['to-string-loader', 'css-loader', 'sass-loader']
             },
             {
                test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,

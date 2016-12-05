@@ -1,0 +1,19 @@
+<st-api-doc [doc]="apiDoc">
+   <div class="example-run">
+      <section class="container-fluid col-md-12">
+         <div class="search-container">
+            <div class="example-run-box">
+               <st-search [placeholder]="placeholder" [qaTag]="qaTag" [debounce]="debounceTime" [minLength]="minLength" (onSearch)="onSearchResult($event)"></st-search>
+            </div>
+         </div>
+         <div class="option"><span class="option-title">Search value: </span> <span class="option-value">{{searched}}</span></div>
+         <div class="option"><span class="option-title">debounce: </span> <input type="number" [(ngModel)]="debounceTime" min="0" class="debounceTime"></div>
+         <div class="option"><span class="option-title">minLength:  </span> <input type="number" [(ngModel)]="minLength" min="0" class="debounceTime"></div>
+      </section>
+   </div>
+   <div class="example-code">
+      <!--{{code}}-->
+      <st-load-code class="col-sm-12" file="search/example-code/search.ts.txt"></st-load-code>
+      <st-load-code class="col-sm-12" file="search/example-code/search.html.txt"></st-load-code>
+   </div>
+</st-api-doc>

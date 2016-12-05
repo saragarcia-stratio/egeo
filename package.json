@@ -74,10 +74,11 @@
     "url": "https://github.com/Stratio/egeo"
   },
   "scripts": {
-    "build": "NODE_ENV=production rm -rf target && webpack --no-color --bail",
-    "generate-declarations": "tsc",
+    "build": "NODE_ENV=production rm -rf target && webpack --config config/webpack.prod.js --no-color --bail",
+    "generate-declarations": "tsc -p tsconfig.components.json",
+    "lint": "tslint -c ./tslint.json 'components/**/*.ts' -e 'node_modules' --project ./tsconfig.json --type-check -t stylish",
     "replace": "json -I -f package.json -e",
-    "start": "NODE_ENV=development webpack-dev-server --progress --profile --watch --content-base src/",
+    "start": "NODE_ENV=development webpack-dev-server --config config/webpack.dev.js --progress --profile --watch --content-base src/",
     "test": "NODE_ENV=test karma start",
     "test:watch": "NODE_ENV=test karma start --auto-watch --no-single-run"
   },

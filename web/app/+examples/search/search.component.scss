@@ -1,0 +1,42 @@
+@import '~ui-base/utils/typography';
+@import '~ui-base/utils/colors';
+
+$text: egeo-get-font(open-sans);
+$text-size: egeo-get-font-size(body_small);
+
+.search-container {
+   width: 210px;
+   margin-bottom: 50px;
+}
+
+.option {
+   margin-bottom: 10px;
+   color: egeo-get-color(n7);
+
+   &-title {
+      font-family: $text;
+      font-size: $text-size;
+      font-weight: egeo-get-font-weight(bold);
+   }
+
+   &-value {
+      font-family: $text;
+      font-size: $text-size;
+      font-weight: egeo-get-font-weight(normal);
+      margin-left: 5px;
+      color: egeo-get-color(n10);
+   }
+}
+
+
+
+.debounceTime {
+   width: 50px;
+   border: 1px solid egeo-get-color(n6);
+   margin-left: 5px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+   opacity: 1;
+}

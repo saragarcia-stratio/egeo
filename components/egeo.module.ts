@@ -16,6 +16,7 @@ import { StHorizontalTabComponent } from './st-horizontal-tab/st-horizontal-tab.
 import { StTabBoxComponent } from './st-tab-box/st-tab-box.component';
 import { StRadioMenuComponent } from './st-radio-menu/st-radio-menu.component';
 import { StPageTitleComponent } from './st-page-title';
+import { StSearchComponent } from './st-search';
 import {    GosecListRowComponent,
             GosecListBodyComponent,
             GosecListHeaderComponent,
@@ -47,11 +48,11 @@ import {
   declarations: [
     StInputComponent, StSpinnerComponent, StTooltip, StTwoListSelectionComponent, StFooterComponent,
     StInfoBoxComponent, StInfoCardComponent, StVerticalMenuComponent, GosecListRowComponent, GosecListBodyComponent, GosecListHeaderComponent,
-    GosecListComponent, GosecPaginationComponent, StHorizontalTabComponent, StTabBoxComponent, StRadioMenuComponent, StPageTitleComponent
+    GosecListComponent, GosecPaginationComponent, StHorizontalTabComponent, StTabBoxComponent, StRadioMenuComponent, StPageTitleComponent, StSearchComponent
   ],
   exports: [
     StInputComponent, StInfoBoxComponent, StSpinnerComponent, StTooltip, StTwoListSelectionComponent, StFooterComponent, StInfoCardComponent,
-    StVerticalMenuComponent, GosecListComponent, StHorizontalTabComponent, StTabBoxComponent, StRadioMenuComponent, StPageTitleComponent
+    StVerticalMenuComponent, GosecListComponent, StHorizontalTabComponent, StTabBoxComponent, StRadioMenuComponent, StPageTitleComponent, StSearchComponent
   ]
 })
 export class EgeoModule {

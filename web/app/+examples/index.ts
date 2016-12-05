@@ -19,3 +19,4 @@ export * from './typography';
 export * from './icons';
 export * from './logo';
 export * from './page-title';
+export * from './search';

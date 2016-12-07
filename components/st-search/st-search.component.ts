@@ -5,10 +5,7 @@ import { Subscription } from 'rxjs';
 @Component({
    selector: 'st-search',
    template: require('./st-search.component.html'),
-   styles: [
-      require('./st-search.component.scss'),
-      require('flexboxgrid/css/flexboxgrid.min.css')
-   ],
+   styles: [require('./st-search.component.scss')],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 

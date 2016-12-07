@@ -1,12 +1,14 @@
-<section>
-   <div class="input-container">
-      <input
-         [attr.id]="qaTag"
-         [formControl]="searchBox"
-         [placeholder]="placeholder"
-         (keypress)="onKeyPress($event)"
-         class="remove-default-style"
-      />
-      <i class="st-search-icon icon-search" (click)="launchSearch()"></i>
+<section class="row">
+   <div class="col-md-12">
+      <div class="input-container">
+         <input
+            [attr.id]="qaTag"
+            [formControl]="searchBox"
+            [placeholder]="placeholder"
+            (keypress)="onKeyPress($event)"
+            class="remove-default-style"
+         />
+         <i class="st-search-icon icon-search" (click)="launchSearch()"></i>
+      </div>
    </div>
 </section>

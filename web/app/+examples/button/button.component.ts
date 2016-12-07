@@ -1,3 +1,4 @@
+import { Buttons } from './../../../../components/st-modal/shared/message-modal.model';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { ApiDoc, TYPES } from '../../shared';
 
@@ -16,7 +17,7 @@ export class ButtonComponent {
          inputs: [
             { paramName: 'inputType', type: TYPES.STR, required: false, details: 'The button type can have one of these possible values: submit / reset / button. The submit and reset ones are used to be recognized as the HTML forms predefined options. Default type is submit.' },
             { paramName: 'isDisabled', type: TYPES.BOOL, required: false, details: 'The button type can have one of these possible values: submit / reset / button. The submit and reset ones are used to be recognized as the HTML forms predefined options. Default type is submit.' },
-            { paramName: 'onClickEvtEmitter', type: TYPES.FUNC, required: true, details: 'Callback function called on click on the button.' },
+            { paramName: 'click', type: TYPES.FUNC, required: true, details: 'Callback function called on click on the Buttons.' },
             { paramName: 'value', type: TYPES.STR, required: true, details: 'Text of the button. Default type is "Click Me".' },
             { paramName: 'qaTag', type: TYPES.STR, required: true, details: 'Id value for qa test.' },
             { paramName: 'leftIcon', type: TYPES.STR, required: false, details: 'An icon of the Stratio Fonticon family of icons that should appear at left of the text.' },

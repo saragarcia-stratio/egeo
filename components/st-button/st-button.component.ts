@@ -17,8 +17,6 @@ export class StButtonComponent {
    @Input() themeClass: string;
    @Input() typeClass: string = 'btnMain';
 
-   @Output() onClickEvtEmitter: EventEmitter<any> = new EventEmitter();
-
    constructor() {}
 
    private getButtonTypeClass(): string {
@@ -39,7 +37,4 @@ export class StButtonComponent {
       return cssClass;
    }
 
-   private onClick(event: any): void {
-      this.onClickEvtEmitter.emit(event);
-   }
 }

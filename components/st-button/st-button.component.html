@@ -1,4 +1,4 @@
-<button #myInput [attr.type]="inputType" class="st-button" [attr.id]="qaTag" [attr.disabled]="isDisabled ? true : null" (click)="onClick($event)"  [ngClass]="getButtonTypeClass()">
+<button #myInput [attr.type]="inputType" class="st-button" [attr.id]="qaTag" [attr.disabled]="isDisabled ? true : null" [ngClass]="getButtonTypeClass()">
    <i class="st-button__icon {{leftIcon}}" *ngIf="leftIcon"></i>
    <span class="st-button__text">{{text}}</span>
    <i class="st-button__icon {{rightIcon}}" *ngIf="rightIcon"></i>

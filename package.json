@@ -31,6 +31,7 @@
     "assets-webpack-plugin": "3.5.0",
     "awesome-typescript-loader": "2.2.4",
     "copy-webpack-plugin": "4.0.1",
+    "cross-env": "3.1.3",
     "css-loader": "0.26.0",
     "extract-text-webpack-plugin": "1.0.1",
     "file-loader": "0.9.0",
@@ -74,13 +75,13 @@
     "url": "https://github.com/Stratio/egeo"
   },
   "scripts": {
-    "build": "NODE_ENV=production rm -rf target && webpack --config config/webpack/webpack.prod.js --no-color --bail",
+    "build": "cross-env NODE_ENV=production rm -rf target && webpack --no-color --bail",
     "generate-declarations": "tsc -p tsconfig.components.json",
     "lint": "tslint -c ./tslint.json 'components/**/*.ts' -e 'node_modules' --project ./tsconfig.json --type-check -t stylish",
     "replace": "json -I -f package.json -e",
-    "start": "NODE_ENV=development webpack-dev-server --config config/webpack/webpack.dev.js --progress --profile --watch --content-base src/",
-    "test": "NODE_ENV=test karma start",
-    "test:watch": "NODE_ENV=test karma start --auto-watch --no-single-run"
+    "start": "cross-env NODE_ENV=development webpack-dev-server --progress --profile --watch --content-base src/",
+    "test": "cross-env NODE_ENV=test karma start",
+    "test:watch": "cross-env NODE_ENV=test karma start --auto-watch --no-single-run"
   },
   "version": ""
 }

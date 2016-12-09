@@ -22,10 +22,11 @@ export class StSearchComponent implements OnChanges, OnDestroy, OnInit {
 
    private lastEmited: string | undefined = undefined;
 
-   constructor() { }
 
    public launchSearch(): void {
-      if (this.searchBox.value !== undefined && this.lastEmited !== this.searchBox.value && this.minLength <= this.searchBox.value.length) {
+      if (this.searchBox.value !== null && this.searchBox.value !== undefined &&
+         this.lastEmited !== this.searchBox.value && this.minLength <= this.searchBox.value.length
+      ) {
          this.lastEmited = this.searchBox.value;
          this.onSearch.emit(this.lastEmited);
       }

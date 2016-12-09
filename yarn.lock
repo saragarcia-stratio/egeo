@@ -5111,13 +5111,13 @@ uglify-to-browserify@~1.0.0:
   version "1.0.2"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/uglify-to-browserify/-/uglify-to-browserify-1.0.2.tgz#6e0924d6bda6b5afe349e39a6d632850a0f882b7"
 
-ui-base@0.1.0-SNAPSHOT:
-  version "0.1.0-SNAPSHOT"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/ui-base/-/ui-base-0.1.0-SNAPSHOT.tgz#6be4378c721f62119a2b7fb2217c19bbc6fee1c2"
+ui-base@0.1.0:
+  version "0.1.0"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/ui-base/-/ui-base-0.1.0.tgz#e4987d2918ebd007ea4fe633358d07b34b762c53"
 
-ui-fonts@0.1.0-SNAPSHOT:
-  version "0.1.0-SNAPSHOT"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/ui-fonts/-/ui-fonts-0.1.0-SNAPSHOT.tgz#2a74e56a0ff392bc337dd0bd0722830c58e63c98"
+ui-fonts@0.1.0:
+  version "0.1.0"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/ui-fonts/-/ui-fonts-0.1.0.tgz#92302dfe38b495280881311654c848e063f92b6d"
 
 uid-number@~0.0.6:
   version "0.0.6"

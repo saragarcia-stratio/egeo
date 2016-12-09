@@ -55,8 +55,9 @@ $st-button---height: 35px !default;
 
       &-default,
       &-subtype1 {
+         border: none;
          background-color: egeo-get-color(a1);
-         color: egeo-get-color(n0);      
+         color: egeo-get-color(n0);
 
          &:not([disabled]):hover {
             background-color: egeo-get-color(a1_dark);
@@ -64,8 +65,9 @@ $st-button---height: 35px !default;
       }
 
       &-subtype2 {
+         border: none;
          background-color: egeo-get-color(a2);
-         color: egeo-get-color(n0);      
+         color: egeo-get-color(n0);
 
          &:not([disabled]):hover {
             background-color: egeo-get-color(a2_dark);
@@ -73,14 +75,15 @@ $st-button---height: 35px !default;
       }
 
       &-subtype3 {
+         border: none;
          background-color: egeo-get-color(a3);
-         color: egeo-get-color(n0);      
+         color: egeo-get-color(n0);
 
          &:not([disabled]):hover {
             background-color: egeo-get-color(a3_dark);
          }
       }
-   
+
       &-subtype4 {
          background-color: transparent;
          border: 3px solid egeo-get-color(n4);
@@ -132,7 +135,7 @@ $st-button---height: 35px !default;
       @extend %round-button;
 
       font-size: egeo-get-font-size(icon_xsmall);
-   
+
       .#{$this}__icon + .#{$this}__text,
       .#{$this}__text + .#{$this}__icon {
          margin: 0;
@@ -192,6 +195,7 @@ $st-button---height: 35px !default;
          &-subtype1,
          &-subtype2,
          &-subtype3 {
+            border: none;
             background-color: egeo-get-color(n0);
          }
       }

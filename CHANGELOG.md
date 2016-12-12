@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.0 (upcoming)
+
+* Pending changelog
+
 ## 0.5.0 (upcoming)
 
 * Change repository name for Egeo

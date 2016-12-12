@@ -83,5 +83,5 @@
     "test": "cross-env NODE_ENV=test karma start",
     "test:watch": "cross-env NODE_ENV=test karma start --auto-watch --no-single-run"
   },
-  "version": "0.5.0-RC1"
+  "version": "0.5.0"
 }

@@ -8,11 +8,12 @@ Add a description of your changes here.
 - [ ] Have explained API (Inputs, Outpus, Models, Functions, etc)
 - [ ] Have example running
 - [ ] Have example code (HTML, ts)
-- [ ] Have changelog updated
+- [ ] Have changelog.md & changelog inside the website updated
 
 ### Code
 - [ ] Have 3 spaces indentation
 - [ ] Pass ts lint Task
+- [ ] Pass Sass lint Task
 - [ ] Have QA-tags
 
 ### Tests
@@ -22,6 +23,6 @@ Add a description of your changes here.
 - Add other information you consider important
 
 ### Post-review reminder
-- Remember reviewer do shipit without +1, it is understood 
+- Remember reviewer approve changes inside the Files Changed tab (Review changes dropdown)
 - Squash commits
 - Release version in case of breaking changes and notify of all front

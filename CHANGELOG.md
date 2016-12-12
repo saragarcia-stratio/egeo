@@ -4,7 +4,7 @@
 
 * Pending changelog
 
-## 0.5.0 (upcoming)
+## 0.5.0 (December 12, 2016)
 
 * Change repository name for Egeo
 * Fix bad URL imports in the new UI-Base Sass files.

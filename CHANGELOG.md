@@ -2,7 +2,7 @@
 
 ## 0.6.0 (upcoming)
 
-* Pending changelog
+* Update colors with new values, possibility of getting in RGB format and documentation with RGB info.
 
 ## 0.5.0 (December 12, 2016)
 

@@ -27,7 +27,7 @@ export class ListComponent {
       this.fieldsMetaData = DEFAULT_USER_METADATA;
       this.order = new Order('id', ORDER_TYPE.ASC);
       this.hasDetail = true;
-      this.pagination = new Page(1, 10, 10);
+      this.pagination = new Page(1, this.elementsPerPage, 10);
       this.refreshElementToShow();
    }
 

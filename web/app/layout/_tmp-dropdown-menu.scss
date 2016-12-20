@@ -1,71 +1,90 @@
 /* TODO: move these placeholders to a better place */
 %remove-list-style {
-  &,
-  & ul {
-    list-style: none;
-    padding: 0;
-  }
+   & {
+      list-style: none;
+      padding: 0;
+   }
 }
 
 %remove-link-style {
-  &,
-  & a {
-    color: inherit;
-    text-decoration: none;
-  }
+   &,
+   & a {
+      color: inherit;
+      text-decoration: none;
+   }
 }
 
 .tmp-dropdown-menu {
-  @extend %remove-list-style;
-  @extend %remove-link-style;
+   @extend %remove-list-style;
+   @extend %remove-link-style;
 
-  &-item {
-    color: egeo-get-color(a2_dark);
-    cursor: pointer;
-    padding: 0 0 20px;
-    text-transform: uppercase;
+   &__section {
+      color: egeo-get-color(n7);
+      cursor: pointer;
+      padding: 10px 0;
+      text-transform: uppercase;
 
-    &--active {
-      color: egeo-get-color(n9);
-    }
-
-    &--submenu {
-      border-bottom: 0;
-
-      .icon {
-        float: right;
+      &-title {
+         font-family: egeo-get-font(heading);
+         font-size: egeo-get-font-size(head_large);
+         margin: 40px 0 10px;
       }
-    }
 
-    &--separation {
-      border-top: 1px solid egeo-get-color(n3);
-      padding: 20px 0;
-    }
-
-    &--open {
-      .icon {
-        -ms-transform: rotate(180deg);
-        -webkit-transform: rotate(180deg);
-        transform: rotate(180deg);
+      &--active {
+         color: egeo-get-color(n9);
       }
-    }
-  }
+      
+      &-item {
+         border-top: 1px solid egeo-get-color(n3);
+         font-family: egeo-get-font(brandon-grotesque);
+         font-size: egeo-get-font-size(head_xxsmall);
+         padding: 15px 0;
+
+         &--active {
+            color: egeo-get-color(n10);
+
+            &:before {
+                content: '\e095';
+                font-family: egeo-get-font(icon);
+                margin-right: 4px;
+            }
+         }
+
+         &--submenu {
+            border-bottom-width: 0;
+
+            .icon {
+               float: right;
+            }
+         }
+
+         &--open {
+            .icon {
+                -ms-transform: rotate(180deg);
+                -webkit-transform: rotate(180deg);
+                transform: rotate(180deg);
+            }
+         }
+      }
+   }
 }
 
 .tmp-dropdown-submenu {
-  @extend %remove-list-style;
-  @extend %remove-link-style;
+   @extend %remove-list-style;
+   @extend %remove-link-style;
 
-  font-size: egeo-get-font-size(body_large);
-  margin-top: $base-separation;
-  text-transform: none;
+   font-family: egeo-get-font(open-sans);
+   font-size: egeo-get-font-size(body_small);
+   margin: 10px 0;
+   text-transform: none;
 
-  &-item {
-    border-left: 1px solid egeo-get-color(a2);
-    padding: 10px 20px;
+   &-item {
+      border-left: 1px solid egeo-get-color(a2);
+      padding: 10px 20px;
 
-    &--active {
-      border-left-color: egeo-get-color(a1);
-    }
-  }
+      &--active {
+         border-left-color: egeo-get-color(a1);
+         color: egeo-get-color(n10);
+      }
+   }
 }

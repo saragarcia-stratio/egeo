@@ -1,8 +1,8 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'st-radio-menu',
-  templateUrl: './st-radio-menu.component.html',
-  styleUrls: ['./st-radio-menu.component.scss'],
+  template: require('./st-radio-menu.component.html'),
+  styles: [require('./st-radio-menu.component.scss')],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 

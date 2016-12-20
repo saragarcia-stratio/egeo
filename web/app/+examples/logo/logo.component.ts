@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'logo',
-  templateUrl: './logo.component.html',
-  styleUrls: ['./logo.component.scss']
+  template: require('./logo.component.html'),
+  styles: [require('./logo.component.scss')]
 })
 
 export class LogoComponent {}

@@ -8,8 +8,8 @@ import { TestModule2 } from './shared/onlyModule.module';
 
 @Component({
    selector: 'modal-example',
-   templateUrl: './modal.component.html',
-   styleUrls: ['./modal.component.scss']
+   template: require('./modal.component.html'),
+   styles: [require('./modal.component.scss')]
 })
 
 export class ModalComponent {

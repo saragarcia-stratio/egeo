@@ -3,8 +3,8 @@ import { ApiDoc, TYPES } from '../../shared';
 
 @Component({
    selector: 'vertical-menu-example',
-   templateUrl: './vertical-menu.component.html',
-   styleUrls: ['./vertical-menu.component.scss']
+   template: require('./vertical-menu.component.html'),
+   styles: [require('./vertical-menu.component.scss')]
 })
 
 export class VerticalMenuComponent implements OnInit {

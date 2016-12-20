@@ -4,8 +4,8 @@ import { ApiDoc, TYPES } from '../../shared';
 
 @Component({
    selector: 'footer-example',
-   templateUrl: './footer.component.html',
-   styleUrls: ['./footer.component.scss']
+   template: require('./footer.component.html'),
+   styles: [require('./footer.component.scss')]
 })
 
 export class FooterComponent {

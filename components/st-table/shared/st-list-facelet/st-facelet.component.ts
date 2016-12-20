@@ -3,8 +3,8 @@ import { FaceletBlock, FaceletCriteria, Filter, InternalBlock, InternalCriteria,
 
 @Component({
   selector: 'st-facelet',
-  styleUrls: ['./st-facelet.component.scss'],
-  templateUrl: './st-facelet.component.html',
+  styles: [require('./st-facelet.component.scss')],
+  template: require('./st-facelet.component.html'),
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GosecFaceletComponent implements OnChanges {

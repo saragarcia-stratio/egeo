@@ -3,8 +3,8 @@ import { ApiDoc } from './shared';
 
 @Component({
   selector: 'st-api-doc',
-  templateUrl: './api-doc.component.html',
-  styleUrls: ['./api-doc.component.scss']
+  template: require('./api-doc.component.html'),
+  styles: [require('./api-doc.component.scss')]
 })
 export class ApiDocComponent {
    @Input() doc: ApiDoc;

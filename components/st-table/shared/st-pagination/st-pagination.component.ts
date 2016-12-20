@@ -3,8 +3,8 @@ import { Page } from './st-pagination.model';
 
 @Component({
    selector: 'gosec-pagination',
-   styleUrls: ['./st-pagination.component.scss'],
-   templateUrl: './st-pagination.component.html',
+   styles: [require('./st-pagination.component.scss')],
+   template: require('./st-pagination.component.html'),
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 

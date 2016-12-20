@@ -3,8 +3,8 @@ import { SearchElement, Search } from './gosec-search.model';
 
 @Component({
   selector: 'gosec-search',
-  styleUrls: ['./gosec-search.component.scss'],
-  templateUrl: './gosec-search.component.html',
+  styles: [require('./gosec-search.component.scss')],
+  template: require('./gosec-search.component.html'),
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GosecSearchComponent implements OnChanges {

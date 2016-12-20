@@ -4,8 +4,8 @@ import { ApiRow, TYPES } from './../api-doc.model';
 
 @Component({
    selector: 'st-parameters-table',
-   templateUrl: './paramenters-table.component.html',
-   styleUrls: ['./paramenters-table.component.scss']
+   template: require('./paramenters-table.component.html'),
+   styles: [require('./paramenters-table.component.scss')]
 })
 export class ParametersTableComponent {
    @Input() title: string;

@@ -4,8 +4,8 @@ import { ApiDoc, TYPES } from '../../shared';
 
 @Component({
    selector: 'button-example',
-   templateUrl: './button.component.html',
-   styleUrls: ['./button.component.scss']
+   template: require('./button.component.html'),
+   styles: [require('./button.component.scss')]
 })
 
 export class ButtonComponent {

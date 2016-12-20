@@ -4,8 +4,8 @@ import { ApiDoc, TYPES } from '../../shared';
 
 @Component({
    selector: 'horizontal-tab-example',
-   templateUrl: './horizontal-tab.component.html',
-   styleUrls: ['./horizontal-tab.component.scss']
+   template: require('./horizontal-tab.component.html'),
+   styles: [require('./horizontal-tab.component.scss')]
 })
 
 export class HorizontalTabComponent {

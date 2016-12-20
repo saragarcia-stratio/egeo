@@ -3,8 +3,8 @@ import { ApiDoc, TYPES } from '../../shared';
 
 @Component({
    selector: 'tooltip-example',
-   templateUrl: './tooltip.component.html',
-   styleUrls: ['./tooltip.component.scss']
+   template: require('./tooltip.component.html'),
+   styles: [require('./tooltip.component.scss')]
 })
 
 export class TooltipComponent {

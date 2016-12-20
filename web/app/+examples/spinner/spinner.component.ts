@@ -3,8 +3,8 @@ import { ApiDoc } from '../../shared';
 
 @Component({
   selector: 'spinner-example',
-  templateUrl: './spinner.component.html',
-  styleUrls: ['./spinner.component.scss']
+  template: require('./spinner.component.html'),
+  styles: [require('./spinner.component.scss')]
 })
 
 export class SpinnerComponent {

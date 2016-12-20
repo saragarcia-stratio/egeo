@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
    selector: 'search-example',
-   templateUrl: './search.component.html',
-   styleUrls: ['./search.component.scss']
+   template: require('./search.component.html'),
+   styles: [require('./search.component.scss')]
 })
 export class SearchComponent {
    public placeholder: string = 'Text for search';

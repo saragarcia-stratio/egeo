@@ -3,8 +3,8 @@ import { ApiDoc, TYPES } from '../../shared';
 
 @Component({
    selector: 'api-doc-example',
-   templateUrl: './api-doc-example.component.html',
-   styleUrls: ['./api-doc-example.component.scss']
+   template: require('./api-doc-example.component.html'),
+   styles: [require('./api-doc-example.component.scss')]
 })
 
 export class ApiDocExample {

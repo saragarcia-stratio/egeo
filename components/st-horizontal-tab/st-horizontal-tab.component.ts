@@ -3,8 +3,8 @@ import { StHorizontalTab } from './st-horizontal-tab.interface';
 
 @Component({
    selector: 'st-horizontal-tab',
-   templateUrl: './st-horizontal-tab.component.html',
-   styleUrls: ['./st-horizontal-tab.component.scss'],
+   template: require('./st-horizontal-tab.component.html'),
+   styles: [require('./st-horizontal-tab.component.scss')],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StHorizontalTabComponent {

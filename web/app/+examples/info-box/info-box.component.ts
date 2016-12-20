@@ -3,8 +3,8 @@ import { ApiDoc, TYPES } from '../../shared';
 
 @Component({
    selector: 'info-box-example',
-   templateUrl: './info-box.component.html',
-   styleUrls: ['./info-box.component.scss']
+   template: require('./info-box.component.html'),
+   styles: [require('./info-box.component.scss')]
 })
 
 export class InfoBoxComponent {

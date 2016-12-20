@@ -2,8 +2,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'component1',
-  templateUrl: './component1.html',
-  styleUrls: ['./component1.scss']
+  template: require('./component1.html'),
+  styles: [require('./component1.scss')]
 })
 
 export class Component1 { }

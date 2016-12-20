@@ -3,8 +3,8 @@ import { StTwoListSelectionElement, StListModifierObject } from '../../../../ege
 
 @Component({
   selector: 'two-list-selection-example',
-  templateUrl: './two-list-selection.component.html',
-  styleUrls: ['./two-list-selection.component.scss']
+  template: require('./two-list-selection.component.html'),
+  styles: [require('./two-list-selection.component.scss')]
 })
 
 export class TwoListSelectionComponent implements OnInit {

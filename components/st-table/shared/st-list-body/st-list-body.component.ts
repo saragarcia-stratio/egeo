@@ -3,8 +3,8 @@ import { DataList, FieldsMetadata } from '../st-list.model';
 
 @Component({
    selector: 'gosec-list-body',
-   styleUrls: ['./st-list-body.component.scss'],
-   templateUrl: './st-list-body.component.html',
+   styles: [require('./st-list-body.component.scss')],
+   template: require('./st-list-body.component.html'),
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GosecListBodyComponent<T> {

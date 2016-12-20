@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'typography',
-  templateUrl: './typography.component.html',
-  styleUrls: ['./typography.component.scss']
+  template: require('./typography.component.html'),
+  styles: [require('./typography.component.scss')]
 })
 
 export class TypographyComponent {}

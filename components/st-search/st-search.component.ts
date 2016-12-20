@@ -4,8 +4,8 @@ import { Subscription } from 'rxjs';
 
 @Component({
    selector: 'st-search',
-   templateUrl: './st-search.component.html',
-   styleUrls: ['./st-search.component.scss'],
+   template: require('./st-search.component.html'),
+   styles: [require('./st-search.component.scss')],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 

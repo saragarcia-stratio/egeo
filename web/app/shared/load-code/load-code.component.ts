@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'st-load-code',
-  templateUrl: './load-code.component.html',
-  styleUrls: ['./load-code.component.scss']
+  template: require('./load-code.component.html'),
+  styles: [require('./load-code.component.scss')]
 })
 
 export class LoadCodeComponent implements OnInit {

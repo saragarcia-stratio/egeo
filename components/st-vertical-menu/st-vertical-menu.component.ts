@@ -2,8 +2,8 @@ import { Component, Input, Output, OnInit, EventEmitter, ChangeDetectionStrategy
 
 @Component({
   selector: 'st-vertical-menu',
-  templateUrl: './st-vertical-menu.component.html',
-  styleUrls: ['./st-vertical-menu.component.scss'],
+  template: require('./st-vertical-menu.component.html'),
+  styles: [require('./st-vertical-menu.component.scss')],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 

@@ -2,8 +2,8 @@ import { Component, Input, ElementRef, Renderer, ChangeDetectorRef, ChangeDetect
 
 @Component({
    selector: 'st-tooltip',
-   templateUrl: './st-tooltip.component.html',
-   styleUrls: ['./st-tooltip.component.scss'],
+   template: require('./st-tooltip.component.html'),
+   styles: [require('./st-tooltip.component.scss')],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StTooltip {

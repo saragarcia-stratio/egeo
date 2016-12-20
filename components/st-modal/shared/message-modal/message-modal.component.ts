@@ -3,8 +3,8 @@ import { MessageModal, Buttons, BUTTON_TYPES } from '../message-modal.model';
 
 @Component({
   selector: 'stratio-message-modal',
-  templateUrl: './message-modal.component.html',
-  styleUrls: ['./message-modal.component.scss'],
+  template: require('./message-modal.component.html'),
+  styles: [require('./message-modal.component.scss')],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StMessageModalComponent implements OnInit {

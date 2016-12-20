@@ -3,6 +3,10 @@
 ## 0.6.0 (upcoming)
 
 * Update colors with new values, possibility of getting in RGB format and documentation with RGB info.
+* Add alpha channel to the egeo-get-color API.
+* Apply complete design of sidebar in the documentation website.
+* Review and update libraries.
+* FIX Button event is launched when disabled.
 
 ## 0.5.0 (December 12, 2016)
 

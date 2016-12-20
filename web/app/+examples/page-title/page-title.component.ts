@@ -3,8 +3,8 @@ import { ApiDoc, TYPES } from '../../shared';
 
 @Component({
    selector: 'page-title-example',
-   template: require('./page-title.component.html'),
-   styles: [require('./page-title.component.scss')]
+   templateUrl: './page-title.component.html',
+   styleUrls: ['./page-title.component.scss']
 })
 
 export class PageTitleComponent {

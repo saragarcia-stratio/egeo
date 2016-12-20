@@ -3,8 +3,8 @@ import { StFooterLink } from './shared/';
 
 @Component({
   selector: 'st-footer',
-  styles: [require('./st-footer.component.scss')],
-  template: require('./st-footer.component.html'),
+  styleUrls: ['./st-footer.component.scss'],
+  templateUrl: './st-footer.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StFooterComponent {

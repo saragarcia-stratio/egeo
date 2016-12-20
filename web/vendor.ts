@@ -9,6 +9,10 @@ import '@angular/forms';
 // RxJS
 import 'rxjs';
 
+// Libs
 import 'lodash';
 
-// You can import js, ts, css, sass, ...
+// Global styles
+import 'ui-fonts/fonts.css';
+import 'flexboxgrid/css/flexboxgrid.css';
+import 'prismjs/themes/prism-coy.css';

@@ -55,6 +55,7 @@ interface HeroeInterface {
    age: number;
    magician: number;
    alive: boolean;
+   [key: string]: any;
 };
 
 let heroes = [

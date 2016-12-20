@@ -1,10 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-// import * as Prism from 'prismjs';
 
 @Component({
   selector: 'st-load-code',
-  template: require('./load-code.component.html'),
-  styles: [require('./load-code.component.scss')]
+  templateUrl: './load-code.component.html',
+  styleUrls: ['./load-code.component.scss']
 })
 
 export class LoadCodeComponent implements OnInit {

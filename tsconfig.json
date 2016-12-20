@@ -2,17 +2,22 @@
    "atom": {
       "rewriteTsconfig": false
    },
+   "awesomeTypescriptLoaderOptions": {
+      "forkChecker": true,
+      "useWebpackText": true
+   },
    "compilerOptions": {
-      "declaration": true,
+      "allowSyntheticDefaultImports": true,
+      "baseUrl": "./web",
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
+      "noEmitHelpers": true,
       "module": "commonjs",
       "moduleResolution": "node",
       "noImplicitAny": true,
-      "pretty": true,
-      "removeComments": false,
+      "skipLibCheck": true,
       "sourceMap": true,
-      "suppressImplicitAnyIndexErrors": true,
+      "strictNullChecks": false,
       "target": "es5"
    },
    "exclude": [

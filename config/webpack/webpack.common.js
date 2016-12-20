@@ -3,11 +3,9 @@ const helpers = require('../helpers');
 
 const AssetsPlugin = require('assets-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
-const StringReplacePlugin = require("string-replace-webpack-plugin");
 
 var CopyWebpackPlugin = (CopyWebpackPlugin = require('copy-webpack-plugin'), CopyWebpackPlugin.default || CopyWebpackPlugin);
 
@@ -24,6 +22,10 @@ module.exports = function (options) {
          modules: [helpers.root('web'), helpers.root('node_modules')],
       },
 
+      performance: {
+         hints: false
+      },
+
       module: {
          rules: [
             {
@@ -36,46 +38,22 @@ module.exports = function (options) {
                exclude: [/\.(spec|e2e)\.ts$/]
             },
             {
-               test: /\.json$/,
-               use: 'json-loader'
-            },
-            {
                test: /\.html$/,
                use: 'raw-loader',
                exclude: [helpers.root('web/index.html')]
             },
-            {
+                       {
                test: /\.css$/,
-               use: ['to-string-loader', 'css-loader']
+               use: ['style-loader', 'css-loader']
             },
             {
                test: /\.scss$/,
                exclude: '/node_modules/',
-               use: ['to-string-loader', 'css-loader', 'sass-loader']
+               use: ['raw-loader', 'sass-loader']
             },
             {
-               test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
-               use: "url-loader?limit=10000&minetype=application/font-woff"
-            },
-            {
-               test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
-               use: "url-loader?limit=10000&minetype=application/font-woff"
-            },
-            {
-               test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-               use: "url-loader?limit=10000&minetype=application/octet-stream"
-            },
-            {
-               test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-               use: "file-loader"
-            },
-            {
-               test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-               use: "url-loader?limit=10000&minetype=image/svg+xml"
-            },
-            {
-               test: /\.ico(\?v=\d+\.\d+\.\d+)?$/,
-               use: "file-loader"
+               test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+               use: "file-loader?name=assets/fonts/[name].[hash].[ext]"
             }
          ]
       },
@@ -86,7 +64,6 @@ module.exports = function (options) {
             filename: 'webpack-assets.json',
             prettyPrint: true
          }),
-         new StringReplacePlugin(),
          new CommonsChunkPlugin({
             name: ['polyfills', 'vendor'].reverse()
          }),

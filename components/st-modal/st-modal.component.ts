@@ -16,8 +16,8 @@ import { ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
    selector: 'st-modal',
-   template: require('./st-modal.component.html'),
-   styles: [require('./st-modal.component.scss')],
+   templateUrl: './st-modal.component.html',
+   styleUrls: ['./st-modal.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StModal implements OnDestroy, OnInit {
@@ -93,13 +93,13 @@ export class StModal implements OnDestroy, OnInit {
    private bindModalInputs(): void {
       for (let key in this.componentInputs) {
          if (this.componentInputs.hasOwnProperty(key)) {
-            this.componentRef.instance[key] = this.componentInputs[key];
+            this.componentRef.instance[key] = (<any>this.componentInputs)[key];
          }
       }
 
       for (let key in this.componentOutputs) {
          if (this.componentOutputs.hasOwnProperty(key)) {
-            this.componentRef.instance[key].subscribe(this.componentOutputs[key]);
+            this.componentRef.instance[key].subscribe((<any>this.componentOutputs)[key]);
          }
       }
       this.componentRef.changeDetectorRef.detectChanges();

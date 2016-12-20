@@ -2,7 +2,6 @@ const helpers = require('../helpers');
 const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common.js'); // the settings that are common to prod and dev
 
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 

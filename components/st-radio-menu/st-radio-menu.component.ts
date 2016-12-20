@@ -2,8 +2,8 @@ import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy} from '@
 import {StRadioMenuOption} from './st-radio-menu-option.interface';
 @Component({
    selector: 'st-radio-menu',
-   template: require('./st-radio-menu.component.html'),
-   styles: [require('./st-radio-menu.component.scss')],
+   templateUrl: './st-radio-menu.component.html',
+   styleUrls: ['./st-radio-menu.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 

@@ -4,8 +4,8 @@ import {StRadioMenuOption} from '../../../../components/st-radio-menu/st-radio-m
 
 @Component({
    selector: 'radio-menu-example',
-   template: require('./radio-menu.component.html'),
-   styles: [require('./radio-menu.component.scss')]
+   templateUrl: './radio-menu.component.html',
+   styleUrls: ['./radio-menu.component.scss']
 })
 
 export class RadioMenuComponent {

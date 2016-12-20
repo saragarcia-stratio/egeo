@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'layout',
-  template: require('./layout.component.html'),
-  styles: [require('./layout.component.scss')]
+  templateUrl: './layout.component.html',
+  styleUrls: ['./layout.component.scss']
 })
 
 export class LayoutComponent {

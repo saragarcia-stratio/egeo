@@ -9,7 +9,9 @@ class Hero extends Model<HeroeInterface> {
       super(data);
    };
 
+
    getValue(key: string): string {
+      let a = this.data[key];
       return this.toString(this.data[key]);
    }
 
@@ -55,6 +57,7 @@ interface HeroeInterface {
    age: number;
    magician: number;
    alive: boolean;
+   [key: string]: any;
 }
 
 let heroes: Array<HeroeInterface> = [

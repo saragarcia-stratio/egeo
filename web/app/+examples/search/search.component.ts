@@ -3,8 +3,8 @@ import { ApiDoc, TYPES } from '../../shared';
 
 @Component({
    selector: 'search-example',
-   template: require('./search.component.html'),
-   styles: [require('./search.component.scss')]
+   templateUrl: './search.component.html',
+   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent {
    public apiDoc: ApiDoc;

@@ -7,14 +7,29 @@ module.exports = function (config) {
       frameworks: ['jasmine'],
 
       exclude: [],
-      files: [{ pattern: './config/spec-bundle.js', watched: false }],
-      preprocessors: { './config/spec-bundle.js': ['webpack', 'sourcemap'] },
+      files: [ { pattern: './config/spec-bundle.js', watched: false } ],
+      preprocessors: { './config/spec-bundle.js': ['coverage', 'webpack', 'sourcemap'] },
 
       webpack: testWebpackConfig,
 
+      coverageReporter: {
+         /** For sonar */
+         type : 'lcovonly',
+         dir : 'target/coverage',
+         file: '../../lcovUT.info'
+         /** Uncoment in develop if you want coverage in console */
+         // type: 'in-memory'
+      },
+
+      remapCoverageReporter: {
+         'text-summary': null,
+         json: './coverage/coverage.json',
+         html: './coverage/html'
+      },
+
       webpackMiddleware: { stats: 'errors-only' },
 
-      reporters: ['progress'],
+      reporters: ['mocha', 'coverage', 'remap-coverage'],
       port: 9876,
       colors: true,
       logLevel: config.LOG_INFO,

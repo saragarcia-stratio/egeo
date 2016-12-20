@@ -4,8 +4,8 @@ import { Subscription } from 'rxjs';
 
 @Component({
    selector: 'st-search',
-   template: require('./st-search.component.html'),
-   styles: [require('./st-search.component.scss')],
+   templateUrl: './st-search.component.html',
+   styleUrls: ['./st-search.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 
@@ -22,9 +22,10 @@ export class StSearchComponent implements OnChanges, OnDestroy, OnInit {
 
    private lastEmited: string | undefined = undefined;
 
-
+   // Its necesary check null because value is any type.
    public launchSearch(): void {
-      if (this.searchBox.value !== null && this.searchBox.value !== undefined &&
+      /* tslint:disable:no-null-keyword */
+      if (this.searchBox.value !== null && this.searchBox.value !== undefined && /* tslint:enable:no-null-keyword */
          this.lastEmited !== this.searchBox.value && this.minLength <= this.searchBox.value.length
       ) {
          this.lastEmited = this.searchBox.value;

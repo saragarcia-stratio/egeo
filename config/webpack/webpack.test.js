@@ -20,13 +20,18 @@ module.exports = function (options) {
          modules: [path.resolve(__dirname, 'components'), 'node_modules']
 
       },
+
+      performance: {
+         hints: false
+      },
+
       module: {
 
          rules: [
             {
                enforce: 'pre',
                test: /\.js$/,
-               use: 'source-map-loader',
+               loader: 'source-map-loader',
                exclude: [
                   // these packages have problems with their sourcemaps
                   helpers.root('node_modules/rxjs'),
@@ -35,41 +40,30 @@ module.exports = function (options) {
             },
             {
                test: /\.ts$/,
-               use: 'awesome-typescript-loader',
-               query: {
-                  // use inline sourcemaps for "karma-remap-coverage" reporter
-                  sourceMap: false,
-                  inlineSourceMap: true,
-                  compilerOptions: {
-                     // Remove TypeScript helpers to be injected
-                     // below by DefinePlugin
-                     removeComments: true
-
-                  }
-               },
+               loaders: [ 'angular2-template-loader','awesome-typescript-loader?sourceMap=false&inlineSourceMap=true'],
                exclude: [/\.e2e\.ts$/]
             },
             {
                test: /\.json$/,
-               use: 'json-loader'
+               loader: 'json-loader'
             },
             {
                test: /\.css$/,
-               use: ['to-string-loader', 'css-loader']
+               loader: ['to-string-loader', 'css-loader']
             },
             {
                test: /\.html$/,
-               use: 'raw-loader',
+               loader: 'raw-loader'
             },
             {
                test: /\.scss$/,
                exclude: '/node_modules/',
-               use: ['raw-loader', 'sass-loader']
+               loader: ['to-string-loader', 'css-loader', 'sass-loader']
             },
             {
                enforce: 'post',
                test: /\.(js|ts)$/,
-               use: 'istanbul-instrumenter-loader',
+               loader: 'istanbul-instrumenter-loader',
                include: helpers.root('components'),
                exclude: [
                   /\.(e2e|spec)\.ts$/,

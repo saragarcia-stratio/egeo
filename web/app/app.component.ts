@@ -4,13 +4,8 @@ import { StModalService } from './../../egeo';
 
 @Component({
    selector: 'app',
-   template: require('./app.component.html'),
-   styles: [
-      require('ui-fonts/fonts.css'),
-      require('flexboxgrid/css/flexboxgrid.min.css'),
-      require('prismjs/themes/prism-coy.css'),
-      require('./app.component.scss')
-      ],
+   templateUrl: './app.component.html',
+   styleUrls: ['./app.component.scss'],
    encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {

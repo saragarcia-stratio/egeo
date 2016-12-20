@@ -7,8 +7,8 @@ import * as _ from "lodash";
 
 @Component({
    selector: 'list-example',
-   template: require('./list.component.html'),
-   styles: [require('./list.component.scss')]
+   templateUrl: './list.component.html',
+   styleUrls: ['./list.component.scss']
 })
 
 export class ListComponent {

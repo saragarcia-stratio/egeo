@@ -3,8 +3,8 @@ import { StInputError } from '../../../../egeo'; // For declare messages in case
 
 @Component({
   selector: 'input-example',
-  template: require('./input.component.html'),
-  styles: [require('./input.component.scss')]
+  templateUrl: './input.component.html',
+  styleUrls: ['./input.component.scss']
 })
 
 export class InputComponent {

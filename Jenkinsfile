@@ -12,7 +12,12 @@ hose {
         doCompile(config)
         doUT(config)
         doPackage(config)
-        doDeploy(config)
+
+        parallel(QC: {
+            doStaticAnalysis(config)
+        }, DEPLOY: {
+            doDeploy(config)
+        }, failFast: config.FAILFAST)
 
     }
 }

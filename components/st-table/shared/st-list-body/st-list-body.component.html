@@ -1,4 +1,4 @@
-<div class="gosec-list-body col-md-12">
+<div class="st-list-body col-md-12">
    <ul>
       <div *ngIf="data.length  !== 0">
          <gosec-list-row *ngFor="let row of data.data " [rowData]="row" [metadata]="headerList" (openDetail)="showDetail($event)"
@@ -6,5 +6,5 @@
          </gosec-list-row>
       </div>
    </ul>
-   <div class="gosec-list-body__msg " *ngIf="data.length===0 ">{{'LIST.EMPTY_LIST' | translate}}</div>
+   <div class="st-list-body__msg " *ngIf="data.length===0 ">{{'LIST.EMPTY_LIST' | translate}}</div>
 </div>

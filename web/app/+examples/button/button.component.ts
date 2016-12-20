@@ -21,6 +21,7 @@ export class ButtonComponent {
             { paramName: 'value', type: TYPES.STR, required: true, details: 'Text of the button. Default type is "Click Me".' },
             { paramName: 'qaTag', type: TYPES.STR, required: true, details: 'Id value for qa test.' },
             { paramName: 'leftIcon', type: TYPES.STR, required: false, details: 'An icon of the Stratio Fonticon family of icons that should appear at left of the text.' },
+            { paramName: 'onClick', type: TYPES.FUNC, required: true, details: 'Callback function called on click on the button.' },
             { paramName: 'rightIcon', type: TYPES.STR, required: false, details: 'An icon of the Stratio Fonticon family of icons that should appear at right of the text.' },
             { paramName: 'subtypeClass', type: TYPES.STR, required: false, details: 'Subtype of button. Only for graphic purposes. It defines graphical variations of the type and always use the same color variations related to the name of subtype. Subtypes are subtype1, subtype2, subtype3... Not all buttons have all subtypes. Default is the subtype1 value.' },
             { paramName: 'themeClass', type: TYPES.STR, required: false, details: 'Theme applied to the button. Only for graphic purposes. Themes are created related to the context the button is placed in(i.e. the same button in different backgrounds). There is not default value.' },

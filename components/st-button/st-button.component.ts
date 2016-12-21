@@ -7,7 +7,7 @@ import { Component, Input, Output, EventEmitter, AfterViewInit } from '@angular/
 })
 
 export class StButtonComponent {
-   @Input() inputType: string = 'submit'; // button / submit / reset
+   @Input() inputType: string = 'button'; // button / submit / reset
    @Input() isDisabled: boolean = false;
    @Input() leftIcon: string;
    @Input() qaTag: string;

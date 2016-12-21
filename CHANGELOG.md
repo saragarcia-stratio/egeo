@@ -7,6 +7,7 @@
 * Apply complete design of sidebar in the documentation website.
 * Review and update libraries.
 * FIX Button event is launched when disabled.
+* Remove PostCSS
 
 ## 0.5.0 (December 12, 2016)
 
@@ -15,7 +16,7 @@
 * Separate font faces and fonts in a separate CSS and process
 * Remove old implementations of egeo.ui.base and rewrite imports to the new /ui-base
 * Fix linting errors
-* Add postCSS support
+* Add PostCSS support
 * Update to Angular 2.1.0 and Typescript 2.0.3 with types in npm
 * Add radio menu component
 * New component Title Page

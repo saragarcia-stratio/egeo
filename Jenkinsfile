@@ -5,7 +5,7 @@ hose {
     MODULE = 'egeo'
     DEVTIMEOUT = 30
     RELEASETIMEOUT = 30
-    REPOSITORY = 'egeo'
+    REPOSITORY = 'bitbucket.org/egeo'
 
     DEV = { config ->
 

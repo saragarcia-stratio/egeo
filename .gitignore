@@ -1,6 +1,9 @@
+
+
+
 node_modules
 node
-npm-debug.log
+npm-debug.log*
 
 bower_components
 
@@ -17,5 +20,5 @@ dist
 
 typings
 public
-yarn-error.log
+yarn-error.log*
 bundle

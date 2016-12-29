@@ -1,27 +1,28 @@
 {
-   "atom": {
-      "rewriteTsconfig": false
-   },
-   "awesomeTypescriptLoaderOptions": {
-      "forkChecker": true,
-      "useWebpackText": true
-   },
    "compilerOptions": {
-      "allowSyntheticDefaultImports": true,
-      "baseUrl": "./web",
-      "emitDecoratorMetadata": true,
-      "experimentalDecorators": true,
-      "noEmitHelpers": true,
+      "target": "es5",
       "module": "commonjs",
       "moduleResolution": "node",
-      "noImplicitAny": true,
-      "skipLibCheck": true,
       "sourceMap": true,
-      "strictNullChecks": false,
-      "target": "es5"
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "noImplicitAny": true,
+      "skipLibCheck": true
    },
    "exclude": [
       "node_modules",
+      "coverage",
+      "config",
+      "report",
       "dist"
-   ]
+   ],
+   "include": [
+      "src/**/*.ts"
+   ],
+   "awesomeTypescriptLoaderOptions": {
+      "useWebpackText": true
+   },
+   "compileOnSave": false,
+   "buildOnSave": false,
+   "atom": { "rewriteTsconfig": false }
 }

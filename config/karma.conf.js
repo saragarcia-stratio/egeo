@@ -1,30 +1,29 @@
 module.exports = function (config) {
-   var testWebpackConfig = require('./webpack/webpack.test.js')({ env: 'test' });
+   var testWebpackConfig = require('./webpack/webpack.test.js');
 
    var configuration = {
       basePath: '',
 
       frameworks: ['jasmine'],
 
+
+      files: [
+         './config/spec-bundle.js'
+      ],
       exclude: [],
-      files: [ { pattern: './config/spec-bundle.js', watched: false } ],
       preprocessors: { './config/spec-bundle.js': ['coverage', 'webpack', 'sourcemap'] },
 
       webpack: testWebpackConfig,
 
       coverageReporter: {
-         /** For sonar */
-         type : 'lcovonly',
-         dir : 'target/coverage',
-         file: '../../lcovUT.info'
-         /** Uncoment in develop if you want coverage in console */
-         // type: 'in-memory'
+         type: 'in-memory'
       },
 
       remapCoverageReporter: {
          'text-summary': null,
-         json: './coverage/coverage.json',
-         html: './coverage/html'
+         'json': './target/coverage/coverage.json',
+         'html': './target/coverage/html',
+         'lcovonly': './target/lcovUT.info'
       },
 
       webpackMiddleware: { stats: 'errors-only' },

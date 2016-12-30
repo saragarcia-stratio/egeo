@@ -2,25 +2,21 @@
    xmlns="http://maven.apache.org/POM/4.0.0"
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
    <modelVersion>4.0.0</modelVersion>
-
    <parent>
       <groupId>com.stratio</groupId>
       <artifactId>parent</artifactId>
       <version>0.7.0</version>
    </parent>
-
-   <groupId>com.stratio.egeo</groupId>
-   <artifactId>components</artifactId>
+   <groupId>com.stratio.egeo-angular2-components</groupId>
+   <artifactId>egeo-angular2-components</artifactId>
    <version>0.6.0-SNAPSHOT</version>
-   <name>Egeo Components</name>
+   <name>Egeo Angular2 Components</name>
    <inceptionYear>2016</inceptionYear>
-
    <properties>
       <nodeVer>v6.9.2</nodeVer>
-      <yarnVer>v0.18.1</yarnVer>
+      <npmVer>3.8.8</npmVer>
       <nodeURL>http://tools.stratio.com/buildtools</nodeURL>
    </properties>
-
    <build>
       <sourceDirectory>src</sourceDirectory>
       <testSourceDirectory>src</testSourceDirectory>
@@ -38,64 +34,65 @@
             <version>1.3</version>
             <executions>
                <execution>
-                  <id>install node and yarn</id>
+                  <id>install node and npm</id>
                   <goals>
-                     <goal>install-node-and-yarn</goal>
+                     <goal>install-node-and-npm</goal>
                   </goals>
                   <phase>validate</phase>
                   <configuration>
                      <nodeVersion>${nodeVer}</nodeVersion>
-                     <yarnVersion>${yarnVer}</yarnVersion>
+                     <npmVersion>${npmVer}</npmVersion>
                      <nodeDownloadRoot>${customnodeDownloadRoot}</nodeDownloadRoot>
-                     <yarnDownloadRoot>${customyarnDownloadRoot}</yarnDownloadRoot>
+                     <npmDownloadRoot>${customnpmDownloadRoot}</npmDownloadRoot>
+                     <skip.installnodenpm>${skip.installnodenpm}</skip.installnodenpm>
                   </configuration>
                </execution>
                <execution>
-                  <id>yarn install</id>
+                  <id>npm install</id>
                   <goals>
-                     <goal>yarn</goal>
+                     <goal>npm</goal>
                   </goals>
                   <phase>generate-sources</phase>
                   <configuration>
                      <npmRegistryURL>${customnpmRegistryURL}</npmRegistryURL>
-                     <arguments>install</arguments>
+                     <arguments>install --no-optional --loglevel=error --depth=0</arguments>
                   </configuration>
                </execution>
                <execution>
                   <id>replace version</id>
                   <goals>
-                     <goal>yarn</goal>
+                     <goal>npm</goal>
                   </goals>
                   <phase>generate-sources</phase>
                   <configuration>
-                     <arguments>replace -- this.version="${VERSION}"</arguments>
+                     <arguments>run-script replace -- this.version="${VERSION}"</arguments>
                   </configuration>
                </execution>
                <execution>
-                  <id>build-components</id>
+                  <id>npm test</id>
                   <goals>
-                     <goal>yarn</goal>
-                  </goals>
-                  <phase>compile</phase>
-                  <configuration>
-                     <arguments>build-components</arguments>
-                  </configuration>
-               </execution>
-               <execution>
-                  <id>yarn test</id>
-                  <goals>
-                     <goal>yarn</goal>
+                     <goal>npm</goal>
                   </goals>
                   <phase>test</phase>
                   <configuration>
                      <skipTests>${skipUTs}</skipTests>
-                     <arguments>test</arguments>
+                     <arguments>run-script test</arguments>
                   </configuration>
                </execution>
                <execution>
-                  <id>yarn publish</id>
+                  <id>generate declarations</id>
                   <goals>
-                     <goal>yarn</goal>
+                     <goal>npm</goal>
+                  </goals>
+                  <phase>deploy</phase>
+                  <configuration>
+                     <arguments>run-script generate-declarations</arguments>
+                  </configuration>
+               </execution>
+               <execution>
+                  <id>npm publish</id>
+                  <goals>
+                     <goal>npm</goal>
                   </goals>
                   <phase>deploy</phase>
                   <configuration>
@@ -112,7 +109,7 @@
          <id>node</id>
          <properties>
             <customnodeDownloadRoot>${nodeURL}/node/</customnodeDownloadRoot>
-            <customyarnDownloadRoot>${nodeURL}/yarn/</customyarnDownloadRoot>
+            <customnpmDownloadRoot>${nodeURL}/npm/${npmVer}/</customnpmDownloadRoot>
             <customnpmRegistryURL>http://sodio.stratio.com/nexus/content/groups/publicnpm/</customnpmRegistryURL>
          </properties>
       </profile>

@@ -112,7 +112,7 @@
          <id>node</id>
          <properties>
             <customnodeDownloadRoot>${nodeURL}/node/</customnodeDownloadRoot>
-            <customyarnDownloadRoot>${nodeURL}/yarn/${yarnVer}/</customyarnDownloadRoot>
+            <customyarnDownloadRoot>${nodeURL}/yarn/</customyarnDownloadRoot>
             <customnpmRegistryURL>http://sodio.stratio.com/nexus/content/groups/publicnpm/</customnpmRegistryURL>
          </properties>
       </profile>

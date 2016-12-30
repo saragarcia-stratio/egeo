@@ -4,8 +4,8 @@
   "description": "Egeo Library. Common components, styles, fonts and website",
   "author": "Stratio",
   "scripts": {
-    "build": "cross-env NODE_ENV=production rm -rf target && webpack --no-color --bail",
-    "generate-declarations": "tsc -p tsconfig.components.json",
+    "build-doc": "cross-env NODE_ENV=production rm -rf target && webpack --no-color --bail",
+    "build-components": "tsc -p tsconfig.components.json",
     "lint": "tslint -c ./tslint.json 'components/**/*.ts' -e 'node_modules' --project ./tsconfig.json --type-check -t stylish",
     "replace": "json -I -f package.json -e",
     "start": "cross-env NODE_ENV=development webpack-dev-server --progress --profile --watch --content-base src/",

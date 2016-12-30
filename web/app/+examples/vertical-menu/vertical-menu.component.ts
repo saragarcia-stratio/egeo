@@ -11,6 +11,7 @@ export class VerticalMenuComponent implements OnInit {
    options: Array<string>;
    qaTag: string = 'vertical-menu-example';
 
+   // tslint:disable:max-line-length
    public apiDoc: ApiDoc = {
       title: 'Vertical tabs',
       description: 'The vertical tabs is a component used for navigation purposes. It shows a set of links stacked like a vertical menu that can be used to put content at a side.',
@@ -27,9 +28,7 @@ export class VerticalMenuComponent implements OnInit {
       },
       exampleDesc: `Next, you can see an example of vertical menu with three options.`
    };
-
-   constructor() {
-   }
+   // tslint:enable:max-line-length
 
    ngOnInit(): void {
       this.options = ['MENU.SERVICE', 'MENU.NODES', 'MENU.CASSANDRA'];

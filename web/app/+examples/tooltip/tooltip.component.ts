@@ -9,6 +9,7 @@ import { ApiDoc, TYPES } from '../../shared';
 
 export class TooltipComponent {
 
+   // tslint:disable:max-line-length
    public apiDoc: ApiDoc = {
       title: 'Tooltip',
       description: 'The tooltip component is a text box that appear floating over an other UI component to explain further information about something related to the content or the component itself. It could be shown on click or on hover.',
@@ -23,4 +24,5 @@ export class TooltipComponent {
       },
       exampleDesc: `example desc`
    };
+   // tslint:enable:max-line-length
 }

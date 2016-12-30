@@ -12,6 +12,7 @@ export class TabBoxComponent {
    tabs: StTab[];
    selectedTab: StTab;
 
+   // tslint:disable:max-line-length
    public apiDoc: ApiDoc = {
       title: 'Tab Box',
       description: 'Tab box component is a useful component in order to divide information according a specific criteria',
@@ -27,6 +28,7 @@ export class TabBoxComponent {
       },
       exampleDesc: `Next, you can see an example of a tab box with two tabs.`
    };
+   // tslint:enable:max-line-length
 
    constructor() {
       this.tabs = [

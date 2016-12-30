@@ -9,6 +9,7 @@ import { ApiDoc, TYPES } from '../../shared';
 
 export class InfoCardComponent {
 
+   // tslint:disable:max-line-length
    public apiDoc: ApiDoc = {
       title: 'Info Card',
       description: 'Info card component is used to display a list of elements in a grid. These elements are shown with an identification logo and a short information.',
@@ -24,6 +25,7 @@ export class InfoCardComponent {
       },
       exampleDesc: `Next, you can see how info cards are shown in a grid.`
    };
+   // tslint:enable:max-line-length
 
    constructor() { }
 }

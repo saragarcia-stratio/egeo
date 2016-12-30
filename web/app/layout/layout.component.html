@@ -12,15 +12,6 @@
           <div class="tmp-dropdown-menu__section-title">Overview</div>
         </li>
 
-        <!-- HowTo -->
-        <li class="tmp-dropdown-menu__section">
-          <div class="tmp-dropdown-menu__section-title">Getting Started</div>
-
-          <div class="tmp-dropdown-menu__section-item" [ngClass]="{'tmp-dropdown-menu__section-item--active': currentUrl === '/api-doc'}">
-            <a routerLink="/api-doc">How to document with API Doc</a>
-          </div>
-        </li>
-
         <!-- Branding -->
         <li class="tmp-dropdown-menu__section">
           <div class="tmp-dropdown-menu__section-title">Branding</div>
@@ -106,19 +97,19 @@
               </li>
             </ul>
           </ul>
-          
+
           <div class="tmp-dropdown-menu__section-item" [ngClass]="{'tmp-dropdown-menu__section-item--active': currentUrl === '/spinner'}">
             <a routerLink="/spinner">Spinner</a>
           </div>
-          
+
           <div class="tmp-dropdown-menu__section-item" [ngClass]="{'tmp-dropdown-menu__section-item--active': currentUrl === '/tooltip'}">
             <a routerLink="/tooltip">Tooltip</a>
           </div>
-          
+
           <div class="tmp-dropdown-menu__section-item" [ngClass]="{'tmp-dropdown-menu__section-item--active': currentUrl === '/page-title'}">
             <a routerLink="/page-title">Page title</a>
           </div>
-          
+
           <div class="tmp-dropdown-menu__section-item" [ngClass]="{'tmp-dropdown-menu__section-item--active': currentUrl === '/search'}">
             <a routerLink="/search">Search</a>
           </div>

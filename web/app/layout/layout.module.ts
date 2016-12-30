@@ -23,7 +23,6 @@ import {
   VerticalMenuComponent,
   HorizontalTabComponent,
   TabBoxComponent,
-  ApiDocExample,
   RadioMenuComponent,
   PageTitleComponent,
   SearchComponent
@@ -59,7 +58,6 @@ import { EgeoModule } from '../../../egeo';
     VerticalMenuComponent,
     HorizontalTabComponent,
     TabBoxComponent,
-    ApiDocExample,
     RadioMenuComponent,
     PageTitleComponent,
     SearchComponent

@@ -6,7 +6,7 @@
   "scripts": {
     "build-doc": "cross-env NODE_ENV=production rm -rf target && webpack --no-color --bail",
     "build-components": "tsc -p tsconfig.components.json",
-    "lint": "tslint -c ./tslint.json 'components/**/*.ts' -e 'node_modules' --project ./tsconfig.json --type-check -t stylish",
+    "lint": "tslint -c ./tslint.json -e 'node_modules' --type-check -t stylish '{web,components}/**/*.ts'",
     "replace": "json -I -f package.json -e",
     "start": "cross-env NODE_ENV=development webpack-dev-server --progress --profile --watch --content-base src/",
     "test": "cross-env NODE_ENV=test karma start",

@@ -13,7 +13,7 @@
    <name>Egeo Angular2 Components</name>
    <inceptionYear>2016</inceptionYear>
    <properties>
-      <nodeVer>v6.0.0</nodeVer>
+      <nodeVer>v6.9.2</nodeVer>
       <npmVer>3.8.8</npmVer>
       <nodeURL>http://tools.stratio.com/buildtools</nodeURL>
    </properties>

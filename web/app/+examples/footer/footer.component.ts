@@ -24,6 +24,7 @@ export class FooterComponent {
          url: 'http://www.google.es'
       });
 
+      // tslint:disable:max-line-length
       this.apiDoc = {
          title: 'Footer',
          description: 'The footer component is used to create a consistent user experience across the whole applications of the Stratio Data Centric Suite. It beyonds to the layout family of components.',
@@ -38,8 +39,6 @@ export class FooterComponent {
          },
          exampleDesc: ``
       };
+      // tslint:enable:max-line-length
    }
-
-
-
 }

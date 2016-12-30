@@ -86,7 +86,7 @@
                   </goals>
                   <phase>deploy</phase>
                   <configuration>
-                     <arguments>run-script generate-declarations</arguments>
+                     <arguments>run-script build-components</arguments>
                   </configuration>
                </execution>
                <execution>

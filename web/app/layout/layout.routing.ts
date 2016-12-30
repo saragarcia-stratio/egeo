@@ -21,7 +21,6 @@ import {
   TooltipComponent,
   HorizontalTabComponent,
   TabBoxComponent,
-  ApiDocExample,
   RadioMenuComponent,
   PageTitleComponent,
   SearchComponent
@@ -30,7 +29,7 @@ import {
 export const routing: ModuleWithProviders = RouterModule.forChild([
   {
     path: '', component: LayoutComponent, children: [
-      { path: '', redirectTo: 'main' },
+      { path: '', redirectTo: 'main', pathMatch: 'full' },
       { path: 'main', component: MainComponent },
       { path: 'colors', component: ColorsComponent },
       { path: 'typography', component: TypographyComponent },
@@ -51,7 +50,6 @@ export const routing: ModuleWithProviders = RouterModule.forChild([
       { path: 'tooltip', component: TooltipComponent },
       { path: 'horizontal-tab', component: HorizontalTabComponent },
       { path: 'tab-box', component: TabBoxComponent },
-      { path: 'api-doc', component: ApiDocExample },
       { path: 'page-title', component: PageTitleComponent },
       { path: 'search', component: SearchComponent }
     ]

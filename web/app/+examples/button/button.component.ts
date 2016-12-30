@@ -13,6 +13,7 @@ export class ButtonComponent {
       title: 'Button',
       description: 'The button component represents a clickable button.',
       haveModel: false,
+      // tslint:disable:max-line-length
       apiSection: {
          inputs: [
             { paramName: 'inputType', type: TYPES.STR, required: false, details: 'The button type can have one of these possible values: submit / reset / button. The submit and reset ones are used to be recognized as the HTML forms predefined options. Default type is button.' },
@@ -24,18 +25,19 @@ export class ButtonComponent {
             { paramName: 'subtypeClass', type: TYPES.STR, required: false, details: 'Subtype of button. Only for graphic purposes. It defines graphical variations of the type and always use the same color variations related to the name of subtype. Subtypes are subtype1, subtype2, subtype3... Not all buttons have all subtypes. Default is the subtype1 value.' },
             { paramName: 'text', type: TYPES.STR, required: true, details: 'Text of the button. Default type is "Click Me".' },
             { paramName: 'themeClass', type: TYPES.STR, required: false, details: 'Theme applied to the button. Only for graphic purposes. Themes are created related to the context the button is placed in(i.e. the same button in different backgrounds). There is not default value.' },
-            { paramName: 'typeClass', type: TYPES.STR, required: true, details: 'Type of button. Only for graphic purposes. It defines different types or buttons like classical rect buttons, the rounded ones or ones without background, similar to links. Types are btnMain, btnLink and btnTool. btnMain is the default value.' },
+            { paramName: 'typeClass', type: TYPES.STR, required: true, details: 'Type of button. Only for graphic purposes. It defines different types or buttons like classical rect buttons, the rounded ones or ones without background, similar to links. Types are btnMain, btnLink and btnTool. btnMain is the default value.' }
          ],
          outputs: []
       },
       exampleDesc: `You can see below several samples showing different the most common configurations of the button component inside a Stratio application.`
    };
+   // tslint:enable:max-line-length
 
-   test1() {
+   test1(): void {
       console.log('You clicked the button 1!');
    }
 
-   test2() {
+   test2(): void {
       console.log('You clicked the button 2!');
    }
 }

@@ -1,5 +1,5 @@
 import { FieldsMetadata, Model, Order, ORDER_TYPE } from '../../../../../components/st-table';
-import * as _ from "lodash";
+import * as _ from 'lodash';
 
 const userMetadata: Array<FieldsMetadata> = [{
    id: 'name',
@@ -37,7 +37,7 @@ const userMetadata: Array<FieldsMetadata> = [{
          },
          falseText: 'UnHealthy'
       },
-      link: false,
+      link: false
    }
 ];
 

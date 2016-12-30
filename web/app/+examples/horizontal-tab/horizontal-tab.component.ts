@@ -25,7 +25,7 @@ export class HorizontalTabComponent {
             active: false
          }
       ];
-
+      // tslint:disable:max-line-length
       this.apiDoc = {
          title: 'Toggle buttons',
          description: 'Toggle buttons component is used to apply a specific filter according the selected tab. Each tab displays a number to indicate how many content fulfils its filter.',
@@ -42,6 +42,7 @@ export class HorizontalTabComponent {
          },
          exampleDesc: ``
       };
+      // tslint:enable:max-line-length
    }
 
    onSelectTab(tab: StHorizontalTab): void {

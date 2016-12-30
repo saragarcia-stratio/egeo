@@ -28,6 +28,7 @@ export class RegexpComponent {
       pattern: 'Invalid value'
    };
 
+   // tslint:disable:max-line-length
    public apiDoc: ApiDoc = {
       title: 'Regular expresions',
       description: 'This is an utility to work with Regular Expressions. It includes a vault to gather the most frequently used regular expressions like the validation ones.',
@@ -35,6 +36,7 @@ export class RegexpComponent {
       apiSection: { inputs: [], outputs: [] },
       exampleDesc: `This example use an email regular expresion for test input values.`
    };
+   // tslint:enable:max-line-length
 
    onSubmitTemplateBased(): void {
       console.log('submit value: ', JSON.stringify(this.model));

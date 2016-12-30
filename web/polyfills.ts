@@ -10,6 +10,7 @@ if (process.env.ENV === 'production') {
   // Production
 } else {
   // Development
+  // tslint:disable-next-line:no-string-literal
   Error['stackTraceLimit'] = Infinity;
   require('zone.js/dist/long-stack-trace-zone');
 }

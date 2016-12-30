@@ -58,7 +58,7 @@
                   <phase>generate-sources</phase>
                   <configuration>
                      <npmRegistryURL>${customnpmRegistryURL}</npmRegistryURL>
-                     <arguments>install --loglevel=error --depth=0</arguments>
+                     <arguments>install</arguments>
                   </configuration>
                </execution>
                <execution>

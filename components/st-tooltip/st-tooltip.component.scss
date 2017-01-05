@@ -20,16 +20,18 @@ $tooltip-content--span-after---border-top: 5px solid egeo-get-color(n0) !default
 $tooltip-content--span-after---border-right: 5px solid transparent !default;
 $tooltip-content--span-after---border-left: 5px solid transparent !default;
 $tooltip-content--hover---bottom: 25px !default;
-$tooltip-content--hover---margin-left: -115px !default;
 
 span.tooltip-content {
   position: relative;
   display: inline;
   cursor: pointer;
+  width: 100%;
+  float: left;
 }
 span.tooltip-content span {
   position: absolute;
-  width:$tooltip-content--span---width;
+  width: 100%;
+  max-width:$tooltip-content--span---width;
   font-size: $tooltip-content--span---font-size;
   color: $tooltip-content--span---color;
   background: $tooltip-content--span---background;
@@ -45,8 +47,7 @@ span.tooltip-content span:before {
   content: '';
   position: absolute;
   top: 100%;
-  left: 50%;
-  margin-left: $tooltip-content--span-before---margin-left;
+  left: 12px;
   width: 0; height: 0;
   border-top: $tooltip-content--span-before---border-top;
   border-right: $tooltip-content--span-before---border-right;
@@ -56,26 +57,25 @@ span.tooltip-content span:after {
   content: '';
   position: absolute;
   top: 100%;
-  left: 50%;
-  margin-left: $tooltip-content--span-after---margin-left;
+  left: 13px;
   width: 0; height: 0;
   border-top: $tooltip-content--span-after---border-top;
   border-right: $tooltip-content--span-after---border-right;
   border-left: $tooltip-content--span-after---border-left;
 }
+
 span:hover.tooltip-content.on-hover span,
 span .tooltip-content.on-click span {
   visibility: visible;
   opacity: 1;
   bottom: $tooltip-content--hover---bottom;
-  left: 50%;
-  margin-left: $tooltip-content--hover---margin-left;
+  left: 0;
   z-index: 999;
 }
 
 a{
-   text-decoration: none;
-   color: inherit;
-   font-family: inherit;
-   font-size: inherit;
+  text-decoration: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
 }

@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { FieldsMetadata, DataList, Order, GosecListHeaderComponent, GosecListBodyComponent} from './shared';
+import { FieldsMetadata, DataList, Order} from './shared';
 import { Page } from './shared/st-pagination/';
 
 
@@ -32,6 +32,9 @@ export class GosecListComponent<T> {
    @Input() totalElements: number;
    @Output() changePage: EventEmitter<number> = new EventEmitter<number>();
 
+   private rowHeight: number = 46;
+
+
    onChangePage(page: number): void {
       this.changePage.emit(page);
    }
@@ -46,6 +49,10 @@ export class GosecListComponent<T> {
 
    clickOnAction(id: string): void {
       this.clickAction.emit(id);
+   }
+
+   calculatePaginationTopPosition(): string {
+      return (this.pagination.elementsPerPage - this.data.length) * this.rowHeight + 'px';
    }
 
 }

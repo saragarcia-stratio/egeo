@@ -9,7 +9,7 @@
          <gosec-list-body [headerList]="metadata" [data]="data" (openDetail)="showDetail($event)" (clickAction)="clickOnAction($event)" [hasDetail]="hasDetail" [detailText]="detailText" [actionClass]="actionClass"></gosec-list-body>
       </div>
    </div>
-   <div class="row">
+   <div class="row" [style.margin-top] = "calculatePaginationTopPosition()">
       <div class="col-md-12">
          <gosec-pagination [pagination]="pagination" [totalElements]="totalElements" (changePage)="onChangePage($event)"></gosec-pagination>
       </div>

@@ -1,0 +1,21 @@
+.changelog {
+     h1 {
+      color: egeo-get-color(n9);
+      font-family: egeo-get-font(brandon-grotesque);
+      font-size: egeo-get-font-size(head_xxxlarge);
+      font-weight: egeo-get-font-weight(normal);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+
+      &::after {
+         border-bottom: 2px solid;
+         border-color: egeo-get-color(a2);
+         content: ' ';
+         display: block;
+         height: 10px;
+         width: 100%;
+      }
+   }
+}
+
+

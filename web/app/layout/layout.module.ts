@@ -26,17 +26,18 @@ import {
    RadioMenuComponent,
    PageTitleComponent,
    SearchComponent,
-   ChangelogComponent
+   ChangelogComponent,
+   ChangelogService
 } from '../+examples';
 import { routing } from './layout.routing';
 
 import { LoadCodeComponent, ApiDocComponent, ParametersTableComponent } from '../shared';
 
 import { EgeoModule } from '../../../egeo';
-import { MarkdownModule } from 'angular2-markdown';
+import { MarkdownToHtmlPipe } from 'markdown-to-html-pipe';
 
 @NgModule({
-   imports: [CommonModule, routing, FormsModule, ReactiveFormsModule, EgeoModule, MarkdownModule],
+   imports: [CommonModule, routing, FormsModule, ReactiveFormsModule, EgeoModule],
    declarations: [
       LayoutComponent,
       LoadCodeComponent,
@@ -63,7 +64,9 @@ import { MarkdownModule } from 'angular2-markdown';
       RadioMenuComponent,
       PageTitleComponent,
       SearchComponent,
-      ChangelogComponent
-   ]
+      ChangelogComponent,
+      MarkdownToHtmlPipe
+   ],
+   providers: [ChangelogService]
 })
 export class LayoutModule { }

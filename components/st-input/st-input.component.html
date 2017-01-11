@@ -8,8 +8,8 @@
          <span *ngIf="!contextualHelp">{{label}}</span>
       </label>
       <input (focus)="onFocus($event)" (focusout)="onFocusOut($event)" (blur)="onFocusOut($event)" [formControl]="internalControl"
-         class="remove-default-style" [ngClass]="{disabled: disabled}" [ngModel]="ngModel" (ngModelChange)="changeModel($event)"
-         [placeholder]="placeholder" [name]="name" [type]="internalType" [attr.maxlength]="maxLength" [attr.id]="qaTag">
+         class="remove-default-style" [ngClass]="{disabled: isDisabled}"
+         [placeholder]="placeholder" [name]="name" [attr.type]="internalType" [attr.maxlength]="maxLength" [attr.id]="qaTag">
 
       <span class="bar" [ngClass]="getBarType()"></span>
    </div>

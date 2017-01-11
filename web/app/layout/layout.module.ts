@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { LayoutComponent } from './layout.component';
 import {
@@ -34,7 +34,7 @@ import { LoadCodeComponent, ApiDocComponent, ParametersTableComponent } from '..
 import { EgeoModule } from '../../../egeo';
 
 @NgModule({
-  imports: [CommonModule, routing, FormsModule, EgeoModule],
+  imports: [CommonModule, routing, FormsModule, ReactiveFormsModule, EgeoModule],
   declarations: [
     LayoutComponent,
     LoadCodeComponent,

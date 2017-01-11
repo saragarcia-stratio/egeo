@@ -7,7 +7,7 @@
          <form #myForm="ngForm" class="form-group" novalidate>
             <div class="row">
                <div class="form-group col-md-4">
-                  <st-input label="Email" [placeholder]="emailPlaceholder" [(ngModel)]="model.email" [accept]="emailRegExp" [forceValidations]="forceValidations"
+                  <st-input label="Email" [placeholder]="emailPlaceholder" [(ngModel)]="model.email" [pattern]="emailRegExp" [forceValidations]="forceValidations"
                      [errors]="errors" name="email" style="margin-bottom: 20px; display: inline-block"></st-input>
                </div>
             </div>

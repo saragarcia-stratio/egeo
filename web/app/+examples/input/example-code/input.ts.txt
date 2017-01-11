@@ -1,51 +1,82 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { StInputError } from 'egeo/components'; // For declare messages in case of error.
+import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
+
 
 @Component({
-  selector: 'input-example',
-  template: require('./input.component.html'),
-  styles: [require('./input.component.scss')]
+   selector: 'input-example',
+   template: require('./input.component.html'),
+   styles: [require('./input.component.scss')]
 })
 
-export class InputComponent {
+export class InputComponent implements OnInit {
+   @ViewChild('templateDrivenForm') public templateDrivenForm: NgForm;
 
-  model: Object = {
-    name: 'Egeo',
-    description: '',
-    components: 10,
-    password: ''
-  };
+   public model: MyModel = {
+      name: 'Egeo',
+      description: '',
+      components: 10
+   };
 
-  min: number = 10;
-  max: number = 100;
-  minlength: number = 3;
-  maxlength: number = 10;
-  textWithoutSpaces: string = '[a-z]*';
-  numberWithoutSpaces: string = '[0-9]*';
-  descriptionPlaceholder: string = 'Module description';
-  disabledPlaceholder: string = 'Field disabled';
-  isDisabled: boolean = true;
+   public textWithoutSpaces: string = '[a-z]*';
+   public disabledPlaceholder: string = 'Field disabled';
+   public minLength: number = 3;
+   public isDisabled: boolean = false;
 
-  forceValidations: boolean = false;
+   public forceValidations: boolean = false;
 
-  errors: StInputError = {
-    generic: 'Error',
-    required: 'This field is required',
-    min: 'The min for this field is: ' + this.min,
-    max: 'The max for this field is: ' + this.max,
-    minLength: 'The field min length is: ' + this.minlength,
-    pattern: 'Invalid value'
-  };
+   public errors: StInputError = {
+      generic: 'Error',
+      required: 'This field is required',
+      minLength: 'The field min length is: ' + this.minLength,
+      pattern: 'Invalid value'
+   };
 
-  onSubmitTemplateBased(): void {
-    console.log('submit value: ', JSON.stringify(this.model));
-  }
+   public reactiveForm: FormGroup; // our model driven form
 
-  checkValidations(): void {
-    this.forceValidations = true;
-  }
 
-  changeDisabled(): void {
-    this.isDisabled = !this.isDisabled;
-  }
+   constructor(private _fb: FormBuilder) { }
+
+   onSubmitTemplateBased(): void {
+      console.log('submit value: ', JSON.stringify(this.model));
+   }
+
+   forceValidation(): void {
+      this.forceValidations = true;
+   }
+
+   onSubmitReactiveForm(): void {
+      this.model.description = this.reactiveForm.value.description;
+      this.model.components = this.reactiveForm.value.components;
+      console.log('submit value: ', JSON.stringify(this.model));
+   }
+
+   changeDisabled(): void {
+      console.log('change disable');
+      this.isDisabled = !this.isDisabled;
+      if (this.isDisabled) {
+         this.reactiveForm.get('components').disable();
+         this.templateDrivenForm.form.get('components-template').disable();
+      } else {
+         this.reactiveForm.get('components').enable();
+         this.templateDrivenForm.form.get('components-template').enable();
+      }
+   }
+
+   ngOnInit(): void {
+      this.reactiveForm = this._fb.group({
+         'description': [
+               this.model.description,
+               [Validators.required, Validators.minLength(this.minLength), Validators.pattern(this.textWithoutSpaces)]
+            ],
+         'components': [this.model.components, [Validators.required]]
+      });
+   }
+}
+
+
+interface MyModel {
+   name: string;
+   description: string;
+   components: number;
 }

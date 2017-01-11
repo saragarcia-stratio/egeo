@@ -9,8 +9,15 @@
             </st-tooltip>
          </div>
          <div class="col-sm-4 contains-tooltip">
+            <h3>Label with icon 2 (Showing on click)</h3>
+            <st-tooltip text="only one tooltip should be open at the same time" [showOnClick]="true" [qaTag]="qaTag + '-example2-contextual-help'">
+               <span> Port 2</span>
+               <span class="icon-help2"></span>
+            </st-tooltip>
+         </div>
+         <div class="col-sm-4 contains-tooltip">
             <h3>Icon (Showing on hover)</h3>
-            <st-tooltip text="This is the tooltip activated on hover" [showOnClick]="false" [qaTag]="qaTag + '-example2-contextual-help'">
+            <st-tooltip text="This is the tooltip activated on hover" [showOnClick]="false" [qaTag]="qaTag + '-example3-contextual-help'">
                <span class="icon-help1"></span>
             </st-tooltip>
          </div>

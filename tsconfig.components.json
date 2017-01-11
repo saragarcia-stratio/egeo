@@ -8,6 +8,7 @@
       "experimentalDecorators": true,
       "removeComments": false,
       "noImplicitAny": true,
+      "skipLibCheck": true,
       "suppressImplicitAnyIndexErrors": true,
       "declaration": true,
       "pretty": true

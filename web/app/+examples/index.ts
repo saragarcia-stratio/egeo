@@ -20,3 +20,4 @@ export * from './logo';
 export * from './page-title';
 export * from './search';
 export * from './button';
+export * from './changelog';

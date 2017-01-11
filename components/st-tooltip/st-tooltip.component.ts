@@ -1,4 +1,5 @@
-import { Component, Input, ElementRef, Renderer, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { ListComponent } from './../../web/app/+examples/list/list.component';
+import { Component, Input, ElementRef, Renderer, ChangeDetectorRef, ChangeDetectionStrategy, OnInit, OnDestroy, ViewContainerRef } from '@angular/core';
 
 @Component({
    selector: 'st-tooltip',
@@ -6,39 +7,30 @@ import { Component, Input, ElementRef, Renderer, ChangeDetectorRef, ChangeDetect
    styles: [require('./st-tooltip.component.scss')],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StTooltip {
+export class StTooltip implements OnInit, OnDestroy {
 
    @Input() text: string = '';
-   @Input() showOnClick: boolean = false;
+   @Input() showOnClick: boolean;
    @Input() qaTag: string;
 
-   private globalListener: Array<any> = [];
+   private globalListener: Function;
    private clicked: boolean = false;
-
+   private clickListener: Function;
+   private clickInside: boolean;
    constructor(private _elementRef: ElementRef, private renderer: Renderer, private cd: ChangeDetectorRef) {
    }
 
-   changeTooltipState($event: Event): void {
-      $event.stopPropagation();
-      this.clicked ? this.closeTooltip() : this.openTooltip();
+   ngOnInit(): void {
+      this.clickListener = ($event: Event) => {
+         this.clickInside = this._elementRef.nativeElement.contains($event.target);
+         this.clicked = this.clickInside && !this.clicked;
+         this.cd.markForCheck();
+      };
+      this.globalListener = this.renderer.listenGlobal('document', 'click', this.clickListener);
    }
 
-   openTooltip(): void {
-      this.clicked = true;
-      this.globalListener[0] = this.renderer.listenGlobal('document', 'click', this.closeTooltip.bind(this));
-      this.globalListener[1] = this.renderer.listenGlobal('document', 'keydown', this.closeTooltip.bind(this));
-      this.globalListener[2] = this.renderer.listenGlobal('document', 'wheel', this.closeTooltip.bind(this));
+   ngOnDestroy(): void {
+      this.globalListener();
    }
 
-   closeTooltip(): void {
-      if (this.clicked) {
-         this.clicked = false;
-      }
-      this.globalListener.map((data) => {
-         if (this.globalListener) {
-            data();
-         }
-      });
-      this.cd.markForCheck();
-   }
 }

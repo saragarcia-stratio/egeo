@@ -23,7 +23,8 @@ import {
   TabBoxComponent,
   RadioMenuComponent,
   PageTitleComponent,
-  SearchComponent
+  SearchComponent,
+  ChangelogComponent
 } from '../+examples';
 
 export const routing: ModuleWithProviders = RouterModule.forChild([
@@ -51,7 +52,8 @@ export const routing: ModuleWithProviders = RouterModule.forChild([
       { path: 'horizontal-tab', component: HorizontalTabComponent },
       { path: 'tab-box', component: TabBoxComponent },
       { path: 'page-title', component: PageTitleComponent },
-      { path: 'search', component: SearchComponent }
+      { path: 'search', component: SearchComponent },
+      { path: 'changelog', component: ChangelogComponent }
     ]
   }
 ]);

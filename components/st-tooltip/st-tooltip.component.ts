@@ -1,5 +1,4 @@
-import { ListComponent } from './../../web/app/+examples/list/list.component';
-import { Component, Input, ElementRef, Renderer, ChangeDetectorRef, ChangeDetectionStrategy, OnInit, OnDestroy, ViewContainerRef } from '@angular/core';
+import { Component, Input, ElementRef, Renderer, ChangeDetectorRef, ChangeDetectionStrategy, OnInit, OnDestroy} from '@angular/core';
 
 @Component({
    selector: 'st-tooltip',

@@ -178,6 +178,8 @@ $font-family---open-sans: egeo-get-font(open-sans) !default;
 .st-input {
   width: $input---width;
   font-family: $font-family---open-sans;
+  min-height: 90px;
+  height: 90px;
 }
 
 .error-message {

@@ -1,174 +1,155 @@
-import { Component, Output, EventEmitter, forwardRef, Input, OnChanges, Provider, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { FormControl, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Validators, ValidatorFn } from '@angular/forms';
+import { Component, forwardRef, Input, OnChanges, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { FormControl, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { STVALIDATIONS } from '../st-validations';
 import { StInputError } from './shared';
 
 @Component({
-  selector: 'st-input',
-  template: require('./st-input.component.html'),
-  styles: [require('./st-input.component.scss')],
-  providers: [
-    { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => StInputComponent), multi: true },
-    { provide: NG_VALIDATORS, useExisting: forwardRef(() => StInputComponent), multi: true }
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+   selector: 'st-input',
+   template: require('./st-input.component.html'),
+   styles: [require('./st-input.component.scss')],
+   providers: [
+      { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => StInputComponent), multi: true },
+      { provide: NG_VALIDATORS, useExisting: forwardRef(() => StInputComponent), multi: true }
+   ],
+   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit {
-  @Input() placeholder: string = '';
-  @Input() infoMessage: string = '';
-  @Input() name: string = '';
-  @Input() label: string = '';
-  @Input() fieldType: 'string' | 'number' | 'password' = 'string';
-  @Input() isRequired: boolean;
-  @Input() isDisabled: boolean;
-  @Input() accept: string;
-  @Input() min: number;
-  @Input() max: number;
-  @Input() minLength: number;
-  @Input() maxLength: number;
+export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit, OnDestroy {
 
-  @Input() forceValidations: boolean = false;
-  @Input() errors: StInputError;
-  @Input() qaTag: string;
-  @Input() contextualHelp: string;
+   @Input() placeholder: string = '';
+   @Input() name: string = '';
+   @Input() label: string = '';
+   @Input() fieldType: 'string' | 'number' | 'password' = 'string';
+   @Input() errors: StInputError;
+   @Input() qaTag: string;
+   @Input() forceValidations: boolean = false;
+   @Input() contextualHelp: string;
 
-  // Model
-  @Input() ngModel: string;
-  @Output() ngModelChange: EventEmitter<string> = new EventEmitter<string>();
+   private sub: Subscription;
+   private valueChangeSub: Subscription;
+   private internalControl: FormControl;
+   private errorMessage: string = undefined;
+   private internalInputModel: any = '';
+   private internalType: string = 'text';
 
-  pristine: boolean = true;
+   private focus: boolean = false; // For change style when focus
 
-  private internalControl: FormControl;
-  private errorMessage: string = undefined;
-  private focus: boolean = false;
-  private internalType: string = 'text';
+   private isDisabled: boolean = false; // To check disable
 
-  onChange = (_: any) => { };
-  onTouched = () => { };
-  validateFn: any = () => {};
+   constructor(private _cd: ChangeDetectorRef) { }
 
-  changeModel(value: string): void {
-    this.ngModel = value;
-    this.updateModel();
-  }
 
-  validate(control: FormControl): any {
-    let errors: { [key: string]: any } = this.validations()(control);
-    this.errorMessage = this.getErrorMessage(errors);
-    return errors;
-  }
+   onChange = (_: any) => { };
+   onTouched = () => { };
 
-  ngOnChanges(): void {
-    this.validateFn = this.validateFn;
-    this.checkDisabled();
-  }
 
-  ngOnInit(): void {
-    this.internalControl = new FormControl(this.ngModel, this.validations());
-    this.isRequired = this.isRequired !== undefined && this.isRequired !== false;
-    this.isDisabled = this.isDisabled !== undefined && this.isDisabled !== false;
-    this.internalType = this.fieldType === 'password' ? 'password' : 'text';
-    this.checkDisabled();
-  }
+   validate(control: FormControl): any {
+      if (this.sub) {
+         this.sub.unsubscribe();
+      }
+      this.sub = control.statusChanges.subscribe(() => this.checkErrors(control));
+   }
 
-  writeValue(value: any): void {
-    this.ngModel = value;
-  }
+   ngOnChanges(): void {
+      if (this.forceValidations) {
+         this.writeValue(this.internalControl.value);
+      }
+      this._cd.markForCheck();
+   }
 
-  registerOnChange(fn: (_: number) => void): void {
-    this.onChange = fn;
-  }
+   ngOnInit(): void {
+      this.internalControl = new FormControl(this.internalInputModel);
+      this.internalType = this.fieldType === 'password' ? 'password' : 'text';
+      this.valueChangeSub = this.internalControl.valueChanges.subscribe((value) => this.onChange(value));
+   }
 
-  registerOnTouched(fn: () => void): void { }
+   ngOnDestroy(): void {
+      if (this.valueChangeSub) {
+         this.valueChangeSub.unsubscribe();
+      }
+      if (this.sub) {
+         this.sub.unsubscribe();
+      }
+   }
 
-  private getBarType(): string {
-    return this.showError() ? 'error-bar' : 'normal-bar';
-  }
+   // When value is received from outside
+   writeValue(value: any): void {
+      this.internalControl.setValue(value);
+      this.internalInputModel = value;
+   }
 
-  private onFocus(event: Event): void {
-    this.focus = true;
-  }
+   // Registry the change function to propagate internal model changes
+   registerOnChange(fn: (_: any) => void): void {
+      this.onChange = fn;
+   }
 
-  private onFocusOut(event: Event): void {
-    this.focus = false;
-  }
+   // Registry the touch function to propagate internal touch events TODO: make this function.
+   registerOnTouched(fn: () => void): void {
+      this.onTouched = fn;
+   }
 
-  private showError(): boolean {
-    return this.errorMessage !== undefined && (!this.internalControl.pristine || this.forceValidations) && !this.isDisabled && !this.focus;
-  }
+   setDisabledState(disable: boolean): void {
+      this.isDisabled = disable;
+      if (this.isDisabled && this.internalControl && this.internalControl.enabled) {
+         this.internalControl.disable();
+      } else if (!this.isDisabled && this.internalControl && this.internalControl.disabled) {
+         this.internalControl.enable();
+      }
+      this._cd.markForCheck();
+   }
 
-  private getErrorMessage(errors: { [key: string]: any }): string {
-    if (!errors) {
-      return undefined;
-    }
+   // When status change call this function to check if have errors
+   private checkErrors(control: FormControl): void {
+      let errors: { [key: string]: any } = control.errors;
+      this.errorMessage = this.getErrorMessage(errors);
+      this._cd.markForCheck();
+   }
 
-    if (!this.errors) {
+   // Get error message in function of error list.
+   private getErrorMessage(errors: { [key: string]: any }): string {
+      if (!errors) {
+         return undefined;
+      }
+
+      if (!this.errors) {
+         return '';
+      }
+
+      if (errors.hasOwnProperty('required')) {
+         return this.errors.required || this.errors.generic || '';
+      }
+      if (errors.hasOwnProperty('fieldType')) {
+         return this.errors.type || this.errors.generic || '';
+      }
+      if (errors.hasOwnProperty('minlength')) {
+         return this.errors.minLength || this.errors.generic || '';
+      }
+      if (errors.hasOwnProperty('pattern')) {
+         return this.errors.pattern || this.errors.generic || '';
+      }
+      if (errors.hasOwnProperty('min')) {
+         return this.errors.min || this.errors.generic || '';
+      }
+      if (errors.hasOwnProperty('max')) {
+         return this.errors.max || this.errors.generic || '';
+      }
       return '';
-    }
+   }
 
-    if (errors.hasOwnProperty('required')) {
-      return this.errors.required || this.errors.generic || '';
-    }
-    if (errors.hasOwnProperty('fieldType')) {
-      return this.errors.type || this.errors.generic || '';
-    }
-    if (errors.hasOwnProperty('minlength')) {
-      return this.errors.minLength || this.errors.generic || '';
-    }
-    if (errors.hasOwnProperty('pattern')) {
-      return this.errors.pattern || this.errors.generic || '';
-    }
-    if (errors.hasOwnProperty('min')) {
-      return this.errors.min || this.errors.generic || '';
-    }
-    if (errors.hasOwnProperty('max')) {
-      return this.errors.max || this.errors.generic || '';
-    }
-    return '';
-  }
+   /** Style functions */
+   private getBarType(): string {
+      return this.showError() ? 'error-bar' : 'normal-bar';
+   }
 
-  private checkDisabled(): void {
-    if (this.isDisabled && this.internalControl && this.internalControl.enabled) {
-      this.internalControl.disable();
-    } else if (!this.isDisabled && this.internalControl && this.internalControl.disabled) {
-      this.internalControl.enable();
-    }
-  }
+   private showError(): boolean {
+      return this.errorMessage !== undefined && (!this.internalControl.pristine || this.forceValidations) && !this.focus && !this.isDisabled;
+   }
 
-  private updateModel(): void {
-    this.ngModelChange.emit(this.ngModel);
-  }
+   private onFocus(event: Event): void {
+      this.focus = true;
+   }
 
-  private validations(): ValidatorFn {
-    let validations: ValidatorFn[] = [];
-
-    // general validations
-    if (this.isRequired) {
-      validations.push(Validators.required);
-    }
-    if (this.accept) {
-      validations.push(Validators.pattern(this.accept));
-    }
-
-    // number validations
-    if (this.fieldType === 'number') {
-      validations.push(STVALIDATIONS.validateNumber());
-      if (this.min) {
-        validations.push(STVALIDATIONS.validateMin(this.min));
-      }
-      if (this.max) {
-        validations.push(STVALIDATIONS.validateMax(this.max));
-      }
-    }
-    // string validations
-    if (this.fieldType === 'string' || this.fieldType === 'password') {
-      if (this.minLength) {
-        validations.push(Validators.minLength(this.minLength));
-      }
-      if (this.maxLength) {
-        validations.push(Validators.maxLength(this.maxLength));
-      }
-    }
-    return Validators.compose(validations);
-  }
+   private onFocusOut(event: Event): void {
+      this.focus = false;
+   }
 }

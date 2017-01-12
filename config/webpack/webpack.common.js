@@ -19,7 +19,7 @@ module.exports = function (options) {
 
       resolve: {
          extensions: ['.js', '.ts'],
-         modules: [helpers.root('web'), helpers.root('node_modules')],
+         modules: [helpers.root('components'), helpers.root('web'), helpers.root('node_modules')],
       },
 
       performance: {
@@ -33,7 +33,7 @@ module.exports = function (options) {
                use: [
                   'awesome-typescript-loader?declaration=false',
                   'angular2-template-loader',
-                  'angular2-router-loader'
+                  'angular-router-loader'
                ],
                exclude: [/\.(spec|e2e)\.ts$/]
             },

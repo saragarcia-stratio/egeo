@@ -127,9 +127,9 @@ amdefine@>=0.0.4, amdefine@^1.0.0:
   version "1.0.0"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/amdefine/-/amdefine-1.0.0.tgz#fd17474700cb5cc9c2b709f0be9d23ce3c198c33"
 
-angular2-router-loader@0.3.4:
-  version "0.3.4"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/angular2-router-loader/-/angular2-router-loader-0.3.4.tgz#bb458f233d30d66d58ae2648ad52b8ea1f433dec"
+angular-router-loader@0.5.0:
+  version "0.5.0"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/angular-router-loader/-/angular-router-loader-0.5.0.tgz#b81b1480498320d2a9ac7afb24ed7a9e735a5692"
   dependencies:
     loader-utils "^0.2.15"
 

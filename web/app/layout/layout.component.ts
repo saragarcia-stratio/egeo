@@ -2,9 +2,9 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'layout',
-  template: require('./layout.component.html'),
-  styles: [require('./layout.component.scss')]
+   selector: 'layout',
+   template: require('./layout.component.html'),
+   styles: [require('./layout.component.scss')]
 })
 
 export class LayoutComponent {
@@ -20,7 +20,7 @@ export class LayoutComponent {
    private formsUrls: Array<string> = ['/input'];
    private buttonsUrls: Array<string> = ['/button', '/horizontal-tab'];
    private utilsUrls: Array<string> = ['/regexp'];
-   private navigationUrls: Array<string> = ['/radio-menu'];
+   private navigationUrls: Array<string> = ['/navigation/radio-menu', '/navigation/header'];
    private tabsUrls: Array<string> = ['/tab-box', '/vertical-menu'];
 
    constructor(private router: Router) {
@@ -35,16 +35,16 @@ export class LayoutComponent {
       if (this.formsUrls.includes(this.currentUrl)) {
          this.isFormsOpened = true;
       }
-      if (this.buttonsUrls.includes(this.currentUrl)){
+      if (this.buttonsUrls.includes(this.currentUrl)) {
          this.isButtonsOpened = true;
       }
-      if (this.utilsUrls.includes(this.currentUrl)){
+      if (this.utilsUrls.includes(this.currentUrl)) {
          this.isUtilsOpened = true;
       }
-      if (this.navigationUrls.includes(this.currentUrl)){
+      if (this.navigationUrls.includes(this.currentUrl)) {
          this.isNavigationOpened = true;
       }
-      if (this.tabsUrls.includes(this.currentUrl)){
+      if (this.tabsUrls.includes(this.currentUrl)) {
          this.isTabsOpened = true;
       }
    }

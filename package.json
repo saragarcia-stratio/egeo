@@ -8,7 +8,7 @@
     "build-components": "tsc -p tsconfig.components.json",
     "lint": "tslint -c ./tslint.json -e 'node_modules' --type-check -t stylish '{web,components}/**/*.ts'",
     "replace": "json -I -f package.json -e",
-    "start": "cross-env NODE_ENV=development webpack-dev-server --progress --profile --watch --content-base src/",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --progress --profile --watch --content-base ./",
     "test": "cross-env NODE_ENV=test karma start",
     "test:watch": "cross-env NODE_ENV=test karma start --auto-watch --no-single-run"
   },
@@ -44,7 +44,7 @@
     "@types/lodash": "4.14.44",
     "@types/node": "6.0.54",
     "@types/prismjs": "1.4.18",
-    "angular2-router-loader": "0.3.4",
+    "angular-router-loader": "0.5.0",
     "angular2-template-loader": "0.6.0",
     "assets-webpack-plugin": "3.5.0",
     "awesome-typescript-loader": "2.2.4",

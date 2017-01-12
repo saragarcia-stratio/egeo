@@ -1,6 +1,6 @@
 import {Component, ViewEncapsulation, OnInit} from '@angular/core';
-import {ApiDoc, TYPES} from '../../shared/api-doc/shared/api-doc.model';
-import {StRadioMenuOption} from '../../../../components/st-radio-menu/st-radio-menu-option.interface';
+import {ApiDoc, TYPES} from '../../../shared/api-doc/shared/api-doc.model';
+import {StRadioMenuOption} from '../../../../../components/st-radio-menu/st-radio-menu-option.interface';
 
 @Component({
    selector: 'radio-menu-example',

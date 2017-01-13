@@ -1,2 +1,2 @@
-export * from './st-header.component';
-export * from './st-header.model';
+export { StHeaderModel, StSubMenuModel } from './shared';
+export * from './st-header.module';

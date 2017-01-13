@@ -1,4 +1,6 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+
+import { StHeaderModel } from './shared';
 
 @Component({
   selector: 'st-header',
@@ -8,5 +10,12 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 })
 export class StHeaderComponent {
 
+   @Input() appName: string | undefined;
+   @Input() appLogoPath: string | undefined;
+
+   @Input() menu: Array<StHeaderModel> = [];
+
    constructor() {}
+
+
 }

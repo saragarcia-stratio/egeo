@@ -1,0 +1,13 @@
+<div class="header-app-name">
+   <div *ngIf="showAppName()" [ngClass]="getStatusClass()">
+      <i class="icon-stratio_standard logo"></i>
+      <div class="app-label">
+         <div class="company-name">{{companyName}}</div>
+         <div class="app-name">{{appName}}</div>
+      </div>
+   </div>
+
+   <div *ngIf="!showAppName()">
+      <img [src]="appLogoPath" alt="">
+   </div>
+</div>

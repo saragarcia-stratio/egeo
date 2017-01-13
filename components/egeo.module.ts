@@ -23,7 +23,7 @@ import {    GosecListRowComponent,
             GosecListComponent,
             GosecPaginationComponent
         } from './st-table';
-import { StHeaderComponent } from './st-header';
+import { StHeaderModule } from './st-header';
 import { StButtonComponent } from './st-button';
 
 /* External libs */
@@ -42,7 +42,8 @@ import {
       provide: TranslateLoader,
       useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/langs', '.json'),
       deps: [Http]
-    })
+    }),
+    StHeaderModule
   ],
   providers: [
     TranslateService
@@ -51,12 +52,12 @@ import {
     StInputComponent, StSpinnerComponent, StTooltip, StTwoListSelectionComponent, StFooterComponent,
     StInfoBoxComponent, StInfoCardComponent, StVerticalMenuComponent, GosecListRowComponent, GosecListBodyComponent, GosecListHeaderComponent,
     GosecListComponent, GosecPaginationComponent, StHorizontalTabComponent, StTabBoxComponent, StRadioMenuComponent, StPageTitleComponent,
-    StButtonComponent, StSearchComponent, StHeaderComponent
+    StButtonComponent, StSearchComponent
   ],
   exports: [
     StInputComponent, StInfoBoxComponent, StSpinnerComponent, StTooltip, StTwoListSelectionComponent, StFooterComponent, StInfoCardComponent,
     StVerticalMenuComponent, GosecListComponent, StHorizontalTabComponent, StTabBoxComponent, StRadioMenuComponent, StPageTitleComponent,
-    StButtonComponent, StSearchComponent, StHeaderComponent
+    StButtonComponent, StSearchComponent, StHeaderModule
   ]
 })
 export class EgeoModule {

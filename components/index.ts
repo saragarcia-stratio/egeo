@@ -4,7 +4,7 @@ export { StInputError } from './st-input';
 export { StTwoListSelectionElement, StListModifierObject } from './st-two-list-selection';
 export { StFooterLink } from './st-footer';
 export { BUTTON_TYPES, Buttons, StModalService, MessageModal, ModalTitle, StModalConfiguration, StModal } from './st-modal';
-export { StHeaderModel } from './st-header';
+export { StHeaderModel, StSubMenuModel } from './st-header';
 export * from './utils';
 export * from './st-horizontal-tab/st-horizontal-tab.interface';
 export * from './st-radio-menu/st-radio-menu-option.interface';

@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ApiDoc, TYPES } from '../../../shared';
+import { StHeaderModel } from '../../../../../egeo';
 
 @Component({
    selector: 'header-example',
@@ -9,6 +10,44 @@ import { ApiDoc, TYPES } from '../../../shared';
 })
 
 export class HeaderComponent {
+
+   public headerMenu: Array<StHeaderModel> = [
+      {
+         icon: 'icon-head',
+         label: 'IDENTITIES',
+         link: '/navigation/header/test1',
+         subMenus: [],
+         isActive: true
+      },
+      {
+         icon: 'icon-puzzle',
+         label: 'SERVICES',
+         link: '/navigation/header/test2',
+         subMenus: [],
+         isActive: true
+      },
+      {
+         icon: 'icon-paper',
+         label: 'POLICIES',
+         link: '/navigation/header/test3',
+         subMenus: [],
+         isActive: true
+      },
+      {
+         icon: 'icon-layers',
+         label: 'AUDITING',
+         link: '/navigation/header/test4',
+         subMenus: [],
+         isActive: true
+      },
+      {
+         icon: 'icon-cog',
+         label: 'SETTINGS',
+         link: '/navigation/header/test5',
+         subMenus: [],
+         isActive: true
+      }
+   ];
 
    constructor() {
    }

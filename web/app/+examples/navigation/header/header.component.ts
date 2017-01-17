@@ -16,7 +16,16 @@ export class HeaderComponent {
          icon: 'icon-head',
          label: 'IDENTITIES',
          link: '/navigation/header/test1',
-         subMenus: [],
+         subMenus: [{
+            label: 'USER',
+            link: '/navigation/header/test1/subtest1',
+            isActive: true
+         },
+         {
+            label: 'GROUP',
+            link: '/navigation/header/test1/subtest2',
+            isActive: true
+         }],
          isActive: true
       },
       {

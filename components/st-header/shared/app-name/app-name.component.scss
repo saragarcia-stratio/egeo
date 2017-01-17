@@ -1,34 +1,26 @@
 @import '~ui-base/utils/typography';
 @import '~ui-base/utils/colors';
 
-
-.normal {
-   color: egeo-get-color(n0);
+.expanded-menu {
    position: relative;
-   & .logo { // do with flex
-      font-size: 33px;
-      position: absolute;
-      left: 30px;
-      bottom: 16px;
+   display: block;
+
+   & .logo-form {
+      float: left;
    }
 
    & .app-label {
-      font-family: egeo-get-font('brandon-grotesque');
-      position: absolute;
-      left: 85px;
-      bottom: 20px;
+      display: inline-block;
+      line-height: .95;
+      position: relative;
+      margin-left: 10px;
+      bottom: 5px;
 
       & .company-name {
-         font-size: egeo-get-font-size(head_xxsmall);
-         font-weight: normal;
+         padding-top: 4px;
       }
       & .app-name {
-         font-size: egeo-get-font-size(head_large);
-         font-weight: 500;
+
       }
    }
-}
-
-.collapse {
-
 }

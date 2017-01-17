@@ -19,7 +19,7 @@ module.exports = function (options) {
 
       resolve: {
          extensions: ['.js', '.ts'],
-         modules: [helpers.root('components'), helpers.root('web'), helpers.root('node_modules')],
+         modules: [helpers.root('web'), helpers.root('node_modules')],
       },
 
       performance: {

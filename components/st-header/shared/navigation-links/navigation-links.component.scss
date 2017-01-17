@@ -2,12 +2,25 @@
 @import '~ui-base/utils/colors';
 
 
-
 .link-list {
    list-style: none;
+   display: inline-block
 }
 
+.option {
+   float: left;
+   margin-left: 20px;
+   margin-right: 20px;
+   height: 35px;
+   line-height: 35px;
+   cursor: pointer;
 
-.active {
-   background-color: red;
+   & .link-icon {
+     float: left;
+     margin-right: 8px;
+   }
+
+   & .link-label {
+      float: left;
+   }
 }

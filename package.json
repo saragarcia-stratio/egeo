@@ -34,8 +34,8 @@
     "ng2-translate": "2.5.0",
     "prismjs": "1.6.0",
     "rxjs": "5.0.2",
-    "ui-base": "0.1.0",
-    "ui-fonts": "0.1.0",
+    "ui-base": "0.2.0-SNAPSHOT",
+    "ui-fonts": "0.2.0-SNAPSHOT",
     "zone.js": "0.7.2"
   },
   "devDependencies": {

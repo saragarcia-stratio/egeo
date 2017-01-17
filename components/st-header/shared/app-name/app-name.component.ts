@@ -20,7 +20,7 @@ export class AppNameComponent {
    }
 
    public getStatusClass(): string {
-      return this.isCollapsed ? 'collapsed' : 'normal';
+      return this.isCollapsed ? 'collapsed-menu' : 'expanded-menu';
    }
 
 }

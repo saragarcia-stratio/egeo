@@ -29,8 +29,9 @@ module.exports = function (options) {
       module: {
          rules: [
             {
-               test: /\.ts$/,
+               test: /\.ts$/,git
                use: [
+                  '@angularclass/hmr-loader',
                   'awesome-typescript-loader?declaration=false',
                   'angular2-template-loader',
                   'angular-router-loader'

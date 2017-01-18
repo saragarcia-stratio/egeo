@@ -21,7 +21,6 @@ import {
   TooltipComponent,
   HorizontalTabComponent,
   TabBoxComponent,
-  RadioMenuComponent,
   PageTitleComponent,
   SearchComponent,
   ChangelogComponent
@@ -46,14 +45,14 @@ export const routing: ModuleWithProviders = RouterModule.forChild([
       { path: 'info-card', component: InfoCardComponent },
       { path: 'regexp', component: RegexpComponent },
       { path: 'vertical-menu', component: VerticalMenuComponent },
-      { path: 'radio-menu', component: RadioMenuComponent },
       { path: 'list', component: ListComponent },
       { path: 'tooltip', component: TooltipComponent },
       { path: 'horizontal-tab', component: HorizontalTabComponent },
       { path: 'tab-box', component: TabBoxComponent },
       { path: 'page-title', component: PageTitleComponent },
       { path: 'search', component: SearchComponent },
-      { path: 'changelog', component: ChangelogComponent }
+      { path: 'changelog', component: ChangelogComponent },
+      { path: 'navigation', loadChildren: '../+examples/navigation/navigation.module#NavigationModule'}
     ]
   }
 ]);

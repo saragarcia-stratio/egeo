@@ -81,3 +81,64 @@ a {
       width: 100%;
   }
 }
+
+
+
+$header-background: egeo-get-color(b2) !default;
+
+.sth-header {
+   background-color: $header-background;
+}
+
+.sth-header-border {
+   background-color: egeo-get-color(b1);
+}
+
+.sth-sub-menu {
+   background-color: egeo-get-color(b3);
+}
+
+.sth-app {
+   color: egeo-get-color(n0);
+}
+
+.sth-app-name {
+   font-family: egeo-get-font('brandon-grotesque');
+   font-size: egeo-get-font-size(head_large);
+   font-weight: 500;
+}
+
+.sth-logo {
+   font-size: 48px;
+}
+
+.sth-company-name {
+   font-family: egeo-get-font('brandon-grotesque');
+   font-size: egeo-get-font-size(head_xxsmall);
+   font-weight: normal;
+}
+
+.sth-option {
+   font-family: egeo-get-font(brandon-grotesque);
+   color: egeo-get-color(n6);
+
+   &:hover {
+      color: egeo-get-color(b3);
+      -webkit-transition: all .3s ease-in-out;
+      -moz-transition: all .3s ease-in-out;
+      -o-transition: all .3s ease-in-out;
+      transition: all .3s ease-in-out;
+   }
+}
+
+.sth-active {
+   color: egeo-get-color(b3);
+}
+
+.sth-link-icon {
+   font-size: egeo-get-font-size(icon_xsmall);
+}
+
+.sth-link-label {
+   font-size: egeo-get-font-size(head_xxsmall);
+}

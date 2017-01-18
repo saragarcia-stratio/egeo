@@ -3,7 +3,7 @@ import { BrowserModule }    from '@angular/platform-browser';
 import { HttpModule, Http }    from '@angular/http';
 
 /* External libs */
-import { TranslateService, TranslateModule, TranslateLoader, TranslateStaticLoader, TranslatePipe } from 'ng2-translate/ng2-translate';
+import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 
 /* App Root */
 import { AppComponent }       from './app.component';

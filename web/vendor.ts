@@ -13,6 +13,6 @@ import 'rxjs';
 import 'lodash';
 
 // Global styles
-import 'ui-fonts/fonts.css';
+import 'ui-fonts/egeo-theme-stratio.css';
 import 'flexboxgrid/css/flexboxgrid.css';
 import 'prismjs/themes/prism-coy.css';

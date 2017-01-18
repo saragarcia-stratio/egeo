@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { LayoutComponent } from './layout.component';
@@ -23,25 +22,22 @@ import {
    VerticalMenuComponent,
    HorizontalTabComponent,
    TabBoxComponent,
-   RadioMenuComponent,
    PageTitleComponent,
    SearchComponent,
    ChangelogComponent,
-   ChangelogService
+   ChangelogService,
+   NavigationModule
 } from '../+examples';
 import { routing } from './layout.routing';
 
-import { LoadCodeComponent, ApiDocComponent, ParametersTableComponent } from '../shared';
+import { SharedModule } from '../shared';
 
-import { EgeoModule } from '../../../egeo';
 import { MarkdownToHtmlPipe } from 'markdown-to-html-pipe';
 
 @NgModule({
-   imports: [CommonModule, routing, FormsModule, ReactiveFormsModule, EgeoModule],
+   imports: [SharedModule, routing, FormsModule, ReactiveFormsModule, NavigationModule],
    declarations: [
       LayoutComponent,
-      LoadCodeComponent,
-      ParametersTableComponent, ApiDocComponent, // For api doc in examples.
       ModalComponent,
       MainComponent,
       ColorsComponent,
@@ -61,7 +57,6 @@ import { MarkdownToHtmlPipe } from 'markdown-to-html-pipe';
       VerticalMenuComponent,
       HorizontalTabComponent,
       TabBoxComponent,
-      RadioMenuComponent,
       PageTitleComponent,
       SearchComponent,
       ChangelogComponent,

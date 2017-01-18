@@ -1,3 +1,3 @@
 export * from './app.constants';
-export * from './load-code';
-export * from './api-doc';
+export * from './shared.module';
+export { ApiDoc, TYPES } from './api-doc';

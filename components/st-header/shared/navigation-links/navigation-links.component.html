@@ -1,0 +1,8 @@
+<div class="navigation-links">
+   <ul class="link-list">
+      <li *ngFor="let option of menu" class="sth-option option" [routerLink]="option.link" routerLinkActive="sth-active">
+         <span *ngIf="hasIcon(option)" class="sth-link-icon link-icon"><i [ngClass]="option.icon"></i></span>
+         <div class="sth-link-label link-label">{{option.label}}</div>
+      </li>
+   </ul>
+</div>

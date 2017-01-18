@@ -1,0 +1,38 @@
+@import '~ui-base/utils/typography';
+@import '~ui-base/utils/colors';
+
+.app-name {
+   margin: 0 30px 0 30px;
+   padding-top: 40px;
+}
+
+.navigation-links {
+   padding-top: 50px
+}
+
+.menu {
+   height: 95px;
+   min-height: 95px;
+   width: 100%;
+   position: relative;
+   display: flex;
+   flex-direction: row;
+   overflow-x: hidden;
+   white-space: nowrap;
+}
+
+.sub-menu-form {
+   min-height: 5px;
+}
+
+.header {
+   width: 100%;
+}
+
+.header-border {
+   height: 10px;
+   width: 100%;
+   z-index: 10;
+   position: absolute;
+   top: 0;
+}

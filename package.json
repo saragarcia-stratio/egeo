@@ -8,7 +8,7 @@
     "build-components": "tsc -p tsconfig.components.json",
     "lint": "tslint -c ./tslint.json -e 'node_modules' --type-check -t stylish '{web,components}/**/*.ts'",
     "replace": "json -I -f package.json -e",
-    "start": "cross-env NODE_ENV=development webpack-dev-server --progress --profile --watch --content-base src/",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --progress --profile --watch --content-base ./",
     "test": "cross-env NODE_ENV=test karma start",
     "test:watch": "cross-env NODE_ENV=test karma start --auto-watch --no-single-run"
   },
@@ -34,8 +34,8 @@
     "ng2-translate": "2.5.0",
     "prismjs": "1.6.0",
     "rxjs": "5.0.2",
-    "ui-base": "0.1.0",
-    "ui-fonts": "0.1.0",
+    "ui-base": "0.2.0-SNAPSHOT",
+    "ui-fonts": "0.2.0-SNAPSHOT",
     "zone.js": "0.7.2"
   },
   "devDependencies": {
@@ -44,7 +44,7 @@
     "@types/lodash": "4.14.44",
     "@types/node": "6.0.54",
     "@types/prismjs": "1.4.18",
-    "angular2-router-loader": "0.3.4",
+    "angular-router-loader": "0.5.0",
     "angular2-template-loader": "0.6.0",
     "assets-webpack-plugin": "3.5.0",
     "awesome-typescript-loader": "2.2.4",
@@ -53,7 +53,7 @@
     "css-loader": "0.26.1",
     "file-loader": "0.9.0",
     "html-loader": "0.4.4",
-    "html-webpack-plugin": "2.24.1",
+    "html-webpack-plugin": "2.26.0",
     "istanbul-instrumenter-loader": "1.2.0",
     "jasmine-core": "2.5.2",
     "json": "9.0.4",

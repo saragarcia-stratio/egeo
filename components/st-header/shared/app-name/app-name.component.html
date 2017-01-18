@@ -1,0 +1,14 @@
+<div class="sth-app">
+   <div *ngIf="showAppName()" [ngClass]="getStatusClass()">
+      <i class="icon-stratio_standard sth-logo"></i>
+      <div class="app-label">
+         <span class="sth-company-name company-name">{{companyName}}</span>
+         <br>
+         <span class="sth-app-name">{{appName}}</span>
+      </div>
+   </div>
+
+   <div *ngIf="!showAppName()">
+      <img [src]="appLogoPath" alt="">
+   </div>
+</div>

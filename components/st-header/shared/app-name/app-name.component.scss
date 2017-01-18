@@ -1,0 +1,19 @@
+@import '~ui-base/utils/typography';
+@import '~ui-base/utils/colors';
+
+.expanded-menu {
+   position: relative;
+   display: block;
+
+   & .app-label {
+      display: inline-block;
+      line-height: .95;
+      position: relative;
+      margin-left: 10px;
+      bottom: 5px;
+
+      & .company-name {
+         padding-top: 4px;
+      }
+   }
+}

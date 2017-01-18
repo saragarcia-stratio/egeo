@@ -34,7 +34,11 @@ module.exports = function (options) {
                   '@angularclass/hmr-loader',
                   'awesome-typescript-loader?declaration=false',
                   'angular2-template-loader',
+<<<<<<< 8d8fc93c8c0d5d6ab7b7531979c96c17a3ae0ae6
                   'angular-router-loader'
+=======
+                  'angular2-router-loader'
+>>>>>>> Refactor Hot Loader
                ],
                exclude: [/\.(spec|e2e)\.ts$/]
             },

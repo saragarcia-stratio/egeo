@@ -17,7 +17,7 @@ import { EgeoModule } from '../../egeo';
 import { AppStore, State } from './app.store';
 
 // Hot Loader
-import { removeNgStyles, createNewHosts, createInputTransfer, bootloader } from '@angularclass/hmr';
+import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
 
 @NgModule({

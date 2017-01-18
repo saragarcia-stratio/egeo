@@ -1,3 +1,5 @@
+import { bootloader } from '@angularclass/hmr';
+
 // The browser platform with a compiler
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
@@ -5,4 +7,8 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 
 // Compile and launch the module
-platformBrowserDynamic().bootstrapModule(AppModule);
+export function main(): any {
+   return platformBrowserDynamic().bootstrapModule(AppModule);
+}
+
+bootloader(main);

@@ -33,7 +33,8 @@ module.exports = function (options) {
                use: [
                   'awesome-typescript-loader?declaration=false',
                   'angular2-template-loader',
-                  'angular2-router-loader'
+                  'angular2-router-loader',
+                  '@angularclass/hmr-loader',
                ],
                exclude: [/\.(spec|e2e)\.ts$/]
             },

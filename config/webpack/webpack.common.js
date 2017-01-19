@@ -31,6 +31,7 @@ module.exports = function (options) {
             {
                test: /\.ts$/,
                use: [
+                  '@angularclass/hmr-loader',
                   'awesome-typescript-loader?declaration=false',
                   'angular2-template-loader',
                   'angular-router-loader'

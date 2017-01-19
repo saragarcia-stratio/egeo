@@ -10,6 +10,10 @@ const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 8080;
 const HMR = helpers.hasProcessFlag('hot');
 
+const {
+   HotModuleReplacementPlugin
+} = require('webpack');
+
 const METADATA = webpackMerge(commonConfig({ env: ENV }).metadata, {
    host: HOST,
    port: PORT,
@@ -40,6 +44,7 @@ module.exports = function (options) {
 
             }
          }),
+         new HotModuleReplacementPlugin()
       ],
 
       devServer: {
@@ -47,7 +52,8 @@ module.exports = function (options) {
          host: METADATA.host,
          historyApiFallback: true,
          stats: "errors-only",
-         clientLogLevel: "warning"
+         clientLogLevel: "warning",
+         hot: true
       },
       node: {
          global: true,

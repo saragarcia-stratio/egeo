@@ -8,7 +8,7 @@
     "build-components": "tsc -p tsconfig.components.json",
     "lint": "tslint -c ./tslint.json -e 'node_modules' --type-check -t stylish '{web,components}/**/*.ts'",
     "replace": "json -I -f package.json -e",
-    "start": "cross-env NODE_ENV=development webpack-dev-server --progress --profile --watch --content-base ./",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --progress --profile --open --watch --content-base ./",
     "test": "cross-env NODE_ENV=test karma start",
     "test:watch": "cross-env NODE_ENV=test karma start --auto-watch --no-single-run"
   },
@@ -26,6 +26,8 @@
     "@angular/platform-browser": "2.4.1",
     "@angular/platform-browser-dynamic": "2.4.1",
     "@angular/router": "3.4.1",
+    "@angularclass/hmr": "1.2.2",
+    "@angularclass/hmr-loader": "3.0.2",
     "assets-webpack-plugin": "3.5.0",
     "core-js": "2.4.1",
     "flexboxgrid": "6.3.1",

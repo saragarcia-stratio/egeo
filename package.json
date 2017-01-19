@@ -8,11 +8,15 @@
     "build-components": "tsc -p tsconfig.components.json",
     "lint": "tslint -c ./tslint.json -e 'node_modules' --type-check -t stylish '{web,components}/**/*.ts'",
     "replace": "json -I -f package.json -e",
+<<<<<<< HEAD
 <<<<<<< b5018567d159e15600fad60e8129ba6e341827dc
     "start": "cross-env NODE_ENV=development webpack-dev-server --progress --profile --watch --content-base ./",
 =======
     "start": "cross-env NODE_ENV=development webpack-dev-server --progress --profile --open --watch --content-base src/",
 >>>>>>> Update Libs
+=======
+    "start": "cross-env NODE_ENV=development webpack-dev-server --progress --profile --open --watch --content-base src/",
+>>>>>>> b1263206899ee65f2fc8369c4fef64899659412c
     "test": "cross-env NODE_ENV=test karma start",
     "test:watch": "cross-env NODE_ENV=test karma start --auto-watch --no-single-run"
   },

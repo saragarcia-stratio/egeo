@@ -29,7 +29,7 @@ module.exports = function (options) {
       module: {
          rules: [
             {
-               test: /\.ts$/,git
+               test: /\.ts$/,
                use: [
                   '@angularclass/hmr-loader',
                   'awesome-typescript-loader?declaration=false',

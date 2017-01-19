@@ -5,6 +5,7 @@
   "author": "Stratio",
   "scripts": {
     "build-doc": "cross-env NODE_ENV=production rm -rf target && webpack --no-color --bail",
+    "build-bundle": "rm -rf bundle && webpack --config config/webpack-components.js  --no-color --bail",
     "build-components": "tsc -p tsconfig.components.json",
     "lint": "tslint -c ./tslint.json -e 'node_modules' --type-check -t stylish '{web,components}/**/*.ts'",
     "replace": "json -I -f package.json -e",

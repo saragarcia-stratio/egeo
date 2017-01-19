@@ -20,8 +20,8 @@ module.exports = {
     output: {
         path: helpers.root('bundle'),
         publicPath: '/',
-        filename: 'egeo.umd.js',
-        libraryTarget: 'umd',
+        filename: 'egeo.js',
+        libraryTarget: 'commonjs2',
         library: 'egeo'
     },
 
@@ -33,9 +33,9 @@ module.exports = {
            {
                test: /\.ts$/,
                use: [
-                  'awesome-typescript-loader',
+                  'awesome-typescript-loader?declaration=true',
                   'angular2-template-loader',
-                  'angular2-router-loader'
+                  'angular-router-loader'
                ],
                exclude: [/\.(spec|e2e)\.ts$/]
             },

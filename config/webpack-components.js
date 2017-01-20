@@ -40,10 +40,6 @@ module.exports = {
                exclude: [/\.(spec|e2e)\.ts$/]
             },
             {
-               test: /\.json$/,
-               use: 'json-loader'
-            },
-            {
                test: /\.html$/,
                use: 'raw-loader',
                exclude: [helpers.root('web/index.html')]
@@ -58,28 +54,8 @@ module.exports = {
                use: ['raw-loader', 'sass-loader']
             },
             {
-               test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
-               use: "url-loader?limit=10000&minetype=application/font-woff"
-            },
-            {
-               test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
-               use: "url-loader?limit=10000&minetype=application/font-woff"
-            },
-            {
-               test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-               use: "url-loader?limit=10000&minetype=application/octet-stream"
-            },
-            {
-               test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-               use: "file-loader"
-            },
-            {
-               test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-               use: "url-loader?limit=10000&minetype=image/svg+xml"
-            },
-            {
-               test: /\.ico(\?v=\d+\.\d+\.\d+)?$/,
-               use: "file-loader"
+               test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+               use: "file-loader?name=assets/fonts/[name].[hash].[ext]"
             }
         ]
     },

@@ -8,6 +8,8 @@
 * Review and update libraries.
 * FIX Button event is launched when disabled.
 * Remove PostCSS
+* HMR in website
+* Dist egeo as webpack bundle
 
 ## 0.5.0 (December 12, 2016)
 

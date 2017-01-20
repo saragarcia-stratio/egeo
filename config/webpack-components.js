@@ -18,7 +18,7 @@ module.exports = {
     entry: helpers.root('egeo.ts'),
 
     output: {
-        path: helpers.root('bundle'),
+        path: './',
         publicPath: '/',
         filename: 'egeo.js',
         libraryTarget: 'commonjs2',
@@ -26,7 +26,7 @@ module.exports = {
     },
 
     // require those dependencies but don't bundle them
-    externals: [/^\@angular\//, /^rxjs\//],
+    externals: [/^\@angular\//, /^rxjs\//, /^ng2-translate\//],
 
     module: {
         rules: [

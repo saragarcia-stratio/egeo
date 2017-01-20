@@ -129,12 +129,12 @@ describe(('st-list'), () => {
       it('pagination position has to be equal to difference between total rows per page and page rows multiplied by 46 (the row height)', () => {
          let rowsPerPage = 10;
 
-         tableComponent.data = new DataList([<Model<string>>{}, <Model<string>>{}]); // 2 rows in page
+         tableComponent.data = new DataList<HeroeInterface>([<Model<HeroeInterface>>{}, <Model<HeroeInterface>>{}]); // 2 rows in page
          tableComponent.pagination = new Page(1, rowsPerPage, 10);
 
          expect(tableComponent.calculatePaginationTopPosition()).toBe('368px');
 
-         tableComponent.data = new DataList([<Model<string>>{}, <Model<string>>{}, <Model<string>>{}]); // 3 rows in page
+         tableComponent.data = new DataList<HeroeInterface>([<Model<HeroeInterface>>{}, <Model<HeroeInterface>>{}, <Model<HeroeInterface>>{}]); // 3 rows in page
 
          expect(tableComponent.calculatePaginationTopPosition()).toBe('322px');
       });

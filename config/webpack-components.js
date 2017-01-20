@@ -18,30 +18,26 @@ module.exports = {
     entry: helpers.root('egeo.ts'),
 
     output: {
-        path: helpers.root('bundle'),
+        path: './',
         publicPath: '/',
-        filename: 'egeo.umd.js',
-        libraryTarget: 'umd',
+        filename: 'egeo.js',
+        libraryTarget: 'commonjs2',
         library: 'egeo'
     },
 
     // require those dependencies but don't bundle them
-    externals: [/^\@angular\//, /^rxjs\//],
+    externals: [/^\@angular\//, /^rxjs\//, /^ng2-translate\//],
 
     module: {
         rules: [
            {
                test: /\.ts$/,
                use: [
-                  'awesome-typescript-loader',
+                  'awesome-typescript-loader?declaration=true',
                   'angular2-template-loader',
-                  'angular2-router-loader'
+                  'angular-router-loader'
                ],
                exclude: [/\.(spec|e2e)\.ts$/]
-            },
-            {
-               test: /\.json$/,
-               use: 'json-loader'
             },
             {
                test: /\.html$/,
@@ -58,28 +54,8 @@ module.exports = {
                use: ['raw-loader', 'sass-loader']
             },
             {
-               test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
-               use: "url-loader?limit=10000&minetype=application/font-woff"
-            },
-            {
-               test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
-               use: "url-loader?limit=10000&minetype=application/font-woff"
-            },
-            {
-               test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-               use: "url-loader?limit=10000&minetype=application/octet-stream"
-            },
-            {
-               test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-               use: "file-loader"
-            },
-            {
-               test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-               use: "url-loader?limit=10000&minetype=image/svg+xml"
-            },
-            {
-               test: /\.ico(\?v=\d+\.\d+\.\d+)?$/,
-               use: "file-loader"
+               test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+               use: "file-loader?name=assets/fonts/[name].[hash].[ext]"
             }
         ]
     },

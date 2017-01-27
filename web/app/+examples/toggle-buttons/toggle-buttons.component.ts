@@ -1,16 +1,16 @@
+import { StToggleButton } from './../../../../components/st-toggle-buttons/st-toggle-buttons.interface';
 import { Component, ViewEncapsulation } from '@angular/core';
-import { StHorizontalTab } from './../../../../egeo';
 import { ApiDoc, TYPES } from '../../shared';
 
 @Component({
-   selector: 'horizontal-tab-example',
-   template: require('./horizontal-tab.component.html'),
-   styles: [require('./horizontal-tab.component.scss')]
+   selector: 'toggle-buttons-example',
+   template: require('./toggle-buttons.component.html'),
+   styles: [require('./toggle-buttons.component.scss')]
 })
 
-export class HorizontalTabComponent {
+export class ToggleButtonsComponent {
    public apiDoc: ApiDoc;
-   public tabs: StHorizontalTab[];
+   public tabs: StToggleButton[];
    public description: string = 'My tabs: ';
 
    constructor() {
@@ -32,12 +32,12 @@ export class HorizontalTabComponent {
          haveModel: true,
          apiSection: {
             inputs: [
-               { paramName: 'tabs', type: 'Array<StHorizontalTab>', required: true, details: 'List of tabs with a label, number and status (active or not active)' },
+               { paramName: 'tabs', type: 'Array<StToggleButton>', required: true, details: 'List of tabs with a label, number and status (active or not active)' },
                { paramName: 'description', type: TYPES.STR, required: false, details: 'Title displayed just before tabs to introduce them' },
                { paramName: 'qaTag', type: TYPES.STR, required: true, details: 'Id for qa search in automated test' }
             ],
             outputs: [
-               { paramName: 'select', type: 'StHorizontalTab', required: true, details: 'This event is emitted when selected tab has changed. This event has the selected tab as param' }
+               { paramName: 'select', type: 'StToggleButton', required: true, details: 'This event is emitted when selected tab has changed. This event has the selected tab as param' }
             ]
          },
          exampleDesc: ``
@@ -45,7 +45,7 @@ export class HorizontalTabComponent {
       // tslint:enable:max-line-length
    }
 
-   onSelectTab(tab: StHorizontalTab): void {
+   onSelectTab(tab: StToggleButton): void {
       console.log('Selected tab: ' + tab.label);
    }
 }

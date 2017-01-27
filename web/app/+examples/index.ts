@@ -10,7 +10,7 @@ export * from './two-list-selection';
 export * from './footer';
 export * from './info-card';
 export * from './regexp';
-export * from './horizontal-tab';
+export * from './toggle-buttons'
 export * from './tab-box';
 export * from './colors';
 export * from './typography';

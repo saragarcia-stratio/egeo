@@ -1,0 +1,5 @@
+<section class="container-fluid">
+  <div style="margin: 20px 0">
+    <st-toggle-buttons [tabs]="tabs" [description]="description" (select)="onSelectTab($event)" qaTag="toggle-buttons"></st-toggle-buttons>
+  </div>
+</section>

@@ -1,14 +1,14 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { StHorizontalTab } from 'egeo/components';
+import { StToggleButton } from 'egeo/components';
 
 @Component({
-  selector: 'horizontal-tab-example',
-  template: require('./horizontal-tab.component.html'),
-  styles: [require('./horizontal-tab.component.scss')]
+  selector: 'toggle-buttons-example',
+  template: require('./toggle-buttons.component.html'),
+  styles: [require('./toggle-buttons.component.scss')]
 })
 
-export class HorizontalTabComponent {
-  tabs: StHorizontalTab[];
+export class ToggleButtonsComponent {
+  tabs: StToggleButton[];
   description: string = 'My tabs: ';
 
   constructor() {
@@ -25,7 +25,7 @@ export class HorizontalTabComponent {
     ];
   }
 
-  onSelectTab(tab: StHorizontalTab): void {
+  onSelectTab(tab: StToggleButton): void {
     console.log('Selected tab: ' + tab.label);
   }
 }

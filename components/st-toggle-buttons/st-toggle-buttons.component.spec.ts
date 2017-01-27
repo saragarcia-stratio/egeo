@@ -3,29 +3,29 @@ import {
    inject
 } from '@angular/core/testing';
 
-import { StHorizontalTabComponent } from './st-horizontal-tab.component';
+import { StToggleButtonsComponent } from './st-toggle-buttons.component';
 import {
    RouterTestingModule
 } from '@angular/router/testing';
 
 
-describe('StHorizontalTabComponent', () => {
+describe('StToggleButtonsComponent', () => {
    beforeEach(() => {
       TestBed.configureTestingModule({
-         declarations: [StHorizontalTabComponent],
+         declarations: [StToggleButtonsComponent],
          imports: [
             RouterTestingModule
          ]
       });
    });
 
-   let stHorizontalTab: StHorizontalTabComponent;
+   let ttToggleButtons: StToggleButtonsComponent;
 
    beforeEach(() => {
-      stHorizontalTab = new StHorizontalTabComponent();
+      ttToggleButtons = new StToggleButtonsComponent();
    });
 
    it('should exist', () => {
-      expect(stHorizontalTab).not.toBe(undefined);
+      expect(ttToggleButtons).not.toBe(undefined);
    });
 });

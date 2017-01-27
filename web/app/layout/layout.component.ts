@@ -18,7 +18,7 @@ export class LayoutComponent {
 
 
    private formsUrls: Array<string> = ['/input'];
-   private buttonsUrls: Array<string> = ['/button', '/horizontal-tab'];
+   private buttonsUrls: Array<string> = ['/button', '/toggle-buttons'];
    private utilsUrls: Array<string> = ['/regexp'];
    private navigationUrls: Array<string> = ['/navigation/radio-menu', '/navigation/header'];
    private tabsUrls: Array<string> = ['/tab-box', '/vertical-menu'];

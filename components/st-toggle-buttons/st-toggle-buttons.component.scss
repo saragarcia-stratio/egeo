@@ -1,16 +1,16 @@
 @import '~ui-base/utils/typography';
 @import '~ui-base/utils/colors';
 
-$st-horizontal-tab---font-size: egeo-get-font-size('body_xsmall') !default;
-$st-horizontal-tab__description---height: 35px !default;
+$st-toggle-buttons---font-size: egeo-get-font-size('body_xsmall') !default;
+$st-toggle-buttons__description---height: 35px !default;
 
-.st-horizontal-tab {
+.st-toggle-buttons {
 
    &__description {
       display: inline-block;
-      height: $st-horizontal-tab__description---height;
-      line-height: $st-horizontal-tab__description---height;
-      font-size: $st-horizontal-tab---font-size;
+      height: $st-toggle-buttons__description---height;
+      line-height: $st-toggle-buttons__description---height;
+      font-size: $st-toggle-buttons---font-size;
       padding-right: 10px;
    }
    &__tabs{
@@ -22,7 +22,7 @@ $st-horizontal-tab__description---height: 35px !default;
       color: egeo-get-color(n7);
       background: egeo-get-color(n2);
       cursor: pointer;
-      font-size: $st-horizontal-tab---font-size;
+      font-size: $st-toggle-buttons---font-size;
 
       &:hover {
          background: egeo-get-color(n3);

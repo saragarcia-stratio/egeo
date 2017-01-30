@@ -1,3 +1,5 @@
+import { StHorizontalTabsModule } from './st-horizontal-tabs/st-horizontal-tabs.module';
+import { StHorizontalTabsComponent } from './st-horizontal-tabs/st-horizontal-tabs.component';
 import { NgModule, ModuleWithProviders }           from '@angular/core';
 import { CommonModule }       from '@angular/common';
 import { FormsModule, ReactiveFormsModule }        from '@angular/forms';
@@ -48,7 +50,8 @@ import {
     }),
     StHeaderModule,
     StDropdownModule,
-    StDropdownMenuModule
+    StDropdownMenuModule,
+    StHorizontalTabsModule
   ],
   providers: [
     TranslateService
@@ -62,7 +65,7 @@ import {
   exports: [
     StInputComponent, StInfoBoxComponent, StSpinnerComponent, StTooltip, StTwoListSelectionComponent, StFooterComponent, StInfoCardComponent,
     StVerticalMenuComponent, GosecListComponent, StToggleButtonsComponent, StTabBoxComponent, StRadioMenuComponent, StPageTitleComponent,
-    StButtonComponent, StSearchComponent, StHeaderModule, StDropdownModule, StDropdownMenuModule
+    StButtonComponent, StSearchComponent, StHeaderModule, StHorizontalTabsModule,  StDropdownModule, StDropdownMenuModule
   ]
 })
 export class EgeoModule {

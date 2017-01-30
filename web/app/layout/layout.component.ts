@@ -20,7 +20,7 @@ export class LayoutComponent {
    private formsUrls: Array<string> = ['/input'];
    private buttonsUrls: Array<string> = ['/button', '/toggle-buttons'];
    private utilsUrls: Array<string> = ['/regexp'];
-   private navigationUrls: Array<string> = ['/navigation/radio-menu', '/navigation/header'];
+   private navigationUrls: Array<string> = ['/navigation/radio-menu', '/navigation/header', '/navigation/horizontal-tabs'];
    private tabsUrls: Array<string> = ['/tab-box', '/vertical-menu'];
 
    constructor(private router: Router) {

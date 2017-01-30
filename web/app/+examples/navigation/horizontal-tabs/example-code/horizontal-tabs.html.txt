@@ -1,0 +1,10 @@
+<section class="container-liquid">
+   <div class="row">
+      <div class="col-sm-12 contains-horizontal-tabs">
+         <st-horizontal-tabs class="horizontal-tabs" [options]="options" qaTag="{{qaTag}}">
+         </st-horizontal-tabs>
+         <st-info-box title="Info box component" class="info-box">
+         </st-info-box>
+      </div>
+   </div>
+</section>

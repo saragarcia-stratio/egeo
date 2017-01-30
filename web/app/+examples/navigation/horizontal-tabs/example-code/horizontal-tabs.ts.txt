@@ -1,0 +1,24 @@
+import {Component, ViewEncapsulation, OnInit} from '@angular/core';
+
+@Component({
+  selector: 'horizontal-tabs-example',
+  template: require('./horizontal-tabs.component.html'),
+  styles: [require('./horizontal-tabs.component.scss')]
+})
+
+export class HorizontalTabsComponent implements OnInit {
+  options: Array<any>;
+  qaTag: string = 'horizontal-tabs-example';
+
+  constructor () {
+  }
+
+  ngOnInit (): void {
+      this.options = [
+         {text: 'SERVICES', isDisabled: false},
+         {text: 'NODES' },
+         {text: 'CASSANDRA' },
+         {text: 'DISABLED', isDisabled: true}
+      ];
+  }
+}

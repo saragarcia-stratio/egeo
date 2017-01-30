@@ -36,11 +36,13 @@ describe('StHorizontalTabsComponent', () => {
 
   beforeEach(() => {
     stHorizontalTabsComponent = new StHorizontalTabsComponent();
+
   });
 
   describe('when it is initialized', () => {
     it ('if active option is not defined, first option is activated', () => {
       stHorizontalTabsComponent.activeOption = undefined;
+      stHorizontalTabsComponent.qaTag = 'test';
       stHorizontalTabsComponent.options = fakeOptions;
       stHorizontalTabsComponent.ngOnInit();
 
@@ -65,7 +67,7 @@ describe('StHorizontalTabsComponent', () => {
       expect(stHorizontalTabsComponent.activeOption).toBe(fakeOptions[1].text);
     });
 
-    it('when option have isDisabled property like true, active option name not change', () => {
+    it('when option have isDisabled property like true, active option name does not change', () => {
         stHorizontalTabsComponent.activateOption(fakeOptions[2]);
 
         expect(stHorizontalTabsComponent.activeOption).not.toBe(fakeOptions[2].text);

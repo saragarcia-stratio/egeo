@@ -15,7 +15,7 @@ export class StHorizontalTabsComponent implements OnInit {
   @Output() changedOption: EventEmitter<any> = new EventEmitter<any>();
 
   ngOnInit (): void {
-    if (this.activeOption === undefined || this.qaTag === undefined) {
+    if (this.options === undefined || this.qaTag === undefined) {
        throw new Error('Attribute options and qaTag is required, please review it');
     }
 

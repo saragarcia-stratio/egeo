@@ -26,7 +26,9 @@ import {
    SearchComponent,
    ChangelogComponent,
    ChangelogService,
-   NavigationModule
+   NavigationModule,
+   DropdownComponent,
+   DropdownMenuComponent
 } from '../+examples';
 import { routing } from './layout.routing';
 
@@ -60,7 +62,9 @@ import { MarkdownToHtmlPipe } from 'markdown-to-html-pipe';
       PageTitleComponent,
       SearchComponent,
       ChangelogComponent,
-      MarkdownToHtmlPipe
+      MarkdownToHtmlPipe,
+      DropdownComponent,
+      DropdownMenuComponent
    ],
    providers: [ChangelogService]
 })

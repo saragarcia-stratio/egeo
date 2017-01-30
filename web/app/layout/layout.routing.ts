@@ -23,7 +23,9 @@ import {
   TabBoxComponent,
   PageTitleComponent,
   SearchComponent,
-  ChangelogComponent
+  ChangelogComponent,
+  DropdownComponent,
+  DropdownMenuComponent
 } from '../+examples';
 
 export const routing: ModuleWithProviders = RouterModule.forChild([
@@ -39,6 +41,8 @@ export const routing: ModuleWithProviders = RouterModule.forChild([
       { path: 'button', component: ButtonComponent },
       { path: 'input', component: InputComponent },
       { path: 'info-box', component: InfoBoxComponent },
+      { path: 'dropdown', component: DropdownComponent },
+      { path: 'dropdown-menu', component: DropdownMenuComponent },
       { path: 'spinner', component: SpinnerComponent },
       { path: 'two-list-selection', component: TwoListSelectionComponent },
       { path: 'footer', component: FooterComponent },

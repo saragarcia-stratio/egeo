@@ -25,6 +25,9 @@ import {    GosecListRowComponent,
         } from './st-table';
 import { StHeaderModule } from './st-header';
 import { StButtonComponent } from './st-button';
+import { StDropdownModule } from './st-dropdown';
+import { StDropdownMenuModule } from './st-dropdown-menu';
+
 
 /* External libs */
 import {
@@ -43,7 +46,9 @@ import {
       useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/langs', '.json'),
       deps: [Http]
     }),
-    StHeaderModule
+    StHeaderModule,
+    StDropdownModule,
+    StDropdownMenuModule
   ],
   providers: [
     TranslateService
@@ -57,14 +62,14 @@ import {
   exports: [
     StInputComponent, StInfoBoxComponent, StSpinnerComponent, StTooltip, StTwoListSelectionComponent, StFooterComponent, StInfoCardComponent,
     StVerticalMenuComponent, GosecListComponent, StHorizontalTabComponent, StTabBoxComponent, StRadioMenuComponent, StPageTitleComponent,
-    StButtonComponent, StSearchComponent, StHeaderModule
+    StButtonComponent, StSearchComponent, StHeaderModule, StDropdownModule, StDropdownMenuModule
   ]
 })
 export class EgeoModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: EgeoModule,
-      providers: [StModalService]
+      providers: [ StModalService ]
     };
   }
 }

@@ -1,0 +1,6 @@
+<li tabindex="0"
+   [attr.qaTag]="qaTag + 'item' + item.value" class="sth-dropdown-menu-item"
+   (click)="onChangeItem(item)" (keyup.enter)="onChangeItem(item)">
+   <i *ngIf="item.icon" [ngClass]="item.icon"></i>
+   {{item.label}}
+</li>

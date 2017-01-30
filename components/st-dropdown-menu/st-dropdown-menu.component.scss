@@ -1,0 +1,38 @@
+@import '~ui-base/utils/typography';
+@import '~ui-base/utils/colors';
+
+.dropdown-menu {
+   box-shadow: 0px 3px 2px 0 rgba(1, 1, 1, 0.07);
+   border: 1px solid rgba(1, 1, 1, 0.07);
+   padding: 7px 0;
+   max-height: 265px;
+   overflow: auto;
+
+   &.active {
+      display: block;
+   }
+
+   ul, li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+   }
+
+   ul {
+      h3 {
+         padding: 7px 14px;
+         margin: 10px 0 0 0;
+         white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+      }
+
+      li.children {
+         padding: 7px 14px;
+         cursor: pointer;
+         white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+      }
+   }
+}

@@ -1,0 +1,9 @@
+
+ <st-dropdown [button]="textButton"
+              [disabled]="disabledBoolean"
+              [items]="arrayItemsDropdown"
+              [default]="textButtonAlwaysDefault"
+              [active]="showAlways"
+              (click)="onClickDropdown($event)"
+              (change)="onItemChange($event)">
+ </st-dropdown>

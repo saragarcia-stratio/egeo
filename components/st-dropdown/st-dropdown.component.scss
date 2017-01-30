@@ -1,0 +1,47 @@
+@import '~ui-base/utils/typography';
+@import '~ui-base/utils/colors';
+
+.sth-dropdown-container {
+   position: relative;
+   display: flex;
+
+   .button {
+      cursor: pointer;
+      padding: 11px 30px 7px 11px;
+      display: inline-flex;
+      min-width: 200px;
+      text-align: left;
+      position: relative;
+      outline: 0;
+
+      span {
+         white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         word-wrap: break-word;
+         display: inline-block;
+      }
+
+      i {
+         padding-left: 20px;
+         position: absolute;
+         top: 50%;
+         margin-top: -7px;
+         right: 11px;
+         float: right;
+      }
+
+      &:disabled {
+         opacity: 0.5;
+      }
+   }
+
+   .menu {
+      position:absolute;
+      z-index: 1000;
+      width: inherit;
+      top: 0;
+      left: 0;
+   }
+
+}

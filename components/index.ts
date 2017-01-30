@@ -9,5 +9,6 @@ export * from './st-horizontal-tab/st-horizontal-tab.interface';
 export * from './st-radio-menu/st-radio-menu-option.interface';
 export * from './st-tab-box/st-tab-box.interface';
 export { EgeoModule } from './egeo.module';
+export { StDropDownMenuItem, StDropDownMenuGroup } from './st-dropdown-menu';
 export { Order, ORDER_TYPE, Page, DataList, Model } from './st-table/shared';
 

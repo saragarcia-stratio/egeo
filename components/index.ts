@@ -11,4 +11,5 @@ export * from './st-tab-box/st-tab-box.interface';
 export { EgeoModule } from './egeo.module';
 export { StDropDownMenuItem, StDropDownMenuGroup } from './st-dropdown-menu';
 export { Order, ORDER_TYPE, Page, DataList, Model } from './st-table/shared';
-
+export { StToggleButton } from './st-toggle-buttons';
+export { StHorizontalTab } from './st-horizontal-tabs';

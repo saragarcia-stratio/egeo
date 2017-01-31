@@ -32,7 +32,12 @@ module.exports = function (options) {
                test: /\.ts$/,
                use: [
                   '@angularclass/hmr-loader',
-                  'awesome-typescript-loader?declaration=false',
+                  {
+                     loader: 'awesome-typescript-loader?declaration=false',
+                     options: {
+                        configFilename: 'tsconfig.web.json'
+                     }
+                  },
                   'angular2-template-loader',
                   'angular-router-loader'
                ],

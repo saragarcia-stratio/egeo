@@ -31,7 +31,7 @@ export default class StDropdownComponent extends EventWindowManager implements A
    @Input() items: Array<StDropDownMenuItem> | Array<StDropDownMenuGroup>;
    @Input() default: boolean;
    @Input() disabled: boolean;
-   @Input() width: boolean;
+   @Input() width: string;
    @Input() qaTag: string;
    @Output() click: EventEmitter<boolean> = new EventEmitter<boolean>();
    @Output() change: EventEmitter<Object> = new EventEmitter<Object>();
@@ -50,7 +50,7 @@ export default class StDropdownComponent extends EventWindowManager implements A
 
    ngAfterViewInit(): void {
       setTimeout(() => {
-         this.widthMenu = this.buttonElement.nativeElement.offsetWidth + 5 + 'px';
+         this.widthMenu = this.buttonElement.nativeElement.offsetWidth + 'px';
          this.cd.markForCheck();
       });
    };

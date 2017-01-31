@@ -1,18 +1,14 @@
-@import '~ui-base/utils/typography';
-@import '~ui-base/utils/colors';
-
 .sth-dropdown-container {
    position: relative;
-   display: flex;
 
    .button {
       cursor: pointer;
       padding: 11px 30px 7px 11px;
-      display: inline-flex;
-      min-width: 200px;
+      display: block;
       text-align: left;
       position: relative;
       outline: 0;
+      width: 100%;
 
       span {
          white-space: nowrap;

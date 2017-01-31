@@ -1,3 +1,4 @@
+import { HorizontalTabsComponent } from './horizontal-tabs/horizontal-tabs.component';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../shared';
 
@@ -11,8 +12,8 @@ import { routing } from './navigation.routing';
    imports: [SharedModule, routing],
    declarations: [
       HeaderComponent, FakePageComponent,
-      RadioMenuComponent
+      RadioMenuComponent, HorizontalTabsComponent
    ],
-   exports: [HeaderComponent, RadioMenuComponent]
+   exports: [HeaderComponent, RadioMenuComponent, HorizontalTabsComponent]
 })
 export class NavigationModule { }

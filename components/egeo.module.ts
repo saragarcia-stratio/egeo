@@ -1,3 +1,5 @@
+import { StHorizontalTabsModule } from './st-horizontal-tabs/st-horizontal-tabs.module';
+import { StHorizontalTabsComponent } from './st-horizontal-tabs/st-horizontal-tabs.component';
 import { NgModule, ModuleWithProviders }           from '@angular/core';
 import { CommonModule }       from '@angular/common';
 import { FormsModule, ReactiveFormsModule }        from '@angular/forms';
@@ -12,7 +14,7 @@ import { StFooterComponent }  from './st-footer';
 import { StInfoCardComponent } from './st-info-card';
 import { StTooltip } from './st-tooltip';
 import { StVerticalMenuComponent } from './st-vertical-menu/st-vertical-menu.component';
-import { StHorizontalTabComponent } from './st-horizontal-tab/st-horizontal-tab.component';
+import { StToggleButtonsComponent } from './st-toggle-buttons/st-toggle-buttons.component';
 import { StTabBoxComponent } from './st-tab-box/st-tab-box.component';
 import { StRadioMenuComponent } from './st-radio-menu/st-radio-menu.component';
 import { StPageTitleComponent } from './st-page-title';
@@ -48,7 +50,8 @@ import {
     }),
     StHeaderModule,
     StDropdownModule,
-    StDropdownMenuModule
+    StDropdownMenuModule,
+    StHorizontalTabsModule
   ],
   providers: [
     TranslateService
@@ -56,13 +59,13 @@ import {
   declarations: [
     StInputComponent, StSpinnerComponent, StTooltip, StTwoListSelectionComponent, StFooterComponent,
     StInfoBoxComponent, StInfoCardComponent, StVerticalMenuComponent, GosecListRowComponent, GosecListBodyComponent, GosecListHeaderComponent,
-    GosecListComponent, GosecPaginationComponent, StHorizontalTabComponent, StTabBoxComponent, StRadioMenuComponent, StPageTitleComponent,
+    GosecListComponent, GosecPaginationComponent, StToggleButtonsComponent, StTabBoxComponent, StRadioMenuComponent, StPageTitleComponent,
     StButtonComponent, StSearchComponent
   ],
   exports: [
     StInputComponent, StInfoBoxComponent, StSpinnerComponent, StTooltip, StTwoListSelectionComponent, StFooterComponent, StInfoCardComponent,
-    StVerticalMenuComponent, GosecListComponent, StHorizontalTabComponent, StTabBoxComponent, StRadioMenuComponent, StPageTitleComponent,
-    StButtonComponent, StSearchComponent, StHeaderModule, StDropdownModule, StDropdownMenuModule
+    StVerticalMenuComponent, GosecListComponent, StToggleButtonsComponent, StTabBoxComponent, StRadioMenuComponent, StPageTitleComponent,
+    StButtonComponent, StSearchComponent, StHeaderModule, StHorizontalTabsModule,  StDropdownModule, StDropdownMenuModule
   ]
 })
 export class EgeoModule {

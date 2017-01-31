@@ -47,8 +47,8 @@
               <li class="tmp-dropdown-submenu-item" [ngClass]="{'tmp-dropdown-submenu-item--active': currentUrl === '/button'}">
                 <a routerLink="/button">Buttons</a>
               </li>
-              <li class="tmp-dropdown-submenu-item" [ngClass]="{'tmp-dropdown-submenu-item--active': currentUrl === '/horizontal-tab'}">
-                <a routerLink="/horizontal-tab">Toggle buttons</a>
+              <li class="tmp-dropdown-submenu-item" [ngClass]="{'tmp-dropdown-submenu-item--active': currentUrl === '/toggle-buttons'}">
+                <a routerLink="/toggle-buttons">Toggle buttons</a>
               </li>
             </ul>
           </ul>
@@ -105,6 +105,9 @@
                      <a routerLink="/navigation/radio-menu">Radio menu</a>
                   </li>
 
+                  <li class="tmp-dropdown-submenu-item" [ngClass]="{'tmp-dropdown-submenu-item--active': currentUrl === '/navigation/horizontal-tabs'}">
+                     <a routerLink="/navigation/horizontal-tabs">Horizontal tabs</a>
+                  </li>
                </ul>
           </ul>
 

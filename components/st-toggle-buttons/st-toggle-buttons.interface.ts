@@ -1,4 +1,4 @@
-export interface StHorizontalTab {
+export interface StToggleButton {
    label: string;
    number?: number;
    active?: boolean;

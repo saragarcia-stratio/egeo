@@ -1,0 +1,12 @@
+<section class="st-toggle-buttons">
+   <div *ngIf="description" class="st-toggle-buttons__description">
+      {{description}}
+   </div>
+   <div class="st-toggle-buttons__tabs">
+      <span *ngFor="let tab of tabs; let i = index;" (click)="onClick(tab)" class="st-toggle-buttons__tab" [attr.id]="qaTag + '-' + tab.label"
+         [class.st-toggle-buttons__tab--active]="tab.active">
+      {{tab.label}}
+      <span *ngIf="tab.number?.toFixed">({{tab.number}})</span>
+      </span>
+   </div>
+</section>

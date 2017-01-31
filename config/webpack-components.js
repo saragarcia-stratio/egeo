@@ -18,7 +18,7 @@ module.exports = {
     entry: helpers.root('egeo.ts'),
 
     output: {
-        path: './bundle',
+        path: './',
         publicPath: '/',
         filename: 'egeo.js',
         libraryTarget: 'commonjs2',

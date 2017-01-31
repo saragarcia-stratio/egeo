@@ -6,7 +6,7 @@
   "scripts": {
     "build-doc": "cross-env NODE_ENV=production rm -rf target && webpack --no-color --bail",
     "build-components": "webpack --config config/webpack-components.js  --no-color --bail && npm run definition",
-    "definition": "dts-generator --name egeo --project ./ --out ./egeo.d.ts",
+    "definition": "tsc -p tsconfig.declaration.json",
     "lint": "tslint -c ./tslint.json -e 'node_modules' --type-check -t stylish '{web,components}/**/*.ts'",
     "replace": "json -I -f package.json -e",
     "start": "cross-env NODE_ENV=development webpack-dev-server --progress --profile --open --watch --content-base ./",

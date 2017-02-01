@@ -1,0 +1,27 @@
+@import '~ui-base/utils/typography';
+@import '~ui-base/utils/colors';
+
+ul {
+   list-style: none;
+   padding: 0;
+}
+
+.user-combo {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+}
+
+.user-combo-element {
+   margin: 0 5px 0 7px;
+}
+
+.combo-list-item {
+   height: 35px;
+   padding-left: 10px;
+   line-height: 35px;
+}
+
+.combo-list-container {
+   position: relative;
+}

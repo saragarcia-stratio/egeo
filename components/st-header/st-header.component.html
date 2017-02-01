@@ -1,8 +1,17 @@
 <div class="sth-header header">
-   <div class="menu">
-      <div class="sth-header-border header-border"></div>
-      <app-name [appName]="appName" [appLogoPath]="appLogoPath" class="app-name"></app-name>
-      <navigation-links [menu]="menu" class="navigation-links"></navigation-links>
+   <div class="menu menu-height">
+      <div class="sth-header-border header-border">
+         <div class="sth-header-user-container" *ngIf="hasUserMenu()">
+            <div class="sth-header-border-separator"></div>
+            <user-menu [userMenuModel]="userMenu" [qaTag]="qaTag"></user-menu>
+         </div>
+      </div>
+      <app-name [appName]="appName" [companyName]="companyName" [appLogoPath]="appLogoPath" [qaTag]="qaTag" class="app-name"></app-name>
+      <navigation-links [menu]="menu" class="navigation-links" (positionChange)="onPositionChange($event)" [qaTag]="qaTag"></navigation-links>
    </div>
-   <div class="sth-sub-menu sub-menu"></div>
+   <div class="sth-sub-menu sub-menu">
+      <div *ngIf="hasSubmenu()" class="submenu-wrapper">
+      <submenu [submenu]="selectedSubmenu" [offset]="navigationOffset" [qaTag]="qaTag"></submenu>
+      </div>
+   </div>
 </div>

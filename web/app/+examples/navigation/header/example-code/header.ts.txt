@@ -1,11 +1,76 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+
+import { StHeaderModel, StHeaderUserMenuModel } from 'egeo/egeo';
 
 @Component({
-  selector: 'tooltip-example',
-  template: require('./tooltip.component.html'),
-  styles: [require('./tooltip.component.scss')]
+   selector: 'header-example',
+   template: require('./header.component.html'),
+   styles: [require('./header.component.scss')]
 })
 
-export class TooltipComponent {
+export class HeaderComponent {
 
+   public userMenu: StHeaderUserMenuModel = {
+      logoutLabel: 'Logout',
+      userName: 'Antonio H.',
+      logoutPath: ''
+   };
+
+   public contentOffset: number = 0;
+
+   public headerMenu: Array<StHeaderModel> = [
+      {
+         icon: 'icon-head',
+         label: 'IDENTITIES',
+         link: '/navigation/header/test1',
+         subMenus: [{
+            label: 'USER',
+            link: '/navigation/header/test1/subtest1',
+            isActive: true
+         },
+         {
+            label: 'GROUP',
+            link: '/navigation/header/test1/subtest2',
+            isActive: true
+         }],
+         isActive: true
+      },
+      {
+         icon: 'icon-puzzle',
+         label: 'SERVICES',
+         link: '/navigation/header/test2',
+         subMenus: [],
+         isActive: true
+      },
+      {
+         icon: 'icon-paper',
+         label: 'POLICIES',
+         link: '/navigation/header/test3',
+         subMenus: [],
+         isActive: true
+      },
+      {
+         icon: 'icon-layers',
+         label: 'AUDITING',
+         link: '/navigation/header/test4',
+         subMenus: [],
+         isActive: true
+      },
+      {
+         icon: 'icon-cog',
+         label: 'SETTINGS',
+         link: '/navigation/header/test5',
+         subMenus: [],
+         isActive: true
+      }
+   ];
+
+   constructor(private _cd: ChangeDetectorRef) { }
+
+   onContentChangeOffset(offset: number): void {
+      this.contentOffset = offset + 10;
+      setTimeout(() => {
+         this._cd.markForCheck();
+      });
+   }
 }

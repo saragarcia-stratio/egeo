@@ -21,6 +21,7 @@ export const routing: ModuleWithProviders = RouterModule.forChild([
    { path: 'radio-menu', component: RadioMenuComponent },
    { path: 'horizontal-tabs', component: HorizontalTabsComponent },
    { path: 'header', component: HeaderComponent, children: [
+      { path: 'test1', redirectTo: 'test1/subtest1', pathMatch: 'full' },
       { path: 'test1', component: FakePageComponent, data: { pageName: 'TEST 1'  }, children: [
          { path: 'subtest1', component: FakePageComponent, data: { pageName: 'SUBTEST 1'  } },
          { path: 'subtest2', component: FakePageComponent, data: { pageName: 'SUBTEST 2'  } }

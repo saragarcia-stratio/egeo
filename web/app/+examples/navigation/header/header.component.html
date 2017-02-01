@@ -1,10 +1,23 @@
 <section class="container-liquid">
    <div class="header-container">
-      <st-header appName="Data Governance" [menu]="headerMenu"></st-header>
-      <router-outlet></router-outlet>
+      <st-header appName="Data Governance" [menu]="headerMenu" [userMenu]="userMenu" (contentChangeOffset)="onContentChangeOffset($event)" qaTag="st-header"
+         stHeaderBehavior></st-header>
+
+      <div [ngStyle]="{'padding-top': contentOffset + 'px'}">
+         <router-outlet></router-outlet>
+      </div>
    </div>
 </section>
 
-<!--{{code}}-->
-<!--<st-load-code file="header/example-code/header.ts.txt"></st-load-code>
-<st-load-code file="header/example-code/header.html.txt"></st-load-code>-->
+<st-api-doc [doc]="apiDoc">
+   <div class="example-run"></div>
+   <div class="example-model">
+      <!--{{code}}-->
+      <st-load-code file="navigation/header/example-code/header.model.ts.txt"></st-load-code>
+   </div>
+   <div class="example-code">
+      <!--{{code}}-->
+      <st-load-code class="col-sm-12" file="navigation/header/example-code/header.ts.txt"></st-load-code>
+      <st-load-code class="col-sm-12" file="navigation/header/example-code/header.html.txt"></st-load-code>
+   </div>
+</st-api-doc>

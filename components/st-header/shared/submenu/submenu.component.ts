@@ -11,4 +11,12 @@ import { StSubMenuModel } from '../st-header.model';
 export class SubmenuComponent {
 
    @Input() submenu: Array<StSubMenuModel> = [];
+   @Input() qaTag: string;
+   @Input() offset: number = 0;
+
+   public getOffset(): Object {
+      return {
+         'margin-left': `${this.offset}px`
+      };
+   }
 }

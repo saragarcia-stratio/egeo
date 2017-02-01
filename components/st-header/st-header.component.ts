@@ -1,21 +1,85 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, ChangeDetectorRef, ElementRef, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router, Event } from '@angular/router';
 
-import { StHeaderModel } from './shared';
+import { StHeaderModel, StSubMenuModel, StHeaderUserMenuModel } from './shared';
 
 @Component({
-  selector: 'st-header',
-  template: require('./st-header.component.html'),
-  styles: [require('./st-header.component.scss')],
-  changeDetection: ChangeDetectionStrategy.OnPush
+   selector: 'st-header',
+   template: require('./st-header.component.html'),
+   styles: [require('./st-header.component.scss')],
+   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StHeaderComponent {
+export class StHeaderComponent implements OnInit {
 
    @Input() appName: string | undefined;
-   @Input() appLogoPath: string | undefined;
+   @Input() companyName: string = 'Stratio';
+
+   // TODO: In the future this header can use image or text for now, only use text
+   appLogoPath: string | undefined;
+
 
    @Input() menu: Array<StHeaderModel> = [];
 
-   constructor() {}
+   @Input() userMenu: StHeaderUserMenuModel | undefined;
+   @Input() qaTag: string;
 
+   @Output() contentChangeOffset: EventEmitter<number> = new EventEmitter<number>();
 
+   selectedSubmenu: Array<StSubMenuModel> = [];
+   navigationOffset: number = 0;
+
+   private headerOffset: number = 0;
+   private showSubmenu: boolean = false;
+
+   constructor(
+      private _router: Router,
+      private _cd: ChangeDetectorRef,
+      private el: ElementRef
+   ) { }
+
+   public hasSubmenu(): boolean {
+      let menu: StHeaderModel | undefined = this.menu.find(menuOption => this._router.url.includes(menuOption.link));
+      if (menu !== undefined && menu.subMenus !== undefined && menu.subMenus.length > 0) {
+         this.selectedSubmenu = menu.subMenus;
+         this.checkIfNotify(true);
+         return true;
+      } else {
+         this.selectedSubmenu = [];
+         this.checkIfNotify(false);
+         return false;
+      }
+   }
+
+   public ngOnInit(): void {
+      if (!this.qaTag) {
+         throw new Error('qaTag is a necesary field');
+      }
+      this.headerOffset = this.el.nativeElement.getBoundingClientRect().left;
+      this.showSubmenu = this.hasSubmenu();
+      this.notifyOffset();
+   }
+
+   public onPositionChange(newPosition: number): void {
+      this.navigationOffset = newPosition - this.headerOffset;
+      this._cd.markForCheck();
+   }
+
+   public hasUserMenu(): boolean {
+      return this.userMenu !== undefined;
+   }
+
+   private checkIfNotify(hasSubMenu: boolean): void {
+      if (this.showSubmenu !== hasSubMenu) {
+         this.showSubmenu = hasSubMenu;
+         this.notifyOffset();
+      }
+   }
+
+   private notifyOffset(): void {
+      if (this.showSubmenu) {
+            this.contentChangeOffset.emit(140);
+         } else {
+            this.contentChangeOffset.emit(95);
+         }
+   }
 }

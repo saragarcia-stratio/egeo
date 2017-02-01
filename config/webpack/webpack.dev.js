@@ -52,8 +52,7 @@ module.exports = function (options) {
          host: METADATA.host,
          historyApiFallback: true,
          stats: "errors-only",
-         clientLogLevel: "warning",
-         hot: true
+         clientLogLevel: "warning"
       },
       node: {
          global: true,

@@ -1,15 +1,23 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ApiDoc, TYPES } from '../../../shared';
-import { StHeaderModel } from '../../../../../egeo';
+
+import { StHeaderModel, StHeaderUserMenuModel } from '../../../../../egeo';
 
 @Component({
    selector: 'header-example',
    template: require('./header.component.html'),
-   styles: [require('./header.component.scss')],
-   changeDetection: ChangeDetectionStrategy.OnPush
+   styles: [require('./header.component.scss')]
 })
 
 export class HeaderComponent {
+
+   public userMenu: StHeaderUserMenuModel = {
+      logoutLabel: 'Logout',
+      userName: 'Antonio H.',
+      logoutPath: ''
+   };
+
+   public contentOffset: number = 0;
 
    public headerMenu: Array<StHeaderModel> = [
       {
@@ -58,23 +66,33 @@ export class HeaderComponent {
       }
    ];
 
-   constructor() {
-   }
-
    // tslint:disable:max-line-length
-   // public apiDoc: ApiDoc = {
-   //    title: 'Tooltip',
-   //    description: 'The tooltip component is a text box that appear floating over an other UI component to explain further information about something related to the content or the component itself. It could be shown on click or on hover.',
-   //    haveModel: false,
-   //    apiSection: {
-   //       inputs: [
-   //          { paramName: 'text', type: TYPES.STR, required: true, details: 'Text to be shown inside the tooltip' },
-   //          { paramName: 'showOnClick', type: TYPES.BOOL, required: false, details: 'TRUE: Show when click, FALSE: show on hover, DEFAULT: FALSE' },
-   //          { paramName: 'qaTag', type: TYPES.STR, required: true, details: 'Id value for qa test' }
-   //       ],
-   //       outputs: []
-   //    },
-   //    exampleDesc: `example desc`
-   // };
+   public apiDoc: ApiDoc = {
+      title: 'Header',
+      description: 'The header component is a main component of an application. This component must be on top and scroll with page, when scroll is in a calculated position, the header shrinks and fix to top.',
+      haveModel: true,
+      apiSection: {
+         inputs: [
+            { paramName: 'appName', type: TYPES.STR, required: false, details: 'Name of application to show, by default empty' },
+            { paramName: 'companyName', type: TYPES.STR, required: false, details: 'Company name to show, by default: Stratio' },
+            { paramName: 'menu', type: 'Array<StHeaderModel>', required: false, details: 'Array with menu option to show' },
+            { paramName: 'userMenu', type: 'StHeaderUserMenuModel', required: false, details: 'Object with user menu information' },
+            { paramName: 'qaTag', type: TYPES.STR, required: true, details: 'Id value for qa test' }
+         ],
+         outputs: [
+            { paramName: 'contentChangeOffset', type: TYPES.NUM, required: false, details: '' }
+         ]
+      },
+      exampleDesc: `You can find the example at top of page`
+   };
    // tslint:enable:max-line-length
+
+   constructor(private _cd: ChangeDetectorRef) { }
+
+   onContentChangeOffset(offset: number): void {
+      this.contentOffset = offset + 10;
+      setTimeout(() => {
+         this._cd.markForCheck();
+      });
+   }
 }

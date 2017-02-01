@@ -1,19 +1,7 @@
 @import '~ui-base/utils/typography';
 @import '~ui-base/utils/colors';
 
-.app-name {
-   margin: 0 30px 0 30px;
-   padding-top: 40px;
-}
-
-.navigation-links {
-   padding-top: 50px
-}
-
 .menu {
-   height: 95px;
-   min-height: 95px;
-   width: 100%;
    position: relative;
    display: flex;
    flex-direction: row;
@@ -21,18 +9,80 @@
    white-space: nowrap;
 }
 
-.sub-menu-form {
-   min-height: 5px;
-}
-
-.header {
+// header
+:host-context(.st-header-normal) .header {
    width: 100%;
+   display: block;
+   position: absolute;
 }
 
-.header-border {
+:host-context(.st-header-collapsed) .header {
+   width: 100%;
+   display: block;
+   position: fixed;
+   top: 0;
+}
+
+// menu-height
+:host-context(.st-header-normal) .menu-height {
+   height: 95px;
+ }
+:host-context(.st-header-collapsed) .menu-height {
+   height: 50px;
+}
+
+
+// header-border
+:host-context(.st-header-normal) .header-border {
    height: 10px;
    width: 100%;
    z-index: 10;
    position: absolute;
    top: 0;
+}
+
+:host-context(.st-header-collapsed) .header-border {
+   display: none;
+}
+
+// app-name
+:host-context(.st-header-normal) .app-name {
+   margin: 0 30px 0 30px;
+   padding-top: 35px;
+}
+
+:host-context(.st-header-collapsed) .app-name {
+   margin: 0 30px 0 30px;
+   padding-top: 7px;
+}
+
+// navigation-links
+:host-context(.st-header-normal) .navigation-links {
+   padding-top: 52px
+}
+
+:host-context(.st-header-collapsed) .navigation-links {
+   padding-top: 10px
+}
+
+// .sub-menu
+:host-context(.st-header-normal) .sub-menu {
+   min-height: 5px;
+   width: 100%;
+}
+
+:host-context(.st-header-collapsed) .sub-menu {
+   min-height: 5px;
+   width: 100%;
+   opacity: 0.95;
+}
+
+
+// submenu-wrapper
+:host-context(.st-header-normal) .submenu-wrapper {
+   height: 45px;
+}
+
+:host-context(.st-header-collapsed) .submenu-wrapper {
+   height: 30px;
 }

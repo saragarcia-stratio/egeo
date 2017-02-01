@@ -3,7 +3,7 @@ export { StInputError } from './st-input';
 export { StTwoListSelectionElement, StListModifierObject } from './st-two-list-selection';
 export { StFooterLink } from './st-footer';
 export { BUTTON_TYPES, Buttons, StModalService, MessageModal, ModalTitle, StModalConfiguration, StModal } from './st-modal';
-export { StHeaderModel, StSubMenuModel } from './st-header';
+export { StHeaderModel, StSubMenuModel, StHeaderUserMenuModel } from './st-header';
 export * from './utils';
 export * from './st-toggle-buttons/st-toggle-buttons.interface';
 export * from './st-radio-menu/st-radio-menu-option.interface';

@@ -46,7 +46,7 @@ module.exports = {
             },
             {
                test: /\.css$/,
-               use: ['to-string-loader', 'css-loader']
+               use: ['raw-loader', 'css-loader']
             },
             {
                test: /\.scss$/,

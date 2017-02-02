@@ -48,7 +48,7 @@ module.exports = function (options) {
                use: 'raw-loader',
                exclude: [helpers.root('web/index.html')]
             },
-                       {
+            {
                test: /\.css$/,
                use: ['style-loader', 'css-loader']
             },
@@ -59,14 +59,14 @@ module.exports = function (options) {
             },
             {
                test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-               use: "file-loader?name=assets/fonts/[name].[hash].[ext]"
+               use: "file-loader?name=assets/fonts/[name].[ext]"
             }
          ]
       },
 
       plugins: [
          new AssetsPlugin({
-            path: helpers.root('dist'),
+            path: helpers.root('target', 'site', 'web'),
             filename: 'webpack-assets.json',
             prettyPrint: true
          }),

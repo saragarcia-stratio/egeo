@@ -6,6 +6,7 @@ hose {
     DEVTIMEOUT = 30
     RELEASETIMEOUT = 30
     REPOSITORY = 'bitbucket.org/egeo'
+    LANG = 'typescript'
 
     DEV = { config ->
 
@@ -17,7 +18,8 @@ hose {
             doStaticAnalysis(config)
         }, DEPLOY: {
             doDeploy(config)
+        }, DOC: {
+            doDoc(config)
         }, failFast: config.FAILFAST)
-
     }
 }

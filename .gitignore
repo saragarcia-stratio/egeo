@@ -1,24 +1,36 @@
-
-
-
+#################
+## Misc
+#################
+**/.DS_Store
 node_modules
+*.log
 node
-npm-debug.log*
-
-bower_components
-
-.sass-cache
-
 coverage
 target
-surefire-reports
+.sass-cache
+
+#################
+## Project
+#################
+temp
+lib
 dist
 
+#################
+## IDEs
+#################
 .idea
+.project
+.settings
 .vscode
-.history
 
-typings
-public
-yarn-error.log*
-bundle
+############
+## Windows
+############
+Thumbs.db
+Desktop.ini
+
+############
+## Mac
+############
+.DS_Store

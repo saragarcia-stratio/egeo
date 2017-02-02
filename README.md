@@ -9,7 +9,7 @@ Here, you'll find UI components and visual styles. Sometimes it makes sense to b
 This repo includes the common module of angular 2 components, directives and services. There are two more repos that work with this:
 
 * [https://github.com/Stratio/egeo-ui-base](egeo-ui-base) that includes Sass utilities and CSS base rules to begin build your own Egeo components.
-* [https://github.com/Stratio/egeo-ui-fonts](egeo-ui-fonts) that includes the fonts used by the Egeo framework compiled in a specific CSS files to be included in your projects.
+* [https://github.com/Stratio/egeo-ui-theme](egeo-ui-theme) that includes the fonts, theme and grid used by the Egeo framework compiled in a specific CSS files to be included in your projects.
 
 # How to Run
 

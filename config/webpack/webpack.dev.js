@@ -27,7 +27,7 @@ module.exports = function (options) {
       devtool: 'inline-source-map',
 
       output: {
-         path: helpers.root('dist'),
+         path: helpers.root('target', 'site', 'web'),
          filename: '[name].js',
          sourceMapFilename: '[name].map',
          chunkFilename: '[id].chunk.js',

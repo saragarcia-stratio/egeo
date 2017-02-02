@@ -6,10 +6,18 @@
 * Add alpha channel to the egeo-get-color API.
 * Apply complete design of sidebar in the documentation website.
 * Review and update libraries.
-* FIX Button event is launched when disabled.
+* Fix Button event is launched when disabled.
 * Remove PostCSS
-* HMR in website
-* Dist egeo as webpack bundle
+* New dropdown menu component
+* New dropdown component
+* Rename old horizontal tabs to toggle buttons
+* New horizontal tab component
+* New Input component
+* Generic class for manage events
+* Solve minor bugs
+* Add coverage reports
+* Refactor Footer component for support internal url, logos and now with tests
+* New Header component
 
 ## 0.5.0 (December 12, 2016)
 

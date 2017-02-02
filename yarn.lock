@@ -1391,9 +1391,13 @@ ee-first@1.1.1:
   version "1.1.1"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
 
-egeo-theme@0.2.0-SNAPSHOT:
-  version "0.2.0-SNAPSHOT"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/egeo-theme/-/egeo-theme-0.2.0-SNAPSHOT.tgz#5ea1c7395db9882bde0d75612f7422306571144f"
+egeo-theme@0.2.0:
+  version "0.2.0"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/egeo-theme/-/egeo-theme-0.2.0.tgz#6c855fad974e31ad472509e397f1d88e54b2f943"
+
+egeo-ui-base@0.4.0:
+  version "0.4.0"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/egeo-ui-base/-/egeo-ui-base-0.4.0.tgz#10dfaac1ca0b60269c3d2cbced6d17a880ffd7ad"
 
 electron-to-chromium@^1.2.1:
   version "1.2.1"
@@ -4492,7 +4496,7 @@ right-align@^0.1.1:
   dependencies:
     align-text "^0.1.1"
 
-rimraf@2, rimraf@^2.2.8, rimraf@^2.3.3, rimraf@^2.4.4, rimraf@~2.5.1, rimraf@~2.5.4:
+rimraf@2, rimraf@2.5.4, rimraf@^2.2.8, rimraf@^2.3.3, rimraf@^2.4.4, rimraf@~2.5.1, rimraf@~2.5.4:
   version "2.5.4"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/rimraf/-/rimraf-2.5.4.tgz#96800093cbf1a0c86bd95b4625467535c29dfa04"
   dependencies:
@@ -5125,10 +5129,6 @@ uglify-js@2.7.x, uglify-js@^2.6, uglify-js@^2.7.5:
 uglify-to-browserify@~1.0.0:
   version "1.0.2"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/uglify-to-browserify/-/uglify-to-browserify-1.0.2.tgz#6e0924d6bda6b5afe349e39a6d632850a0f882b7"
-
-ui-base@0.2.0-SNAPSHOT:
-  version "0.2.0-SNAPSHOT"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/ui-base/-/ui-base-0.2.0-SNAPSHOT.tgz#d53052a7dc06b68ea371dd24b798ef3b9be2c9e5"
 
 uid-number@~0.0.6:
   version "0.0.6"

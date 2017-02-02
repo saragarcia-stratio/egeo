@@ -14,6 +14,7 @@
    width: 100%;
    display: block;
    position: absolute;
+   z-index: 1000;
 }
 
 :host-context(.st-header-collapsed) .header {
@@ -21,6 +22,7 @@
    display: block;
    position: fixed;
    top: 0;
+   z-index: 1000;
 }
 
 // menu-height
@@ -74,7 +76,7 @@
 :host-context(.st-header-collapsed) .sub-menu {
    min-height: 5px;
    width: 100%;
-   opacity: 0.95;
+   filter: opacity(0.95);
 }
 
 

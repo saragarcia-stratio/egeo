@@ -1393,7 +1393,7 @@ ee-first@1.1.1:
 
 egeo-theme@0.2.0-SNAPSHOT:
   version "0.2.0-SNAPSHOT"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/egeo-theme/-/egeo-theme-0.2.0-SNAPSHOT.tgz#58c39c67cbd3d873cd28b0a6721316f9ae07d62a"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/egeo-theme/-/egeo-theme-0.2.0-SNAPSHOT.tgz#5ea1c7395db9882bde0d75612f7422306571144f"
 
 electron-to-chromium@^1.2.1:
   version "1.2.1"

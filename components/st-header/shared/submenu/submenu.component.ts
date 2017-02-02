@@ -19,4 +19,12 @@ export class SubmenuComponent {
          'margin-left': `${this.offset}px`
       };
    }
+
+   public isActive(option: StSubMenuModel): string {
+      if (!option.isActive) {
+         return 'sth-header-submenu-disable-option';
+      } else {
+         return '';
+      }
+   }
 }

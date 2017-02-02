@@ -32,7 +32,7 @@ export class HeaderComponent {
          {
             label: 'GROUP',
             link: '/navigation/header/test1/subtest2',
-            isActive: true
+            isActive: false
          }],
          isActive: true
       },
@@ -41,7 +41,7 @@ export class HeaderComponent {
          label: 'SERVICES',
          link: '/navigation/header/test2',
          subMenus: [],
-         isActive: true
+         isActive: false
       },
       {
          icon: 'icon-paper',

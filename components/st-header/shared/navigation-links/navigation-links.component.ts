@@ -27,4 +27,12 @@ export class NavigationLinksComponent {
    public onPositionChange(newPosition: number): void {
       this.positionChange.emit(newPosition);
    }
+
+   public isActive(option: StHeaderModel): string {
+      if (!option.isActive) {
+         return 'sth-header-disable-option';
+      } else {
+         return '';
+      }
+   }
 }

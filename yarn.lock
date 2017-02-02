@@ -303,11 +303,11 @@ asynckit@^0.4.0:
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
 
 autoprefixer@^6.3.1:
-  version "6.7.1"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/autoprefixer/-/autoprefixer-6.7.1.tgz#d14d0842f6ef90741cfb2b1e8152a04e83b39ed2"
+  version "6.7.2"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/autoprefixer/-/autoprefixer-6.7.2.tgz#172ab07b998ae9b957530928a59a40be54a45023"
   dependencies:
     browserslist "^1.7.1"
-    caniuse-db "^1.0.30000617"
+    caniuse-db "^1.0.30000618"
     normalize-range "^0.1.2"
     num2fraction "^1.2.2"
     postcss "^5.2.11"
@@ -427,8 +427,8 @@ batch@0.5.3:
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/batch/-/batch-0.5.3.tgz#3f3414f380321743bfc1042f9a83ff1d5824d464"
 
 bcrypt-pbkdf@^1.0.0:
-  version "1.0.0"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/bcrypt-pbkdf/-/bcrypt-pbkdf-1.0.0.tgz#3ca76b85241c7170bf7d9703e7b9aa74630040d4"
+  version "1.0.1"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/bcrypt-pbkdf/-/bcrypt-pbkdf-1.0.1.tgz#63bc5dcb61331b92bc05fd528953c33462a06f8d"
   dependencies:
     tweetnacl "^0.14.3"
 
@@ -671,16 +671,15 @@ camelcase@^3.0.0:
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/camelcase/-/camelcase-3.0.0.tgz#32fc4b9fcdaf845fcdf7e73bb97cac2261f0ab0a"
 
 caniuse-api@^1.5.2:
-  version "1.5.2"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/caniuse-api/-/caniuse-api-1.5.2.tgz#8f393c682f661c0a997b77bba6e826483fb3600e"
+  version "1.5.3"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/caniuse-api/-/caniuse-api-1.5.3.tgz#5018e674b51c393e4d50614275dc017e27c4a2a2"
   dependencies:
     browserslist "^1.0.1"
     caniuse-db "^1.0.30000346"
     lodash.memoize "^4.1.0"
     lodash.uniq "^4.3.0"
-    shelljs "^0.7.0"
 
-caniuse-db@^1.0.30000346, caniuse-db@^1.0.30000617:
+caniuse-db@^1.0.30000346, caniuse-db@^1.0.30000617, caniuse-db@^1.0.30000618:
   version "1.0.30000618"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/caniuse-db/-/caniuse-db-1.0.30000618.tgz#821258ff484f662864f28ffbcf849a6247acf1fa"
 
@@ -1394,7 +1393,7 @@ ee-first@1.1.1:
 
 egeo-theme@0.2.0-SNAPSHOT:
   version "0.2.0-SNAPSHOT"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/egeo-theme/-/egeo-theme-0.2.0-SNAPSHOT.tgz#1bc287f3eb3496e3fa82871bd7b963730c95423e"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/egeo-theme/-/egeo-theme-0.2.0-SNAPSHOT.tgz#58c39c67cbd3d873cd28b0a6721316f9ae07d62a"
 
 electron-to-chromium@^1.2.1:
   version "1.2.1"
@@ -3043,10 +3042,6 @@ lodash.escape@^3.0.0:
   dependencies:
     lodash._root "^3.0.0"
 
-lodash.indexof@^4.0.5:
-  version "4.0.5"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/lodash.indexof/-/lodash.indexof-4.0.5.tgz#53714adc2cddd6ed87638f893aa9b6c24e31ef3c"
-
 lodash.isarguments@^3.0.0:
   version "3.1.0"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/lodash.isarguments/-/lodash.isarguments-3.1.0.tgz#2f573d85c6a24289ff00663b491c1d338ff3458a"
@@ -3221,10 +3216,8 @@ marked@^0.3.6:
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/marked/-/marked-0.3.6.tgz#b2c6c618fccece4ef86c4fc6cb8a7cbf5aeda8d7"
 
 math-expression-evaluator@^1.2.14:
-  version "1.2.15"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/math-expression-evaluator/-/math-expression-evaluator-1.2.15.tgz#38dc5f0194c5bf5ff1c690ad4c4b64df71ac0187"
-  dependencies:
-    lodash.indexof "^4.0.5"
+  version "1.2.16"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/math-expression-evaluator/-/math-expression-evaluator-1.2.16.tgz#b357fa1ca9faefb8e48d10c14ef2bcb2d9f0a7c9"
 
 md5@^2.0.0:
   version "2.2.1"
@@ -3806,8 +3799,8 @@ pluralize@^1.2.1:
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/pluralize/-/pluralize-1.2.1.tgz#d1a21483fd22bb41e58a12fa3421823140897c45"
 
 portfinder@^1.0.9:
-  version "1.0.12"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/portfinder/-/portfinder-1.0.12.tgz#94a65114bec64433f9ce2116da33158238ce7ab4"
+  version "1.0.13"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/portfinder/-/portfinder-1.0.13.tgz#bb32ecd87c27104ae6ee44b5a3ccbf0ebb1aede9"
   dependencies:
     async "^1.5.2"
     debug "^2.2.0"
@@ -4312,12 +4305,6 @@ recast@~0.11.12:
     private "~0.1.5"
     source-map "~0.5.0"
 
-rechoir@^0.6.2:
-  version "0.6.2"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/rechoir/-/rechoir-0.6.2.tgz#85204b54dba82d5742e28c96756ef43af50e3384"
-  dependencies:
-    resolve "^1.1.6"
-
 redent@^1.0.0:
   version "1.0.0"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/redent/-/redent-1.0.0.tgz#cf916ab1fd5f1f16dfb20822dd6ec7f730c2afde"
@@ -4488,7 +4475,7 @@ resolve@1.1.x:
   version "1.1.7"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/resolve/-/resolve-1.1.7.tgz#203114d82ad2c5ed9e8e0411b3932875e889e97b"
 
-resolve@^1.1.6, resolve@^1.1.7:
+resolve@^1.1.7:
   version "1.2.0"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/resolve/-/resolve-1.2.0.tgz#9589c3f2f6149d1417a40becc1663db6ec6bc26c"
 
@@ -4659,14 +4646,6 @@ sha.js@^2.3.6:
 shelljs@^0.6.0:
   version "0.6.1"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/shelljs/-/shelljs-0.6.1.tgz#ec6211bed1920442088fe0f70b2837232ed2c8a8"
-
-shelljs@^0.7.0:
-  version "0.7.6"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/shelljs/-/shelljs-0.7.6.tgz#379cccfb56b91c8601e4793356eb5382924de9ad"
-  dependencies:
-    glob "^7.0.0"
-    interpret "^1.0.0"
-    rechoir "^0.6.2"
 
 signal-exit@^3.0.0:
   version "3.0.2"

@@ -10,7 +10,7 @@ import { StModalService } from './st-modal';
 import { StInfoBoxComponent }  from './st-info-box';
 import { StSpinnerComponent } from './st-spinner';
 import { StTwoListSelectionComponent } from './st-two-list-selection';
-import { StFooterComponent }  from './st-footer';
+import { StFooterModule }  from './st-footer';
 import { StInfoCardComponent } from './st-info-card';
 import { StTooltip } from './st-tooltip';
 import { StVerticalMenuComponent } from './st-vertical-menu/st-vertical-menu.component';
@@ -49,6 +49,7 @@ import {
       deps: [Http]
     }),
     StHeaderModule,
+    StFooterModule,
     StDropdownModule,
     StDropdownMenuModule,
     StHorizontalTabsModule
@@ -57,15 +58,15 @@ import {
     TranslateService
   ],
   declarations: [
-    StInputComponent, StSpinnerComponent, StTooltip, StTwoListSelectionComponent, StFooterComponent,
+    StInputComponent, StSpinnerComponent, StTooltip, StTwoListSelectionComponent,
     StInfoBoxComponent, StInfoCardComponent, StVerticalMenuComponent, GosecListRowComponent, GosecListBodyComponent, GosecListHeaderComponent,
     GosecListComponent, GosecPaginationComponent, StToggleButtonsComponent, StTabBoxComponent, StRadioMenuComponent, StPageTitleComponent,
     StButtonComponent, StSearchComponent
   ],
   exports: [
-    StInputComponent, StInfoBoxComponent, StSpinnerComponent, StTooltip, StTwoListSelectionComponent, StFooterComponent, StInfoCardComponent,
+    StInputComponent, StInfoBoxComponent, StSpinnerComponent, StTooltip, StTwoListSelectionComponent, StInfoCardComponent,
     StVerticalMenuComponent, GosecListComponent, StToggleButtonsComponent, StTabBoxComponent, StRadioMenuComponent, StPageTitleComponent,
-    StButtonComponent, StSearchComponent, StHeaderModule, StHorizontalTabsModule,  StDropdownModule, StDropdownMenuModule
+    StButtonComponent, StSearchComponent, StHeaderModule, StHorizontalTabsModule,  StDropdownModule, StDropdownMenuModule, StFooterModule
   ]
 })
 export class EgeoModule {

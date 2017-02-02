@@ -5,8 +5,15 @@
    <div class="example-run">
       <section class="container-liquid">
          <div style="margin: 20px 0">
-            <st-footer [rightsText]="rightsText" [links]="links" qaTag="footer"></st-footer>
+            <st-footer (link)="onLinkChange($event)" [rightsText]="rightsText" [links]="links" qaTag="footer" image="/assets/images/logos-stratio/logo_stratio_neg.png">
+            </st-footer>
          </div>
+
+         <div style="margin: 20px 0">
+            <st-footer rightsText="© Carrefour. All Rights Reserved " [links]="links" qaTag="footer" image="http://www.infinitychefs.com/img/logo_carrefour.png">
+            </st-footer>
+         </div>
+
       </section>
    </div>
    <div class="example-code">

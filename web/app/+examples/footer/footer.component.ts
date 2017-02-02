@@ -7,7 +7,6 @@ import { ApiDoc, TYPES } from '../../shared';
    template: require('./footer.component.html'),
    styles: [require('./footer.component.scss')]
 })
-
 export class FooterComponent {
    public apiDoc: ApiDoc;
    private rightsText: string;
@@ -23,6 +22,13 @@ export class FooterComponent {
          title: 'Help',
          url: 'http://www.google.es'
       });
+      this.links.push({
+         title: 'Internal Content',
+         router: 'info-box'
+      });
+      this.links.push({
+         title: 'Modal Open'
+      });
 
       // tslint:disable:max-line-length
       this.apiDoc = {
@@ -31,14 +37,23 @@ export class FooterComponent {
          haveModel: true,
          apiSection: {
             inputs: [
-               { paramName: 'rightsText', type: TYPES.STR, required: true, details: 'The text that appears at the beginning of the toolbar to show the rights and copyright declarations.' },
+               { paramName: 'rightsText', type: TYPES.STR, required: false, details: 'The text that appears at the beginning of the toolbar to show the rights and copyright declarations.' },
+               { paramName: 'image', type: TYPES.STR, required: false, details: 'The image that appears in the footer, such as the logo of your project' },
                { paramName: 'links', type: TYPES.ARRAY_OBJ, required: false, details: 'An array of StFooterLink objects (see below) that defines the links that will appear in the toolbar.' },
                { paramName: 'qaTag', type: TYPES.STR, required: true, details: 'Id for qa search in automated test' }
             ],
-            outputs: []
+            outputs: [
+               { paramName: 'link', type: TYPES.OBJ, required: false, details: 'Trigger an event out to control the action of clicking a link' }
+
+            ]
          },
          exampleDesc: ``
       };
       // tslint:enable:max-line-length
+
+   }
+
+   onLinkChange($event: MouseEvent): void {
+      console.log($event);
    }
 }

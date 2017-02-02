@@ -1,4 +1,5 @@
 export interface StFooterLink {
   title: string;
-  url: string;
+  url?: string;
+  router?: string;
 }

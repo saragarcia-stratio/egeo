@@ -36,9 +36,7 @@ module.exports = function (env) {
          // NOTE: when adding more properties make sure you include them in custom-typings.d.ts
          new DefinePlugin({
             ENV: 'production',
-            'process.env': {
-               'NODE_ENV': 'production'
-            }
+            'process.env.NODE_ENV': '"production"'
          }),
 
          new UglifyJsPlugin({

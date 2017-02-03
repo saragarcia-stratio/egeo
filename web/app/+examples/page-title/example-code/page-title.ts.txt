@@ -1,13 +1,18 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, Input, Output, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
 
 @Component({
-   selector: 'page-title-example',
-   template: require('./page-title.component.html'),
-   styles: [require('./page-title.component.scss')]
+  selector: 'st-page-title',
+  template: require('./st-page-title.component.html'),
+  styles: [require('./st-page-title.component.scss')],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
+export class StPageTitleComponent {
+   @Input() title: string = '';
+   @Input() leftButton: string = '';
+   @Input() qaTag: string = '';
+   @Output() clickButton: EventEmitter<any> = new EventEmitter();
 
-export class PageTitleComponent {
-   private title: string = 'page title';
-
-   constructor() { }
+   onClickedButton(): void {
+      this.clickButton.emit();
+   }
 }

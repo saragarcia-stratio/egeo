@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'st-page-title',
@@ -8,4 +8,11 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 })
 export class StPageTitleComponent {
    @Input() title: string = '';
+   @Input() leftButton: string = '';
+   @Input() qaTag: string = '';
+   @Output() clickButton: EventEmitter<any> = new EventEmitter();
+   
+   onClickedButton(): void {
+      this.clickButton.emit();
+   }
 }

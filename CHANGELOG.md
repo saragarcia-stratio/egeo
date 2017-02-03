@@ -18,6 +18,7 @@
 * Add coverage reports
 * Refactor Footer component for support internal url, logos and now with tests
 * New Header component
+* Add button to page title
 
 ## 0.5.0 (December 12, 2016)
 

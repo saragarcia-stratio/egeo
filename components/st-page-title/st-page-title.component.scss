@@ -7,21 +7,48 @@ $font-weight: egeo-get-font-weight(normal) !default;
 $font-color: egeo-get-color(a3_dark) !default;
 
 $border-color: egeo-get-color(n4) !default;
+$icon-size: 35px;
+$icon-color: egeo-get-color(n9);
+$padding: 10px;
+
+.st-page-title {
+  width: 100%;
+  border-bottom: 2px solid #cbcbcb;
+}
+
+.button-box {
+  border-right: 2px solid #cbcbcb;
+  padding-right: $padding;
+  padding-bottom: $padding - 2;
+  margin-right: $padding;
+  display: inline-block;
+}
 
 .title {
+  display: inline-block;
+  max-width: 50%;
   font-family: $font-family;
   font-size: $font-size;
   font-weight: $font-weight;
   color: $font-color;
   line-height: 25px;
+  padding-bottom: $padding;
+  vertical-align: bottom;
 }
 
-.header {
-   height: 65px;
-   padding-bottom: 10px;
+.external-button-box {
+  max-width: 40%;
+  float: right;
 }
 
-.divisor {
-   border-top: 2px solid $border-color;
-   height: 30px;
+.icon {
+  width: $icon-size;
+  height: $icon-size;
+  font-family: egeo-get-font(ico_stratio);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  color: $icon-color;
+  border: 2px solid $border-color;
+  border-radius: $icon-size;
 }

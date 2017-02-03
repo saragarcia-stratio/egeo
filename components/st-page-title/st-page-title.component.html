@@ -1,15 +1,10 @@
-<div class="col-md-12">
-   <div class="row header bottom-md">
-      <div class="col-md-6 title">
-         <div class="row">
-            {{title | uppercase}}
-         </div>
-      </div>
-      <div class="col-md-6">
-         <div class="row end-md">
-            <ng-content></ng-content>
-         </div>
-      </div>
-   </div>
-   <div class="row divisor"></div>
+<div class="st-page-title">
+  <st-button *ngIf="leftButton" text="Tool subtype4" typeClass="btnTool" subtypeClass="subtype4" qaTag="{{qaTag}}-left-button"
+             leftIcon="{{leftButton}}" class="button-box"
+             inputType="button" (click)="onClickedButton()">
+  </st-button>
+  <span class="title">{{title | uppercase}}</span>
+  <div class="external-button-box">
+    <ng-content></ng-content>
+  </div>
 </div>

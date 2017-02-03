@@ -6,4 +6,4 @@ export const routes: Routes = [
   { path: '', redirectTo: 'libs', pathMatch: 'full' }
 ];
 
-export const routing: ModuleWithProviders = RouterModule.forRoot(routes);
+export const routing: ModuleWithProviders = RouterModule.forRoot(routes, { useHash: true });

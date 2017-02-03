@@ -88,7 +88,7 @@ module.exports = function (options) {
          ),
          new CopyWebpackPlugin([
             { from: 'web/assets', to: 'assets' },
-            { from: 'CHANGELOG.md', to: 'CHANGELOG.md' }
+            { from: 'CHANGELOG.md', to: 'assets/CHANGELOG.md' }
          ]),
 
          new HtmlWebpackPlugin({

@@ -8,7 +8,7 @@ export class ChangelogService {
    constructor(private http: Http) { }
 
    getChangelog(): Observable<string> {
-      return this.http.get('../../../../CHANGELOG.md')
+      return this.http.get(location.pathname + '/assets/CHANGELOG.md')
          .map(response => response.text());
    }
 }

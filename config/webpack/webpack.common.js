@@ -58,8 +58,12 @@ module.exports = function (options) {
                use: ['raw-loader', 'sass-loader']
             },
             {
-               test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+               test: /\.(svg|woff|woff2|ttf|eot|ico)$/,
                use: "file-loader?name=assets/fonts/[name].[ext]"
+            },
+            {
+               test: /\.(png|jpe?g|gif)$/,
+               use: "file-loader"
             }
          ]
       },

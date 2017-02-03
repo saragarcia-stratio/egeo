@@ -29,7 +29,7 @@ import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularcla
     EgeoModule.forRoot(),
     TranslateModule.forRoot({
       provide: TranslateLoader,
-      useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/langs', '.json'),
+      useFactory: (http: Http) => new TranslateStaticLoader(http, 'assets/langs', '.json'),
       deps: [Http]
     })
   ],

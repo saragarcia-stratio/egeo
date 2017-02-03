@@ -17,12 +17,6 @@ const V8LazyParseWebpackPlugin = require('v8-lazy-parse-webpack-plugin');
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 8080;
-const METADATA = webpackMerge(commonConfig({ env: ENV }).metadata, {
-   host: HOST,
-   port: PORT,
-   ENV: ENV,
-   HMR: false
-});
 
 module.exports = function (env) {
    return webpackMerge(commonConfig({ env: ENV }), {
@@ -41,12 +35,9 @@ module.exports = function (env) {
          new WebpackMd5Hash(),
          // NOTE: when adding more properties make sure you include them in custom-typings.d.ts
          new DefinePlugin({
-            'ENV': JSON.stringify(METADATA.ENV),
-            'HMR': METADATA.HMR,
+            ENV: 'production',
             'process.env': {
-               'ENV': JSON.stringify(METADATA.ENV),
-               'NODE_ENV': JSON.stringify(METADATA.ENV),
-               'HMR': METADATA.HMR,
+               'NODE_ENV': 'production'
             }
          }),
 
@@ -72,13 +63,6 @@ module.exports = function (env) {
                negate_iife: false // we need this for lazy v8
             },
          }),
-
-         /**
-          * Plugin: NormalModuleReplacementPlugin
-          * Description: Replace resources that matches resourceRegExp with newResource
-          *
-          * See: http://webpack.github.io/docs/list-of-plugins.html#normalmodulereplacementplugin
-          */
 
          new NormalModuleReplacementPlugin(
             /angular2-hmr/,
@@ -110,15 +94,6 @@ module.exports = function (env) {
             }
          }),
 
-      ],
-      node: {
-         global: true,
-         crypto: 'empty',
-         process: false,
-         module: false,
-         clearImmediate: false,
-         setImmediate: false
-      }
-
+      ]
    });
 }

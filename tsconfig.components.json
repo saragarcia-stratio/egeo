@@ -15,14 +15,10 @@
       "coverage",
       "config",
       "report",
-      "dist"
+      "dist",
+      "bundle",
+      "web"
    ],
-   "include": [
-      "web/**/*.ts"
-   ],
-   "awesomeTypescriptLoaderOptions": {
-      "useWebpackText": true
-   },
    "compileOnSave": false,
    "buildOnSave": false,
    "atom": { "rewriteTsconfig": false }

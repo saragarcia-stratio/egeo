@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { StTab } from './../../../../egeo';
+import { StTab } from 'egeo';
 import { ApiDoc, TYPES } from '../../shared';
 
 @Component({

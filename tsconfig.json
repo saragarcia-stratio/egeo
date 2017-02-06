@@ -7,7 +7,12 @@
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
       "noImplicitAny": true,
-      "skipLibCheck": true
+      "skipLibCheck": true,
+      "baseUrl": "./web",
+      "paths": {
+         "egeo": [ "../components" ]
+      }
+
    },
 
    "exclude": [
@@ -15,10 +20,14 @@
       "coverage",
       "config",
       "report",
-      "dist",
-      "bundle",
-      "web"
+      "dist"
    ],
+   "include": [
+      "web/**/*.ts"
+   ],
+   "awesomeTypescriptLoaderOptions": {
+      "useWebpackText": true
+   },
    "compileOnSave": false,
    "buildOnSave": false,
    "atom": { "rewriteTsconfig": false }

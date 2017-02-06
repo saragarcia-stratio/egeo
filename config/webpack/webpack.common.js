@@ -18,6 +18,9 @@ module.exports = function (options) {
       },
 
       resolve: {
+         alias: {
+            'egeo': helpers.root('components', 'index.ts'),
+         },
          extensions: ['.js', '.ts'],
          modules: [helpers.root('web'), helpers.root('node_modules')],
       },
@@ -32,12 +35,7 @@ module.exports = function (options) {
                test: /\.ts$/,
                use: [
                   '@angularclass/hmr-loader',
-                  {
-                     loader: 'awesome-typescript-loader?declaration=false',
-                     options: {
-                        configFilename: 'tsconfig.web.json'
-                     }
-                  },
+                  'awesome-typescript-loader?declaration=false',
                   'angular2-template-loader',
                   'angular-router-loader'
                ],

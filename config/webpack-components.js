@@ -15,10 +15,10 @@ module.exports = {
         extensions: ['.ts', '.js']
     },
 
-    entry: helpers.root('egeo.ts'),
+    entry: './components/index.ts',
 
     output: {
-        path: './',
+        path: './lib',
         publicPath: '/',
         filename: 'egeo.js',
         libraryTarget: 'commonjs2',
@@ -33,7 +33,12 @@ module.exports = {
            {
                test: /\.ts$/,
                use: [
-                  'awesome-typescript-loader?declaration=false',
+                  {
+                     loader: 'awesome-typescript-loader?declaration=false',
+                     options: {
+                        configFilename: 'tsconfig.components.json'
+                     }
+                  },
                   'angular2-template-loader',
                   'angular-router-loader'
                ],

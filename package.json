@@ -18,6 +18,8 @@
       "test": "cross-env NODE_ENV=test karma start",
       "test:watch": "cross-env NODE_ENV=test karma start --auto-watch --no-single-run"
    },
+   "main": "lib/egeo.js",
+   "typings": "lib/egeo.d.ts",
    "repository": {
       "type": "git",
       "url": "https://github.com/Stratio/egeo"

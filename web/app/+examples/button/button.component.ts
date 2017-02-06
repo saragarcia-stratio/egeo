@@ -1,4 +1,4 @@
-import { Buttons } from './../../../../components/st-modal/shared/message-modal.model';
+import { Buttons } from 'egeo';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { ApiDoc, TYPES } from '../../shared';
 

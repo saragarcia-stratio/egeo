@@ -12,7 +12,7 @@ import { AppComponent }       from './app.component';
 import { LayoutModule } from './layout/layout.module';
 import { routing } from './app.routing';
 
-import { EgeoModule } from '../../egeo';
+import { EgeoModule } from 'egeo';
 
 import { AppStore, State } from './app.store';
 

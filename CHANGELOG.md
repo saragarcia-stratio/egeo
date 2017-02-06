@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0 (upcoming)
+
+* Pending changelog
+
 ## 0.6.0 (upcoming)
 
 * Update colors with new values, possibility of getting in RGB format and documentation with RGB info.

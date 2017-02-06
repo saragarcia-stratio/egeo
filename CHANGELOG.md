@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.6.0 (upcoming)
+## 0.6.0 (February 06, 2017)
 
 * Update colors with new values, possibility of getting in RGB format and documentation with RGB info.
 * Add alpha channel to the egeo-get-color API.

@@ -4,10 +4,6 @@ import {
 
 import {Http} from '@angular/http';
 import {
-  TranslateModule, TranslateLoader, TranslateService, TranslateStaticLoader
-}
-  from 'ng2-translate/ng2-translate';
-import {
   RouterTestingModule
 } from '@angular/router/testing';
 import {StVerticalMenuComponent} from './st-vertical-menu.component';
@@ -17,12 +13,8 @@ describe('StVerticalMenuComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [StVerticalMenuComponent],
-      imports: [TranslateModule.forRoot({
-        provide: TranslateLoader,
-        useFactory: (http: Http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
-        deps: [Http]
-      }), RouterTestingModule],
-      providers: [TranslateService]
+      imports: [RouterTestingModule],
+      providers: []
     });
   });
 

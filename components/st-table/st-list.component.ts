@@ -30,6 +30,7 @@ export class GosecListComponent<T> {
    // Pagination Fields
    @Input() pagination: Page;
    @Input() totalElements: number;
+   @Input() emptyListMessage: string = '';
    @Output() changePage: EventEmitter<number> = new EventEmitter<number>();
 
    private rowHeight: number = 46;

@@ -1,6 +1,6 @@
-import {GosecListComponent} from './';
-import {Model} from './shared';
-import {ORDER_TYPE, DataList, Order, Page} from './';
+import { GosecListComponent } from './st-list.component';
+import { Model } from './shared';
+import { ORDER_TYPE, DataList, Order, Page } from './';
 import * as _ from 'lodash';
 
 class Hero extends Model<HeroeInterface> {
@@ -140,7 +140,7 @@ describe(('st-list'), () => {
       });
    })
 })
-;
+   ;
 
 
 

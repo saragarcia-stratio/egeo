@@ -1,8 +1,8 @@
 import { Component, forwardRef, Input, OnChanges, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FormControl, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { STVALIDATIONS } from '../st-validations';
-import { StInputError } from './shared';
+
+import { StInputError } from './st-input.error.model';
 
 @Component({
    selector: 'st-input',

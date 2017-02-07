@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { NgForm }    from '@angular/forms';
-import { StTwoListSelectionElement, StListModifierObject } from './shared/element.model';
+
+import { StTwoListSelectionElement, StListModifierObject } from './st-two-list-selection.model';
 
 @Component({
   selector: 'st-two-list-selection',

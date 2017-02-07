@@ -4,10 +4,6 @@ import {
 
 import {Http} from '@angular/http';
 import {
-  TranslateModule, TranslateLoader, TranslateService, TranslateStaticLoader
-}
-  from 'ng2-translate/ng2-translate';
-import {
   RouterTestingModule
 } from '@angular/router/testing';
 import {StInfoCardComponent} from './st-info-card.component';
@@ -17,12 +13,8 @@ describe('StInfoCardComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [StInfoCardComponent],
-      imports: [TranslateModule.forRoot({
-        provide: TranslateLoader,
-        useFactory: (http: Http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
-        deps: [Http]
-      }), RouterTestingModule],
-      providers: [TranslateService]
+      imports: [RouterTestingModule],
+      providers: []
     });
   });
 

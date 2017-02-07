@@ -2,12 +2,12 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import StDropdownMenuItemComponent from './st-dropdown-menu-item.component';
-import { StDropDownMenuItem } from './st-dropdown-menu.interface';
+import { StDropdownMenuItemComponent } from './st-dropdown-menu-item.component';
+import { StDropDownMenuItem } from '../../st-dropdown-menu.interface';
 
 let item: StDropDownMenuItem = {
-      label: 'example 1',
-      value: 1
+   label: 'example 1',
+   value: 1
 };
 
 describe('StDropdownMenuItemComponent', () => {
@@ -18,7 +18,7 @@ describe('StDropdownMenuItemComponent', () => {
 
    beforeEach(() => {
       TestBed.configureTestingModule({
-         declarations: [ StDropdownMenuItemComponent ]
+         declarations: [StDropdownMenuItemComponent]
       });
 
       fixture = TestBed.createComponent(StDropdownMenuItemComponent);

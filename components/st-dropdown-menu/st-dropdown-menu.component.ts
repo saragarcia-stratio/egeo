@@ -37,7 +37,7 @@ import { StDropDownMenuGroup, StDropDownMenuItem } from './st-dropdown-menu.inte
       ])
    ]
 })
-export default class StDropdownMenuComponent implements OnInit {
+export class StDropdownMenuComponent implements OnInit {
 
    @Input() active: boolean;
    @Input() items: Array<StDropDownMenuItem> | Array<StDropDownMenuGroup>;

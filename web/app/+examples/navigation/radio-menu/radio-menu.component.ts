@@ -16,7 +16,7 @@ export class RadioMenuComponent {
 
    constructor() {
 
-      this.options = [{label: 'MENU.SERVICE', value: 'service'}, {label: 'MENU.NODES', value: 'nodes'}, {label: 'MENU.CASSANDRA', value: 'cassandra'}];
+      this.options = [{label: 'Service', value: 'service'}, {label: 'Nodes', value: 'nodes'}, {label: 'Casandra', value: 'cassandra'}];
 
       this.apiDoc = {
          title: 'Radio Menu',
@@ -37,7 +37,7 @@ export class RadioMenuComponent {
                   paramName: 'options',
                   type: TYPES.ARRAY_OBJ,
                   required: true,
-                  details: 'Array of string with options'
+                  details: 'Array of string with options, option names must be translated'
                },
                {
                   paramName: 'qaTag',

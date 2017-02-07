@@ -1,7 +1,7 @@
 import { Component, Input, Output, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { StFooterLink } from './shared/';
+import { StFooterLink } from './st-footer.model';
 
 @Component({
   selector: 'st-footer',

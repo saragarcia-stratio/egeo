@@ -1,1 +1,1 @@
-export * from './st-tooltip.component';
+export * from './st-tooltip.module';

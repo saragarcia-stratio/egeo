@@ -18,7 +18,6 @@ config
 web
 temp
 dist
-egeo.ts
 
 .editorconfig
 .gitignore

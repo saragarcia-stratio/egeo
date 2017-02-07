@@ -1,1 +1,1 @@
-export * from './st-search.component';
+export * from './st-search.module';

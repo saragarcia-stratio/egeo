@@ -1,1 +1,1 @@
-export * from './st-page-title.component';
+export * from './st-page-title.module';

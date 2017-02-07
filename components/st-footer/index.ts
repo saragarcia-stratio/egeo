@@ -1,2 +1,2 @@
 export * from './st-footer.module';
-export * from './shared';
+export * from './st-footer.model';

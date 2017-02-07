@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { StFooterComponent } from './st-footer.component';
-import { StFooterLink } from './shared/st-footer.model';
+import { StFooterLink } from './st-footer.model';
 
 let items: Array<StFooterLink> = [
    {

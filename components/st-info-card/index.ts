@@ -1,1 +1,1 @@
-export * from './st-info-card.component';
+export * from './st-info-card.module';

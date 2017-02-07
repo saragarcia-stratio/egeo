@@ -19,7 +19,7 @@ export class VerticalMenuComponent implements OnInit {
       apiSection: {
          inputs: [
             { paramName: 'activeOption', type: TYPES.STR, required: false, details: 'Current active option name' },
-            { paramName: 'options', type: TYPES.ARRAY_STR, required: true, details: 'Menu option names' },
+            { paramName: 'options', type: TYPES.ARRAY_STR, required: true, details: 'Menu option names, must be translated' },
             { paramName: 'qaTag', type: TYPES.STR, required: true, details: 'Prefix used to generate the id values for qa tests' }
          ],
          outputs: [
@@ -31,6 +31,6 @@ export class VerticalMenuComponent implements OnInit {
    // tslint:enable:max-line-length
 
    ngOnInit(): void {
-      this.options = ['MENU.SERVICE', 'MENU.NODES', 'MENU.CASSANDRA'];
+      this.options = ['Service', 'Nodes', 'Cassandra'];
    }
 }

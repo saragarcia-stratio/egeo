@@ -4,10 +4,6 @@ import {
 
 import {Http} from '@angular/http';
 import {
-   TranslateModule, TranslateLoader, TranslateService, TranslateStaticLoader
-}
-   from 'ng2-translate/ng2-translate';
-import {
    RouterTestingModule
 } from '@angular/router/testing';
 import {StRadioMenuComponent} from './st-radio-menu.component';
@@ -18,12 +14,8 @@ describe('StRadioMenuComponent', () => {
    beforeEach(() => {
       TestBed.configureTestingModule({
          declarations: [StRadioMenuComponent],
-         imports: [TranslateModule.forRoot({
-            provide: TranslateLoader,
-            useFactory: (http: Http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
-            deps: [Http]
-         }), RouterTestingModule],
-         providers: [TranslateService]
+         imports: [RouterTestingModule],
+         providers: []
       });
    });
 

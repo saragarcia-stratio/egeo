@@ -1,2 +1,2 @@
-export * from './st-two-list-selection.component';
-export * from './shared';
+export * from './st-two-list-selection.module';
+export * from './st-two-list-selection.model';

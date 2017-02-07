@@ -24,7 +24,7 @@ import { StDropDownMenuItem, StDropDownMenuGroup } from '../st-dropdown-menu/st-
    styleUrls: ['st-dropdown.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export default class StDropdownComponent extends EventWindowManager implements AfterViewInit, OnDestroy, OnInit  {
+export class StDropdownComponent extends EventWindowManager implements AfterViewInit, OnDestroy, OnInit  {
 
    @Input() button: string;
    @Input() active: boolean;

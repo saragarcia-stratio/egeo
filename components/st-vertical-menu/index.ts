@@ -1,1 +1,1 @@
-export * from './st-vertical-menu.component';
+export * from './st-vertical-menu.module';

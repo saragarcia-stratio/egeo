@@ -10,12 +10,14 @@ import { DataList, FieldsMetadata } from '../st-list.model';
 export class GosecListBodyComponent<T> {
    @Input() headerList: Array<FieldsMetadata>;
    @Input() data: DataList<T>;
+
    @Output() openDetail: EventEmitter<string> = new EventEmitter<string>();
    @Output() clickAction: EventEmitter<string> = new EventEmitter<string>();
 
    @Input() hasDetail: boolean = true;
    @Input() detailText: string = '';
    @Input() actionClass: string = '';
+   @Input() emptyListMessage: string = '';
 
 
    constructor() { }

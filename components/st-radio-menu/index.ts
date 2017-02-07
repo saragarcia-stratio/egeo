@@ -1,1 +1,2 @@
-export * from './st-radio-menu.component';
+export * from './st-radio-menu.module';
+export * from './st-radio-menu-option.interface';

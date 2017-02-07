@@ -6,5 +6,5 @@
          </gosec-list-row>
       </div>
    </ul>
-   <div class="st-list-body__msg " *ngIf="data.length===0 ">{{'LIST.EMPTY_LIST' | translate}}</div>
+   <div class="st-list-body__msg " *ngIf="data.length===0 ">{{ emptyListMessage }}</div>
 </div>

@@ -2,8 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import StDropdownMenuComponent from './st-dropdown-menu.component';
-import StDropdownMenuItemComponent from './st-dropdown-menu-item.component';
+import { StDropdownMenuComponent } from './st-dropdown-menu.component';
+import { StDropdownMenuItemComponent } from './components';
 import { StDropDownMenuItem } from './st-dropdown-menu.interface';
 
 let items: Array<StDropDownMenuItem> = [
@@ -25,7 +25,7 @@ describe('StDropdownMenuComponent', () => {
 
    beforeEach(() => {
       TestBed.configureTestingModule({
-         declarations: [ StDropdownMenuComponent, StDropdownMenuItemComponent ]
+         declarations: [StDropdownMenuComponent, StDropdownMenuItemComponent]
       });
 
       fixture = TestBed.createComponent(StDropdownMenuComponent);

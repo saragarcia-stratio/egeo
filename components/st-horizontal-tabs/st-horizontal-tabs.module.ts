@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { StHorizontalTabsComponent } from './../st-horizontal-tabs/st-horizontal-tabs.component';
-import { StHorizontalTab } from './st-horizontal-tabs.model';
-
+import { StHorizontalTabsComponent } from './st-horizontal-tabs.component';
 
 @NgModule({
-   imports: [CommonModule, RouterModule],
+   imports: [CommonModule],
    declarations: [StHorizontalTabsComponent],
    exports: [StHorizontalTabsComponent]
 })

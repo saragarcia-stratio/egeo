@@ -3,7 +3,7 @@
     <li *ngFor="let option of options; let i = index;" class="st-vertical-menu__option">
       <a class="st-vertical-menu__option__text" (click)="activateOption(option, i)"
          [ngClass]="{'st-vertical-menu__option--active': isActive(option)}"
-         [attr.id]="qaTag + '-tab-' + i" href="javascript:void(0)">{{option | translate}}</a>
+         [attr.id]="qaTag + '-tab-' + i" href="javascript:void(0)">{{option}}</a>
     </li>
   </ul>
   <div class="st-vertical-menu__line">

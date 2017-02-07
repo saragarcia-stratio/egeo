@@ -1,1 +1,1 @@
-export * from './st-info-box.component';
+export * from './st-info-box.module';

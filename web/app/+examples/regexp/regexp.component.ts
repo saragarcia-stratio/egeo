@@ -4,8 +4,7 @@ import { ApiDoc, TYPES } from '../../shared';
 
 @Component({
    selector: 'regexp-example',
-   templateUrl: './regexp.component.html',
-   styleUrls: ['./regexp.component.scss']
+   templateUrl: './regexp.component.html'
 })
 
 export class RegexpComponent {

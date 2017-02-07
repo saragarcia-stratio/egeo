@@ -3,8 +3,7 @@ import { ApiDoc, TYPES } from '../../shared';
 
 @Component({
    selector: 'info-card-example',
-   templateUrl: './info-card.component.html',
-   styleUrls: ['./info-card.component.scss']
+   templateUrl: './info-card.component.html'
 })
 
 export class InfoCardComponent {

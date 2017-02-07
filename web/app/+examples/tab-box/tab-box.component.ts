@@ -4,8 +4,7 @@ import { ApiDoc, TYPES } from '../../shared';
 
 @Component({
    selector: 'tab-box-example',
-   templateUrl: './tab-box.component.html',
-   styleUrls: ['./tab-box.component.scss']
+   templateUrl: './tab-box.component.html'
 })
 
 export class TabBoxComponent {

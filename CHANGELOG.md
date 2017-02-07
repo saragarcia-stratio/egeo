@@ -2,7 +2,10 @@
 
 ## 1.0.0 (upcoming)
 
-* Pending changelog
+* Modularize all components
+* Remove st-spinner from website
+* BREAKING CHANGE. Remove ng2-translate dependency
+* BREAKING CHANGE. Now egeo is imported like this: "import { EgeoModule } from 'egeo';"
 
 ## 0.6.0 (February 06, 2017)
 
@@ -45,7 +48,7 @@
 * New tab box component
 * Spinner in modificable list while input is undefined
 
-## 0.3.0
+## 0.3.0 (September 23, 2016)
 
 * Spinner component
 * Modificable List component
@@ -57,11 +60,11 @@
 + Vertical menu component
 * Close tooltip with click, keydown or mouse wheel
 
-## 0.2.0
+## 0.2.0 (September 21, 2016)
 
 * Several components
 * Update to Angular2-rc.6
 
-## 0.1.0
+## 0.1.0 (September 1, 2016)
 
 * First iteration of egeo angular 2 components using Angular2-rc.5

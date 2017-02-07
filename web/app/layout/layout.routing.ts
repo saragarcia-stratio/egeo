@@ -25,7 +25,8 @@ import {
   SearchComponent,
   ChangelogComponent,
   DropdownComponent,
-  DropdownMenuComponent
+  DropdownMenuComponent,
+  GridComponent
 } from '../+examples';
 
 export const routing: ModuleWithProviders = RouterModule.forChild([
@@ -33,6 +34,7 @@ export const routing: ModuleWithProviders = RouterModule.forChild([
     path: '', component: LayoutComponent, children: [
       { path: '', redirectTo: 'main', pathMatch: 'full' },
       { path: 'main', component: MainComponent },
+      { path: 'grid', component: GridComponent },
       { path: 'colors', component: ColorsComponent },
       { path: 'typography', component: TypographyComponent },
       { path: 'icons', component: IconsComponent },

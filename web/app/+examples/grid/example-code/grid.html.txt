@@ -1,0 +1,54 @@
+<div class="container-fluid">
+   <div class="row">
+      <div class="col-lg-5 col-md-24 col-sm-24 col-xs-24" style="background-color: #eff2f3;">
+         <div class="menu" style="margin:0 15px;  padding-left:30px; min-width:240px !important;">
+         <h5 style="width:100%; border-bottom:1px solid #09C">NOTEBOOKS</h5>
+         <p>A whole kitchen sink of goodies comes with Foundation. Checkout the docs to see them all, along with details on making them your own.</p>
+         <br>
+         <a href="http://foundation.zurb.com/docs/" class="small button">Go to Foundation Docs</a> </div>
+      </div>
+
+      <div class="col-lg-15 col-md-24 col-sm-24 col-xs-24">
+         <div class="box box-container">
+         <div class="row">
+            <div class="col-lg-24, col-md-24 col-sm-24 col-xs-24">
+               <p class="box" style="background-color: #A4EDFF;"><strong>This is a twelve column section in a row.</strong> Each of these includes a div.panel element so you can see where the columns are - it's not required at all for the grid.</p>
+            </div>
+         </div>
+         </div>
+
+         <div class="box box-container">
+         <div class="row">
+            <div class="col-lg-12, col-md-12 col-sm-12 col-xs-12">
+               <p class="box" style="background-color: #F60">12 columns</p>
+            </div>
+            <div class="col-lg-12, col-md-12 col-sm-12 col-xs-12">
+               <p class="box" style="background-color: #F60">12 columns</p>
+            </div>
+         </div>
+         </div>
+
+         <div class="box box-container">
+         <div class="row">
+            <div class="col-lg-8, col-md-8 col-sm-8 col-xs-8">
+               <p class="box" style="background-color: #9C0">8 columns</p>
+            </div>
+            <div class="col-lg-8, col-md-8 col-sm-8 col-xs-8">
+               <p class="box" style="background-color: #9C0">8 columns</p>
+            </div>
+            <div class="col-lg-8, col-md-8 col-sm-8 col-xs-8">
+               <p class="box" style="background-color: #9C0">8 columns</p>
+            </div>
+         </div>
+         </div>
+      </div>
+
+      <div class="col-lg-4 col-md-24 col-sm-24 col-xs-24" style="background-color: #ededed;">
+         <div class="menu" style="margin:0 10px;">
+         <h5 style="width:100%; border-bottom:1px solid #c2c2c2">GLOBAL STATUS</h5>
+         <p>A whole kitchen sink of goodies comes with Foundation. Checkout the docs to see them all, along with details on making them your own.</p>
+         <br>
+         <a href="http://foundation.zurb.com/docs/" class="small button">Go to Foundation Docs</a> </div>
+      </div>
+   </div>
+</div>

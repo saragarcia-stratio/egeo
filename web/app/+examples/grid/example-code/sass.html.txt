@@ -1,0 +1,4 @@
+/* Sass code. Only needed if plan to import the grid on your own code without the use of egeo-theme */
+$egeo-grid: true;
+
+@import 'node_modules/egeo-ui-base/utils/grid';

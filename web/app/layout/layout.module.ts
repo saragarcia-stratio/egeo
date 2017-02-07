@@ -28,7 +28,8 @@ import {
    ChangelogService,
    NavigationModule,
    DropdownComponent,
-   DropdownMenuComponent
+   DropdownMenuComponent,
+   GridComponent
 } from '../+examples';
 import { routing } from './layout.routing';
 
@@ -64,7 +65,8 @@ import { MarkdownToHtmlPipe } from 'markdown-to-html-pipe';
       ChangelogComponent,
       MarkdownToHtmlPipe,
       DropdownComponent,
-      DropdownMenuComponent
+      DropdownMenuComponent,
+      GridComponent
    ],
    providers: [ChangelogService]
 })

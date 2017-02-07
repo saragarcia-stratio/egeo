@@ -4,8 +4,8 @@ import { EventWindowManager } from '../utils';
 
 @Component({
    selector: 'st-tooltip',
-   template: require('./st-tooltip.component.html'),
-   styles: [require('./st-tooltip.component.scss')],
+   templateUrl: './st-tooltip.component.html',
+   styleUrls: ['./st-tooltip.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StTooltip extends EventWindowManager implements OnDestroy {

@@ -2,8 +2,8 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
    selector: 'app-name',
-   styles: [require('./app-name.component.scss')],
-   template: require('./app-name.component.html'),
+   styleUrls: ['./app-name.component.scss'],
+   templateUrl: './app-name.component.html',
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppNameComponent {

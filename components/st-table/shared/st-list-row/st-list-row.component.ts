@@ -4,8 +4,8 @@ import { getColPercent } from '../utils';
 
 @Component({
    selector: 'gosec-list-row',
-   styles: [require('./st-list-row.component.scss')],
-   template: require('./st-list-row.component.html'),
+   styleUrls: ['./st-list-row.component.scss'],
+   templateUrl: './st-list-row.component.html',
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GosecListRowComponent<T> {

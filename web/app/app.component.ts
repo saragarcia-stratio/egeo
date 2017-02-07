@@ -4,8 +4,8 @@ import { StModalService } from 'egeo';
 
 @Component({
    selector: 'app',
-   template: require('./app.component.html'),
-   styles: [require('./app.component.scss')],
+   templateUrl: './app.component.html',
+   styleUrls: ['./app.component.scss'],
    encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {

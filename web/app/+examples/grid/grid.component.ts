@@ -3,8 +3,8 @@ import { ApiDoc, TYPES } from '../../shared';
 
 @Component({
   selector: 'grid',
-  template: require('./grid.component.html'),
-  styles: [require('./grid.component.scss')]
+  templateUrl: './grid.component.html',
+  styleUrls: ['./grid.component.scss']
 })
 
 export class GridComponent {

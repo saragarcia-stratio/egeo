@@ -6,8 +6,8 @@ import { StHeaderUserMenuModel } from './user-menu.model';
 
 @Component({
    selector: 'user-menu',
-   styles: [require('./user-menu.component.scss')],
-   template: require('./user-menu.component.html'),
+   styleUrls: ['./user-menu.component.scss'],
+   templateUrl: './user-menu.component.html',
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserMenuComponent extends EventWindowManager implements OnDestroy {

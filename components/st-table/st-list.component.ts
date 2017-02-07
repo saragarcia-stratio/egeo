@@ -5,8 +5,8 @@ import { Page } from './shared/st-pagination/';
 
 @Component({
    selector: 'st-table',
-   styles: [require('./st-list.component.scss')],
-   template: require('./st-list.component.html'),
+   styleUrls: ['./st-list.component.scss'],
+   templateUrl: './st-list.component.html',
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 

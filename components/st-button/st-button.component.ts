@@ -2,8 +2,8 @@ import { Component, Input, Output, EventEmitter, AfterViewInit } from '@angular/
 
 @Component({
   selector: 'st-button',
-  template: require('./st-button.component.html'),
-  styles: [require('./st-button.component.scss')]
+  templateUrl: './st-button.component.html',
+  styleUrls: ['./st-button.component.scss']
 })
 
 export class StButtonComponent {

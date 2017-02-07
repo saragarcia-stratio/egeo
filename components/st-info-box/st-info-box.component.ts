@@ -2,8 +2,8 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'st-info-box',
-  template: require('./st-info-box.component.html'),
-  styles: [require('./st-info-box.component.scss')],
+  templateUrl: './st-info-box.component.html',
+  styleUrls: ['./st-info-box.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 

@@ -5,7 +5,7 @@ import { ApiDoc, TYPES } from './../../../shared';
 import { } from 'egeo/egeo';
 @Component({
    selector: 'horizontal-tabs-example',
-   template: require('./horizontal-tabs.component.html')
+   templateUrl: './horizontal-tabs.component.html'
 })
 
 export class HorizontalTabsComponent implements OnInit {

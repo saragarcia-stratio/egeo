@@ -2,8 +2,8 @@ import {Component, ViewEncapsulation, OnInit} from '@angular/core';
 
 @Component({
   selector: 'horizontal-tabs-example',
-  template: require('./horizontal-tabs.component.html'),
-  styles: [require('./horizontal-tabs.component.scss')]
+  templateUrl: './horizontal-tabs.component.html',
+  styleUrls: ['./horizontal-tabs.component.scss']
 })
 
 export class HorizontalTabsComponent implements OnInit {

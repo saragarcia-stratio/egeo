@@ -16,8 +16,8 @@ import { ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
    selector: 'st-modal',
-   template: require('./st-modal.component.html'),
-   styles: [require('./st-modal.component.scss')],
+   templateUrl: './st-modal.component.html',
+   styleUrls: ['./st-modal.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StModal implements OnDestroy, OnInit {

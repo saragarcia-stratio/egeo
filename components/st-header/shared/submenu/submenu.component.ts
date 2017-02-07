@@ -4,8 +4,8 @@ import { StSubMenuModel } from '../st-header.model';
 
 @Component({
    selector: 'submenu',
-   styles: [require('./submenu.component.scss')],
-   template: require('./submenu.component.html'),
+   styleUrls: ['./submenu.component.scss'],
+   templateUrl: './submenu.component.html',
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SubmenuComponent {

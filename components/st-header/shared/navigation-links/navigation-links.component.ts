@@ -4,8 +4,8 @@ import { StHeaderModel } from '../st-header.model';
 
 @Component({
    selector: 'navigation-links',
-   styles: [require('./navigation-links.component.scss')],
-   template: require('./navigation-links.component.html')
+   styleUrls: ['./navigation-links.component.scss'],
+   templateUrl: './navigation-links.component.html'
 })
 export class NavigationLinksComponent {
 

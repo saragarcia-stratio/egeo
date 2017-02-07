@@ -5,8 +5,8 @@ import { StHeaderModel, StHeaderUserMenuModel } from 'egeo';
 
 @Component({
    selector: 'header-example',
-   template: require('./header.component.html'),
-   styles: [require('./header.component.scss')]
+   templateUrl: './header.component.html',
+   styleUrls: ['./header.component.scss']
 })
 
 export class HeaderComponent {

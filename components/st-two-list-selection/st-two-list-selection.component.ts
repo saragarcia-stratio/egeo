@@ -4,8 +4,8 @@ import { StTwoListSelectionElement, StListModifierObject } from './st-two-list-s
 
 @Component({
   selector: 'st-two-list-selection',
-  template: require('./st-two-list-selection.component.html'),
-  styles: [require('./st-two-list-selection.component.scss')],
+  templateUrl: './st-two-list-selection.component.html',
+  styleUrls: ['./st-two-list-selection.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StTwoListSelectionComponent {

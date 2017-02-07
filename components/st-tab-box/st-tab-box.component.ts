@@ -3,8 +3,8 @@ import { StTab } from './st-tab-box.interface';
 
 @Component({
   selector: 'st-tab-box',
-  template: require('./st-tab-box.component.html'),
-  styles: [require('./st-tab-box.component.scss')],
+  templateUrl: './st-tab-box.component.html',
+  styleUrls: ['./st-tab-box.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StTabBoxComponent {

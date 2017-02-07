@@ -4,8 +4,8 @@ import { getColPercent } from '../utils';
 
 @Component({
   selector: 'gosec-list-header',
-  styles: [require('./gosec-list-header.component.scss')],
-  template: require('./gosec-list-header.component.html'),
+  styleUrls: ['./gosec-list-header.component.scss'],
+  templateUrl: './gosec-list-header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GosecListHeaderComponent<T> {

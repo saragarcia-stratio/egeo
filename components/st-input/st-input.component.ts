@@ -6,8 +6,8 @@ import { StInputError } from './st-input.error.model';
 
 @Component({
    selector: 'st-input',
-   template: require('./st-input.component.html'),
-   styles: [require('./st-input.component.scss')],
+   templateUrl: './st-input.component.html',
+   styleUrls: ['./st-input.component.scss'],
    providers: [
       { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => StInputComponent), multi: true },
       { provide: NG_VALIDATORS, useExisting: forwardRef(() => StInputComponent), multi: true }

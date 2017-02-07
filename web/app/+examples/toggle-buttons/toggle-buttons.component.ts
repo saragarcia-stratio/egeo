@@ -4,8 +4,8 @@ import { ApiDoc, TYPES } from '../../shared';
 
 @Component({
    selector: 'toggle-buttons-example',
-   template: require('./toggle-buttons.component.html'),
-   styles: [require('./toggle-buttons.component.scss')]
+   templateUrl: './toggle-buttons.component.html',
+   styleUrls: ['./toggle-buttons.component.scss']
 })
 
 export class ToggleButtonsComponent {

@@ -5,8 +5,8 @@ import { StHeaderModel, StSubMenuModel, StHeaderUserMenuModel } from './shared';
 
 @Component({
    selector: 'st-header',
-   template: require('./st-header.component.html'),
-   styles: [require('./st-header.component.scss')],
+   templateUrl: './st-header.component.html',
+   styleUrls: ['./st-header.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StHeaderComponent implements OnInit {

@@ -2,8 +2,8 @@ import {Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'info-box-example',
-  template: require('./info-box.component.html'),
-  styles: [require('./info-box.component.scss')]
+  templateUrl: './info-box.component.html',
+  styleUrls: ['./info-box.component.scss']
 })
 
 export class InfoBoxComponent {

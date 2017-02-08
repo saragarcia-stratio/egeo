@@ -23,6 +23,7 @@ dist
 .project
 .settings
 .vscode
+.history
 
 ############
 ## Windows

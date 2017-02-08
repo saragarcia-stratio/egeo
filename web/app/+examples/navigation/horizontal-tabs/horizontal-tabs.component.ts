@@ -26,7 +26,7 @@ export class HorizontalTabsComponent implements OnInit {
          outputs: [
             {
               paramName: 'changedOption',
-              type: 'any',
+              type: 'string',
               required: true,
               details: 'This event is emitted when active option has changed. It has the active option name as param'
             }

@@ -31,4 +31,17 @@ describe('StInfoCardComponent', () => {
 
     expect(stInfoCardComponent.photo).toBe(stInfoCardComponent.defaultPhoto);
   });
+  it ('if qaTag is defined generateQaTag returns this string', () => {
+    stInfoCardComponent.qaTag = 'test';
+    let id = stInfoCardComponent.generateQaTag();
+
+    expect(id).toEqual('qaTag-test');
+  });
+  it ('if qaTag is not defined generateQaTag returns title', () => {
+    stInfoCardComponent.qaTag = undefined;
+    stInfoCardComponent.title = 'title';
+    let id = stInfoCardComponent.generateQaTag();
+
+    expect(id).toEqual('qaTag-title');
+  });
 });

@@ -1,4 +1,4 @@
-<section class="st-info-card">
+<section class="st-info-card" [attr.id]="generateQaTag()">
   <div class="st-info-card__photo-div">
     <img class="st-info-card__photo img-responsive" src="{{photo}}" (error)="onPhotoError()">
   </div>

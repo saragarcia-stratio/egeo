@@ -12,6 +12,7 @@ export class StInfoCardComponent {
   @Input() defaultPhoto: string;
   @Input() title: string;
   @Input() description: string;
+  @Input() qaTag: string;
 
   constructor() {
   }
@@ -19,5 +20,9 @@ export class StInfoCardComponent {
   onPhotoError(): boolean {
     this.photo = this.defaultPhoto;
     return true;
+  }
+
+  generateQaTag(): string {
+   return this.qaTag ? 'qaTag-' + this.qaTag : 'qaTag-' + this.title.split(' ').join('-');
   }
 }

@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
 @Component({
   selector: 'st-spinner',
@@ -6,5 +6,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./st-spinner.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StSpinnerComponent {}
-
+export class StSpinnerComponent {
+  @Input() imageUrl: string;
+}

@@ -18,7 +18,8 @@ export class PageTitleComponent {
          haveModel: true,
          apiSection: {
             inputs: [
-               { paramName: 'title', type: TYPES.STR, required: true, details: 'Title text to show, must be final text to show not allow translate' }
+               { paramName: 'title', type: TYPES.STR, required: true, details: 'Title text to show, must be final text to show not allow translate' },
+               { paramName: 'leftButton', type: TYPES.STR, required: false, details: 'Icon class of button displayed  to the left of title.' }
             ],
             outputs: []
          },

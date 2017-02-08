@@ -1,10 +1,21 @@
-<div class="st-page-title">
-  <st-button *ngIf="leftButton" text="Tool subtype4" typeClass="btnTool" subtypeClass="subtype4" qaTag="{{qaTag}}-left-button"
-             leftIcon="{{leftButton}}" class="button-box"
-             inputType="button" (click)="onClickedButton()">
-  </st-button>
-  <span class="title">{{title | uppercase}}</span>
-  <div class="external-button-box">
-    <ng-content></ng-content>
-  </div>
-</div>
+   <div class="example-run">
+      <section class="container-fluid col-md-12">
+         <h3>Title without left button</h3>
+         <st-page-title [title]="title">
+            <div class="box-right">
+               <span class="box-content">Box with content</span>
+            </div>
+            <button>Button</button>
+         </st-page-title>
+      </section>
+
+      <section class="container-fluid col-md-12">
+         <h3>Title with back button</h3>
+         <st-page-title leftButton="icon-reply" [title]="title">
+            <div class="box-right">
+               <span class="box-content">Box with content</span>
+            </div>
+            <button>Button</button>
+         </st-page-title>
+      </section>
+   </div>

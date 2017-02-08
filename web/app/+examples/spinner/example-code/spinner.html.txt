@@ -1,7 +1,7 @@
-<section class="container-liquid">
+ <section class="container-liquid">
    <button class="btn btn-default" (click)="changeLoading()">{{loading ? 'Set loading var to false' : 'Set loading var to true'}}</button>
    <div class="loading-content" *ngIf="loading == true">
-      <st-spinner></st-spinner>
+      <st-spinner imageUrl="assets/images/loading_spinner.gif"></st-spinner>
    </div>
    <div class="content" *ngIf="loading == false">
       <h1>Content has been loaded!!</h1>

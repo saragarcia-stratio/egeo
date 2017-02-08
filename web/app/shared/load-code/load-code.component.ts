@@ -1,51 +1,74 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
+
 
 @Component({
-  selector: 'st-load-code',
-  templateUrl: './load-code.component.html'
+   selector: 'st-load-code',
+   templateUrl: './load-code.component.html'
 })
 
 export class LoadCodeComponent implements OnInit {
-  @Input() file: string;
+   @Input() file: string;
 
-  code: string = '';
-  private type: string = 'typescript';
+   @ViewChild('codeId') codeId: ElementRef;
 
-  ngOnInit(): void {
-    if (this.file && this.file !== '') {
-      let parts = this.file.split('.');
-      this.checkExtension(parts[parts.length - 1]);
-    }
-    this.code = this.getCode(this.file);
-  }
+   code: string = '';
+   private type: string = 'typescript';
 
-  getCode(value: string): string {
-    let result: string;
-    if (this.type === 'markup') {
-      result = require(`!!prismjs-loader?lang=markup!../../+examples/${value}`);
-    } else if (this.type === 'typescript') {
-      result = require(`!!prismjs-loader?lang=typescript!../../+examples/${value}`);
-    } else {
-      result = require(`!!prismjs-loader?lang=javascript!../../+examples/${value}`);
-    }
-    return result;
-  }
+   ngOnInit(): void {
+      if (this.file && this.file !== '') {
+         let parts = this.file.split('.');
+         let extension: string = parts[parts.length - 2];
+         if (extension === 'model') {
+            extension = 'typescript';
+         }
+         this.checkExtension(extension);
+         this.code = this.getCode(this.file, extension);
+      }
+   }
 
-  getClass(): string {
-    return `language-${this.type}`;
-  }
+   getCode(value: string, extension: string): string {
+      let code: string = this.getCodeAsText(value);
+      let languaje: PrismJS.LanguageDefinition = this.getLanguaje(extension);
+      return Prism.highlight(code, languaje);
+   }
 
-  private checkExtension(extension: string): void {
-    switch (extension) {
-      case 'ts':
-        this.type = 'typescript';
-        break;
-      case 'html':
-        this.type = 'markup';
-        break;
-      default:
-        this.type = 'typescript';
-        break;
-    }
-  }
+   getClass(): string {
+      return `language-${this.type}`;
+   }
+
+   private getCodeAsText(path: string): string {
+      return require(`!!raw-loader!../../+examples/${path}`);
+   }
+
+   private getLanguaje(languaje: string): PrismJS.LanguageDefinition {
+      let defaultLanguaje: string = 'html';
+      let result: PrismJS.LanguageDefinition | undefined;
+      result = (<any>Prism.languages)[languaje];
+      if (result) {
+         return result;
+      } else {
+         return (<any>Prism.languages)[defaultLanguaje];
+      }
+   }
+
+   private checkExtension(extension: string): void {
+      switch (extension) {
+         case 'ts':
+            this.type = 'typescript';
+            break;
+         case 'html':
+            this.type = 'markup';
+            break;
+         case 'json':
+            this.type = 'json';
+            break;
+         default:
+            this.type = 'typescript';
+            break;
+      }
+   }
+}
+
+interface PrismLanguaje {
+   [key: string]: PrismJS.LanguageDefinition;
 }

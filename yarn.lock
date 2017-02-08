@@ -1409,10 +1409,6 @@ elliptic@^6.0.0:
     hash.js "^1.0.0"
     inherits "^2.0.1"
 
-emojis-list@^1.0.0:
-  version "1.0.3"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/emojis-list/-/emojis-list-1.0.3.tgz#caffe970d50c76bfb2380cae8bd62acad4b6dfd5"
-
 emojis-list@^2.0.0:
   version "2.1.0"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/emojis-list/-/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"
@@ -2920,15 +2916,6 @@ loader-runner@^2.3.0:
   version "2.3.0"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/loader-runner/-/loader-runner-2.3.0.tgz#f482aea82d543e07921700d5a46ef26fdac6b8a2"
 
-loader-utils@0.2.14:
-  version "0.2.14"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/loader-utils/-/loader-utils-0.2.14.tgz#3edab2a123ebb196a1c9d6dd3e83384958843e6f"
-  dependencies:
-    big.js "^3.1.3"
-    emojis-list "^1.0.0"
-    json5 "^0.5.0"
-    object-assign "^4.0.1"
-
 loader-utils@0.2.x, loader-utils@^0.2.15, loader-utils@^0.2.16, loader-utils@^0.2.5, loader-utils@^0.2.7, loader-utils@~0.2.2, loader-utils@~0.2.5:
   version "0.2.16"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/loader-utils/-/loader-utils-0.2.16.tgz#f08632066ed8282835dff88dfb52704765adee6d"
@@ -4052,17 +4039,6 @@ pretty-error@^2.0.2:
   dependencies:
     renderkid "~2.0.0"
     utila "~0.4"
-
-prismjs-loader@0.0.4:
-  version "0.0.4"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/prismjs-loader/-/prismjs-loader-0.0.4.tgz#ad62bc127c7d2aa73feae4a6b433ef0188f1cdef"
-  dependencies:
-    loader-utils "0.2.14"
-    prismjs "1.4.1"
-
-prismjs@1.4.1:
-  version "1.4.1"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/prismjs/-/prismjs-1.4.1.tgz#b82a10374f33bea58b355c6029e7e257ca05134a"
 
 prismjs@1.6.0:
   version "1.6.0"

@@ -15,4 +15,10 @@ import 'lodash';
 // Global styles
 import 'egeo-theme/egeo-theme-stratio.css';
 import 'flexboxgrid/css/flexboxgrid.css';
+
+
+// Prismjs
 import 'prismjs/themes/prism-coy.css';
+import 'prismjs/prism.js';
+import 'prismjs/components/prism-typescript.min.js';
+import 'prismjs/components/prism-json.min.js';

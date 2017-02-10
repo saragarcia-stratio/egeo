@@ -10,7 +10,7 @@ export class StDropdownMenuItemComponent implements OnInit {
 
    @Input() item: StDropDownMenuItem;
    @Input() qaTag: string;
-   @Output() change: EventEmitter<any> = new EventEmitter();
+   @Output() change: EventEmitter<StDropDownMenuItem> = new EventEmitter<StDropDownMenuItem>();
 
    constructor() {
    }
@@ -21,10 +21,7 @@ export class StDropdownMenuItemComponent implements OnInit {
       }
    }
 
-   onChangeItem(item: any): void {
-      this.change.emit({
-         value: item.value,
-         label: item.label
-      });
+   onChangeItem(): void {
+      this.change.emit(this.item);
    }
 }

@@ -11,7 +11,8 @@ export class DropdownComponent {
    public items: Array<any> = [
       {
          label: 'Item 1',
-         value: 1
+         value: 1,
+         selected: true
       },
       {
          label: 'Item 2',
@@ -85,6 +86,17 @@ export class DropdownComponent {
       }
    ];
 
+   public itemsWithGroup: Array<any> = [
+      {
+         title: 'Group1',
+         items: this.items
+      },
+      {
+         title: 'Group2',
+         items: this.items10
+      }
+   ]
+
    public apiDoc: ApiDoc = {
       title: 'Dropdown',
       description: 'The dropdown component represents a clickable dropdown.',
@@ -102,13 +114,16 @@ export class DropdownComponent {
                paramName: 'disabled', type: TYPES.BOOL, required: false, details: 'Disables the dropdown menu button'
             },
             {
+               paramName: 'firstSelected', type: TYPES.BOOL, required: false, details: 'Marks the first option in the default list of items'
+            },
+            {
                paramName: 'default', type: TYPES.BOOL, required: false, details: 'This parameter allows to keep the default text as the dropdown\'s permanent value'
             },
             {
                paramName: 'items', type: TYPES.OBJ, required: true, details: 'Values array that receives the dropdown'
             },
             {
-               paramName: 'width', type: TYPES.NUM, required: true, details: 'This parameter change the attribute width of dropdown'
+               paramName: 'width', type: TYPES.NUM, required: false, details: 'This parameter change the attribute width in pixels of dropdown'
             },
          ],
          outputs: [

@@ -2,7 +2,7 @@ export interface StDropDownMenuItem {
    label: string;
    value: any;
    icon?: string;
-   selected: boolean;
+   selected?: boolean;
 }
 
 export interface StDropDownMenuGroup {

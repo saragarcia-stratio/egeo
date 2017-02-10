@@ -41,7 +41,7 @@ export class StDropdownMenuComponent implements OnInit {
 
    @Input() active: boolean;
    @Input() items: Array<StDropDownMenuItem> | Array<StDropDownMenuGroup>;
-   @Output() change: EventEmitter<Object> = new EventEmitter<Object>();
+   @Output() change: EventEmitter<StDropDownMenuItem> = new EventEmitter<StDropDownMenuItem>();
 
    private itemsGroup: Array<StDropDownMenuGroup> = [];
 
@@ -63,7 +63,7 @@ export class StDropdownMenuComponent implements OnInit {
       return value && value.length > 0 && (<StDropDownMenuGroup>value[0]).title !== undefined;
    }
 
-   onChange(value: string): void {
+   onChange(value: StDropDownMenuItem): void {
       this.change.emit(value);
    }
 

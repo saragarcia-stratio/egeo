@@ -24,12 +24,13 @@ import { StDropDownMenuItem, StDropDownMenuGroup } from '../st-dropdown-menu/st-
    styleUrls: ['st-dropdown.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StDropdownComponent extends EventWindowManager implements AfterViewInit, OnDestroy, OnInit  {
+export class StDropdownComponent extends EventWindowManager implements AfterViewInit, OnDestroy, OnInit {
 
    @Input() button: string;
    @Input() active: boolean;
-   @Input() items: Array<StDropDownMenuItem> | Array<StDropDownMenuGroup>;
+   @Input() items: Array<StDropDownMenuItem | StDropDownMenuGroup>;
    @Input() default: boolean;
+   @Input() firstSelected: boolean;
    @Input() disabled: boolean;
    @Input() width: string;
    @Input() qaTag: string;
@@ -59,27 +60,72 @@ export class StDropdownComponent extends EventWindowManager implements AfterView
       if (undefined === this.items) {
          throw new Error('Attribute items is required');
       }
-      if (undefined === this.button) {
-         throw new Error('Attribute button is required');
-      }
+
+      this.checkFirstSelected();
+      this.findSelected();
+
    };
 
    ngOnDestroy(): void {
       this.closeElement();
    };
 
-   public changeOption(event: any): void {
+   public changeOption(item: StDropDownMenuItem): void {
       this.active = !this.active;
+      this.updateSelected(item);
 
       if (!this.default)
-      this.button = event.label;
-      this.change.emit(event);
+         this.button = item.label;
+      this.change.emit(item);
       this.closeElement();
    };
 
-   private onClickEvent(event: any): void {
+   private onClickEvent(event: MouseEvent): void {
       this.openElement();
       this.click.emit(true);
    };
+
+   private findSelected(): void {
+      if (this.isStDropdownItem(this.items)) {
+         let item = this.items.find(object => object.selected === true);
+         if (item) {
+            this.button = item.label;
+         }
+      }
+   }
+
+   private isStDropdownItem(items: Array<StDropDownMenuItem | StDropDownMenuGroup>): items is Array<StDropDownMenuItem> {
+      if (items && items.length > 0) {
+         return (<Array<StDropDownMenuGroup>>items)[0].items === undefined;
+      }
+   }
+
+   private updateSelected(item?: StDropDownMenuItem): void {
+
+      if (this.isStDropdownItem(this.items)) {
+         let itemSelected = this.items.find(object => object.selected === true);
+
+         if (itemSelected) {
+            itemSelected.selected = false;
+         }
+
+         if (item) {
+            let element = this.items.find(i => i === item);
+            element.selected = true;
+         }
+      }
+
+   }
+
+   private checkFirstSelected(): void {
+
+      if (this.firstSelected) {
+         if (this.isStDropdownItem(this.items)) {
+            this.updateSelected();
+            this.items[0].selected = true;
+         }
+      }
+
+   }
 
 }

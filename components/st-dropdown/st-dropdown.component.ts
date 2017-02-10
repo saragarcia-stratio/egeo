@@ -9,6 +9,7 @@ import {
    AfterViewInit,
    OnDestroy,
    OnInit,
+   OnChanges,
    ChangeDetectorRef,
    ChangeDetectionStrategy
 } from '@angular/core';
@@ -24,7 +25,7 @@ import { StDropDownMenuItem, StDropDownMenuGroup } from '../st-dropdown-menu/st-
    styleUrls: ['st-dropdown.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StDropdownComponent extends EventWindowManager implements AfterViewInit, OnDestroy, OnInit {
+export class StDropdownComponent extends EventWindowManager implements AfterViewInit, OnDestroy, OnInit, OnChanges {
 
    @Input() button: string;
    @Input() active: boolean;
@@ -66,6 +67,13 @@ export class StDropdownComponent extends EventWindowManager implements AfterView
 
    };
 
+   ngOnChanges(values: any): void {
+      if (values.items) {
+         this.checkFirstSelected();
+         this.findSelected();
+      }
+   }
+
    ngOnDestroy(): void {
       this.closeElement();
    };
@@ -90,6 +98,7 @@ export class StDropdownComponent extends EventWindowManager implements AfterView
          let item = this.items.find(object => object.selected === true);
          if (item) {
             this.button = item.label;
+            this.cd.markForCheck();
          }
       }
    }

@@ -18,7 +18,7 @@
 
          <div class="row">
             <div class="col-md-6">
-               <st-dropdown button="Example with scroll" [items]="items10"></st-dropdown>
+               <st-dropdown button="Example with scroll" [items]="items10" [firstSelected]="true"></st-dropdown>
                <br /><br />
             </div>
          </div>
@@ -40,6 +40,13 @@
          <div class="row">
             <div class="col-md-12">
                <st-dropdown button="Example Disabled" disabled="true" [items]="itemsWithIcon"></st-dropdown>
+               <br /><br />
+            </div>
+         </div>
+
+            <div class="row">
+            <div class="col-md-12">
+               <st-dropdown button="Example With Group" [items]="itemsWithGroup"></st-dropdown>
                <br /><br />
             </div>
          </div>

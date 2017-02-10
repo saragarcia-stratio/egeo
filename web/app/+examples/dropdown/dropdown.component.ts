@@ -11,7 +11,8 @@ export class DropdownComponent {
    public items: Array<any> = [
       {
          label: 'Item 1',
-         value: 1
+         value: 1,
+         selected: true
       },
       {
          label: 'Item 2',
@@ -85,6 +86,17 @@ export class DropdownComponent {
       }
    ];
 
+   public itemsWithGroup: Array<any> = [
+      {
+         title: 'Group1',
+         items: this.items
+      },
+      {
+         title: 'Group2',
+         items: this.items10
+      }
+   ]
+
    public apiDoc: ApiDoc = {
       title: 'Dropdown',
       description: 'The dropdown component represents a clickable dropdown.',
@@ -108,7 +120,7 @@ export class DropdownComponent {
                paramName: 'items', type: TYPES.OBJ, required: true, details: 'Values array that receives the dropdown'
             },
             {
-               paramName: 'width', type: TYPES.NUM, required: true, details: 'This parameter change the attribute width of dropdown'
+               paramName: 'width', type: TYPES.NUM, required: false, details: 'This parameter change the attribute width in pixels of dropdown'
             },
          ],
          outputs: [

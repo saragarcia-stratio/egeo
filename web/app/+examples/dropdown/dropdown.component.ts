@@ -114,6 +114,9 @@ export class DropdownComponent {
                paramName: 'disabled', type: TYPES.BOOL, required: false, details: 'Disables the dropdown menu button'
             },
             {
+               paramName: 'firstSelected', type: TYPES.BOOL, required: false, details: 'Marks the first option in the default list of items'
+            },
+            {
                paramName: 'default', type: TYPES.BOOL, required: false, details: 'This parameter allows to keep the default text as the dropdown\'s permanent value'
             },
             {

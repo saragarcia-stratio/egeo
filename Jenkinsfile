@@ -5,7 +5,7 @@ hose {
     MODULE = 'egeo'
     DEVTIMEOUT = 30
     RELEASETIMEOUT = 30
-    REPOSITORY = 'bitbucket.org/egeo'
+    REPOSITORY = 'github.com/egeo'
     LANG = 'typescript'
 
     DEV = { config ->

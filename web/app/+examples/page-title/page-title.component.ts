@@ -15,13 +15,17 @@ export class PageTitleComponent {
       this.apiDoc = {
          title: 'Page title',
          description: 'Page title component is think for use in headers of pages.',
-         haveModel: true,
+         haveModel: false,
          apiSection: {
             inputs: [
-               { paramName: 'title', type: TYPES.STR, required: true, details: 'Title text to show, must be final text to show not allow translate' },
+               { paramName: 'qaTag', type: TYPES.STR, required: true, details: 'Id for qa test' },
+               { paramName: 'title', type: TYPES.STR, required: false, details: 'Title text to show, must be final text to show not allow translate' },
+               { paramName: 'preTitle', type: TYPES.STR, required: false, details: 'Text previous to title for example to details like "USER:" username' },
                { paramName: 'leftButton', type: TYPES.STR, required: false, details: 'Icon class of button displayed  to the left of title.' }
             ],
-            outputs: []
+            outputs: [
+               { paramName: 'clickButton', type: TYPES.ANY, required: false, details: 'Event when click on leftButton' }
+            ]
          },
          exampleDesc: `Next, we can see an example of Page title component showing a title and two elements in the right side.
          The right side content must be surrounded by page-title tags as you can see in html code below`

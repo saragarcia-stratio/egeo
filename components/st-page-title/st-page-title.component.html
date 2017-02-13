@@ -1,10 +1,12 @@
-<div class="st-page-title">
-  <st-button *ngIf="leftButton" text="Tool subtype4" typeClass="btnTool" subtypeClass="subtype4" qaTag="{{qaTag}}-left-button"
-             leftIcon="{{leftButton}}" class="button-box"
-             inputType="button" (click)="onClickedButton()">
-  </st-button>
-  <span class="title">{{title | uppercase}}</span>
-  <div>
-    <ng-content></ng-content>
-  </div>
+<div class="st-page-title sth-page-title">
+   <st-button *ngIf="leftButton" text="Tool subtype4" typeClass="btnTool" subtypeClass="subtype4" qaTag="{{qaTag}}-left-button"
+      leftIcon="{{leftButton}}" class="button-box sth-page-title-button-box" inputType="button" (click)="onClickedButton()">
+      </st-button>
+      <div class="main-title sth-page-title-main-title">
+         <span *ngIf="hasPreTitle()" class="sth-page-title-pre-title">{{preTitle | uppercase}}: </span>
+         <span class="sth-page-title-title">{{title | uppercase}}</span>
+      </div>
+      <div>
+         <ng-content></ng-content>
+      </div>
 </div>

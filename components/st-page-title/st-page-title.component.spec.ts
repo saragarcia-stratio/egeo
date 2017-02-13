@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 // Component
 import { StPageTitleComponent } from './st-page-title.component';
-import { StButtonComponent } from '../st-button/st-button.component';
+import { StButtonModule } from '../st-button';
 
 let component: StPageTitleComponent;
 let fixture: ComponentFixture<StPageTitleComponent>;
@@ -11,11 +11,13 @@ let fixture: ComponentFixture<StPageTitleComponent>;
 describe('StPageTitleComponent', () => {
    beforeEach(() => {
       TestBed.configureTestingModule({
-         declarations: [StPageTitleComponent, StButtonComponent]
+         imports: [StButtonModule],
+         declarations: [StPageTitleComponent]
       });
 
       fixture = TestBed.createComponent(StPageTitleComponent);
       component = fixture.componentInstance;
+      component.qaTag = 'test qaTag';
    });
 
 

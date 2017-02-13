@@ -1,21 +1,24 @@
-   <div class="example-run">
-      <section class="container-fluid col-md-12">
-         <h3>Title without left button</h3>
-         <st-page-title [title]="title">
-            <div class="box-right">
-               <span class="box-content">Box with content</span>
-            </div>
-            <button>Button</button>
-         </st-page-title>
-      </section>
+<section class="container-fluid col-md-12">
+   <h3>Title without left button</h3>
+   <st-page-title [title]="title" qaTag="page-title">
+      <div class="box-right">
+         <span class="box-content">Box with content</span>
+      </div>
+      <button>Button</button>
+   </st-page-title>
+</section>
 
-      <section class="container-fluid col-md-12">
-         <h3>Title with back button</h3>
-         <st-page-title leftButton="icon-reply" [title]="title">
-            <div class="box-right">
-               <span class="box-content">Box with content</span>
-            </div>
-            <button>Button</button>
-         </st-page-title>
-      </section>
-   </div>
+<section class="container-fluid col-md-12">
+   <h3>Title without left button and with pretitle</h3>
+   <st-page-title title="Egeo" preTitle="Project" qaTag="page-title-pretitle"></st-page-title>
+</section>
+
+<section class="container-fluid col-md-12">
+   <h3>Title with back button</h3>
+   <st-page-title leftButton="icon-reply" [title]="title" qaTag="page-title-button">
+      <div class="box-right">
+         <span class="box-content">Box with content</span>
+      </div>
+      <button>Button</button>
+   </st-page-title>
+</section>

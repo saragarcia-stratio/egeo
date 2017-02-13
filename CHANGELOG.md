@@ -9,6 +9,7 @@
 * BREAKING CHANGE. Remove ng2-translate dependency
 * BREAKING CHANGE. Now egeo is imported like this: "import { EgeoModule } from 'egeo';"
 * BREAKING CHANGE. Output Search Component change of (onSearch) to (search);
+* Update color definitions
 
 ## 0.6.1 (February 08, 2017)
 

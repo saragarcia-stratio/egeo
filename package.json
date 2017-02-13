@@ -56,7 +56,7 @@
     "copy-webpack-plugin": "4.0.1",
     "cross-env": "3.1.4",
     "css-loader": "0.26.1",
-    "egeo-theme": "0.2.0",
+    "egeo-theme": "0.3.0-SNAPSHOT",
     "egeo-ui-base": "0.4.0",
     "file-loader": "0.10.0",
     "flexboxgrid": "6.3.1",

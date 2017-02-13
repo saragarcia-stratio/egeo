@@ -26,10 +26,13 @@ export class SearchComponent {
                { paramName: 'placeholder', type: TYPES.STR, required: false, details: 'Text to display as long as the user does not focus on search box, Default: Search' },
                { paramName: 'debounce', type: TYPES.NUM, required: false, details: 'Time in ms to wait before launch search. Default 0' },
                { paramName: 'minLength', type: TYPES.NUM, required: false, details: 'Minimum length to do search. Default 0' },
+               { paramName: 'value', type: TYPES.STR, required: false, details: 'Assign the value from outside to the search field' },
+               { paramName: 'hasClearButton', type: TYPES.BOOL, required: false, details: 'Turn on or off the clear search button' },
                { paramName: 'qaTag', type: TYPES.STR, required: true, details: 'Identifier to generate a qa tag for each option' }
+               
             ],
             outputs: [
-               { paramName: 'onSearch', type: TYPES.STR, required: true, details: 'Function for call when search' }
+               { paramName: 'search', type: TYPES.STR, required: true, details: 'Function for call when search' }
             ]
          },
          exampleDesc: `Next, we can see an example of Search component you can see a search box and search result.

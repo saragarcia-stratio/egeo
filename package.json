@@ -16,6 +16,7 @@
     "webpack:lib": "webpack --config config/webpack-components.js  --no-color --bail && npm run definition:generate",
     "lint": "tslint -c ./tslint.json -e 'node_modules' --type-check -t stylish '{web,components}/**/*.ts'",
     "replace": "json -I -f package.json -e",
+    "start:dev" : "npm run start -- --hot --inline",
     "start": "cross-env NODE_ENV=development webpack-dev-server --progress --profile --open --watch --content-base ./",
     "test": "cross-env NODE_ENV=test karma start",
     "test:watch": "cross-env NODE_ENV=test karma start --auto-watch --no-single-run"

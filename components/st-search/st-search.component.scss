@@ -36,6 +36,7 @@
 .input-container {
    position: relative;
    display: flex;
+   min-width: 245px;
    @include placeholder {
       @include basicInput;
       color: egeo-get-color(n6);
@@ -62,6 +63,7 @@
    top: 10px;
    font-size: egeo-get-font-size(icon_small);
    color: egeo-get-color(n6);
+   cursor: pointer;
 }
 
 .input-container input:focus + .st-search-icon {

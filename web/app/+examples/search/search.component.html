@@ -2,12 +2,16 @@
    <div class="example-run">
       <section class="container-fluid col-md-12">
          <div class="search-container">
-            <st-search [placeholder]="placeholder" [qaTag]="qaTag" [debounce]="debounceTime" [minLength]="minLength" (onSearch)="onSearchResult($event)"></st-search>
+            <st-search [placeholder]="placeholder" [qaTag]="qaTag" [value]="searched" [debounce]="debounceTime" [minLength]="minLength" (search)="onSearchResult($event)"></st-search>
+            <br />
+            <st-search placeholder="Text for search with clear button" [value]="searched" [qaTag]="qaTag" [debounce]="debounceTime" hasClearButton="true" [minLength]="minLength" (onSearch)="onSearchResult($event)"></st-search>
+        
          </div>
          <div class="option"><span class="option-title">Search value: </span> <span class="option-value">{{searched}}</span></div>
          <div class="option"><span class="option-title">debounce: </span> <input type="number" [(ngModel)]="debounceTime" min="0" class="debounceTime"></div>
          <div class="option"><span class="option-title">minLength:  </span> <input type="number" [(ngModel)]="minLength" min="0" class="debounceTime"></div>
       </section>
+
    </div>
    <div class="example-code">
       <!--{{code}}-->

@@ -53,7 +53,7 @@ describe('StSearchComponent', () => {
       let input: HTMLInputElement = fixture.debugElement.query(By.css('input')).nativeElement;
 
       let outputSearch: string;
-      comp.onSearch.subscribe((search: string) => outputSearch = search);
+      comp.search.subscribe((search: string) => outputSearch = search);
       input.value = result;
       input.dispatchEvent(new Event('input'));
       fixture.detectChanges();
@@ -68,7 +68,7 @@ describe('StSearchComponent', () => {
       let input: HTMLInputElement = fixture.debugElement.query(By.css('input')).nativeElement;
 
       let outputSearch: string = '';
-      comp.onSearch.subscribe((search: string) => outputSearch = search);
+      comp.search.subscribe((search: string) => outputSearch = search);
       input.value = result;
       dispatchEvent(input, 'input');
       input.dispatchEvent(new Event('input'));
@@ -85,7 +85,7 @@ describe('StSearchComponent', () => {
       let input: HTMLInputElement = fixture.debugElement.query(By.css('input')).nativeElement;
 
       let outputSearch: string = '';
-      comp.onSearch.subscribe((search: string) => outputSearch = search);
+      comp.search.subscribe((search: string) => outputSearch = search);
 
       input.value = 'te';
       dispatchEvent(input, 'input');

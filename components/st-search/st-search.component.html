@@ -1,14 +1,14 @@
-<section class="row">
-   <div class="col-md-12">
-      <div class="input-container">
-         <input
-            [attr.id]="qaTag"
-            [formControl]="searchBox"
-            [placeholder]="placeholder"
-            (keypress)="onKeyPress($event)"
-            class="remove-default-style"
-         />
-         <i class="st-search-icon icon-search" (click)="launchSearch()"></i>
-      </div>
-   </div>
-</section>
+<div class="input-container">
+   <input
+      [attr.id]="qaTag"
+      [formControl]="searchBox"
+      [placeholder]="placeholder"
+      (focus)="onFocus($event)"
+      (blur)="onBlur($event)"
+      (keypress)="onKeyPress($event)"
+      class="remove-default-style"
+   />
+   <i class="st-search-icon icon-search" tabindex="0" *ngIf="!focus || !hasClearButton" (mousedown)="launchSearch($event)" (keyup.enter)="launchSearch($event)"></i>
+   <i class="st-search-icon icon-cross" tabindex="0" *ngIf="focus && hasClearButton" (mousedown)="clearInput($event)" (keyup.enter)="clearInput($event)" ></i>
+</div>
+

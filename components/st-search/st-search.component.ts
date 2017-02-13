@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, OnChanges, OnDestroy, SimpleChanges, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy,  OnChanges, OnDestroy, SimpleChanges, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -14,14 +14,17 @@ export class StSearchComponent implements OnChanges, OnDestroy, OnInit {
    @Input() placeholder: string = 'Search';
    @Input() debounce: number = 0;
    @Input() minLength: number = 0;
+   @Input() hasClearButton: boolean = false;
+   @Input() value: string; 
 
-   @Output() onSearch: EventEmitter<string> = new EventEmitter<string>();
+   @Output() search: EventEmitter<string> = new EventEmitter<string>();
 
    private searchBox: FormControl = new FormControl();
    private sub: Subscription | undefined = undefined;
+   private focus: Boolean;
 
    private lastEmited: string | undefined = undefined;
-
+   
    // Its necesary check null because value is any type.
    public launchSearch(): void {
       /* tslint:disable:no-null-keyword */
@@ -29,7 +32,7 @@ export class StSearchComponent implements OnChanges, OnDestroy, OnInit {
          this.lastEmited !== this.searchBox.value && this.minLength <= this.searchBox.value.length
       ) {
          this.lastEmited = this.searchBox.value;
-         this.onSearch.emit(this.lastEmited);
+         this.search.emit(this.lastEmited);
       }
    }
 
@@ -40,17 +43,43 @@ export class StSearchComponent implements OnChanges, OnDestroy, OnInit {
       }
    }
 
+   public onFocus(event: MouseEvent): void {
+      this.focus = true;
+   }
+
+   public onBlur(event: MouseEvent): void {
+      this.focus = false;
+   }
+
+   public clearInput(event: MouseEvent): void {
+      this.searchBox.setValue('');
+      this.search.emit(this.searchBox.value);
+      this.focus = false;
+   }
+
    public ngOnChanges(changes: SimpleChanges): void {
       this.manageSubscription();
+      this.updateValue(changes);
    }
 
    public ngOnInit(): void {
+
+      if (this.value) {
+         this.searchBox.setValue(this.value);
+      }
+
       this.manageSubscription();
    }
 
    public ngOnDestroy(): void {
       if (this.sub !== undefined) {
          this.sub.unsubscribe();
+      }
+   }
+
+   private updateValue(changes: SimpleChanges) {
+      if (changes['value']) {
+         this.searchBox.setValue(changes['value'].currentValue);
       }
    }
 

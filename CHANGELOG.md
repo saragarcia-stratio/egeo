@@ -4,8 +4,11 @@
 
 * Modularize all components
 * Remove st-spinner from website
+* Add Button Clear in Search Component
+* Add Value Input in Search Component
 * BREAKING CHANGE. Remove ng2-translate dependency
 * BREAKING CHANGE. Now egeo is imported like this: "import { EgeoModule } from 'egeo';"
+* BREAKING CHANGE. Output Search Component change of (onSearch) to (search);
 
 ## 0.6.1 (February 08, 2017)
 

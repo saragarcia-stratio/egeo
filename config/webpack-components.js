@@ -39,8 +39,7 @@ module.exports = {
                         configFilename: 'tsconfig.components.json'
                      }
                   },
-                  'angular2-template-loader',
-                  'angular-router-loader'
+                  'angular2-template-loader'
                ],
                exclude: [/\.(spec|e2e)\.ts$/]
             },

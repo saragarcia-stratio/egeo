@@ -5,7 +5,14 @@ const AssetsPlugin = require('assets-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
+const { CheckerPlugin } = require('awesome-typescript-loader')
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
+const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const ngcWebpack = require('ngc-webpack');
+
+const HMR = helpers.hasProcessFlag('hot');
+const AOT = helpers.hasNpmFlag('aot');
 
 var CopyWebpackPlugin = (CopyWebpackPlugin = require('copy-webpack-plugin'), CopyWebpackPlugin.default || CopyWebpackPlugin);
 
@@ -35,9 +42,16 @@ module.exports = function (options) {
                test: /\.ts$/,
                use: [
                   '@angularclass/hmr-loader',
+                  {
+                     loader: 'ng-router-loader',
+                     options: {
+                        loader: 'async-import',
+                        genDir: 'compiled',
+                        aot: AOT
+                     }
+                  },
                   'awesome-typescript-loader?declaration=false',
                   'angular2-template-loader',
-                  'angular-router-loader'
                ],
                exclude: [/\.(spec|e2e)\.ts$/]
             },
@@ -72,6 +86,16 @@ module.exports = function (options) {
             filename: 'webpack-assets.json',
             prettyPrint: true
          }),
+         new CheckerPlugin(),
+         new CommonsChunkPlugin({
+            name: 'polyfills',
+            chunks: ['polyfills']
+         }),
+         new CommonsChunkPlugin({
+            name: 'vendor',
+            chunks: ['main'],
+            minChunks: module => /node_modules/.test(module.resource)
+         }),
          new CommonsChunkPlugin({
             name: ['polyfills', 'vendor'].reverse()
          }),
@@ -90,8 +114,15 @@ module.exports = function (options) {
          ]),
 
          new HtmlWebpackPlugin({
-            template: 'web/index.html'
+            template: 'web/index.html',
+            chunksSortMode: 'dependency'
          }),
+
+         new ScriptExtHtmlWebpackPlugin({
+            defaultAttribute: 'defer'
+         }),
+
+         new LoaderOptionsPlugin({}),
 
          // Fix Angular 2
          new NormalModuleReplacementPlugin(
@@ -113,7 +144,12 @@ module.exports = function (options) {
          new NormalModuleReplacementPlugin(
             /facade(\\|\/)math/,
             helpers.root('node_modules/@angular/core/src/facade/math.js')
-         )
+         ),
+         new ngcWebpack.NgcWebpackPlugin({
+            disabled: !AOT,
+            tsConfig: helpers.root('tsconfig.webpack.json'),
+            resourceOverride: helpers.root('config/resource-override.js')
+         })
       ],
    }
 };

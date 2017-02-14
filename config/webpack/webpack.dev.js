@@ -4,15 +4,16 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
 
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const webpackMergeDll = webpackMerge.strategy({ plugins: 'replace' });
 
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 8080;
 const HMR = helpers.hasProcessFlag('hot');
 
-const {
-   HotModuleReplacementPlugin
-} = require('webpack');
+
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const DllBundlesPlugin = require('webpack-dll-bundles-plugin').DllBundlesPlugin;
 
 const METADATA = webpackMerge(commonConfig({ env: ENV }).metadata, {
    host: HOST,
@@ -20,6 +21,7 @@ const METADATA = webpackMerge(commonConfig({ env: ENV }).metadata, {
    ENV: ENV,
    HMR: HMR
 });
+
 
 module.exports = function (options) {
    return webpackMerge(commonConfig({ env: ENV }), {
@@ -44,7 +46,41 @@ module.exports = function (options) {
 
             }
          }),
-         new HotModuleReplacementPlugin()
+         new DllBundlesPlugin({
+            bundles: {
+               polyfills: [
+                  'core-js',
+                  {
+                     name: 'zone.js',
+                     path: 'zone.js/dist/zone.js'
+                  },
+                  {
+                     name: 'zone.js',
+                     path: 'zone.js/dist/long-stack-trace-zone.js'
+                  },
+               ],
+               vendor: [
+                  '@angular/platform-browser',
+                  '@angular/platform-browser-dynamic',
+                  '@angular/core',
+                  '@angular/common',
+                  '@angular/forms',
+                  '@angular/http',
+                  '@angular/router',
+                  '@angularclass/hmr',
+                  'rxjs',
+               ]
+            },
+            dllDir: helpers.root('dll'),
+            webpackConfig: webpackMergeDll(commonConfig({ env: ENV }), {
+               devtool: 'cheap-module-source-map',
+               plugins: []
+            })
+         }),
+         new AddAssetHtmlPlugin([
+            { filepath: helpers.root(`dll/${DllBundlesPlugin.resolveFile('polyfills')}`) },
+            { filepath: helpers.root(`dll/${DllBundlesPlugin.resolveFile('vendor')}`) }
+         ]),
       ],
 
       devServer: {

@@ -53,7 +53,6 @@ export class StSearchComponent implements OnChanges, OnDestroy, OnInit {
 
    public clearInput(event: MouseEvent): void {
       this.searchBox.setValue('');
-      this.search.emit(this.searchBox.value);
       this.focus = false;
    }
 

@@ -1,0 +1,18 @@
+<st-api-doc [doc]="apiDoc">
+   <div class="example-run">
+      <section class="container-liquid">
+         <div class="row">
+            <div class="col-sm-12 contains-vertical-tabs">
+               <st-vertical-tabs class="vertical-tabs" [options]="options" [qaTag]="qaTag" (changeOption)="onChangeOption($event)" [activeOption]="active"></st-vertical-tabs>
+               <st-info-box title="Info box component" class="info-box">
+                  {{active}}
+               </st-info-box>
+            </div>
+         </div>
+      </section>
+   </div>
+   <div class="example-code">
+      <!--{{code}}-->
+      <st-load-code file="vertical-tabs/example-code/vertical-tabs.html.txt"></st-load-code>
+   </div>
+</st-api-doc>

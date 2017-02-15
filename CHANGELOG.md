@@ -7,10 +7,14 @@
 * Add Button Clear in Search Component
 * Add Value Input in Search Component
 * Add optional Pre-title to Page Title Component
+* Update color definitions
+* Add util service for manage translations of complex objects
 * BREAKING CHANGE. Remove ng2-translate dependency
 * BREAKING CHANGE. Now egeo is imported like this: "import { EgeoModule } from 'egeo';"
 * BREAKING CHANGE. Output Search Component change of (onSearch) to (search);
-* Update color definitions
+* BREAKING CHANGE. Vertical menu now is called Vertical Tabs;
+* BREAKING CHANGE. Vertical menu now not emit active when active is set from outside;
+* BREAKING CHANGE. Vertical menu output change from changedOption to changeOption;
 
 ## 0.6.1 (February 08, 2017)
 

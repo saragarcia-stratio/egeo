@@ -17,7 +17,7 @@ export * from './st-table';
 export * from './st-toggle-buttons';
 export * from './st-tooltip';
 export * from './st-two-list-selection';
-export * from './st-vertical-menu';
+export * from './st-vertical-tabs';
 export * from './utils';
 export * from './egeo.module';
 

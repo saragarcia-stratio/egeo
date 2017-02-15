@@ -1,14 +1,15 @@
 import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { ApiDoc, TYPES } from '../../../shared';
+import { TranslateService } from 'ng2-translate';
+import { Observable } from 'rxjs';
+import { StHeaderModel, StHeaderUserMenuModel, EgeoResolveService } from 'egeo';
 
-import { StHeaderModel, StHeaderUserMenuModel } from 'egeo';
+import { ApiDoc, TYPES } from '../../../shared';
 
 @Component({
    selector: 'header-example',
    templateUrl: './header.component.html',
    styleUrls: ['./header.component.scss']
 })
-
 export class HeaderComponent {
 
    public userMenu: StHeaderUserMenuModel = {
@@ -19,18 +20,18 @@ export class HeaderComponent {
 
    public contentOffset: number = 0;
 
-   public headerMenu: Array<StHeaderModel> = [
+   public headerMenuSchema: Array<Object> = [
       {
          icon: 'icon-head',
-         label: 'IDENTITIES',
+         label: { label: 'HEADER_MENU.IDENTITIES.IDENTITIES', translate: true },
          link: '/navigation/header/test1',
          subMenus: [{
-            label: 'USER',
+            label: { label: 'HEADER_MENU.IDENTITIES.USER', translate: true },
             link: '/navigation/header/test1/subtest1',
             isActive: true
          },
          {
-            label: 'GROUP',
+            label: { label: 'HEADER_MENU.IDENTITIES.GROUP', translate: true },
             link: '/navigation/header/test1/subtest2',
             isActive: false
          }],
@@ -38,33 +39,35 @@ export class HeaderComponent {
       },
       {
          icon: 'icon-puzzle',
-         label: 'SERVICES',
+         label: { label: 'HEADER_MENU.SERVICES', translate: true },
          link: '/navigation/header/test2',
          subMenus: [],
          isActive: false
       },
       {
          icon: 'icon-paper',
-         label: 'POLICIES',
+         label: { label: 'HEADER_MENU.POLICIES', translate: true },
          link: '/navigation/header/test3',
          subMenus: [],
          isActive: true
       },
       {
          icon: 'icon-layers',
-         label: 'AUDITING',
+         label: { label: 'HEADER_MENU.AUDITING', translate: true },
          link: '/navigation/header/test4',
          subMenus: [],
          isActive: true
       },
       {
          icon: 'icon-cog',
-         label: 'SETTINGS',
+         label: { label: 'HEADER_MENU.SETTINGS', translate: true },
          link: '/navigation/header/test5',
          subMenus: [],
          isActive: true
       }
    ];
+
+   public menu: Observable<StHeaderModel>;
 
    // tslint:disable:max-line-length
    public apiDoc: ApiDoc = {
@@ -87,7 +90,13 @@ export class HeaderComponent {
    };
    // tslint:enable:max-line-length
 
-   constructor(private _cd: ChangeDetectorRef) { }
+   constructor(
+      private _cd: ChangeDetectorRef,
+      private resolveService: EgeoResolveService,
+      private translate: TranslateService
+   ) {
+      this.menu = this.resolveService.translate(this.headerMenuSchema, this.translate);
+   }
 
    onContentChangeOffset(offset: number): void {
       this.contentOffset = offset + 10;

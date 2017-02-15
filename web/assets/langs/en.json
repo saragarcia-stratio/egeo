@@ -1,8 +1,19 @@
 {
-  "HELLO_WORLD": "HELLO WORLD",
-  "MENU":{
-    "SERVICE": "Service",
-    "NODES": "Nodes",
-    "CASSANDRA": "Cassandra"
-  }
+   "HELLO_WORLD": "HELLO WORLD",
+   "MENU": {
+      "SERVICE": "Service",
+      "NODES": "Nodes",
+      "CASSANDRA": "Cassandra"
+   },
+   "HEADER_MENU": {
+      "IDENTITIES": {
+         "IDENTITIES": "IDENTITIES",
+         "USER": "USER",
+         "GROUP": "GROUP"
+      },
+      "SERVICES": "SERVICES",
+      "POLICIES": "POLICIES",
+      "AUDITING": "AUDITING",
+      "SETTINGS": "SETTINGS"
+   }
 }

@@ -1,6 +1,6 @@
 <section class="container-liquid">
    <div class="header-container">
-      <st-header appName="Data Governance" [menu]="headerMenu" [userMenu]="userMenu" (contentChangeOffset)="onContentChangeOffset($event)" qaTag="st-header"
+      <st-header appName="Data Governance" [menu]="(menu | async) || []" [userMenu]="userMenu" (contentChangeOffset)="onContentChangeOffset($event)" qaTag="st-header"
          stHeaderBehavior></st-header>
 
       <div [ngStyle]="{'padding-top': contentOffset + 'px'}">

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import * as _ from 'lodash';
 
 import { EgeoResolverKeys, TranslateServiceType } from './egeo-resolve-model';
@@ -19,12 +19,12 @@ export class EgeoResolveService {
       let keys: Array<EgeoResolverKeys> = this.getKeys(object, 'translate'); // Get keys
       let toTranslate: Array<string> = this.extractTranslationKeys(keys); // Extract keys for translate service
       return translateService.get(toTranslate) // return object translation
-      .map(translation => this.remapObjectWithTranslations(translation, keys, object));
+         .map(translation => this.remapObjectWithTranslations(translation, keys, object));
    }
 
    translateArrayOfKeys(keys: Array<string>, translateService: TranslateServiceType): Observable<Array<string>> {
       return translateService.get(keys)
-      .map(translation => this.remapArrayWithTranslations(translation, keys));
+         .map(translation => this.remapArrayWithTranslations(translation, keys));
    }
 
    private remapArrayWithTranslations(translations: { [key: string]: string }, originalArray: Array<string>): Array<string> {
@@ -32,16 +32,19 @@ export class EgeoResolveService {
    }
 
    private remapObjectWithTranslations(translations: { [key: string]: string }, resolverKeys: Array<EgeoResolverKeys>, object: any): any {
-      _.forEach(translations, (value, key) => {
-         let resolverKey: EgeoResolverKeys = this.getResolveItemByKey(resolverKeys, key);
-         _.set(object, resolverKey.path, value);
-      });
-      return _.cloneDeep(object);
+      let newObj = _.cloneDeep(object);
+      if (translations || _.keys(translations).length > 0) {
+         _.forEach(translations, (value, key) => {
+            let resolverKey: EgeoResolverKeys = this.getResolveItemByKey(resolverKeys, key);
+            _.set(newObj, resolverKey.path, value);
+         });
+      }
+      return newObj;
    }
 
    // Find a item
    private getResolveItemByKey(list: Array<EgeoResolverKeys>, key: string): EgeoResolverKeys {
-      return list.find(item =>  _.values(_.omit(item.toResolve, 'translate'))[0] === key);
+      return list.find(item => _.values(_.omit(item.toResolve, 'translate'))[0] === key);
    }
 
    private extractTranslationKeys(list: Array<EgeoResolverKeys>): Array<string> {

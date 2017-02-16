@@ -13,7 +13,7 @@ $st-vertical-menu__list---position: relative;
 $st-vertical-menu__list---list-style: none;
 $st-vertical-menu__list---float: left;
 $st-vertical-menu__list---width: 90%;
-$st-vertical-menu__list---padding: 10px 30px;
+$st-vertical-menu__list---padding: 0 30px 0 0;
 
 $st-vertical-menu__option---height: 40px;
 $st-vertical-menu__option---margin-top: -1px;
@@ -58,7 +58,6 @@ $st-vertical-menu__line__arrow---margin-left: -7.1px;
 $st-vertical-menu__line__arrow---transition: margin-top .4s;
 
 @mixin st-vertical-menu() {
-  height:100%;
   height: $st-vertical-menu---height;
   width: $st-vertical-menu---width;
   display: $st-vertical-menu---display;

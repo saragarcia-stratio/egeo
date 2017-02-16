@@ -36,7 +36,7 @@
       
       &-item {
          border-top: 1px solid egeo-get-color(n3);
-         font-family: egeo-get-font(brandon-grotesque);
+         font-family: egeo-get-font(heading);
          font-size: egeo-get-font-size(head_xxsmall);
          padding: 15px 0;
 
@@ -73,7 +73,7 @@
    @extend %remove-list-style;
    @extend %remove-link-style;
 
-   font-family: egeo-get-font(open-sans);
+   font-family: egeo-get-font(body);
    font-size: egeo-get-font-size(body_small);
    margin: 10px 0;
    text-transform: none;

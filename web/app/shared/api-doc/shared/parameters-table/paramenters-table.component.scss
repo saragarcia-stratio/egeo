@@ -4,7 +4,7 @@ $title-background-color: egeo-get-color(n3) !default;
 $title-height: 50px;
 $title-width: 100%;
 
-$opensans: egeo-get-font(open-sans) !default;
+$opensans: egeo-get-font(body) !default;
 $title-text-color: egeo-get-color(a3) !default;
 $title-text-size: egeo-get-font-size(body_xxlarge) !default;
 $title-padding: 0 1rem !default;
@@ -16,7 +16,7 @@ $header-text-weight: egeo-get-font-weight(bold) !default;
 
 $text-color: egeo-get-color(n8) !default;
 $body-text-size: egeo-get-font-size(body_small) !default;
-$body-text-weight: egeo-get-font-weight(normañ) !default;
+$body-text-weight: egeo-get-font-weight(normal) !default;
 
 $row-separator: 1px solid egeo-get-color(n4);
 

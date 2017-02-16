@@ -1,6 +1,6 @@
 $c-html: $c-print !default;
 $body---margin: 0 !default;
-$font: egeo-get-font(open-sans) !default;
+$font: egeo-get-font(body) !default;
 $font-size: egeo-get-font-size(body_xlarge) !default;
 
 @if $c-html {

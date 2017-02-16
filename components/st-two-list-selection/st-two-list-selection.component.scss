@@ -1,7 +1,7 @@
 @import '~egeo-ui-base/utils/typography';
 @import '~egeo-ui-base/utils/colors';
 
-$st-two-list-selection---font-family: egeo-get-font('open-sans') !default;
+$st-two-list-selection---font-family: egeo-get-font(body) !default;
 $st-two-list-selection---font-size: egeo-get-font-size('body_medium') !default;
 $st-two-list-selection---color: egeo-get-color(n7) !default;
 $st-two-list-selection---min-height: 500px !default;

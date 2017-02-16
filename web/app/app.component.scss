@@ -1,6 +1,6 @@
 @import '../styles/main';
 
-$body---font-family: egeo-get-font(open-sans) !default;
+$body---font-family: egeo-get-font(body) !default;
 $body---margin: 0 !default;
 
 html{
@@ -61,7 +61,7 @@ a {
 // TODO: Refactor to implement a better markdown loader
 .changelog h1 {
    color: egeo-get-color(n9);
-   font-family: egeo-get-font(brandon-grotesque);
+   font-family: egeo-get-font(heading);
    font-size: egeo-get-font-size(head_xxxlarge);
    font-weight: egeo-get-font-weight(normal);
    margin-bottom: 10px;

@@ -31,7 +31,7 @@ $st-radio-menu__text---margin-left: 15px;
 $st-radio-menu__text---cursor: pointer;
 $st-radio-menu__text---color: egeo-get-color(n6);
 $st-radio-menu__text---text-decoration: none;
-$st-radio-menu__text---font-family: egeo-get-font(brandon-grotesque);
+$st-radio-menu__text---font-family: egeo-get-font(heading);
 $st-radio-menu__text---font-weight: 400;
 $st-radio-menu__text---font-style: normal;
 $st-radio-menu__text---font-size: 15px;
@@ -66,7 +66,7 @@ $st-radio-menu__option---selected--before---margin-right: -10.4px;
   &__option {
     padding: 3px 0 0 8px;
     height: $st-radio-menu__option---height;
-    font-family: egeo-get-font(open-sans);
+    font-family: egeo-get-font(body);
     font-size: 15px;
     color: egeo-get-color(n7);
     margin-bottom: 6px;

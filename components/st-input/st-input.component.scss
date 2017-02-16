@@ -51,7 +51,7 @@ $title---width: 100% !default;
 
 $error-layout---height: 15px !default;
 
-$font-family---open-sans: egeo-get-font(open-sans) !default;
+$font-family---open-sans: egeo-get-font(body) !default;
 
 @mixin placeholder {
   ::-webkit-input-placeholder {@content}

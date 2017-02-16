@@ -28,7 +28,7 @@ $st-button---height: 35px !default;
 .#{$this} {
    box-sizing: border-box;
    cursor: pointer;
-   font-family: egeo-get-font(brandon-grotesque);
+   font-family: egeo-get-font(heading);
    font-size: egeo-get-font-size(body_medium);
    height: $st-button---height;
    line-height: 1.5;
@@ -105,7 +105,7 @@ $st-button---height: 35px !default;
       @extend %rect-button;
 
       background-color: transparent;
-      font-family: egeo-get-font(open-sans);
+      font-family: egeo-get-font(body);
       font-size: egeo-get-font-size(body_large);
 
       .#{$this}__icon + .#{$this}__text,

@@ -1,7 +1,7 @@
 @import '../../../styles/require';
 
-$brandon: egeo-get-font(brandon-grotesque) !default;
-$opensans: egeo-get-font(open-sans) !default;
+$brandon: egeo-get-font(heading) !default;
+$opensans: egeo-get-font(body) !default;
 $opensans-normal-font-weight: egeo-get-font-weight(normal) !default;
 $titles-color: egeo-get-color(n6) !default;
 $text-color: egeo-get-color(n8) !default;

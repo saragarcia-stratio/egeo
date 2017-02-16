@@ -20,7 +20,7 @@
 }
 
 @mixin basicInput {
-   font-family: egeo-get-font(open-sans);
+   font-family: egeo-get-font(body);
    font-weight: egeo-get-font-weight(normal);
    font-size: egeo-get-font-size(body_medium);
 }

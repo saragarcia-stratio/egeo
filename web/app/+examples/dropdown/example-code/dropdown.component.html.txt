@@ -4,6 +4,8 @@
               [items]="arrayItemsDropdown"
               [default]="textButtonAlwaysDefault"
               [active]="showAlways"
+              [themeClass]="themeClass"
               (click)="onClickDropdown($event)"
               (change)="onItemChange($event)">
  </st-dropdown>
+ 

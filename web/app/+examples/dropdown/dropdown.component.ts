@@ -3,7 +3,8 @@ import { ApiDoc, TYPES } from '../../shared';
 
 @Component({
    selector: 'dropdown-example',
-   templateUrl: 'dropdown.component.html'
+   templateUrl: 'dropdown.component.html',
+   styleUrls: ['dropdown.component.scss']
 })
 
 export class DropdownComponent {
@@ -105,7 +106,7 @@ export class DropdownComponent {
       apiSection: {
          inputs: [
             {
-               paramName: 'button', type: TYPES.STR, required: true, details: 'This parameter displays the button text'
+               paramName: 'button', type: TYPES.STR, required: false, details: 'This parameter displays the button text'
             },
             {
                paramName: 'active', type: TYPES.BOOL, required: false, details: 'Allows to enable or disable the dropdown'
@@ -125,6 +126,9 @@ export class DropdownComponent {
             {
                paramName: 'width', type: TYPES.NUM, required: false, details: 'This parameter change the attribute width in pixels of dropdown'
             },
+            {
+               paramName: 'themeClass', type: TYPES.STR, required: false, details: 'Theme applied to the button. Only for graphic purposes. Themes are created related to the context the button is placed in(i.e. the same button in different backgrounds). There is not default value.'
+            }
          ],
          outputs: [
             {

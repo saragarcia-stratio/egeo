@@ -35,6 +35,7 @@ export class StDropdownComponent extends EventWindowManager implements AfterView
    @Input() disabled: boolean;
    @Input() width: string;
    @Input() qaTag: string;
+   @Input() themeClass: string;
    @Output() click: EventEmitter<boolean> = new EventEmitter<boolean>();
    @Output() change: EventEmitter<Object> = new EventEmitter<Object>();
    @ViewChild('buttonId') buttonElement: ElementRef;
@@ -64,7 +65,6 @@ export class StDropdownComponent extends EventWindowManager implements AfterView
 
       this.checkFirstSelected();
       this.findSelected();
-
    };
 
    ngOnChanges(values: any): void {

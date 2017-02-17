@@ -17,7 +17,7 @@ import { StToggleButtonsModule } from './st-toggle-buttons';
 import { StTooltipModule } from './st-tooltip';
 import { StTwoListSelectionModule } from './st-two-list-selection';
 import { StVerticalTabsModule } from './st-vertical-tabs';
-
+import { StPaginationModule } from './st-pagination';
 
 export const DECLARATIONS = [
    StButtonModule,
@@ -38,5 +38,6 @@ export const DECLARATIONS = [
    StToggleButtonsModule,
    StTooltipModule,
    StTwoListSelectionModule,
-   StVerticalTabsModule
+   StVerticalTabsModule,
+   StPaginationModule
 ];

@@ -98,20 +98,20 @@
 
           <ul class="tmp-dropdown-menu__section-item tmp-dropdown-menu__section-item--submenu" [ngClass]="{'tmp-dropdown-menu__section-item--open': isNavigationOpened}">
             <div (click)="isNavigationOpened = !isNavigationOpened">Navigation<i class="icon icon-arrow2_down"></i></div>
-               <ul class="tmp-dropdown-submenu" *ngIf="isNavigationOpened">
+            <ul class="tmp-dropdown-submenu" *ngIf="isNavigationOpened">
 
-                  <li class="tmp-dropdown-submenu-item" [ngClass]="{'tmp-dropdown-submenu-item--active': currentUrl === '/navigation/header'}">
-                     <a routerLink="/navigation/header">Header</a>
-                  </li>
+              <li class="tmp-dropdown-submenu-item" [ngClass]="{'tmp-dropdown-submenu-item--active': currentUrl === '/navigation/header'}">
+                <a routerLink="/navigation/header">Header</a>
+              </li>
 
-                  <li class="tmp-dropdown-submenu-item" [ngClass]="{'tmp-dropdown-submenu-item--active': currentUrl === '/navigation/radio-menu'}">
-                     <a routerLink="/navigation/radio-menu">Radio menu</a>
-                  </li>
+              <li class="tmp-dropdown-submenu-item" [ngClass]="{'tmp-dropdown-submenu-item--active': currentUrl === '/navigation/radio-menu'}">
+                <a routerLink="/navigation/radio-menu">Radio menu</a>
+              </li>
 
-                  <li class="tmp-dropdown-submenu-item" [ngClass]="{'tmp-dropdown-submenu-item--active': currentUrl === '/navigation/horizontal-tabs'}">
-                     <a routerLink="/navigation/horizontal-tabs">Horizontal tabs</a>
-                  </li>
-               </ul>
+              <li class="tmp-dropdown-submenu-item" [ngClass]="{'tmp-dropdown-submenu-item--active': currentUrl === '/navigation/horizontal-tabs'}">
+                <a routerLink="/navigation/horizontal-tabs">Horizontal tabs</a>
+              </li>
+            </ul>
           </ul>
 
           <ul class="tmp-dropdown-menu__section-item tmp-dropdown-menu__section-item--submenu" [ngClass]="{'tmp-dropdown-menu__section-item--open': isTabsOpened}">
@@ -133,6 +133,10 @@
 
           <div class="tmp-dropdown-menu__section-item" [ngClass]="{'tmp-dropdown-menu__section-item--active': currentUrl === '/page-title'}">
             <a routerLink="/page-title">Page title</a>
+          </div>
+
+          <div class="tmp-dropdown-menu__section-item" [ngClass]="{'tmp-dropdown-menu__section-item--active': currentUrl === '/pagination'}">
+            <a routerLink="/pagination">Pagination</a>
           </div>
 
           <div class="tmp-dropdown-menu__section-item" [ngClass]="{'tmp-dropdown-menu__section-item--active': currentUrl === '/search'}">
@@ -164,7 +168,7 @@
           <router-outlet></router-outlet>
 
           <footer class="page-footer">
-             Feedback? email us at <a href="mailto:egeo@stratio.com">egeo@stratio.com</a>.
+            Feedback? email us at <a href="mailto:egeo@stratio.com">egeo@stratio.com</a>.
           </footer>
         </div>
       </div>

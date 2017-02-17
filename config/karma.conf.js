@@ -19,6 +19,17 @@ module.exports = function (config) {
          type: 'in-memory'
       },
 
+      htmlReporter: {
+         outputFile: 'tests/units.html',
+
+         // Optional
+         pageTitle: 'Unit Tests',
+         subPageTitle: 'A sample project description',
+         groupSuites: true,
+         useCompactStyle: true,
+         useLegacyStyle: true
+      },
+
       remapCoverageReporter: {
          'text-summary': null,
          'json': './target/coverage/coverage.json',

@@ -1,0 +1,38 @@
+@import '~egeo-ui-base/utils/typography';
+@import '~egeo-ui-base/utils/colors';
+
+.pagination {
+   display: flex;
+   justify-content: space-around; 
+   align-items: center;
+   padding: 20px 5px;
+
+   .selector {
+      margin-right: auto;
+   }
+
+   .navigator {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+
+      p {
+         margin: 0;
+         padding: 0 15px;
+      }
+   }
+
+}
+
+
+/// Custom Styles
+
+.sth-pagination {
+   background: egeo-get-color(n1);
+   font-family: egeo-get-font(body);
+}
+
+.sth-pagination-pages {
+   font-size: egeo-get-font-size(body_xsmall);
+   color: egeo-get-color(n7)
+}

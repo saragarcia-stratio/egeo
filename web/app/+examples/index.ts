@@ -15,6 +15,7 @@ export * from './main';
 export * from './modal';
 export * from './navigation';
 export * from './page-title';
+export * from './pagination';
 export * from './regexp';
 export * from './search';
 export * from './spinner';

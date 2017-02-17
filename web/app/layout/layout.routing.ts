@@ -1,6 +1,6 @@
 import { ModuleWithProviders } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { LayoutComponent } from './layout.component';
+import {RouterModule} from '@angular/router';
+import {LayoutComponent} from './layout.component';
 import {
    ButtonComponent,
    ChangelogComponent,
@@ -18,6 +18,7 @@ import {
    MainComponent,
    ModalComponent,
    PageTitleComponent,
+   PaginationComponent,
    RegexpComponent,
    SearchComponent,
    SpinnerComponent,
@@ -50,6 +51,7 @@ export const routing: ModuleWithProviders = RouterModule.forChild([
          { path: 'modal', component: ModalComponent },
          { path: 'navigation', loadChildren: '../+examples/navigation/navigation.module#NavigationModule' },
          { path: 'page-title', component: PageTitleComponent },
+         { path: 'pagination', component: PaginationComponent },
          { path: 'regexp', component: RegexpComponent },
          { path: 'search', component: SearchComponent },
          { path: 'spinner', component: SpinnerComponent },

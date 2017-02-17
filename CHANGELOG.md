@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.6.2 (February 17, 2017)
+* Remove left and top margin to vertical-menu component
+
 ## 0.6.1 (February 08, 2017)
 
 * Prevent horizontal-tab wrong shown when zoom the browser

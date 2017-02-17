@@ -1,4 +1,4 @@
-<section class="st-info-box">
+<section class="st-info-box" [ngStyle]="getStyles()">
    <div class="st-info-box__header">
       <label class="st-info-box__header__text">  <i *ngIf="icon" [ngClass]="icon" class="st-info-box__header__icon"></i>{{title}}</label>
    </div>

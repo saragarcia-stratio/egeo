@@ -16,7 +16,9 @@ export class InfoBoxComponent {
       apiSection: {
          inputs: [
             { paramName: 'icon', type: TYPES.STR, required: false, details: 'Class of the header icon. If it is empty, no icon will be shown' },
-            { paramName: 'title', type: TYPES.STR, required: true, details: 'Header title' }
+            { paramName: 'title', type: TYPES.STR, required: true, details: 'Header title' },
+            { paramName: 'width', type: TYPES.NUM, required: false, details: 'Fix width in pixels' },
+            { paramName: 'height', type: TYPES.NUM, required: false, details: 'Fix height in pixels' }
          ],
          outputs: []
       },

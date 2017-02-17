@@ -11,6 +11,8 @@
 * Add util service for manage translations of complex objects
 * Update fonts in sass for use body istead open-sans and heading instead brandon-grotesque
 * Fix some problems with fonts
+* Info Box now have a variable height and with that adapt to content and container
+* Info Box now have two new inputs, height and with to fix height and with in pixels
 * BREAKING CHANGE. Remove ng2-translate dependency
 * BREAKING CHANGE. Now egeo is imported like this: "import { EgeoModule } from 'egeo';"
 * BREAKING CHANGE. Output Search Component change of (onSearch) to (search);

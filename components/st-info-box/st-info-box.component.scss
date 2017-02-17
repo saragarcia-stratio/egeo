@@ -4,8 +4,6 @@
 $st-print---info-box: true !default;
 $st-info-box---margin: 0;
 $st-info-box---background-color: egeo-get-color(n1);
-$st-info-box---height: 437px;
-$st-info-box---min-width: 415px;
 $st-info-box---float: left;
 $st-info-box---border-bottom: 1px solid egeo-get-color(n3);;
 
@@ -28,14 +26,14 @@ $st-info-box__header__text---text-align: center;
 $st-info-box__header__text---color: egeo-get-color(n7);
 $st-info-box__header__text---text-transform: uppercase;
 
-$st-info-box__content---padding: 20px 30px 40px 30px;
+$st-info-box__content---padding: 20px 30px 30px 30px;
 
 @mixin st-info-box() {
   margin: $st-info-box---margin;
   background-color: $st-info-box---background-color;
   border-bottom: $st-info-box---border-bottom;
-  height: $st-info-box---height;
-  min-width: $st-info-box---min-width;
+  height: 100%;
+  width: 100%;
   overflow-x: auto;
 
   &__header {

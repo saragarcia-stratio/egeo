@@ -25,15 +25,16 @@ export class StButtonComponent {
       let cssClass: string;
 
       if (this.typeClass) {
-        cssClass = 'st-button--' + this.typeClass;
+        cssClass = 'st-button--' + this.typeClass + ' sth-button--' + this.typeClass;
       }
 
       if (this.subtypeClass) {
-        cssClass = cssClass + ' ' +  'st-button--' + this.typeClass + '-' + this.subtypeClass;
+        cssClass = cssClass + ' ' +  'st-button--' + this.typeClass + '-'
+                   + this.subtypeClass + ' sth-button--' + this.typeClass + '-' + this.subtypeClass;
       }
 
       if (this.themeClass) {
-        cssClass = cssClass + ' ' + 'st-button--' + this.themeClass;
+        cssClass = cssClass + ' ' + 'st-button--' + this.themeClass + ' sth-button--' + this.themeClass;
       }
 
       return cssClass;

@@ -15,6 +15,7 @@ export class LayoutComponent {
    public isUtilsOpened: boolean = false;
    public isNavigationOpened: boolean = false;
    public isTabsOpened: boolean = false;
+   public isFeedbackOpened: boolean = false;
 
 
    private formsUrls: Array<string> = ['/input'];
@@ -22,6 +23,7 @@ export class LayoutComponent {
    private utilsUrls: Array<string> = ['/regexp'];
    private navigationUrls: Array<string> = ['/navigation/radio-menu', '/navigation/header', '/navigation/horizontal-tabs'];
    private tabsUrls: Array<string> = ['/tab-box', '/vertical-menu'];
+   private feedbacksUrls: Array<string> = ['/spinner'];
 
    constructor(private router: Router) {
 
@@ -46,6 +48,9 @@ export class LayoutComponent {
       }
       if (this.tabsUrls.includes(this.currentUrl)) {
          this.isTabsOpened = true;
+      }
+      if (this.feedbacksUrls.includes(this.currentUrl)) {
+         this.isFeedbackOpened = true;
       }
    }
 }

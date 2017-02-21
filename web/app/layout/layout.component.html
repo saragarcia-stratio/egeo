@@ -66,6 +66,16 @@
             </ul>
           </ul>
 
+          <ul class="tmp-dropdown-menu__section-item tmp-dropdown-menu__section-item--submenu" [ngClass]="{'tmp-dropdown-menu__section-item--open': isFeedbackOpened}">
+            <div (click)="isFeedbackOpened = !isFeedbackOpened">Feedback<i class="icon icon-arrow2_down"></i></div>
+
+            <ul class="tmp-dropdown-submenu" *ngIf="isFeedbackOpened">
+              <li class="tmp-dropdown-submenu-item" [ngClass]="{'tmp-dropdown-submenu-item--active': currentUrl === '/spinner'}">
+                <a routerLink="/spinner">Spinner</a>
+              </li>
+            </ul>
+          </ul>
+
           <div class="tmp-dropdown-menu__section-item" [ngClass]="{'tmp-dropdown-menu__section-item--active': currentUrl === '/footer'}">
             <a routerLink="/footer">Footer</a>
           </div>

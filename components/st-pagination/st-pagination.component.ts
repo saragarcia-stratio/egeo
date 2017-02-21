@@ -15,6 +15,7 @@ export class StPaginationComponent implements OnInit, OnChanges {
    @Input() perPage: number = 20;
    @Input() currentPage: number = 1;
    @Input() label: PaginateTexts;
+   @Input() qaTag: string;
 
    @Output() change: EventEmitter<Paginate> = new EventEmitter<Paginate>();
 

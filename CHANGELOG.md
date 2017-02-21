@@ -3,7 +3,6 @@
 ## 1.0.0 (upcoming)
 
 * Modularize all components
-* Remove st-spinner from website
 * Add Button Clear in Search Component
 * Add Value Input in Search Component
 * Add optional Pre-title to Page Title Component
@@ -13,12 +12,15 @@
 * Fix some problems with fonts
 * Info Box now have a variable height and with that adapt to content and container
 * Info Box now have two new inputs, height and with to fix height and with in pixels
-* BREAKING CHANGE. Remove ng2-translate dependency
-* BREAKING CHANGE. Now egeo is imported like this: "import { EgeoModule } from 'egeo';"
-* BREAKING CHANGE. Output Search Component change of (onSearch) to (search);
-* BREAKING CHANGE. Vertical menu now is called Vertical Tabs;
-* BREAKING CHANGE. Vertical menu now not emit active when active is set from outside;
-* BREAKING CHANGE. Vertical menu output change from changedOption to changeOption;
+* Added Pagination component
+* Remove external padding in vertical tab component
+* **BREAKING CHANGE:** Remove ng2-translate dependency
+* **BREAKING CHANGE:** Now egeo is imported like this ```import { EgeoModule } from 'egeo';```
+* **BREAKING CHANGE:** Output Search Component change of (onSearch) to (search)
+* **BREAKING CHANGE:** Vertical menu now is called Vertical Tabs
+* **BREAKING CHANGE:** Vertical menu now not emit active when active is set from outside
+* **BREAKING CHANGE:** Vertical menu output change from changedOption to changeOption
+* **AND ALL FIX OF VERSION 0.6.1**
 
 ## 0.6.1 (February 08, 2017)
 

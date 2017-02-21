@@ -317,8 +317,8 @@ async@^0.9.0, async@~0.9.0:
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/async/-/async-0.9.2.tgz#aea74d5e61c1f899613bf64bda66d4c78f2fd17d"
 
 async@^2.0.1, async@^2.1.2:
-  version "2.1.4"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/async/-/async-2.1.4.tgz#2d2160c7788032e4dd6cbe2502f1f9a2c8f6cde4"
+  version "2.1.5"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/async/-/async-2.1.5.tgz#e587c68580994ac67fc56ff86d3ac56bdbe810bc"
   dependencies:
     lodash "^4.14.0"
 
@@ -331,14 +331,14 @@ asynckit@^0.4.0:
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
 
 autoprefixer@^6.3.1:
-  version "6.7.3"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/autoprefixer/-/autoprefixer-6.7.3.tgz#bc2c28018e9a226f24f0ded36ce81014dccec817"
+  version "6.7.4"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/autoprefixer/-/autoprefixer-6.7.4.tgz#b4405a263325c04a7c2b1c86fc603ad7bbfe01c6"
   dependencies:
-    browserslist "^1.7.2"
-    caniuse-db "^1.0.30000623"
+    browserslist "^1.7.4"
+    caniuse-db "^1.0.30000624"
     normalize-range "^0.1.2"
     num2fraction "^1.2.2"
-    postcss "^5.2.13"
+    postcss "^5.2.14"
     postcss-value-parser "^3.2.3"
 
 awesome-typescript-loader@3.0.3:
@@ -617,11 +617,11 @@ browserify-zlib@^0.1.4:
   dependencies:
     pako "~0.2.0"
 
-browserslist@^1.0.1, browserslist@^1.5.2, browserslist@^1.7.2:
-  version "1.7.3"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/browserslist/-/browserslist-1.7.3.tgz#25ead9c917b278ad668b83f39c8025697797b2ab"
+browserslist@^1.0.1, browserslist@^1.5.2, browserslist@^1.7.4:
+  version "1.7.4"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/browserslist/-/browserslist-1.7.4.tgz#56a12da876f787223743a866224ccd8f97014628"
   dependencies:
-    caniuse-db "^1.0.30000623"
+    caniuse-db "^1.0.30000624"
     electron-to-chromium "^1.2.2"
 
 buffer-shims@^1.0.0:
@@ -705,9 +705,9 @@ caniuse-api@^1.5.2:
     lodash.memoize "^4.1.0"
     lodash.uniq "^4.3.0"
 
-caniuse-db@^1.0.30000346, caniuse-db@^1.0.30000623:
-  version "1.0.30000623"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/caniuse-db/-/caniuse-db-1.0.30000623.tgz#6e9dc4385d00a8f587efbb23fcbed7916f186e5d"
+caniuse-db@^1.0.30000346, caniuse-db@^1.0.30000624:
+  version "1.0.30000624"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/caniuse-db/-/caniuse-db-1.0.30000624.tgz#554b87547895e36f5fe128f4b7448a2ea5bf2213"
 
 capture-stack-trace@^1.0.0:
   version "1.0.0"
@@ -961,11 +961,11 @@ connect-history-api-fallback@^1.3.0:
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/connect-history-api-fallback/-/connect-history-api-fallback-1.3.0.tgz#e51d17f8f0ef0db90a64fdb47de3051556e9f169"
 
 connect@^3.3.5:
-  version "3.5.1"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/connect/-/connect-3.5.1.tgz#6d30d7a63c7f170857a6b3aa6b363d973dca588e"
+  version "3.6.0"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/connect/-/connect-3.6.0.tgz#f09a4f7dcd17324b663b725c815bdb1c4158a46e"
   dependencies:
-    debug "~2.2.0"
-    finalhandler "0.5.1"
+    debug "2.6.1"
+    finalhandler "1.0.0"
     parseurl "~1.3.1"
     utils-merge "1.0.0"
 
@@ -1409,9 +1409,9 @@ ee-first@1.1.1:
   version "1.1.1"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
 
-egeo-theme@0.3.0-SNAPSHOT:
-  version "0.3.0-SNAPSHOT"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/egeo-theme/-/egeo-theme-0.3.0-SNAPSHOT.tgz#fc48edd7c29008e740568f310d2648d19e7cd7bc"
+egeo-theme@0.3.0:
+  version "0.3.0"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/egeo-theme/-/egeo-theme-0.3.0.tgz#9b14b9e8a7f7512bf73c1a2f9664d809ac5c212e"
 
 egeo-ui-base@1.0.0:
   version "1.0.0"
@@ -1870,6 +1870,18 @@ finalhandler@0.5.1:
     statuses "~1.3.1"
     unpipe "~1.0.0"
 
+finalhandler@1.0.0:
+  version "1.0.0"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/finalhandler/-/finalhandler-1.0.0.tgz#b5691c2c0912092f18ac23e9416bde5cd7dc6755"
+  dependencies:
+    debug "2.6.1"
+    encodeurl "~1.0.1"
+    escape-html "~1.0.3"
+    on-finished "~2.3.0"
+    parseurl "~1.3.1"
+    statuses "~1.3.1"
+    unpipe "~1.0.0"
+
 find-root@^1.0.0:
   version "1.0.0"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/find-root/-/find-root-1.0.0.tgz#962ff211aab25c6520feeeb8d6287f8f6e95807a"
@@ -1963,8 +1975,8 @@ fs.realpath@^1.0.0:
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
 
 fsevents@^1.0.0:
-  version "1.0.17"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/fsevents/-/fsevents-1.0.17.tgz#8537f3f12272678765b4fd6528c0f1f66f8f4558"
+  version "1.1.1"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/fsevents/-/fsevents-1.1.1.tgz#f19fd28f43eeaf761680e519a203c4d0b3d31aff"
   dependencies:
     nan "^2.3.0"
     node-pre-gyp "^0.6.29"
@@ -2078,8 +2090,8 @@ glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.1.1, glob@~7.1.1:
     path-is-absolute "^1.0.0"
 
 globals@^9.0.0, globals@^9.2.0:
-  version "9.15.0"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/globals/-/globals-9.15.0.tgz#7a5d8fd865e69de910b090b15a87772f9423c5de"
+  version "9.16.0"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/globals/-/globals-9.16.0.tgz#63e903658171ec2d9f51b1d31de5e2b8dc01fb80"
 
 globby@^5.0.0:
   version "5.0.0"
@@ -2296,8 +2308,8 @@ html-loader@0.4.4:
     object-assign "^4.1.0"
 
 html-minifier@^3.0.1, html-minifier@^3.2.3:
-  version "3.3.1"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/html-minifier/-/html-minifier-3.3.1.tgz#dd38e60571537bf34a8171889c64fce73c45edad"
+  version "3.3.3"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/html-minifier/-/html-minifier-3.3.3.tgz#5e85516b2aff3c3fb9bda351879375868386d6f6"
   dependencies:
     camel-case "3.0.x"
     clean-css "4.0.x"
@@ -2381,8 +2393,8 @@ ieee754@^1.1.4:
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/ieee754/-/ieee754-1.1.8.tgz#be33d40ac10ef1926701f6f08a2d86fbfd1ad3e4"
 
 ignore@^3.1.2:
-  version "3.2.2"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/ignore/-/ignore-3.2.2.tgz#1c51e1ef53bab6ddc15db4d9ac4ec139eceb3410"
+  version "3.2.4"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/ignore/-/ignore-3.2.4.tgz#4055e03596729a8fabe45a43c100ad5ed815c4e8"
 
 imurmurhash@^0.1.4:
   version "0.1.4"
@@ -2802,6 +2814,12 @@ karma-coverage@1.1.1:
     minimatch "^3.0.0"
     source-map "^0.5.1"
 
+karma-htmlfile-reporter@^0.3.5:
+  version "0.3.5"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/karma-htmlfile-reporter/-/karma-htmlfile-reporter-0.3.5.tgz#09abca9910a3eb1dbba27a9a766026948c96ca04"
+  dependencies:
+    xmlbuilder "3.1.0"
+
 karma-jasmine@1.1.0:
   version "1.1.0"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/karma-jasmine/-/karma-jasmine-1.1.0.tgz#22e4c06bf9a182e5294d1f705e3733811b810acf"
@@ -2931,8 +2949,8 @@ loader-runner@^2.3.0:
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/loader-runner/-/loader-runner-2.3.0.tgz#f482aea82d543e07921700d5a46ef26fdac6b8a2"
 
 loader-utils@0.2.x, loader-utils@^0.2.15, loader-utils@^0.2.16, loader-utils@^0.2.5, loader-utils@^0.2.7, loader-utils@~0.2.2, loader-utils@~0.2.5:
-  version "0.2.16"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/loader-utils/-/loader-utils-0.2.16.tgz#f08632066ed8282835dff88dfb52704765adee6d"
+  version "0.2.17"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/loader-utils/-/loader-utils-0.2.17.tgz#f86e6374d43205a6e6c60e9196f17c0299bfb348"
   dependencies:
     big.js "^3.1.3"
     emojis-list "^2.0.0"
@@ -3143,7 +3161,7 @@ lodash@4.17.4, lodash@^4.0.0, lodash@^4.0.1, lodash@^4.14.0, lodash@^4.17.2, lod
   version "4.17.4"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
-lodash@^3.8.0:
+lodash@^3.5.0, lodash@^3.8.0:
   version "3.10.1"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
@@ -3892,8 +3910,8 @@ postcss-merge-longhand@^2.0.1:
     postcss "^5.0.4"
 
 postcss-merge-rules@^2.0.3:
-  version "2.1.1"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/postcss-merge-rules/-/postcss-merge-rules-2.1.1.tgz#5e5640020ce43cddd343c73bba91c9a358d1fe0f"
+  version "2.1.2"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/postcss-merge-rules/-/postcss-merge-rules-2.1.2.tgz#d1df5dfaa7b1acc3be553f0e9e10e87c61b5f721"
   dependencies:
     browserslist "^1.5.2"
     caniuse-api "^1.5.2"
@@ -4045,9 +4063,9 @@ postcss-zindex@^2.0.1:
     postcss "^5.0.4"
     uniqs "^2.0.0"
 
-postcss@^5.0.10, postcss@^5.0.11, postcss@^5.0.12, postcss@^5.0.13, postcss@^5.0.14, postcss@^5.0.16, postcss@^5.0.2, postcss@^5.0.4, postcss@^5.0.5, postcss@^5.0.6, postcss@^5.0.8, postcss@^5.2.13:
-  version "5.2.13"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/postcss/-/postcss-5.2.13.tgz#1be52a32cf2ef58c0d75f1aedb3beabcf257cef3"
+postcss@^5.0.10, postcss@^5.0.11, postcss@^5.0.12, postcss@^5.0.13, postcss@^5.0.14, postcss@^5.0.16, postcss@^5.0.2, postcss@^5.0.4, postcss@^5.0.5, postcss@^5.0.6, postcss@^5.0.8, postcss@^5.2.14:
+  version "5.2.14"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/postcss/-/postcss-5.2.14.tgz#47b4fbde363fd4f81e547f7e0e43d6d300267330"
   dependencies:
     chalk "^1.1.3"
     js-base64 "^2.1.9"
@@ -4195,13 +4213,13 @@ raw-loader@0.5.1:
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/raw-loader/-/raw-loader-0.5.1.tgz#0c3d0beaed8a01c966d9787bf778281252a979aa"
 
 rc@^1.0.1, rc@^1.1.6, rc@~1.1.6:
-  version "1.1.6"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/rc/-/rc-1.1.6.tgz#43651b76b6ae53b5c802f1151fa3fc3b059969c9"
+  version "1.1.7"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/rc/-/rc-1.1.7.tgz#c5ea564bb07aff9fd3a5b32e906c1d3a65940fea"
   dependencies:
     deep-extend "~0.4.0"
     ini "~1.3.0"
     minimist "^1.2.0"
-    strip-json-comments "~1.0.4"
+    strip-json-comments "~2.0.1"
 
 read-all-stream@^3.0.0:
   version "3.1.0"
@@ -4334,8 +4352,8 @@ regenerate@^1.2.1:
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/regenerate/-/regenerate-1.3.2.tgz#d1941c67bad437e1be76433add5b385f95b19260"
 
 regenerator-runtime@^0.10.0:
-  version "0.10.1"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/regenerator-runtime/-/regenerator-runtime-0.10.1.tgz#257f41961ce44558b18f7814af48c17559f9faeb"
+  version "0.10.3"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/regenerator-runtime/-/regenerator-runtime-0.10.3.tgz#8c4367a904b51ea62a908ac310bf99ff90a82a3e"
 
 regex-cache@^0.4.2:
   version "0.4.3"
@@ -4912,11 +4930,11 @@ strip-indent@^1.0.1:
   dependencies:
     get-stdin "^4.0.1"
 
-strip-json-comments@^2.0.0:
+strip-json-comments@^2.0.0, strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-strip-json-comments@~1.0.1, strip-json-comments@~1.0.4:
+strip-json-comments@~1.0.1:
   version "1.0.4"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/strip-json-comments/-/strip-json-comments-1.0.4.tgz#1e15fbcac97d3ee99bf2d73b4c656b082bbafb91"
 
@@ -5243,8 +5261,8 @@ url-parse@1.0.x:
     requires-port "1.0.x"
 
 url-parse@^1.1.1:
-  version "1.1.7"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/url-parse/-/url-parse-1.1.7.tgz#025cff999653a459ab34232147d89514cc87d74a"
+  version "1.1.8"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/url-parse/-/url-parse-1.1.8.tgz#7a65b3a8d57a1e86af6b4e2276e34774167c0156"
   dependencies:
     querystringify "0.0.x"
     requires-port "1.0.x"
@@ -5549,6 +5567,12 @@ xdg-basedir@^2.0.0:
 xml-char-classes@^1.0.0:
   version "1.0.0"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/xml-char-classes/-/xml-char-classes-1.0.0.tgz#64657848a20ffc5df583a42ad8a277b4512bbc4d"
+
+xmlbuilder@3.1.0:
+  version "3.1.0"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/xmlbuilder/-/xmlbuilder-3.1.0.tgz#2c86888f2d4eade850fa38ca7f7223f7209516e1"
+  dependencies:
+    lodash "^3.5.0"
 
 xmlhttprequest-ssl@1.5.3:
   version "1.5.3"

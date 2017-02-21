@@ -1,7 +1,7 @@
 <st-api-doc [doc]="apiDoc">
    <div class="example-run">
       <section class="container-liquid">
-         <button class="btn btn-default" (click)="changeLoading()">{{loading ? 'Set loading var to false' : 'Set loading var to true'}}</button>
+         <st-button [text]="loading ? 'Set loading var to false' : 'Set loading var to true'" (onClick)="changeLoading()"></st-button>
          <div class="loading-content" *ngIf="loading == true">
             <st-spinner imageUrl="assets/images/loading_spinner.gif"></st-spinner>
          </div>

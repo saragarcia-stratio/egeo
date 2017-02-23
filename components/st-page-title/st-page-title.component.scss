@@ -21,4 +21,6 @@ $padding: 10px;
   line-height: 25px;
   padding-bottom: $padding;
   vertical-align: bottom;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

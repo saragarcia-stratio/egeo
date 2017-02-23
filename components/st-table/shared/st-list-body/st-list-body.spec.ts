@@ -106,12 +106,12 @@ let heroesMetadata = [
 ];
 
 let heroesDatalist = heroes.map((hero) => new Hero(hero));
-let componentRow: GosecListRowComponent<HeroeInterface>;
+let componentRow: GosecListRowComponent;
 
 describe(('st-list-row'), () => {
 
    beforeEach(() => {
-      componentRow = new GosecListRowComponent<HeroeInterface>();
+      componentRow = new GosecListRowComponent();
       componentRow.metadata = heroesMetadata;
       componentRow.rowData = heroesDatalist[0];
    });

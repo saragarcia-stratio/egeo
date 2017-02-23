@@ -41,7 +41,7 @@ export class StDropdownComponent extends EventWindowManager implements AfterView
    @ViewChild('buttonId') buttonElement: ElementRef;
    @ViewChild('menuId') menuElement: ElementRef;
 
-   private widthMenu: string;
+   public widthMenu: string;
 
    constructor(
       private renderer: Renderer,
@@ -88,7 +88,7 @@ export class StDropdownComponent extends EventWindowManager implements AfterView
       this.closeElement();
    };
 
-   private onClickEvent(event: MouseEvent): void {
+   public onClickEvent(event: MouseEvent): void {
       this.openElement();
       this.click.emit(true);
    };

@@ -104,12 +104,12 @@ let heroesMetadata = [
 ];
 
 let heroesDatalist = heroes.map((hero) => new Hero(hero));
-let tableComponent: GosecListComponent<HeroeInterface>;
+let tableComponent: GosecListComponent;
 
 describe(('st-list'), () => {
 
    beforeEach(() => {
-      tableComponent = new GosecListComponent<HeroeInterface>();
+      tableComponent = new GosecListComponent();
       tableComponent.metadata = heroesMetadata;
    });
 
@@ -134,13 +134,11 @@ describe(('st-list'), () => {
 
          expect(tableComponent.calculatePaginationTopPosition()).toBe('368px');
 
-         tableComponent.data = new DataList<HeroeInterface>([<Model<HeroeInterface>>{}, <Model<HeroeInterface>>{}, <Model<HeroeInterface>>{}]); // 3 rows in page
+         tableComponent.data = new DataList<HeroeInterface>(
+            [<Model<HeroeInterface>>{}, <Model<HeroeInterface>>{}, <Model<HeroeInterface>>{}]
+            ); // 3 rows in page
 
          expect(tableComponent.calculatePaginationTopPosition()).toBe('322px');
       });
-   })
-})
-   ;
-
-
-
+   });
+});

@@ -1,0 +1,86 @@
+@import '~egeo-ui-base/utils/typography';
+@import '~egeo-ui-base/utils/colors';
+
+$egeo-sanitize: true;
+
+
+
+$body---font-family: egeo-get-font(body) !default;
+$body---margin: 0 !default;
+
+$base-separation: 30px;
+$double-separation: 2 * $base-separation;
+
+html{
+   font-size: 16px;
+}
+
+body{
+   margin: $body---margin;
+   overflow-x: hidden;
+   font-family: $body---font-family;
+}
+
+.page {
+   width: 100%;
+   min-width: 1300px;
+}
+
+img {
+   max-width: 100%;
+}
+
+h1 {
+   margin: $base-separation 0 ($base-separation - 10);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6  {
+   color: egeo-get-color(n7);
+}
+
+p {
+   font-size: egeo-get-font-size(body_large);
+   line-height: 1.5;
+   margin-bottom: $base-separation;
+   padding: 0 0 15px;
+}
+
+ul {
+   list-style: circle;
+   padding-left: 25px;
+}
+
+
+li {
+   line-height: 1.5;
+}
+
+a {
+   color: egeo-get-color(a1);
+   text-decoration: underline;
+}
+
+
+// TODO: Refactor to implement a better markdown loader
+.changelog h1 {
+   color: egeo-get-color(n9);
+   font-family: egeo-get-font(heading);
+   font-size: egeo-get-font-size(head_xxxlarge);
+   font-weight: egeo-get-font-weight(normal);
+   margin-bottom: 10px;
+   text-transform: uppercase;
+
+   &::after {
+      border-bottom: 2px solid;
+      border-color: egeo-get-color(a2);
+      content: ' ';
+      display: block;
+      height: 10px;
+      width: 100%;
+  }
+}

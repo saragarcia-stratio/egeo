@@ -15,14 +15,6 @@ const HMR = helpers.hasProcessFlag('hot');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const DllBundlesPlugin = require('webpack-dll-bundles-plugin').DllBundlesPlugin;
 
-const METADATA = webpackMerge(commonConfig({ env: ENV }).metadata, {
-   host: HOST,
-   port: PORT,
-   ENV: ENV,
-   HMR: HMR
-});
-
-
 module.exports = function (options) {
    return webpackMerge(commonConfig({ env: ENV }), {
 
@@ -38,7 +30,34 @@ module.exports = function (options) {
 
 
       },
+ module: {
+      rules: [
+      //  {
+      //    test: /\.ts$/,
+      //    use: [
+      //      {
+      //        loader: 'tslint-loader',
+      //        options: {
+      //          configFile: 'tslint.json'
+      //        }
+      //      }
+      //    ],
+      //    exclude: [/\.(spec|e2e)\.ts$/]
+      //  },
+        {
+          test: /\.css$/,
+          use: ['style-loader', 'css-loader'],
+          include: [helpers.root('src', 'styles')]
+        },
+        {
+          test: /\.scss$/,
+          use: ['style-loader', 'css-loader', 'sass-loader'],
+          include: [helpers.root('src', 'styles')]
+        },
 
+      ]
+
+    },
       plugins: [
          new LoaderOptionsPlugin({
             debug: true,
@@ -50,6 +69,7 @@ module.exports = function (options) {
             bundles: {
                polyfills: [
                   'core-js',
+                  'lodash',
                   {
                      name: 'zone.js',
                      path: 'zone.js/dist/zone.js'
@@ -58,6 +78,10 @@ module.exports = function (options) {
                      name: 'zone.js',
                      path: 'zone.js/dist/long-stack-trace-zone.js'
                   },
+                  {
+                     name: 'prismjs',
+                     path: 'prismjs/prism.js'
+                  }
                ],
                vendor: [
                   '@angular/platform-browser',
@@ -71,21 +95,21 @@ module.exports = function (options) {
                   'rxjs',
                ]
             },
-            dllDir: helpers.root('dll'),
+            dllDir: helpers.root('temp', 'dll'),
             webpackConfig: webpackMergeDll(commonConfig({ env: ENV }), {
                devtool: 'cheap-module-source-map',
                plugins: []
             })
          }),
          new AddAssetHtmlPlugin([
-            { filepath: helpers.root(`dll/${DllBundlesPlugin.resolveFile('polyfills')}`) },
-            { filepath: helpers.root(`dll/${DllBundlesPlugin.resolveFile('vendor')}`) }
+            { filepath: helpers.root(`temp/dll/${DllBundlesPlugin.resolveFile('polyfills')}`) },
+            { filepath: helpers.root(`temp/dll/${DllBundlesPlugin.resolveFile('vendor')}`) }
          ]),
       ],
 
       devServer: {
-         port: METADATA.port,
-         host: METADATA.host,
+         port: PORT,
+         host: HOST,
          historyApiFallback: true,
          stats: "errors-only",
          clientLogLevel: "warning"

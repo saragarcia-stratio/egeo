@@ -7,9 +7,13 @@ const helpers = require('./helpers'),
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
+const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
+const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    devtool: 'inline-source-map',
+    devtool: 'source-map',
 
     resolve: {
         extensions: ['.ts', '.js']
@@ -26,37 +30,40 @@ module.exports = {
     },
 
     // require those dependencies but don't bundle them
-    externals: [/^\@angular\//, /^rxjs\//],
+    externals: [/^\@angular\//, /^rxjs\//, /^lodash/],
 
     module: {
         rules: [
-           {
-               test: /\.ts$/,
-               use: [
-                  {
-                     loader: 'awesome-typescript-loader?declaration=false',
-                     options: {
-                        configFilename: 'tsconfig.components.json'
-                     }
-                  },
-                  'angular2-template-loader'
-               ],
-               exclude: [/\.(spec|e2e)\.ts$/]
+             {
+          test: /\.ts$/,
+          use: [
+            {
+              loader: 'awesome-typescript-loader',
+              options: {
+                configFileName: 'tsconfig.components.json'
+              }
             },
+            {
+              loader: 'angular2-template-loader'
+            }
+          ],
+          exclude: [/\.(spec|e2e)\.ts$/]
+        },
             {
                test: /\.html$/,
-               use: 'raw-loader',
-               exclude: [helpers.root('web/index.html')]
+               use: ['raw-loader'],
+               exclude: [helpers.root('src')]
             },
             {
-               test: /\.css$/,
-               use: ['raw-loader', 'css-loader']
-            },
-            {
-               test: /\.scss$/,
-               exclude: '/node_modules/',
-               use: ['raw-loader', 'sass-loader']
-            },
+          test: /\.css$/,
+          use: ['to-string-loader', 'css-loader'],
+          exclude: [helpers.root('src')]
+        },
+        {
+          test: /\.scss$/,
+          use: ['to-string-loader', 'css-loader', 'sass-loader'],
+          exclude: [helpers.root('src')]
+        },
             {
                test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
                use: "file-loader?name=assets/fonts/[name].[hash].[ext]"
@@ -70,14 +77,83 @@ module.exports = {
             /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
             helpers.root('./components')
         ),
+        new UglifyJsPlugin({
+        beautify: false, //prod
+        output: {
+          comments: false
+        }, //prod
+        mangle: {
+          screw_ie8: true
+        }, //prod
+        compress: {
+          screw_ie8: true,
+          warnings: false,
+          conditionals: true,
+          unused: true,
+          comparisons: true,
+          sequences: true,
+          dead_code: true,
+          evaluate: true,
+          if_return: true,
+          join_vars: true,
+          negate_iife: false
+        },
+      }),
+      new ContextReplacementPlugin(
+        /angular(\\|\/)core(\\|\/)src(\\|\/)linker/,
+        helpers.root('components'), // location of your web
+        { }
+      ),
 
-        new webpack.LoaderOptionsPlugin({
-            options: {
-                tslintLoader: {
-                    emitErrors: false,
-                    failOnHint: false
-                }
-            }
-        })
+       new NormalModuleReplacementPlugin(
+        /angular2-hmr/,
+        helpers.root('config/empty.js')
+      ),
+
+      new NormalModuleReplacementPlugin(
+        /zone\.js(\\|\/)dist(\\|\/)long-stack-trace-zone/,
+        helpers.root('config/empty.js')
+      ),
+
+      // Fix Angular 2
+      new NormalModuleReplacementPlugin(
+        /facade(\\|\/)async/,
+        helpers.root('node_modules/@angular/core/src/facade/async.js')
+      ),
+      new NormalModuleReplacementPlugin(
+        /facade(\\|\/)collection/,
+        helpers.root('node_modules/@angular/core/src/facade/collection.js')
+      ),
+      new NormalModuleReplacementPlugin(
+        /facade(\\|\/)errors/,
+        helpers.root('node_modules/@angular/core/src/facade/errors.js')
+      ),
+      new NormalModuleReplacementPlugin(
+        /facade(\\|\/)lang/,
+        helpers.root('node_modules/@angular/core/src/facade/lang.js')
+      ),
+      new NormalModuleReplacementPlugin(
+        /facade(\\|\/)math/,
+        helpers.root('node_modules/@angular/core/src/facade/math.js')
+      ),
+
+      new LoaderOptionsPlugin({
+        minimize: true,
+        debug: false,
+        options: {
+          htmlLoader: {
+            minimize: true,
+            removeAttributeQuotes: false,
+            caseSensitive: true,
+            customAttrSurround: [
+              [/#/, /(?:)/],
+              [/\*/, /(?:)/],
+              [/\[?\(?/, /(?:)/]
+            ],
+            customAttrAssign: [/\)?\]?=/]
+          },
+
+        }
+      })
     ]
 };

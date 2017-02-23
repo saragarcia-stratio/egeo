@@ -20,7 +20,7 @@ export class GosecPaginationComponent implements OnChanges {
 
    constructor(private cd: ChangeDetectorRef) { }
 
-   ngOnChanges(): void {
+   ngOnChanges(change: any): void {
       this.pagination.limit = this.checkPaginationLimit(); // Check limits
       this.size = (this.SIZE_PER_NUM * this.pagination.limit) + 'px';
       this.createArray(); // create array of pages

@@ -1,0 +1,19 @@
+@import '~egeo-ui-base/utils/colors';
+
+.contains-radio-menu{
+   border: 1px solid egeo-get-color(n2);
+   margin-bottom: 20px;
+}
+
+.radio-menu{
+  height: 150px;
+  margin-bottom: 20px;
+}
+
+.theme-gray-1{
+  background-color: egeo-get-color(n1);
+}
+
+.theme-gray-2{
+  background-color: white;
+}

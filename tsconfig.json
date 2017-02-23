@@ -8,27 +8,30 @@
       "experimentalDecorators": true,
       "noImplicitAny": true,
       "skipLibCheck": true,
-      "baseUrl": "./web",
+      "baseUrl": "./src",
       "paths": {
-         "egeo": [ "../components" ]
+         "egeo": [
+            "../components"
+         ]
       }
-
    },
-
+   "include": [
+      "src/**/*.ts",
+      "components/**/*.ts"
+   ],
    "exclude": [
       "node_modules",
       "coverage",
       "config",
-      "report",
-      "dist"
-   ],
-   "include": [
-      "web/**/*.ts"
+      "target",
+      "temp"
    ],
    "awesomeTypescriptLoaderOptions": {
       "useWebpackText": true
    },
    "compileOnSave": false,
    "buildOnSave": false,
-   "atom": { "rewriteTsconfig": false }
+   "atom": {
+      "rewriteTsconfig": false
+   }
 }

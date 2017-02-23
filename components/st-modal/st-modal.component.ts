@@ -3,12 +3,13 @@ import {
    ComponentRef,
    Input,
    ViewContainerRef,
-   ReflectiveInjector,
+   // ReflectiveInjector,
    Output,
    EventEmitter,
    ViewChild,
    OnDestroy,
-   OnInit
+   OnInit,
+   ComponentFactoryResolver
 } from '@angular/core';
 
 import { StModalConfiguration } from './modal.model';
@@ -29,8 +30,8 @@ export class StModal implements OnDestroy, OnInit {
    @Input() componentOutputs: Object;
    @Input() componentSelector: String;
 
-   @Input() componentFactory: any;
-   @Input() componentInjector: ReflectiveInjector;
+   // @Input() componentFactory: any;
+   // @Input() componentInjector: ReflectiveInjector;
    @Input() qaTag: string;
 
    @ViewChild('stModalBody', { read: ViewContainerRef }) target: ViewContainerRef;
@@ -38,7 +39,7 @@ export class StModal implements OnDestroy, OnInit {
    private componentRef: ComponentRef<any>;
    private moduleType: any;
 
-   constructor() { }
+   constructor(private cfr: ComponentFactoryResolver) { }
 
    getModalSize(): Object {
       if (this.config) {
@@ -85,7 +86,8 @@ export class StModal implements OnDestroy, OnInit {
    private loadBody(): void {
       if (!this.componentRef) {
          this.target.clear();
-         this.componentRef = this.target.createComponent(this.componentFactory, 0, this.componentInjector);
+         let compFactory = this.cfr.resolveComponentFactory(this.component);
+         this.componentRef = this.target.createComponent(compFactory);
          this.bindModalInputs();
       }
    }

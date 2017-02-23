@@ -1,0 +1,31 @@
+import { StHorizontalTab } from 'egeo/components';
+import { StTab } from 'egeo/components';
+
+@Component({
+   selector: 'tab-box-example',
+   templateUrl: './tab-box.component.html',
+   styleUrls: ['tab-box.component.scss']
+})
+
+export class TabBoxComponent {
+   tabs: StTab[];
+   selectedTab: StTab;
+
+   constructor() {
+      this.tabs = [
+         {
+            label: 'Tab1',
+            active: true
+         }, {
+            label: 'Tab2',
+            active: false
+         }
+      ];
+
+      this.selectedTab = this.tabs[0];
+   }
+
+   onSelectTab(tab: StTab): void {
+      this.selectedTab = tab;
+   }
+}

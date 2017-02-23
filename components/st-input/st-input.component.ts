@@ -1,4 +1,15 @@
-import { Component, forwardRef, Input, OnChanges, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import {
+   ChangeDetectionStrategy,
+   ChangeDetectorRef,
+   Component,
+   forwardRef,
+   Input,
+   OnChanges,
+   OnDestroy,
+   OnInit,
+   SimpleChange,
+   SimpleChanges
+} from '@angular/core';
 import { FormControl, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -24,20 +35,19 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
    @Input() qaTag: string;
    @Input() forceValidations: boolean = false;
    @Input() contextualHelp: string;
+   @Input() maxLength: number;
+
+   public isDisabled: boolean = false; // To check disable
+   public focus: boolean = false;
+   public internalControl: FormControl;
+   public internalType: string = 'text';
 
    private sub: Subscription;
    private valueChangeSub: Subscription;
-   private internalControl: FormControl;
    private errorMessage: string = undefined;
    private internalInputModel: any = '';
-   private internalType: string = 'text';
-
-   private focus: boolean = false; // For change style when focus
-
-   private isDisabled: boolean = false; // To check disable
 
    constructor(private _cd: ChangeDetectorRef) { }
-
 
    onChange = (_: any) => { };
    onTouched = () => { };
@@ -50,7 +60,7 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
       this.sub = control.statusChanges.subscribe(() => this.checkErrors(control));
    }
 
-   ngOnChanges(): void {
+   ngOnChanges(change: any): void {
       if (this.forceValidations) {
          this.writeValue(this.internalControl.value);
       }
@@ -98,6 +108,23 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
       this._cd.markForCheck();
    }
 
+   showError(): boolean {
+      return this.errorMessage !== undefined && (!this.internalControl.pristine || this.forceValidations) && !this.focus && !this.isDisabled;
+   }
+
+   /** Style functions */
+   getBarType(): string {
+      return this.showError() ? 'error-bar' : 'normal-bar';
+   }
+
+   onFocus(event: Event): void {
+      this.focus = true;
+   }
+
+   onFocusOut(event: Event): void {
+      this.focus = false;
+   }
+
    // When status change call this function to check if have errors
    private checkErrors(control: FormControl): void {
       let errors: { [key: string]: any } = control.errors;
@@ -136,20 +163,5 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
       return '';
    }
 
-   /** Style functions */
-   private getBarType(): string {
-      return this.showError() ? 'error-bar' : 'normal-bar';
-   }
 
-   private showError(): boolean {
-      return this.errorMessage !== undefined && (!this.internalControl.pristine || this.forceValidations) && !this.focus && !this.isDisabled;
-   }
-
-   private onFocus(event: Event): void {
-      this.focus = true;
-   }
-
-   private onFocusOut(event: Event): void {
-      this.focus = false;
-   }
 }

@@ -1,0 +1,17 @@
+import { Component, ViewEncapsulation } from '@angular/core';
+
+@Component({
+   selector: 'button-example',
+   templateUrl: './button.component.html',
+   styleUrls: ['button.component.scss']
+})
+
+export class ButtonComponent {
+   test1() {
+      console.log('You clicked the button 1!');
+   }
+
+   test2() {
+      console.log('You clicked the button 2!');
+   }
+}

@@ -9,6 +9,7 @@ coverage
 target
 .sass-cache
 dll/
+compiled/
 
 #################
 ## Project

@@ -1,0 +1,186 @@
+<!-- Sidebar -->
+<div class="row">
+  <aside class="sidebar sidebar--open col-xs-3 col-md3 col-lg-3">
+    <div class="sidebar-intro">
+      <a routerLink="/"><img class="text-center logo" src="assets/images/egeo_logo_c.png"></a>
+      <p><a routerLink="/changelog">Version 1.0.0</a></p>
+    </div>
+
+    <nav class="tmp-dropdown-menu">
+      <ul>
+        <li routerLink="/main" class="tmp-dropdown-menu__section" [ngClass]="{'tmp-dropdown-menu__section--active': currentUrl === '/main'}">
+          <div class="tmp-dropdown-menu__section-title">Overview</div>
+        </li>
+
+        <!-- Branding -->
+        <li class="tmp-dropdown-menu__section">
+          <div class="tmp-dropdown-menu__section-title">Branding</div>
+
+          <div class="tmp-dropdown-menu__section-item" [ngClass]="{'tmp-dropdown-menu__section-item--active': currentUrl === '/logo'}">
+            <a routerLink="/logo">Logo</a>
+          </div>
+        </li>
+
+        <!-- Style -->
+        <li class="tmp-dropdown-menu__section">
+          <div class="tmp-dropdown-menu__section-title">Styleguide</div>
+
+          <div class="tmp-dropdown-menu__section-item" [ngClass]="{'tmp-dropdown-menu__section-item--active': currentUrl === '/colors'}">
+            <a routerLink="/colors">Colors</a>
+          </div>
+          <div class="tmp-dropdown-menu__section-item" [ngClass]="{'tmp-dropdown-menu__section-item--active': currentUrl === '/icons'}">
+            <a routerLink="/icons">Icons</a>
+          </div>
+          <div class="tmp-dropdown-menu__section-item" [ngClass]="{'tmp-dropdown-menu__section-item--active': currentUrl === '/typography'}">
+            <a routerLink="/typography">Typography</a>
+          </div>
+          <div class="tmp-dropdown-menu__section-item" [ngClass]="{'tmp-dropdown-menu__section-item--active': currentUrl === '/grid'}">
+            <a routerLink="/grid">Grid</a>
+          </div>
+        </li>
+
+        <!-- UI Catalog -->
+        <li class="tmp-dropdown-menu__section">
+          <div class="tmp-dropdown-menu__section-title">UI Catalog</div>
+
+          <ul class="tmp-dropdown-menu__section-item tmp-dropdown-menu__section-item--submenu" [ngClass]="{'tmp-dropdown-menu__section-item--open': isButtonsOpened}">
+            <div (click)="isButtonsOpened = !isButtonsOpened">Buttons<i class="icon icon-arrow2_down"></i></div>
+
+            <ul class="tmp-dropdown-submenu" *ngIf="isButtonsOpened">
+              <li class="tmp-dropdown-submenu-item" [ngClass]="{'tmp-dropdown-submenu-item--active': currentUrl === '/button'}">
+                <a routerLink="/button">Buttons</a>
+              </li>
+              <li class="tmp-dropdown-submenu-item" [ngClass]="{'tmp-dropdown-submenu-item--active': currentUrl === '/toggle-buttons'}">
+                <a routerLink="/toggle-buttons">Toggle buttons</a>
+              </li>
+            </ul>
+          </ul>
+
+          <ul class="tmp-dropdown-menu__section-item tmp-dropdown-menu__section-item--submenu" [ngClass]="{'tmp-dropdown-menu__section-item--open': isFormsOpened}">
+            <div (click)="isFormsOpened = !isFormsOpened">Forms<i class="icon icon-arrow2_down"></i></div>
+
+            <ul class="tmp-dropdown-submenu" *ngIf="isFormsOpened">
+              <li class="tmp-dropdown-submenu-item" [ngClass]="{'tmp-dropdown-submenu-item--active': currentUrl === '/input'}">
+                <a routerLink="/input">Input</a>
+              </li>
+            </ul>
+          </ul>
+
+          <ul class="tmp-dropdown-menu__section-item tmp-dropdown-menu__section-item--submenu" [ngClass]="{'tmp-dropdown-menu__section-item--open': isFeedbackOpened}">
+            <div (click)="isFeedbackOpened = !isFeedbackOpened">Feedback<i class="icon icon-arrow2_down"></i></div>
+
+            <ul class="tmp-dropdown-submenu" *ngIf="isFeedbackOpened">
+              <li class="tmp-dropdown-submenu-item" [ngClass]="{'tmp-dropdown-submenu-item--active': currentUrl === '/spinner'}">
+                <a routerLink="/spinner">Spinner</a>
+              </li>
+            </ul>
+          </ul>
+
+          <div class="tmp-dropdown-menu__section-item" [ngClass]="{'tmp-dropdown-menu__section-item--active': currentUrl === '/footer'}">
+            <a routerLink="/footer">Footer</a>
+          </div>
+
+          <div class="tmp-dropdown-menu__section-item" [ngClass]="{'tmp-dropdown-menu__section-item--active': currentUrl === '/info-box'}">
+            <a routerLink="/info-box">Info box</a>
+          </div>
+
+          <div class="tmp-dropdown-menu__section-item" [ngClass]="{'tmp-dropdown-menu__section-item--active': currentUrl === '/info-card'}">
+            <a routerLink="/info-card">Info card</a>
+          </div>
+
+          <div class="tmp-dropdown-menu__section-item" [ngClass]="{'tmp-dropdown-menu__section-item--active': currentUrl === '/dropdown'}">
+            <a routerLink="/dropdown">DropDown</a>
+          </div>
+
+          <div class="tmp-dropdown-menu__section-item" [ngClass]="{'tmp-dropdown-menu__section-item--active': currentUrl === '/dropdown-menu'}">
+            <a routerLink="/dropdown-menu">DropDown Menu</a>
+          </div>
+
+          <ul class="tmp-dropdown-menu__section-item tmp-dropdown-menu__section-item--submenu" [ngClass]="{'tmp-dropdown-menu__section-item--open': isUtilsOpened}">
+            <div (click)="isUtilsOpened = !isUtilsOpened">Utils<i class="icon icon-arrow2_down"></i></div>
+
+            <ul class="tmp-dropdown-submenu" *ngIf="isUtilsOpened">
+              <li class="tmp-dropdown-submenu-item" [ngClass]="{'tmp-dropdown-submenu-item--active': currentUrl === '/regexp'}">
+                <a routerLink="/regexp">Regular expressions</a>
+              </li>
+            </ul>
+          </ul>
+
+          <ul class="tmp-dropdown-menu__section-item tmp-dropdown-menu__section-item--submenu" [ngClass]="{'tmp-dropdown-menu__section-item--open': isNavigationOpened}">
+            <div (click)="isNavigationOpened = !isNavigationOpened">Navigation<i class="icon icon-arrow2_down"></i></div>
+            <ul class="tmp-dropdown-submenu" *ngIf="isNavigationOpened">
+
+              <li class="tmp-dropdown-submenu-item" [ngClass]="{'tmp-dropdown-submenu-item--active': currentUrl === '/navigation/header'}">
+                <a routerLink="/navigation/header">Header</a>
+              </li>
+
+              <li class="tmp-dropdown-submenu-item" [ngClass]="{'tmp-dropdown-submenu-item--active': currentUrl === '/navigation/radio-menu'}">
+                <a routerLink="/navigation/radio-menu">Radio menu</a>
+              </li>
+
+              <li class="tmp-dropdown-submenu-item" [ngClass]="{'tmp-dropdown-submenu-item--active': currentUrl === '/navigation/horizontal-tabs'}">
+                <a routerLink="/navigation/horizontal-tabs">Horizontal tabs</a>
+              </li>
+            </ul>
+          </ul>
+
+          <ul class="tmp-dropdown-menu__section-item tmp-dropdown-menu__section-item--submenu" [ngClass]="{'tmp-dropdown-menu__section-item--open': isTabsOpened}">
+            <div (click)="isTabsOpened = !isTabsOpened">Tabs<i class="icon icon-arrow2_down"></i></div>
+
+            <ul class="tmp-dropdown-submenu" *ngIf="isTabsOpened">
+              <li class="tmp-dropdown-submenu-item" [ngClass]="{'tmp-dropdown-submenu-item--active': currentUrl === '/tab-box'}">
+                <a routerLink="/tab-box">Tab Box</a>
+              </li>
+              <li class="tmp-dropdown-submenu-item" [ngClass]="{'tmp-dropdown-submenu-item--active': currentUrl === '/vertical-tabs'}">
+                <a routerLink="/vertical-tabs">Vertical tabs</a>
+              </li>
+            </ul>
+          </ul>
+
+          <div class="tmp-dropdown-menu__section-item" [ngClass]="{'tmp-dropdown-menu__section-item--active': currentUrl === '/tooltip'}">
+            <a routerLink="/tooltip">Tooltip</a>
+          </div>
+
+          <div class="tmp-dropdown-menu__section-item" [ngClass]="{'tmp-dropdown-menu__section-item--active': currentUrl === '/page-title'}">
+            <a routerLink="/page-title">Page title</a>
+          </div>
+
+          <div class="tmp-dropdown-menu__section-item" [ngClass]="{'tmp-dropdown-menu__section-item--active': currentUrl === '/pagination'}">
+            <a routerLink="/pagination">Pagination</a>
+          </div>
+
+          <div class="tmp-dropdown-menu__section-item" [ngClass]="{'tmp-dropdown-menu__section-item--active': currentUrl === '/search'}">
+            <a routerLink="/search">Search</a>
+          </div>
+
+          <!--<div class="tmp-dropdown-menu__section-item" [ngClass]="{'tmp-dropdown-menu__section-item--active': currentUrl === '/modal'}">
+            <a routerLink="/modal">Modals</a>
+          </div>-->
+          <!--<div class="tmp-dropdown-menu__section-item" [ngClass]="{'tmp-dropdown-menu__section-item--active': currentUrl === '/two-list-selection'}">
+            <a routerLink="/two-list-selection">Two list selection</a>
+          </div>-->
+          <!--<div class="tmp-dropdown-menu__section-item" [ngClass]="{'tmp-dropdown-menu__section-item--active': currentUrl === '/list'}">
+            <a routerLink="/list">Table</a>
+          </div>-->
+        </li>
+      </ul>
+    </nav>
+  </aside>
+  <!-- /#sidebar-wrapper
+         Page Content -->
+  <div class="page-content-wrapper col-xs-9 col-md-9 col-lg-9">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <ng-content></ng-content>
+
+          <footer class="page-footer">
+            Feedback? email us at <a href="mailto:egeo@stratio.com">egeo@stratio.com</a>.
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /#page-content-wrapper -->
+</div>

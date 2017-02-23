@@ -3,23 +3,34 @@
       "target": "es5",
       "module": "commonjs",
       "moduleResolution": "node",
-      "sourceMap": true,
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
+      "allowSyntheticDefaultImports": true,
+      "sourceMap": true,
+      "declaration": true,
+      "importHelpers": true,
+      "declarationDir": "./lib",
       "noImplicitAny": true,
       "skipLibCheck": true
    },
-
+   "include": [
+      "components/**/*.ts"
+   ],
    "exclude": [
       "node_modules",
-      "coverage",
-      "config",
-      "report",
-      "dist",
-      "bundle",
-      "web"
+      "target",
+      "src",
+      "lib",
+      "components/**/*.spec.ts",
+      "components/**/*.e2e.ts"
    ],
+   "awesomeTypescriptLoaderOptions": {
+      "forkChecker": true,
+      "useWebpackText": true
+   },
    "compileOnSave": false,
    "buildOnSave": false,
-   "atom": { "rewriteTsconfig": false }
+   "atom": {
+      "rewriteTsconfig": false
+   }
 }

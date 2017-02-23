@@ -15,16 +15,16 @@ export class StSearchComponent implements OnChanges, OnDestroy, OnInit {
    @Input() debounce: number = 0;
    @Input() minLength: number = 0;
    @Input() hasClearButton: boolean = false;
-   @Input() value: string; 
+   @Input() value: string;
 
    @Output() search: EventEmitter<string> = new EventEmitter<string>();
 
-   private searchBox: FormControl = new FormControl();
-   private sub: Subscription | undefined = undefined;
-   private focus: Boolean;
+   public searchBox: FormControl = new FormControl();
+   public focus: Boolean;
 
+   private sub: Subscription | undefined = undefined;
    private lastEmited: string | undefined = undefined;
-   
+
    // Its necesary check null because value is any type.
    public launchSearch(): void {
       /* tslint:disable:no-null-keyword */
@@ -76,9 +76,10 @@ export class StSearchComponent implements OnChanges, OnDestroy, OnInit {
       }
    }
 
-   private updateValue(changes: SimpleChanges) {
-      if (changes['value']) {
-         this.searchBox.setValue(changes['value'].currentValue);
+   private updateValue(changes: SimpleChanges): void {
+      let prop: string = 'value';
+      if (changes[prop]) {
+         this.searchBox.setValue(changes[prop].currentValue);
       }
    }
 

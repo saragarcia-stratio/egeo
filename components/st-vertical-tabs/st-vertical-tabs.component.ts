@@ -33,7 +33,7 @@ export class StVerticalTabsComponent implements OnInit {
       }
    }
 
-   ngOnChanges(changes: { activeOption: SimpleChange }): void {
+   ngOnChanges(changes: any): void {
       if (changes && changes.activeOption) {
          this.changeActive(changes.activeOption.currentValue);
       }

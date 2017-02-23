@@ -18,8 +18,11 @@ import { StTooltipModule } from './st-tooltip';
 import { StTwoListSelectionModule } from './st-two-list-selection';
 import { StVerticalTabsModule } from './st-vertical-tabs';
 import { StPaginationModule } from './st-pagination';
+import { StModalModule } from './st-modal/st-modal.module';
 
-export const DECLARATIONS = [
+
+
+export const DECLARATIONS: Array<any> = [
    StButtonModule,
    StDropdownModule,
    StDropdownMenuModule,
@@ -39,5 +42,6 @@ export const DECLARATIONS = [
    StTooltipModule,
    StTwoListSelectionModule,
    StVerticalTabsModule,
-   StPaginationModule
+   StPaginationModule,
+   StModalModule
 ];

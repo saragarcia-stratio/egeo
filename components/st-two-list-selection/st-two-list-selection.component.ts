@@ -21,8 +21,8 @@ export class StTwoListSelectionComponent {
   @Input() searchButtonLabel: string;
   @Input() qaTag: string;
 
+  public selectedSearchText: string;
   private completeSearchText: string;
-  private selectedSearchText: string;
 
   private listToAdd: Array<StTwoListSelectionElement> = new Array<StTwoListSelectionElement>();
   private listToRemove: Array<StTwoListSelectionElement> = new Array<StTwoListSelectionElement>();

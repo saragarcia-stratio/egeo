@@ -19,6 +19,7 @@
                   [(ngModel)]="model.name"
                   [pattern]="textWithoutSpaces"
                   contextualHelp="This is the contextual help of the name"
+                  [maxLength]="maxLength"
                ></st-input>
 
                <st-input
@@ -58,6 +59,7 @@
                   qaTag="description-input"
                   contextualHelp="This is the contextual help of the description"
                   formControlName="description"
+                  maxLength="20"
                ></st-input>
 
                <st-input

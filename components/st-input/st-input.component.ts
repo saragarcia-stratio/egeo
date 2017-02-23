@@ -24,6 +24,7 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
    @Input() qaTag: string;
    @Input() forceValidations: boolean = false;
    @Input() contextualHelp: string;
+   @Input() maxLength: number;
 
    private sub: Subscription;
    private valueChangeSub: Subscription;

@@ -23,6 +23,7 @@ export class InputComponent implements OnInit {
    public disabledPlaceholder: string = 'Field disabled';
    public minLength: number = 3;
    public isDisabled: boolean = false;
+   public maxLength: number = 18;
 
    public forceValidations: boolean = false;
 

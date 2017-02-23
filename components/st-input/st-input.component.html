@@ -7,7 +7,7 @@
          </st-tooltip>
          <span *ngIf="!contextualHelp">{{label}}</span>
       </label>
-      <input (focus)="onFocus($event)" (focusout)="onFocusOut($event)" (blur)="onFocusOut($event)" [formControl]="internalControl"
+      <input #input (focus)="onFocus($event)" (focusout)="onFocusOut($event)" (blur)="onFocusOut($event)" [formControl]="internalControl"
          class="remove-default-style" [ngClass]="{disabled: isDisabled}"
          [placeholder]="placeholder" [name]="name" [attr.type]="internalType" [attr.maxlength]="maxLength" [attr.id]="qaTag">
 

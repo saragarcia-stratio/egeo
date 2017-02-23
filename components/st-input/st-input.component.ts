@@ -7,8 +7,10 @@ import {
    OnChanges,
    OnDestroy,
    OnInit,
+   AfterViewInit,
    SimpleChange,
-   SimpleChanges
+   SimpleChanges,
+   ViewChildren
 } from '@angular/core';
 import { FormControl, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -25,6 +27,7 @@ import { StInputError } from './st-input.error.model';
    ],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
+
 export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit, OnDestroy {
 
    @Input() placeholder: string = '';
@@ -36,6 +39,9 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
    @Input() forceValidations: boolean = false;
    @Input() contextualHelp: string;
    @Input() maxLength: number;
+   @Input() isFocused: boolean = false;
+
+   @ViewChildren('input') vc: any;
 
    public isDisabled: boolean = false; // To check disable
    public focus: boolean = false;
@@ -71,6 +77,13 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
       this.internalControl = new FormControl(this.internalInputModel);
       this.internalType = this.fieldType === 'password' ? 'password' : 'text';
       this.valueChangeSub = this.internalControl.valueChanges.subscribe((value) => this.onChange(value));
+   }
+
+   ngAfterViewInit(): void {
+      if (this.isFocused) {
+         this.focus = true;
+         this.vc.first.nativeElement.focus();
+      }
    }
 
    ngOnDestroy(): void {

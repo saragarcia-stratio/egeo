@@ -8,7 +8,9 @@
          <form #templateDrivenForm="ngForm" novalidate autocomplete="off" (ngSubmit)="onSubmitTemplateBased()" class="col-md-3">
             <div class="form-group">
                <st-input
+                  #input
                   label="Name"
+                  isFocused="true"
                   placeholder="Project name"
                   [forceValidations]="forceValidations"
                   [errors]="errors"

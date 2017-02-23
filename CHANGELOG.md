@@ -2,7 +2,7 @@
 
 ## 1.1.0 (upcoming)
 
-* Pending changelog
+* Add isFocused parameter on input component to set the focus on the input.
 
 ## 1.0.0 (February 23, 2017)
 

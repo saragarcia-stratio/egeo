@@ -44,6 +44,7 @@ export class InputComponent implements OnInit {
          inputs: [
             { paramName: 'placeholder', type: TYPES.STR, required: false, details: 'The text that appera as placeholder of the input, default empty' },
             { paramName: 'name', type: TYPES.STR, required: true, details: 'Name of the input' },
+            { paramName: 'isFocused', type: TYPES.BOOL, required: false, details: 'If true, the input will be focused on view init.' },
             { paramName: 'label', type: TYPES.STR, required: false, details: 'Label to show over the input, default empty' },
             { paramName: 'fieldType', type: TYPES.STR, required: false, details: 'Input field type, posible values are: string, number or password, default value is string' },
             { paramName: 'errors', type: 'StInputError', required: false, details: 'Error to show in every error case, if you don\'t provide this parameter, default behaivor is change color only without message' },

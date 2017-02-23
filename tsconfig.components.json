@@ -1,18 +1,22 @@
 {
    "compilerOptions": {
+      "module": "es2015",
       "target": "es5",
-      "module": "commonjs",
       "moduleResolution": "node",
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
-      "allowSyntheticDefaultImports": true,
-      "sourceMap": true,
       "declaration": true,
-      "importHelpers": true,
-      "declarationDir": "./lib",
+      "outDir": "./lib",
       "noImplicitAny": true,
-      "skipLibCheck": true
+      "skipDefaultLibCheck": true,
+      "skipLibCheck": true,
+      "allowSyntheticDefaultImports": true
    },
+   "lib": [
+      "es2015",
+      "dom"
+   ],
+
    "include": [
       "components/**/*.ts"
    ],
@@ -27,6 +31,9 @@
    "awesomeTypescriptLoaderOptions": {
       "forkChecker": true,
       "useWebpackText": true
+   },
+   "angularCompilerOptions": {
+      "genDir": "./temp/compiled"
    },
    "compileOnSave": false,
    "buildOnSave": false,

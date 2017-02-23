@@ -46,7 +46,7 @@ export class PaginationComponent implements OnInit {
    }
 
    generateItems(n: number): Array<any> {
-      let items = [];
+      let items: Array<any> = [];
 
       for (let i = 1; i <= n; i++) {
          items.push({

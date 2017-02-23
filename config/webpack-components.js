@@ -11,6 +11,7 @@ const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ngcWebpack = require('ngc-webpack');
 
 module.exports = {
     devtool: 'source-map',
@@ -23,9 +24,7 @@ module.exports = {
 
     output: {
         path: './lib',
-        publicPath: '/',
         filename: 'egeo.js',
-        libraryTarget: 'commonjs2',
         library: 'egeo'
     },
 
@@ -77,28 +76,6 @@ module.exports = {
             /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
             helpers.root('./components')
         ),
-        new UglifyJsPlugin({
-        beautify: false, //prod
-        output: {
-          comments: false
-        }, //prod
-        mangle: {
-          screw_ie8: true
-        }, //prod
-        compress: {
-          screw_ie8: true,
-          warnings: false,
-          conditionals: true,
-          unused: true,
-          comparisons: true,
-          sequences: true,
-          dead_code: true,
-          evaluate: true,
-          if_return: true,
-          join_vars: true,
-          negate_iife: false
-        },
-      }),
       new ContextReplacementPlugin(
         /angular(\\|\/)core(\\|\/)src(\\|\/)linker/,
         helpers.root('components'), // location of your web
@@ -136,6 +113,11 @@ module.exports = {
         /facade(\\|\/)math/,
         helpers.root('node_modules/@angular/core/src/facade/math.js')
       ),
+      new ngcWebpack.NgcWebpackPlugin({
+        disabled: false,
+        tsConfig: helpers.root('tsconfig.components.json'),
+        resourceOverride: helpers.root('config/resource-override.js')
+      }),
 
       new LoaderOptionsPlugin({
         minimize: true,

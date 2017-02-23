@@ -99,7 +99,7 @@ export class InputComponent implements OnInit {
 }
 
 
-interface MyModel {
+export interface MyModel {
    name: string;
    description: string;
    components: number;

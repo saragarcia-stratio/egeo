@@ -9,6 +9,7 @@
       "noImplicitAny": true,
       "skipLibCheck": true,
       "baseUrl": "./src",
+
       "paths": {
          "egeo": [
             "../components"

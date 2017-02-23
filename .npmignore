@@ -18,6 +18,8 @@ config
 web
 temp
 dist
+lib/components
+lib/**/*.js
 
 .editorconfig
 .gitignore

@@ -4,7 +4,7 @@
 
 * Pending changelog
 
-## 1.0.0 (upcoming)
+## 1.0.0 (February 23, 2017)
 
 * Modularize all components
 * Add Button Clear in Search Component

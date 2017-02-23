@@ -1,6 +1,6 @@
 {
   "name": "egeo",
-  "version": "1.0.0-RC1",
+  "version": "1.0.0",
   "description": "Egeo Library. Common components, styles, fonts and website",
   "author": "Stratio",
   "scripts": {

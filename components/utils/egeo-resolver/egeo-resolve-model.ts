@@ -6,5 +6,6 @@ export interface EgeoResolverKeys {
    resolved?: any;
 }
 
-export type TranslateFunctionType = (key: string | string[], interpolateParams?: Object) => Observable<any>;
-export type TranslateServiceType = { get: TranslateFunctionType };
+export interface TranslateServiceType {
+   get(key: string | string[], interpolateParams?: Object): Observable<any>;
+};

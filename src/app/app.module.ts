@@ -1,4 +1,5 @@
 import { NgModule, ApplicationRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HttpModule, Http } from '@angular/http';
@@ -67,6 +68,7 @@ import { Component2Module, Component2 } from './+examples/modal/shared/component
 @NgModule({
    imports: [
       BrowserModule,
+      CommonModule,
       LayoutModule,
       HttpModule,
       EgeoModule.forRoot(),

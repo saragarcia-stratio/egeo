@@ -1,5 +1,5 @@
 const helpers = require('./helpers'),
-    webpack = require('webpack');
+   webpack = require('webpack');
 
 /**
  * Webpack Plugins
@@ -14,128 +14,153 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ngcWebpack = require('ngc-webpack');
 
 module.exports = {
-    devtool: 'source-map',
+   devtool: 'source-map',
 
-    resolve: {
-        extensions: ['.ts', '.js']
-    },
+   resolve: {
+      extensions: ['.ts', '.js']
+   },
 
-    entry: './components/index.ts',
+   entry: './components/index.ts',
 
-    output: {
-        path: './lib',
-        filename: 'egeo.js',
-        library: 'egeo'
-    },
+   output: {
+      path: './lib',
+      publicPath: '/',
+      filename: 'egeo.js',
+      libraryTarget: 'commonjs2',
+      library: 'egeo'
+   },
 
-    // require those dependencies but don't bundle them
-    externals: [/^\@angular\//, /^rxjs\//, /^lodash/],
+   // require those dependencies but don't bundle them
+   externals: [/^\@angular\//, /^rxjs\//, /^lodash/],
 
-    module: {
-        rules: [
-             {
-          test: /\.ts$/,
-          use: [
-            {
-              loader: 'awesome-typescript-loader',
-              options: {
-                configFileName: 'tsconfig.components.json'
-              }
-            },
-            {
-              loader: 'angular2-template-loader'
-            }
-          ],
-          exclude: [/\.(spec|e2e)\.ts$/]
-        },
-            {
-               test: /\.html$/,
-               use: ['raw-loader'],
-               exclude: [helpers.root('src')]
-            },
-            {
-          test: /\.css$/,
-          use: ['to-string-loader', 'css-loader'],
-          exclude: [helpers.root('src')]
-        },
-        {
-          test: /\.scss$/,
-          use: ['to-string-loader', 'css-loader', 'sass-loader'],
-          exclude: [helpers.root('src')]
-        },
-            {
-               test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-               use: "file-loader?name=assets/fonts/[name].[hash].[ext]"
-            }
-        ]
-    },
+   module: {
+      rules: [
+         {
+            test: /\.ts$/,
+            use: [
+               {
+                  loader: 'awesome-typescript-loader',
+                  options: {
+                     configFileName: 'tsconfig.components.json'
+                  }
+               },
+               {
+                  loader: 'angular2-template-loader'
+               }
+            ],
+            exclude: [/\.(spec|e2e)\.ts$/]
+         },
+         {
+            test: /\.html$/,
+            use: ['raw-loader'],
+            exclude: [helpers.root('src')]
+         },
+         {
+            test: /\.css$/,
+            use: ['to-string-loader', 'css-loader'],
+            exclude: [helpers.root('src')]
+         },
+         {
+            test: /\.scss$/,
+            use: ['to-string-loader', 'css-loader', 'sass-loader'],
+            exclude: [helpers.root('src')]
+         },
+         {
+            test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+            use: "file-loader?name=assets/fonts/[name].[hash].[ext]"
+         }
+      ]
+   },
 
-    plugins: [
-        // fix the warning in ./~/@angular/core/src/linker/system_js_ng_module_factory_loader.js
-        new webpack.ContextReplacementPlugin(
-            /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-            helpers.root('./components')
-        ),
-      new ContextReplacementPlugin(
-        /angular(\\|\/)core(\\|\/)src(\\|\/)linker/,
-        helpers.root('components'), // location of your web
-        { }
+   plugins: [
+      // fix the warning in ./~/@angular/core/src/linker/system_js_ng_module_factory_loader.js
+      new webpack.ContextReplacementPlugin(
+         /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+         helpers.root('./components')
       ),
-
-       new NormalModuleReplacementPlugin(
-        /angular2-hmr/,
-        helpers.root('config/empty.js')
+      new ContextReplacementPlugin(
+         /angular(\\|\/)core(\\|\/)src(\\|\/)linker/,
+         helpers.root('components'), // location of your web
+         {}
       ),
 
       new NormalModuleReplacementPlugin(
-        /zone\.js(\\|\/)dist(\\|\/)long-stack-trace-zone/,
-        helpers.root('config/empty.js')
+         /angular2-hmr/,
+         helpers.root('config/empty.js')
+      ),
+
+      new NormalModuleReplacementPlugin(
+         /zone\.js(\\|\/)dist(\\|\/)long-stack-trace-zone/,
+         helpers.root('config/empty.js')
       ),
 
       // Fix Angular 2
       new NormalModuleReplacementPlugin(
-        /facade(\\|\/)async/,
-        helpers.root('node_modules/@angular/core/src/facade/async.js')
+         /facade(\\|\/)async/,
+         helpers.root('node_modules/@angular/core/src/facade/async.js')
       ),
       new NormalModuleReplacementPlugin(
-        /facade(\\|\/)collection/,
-        helpers.root('node_modules/@angular/core/src/facade/collection.js')
+         /facade(\\|\/)collection/,
+         helpers.root('node_modules/@angular/core/src/facade/collection.js')
       ),
       new NormalModuleReplacementPlugin(
-        /facade(\\|\/)errors/,
-        helpers.root('node_modules/@angular/core/src/facade/errors.js')
+         /facade(\\|\/)errors/,
+         helpers.root('node_modules/@angular/core/src/facade/errors.js')
       ),
       new NormalModuleReplacementPlugin(
-        /facade(\\|\/)lang/,
-        helpers.root('node_modules/@angular/core/src/facade/lang.js')
+         /facade(\\|\/)lang/,
+         helpers.root('node_modules/@angular/core/src/facade/lang.js')
       ),
       new NormalModuleReplacementPlugin(
-        /facade(\\|\/)math/,
-        helpers.root('node_modules/@angular/core/src/facade/math.js')
+         /facade(\\|\/)math/,
+         helpers.root('node_modules/@angular/core/src/facade/math.js')
       ),
       new ngcWebpack.NgcWebpackPlugin({
-        disabled: false,
-        tsConfig: helpers.root('tsconfig.components.json'),
-        resourceOverride: helpers.root('config/resource-override.js')
+         disabled: false,
+         tsConfig: helpers.root('tsconfig.components.json'),
+         resourceOverride: helpers.root('config/resource-override.js')
+      }),
+
+      new UglifyJsPlugin({
+         beautify: false, //prod
+         output: {
+            comments: false
+         }, //prod
+         mangle: {
+            screw_ie8: true
+         }, //prod
+         compress: {
+            screw_ie8: true,
+            warnings: false,
+            conditionals: true,
+            unused: true,
+            comparisons: true,
+            sequences: true,
+            dead_code: true,
+            evaluate: true,
+            if_return: true,
+            join_vars: true,
+            negate_iife: false
+         },
       }),
 
       new LoaderOptionsPlugin({
-        minimize: true,
-        debug: false,
-        options: {
-          htmlLoader: {
-            minimize: true,
-            removeAttributeQuotes: false,
-            caseSensitive: true,
-            customAttrSurround: [
-              [/#/, /(?:)/],
-              [/\*/, /(?:)/],
-              [/\[?\(?/, /(?:)/]
-            ],
-            customAttrAssign: [/\)?\]?=/]
-          },
+         minimize: true,
+         debug: false,
+         options: {
+            htmlLoader: {
+               minimize: true,
+               removeAttributeQuotes: false,
+               caseSensitive: true,
+               customAttrSurround: [
+                  [/#/, /(?:)/],
+                  [/\*/, /(?:)/],
+                  [/\[?\(?/, /(?:)/]
+               ],
+               customAttrAssign: [/\)?\]?=/]
+            },
 
-        }
+         }
       })
-    ]
+   ]
 };

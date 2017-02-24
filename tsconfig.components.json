@@ -16,7 +16,6 @@
       "es2015",
       "dom"
    ],
-
    "include": [
       "components/**/*.ts"
    ],

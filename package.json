@@ -13,7 +13,7 @@
       "clean:temp": "rimraf temp",
       "build": "npm run clean && npm run webpack:doc:aot && npm run webpack:lib",
       "build:doc": "npm run clean:doc && npm run clean:aot && npm run webpack:doc:aot",
-      "build:lib": "npm run clean:lib && npm run webpack:lib",
+      "build:lib": "npm run clean:lib && npm run clean:aot && npm run webpack:lib",
       "webpack:doc:aot": "webpack --config config/webpack/webpack.prod.js  --progress --profile --bail",
       "webpack:lib": "webpack --config config/webpack-components.js  --no-color --bail",
       "lint": "tslint -c ./tslint.json -e 'node_modules' --type-check -t stylish '{web,components}/**/*.ts'",

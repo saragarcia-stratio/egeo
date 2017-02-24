@@ -68,7 +68,6 @@ import { Component2Module, Component2 } from './+examples/modal/shared/component
 @NgModule({
    imports: [
       BrowserModule,
-      CommonModule,
       LayoutModule,
       HttpModule,
       EgeoModule.forRoot(),

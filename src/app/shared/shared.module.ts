@@ -12,6 +12,6 @@ import { LoadCodeComponent } from './load-code';
       ApiDocComponent,
       ParametersTableComponent
    ],
-   exports: [LoadCodeComponent, ApiDocComponent, CommonModule, EgeoModule]
+   exports: [CommonModule, LoadCodeComponent, ApiDocComponent, EgeoModule]
 })
 export class SharedModule { }

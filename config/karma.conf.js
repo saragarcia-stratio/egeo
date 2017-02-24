@@ -53,6 +53,7 @@ module.exports = function (config) {
       browserDisconnectTimeout: 30000, // default 2000
       browserDisconnectTolerance: 1, // default 0
       browserNoActivityTimeout: 100000, //default 10000
+      captureTimeout: 100000,
 
       singleRun: true
    };

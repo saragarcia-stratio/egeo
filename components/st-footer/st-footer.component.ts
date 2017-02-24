@@ -5,8 +5,8 @@ import { StFooterLink } from './st-footer.model';
 
 @Component({
   selector: 'st-footer',
-  templateUrl: 'st-footer.component.html',
-  styleUrls: ['st-footer.component.scss'],
+  templateUrl: './st-footer.component.html',
+  styleUrls: ['./st-footer.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StFooterComponent {

@@ -24,7 +24,6 @@ module.exports = {
 
    output: {
       path: './lib',
-      publicPath: '/',
       filename: 'egeo.js',
       libraryTarget: 'commonjs2',
       library: 'egeo'
@@ -73,27 +72,11 @@ module.exports = {
    },
 
    plugins: [
-      // fix the warning in ./~/@angular/core/src/linker/system_js_ng_module_factory_loader.js
-      new webpack.ContextReplacementPlugin(
-         /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-         helpers.root('./components')
-      ),
       new ContextReplacementPlugin(
          /angular(\\|\/)core(\\|\/)src(\\|\/)linker/,
          helpers.root('components'), // location of your web
          {}
       ),
-
-      new NormalModuleReplacementPlugin(
-         /angular2-hmr/,
-         helpers.root('config/empty.js')
-      ),
-
-      new NormalModuleReplacementPlugin(
-         /zone\.js(\\|\/)dist(\\|\/)long-stack-trace-zone/,
-         helpers.root('config/empty.js')
-      ),
-
       // Fix Angular 2
       new NormalModuleReplacementPlugin(
          /facade(\\|\/)async/,
@@ -115,52 +98,62 @@ module.exports = {
          /facade(\\|\/)math/,
          helpers.root('node_modules/@angular/core/src/facade/math.js')
       ),
+
       new ngcWebpack.NgcWebpackPlugin({
          disabled: false,
-         tsConfig: helpers.root('tsconfig.components.json'),
-         resourceOverride: helpers.root('config/resource-override.js')
+         tsConfig: helpers.root('tsconfig.components.json')
       }),
 
-      new UglifyJsPlugin({
-         beautify: false, //prod
-         output: {
-            comments: false
-         }, //prod
-         mangle: {
-            screw_ie8: true
-         }, //prod
-         compress: {
-            screw_ie8: true,
-            warnings: false,
-            conditionals: true,
-            unused: true,
-            comparisons: true,
-            sequences: true,
-            dead_code: true,
-            evaluate: true,
-            if_return: true,
-            join_vars: true,
-            negate_iife: false
-         },
-      }),
+            new NormalModuleReplacementPlugin(
+        /angular2-hmr/,
+        helpers.root('config/empty.js')
+      ),
+
+      new NormalModuleReplacementPlugin(
+        /zone\.js(\\|\/)dist(\\|\/)long-stack-trace-zone/,
+        helpers.root('config/empty.js')
+      ),
 
       new LoaderOptionsPlugin({
-         minimize: true,
-         debug: false,
-         options: {
-            htmlLoader: {
-               minimize: true,
-               removeAttributeQuotes: false,
-               caseSensitive: true,
-               customAttrSurround: [
-                  [/#/, /(?:)/],
-                  [/\*/, /(?:)/],
-                  [/\[?\(?/, /(?:)/]
-               ],
-               customAttrAssign: [/\)?\]?=/]
-            },
+        minimize: true,
+        debug: false,
+        options: {
+          htmlLoader: {
+            minimize: true,
+            removeAttributeQuotes: false,
+            caseSensitive: true,
+            customAttrSurround: [
+              [/#/, /(?:)/],
+              [/\*/, /(?:)/],
+              [/\[?\(?/, /(?:)/]
+            ],
+            customAttrAssign: [/\)?\]?=/]
+          },
 
-         }
+        }
       })
+
+      // new UglifyJsPlugin({
+      //    beautify: false, //prod
+      //    output: {
+      //       comments: false
+      //    }, //prod
+      //    mangle: {
+      //       screw_ie8: true
+      //    }, //prod
+      //    compress: {
+      //       screw_ie8: true,
+      //       warnings: false,
+      //       conditionals: true,
+      //       unused: true,
+      //       comparisons: true,
+      //       sequences: true,
+      //       dead_code: true,
+      //       evaluate: true,
+      //       if_return: true,
+      //       join_vars: true,
+      //       negate_iife: false
+      //    },
+      // }),
    ]
 };

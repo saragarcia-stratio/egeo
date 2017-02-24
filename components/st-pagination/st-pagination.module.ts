@@ -9,7 +9,7 @@ import { StButtonModule } from '../st-button';
 import { StDropdownModule } from '../st-dropdown';
 
 @NgModule({
-   imports: [ StButtonModule, StDropdownModule, CommonModule ],
+   imports: [ CommonModule, StButtonModule, StDropdownModule ],
    exports: [ StPaginationComponent, StPaginationPipe ],
    declarations: [ StPaginationComponent, StPaginationPipe ],
    providers: [

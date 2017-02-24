@@ -23,7 +23,7 @@ module.exports = {
    entry: './components/index.ts',
 
    output: {
-      path: './lib',
+      path: './dist/bundle',
       filename: 'egeo.js',
       libraryTarget: 'commonjs2',
       library: 'egeo'
@@ -33,12 +33,10 @@ module.exports = {
    externals: [/^\@angular\//, /^rxjs\//, /^lodash/],
 
    module: {
-      rules: [
-         {
+      rules: [{
             test: /\.ts$/,
-            use: [
-               {
-                  loader: 'awesome-typescript-loader',
+            use: [{
+                  loader: 'awesome-typescript-loader?declaration=false',
                   options: {
                      configFileName: 'tsconfig.components.json'
                   }
@@ -99,61 +97,55 @@ module.exports = {
          helpers.root('node_modules/@angular/core/src/facade/math.js')
       ),
 
-      new ngcWebpack.NgcWebpackPlugin({
-         disabled: false,
-         tsConfig: helpers.root('tsconfig.components.json')
-      }),
-
-            new NormalModuleReplacementPlugin(
-        /angular2-hmr/,
-        helpers.root('config/empty.js')
+      new NormalModuleReplacementPlugin(
+         /angular2-hmr/,
+         helpers.root('config/empty.js')
       ),
 
       new NormalModuleReplacementPlugin(
-        /zone\.js(\\|\/)dist(\\|\/)long-stack-trace-zone/,
-        helpers.root('config/empty.js')
+         /zone\.js(\\|\/)dist(\\|\/)long-stack-trace-zone/,
+         helpers.root('config/empty.js')
       ),
 
       new LoaderOptionsPlugin({
-        minimize: true,
-        debug: false,
-        options: {
-          htmlLoader: {
-            minimize: true,
-            removeAttributeQuotes: false,
-            caseSensitive: true,
-            customAttrSurround: [
-              [/#/, /(?:)/],
-              [/\*/, /(?:)/],
-              [/\[?\(?/, /(?:)/]
-            ],
-            customAttrAssign: [/\)?\]?=/]
-          },
+         minimize: true,
+         debug: false,
+         options: {
+            htmlLoader: {
+               minimize: true,
+               removeAttributeQuotes: false,
+               caseSensitive: true,
+               customAttrSurround: [
+                  [/#/, /(?:)/],
+                  [/\*/, /(?:)/],
+                  [/\[?\(?/, /(?:)/]
+               ],
+               customAttrAssign: [/\)?\]?=/]
+            },
 
-        }
-      })
-
-      // new UglifyJsPlugin({
-      //    beautify: false, //prod
-      //    output: {
-      //       comments: false
-      //    }, //prod
-      //    mangle: {
-      //       screw_ie8: true
-      //    }, //prod
-      //    compress: {
-      //       screw_ie8: true,
-      //       warnings: false,
-      //       conditionals: true,
-      //       unused: true,
-      //       comparisons: true,
-      //       sequences: true,
-      //       dead_code: true,
-      //       evaluate: true,
-      //       if_return: true,
-      //       join_vars: true,
-      //       negate_iife: false
-      //    },
-      // }),
+         }
+      }),
+      new UglifyJsPlugin({
+         beautify: false, //prod
+         output: {
+            comments: false
+         }, //prod
+         mangle: {
+            screw_ie8: true
+         }, //prod
+         compress: {
+            screw_ie8: true,
+            warnings: false,
+            conditionals: true,
+            unused: true,
+            comparisons: true,
+            sequences: true,
+            dead_code: true,
+            evaluate: true,
+            if_return: true,
+            join_vars: true,
+            negate_iife: false
+         },
+      }),
    ]
 };

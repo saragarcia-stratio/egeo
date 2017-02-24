@@ -5,7 +5,8 @@
       "moduleResolution": "node",
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
-      "noEmit": true,
+      "declaration": true,
+
       "noImplicitAny": true,
       "skipDefaultLibCheck": true,
       "skipLibCheck": true,
@@ -23,13 +24,16 @@
       "target",
       "src",
       "lib",
-      "components",
-      "dist/components/**/*.spec.ts",
-      "dist/components/**/*.e2e.ts"
+      "components/**/*.spec.ts",
+      "components/**/*.e2e.ts"
    ],
    "awesomeTypescriptLoaderOptions": {
       "forkChecker": true,
       "useWebpackText": true
+   },
+   "angularCompilerOptions": {
+      "genDir": "./lib",
+      "skipTemplateCodegen": true
    },
    "compileOnSave": false,
    "buildOnSave": false,

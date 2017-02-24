@@ -1,6 +1,6 @@
-@import '~egeo-ui-base/utils/typography';
-@import '~egeo-ui-base/utils/colors';
-@import '~egeo-ui-base/utils/extends';
+@import '../../../../node_modules/egeo-ui-base/utils/typography';
+@import '../../../../node_modules/egeo-ui-base/utils/colors';
+@import '../../../../node_modules/egeo-ui-base/utils/extends';
 
 $gosec-list-header---font-size: egeo-get-font-size(body_small) !default;
 $gosec-list-header__row__separator---color: egeo-get-color(n5) !default;

@@ -2,7 +2,8 @@
 
 ## 1.1.0 (upcoming)
 
-* Add isFocused parameter on input component to set the focus on the input.
+* Add isFocused parameter on input component to set the focus on the input
+* Add distribution as AoT
 
 ## 1.0.0 (February 23, 2017)
 

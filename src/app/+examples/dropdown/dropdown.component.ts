@@ -96,7 +96,7 @@ export class DropdownComponent {
          title: 'Group2',
          items: this.items10
       }
-   ]
+   ];
 
    public apiDoc: ApiDoc = {
       title: 'Dropdown',

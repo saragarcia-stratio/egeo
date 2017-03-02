@@ -29,7 +29,6 @@ export class SearchComponent {
                { paramName: 'value', type: TYPES.STR, required: false, details: 'Assign the value from outside to the search field' },
                { paramName: 'hasClearButton', type: TYPES.BOOL, required: false, details: 'Turn on or off the clear search button' },
                { paramName: 'qaTag', type: TYPES.STR, required: true, details: 'Identifier to generate a qa tag for each option' }
-               
             ],
             outputs: [
                { paramName: 'search', type: TYPES.STR, required: true, details: 'Function for call when search' }

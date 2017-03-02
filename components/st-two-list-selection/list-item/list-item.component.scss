@@ -1,0 +1,17 @@
+.item {
+   display: flex;
+   min-width: 100%;
+   flex-direction: row;
+   flex-wrap: nowrap;
+   align-items: center;
+}
+
+.check {
+   margin-right: 10px;
+}
+
+.label {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   flex-grow: 1;
+}

@@ -15,5 +15,11 @@
       "POLICIES": "POLICIES",
       "AUDITING": "AUDITING",
       "SETTINGS": "SETTINGS"
+   },
+   "TWO_LIST": {
+      "ALL_ELEMENTS_TITLE": "All elements",
+      "ALL_ELEMENTS_PLACEHOLDER": "Search in all",
+      "SELECTED_ELEMENTS_TITLE": "Selected elements",
+      "SELECTED_ELEMENTS_PLACEHOLDER": "Search in selected"
    }
 }

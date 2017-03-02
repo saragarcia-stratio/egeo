@@ -16,7 +16,7 @@
     "build:lib": "npm run clean:dist && npm run gulp && npm run ngc && npm run webpack:lib",
     "webpack:doc:aot": "webpack --config config/webpack/webpack.prod.js  --no-color --bail",
     "webpack:lib": "webpack --config config/webpack-components.js  --no-color --bail",
-    "lint": "tslint -c ./tslint.json -e 'node_modules' --type-check -t stylish '{web,components}/**/*.ts'",
+    "lint": "tslint -c ./tslint.json -e 'node_modules' --type-check -t stylish '{src,components}/**/*.ts'",
     "replace": "json -I -f package.json -e",
     "start:dev:hmr": "npm run start -- --hot --inline",
     "start": "cross-env NODE_ENV=development webpack-dev-server --progress --profile --open --watch --content-base ./",

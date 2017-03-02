@@ -11,6 +11,7 @@ export class FakePageComponent {
    public pageName: string = 'ERROR';
 
    constructor(private _router: ActivatedRoute) {
-      this._router.data.subscribe(data => this.pageName = data['pageName']);
+      let id: string = 'pageName';
+      this._router.data.subscribe(data => this.pageName = data[id]);
    }
 }

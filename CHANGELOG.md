@@ -2,7 +2,8 @@
 
 ## 1.2.0 (upcoming)
 
-* Pending changelog
+* Remove st-table from website
+* Add test coverage 67% to st-input
 
 ## 1.1.0 (upcoming)
 

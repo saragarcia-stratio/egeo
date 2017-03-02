@@ -9,7 +9,6 @@ export * from './icons';
 export * from './info-box';
 export * from './info-card';
 export * from './input';
-export * from './list';
 export * from './logo';
 export * from './main';
 export * from './modal';

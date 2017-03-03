@@ -1504,9 +1504,9 @@ egeo-theme@0.3.0:
   version "0.3.0"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/egeo-theme/-/egeo-theme-0.3.0.tgz#9b14b9e8a7f7512bf73c1a2f9664d809ac5c212e"
 
-egeo-ui-base@1.0.0:
-  version "1.0.0"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/egeo-ui-base/-/egeo-ui-base-1.0.0.tgz#b37569fdf0a448fd2c6144fd432dc71fd2cf533e"
+egeo-ui-base@1.1.0-RC3:
+  version "1.1.0-RC3"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/egeo-ui-base/-/egeo-ui-base-1.1.0-RC3.tgz#4344e12eac56240975f086fea7acb4d27a7086d7"
 
 electron-to-chromium@^1.2.3:
   version "1.2.5"
@@ -3110,8 +3110,8 @@ js-tokens@^3.0.0:
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/js-tokens/-/js-tokens-3.0.1.tgz#08e9f132484a2c45a30907e9dc4d5567b7f114d7"
 
 js-yaml@3.x, js-yaml@^3.4.6, js-yaml@^3.5.1, js-yaml@^3.5.4:
-  version "3.8.1"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/js-yaml/-/js-yaml-3.8.1.tgz#782ba50200be7b9e5a8537001b7804db3ad02628"
+  version "3.8.2"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/js-yaml/-/js-yaml-3.8.2.tgz#02d3e2c0f6beab20248d412c352203827d786721"
   dependencies:
     argparse "^1.0.7"
     esprima "^3.1.1"
@@ -3630,11 +3630,7 @@ lowercase-keys@^1.0.0:
   version "1.0.0"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/lowercase-keys/-/lowercase-keys-1.0.0.tgz#4e3366b39e7f5457e35f1324bdf6f88d0bfc7306"
 
-lru-cache@2:
-  version "2.7.3"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/lru-cache/-/lru-cache-2.7.3.tgz#6d4524e8b955f95d4f5b58851ce21dd72fb4e952"
-
-lru-cache@2.2.x:
+lru-cache@2, lru-cache@2.2.x:
   version "2.2.4"
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/lru-cache/-/lru-cache-2.2.4.tgz#6c658619becf14031d0d0b594b16042ce4dc063d"
 
@@ -5798,8 +5794,8 @@ typescript@2.0.10:
   resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/typescript/-/typescript-2.0.10.tgz#ccdd4ed86fd5550a407101a0814012e1b3fac3dd"
 
 uglify-js@2.8.x, uglify-js@^2.6, uglify-js@^2.7.5:
-  version "2.8.4"
-  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/uglify-js/-/uglify-js-2.8.4.tgz#5aeb6fd6f1f0a672dea63795016590502c290513"
+  version "2.8.5"
+  resolved "http://sodio.stratio.com/nexus/content/groups/publicnpm/uglify-js/-/uglify-js-2.8.5.tgz#ae9f5b143f4183d99a1dabb350e243fdc06641ed"
   dependencies:
     async "~0.2.6"
     source-map "~0.5.1"

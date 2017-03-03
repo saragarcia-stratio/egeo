@@ -15,11 +15,11 @@ const store = new BehaviorSubject<State>(defaultState);
 @Injectable()
 export class AppStore {
 
+   private _store: any = store;
+
    change: any = this._store
       .asObservable()
       .distinctUntilChanged();
-
-   private _store: any = store;
 
    setState(state: State): void {
       this._store.next(state);

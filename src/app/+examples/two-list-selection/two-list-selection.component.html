@@ -17,12 +17,26 @@
    <h2>Only view element without interaction</h2>
    <br><br>
 
+   <div style="width: 800px; height: 500px">
+      <st-two-list-selection-view
+         [allElements]="completeUserList"
+         [selectedElements]="selectedUserList"
+         [config]="(config | async)"
+         [editable]="true"
+         qaTag="example-two-list"
+      ></st-two-list-selection-view>
+   </div>
 
-   <st-two-list-selection-view
-      [allElements]="completeUserList"
-      [selectedElements]="selectedUserList"
-      [config]="(config | async)"
-      [editable]="true"
-      qaTag="example-two-list"
-   ></st-two-list-selection-view>
+   <br><br><br>
+   <h2>Only view element without interaction</h2>
+   <br><br>
+
+   <div style="width: 800px; height: 500px">
+      <st-two-list-selection-view
+         [allElements]="completeUserList"
+         [config]="(config | async)"
+         [editable]="false"
+         qaTag="example-two-list-disable"
+      ></st-two-list-selection-view>
+   </div>
 </section>

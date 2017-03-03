@@ -10,10 +10,10 @@ import { StTwoListSelectionElement, StTwoListSelectionConfig, StTwoListSelection
    styleUrls: ['./st-two-list-selection.view.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
-@CheckRequired
+@CheckRequired()
 export class StTwoListSelectionViewComponent {
 
-   @Input() @Required allElements: Array<StTwoListSelectionElement>;
+   @Input() @Required() allElements: Array<StTwoListSelectionElement>;
    @Input() selectedElements: Array<StTwoListSelectionElement>;
 
    @Output() selectAllElement: EventEmitter<StTwoListSelectionAction> = new EventEmitter<StTwoListSelectionAction>();
@@ -25,7 +25,7 @@ export class StTwoListSelectionViewComponent {
 
    @Input() config: StTwoListSelectionConfig;
    @Input() editable: boolean = false;
-   @Input() @Required qaTag: string;
+   @Input() @Required() qaTag: string;
    @Input() activeArrowLeft: boolean = false;
    @Input() activeArrowRight: boolean = false;
 

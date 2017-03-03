@@ -11,11 +11,11 @@ import { CheckRequired, Required } from '../../decorators';
 })
 export class ListSelectionComponent {
 
-   @Input() @Required list: Array<StTwoListSelectionElement>;
+   @Input() @Required() list: Array<StTwoListSelectionElement>;
    @Input() editable: boolean = false;
-   @Input() @Required title: string;
-   @Input() @Required searchPlaceholder: string;
-   @Input() @Required qaTag: string;
+   @Input() @Required() title: string;
+   @Input() @Required() searchPlaceholder: string;
+   @Input() @Required() qaTag: string;
 
    @Output() selectItem: EventEmitter<StTwoListSelectionAction> = new EventEmitter<StTwoListSelectionAction>();
    @Output() search: EventEmitter<string> = new EventEmitter<string>();

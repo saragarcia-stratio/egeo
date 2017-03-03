@@ -31,7 +31,7 @@ export class PaginationComponent implements OnInit {
                 { paramName: 'perPage', type: TYPES.NUM, required: false, details: 'Number of items to show per page. By default there are 20' },
                 { paramName: 'currentPage', type: TYPES.NUM, required: false, details: 'Current paging page. By default is 1' },
                 { paramName: 'label', type: TYPES.OBJ, required: false, details: 'Translation tags or component texts' },
-                { paramName: 'qaTag', type: TYPES.STR, required: true, details: 'Id value for qa test.' },
+                { paramName: 'qaTag', type: TYPES.STR, required: true, details: 'Id value for qa test.' }
             ],
             outputs: [
                 { paramName: 'change', type: TYPES.FUNC, required: false, details: 'Output the page change action or change number of items to show per page' }

@@ -26,7 +26,7 @@ let _decorateModuleRef = <T>(value: T): T => { return value; };
   };
 
   PROVIDERS = [
-    ...PROVIDERS,
+    ...PROVIDERS
     // custom providers in production
   ];
 

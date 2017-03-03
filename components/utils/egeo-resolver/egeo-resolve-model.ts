@@ -9,3 +9,8 @@ export interface EgeoResolverKeys {
 export interface TranslateServiceType {
    get(key: string | string[], interpolateParams?: Object): Observable<any>;
 };
+
+export interface TranslateableElement {
+   key: string;
+   translate: boolean;
+}

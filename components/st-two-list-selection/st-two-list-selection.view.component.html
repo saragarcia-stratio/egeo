@@ -1,0 +1,34 @@
+<div class="st-two-list-selection">
+   <!--ALL ELEMENTS-->
+   <list-selection
+      class="list all-list"
+      [list]="allElements"
+
+      [title]="allTitle"
+      [searchPlaceholder]="allPlaceholder"
+      [qaTag]="allQaTag"
+      [editable]="editable"
+      (search)="searchOverAll.emit($event)"
+      (selectItem)="selectAllElement.emit($event)">
+   </list-selection>
+
+   <!--SELECTORS-->
+   <div class="pick-buttons" *ngIf="editable">
+      <i class="icon-arrow2_right" [ngClass]="rightClass" (click)="moveToSelected.emit($event)"></i>
+      <i class="icon-arrow2_left" [ngClass]="leftClass" (click)="moveToAll.emit($event)"></i>
+   </div>
+
+   <!--SELECTED ELEMENTS-->
+   <list-selection
+      *ngIf="editable"
+      class="list selected-list"
+      [list]="selectedElements"
+
+      [title]="selectedTitle"
+      [searchPlaceholder]="selectedPlaceholder"
+      [qaTag]="selectedQaTag"
+      [editable]="editable"
+      (search)="searchOverSelected.emit($event)"
+      (selectItem)="selectSelectedElement.emit($event)">
+   </list-selection>
+</div>

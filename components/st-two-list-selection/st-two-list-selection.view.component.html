@@ -1,16 +1,7 @@
 <div class="st-two-list-selection">
    <!--ALL ELEMENTS-->
-   <list-selection
-      class="list all-list"
-      [ngClass]="{'not-editable': !editable}"
-      [list]="allElements"
-
-      [title]="allTitle"
-      [searchPlaceholder]="allPlaceholder"
-      [qaTag]="allQaTag"
-      [editable]="editable"
-      (search)="searchOverAll.emit($event)"
-      (selectItem)="selectAllElement.emit($event)">
+   <list-selection *ngIf="editable" class="list all-list" [list]="allElements" [title]="allTitle" [searchPlaceholder]="allPlaceholder"
+      [qaTag]="allQaTag" [editable]="editable" (search)="searchOverAll.emit($event)" (selectItem)="selectAllElement.emit($event)">
    </list-selection>
 
    <!--SELECTORS-->
@@ -20,16 +11,8 @@
    </div>
 
    <!--SELECTED ELEMENTS-->
-   <list-selection
-      *ngIf="editable"
-      class="list selected-list"
-      [list]="selectedElements"
-
-      [title]="selectedTitle"
-      [searchPlaceholder]="selectedPlaceholder"
-      [qaTag]="selectedQaTag"
-      [editable]="editable"
-      (search)="searchOverSelected.emit($event)"
+   <list-selection class="list selected-list" [ngClass]="{'not-editable': !editable}" [list]="selectedElements" [title]="selectedTitle"
+      [searchPlaceholder]="selectedPlaceholder" [qaTag]="selectedQaTag" [editable]="editable" (search)="searchOverSelected.emit($event)"
       (selectItem)="selectSelectedElement.emit($event)">
    </list-selection>
 </div>

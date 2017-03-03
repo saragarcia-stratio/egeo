@@ -41,8 +41,8 @@ import { StTwoListSelection } from './st-two-list-selection';
 @CheckRequired()
 export class StTwoListSelectionComponent extends StTwoListSelection implements OnInit, OnChanges {
 
-   @Input() @Required() allElements: Array<StTwoListSelectionElement>;
-   @Input() @Required('editable') selectedElements: Array<StTwoListSelectionElement>;
+   @Input() @Required('editable') allElements: Array<StTwoListSelectionElement>;
+   @Input() @Required() selectedElements: Array<StTwoListSelectionElement>;
    @Output() selectedElementsChange: EventEmitter<Array<StTwoListSelectionElement>> = new EventEmitter<Array<StTwoListSelectionElement>>();
 
    @Input() config: StTwoListSelectionConfig;

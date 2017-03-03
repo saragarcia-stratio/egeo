@@ -4,6 +4,9 @@
 
 * Add isFocused parameter on input component to set the focus on the input
 * Add distribution as AoT
+* Add Required and CheckRequired decorators.
+* Add search filter pipe
+* Add EgeoUtils with some static common functions
 
 ## 1.0.0 (February 23, 2017)
 

@@ -1,1 +1,1 @@
-export { Required, CheckRequired } from './decorators';
+export { Required, CheckRequired } from './require-decorators';

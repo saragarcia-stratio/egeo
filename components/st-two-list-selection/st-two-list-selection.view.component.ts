@@ -13,8 +13,8 @@ import { StTwoListSelectionElement, StTwoListSelectionConfig, StTwoListSelection
 @CheckRequired()
 export class StTwoListSelectionViewComponent {
 
-   @Input() @Required() allElements: Array<StTwoListSelectionElement>;
-   @Input() selectedElements: Array<StTwoListSelectionElement>;
+   @Input() allElements: Array<StTwoListSelectionElement>;
+   @Input() @Required() selectedElements: Array<StTwoListSelectionElement>;
 
    @Output() selectAllElement: EventEmitter<StTwoListSelectionAction> = new EventEmitter<StTwoListSelectionAction>();
    @Output() selectSelectedElement: EventEmitter<StTwoListSelectionAction> = new EventEmitter<StTwoListSelectionAction>();

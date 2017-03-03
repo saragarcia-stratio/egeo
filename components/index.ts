@@ -1,3 +1,4 @@
+export * from './decorators';
 export * from './pipes';
 export * from './st-button';
 export * from './st-dropdown-menu';

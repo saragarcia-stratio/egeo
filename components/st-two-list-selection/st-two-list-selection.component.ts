@@ -38,16 +38,16 @@ import { StTwoListSelection } from './st-two-list-selection';
    `,
    changeDetection: ChangeDetectionStrategy.OnPush
 })
-@CheckRequired
+@CheckRequired()
 export class StTwoListSelectionComponent extends StTwoListSelection implements OnInit, OnChanges {
 
-   @Input() @Required allElements: Array<StTwoListSelectionElement>;
-   @Input() selectedElements: Array<StTwoListSelectionElement>;
+   @Input() @Required() allElements: Array<StTwoListSelectionElement>;
+   @Input() @Required('editable') selectedElements: Array<StTwoListSelectionElement>;
    @Output() selectedElementsChange: EventEmitter<Array<StTwoListSelectionElement>> = new EventEmitter<Array<StTwoListSelectionElement>>();
 
    @Input() config: StTwoListSelectionConfig;
    @Input() editable: boolean = false;
-   @Input() @Required qaTag: string;
+   @Input() @Required() qaTag: string;
    @Input() sortBy: 'id' | 'name' = 'id';
 
    constructor(private cd: ChangeDetectorRef) {

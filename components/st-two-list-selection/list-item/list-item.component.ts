@@ -9,11 +9,11 @@ import { CheckRequired, Required } from '../../decorators';
    styleUrls: ['./list-item.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
-@CheckRequired
+@CheckRequired()
 export class ListItemComponent {
 
-   @Input() @Required item: StTwoListSelectionElement;
-   @Input() @Required qaTag: string;
+   @Input() @Required() item: StTwoListSelectionElement;
+   @Input() @Required() qaTag: string;
    @Input() editable: boolean = false;
 
    @Output() selectItem: EventEmitter<StTwoListSelectionElement> = new EventEmitter<StTwoListSelectionElement>();

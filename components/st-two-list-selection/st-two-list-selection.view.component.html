@@ -2,6 +2,7 @@
    <!--ALL ELEMENTS-->
    <list-selection
       class="list all-list"
+      [ngClass]="{'not-editable': !editable}"
       [list]="allElements"
 
       [title]="allTitle"

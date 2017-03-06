@@ -23,8 +23,8 @@ export class StMessageModalComponent implements OnInit {
 
   getButtonClass(button: Buttons): string {
     switch (button.type) {
-      case BUTTON_TYPES.ACCEPT: return 'egeo-c-button--main-1';
-      case BUTTON_TYPES.CANCEL: return 'egeo-c-button--main-2';
+      case BUTTON_TYPES.ACCEPT: return 'subtype1';
+      case BUTTON_TYPES.CANCEL: return 'subtype2';
       default: return '';
     }
   }

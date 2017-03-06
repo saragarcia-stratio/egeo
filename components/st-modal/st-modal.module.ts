@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { StModal } from './st-modal.component';
 import { StMessageModalComponent } from './shared';
+import { StButtonModule } from '../st-button';
 
 @NgModule({
-   imports: [CommonModule],
+   imports: [CommonModule, StButtonModule],
    exports: [StModal, StMessageModalComponent],
    declarations: [StModal, StMessageModalComponent],
    entryComponents: [StModal, StMessageModalComponent],

@@ -124,7 +124,7 @@ export class StTwoListSelection {
    private searchAndSelect(list: List, selected: IdList): void {
       let i = 0;
       let actualIndex = -1;
-      while (selected.length > 0 || i >= list.length) {
+      while (selected.length > 0 && i < list.length) {
          actualIndex = selected.indexOf(list[i].id);
          if (actualIndex > -1) {
             list[i].selected = true;

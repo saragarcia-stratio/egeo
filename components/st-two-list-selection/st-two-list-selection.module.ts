@@ -10,9 +10,10 @@ import { ListItemComponent } from './list-item/list-item.component';
 // Order modules
 import { StSearchModule } from '../st-search';
 import { PipesModule } from '../pipes';
+import { VirtualScrollModule } from '../st-virtual-scroll';
 
 @NgModule({
-   imports: [CommonModule, StSearchModule, PipesModule],
+   imports: [CommonModule, StSearchModule, PipesModule, VirtualScrollModule],
    declarations: [StTwoListSelectionViewComponent, StTwoListSelectionComponent, ListSelectionComponent, ListItemComponent],
    exports: [StTwoListSelectionComponent, StTwoListSelectionViewComponent]
 })

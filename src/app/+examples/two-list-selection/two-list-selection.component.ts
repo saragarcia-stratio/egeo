@@ -42,7 +42,7 @@ export class TwoListSelectionComponent {
    }
 
    private fillLists(): void {
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < 300; i++) {
          this.completeUserList.push({
             id: i,
             name: `User-${i}`

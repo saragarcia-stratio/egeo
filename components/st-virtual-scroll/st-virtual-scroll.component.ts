@@ -57,9 +57,9 @@ export class VirtualScrollComponent implements OnInit, OnDestroy, OnChanges {
    }
 
    private calculateItems(): void {
-      let itemsToShow: number = this.getNumberOfItems();
+
       this.calculateFirstElementToShow();
-      this.lastItem = this.firstItem + itemsToShow;
+      this.calculateLastElementToShow();
       this.update.emit(this.list.slice(this.firstItem, this.lastItem));
       this.firstElement.emit(this.firstItem);
    }
@@ -68,13 +68,21 @@ export class VirtualScrollComponent implements OnInit, OnDestroy, OnChanges {
       let totalItems: number = 0;
       if (this.contentElementRef && this.contentElementRef.nativeElement) {
          let containerHeight: number = this.contentElementRef.nativeElement.getBoundingClientRect().height;
-          totalItems = Math.floor(containerHeight / this.itemsHeight) + 1;
+         totalItems = Math.floor(containerHeight / this.itemsHeight) + 1;
       }
       return Math.max(1, totalItems);
    }
 
    private calculateFirstElementToShow(): void {
       this.firstItem = Math.floor(this.element.nativeElement.scrollTop / this.itemsHeight);
+   }
+
+   private calculateLastElementToShow(): void {
+      let itemsToShow: number = this.getNumberOfItems();
+      this.lastItem = this.firstItem + itemsToShow;
+      if (this.lastItem > this.list.length) {
+         this.lastItem = this.list.length;
+      }
    }
 
    private getTotalScrollHeight(): number {

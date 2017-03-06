@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
-import { StTwoListSelectionElement, StTwoListSelectionAction } from '../st-two-list-selection.model';
+import { StTwoListSelectionElement } from '../st-two-list-selection.model';
 import { CheckRequired, Required } from '../../decorators';
 
 @Component({
@@ -17,7 +17,7 @@ export class ListSelectionComponent {
    @Input() @Required() searchPlaceholder: string;
    @Input() @Required() qaTag: string;
 
-   @Output() selectItem: EventEmitter<StTwoListSelectionAction> = new EventEmitter<StTwoListSelectionAction>();
+   @Output() selectItem: EventEmitter<StTwoListSelectionElement> = new EventEmitter<StTwoListSelectionElement>();
    @Output() search: EventEmitter<string> = new EventEmitter<string>();
 
    scrollItems: Array<StTwoListSelectionElement>;
@@ -29,12 +29,5 @@ export class ListSelectionComponent {
 
    get listQaTag(): string {
       return this.qaTag + '-list';
-   }
-
-   getAction(element: StTwoListSelectionElement, pos: number): StTwoListSelectionAction {
-      return {
-         element: element,
-         position: pos
-      };
    }
 }

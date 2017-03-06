@@ -12,7 +12,7 @@ import {
 import * as _ from 'lodash';
 
 import { CheckRequired, Required } from '../decorators';
-import { StTwoListSelectionElement, StTwoListSelectionConfig, StTwoListSelectionAction } from './st-two-list-selection.model';
+import { StTwoListSelectionElement, StTwoListSelectionConfig } from './st-two-list-selection.model';
 import { StTwoListSelection } from './st-two-list-selection';
 
 @Component({

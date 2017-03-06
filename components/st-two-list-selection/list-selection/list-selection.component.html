@@ -4,7 +4,7 @@
    <ul class="list">
       <st-virtual-scroll [list]="list" (update)="scrollItems = $event" (firstElement)="firstEl = $event" [itemsHeight]="35">
          <li *ngFor="let item of scrollItems; let i = index" class="item">
-            <list-item [item]="item" (selectItem)="selectItem.emit(getAction($event, firstEl + i))" [qaTag]="listQaTag" [editable]="editable"></list-item>
+            <list-item [item]="item" (selectItem)="selectItem.emit(item)" [qaTag]="listQaTag" [editable]="editable"></list-item>
          </li>
       </st-virtual-scroll>
    </ul>

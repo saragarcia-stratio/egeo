@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
 import * as _ from 'lodash';
 
 import { Required, CheckRequired } from '../decorators';
-import { StTwoListSelectionElement, StTwoListSelectionConfig, StTwoListSelectionAction } from './st-two-list-selection.model';
+import { StTwoListSelectionElement, StTwoListSelectionConfig } from './st-two-list-selection.model';
 
 @Component({
    selector: 'st-two-list-selection-view',
@@ -16,8 +16,8 @@ export class StTwoListSelectionViewComponent {
    @Input() allElements: Array<StTwoListSelectionElement>;
    @Input() @Required() selectedElements: Array<StTwoListSelectionElement>;
 
-   @Output() selectAllElement: EventEmitter<StTwoListSelectionAction> = new EventEmitter<StTwoListSelectionAction>();
-   @Output() selectSelectedElement: EventEmitter<StTwoListSelectionAction> = new EventEmitter<StTwoListSelectionAction>();
+   @Output() selectAllElement: EventEmitter<StTwoListSelectionElement> = new EventEmitter<StTwoListSelectionElement>();
+   @Output() selectSelectedElement: EventEmitter<StTwoListSelectionElement> = new EventEmitter<StTwoListSelectionElement>();
    @Output() searchOverAll: EventEmitter<string> = new EventEmitter<string>();
    @Output() searchOverSelected: EventEmitter<string> = new EventEmitter<string>();
    @Output() moveToSelected: EventEmitter<Event> = new EventEmitter<Event>();

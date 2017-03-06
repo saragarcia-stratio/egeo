@@ -1,7 +1,7 @@
 import { SimpleChanges, ChangeDetectorRef, EventEmitter } from '@angular/core';
 import * as _ from 'lodash';
 
-import { StTwoListSelectionElement, StTwoListSelectionAction } from './st-two-list-selection.model';
+import { StTwoListSelectionElement } from './st-two-list-selection.model';
 
 export type List = Array<StTwoListSelectionElement>;
 export type IdList = Array<string | number>;
@@ -35,16 +35,16 @@ export class StTwoListSelection {
    }
 
    // Check selected element
-   onSelectAllElement(selection: StTwoListSelectionAction): void {
+   onSelectAllElement(selection: StTwoListSelectionElement): void {
       if (this.canSelect(selection, this.copyAllElement)) {
-         this.copyAllElement[selection.position].selected = !this.copyAllElement[selection.position].selected;
+         selection.selected = !selection.selected;
       }
    }
 
    // Check selected element
-   onSelectSelectedElement(selection: StTwoListSelectionAction): void {
+   onSelectSelectedElement(selection: StTwoListSelectionElement): void {
       if (this.canSelect(selection, this.copySelectedElements)) {
-         this.copySelectedElements[selection.position].selected = !this.copySelectedElements[selection.position].selected;
+         selection.selected = !selection.selected;
       }
    }
 
@@ -163,7 +163,7 @@ export class StTwoListSelection {
       return _.sortBy(list, by);
    }
 
-   private canSelect(selection: StTwoListSelectionAction, list: List): boolean {
-      return selection && selection.position !== undefined && list !== undefined && list.length > 0 && list[selection.position] !== undefined;
+   private canSelect(selection: StTwoListSelectionElement, list: List): boolean {
+      return selection && list !== undefined && list.length > 0;
    }
 }

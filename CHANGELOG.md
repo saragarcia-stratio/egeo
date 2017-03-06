@@ -5,7 +5,7 @@
 * Remove st-table from website
 * Add test coverage 67% to st-input
 
-## 1.1.0 (upcoming)
+## 1.1.0 (March 06, 2017)
 
 * Add isFocused parameter on input component to set the focus on the input
 * Add distribution as AoT

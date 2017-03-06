@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.1.0 (upcoming)
+## 1.1.0 (March 06, 2017)
 
 * Add isFocused parameter on input component to set the focus on the input
 * Add distribution as AoT

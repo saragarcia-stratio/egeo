@@ -20,6 +20,8 @@ export class ListSelectionComponent {
    @Output() selectItem: EventEmitter<StTwoListSelectionAction> = new EventEmitter<StTwoListSelectionAction>();
    @Output() search: EventEmitter<string> = new EventEmitter<string>();
 
+   scrollItems: Array<StTwoListSelectionElement>;
+   firstEl: number = 0;
 
    get searchQaTag(): string {
       return this.qaTag + '-search';

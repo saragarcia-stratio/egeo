@@ -33,8 +33,6 @@ $st-message-modal__buttons--margin-left: 10px;
 
   .buttons {
     float: right;
-    display: block;
-    height: $st-message-modal__buttons--height;
-    margin-left: $st-message-modal__buttons--margin-left;
+    margin-right: 10px;
   }
 }

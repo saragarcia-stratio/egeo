@@ -2,8 +2,10 @@
    <st-search [placeholder]="searchPlaceholder" [qaTag]="searchQaTag" (search)="search.emit($event)"></st-search>
    <p class="title">{{title}}</p>
    <ul class="list">
-      <li *ngFor="let item of list; let i = index" class="item">
-         <list-item [item]="item" (selectItem)="selectItem.emit(getAction($event, i))" [qaTag]="listQaTag" [editable]="editable"></list-item>
-      </li>
+      <st-virtual-scroll [list]="list" (update)="scrollItems = $event" (firstElement)="firstEl = $event" [itemsHeight]="35">
+         <li *ngFor="let item of scrollItems; let i = index" class="item">
+            <list-item [item]="item" (selectItem)="selectItem.emit(getAction($event, firstEl + i))" [qaTag]="listQaTag" [editable]="editable"></list-item>
+         </li>
+      </st-virtual-scroll>
    </ul>
 </div>

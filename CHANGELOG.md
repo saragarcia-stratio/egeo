@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1 (March 08, 2017)
+
+* Add max-width to header component
+
 ## 1.1.0 (March 06, 2017)
 
 * Add isFocused parameter on input component to set the focus on the input

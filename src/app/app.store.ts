@@ -15,7 +15,7 @@ const store = new BehaviorSubject<State>(defaultState);
 @Injectable()
 export class AppStore {
 
-   private _store: any = store;
+   _store: any = store;
 
    change: any = this._store
       .asObservable()

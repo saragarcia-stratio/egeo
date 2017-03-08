@@ -80,6 +80,7 @@ export class HeaderComponent {
             { paramName: 'companyName', type: TYPES.STR, required: false, details: 'Company name to show, by default: Stratio' },
             { paramName: 'menu', type: 'Array<StHeaderModel>', required: false, details: 'Array with menu option to show' },
             { paramName: 'userMenu', type: 'StHeaderUserMenuModel', required: false, details: 'Object with user menu information' },
+            { paramName: 'maxWidth', type: TYPES.NUM, required: false, details: 'Define a max-width property in px for header' },
             { paramName: 'qaTag', type: TYPES.STR, required: true, details: 'Id value for qa test' }
          ],
          outputs: [

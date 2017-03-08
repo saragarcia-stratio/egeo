@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.1.1 (March 08, 2017)
+## 1.1.1 (upcoming)
 
 * Add max-width to header component
 

@@ -44,7 +44,7 @@ export function CheckRequired(params?: ''): any {
             checkRequired(target, this);
          };
       }
-   }
+   };
 }
 
 function checkRequired(target: any, scope: any): void {

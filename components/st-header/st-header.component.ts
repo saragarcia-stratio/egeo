@@ -17,6 +17,7 @@ export class StHeaderComponent implements OnInit {
    // TODO: In the future this header can use image or text for now, only use text
    appLogoPath: string | undefined;
 
+   @Input() maxWidth: number;
 
    @Input() menu: Array<StHeaderModel> = [];
 
@@ -66,6 +67,16 @@ export class StHeaderComponent implements OnInit {
 
    public hasUserMenu(): boolean {
       return this.userMenu !== undefined;
+   }
+
+   public getHeaderStyle(): Object {
+      if (this.maxWidth !== undefined && typeof this.maxWidth === 'number' && this.maxWidth > 0) {
+         return {
+            'max-width': `${this.maxWidth}px`
+         };
+      } else {
+         return {};
+      }
    }
 
    private checkIfNotify(hasSubMenu: boolean): void {

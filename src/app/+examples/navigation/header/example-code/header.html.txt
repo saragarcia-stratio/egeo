@@ -1,10 +1,12 @@
-<section class="container-liquid">
-   <div class="header-container">
-      <st-header appName="Data Governance" [menu]="headerMenu" [userMenu]="userMenu" (contentChangeOffset)="onContentChangeOffset($event)" qaTag="st-header"
-         stHeaderBehavior></st-header>
+<st-header
+   appName="Data Governance"
+   [menu]="headerMenu"
+   [userMenu]="userMenu"
+   (contentChangeOffset)="onContentChangeOffset($event)"
+   qaTag="st-header"
+   [maxWidth]="1700"
+   stHeaderBehavior>
+</st-header>
 
-      <div [ngStyle]="{'padding-top': contentOffset + 'px'}">
-         <router-outlet></router-outlet>
-      </div>
-   </div>
-</section>
+<div [ngStyle]="{'padding-top': contentOffset + 'px'}">
+   <router-outlet></router-outlet>

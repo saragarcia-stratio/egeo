@@ -6,20 +6,23 @@
    white-space: nowrap;
 }
 
+.basic-header {
+   display: block;
+   z-index: 1000;
+   width: 100%;
+   margin: auto;
+   left: 0;
+   right: 0;
+   top: 0;
+}
+
 // header
 :host-context(.st-header-normal) .header {
-   width: 100%;
-   display: block;
    position: absolute;
-   z-index: 1000;
 }
 
 :host-context(.st-header-collapsed) .header {
-   width: 100%;
-   display: block;
    position: fixed;
-   top: 0;
-   z-index: 1000;
 }
 
 // menu-height

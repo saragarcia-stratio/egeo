@@ -5,6 +5,14 @@
 * Remove st-table from website
 * Add test coverage 67% to st-input
 
+## 1.1.2 (March 09, 2017)
+
+* Adapt to Nexus3
+
+## 1.1.1 (March 08, 2017)
+
+* Add max-width to header component
+
 ## 1.1.0 (March 06, 2017)
 
 * Add isFocused parameter on input component to set the focus on the input

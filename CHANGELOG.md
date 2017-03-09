@@ -4,6 +4,7 @@
 
 * Remove st-table from website
 * Add test coverage 67% to st-input
+* Add new search options (Live search and only emit on click)
 
 ## 1.1.2 (March 09, 2017)
 

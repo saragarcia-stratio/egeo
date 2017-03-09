@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy,  OnChanges, OnDestroy, SimpleChanges, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, OnChanges, OnDestroy, SimpleChanges, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -10,11 +10,13 @@ import { Subscription } from 'rxjs';
 })
 
 export class StSearchComponent implements OnChanges, OnDestroy, OnInit {
-   @Input() qaTag: string;
-   @Input() placeholder: string = 'Search';
    @Input() debounce: number = 0;
-   @Input() minLength: number = 0;
    @Input() hasClearButton: boolean = false;
+   @Input() liveSearch: boolean = true;
+   @Input() minLength: number = 0;
+   @Input() placeholder: string = 'Search';
+   @Input() qaTag: string;
+   @Input() searchOnlyOnClick: boolean = false;
    @Input() value: string;
 
    @Output() search: EventEmitter<string> = new EventEmitter<string>();
@@ -25,13 +27,10 @@ export class StSearchComponent implements OnChanges, OnDestroy, OnInit {
    private sub: Subscription | undefined = undefined;
    private lastEmited: string | undefined = undefined;
 
-   // Its necesary check null because value is any type.
-   public launchSearch(): void {
-      /* tslint:disable:no-null-keyword */
-      if (this.searchBox.value !== null && this.searchBox.value !== undefined && /* tslint:enable:no-null-keyword */
-         this.lastEmited !== this.searchBox.value && this.minLength <= this.searchBox.value.length
-      ) {
+   public launchSearch(force: boolean = false, isFromButton: boolean = false): void {
+      if (this.canSearch(isFromButton) && this.isDefined() && this.isEqualPrevious(force) && this.checkMins()) {
          this.lastEmited = this.searchBox.value;
+         console.log('emit');
          this.search.emit(this.lastEmited);
       }
    }
@@ -39,7 +38,7 @@ export class StSearchComponent implements OnChanges, OnDestroy, OnInit {
    public onKeyPress(event: KeyboardEvent): void {
       let key: number = event.keyCode || event.which;
       if (key === 13) {
-         this.launchSearch();
+         this.launchSearch(true);
       }
    }
 
@@ -51,7 +50,7 @@ export class StSearchComponent implements OnChanges, OnDestroy, OnInit {
       this.focus = false;
    }
 
-   public clearInput(event: MouseEvent): void {
+   public clearInput(): void {
       this.searchBox.setValue('');
       this.focus = false;
    }
@@ -76,6 +75,22 @@ export class StSearchComponent implements OnChanges, OnDestroy, OnInit {
       }
    }
 
+   private canSearch(isFromButton: boolean): boolean {
+      return !this.searchOnlyOnClick || (this.searchOnlyOnClick && isFromButton);
+   }
+
+   private isDefined(): boolean {
+      return this.searchBox && this.searchBox.value !== null && this.searchBox.value !== undefined;
+   }
+
+   private checkMins(): boolean {
+      return this.minLength <= this.searchBox.value.length || this.searchBox.value.trim().length === 0;
+   }
+
+   private isEqualPrevious(force: boolean): boolean {
+      return this.lastEmited !== this.searchBox.value || force;
+   }
+
    private updateValue(changes: SimpleChanges): void {
       let prop: string = 'value';
       if (changes[prop]) {
@@ -87,9 +102,11 @@ export class StSearchComponent implements OnChanges, OnDestroy, OnInit {
       if (this.sub !== undefined) {
          this.sub.unsubscribe();
       }
-      this.sub = this.searchBox
-         .valueChanges
-         .debounceTime(this.debounce)
-         .subscribe((event) => this.launchSearch());
+      if (this.liveSearch) {
+         this.sub = this.searchBox
+            .valueChanges
+            .debounceTime(this.debounce)
+            .subscribe((event) => this.launchSearch());
+      }
    }
 }

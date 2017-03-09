@@ -8,7 +8,7 @@
       (keypress)="onKeyPress($event)"
       class="remove-default-style"
    />
-   <i class="st-search-icon icon-search" tabindex="0" *ngIf="!focus || !hasClearButton" (mousedown)="launchSearch($event)" (keyup.enter)="launchSearch($event)"></i>
-   <i class="st-search-icon icon-cross" tabindex="0" *ngIf="focus && hasClearButton" (mousedown)="clearInput($event)" (keyup.enter)="clearInput($event)" ></i>
+   <i class="st-search-icon icon-search" tabindex="0" *ngIf="!focus || !hasClearButton" (mousedown)="launchSearch(true, true)" (keyup.enter)="launchSearch(true, true)"></i>
+   <i class="st-search-icon icon-cross" tabindex="0" *ngIf="focus && hasClearButton" (mousedown)="clearInput()" (keyup.enter)="clearInput()" ></i>
 </div>
 

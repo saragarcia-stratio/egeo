@@ -110,7 +110,7 @@
          <properties>
             <customnodeDownloadRoot>${nodeURL}/node/</customnodeDownloadRoot>
             <customnpmDownloadRoot>${nodeURL}/npm/${npmVer}/</customnpmDownloadRoot>
-            <customnpmRegistryURL>http://sodio.stratio.com/repository/strationpmjs/</customnpmRegistryURL>
+            <customnpmRegistryURL>http://sodio.stratio.com/repository/publicnpm/</customnpmRegistryURL>
          </properties>
       </profile>
    </profiles>

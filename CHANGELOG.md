@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.1.2 (upcoming)
+
+* Adapt to Nexus3
 
 ## 1.1.1 (March 08, 2017)
 

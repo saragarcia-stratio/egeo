@@ -30,7 +30,6 @@ export class StSearchComponent implements OnChanges, OnDestroy, OnInit {
    public launchSearch(force: boolean = false, isFromButton: boolean = false): void {
       if (this.canSearch(isFromButton) && this.isDefined() && this.isEqualPrevious(force) && this.checkMins()) {
          this.lastEmited = this.searchBox.value;
-         console.log('emit');
          this.search.emit(this.lastEmited);
       }
    }

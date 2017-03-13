@@ -1,4 +1,4 @@
-<div class="item" (click)="selectItem.emit(item)" [id]="itemQaTag">
+<li class="item" (click)="selectItem.emit(item)" [id]="itemQaTag">
    <input *ngIf="editable" type="checkbox" [checked]="selected" class="check">
    <span class="label">{{itemName}}</span>
-</div>
+</li>

@@ -1,5 +1,5 @@
-[![issuestats pr](http://issuestats.com/github/stratio/egeo/badge/pr?style=flat-square)
-[![issustats issues](http://issuestats.com/github/stratio/egeo/badge/issue?style=flat-square)
+![issuestats pr](http://issuestats.com/github/stratio/egeo/badge/pr?style=flat-square)
+![issustats issues](http://issuestats.com/github/stratio/egeo/badge/issue?style=flat-square)
 
 <div align="center">
 <img src="https://github.com/Stratio/egeo-web/blob/master/src/assets/images/egeo_logo_c.png">

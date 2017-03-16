@@ -22,7 +22,14 @@ testing.TestBed.initTestEnvironment(
   browser.platformBrowserDynamicTesting()
 );
 
-var testContext = require.context('../src', true, /\.spec\.ts/);
+if (!COMPONENT_ENV) {
+  var testContext = require.context('../src', true, /\.spec\.ts/);
+} else {
+  var testContext = require.context('../src' + '/' + COMPONENT_ENV, true, /\.spec\.ts/);
+}
+
+
+
 
 function requireAll(requireContext) {
   return requireContext.keys().map(requireContext);

@@ -1,7 +1,0 @@
-<st-search
-   [placeholder]="placeholder"
-   [qaTag]="qaTag"
-   [debounce]="debounceTime"
-   [minLength]="minLength"
-   (onSearch)="onSearchResult($event)">
-</st-search>

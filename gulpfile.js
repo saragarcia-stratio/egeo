@@ -4,20 +4,20 @@ var sass = require('gulp-sass');
 
 
 gulp.task('copyHtml', () => {
-   gulp.src('./components/**/*.html')
-      .pipe(gulp.dest('./dist/components'));
+   gulp.src('./src/**/*.html')
+      .pipe(gulp.dest('./dist/src'));
 });
 
 gulp.task('copyTs', () => {
-   gulp.src('./components/**/*.ts')
+   gulp.src('./src/**/*.ts')
       .pipe(replace(/styleUrls: \[(\'\.\/|\')(.*?)\.scss\'\]/g, 'styleUrls: [\'$2.css\']'))
-      .pipe(gulp.dest('./dist/components'));
+      .pipe(gulp.dest('./dist/src'));
 });
 
 gulp.task('copyScss', () => {
-   gulp.src('./components/**/*.scss')
+   gulp.src('./src/**/*.scss')
       .pipe(sass())
-      .pipe(gulp.dest('./dist/components'));
+      .pipe(gulp.dest('./dist/src'));
 });
 
 gulp.task('default', ['copyHtml', 'copyTs', 'copyScss']);

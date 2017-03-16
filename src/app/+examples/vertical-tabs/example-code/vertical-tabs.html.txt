@@ -1,6 +1,0 @@
-<st-vertical-tabs
-   [options]="options"
-   [qaTag]="qaTag"
-   (changeOption)="onChangeOption($event)"
-   [activeOption]="active"
-></st-vertical-tabs>

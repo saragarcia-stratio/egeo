@@ -1,4 +1,4 @@
-const helpers = require('../helpers');
+const helpers = require('./helpers');
 const path = require('path');
 
 /**
@@ -16,7 +16,7 @@ module.exports = {
 
    resolve: {
       extensions: ['.ts', '.js', '.scss'],
-      modules: ['node_modules', helpers.root('components')]
+      modules: ['node_modules', helpers.root('src')]
    },
 
    performance: {
@@ -29,7 +29,7 @@ module.exports = {
          enforce: 'post',
          test: /\.(js|ts)$/,
          loader: 'istanbul-instrumenter-loader',
-         include: helpers.root('components'),
+         include: helpers.root('src'),
          exclude: [
             /\.(e2e|spec)\.ts$/,
             /node_modules/
@@ -56,12 +56,12 @@ module.exports = {
       },
       {
          test: /\.css$/,
-         exclude: helpers.root('components', 'app'),
+         exclude: helpers.root('src'),
          loader: 'null-loader'
       },
       {
          test: /\.css$/,
-         include: helpers.root('components', 'app'),
+         include: helpers.root('src'),
          loader: 'raw-loader'
       },
       {

@@ -10,8 +10,6 @@ const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ngcWebpack = require('ngc-webpack');
 
 module.exports = {
    devtool: 'source-map',
@@ -20,7 +18,7 @@ module.exports = {
       extensions: ['.ts', '.js']
    },
 
-   entry: './components/index.ts',
+   entry: './src/index.ts',
 
    output: {
       path: './dist/bundle',
@@ -38,7 +36,7 @@ module.exports = {
             use: [{
                   loader: 'awesome-typescript-loader?declaration=false',
                   options: {
-                     configFileName: 'tsconfig.components.json'
+                     configFileName: 'tsconfig.lib.json'
                   }
                },
                {
@@ -49,22 +47,15 @@ module.exports = {
          },
          {
             test: /\.html$/,
-            use: ['raw-loader'],
-            exclude: [helpers.root('src')]
+            use: ['raw-loader']
          },
          {
             test: /\.css$/,
-            use: ['to-string-loader', 'css-loader'],
-            exclude: [helpers.root('src')]
+            use: ['to-string-loader', 'css-loader']
          },
          {
             test: /\.scss$/,
-            use: ['to-string-loader', 'css-loader', 'sass-loader'],
-            exclude: [helpers.root('src')]
-         },
-         {
-            test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-            use: "file-loader?name=assets/fonts/[name].[hash].[ext]"
+            use: ['to-string-loader', 'css-loader', 'sass-loader']
          }
       ]
    },
@@ -72,7 +63,7 @@ module.exports = {
    plugins: [
       new ContextReplacementPlugin(
          /angular(\\|\/)core(\\|\/)src(\\|\/)linker/,
-         helpers.root('components'), // location of your web
+         helpers.root('src'), // location of your web
          {}
       ),
       // Fix Angular 2

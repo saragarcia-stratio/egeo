@@ -17,15 +17,15 @@
       "dom"
    ],
    "include": [
-      "dist/components/**/*.ts"
+      "dist/src/**/*.ts"
    ],
    "exclude": [
       "node_modules",
       "target",
       "src",
       "lib",
-      "components/**/*.spec.ts",
-      "components/**/*.e2e.ts"
+      "src/**/*.spec.ts",
+      "src/**/*.e2e.ts"
    ],
    "awesomeTypescriptLoaderOptions": {
       "forkChecker": true,

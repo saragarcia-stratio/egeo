@@ -1,4 +1,0 @@
-<st-dropdown-menu
-   active="showAlways"
-   [items]="arrayItemsDropdown">
-</st-dropdown-menu>

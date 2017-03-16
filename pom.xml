@@ -5,12 +5,12 @@
    <parent>
       <groupId>com.stratio</groupId>
       <artifactId>parent</artifactId>
-      <version>0.7.0</version>
+      <version>0.9.0</version>
    </parent>
-   <groupId>com.stratio.egeo-angular2-components</groupId>
-   <artifactId>egeo-angular2-components</artifactId>
+   <groupId>com.stratio.egeo</groupId>
+   <artifactId>egeo</artifactId>
    <version>1.2.0-SNAPSHOT</version>
-   <name>Egeo Angular2 Components</name>
+   <name>Egeo</name>
    <inceptionYear>2016</inceptionYear>
    <properties>
       <nodeVer>v6.9.2</nodeVer>
@@ -80,7 +80,7 @@
                   </configuration>
                </execution>
                <execution>
-                  <id>generate declarations</id>
+                  <id>build</id>
                   <goals>
                      <goal>npm</goal>
                   </goals>

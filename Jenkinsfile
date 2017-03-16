@@ -18,8 +18,6 @@ hose {
             doStaticAnalysis(config)
         }, DEPLOY: {
             doDeploy(config)
-        }, DOC: {
-            doDoc(config)
         }, failFast: config.FAILFAST)
     }
 }

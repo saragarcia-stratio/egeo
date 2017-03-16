@@ -1,6 +1,0 @@
-<st-pagination 
-   [total]="total" 
-   [perPage]="itemsPerPage" 
-   [currentPage]="currentPage" 
-   (change)="changeEvent">
-</st-pagination>

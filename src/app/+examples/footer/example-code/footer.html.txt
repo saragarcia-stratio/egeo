@@ -1,5 +1,0 @@
-<section class="container-liquid">
-  <div style="margin: 20px 0">
-    <st-footer [rightsText]="rightsText" [links]="links" [image]="image" qaTag="footer"></st-footer>
-  </div>
-</section>

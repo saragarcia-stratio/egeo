@@ -22,7 +22,8 @@ In this repository, you'll find UI components, services and utilities but this i
 * [File Structure](#file-structure)
 * [Getting Started](#getting-started)
    * [Dependencies](#dependencies)
-   * [Installing](#installing)
+   * [Installing](#work-with-the-code)
+   * [Work with the code](#installing)
    * [How to run](#how-to-run)
    * [How to test](#how-to-test)
    * [How to build](#how-to-build)
@@ -95,6 +96,14 @@ What your app will need to work with Egeo:
 * Angular2 Virtual Scroll ~ 0.1.3
 
 ### Installing
+
+You can install Egeo from npm:
+
+```
+npm install egeo
+```
+
+### Work with the code
 
 You can use Npm or Yarn to work with Egeo. If you want to use Yarn, it has to be installed first as a global dependency in your local machine.
 

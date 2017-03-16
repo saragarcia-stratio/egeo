@@ -8,7 +8,7 @@ Add a description of your changes here.
 - [ ] Have explained API (Inputs, Outpus, Models, Functions, etc)
 - [ ] Have example running
 - [ ] Have example code (HTML, ts)
-- [ ] Have changelog.md & changelog inside the website updated
+- [ ] Have changelog.md updated
 
 ### Code
 - [ ] Have 3 spaces indentation
@@ -17,7 +17,7 @@ Add a description of your changes here.
 - [ ] Have QA-tags
 
 ### Tests
-- [ ] Have Tests
+- [ ] Have 70% Tests coverage
 
 ### Other observations
 - Add other information you consider important

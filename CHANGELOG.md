@@ -5,6 +5,10 @@
 * Remove st-table from website
 * Add test coverage 67% to st-input
 * Add new search options (Live search and only emit on click)
+* Separate library and website
+* Add test to st-spinner
+* Add test to st-tooltip
+* Prepare for publish release
 
 ## 1.1.2 (March 09, 2017)
 

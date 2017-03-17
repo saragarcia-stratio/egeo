@@ -1,5 +1,5 @@
-@import '../../node_modules/egeo-ui-base/utils/typography';
-@import '../../node_modules/egeo-ui-base/utils/colors';
+@import '../../node_modules/@stratio/egeo-ui-base/utils/typography';
+@import '../../node_modules/@stratio/egeo-ui-base/utils/colors';
 
 $tooltip-content--span---width: 240px !default;
 $tooltip-content--span---font-size: egeo-get-font-size(body_xxsmall) !default;

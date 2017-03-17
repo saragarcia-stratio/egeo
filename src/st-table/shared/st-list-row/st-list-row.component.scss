@@ -1,8 +1,8 @@
-@import '../../../../node_modules/egeo-ui-base/utils/typography';
-@import '../../../../node_modules/egeo-ui-base/utils/colors';
-@import '../../../../node_modules/egeo-ui-base/utils/extends';
-@import '../../../../node_modules/egeo-ui-base/settings/animation';
-@import '../../../../node_modules/egeo-ui-base/utils/colors';
+@import '../../../../node_modules/@stratio/egeo-ui-base/utils/typography';
+@import '../../../../node_modules/@stratio/egeo-ui-base/utils/colors';
+@import '../../../../node_modules/@stratio/egeo-ui-base/utils/extends';
+@import '../../../../node_modules/@stratio/egeo-ui-base/settings/animation';
+@import '../../../../node_modules/@stratio/egeo-ui-base/utils/colors';
 
 
 $gosec-list-row__row__separator---color: egeo-get-color(n3) !default;

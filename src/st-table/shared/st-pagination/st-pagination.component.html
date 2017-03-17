@@ -1,8 +1,0 @@
-<div class="gosec-pagination" [ngStyle]="{'width':size}">
-    <div *ngFor="let page of pages; let index = index" (click)="setPage(page)">
-        <div class="gosec-pagination__button gosec-pagination__page" [ngClass]="{'gosec-pagination__invisible': isInvisible(page), 'gosec-pagination__page--selected': page == pagination.currentPage}" [ngStyle]="{'left': getPosition(page) +'px'}">{{page}}</div>
-    </div>
-    <div class="gosec-pagination__button" [hidden]="isMoreButtonHidden('prev')" [ngStyle]="{'left': '0px'}">...</div>
-    <div class="gosec-pagination__button" [hidden]="isMoreButtonHidden('next')" [ngStyle]="{'left': (pagination.limit-1) * SIZE_PER_NUM +'px'}">...</div>
-</div>
-

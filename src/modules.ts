@@ -8,7 +8,6 @@ import { StHorizontalTabsModule } from './st-horizontal-tabs';
 import { StInfoBoxModule } from './st-info-box';
 import { StInfoCardModule } from './st-info-card';
 import { StInputModule } from './st-input';
-import { StListModule } from './st-table';
 import { StModalModule } from './st-modal/st-modal.module';
 import { StPageTitleModule } from './st-page-title';
 import { StPaginationModule } from './st-pagination';
@@ -39,7 +38,6 @@ export const DECLARATIONS: Array<any> = [
    StSearchModule,
    StSpinnerModule,
    StTabBoxModule,
-   StListModule,
    StToggleButtonsModule,
    StTooltipModule,
    StTwoListSelectionModule,

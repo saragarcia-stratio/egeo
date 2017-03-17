@@ -16,7 +16,6 @@ export * from './st-radio-menu';
 export * from './st-search';
 export * from './st-spinner';
 export * from './st-tab-box';
-export * from './st-table';
 export * from './st-toggle-buttons';
 export * from './st-tooltip';
 export * from './st-two-list-selection';

@@ -2,7 +2,7 @@
 
 ## 1.3.0 (upcoming)
 
-* Pending changelog
+* **BREAKING CHANGE:** Remove Table Component
 
 ## 1.2.0 (March 17, 2017)
 

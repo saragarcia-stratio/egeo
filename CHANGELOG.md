@@ -4,7 +4,7 @@
 
 * Pending changelog
 
-## 1.2.0 (upcoming)
+## 1.2.0 (March 17, 2017)
 
 * Remove st-table from website
 * Add test coverage 67% to st-input

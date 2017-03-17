@@ -9,7 +9,7 @@
    </parent>
    <groupId>com.stratio.egeo</groupId>
    <artifactId>egeo</artifactId>
-   <version>1.2.0</version>
+   <version>1.2.1-RC1-SNAPSHOT</version>
    <name>Egeo</name>
    <inceptionYear>2016</inceptionYear>
    <properties>

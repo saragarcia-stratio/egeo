@@ -151,6 +151,12 @@ or
 npm run test
 ```
 
+It is possible to run an individual test to avoid run the whole suite.
+
+```
+npm run test --component=st-two-list
+```
+
 ### How to Build
 
 If you want to build a distributable package you must use the `build` command. This will create a **target** folder with the distributable code of the package.

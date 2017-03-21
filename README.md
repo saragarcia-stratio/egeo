@@ -1,5 +1,6 @@
 ![issuestats pr](http://issuestats.com/github/stratio/egeo/badge/pr?style=flat-square)
 ![issustats issues](http://issuestats.com/github/stratio/egeo/badge/issue?style=flat-square)
+[![Stories in Ready](https://badge.waffle.io/Stratio/egeo.svg?label=ready&title=Ready)](http://waffle.io/Stratio/egeo)
 
 <div align="center">
 <img src="https://github.com/Stratio/egeo-web/blob/master/src/assets/images/egeo_logo_c.png">

@@ -1,9 +1,9 @@
 ** Please don't delete this template or we'll close your issue **
 
 **I'm submitting a ...**
-[ ] bug report
-[ ] feature request
-[ ] question
+- [ ] bug report
+- [ ] feature request
+- [ ] question
 
 **Define your petition as much as possible**
 

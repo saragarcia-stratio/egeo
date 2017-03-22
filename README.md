@@ -42,7 +42,7 @@ We are also using [HMR](https://github.com/AngularClass/angular2-hmr) and [DLL](
 ## File Structure
 
 ```
-angular2-webpack-starter/
+egeo/
  ├──config/                        * our configuration
  |   ├──empty.js                   * special file needed for webpack
  |   ├──helpers.js                 * utilities file for webpack

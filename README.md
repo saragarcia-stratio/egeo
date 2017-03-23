@@ -23,8 +23,8 @@ In this repository, you'll find UI components, services and utilities but this i
 * [File Structure](#file-structure)
 * [Getting Started](#getting-started)
    * [Dependencies](#dependencies)
-   * [Installing](#work-with-the-code)
-   * [Work with the code](#installing)
+   * [Installing](#installing)
+   * [Work with the code](#work-with-the-code)
    * [How to run](#how-to-run)
    * [How to test](#how-to-test)
    * [How to build](#how-to-build)
@@ -101,7 +101,7 @@ What your app will need to work with Egeo:
 You can install Egeo from npm:
 
 ```
-npm install egeo
+npm i @stratio/egeo
 ```
 
 ### Work with the code

@@ -9,10 +9,9 @@
     "clean:aot": "rimraf temp/compiled",
     "clean:coverage": "rimraf target/coverage",
     "clean:temp": "rimraf temp",
-
     "build": "npm run clean:dist && npm run gulp && npm run ngc && npm run webpack:lib",
+    "build:watch": "npm run webpack:lib -- --watch",
     "webpack:lib": "webpack --config config/webpack-components.js  --no-color --bail",
-
     "lint": "tslint -c ./tslint.json -e 'node_modules' --type-check -t stylish 'src/**/*.ts'",
     "replace": "json -I -f package.json -e",
     "test": "cross-env NODE_ENV=test karma start",

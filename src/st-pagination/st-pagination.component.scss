@@ -21,18 +21,9 @@
          padding: 0 15px;
       }
    }
+   
+   st-button:first-child {
+      margin: 0 5px;
+   }
 
-}
-
-
-/// Custom Styles
-
-.sth-pagination {
-   background: egeo-get-color(n1);
-   font-family: egeo-get-font(body);
-}
-
-.sth-pagination-pages {
-   font-size: egeo-get-font-size(body_xsmall);
-   color: egeo-get-color(n7)
 }

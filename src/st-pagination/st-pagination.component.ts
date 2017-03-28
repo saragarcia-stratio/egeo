@@ -13,9 +13,13 @@ export class StPaginationComponent implements OnInit, OnChanges {
 
    @Input() total: number;
    @Input() perPage: number = 20;
+   @Input() perPageOptions: Array<number> = [20, 50, 100];
    @Input() currentPage: number = 1;
    @Input() label: PaginateTexts;
    @Input() qaTag: string;
+   @Input() showPerPage: boolean = false;
+   @Input() hidePerPage: boolean = false;
+   @Input() theme: string = 'themeA';
 
    @Output() change: EventEmitter<Paginate> = new EventEmitter<Paginate>();
 
@@ -40,34 +44,27 @@ export class StPaginationComponent implements OnInit, OnChanges {
    }
 
    ngOnInit(): void {
-      this.updatePages();
+      this.updatePages(false);
       this.generateItems();
-      this.checkPerPage();
-   }
-
-   checkPerPage(): void {
-      if (this.perPage !== 20 && this.perPage !== 50 && this.perPage !== 100) {
-         throw new Error('The perPage parameter only supports numeric values 20, 50, or 100');
-      };
    }
 
    ngOnChanges(values: any): void {
       if (values.total) {
          this.generateItems();
+         this.updatePages(false);
       }
+
+      if (values.currentPage || values.perPage) {
+         this.updatePages(false);
+      }
+
    }
 
    generateItems(): void {
-
       this.items = [];
-
-      this.items.push(this.generateItem(20));
-      this.items.push(this.generateItem(50));
-
-      if (this.total > 200) {
-         this.items.push(this.generateItem(100));
+      for (let i = 0; i < this.perPageOptions.length; i++) {
+         this.items.push(this.generateItem(this.perPageOptions[i]));
       }
-
    }
 
    generateItem(n: number): StDropDownMenuItem {
@@ -87,6 +84,15 @@ export class StPaginationComponent implements OnInit, OnChanges {
    }
 
    showItemsPerPage(): boolean {
+
+      if (this.showPerPage) {
+         return true;
+      }
+
+      if (this.hidePerPage) {
+         return false;
+      }
+
       if (this.total <= 50) {
          return false;
       }
@@ -104,7 +110,7 @@ export class StPaginationComponent implements OnInit, OnChanges {
       this.updatePages();
    }
 
-   updatePages(): void {
+   updatePages(emit: boolean = true): void {
 
       this.lastItem = (this.perPage * this.currentPage);
 
@@ -123,17 +129,26 @@ export class StPaginationComponent implements OnInit, OnChanges {
          this.disableNextButton = false;
       }
 
-      this.change.emit({
-         currentPage: this.currentPage,
-         perPage: this.perPage
-      });
-
+      if (emit) {
+         this.change.emit({
+            currentPage: this.currentPage,
+            perPage: this.perPage
+         });
+      }
    }
 
    onChangePerPage(item: StDropDownMenuItem): void {
       this.currentPage = 1;
       this.perPage = item.value;
       this.updatePages();
+   }
+
+   getThemeDropdown(): string {
+      if (this.theme === 'themeA') {
+         return 'themeB';
+      } else {
+         return 'themeA';
+      }
    }
 
 }

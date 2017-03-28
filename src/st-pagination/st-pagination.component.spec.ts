@@ -37,10 +37,6 @@ describe('StPaginationComponent', () => {
          expect(component.showItemsPerPage()).toBeTruthy();
       });
 
-      it('should fails the component', () => {
-         component.perPage = 30;
-         expect(() => component.ngOnInit()).toThrowError('The perPage parameter only supports numeric values 20, 50, or 100');
-      });
 
       it('should not show the dropdown menu', () => {
          component.perPage = 20;
@@ -50,6 +46,23 @@ describe('StPaginationComponent', () => {
       });
 
    });
+
+   describe('When insert input perPageOptions', () => {
+
+      it('should be items equal to options insert by user', () => {
+
+         component.perPageOptions = [10, 20, 30];
+         fixture.detectChanges();
+         expect(component.items[0].value).toBe(10);
+      });
+
+      it('should be items equal to default per page options', () => {
+         fixture.detectChanges();
+         expect(component.items[0].value).toBe(20);
+      })
+
+
+   })
 
    describe('When update the pagination', () => {
 
@@ -128,21 +141,5 @@ describe('StPaginationComponent', () => {
 
    });
 
-   describe('when the component emit change the perPage paramater', () => {
-
-      it('should click item and dispatch event change with value of item', () => {
-         spyOn(component.change, 'emit');
-
-         component.perPage = 20;
-         component.total = 300;
-         fixture.detectChanges();
-         let dropdownElement = fixture.nativeElement.querySelector('st-dropdown');
-         dropdownElement.dispatchEvent(new Event('change'));
-         fixture.detectChanges();
-         expect(component.change.emit).toHaveBeenCalledWith({ currentPage: 1, perPage: 20});
-      });
-
-
-   });
 
 });

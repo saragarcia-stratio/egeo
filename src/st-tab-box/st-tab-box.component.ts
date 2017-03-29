@@ -16,11 +16,15 @@ export class StTabBoxComponent {
   }
 
   onClick(selectedTab: StTab): void {
-    for (let tab of this.tabs) {
-      tab.active = false;
-    }
-    selectedTab.active = true;
-    this.select.emit(selectedTab);
+    this.tabs = Object.assign([], this.tabs.map(tab => {
+      if (tab.label === selectedTab.label) {
+        return Object.assign({}, tab, { active: true });
+      } else {
+        return Object.assign({}, tab, { active: false });
+      }
+    }));
+
+    this.select.emit(Object.assign({}, selectedTab, { active: true }));
   }
 
   getTabWidth(): string {

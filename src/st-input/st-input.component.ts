@@ -47,10 +47,10 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
    public focus: boolean = false;
    public internalControl: FormControl;
    public internalType: string = 'text';
+   public errorMessage: string = undefined;
 
    private sub: Subscription;
    private valueChangeSub: Subscription;
-   private errorMessage: string = undefined;
    private internalInputModel: any = '';
 
    constructor(private _cd: ChangeDetectorRef) { }
@@ -163,6 +163,9 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
       }
       if (errors.hasOwnProperty('minlength')) {
          return this.errors.minLength || this.errors.generic || '';
+      }
+      if (errors.hasOwnProperty('maxlength')) {
+         return this.errors.maxLength || this.errors.generic || '';
       }
       if (errors.hasOwnProperty('pattern')) {
          return this.errors.pattern || this.errors.generic || '';

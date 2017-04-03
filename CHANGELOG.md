@@ -4,6 +4,9 @@
 
 * Pending changelog
 
+## 1.3.1 (April 03, 2017)
+* Fix st-modal, export StModalResponse
+
 ## 1.3.0 (April 03, 2017)
 
 * st-modal and StModalService

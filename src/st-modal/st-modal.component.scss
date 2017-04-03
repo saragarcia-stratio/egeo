@@ -1,76 +1,72 @@
-@import '../../node_modules/@stratio/egeo-ui-base/utils/typography';
-@import '../../node_modules/@stratio/egeo-ui-base/utils/colors';
-
-$st-print---modal: true !default;
-
-$st-modal---dp: 30px;
-$st-modal---padding: 30px !default;
-$st-modal--header---font-family: egeo-get-font(heading) !default;
-$st-modal--header---color: egeo-get-color(n8) !default;
-
 .st-modal {
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
-  height: 100%;
-  left: 0;
-  padding-top: 100px;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
+   height: 100vh;
+   left: 0;
+   top: 0;
+   position: fixed;
+   width: 100%;
+   z-index: 999999;
+   display: flex;
+}
 
-  &--content {
-    animation-duration: 0.4s;
-    animation-name: fadeIn;
-    background-color: #fefefe;
-    border: 1px solid #888;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    margin: auto;
-    position: relative;
-  }
+.st-modal-content {
+   align-self: center;
+   animation-duration: 0.5s;
+   animation-name: fadeIn;
+   margin: auto;
+   display: flex;
+   flex-direction: column;
+}
 
-  &--body {
-    padding: $st-modal---padding;
-  }
+.st-modal-header {
+   width: 100%;
+   position: relative;
+   display: flex;
+}
 
-  &--header {
-    color: $st-modal--header---color;
-    font-family: $st-modal--header---font-family;
-    height: 70px;
-    padding: $st-modal---padding;
-  }
+.st-modal-close-button {
+   position: absolute;
+   right: 15px;
+   top: 15px;
+}
 
-  &--title {
-    margin-left: 10px;
-  }
-
-  &--header-ico {
-    vertical-align: middle;
-  }
-
-  &--icon {
-    cursor: pointer;
-    font-family: 'ico-stratio';
-    position: absolute;
-    right: 15px;
-    top: 15px;
-  }
-
-  &--visible {
-    display: block;
-  }
-
-  &--invisible {
-    display: none;
-  }
-
-   @keyframes fadeIn {
-      from {
-         opacity: 0;
-      }
-
-      to {
-         opacity: 1;
-      }
+.st-modal-title {
+   align-self: flex-end;
+   margin: 0 0 7px 30px;
+   display: flex;
+   flex-wrap: nowrap;
+   align-items: center;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   max-width: 87%;
+   & i {
+      margin-right: 10px;
    }
+   & p {
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+   }
+}
+
+.st-modal-body {
+   padding: 30px 30px 50px 30px;
+}
+
+.st-modal-buttons {
+   margin-top: 50px;
+   margin-left: auto;
+   display: flex;
+   justify-content: flex-end;
+   & st-button {
+      margin-left: 10px;
+   }
+}
+
+.st-modal-contextual {
+   height: 35px;
+   padding: 10px 14px;
+   position: absolute;
+   top: 0;
+   left: 30px;
 }

@@ -1,5 +1,3 @@
-export * from './st-modal.service';
-export * from './modal.model';
-export * from './st-modal.component';
-export * from './shared';
-export * from './st-modal.module';
+export { StModalService } from './st-modal.service';
+export { StModalMainTextSize, StModalType, StModalWidth, StModalButton, StModalConfig } from './st-modal.interface';
+export { StModalModule } from './st-modal.module';

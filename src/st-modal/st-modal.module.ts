@@ -2,14 +2,13 @@ import { NgModule, ANALYZE_FOR_ENTRY_COMPONENTS } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { StModal } from './st-modal.component';
-import { StMessageModalComponent } from './shared';
 import { StButtonModule } from '../st-button';
 
 @NgModule({
    imports: [CommonModule, StButtonModule],
-   exports: [StModal, StMessageModalComponent],
-   declarations: [StModal, StMessageModalComponent],
-   entryComponents: [StModal, StMessageModalComponent],
+   exports: [StModal],
+   declarations: [StModal],
+   entryComponents: [StModal],
    providers: []
 })
 export class StModalModule {

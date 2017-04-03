@@ -1,18 +1,32 @@
-<div class="st-modal st-modal--visible">
-  <div class="st-modal--content" [ngStyle]="getModalSize()">
-    <div class="st-modal--header" [ngStyle]="getTitleStyles()">
-      <div [ngStyle]="getIconLineHeight()">
-        <span *ngIf="hasIcon()" class="st-modal--header-ico">
-          <i [ngClass]="config.title.icon"></i>
-          </span>
-        <span class="st-modal--title">{{config.title.title}}</span>
+<div class="st-modal sth-modal">
+   <div class="st-modal-content sth-modal-content" [ngStyle]="getModalSize()">
+      <div class="sth-modal-header st-modal-header" [ngClass]="getTitleClass()" [ngStyle]="{height: getHeaderHeight()}">
+         <div class="st-modal-contextual sth-modal-contextual" *ngIf="hasContextualTitle()">{{contextualTitle}}</div>
+         <div class="st-modal-title sth-modal-title">
+            <i *ngIf="hasIcon()" [ngClass]="getIcon()"></i>
+            <p id="st-modal-title">{{getTitle()}}</p>
+         </div>
+         <div (click)="closeModal($event)" class="st-modal-close-button sth-modal-close-button" id="st-modal-close-button">
+            <i class="icon-circle-cross"></i>
+         </div>
       </div>
-      <span class="st-modal--icon" (click)="closeModal()" [attr.id]="'button-close-modal'">
-        <i class="icon-circle-cross"></i>
-      </span>
-    </div>
-    <div class="st-modal--body">
-      <div #stModalBody></div>
-    </div>
-  </div>
+      <div class="st-modal-body sth-modal-body" [ngClass]="mainTextSize">
+         <div *ngIf="isMessageModal()" class="message">
+            <p id="st-modal-message-plain">{{message}}</p>
+         </div>
+         <div *ngIf="isComplexMessageModal()" [innerHTML]="getHTML()" id="st-modal-message-html"></div>
+         <div #stModalBody id="st-modal-message-component"></div>
+         <div *ngIf="hasButtons()" class="st-modal-buttons">
+            <st-button *ngFor="let button of getButtons(); let idx = index"
+               [text]="button.label"
+               [leftIcon]="getButtonIcon(true, button)"
+               [rightIcon]="getButtonIcon(false, button)"
+               [qaTag]="'st-modal-button-' + idx"
+               [subtypeClass]="getButtonSubtype(button)"
+               [inputType]="button"
+               (onClick)="clickButton(idx, button)"
+            ></st-button>
+      </div>
+      </div>
+   </div>
 </div>

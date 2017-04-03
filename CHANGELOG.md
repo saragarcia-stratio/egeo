@@ -2,7 +2,11 @@
 
 ## 1.3.0 (upcoming)
 
-* **BREAKING CHANGE:** Remove Table Component
+* st-modal and StModalService
+* Add max-lenght validation on inputs
+* Force to install some dependencies
+* st-tab-box as stateless component
+* Bugfix pagination
 
 ## 1.2.0 (March 17, 2017)
 

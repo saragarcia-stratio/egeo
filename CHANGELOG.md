@@ -4,7 +4,7 @@
 
 * Pending changelog
 
-## 1.3.0 (upcoming)
+## 1.3.0 (April 03, 2017)
 
 * st-modal and StModalService
 * Add max-lenght validation on inputs

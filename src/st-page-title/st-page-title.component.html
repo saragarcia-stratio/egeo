@@ -3,8 +3,8 @@
       leftIcon="{{leftButton}}" class="button-box sth-page-title-button-box" inputType="button" (click)="onClickedButton()">
       </st-button>
       <div class="main-title sth-page-title-main-title">
-         <span *ngIf="hasPreTitle()" class="sth-page-title-pre-title">{{preTitle | uppercase}}: </span>
-         <span class="sth-page-title-title">{{title | uppercase}}</span>
+         <span *ngIf="hasPreTitle()" class="sth-page-title-pre-title">{{preTitle}}: </span>
+         <span class="sth-page-title-title">{{title}}</span>
       </div>
       <div>
          <ng-content></ng-content>

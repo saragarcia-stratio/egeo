@@ -15,6 +15,7 @@ import { ModalTestComponent } from './modal-test.component';
       <st-button (onClick)="showModal()" text="Simple Message Modal" qaTag="modal-button-1"></st-button>
       <st-button (onClick)="showModalWithHtml()" text="Modal with HTML" qaTag="modal-button-2"></st-button>
       <st-button (onClick)="showModalWithComponent()" text="Modal with component" qaTag="modal-button-3"></st-button>
+      <st-button (onClick)="showDeleteConfirmationModal()" text="Delete confirmation modal" qaTag="modal-button-7"></st-button>
 
       <br><br>
       <h1 class="st-live-example-title">Modals by size:</h1>
@@ -50,7 +51,7 @@ export class ExampleComponent implements OnInit {
          message: message,
          mainText: StModalMainTextSize.BIG,
          modalType: StModalType.WARNING
-      }).subscribe((response) => console.log(this.evaluateResponse(response)));
+      }).subscribe((response) => this.evaluateResponse(response));
    }
 
    showModalWithHtml(): void {
@@ -78,7 +79,7 @@ export class ExampleComponent implements OnInit {
          mainText: StModalMainTextSize.MEDIUM,
          modalType: StModalType.INFO,
          contextualTitle: 'VALIDATION STATUS'
-      }).subscribe((response) => console.log(this.evaluateResponse(response)));
+      }).subscribe((response) => this.evaluateResponse(response));
    }
 
    showModalWithComponent(): void {
@@ -91,7 +92,7 @@ export class ExampleComponent implements OnInit {
             contextualTitle: 'CONTEXTUAL TITLE'
          },
          ModalTestComponent
-      ).subscribe((response) => console.log(this.evaluateResponse(response)));
+      ).subscribe((response) => this.evaluateResponse(response));
    }
 
    showModalBySize(size: string): void {
@@ -114,16 +115,32 @@ export class ExampleComponent implements OnInit {
          mainText: StModalMainTextSize.BIG,
          modalType: StModalType.INFO,
          modalWidth: width
-      }).subscribe((response) => console.log(this.evaluateResponse(response)));
+      }).subscribe((response) => this.evaluateResponse(response));
    }
 
-   private evaluateResponse(response: StModalResponse): string {
+   showDeleteConfirmationModal(): void {
+
+      let message: string = 'Are you sure of delete this?';
+
+      this._modalService.showDeleteConfirmation('Delete item', message, 'Delete', 'Cancel')
+         .subscribe((response) => this.evaluateResponse(response));
+   }
+
+   private evaluateResponse(response: StModalResponse): void {
       switch (response) {
-         case StModalResponse.YES: return 'YES';
-         case StModalResponse.NO: return 'NO';
-         case StModalResponse.CLOSE: return 'CLOSE';
-         default: return 'Error response not found';
+         case StModalResponse.YES:
+            console.log('YES');
+            break;
+         case StModalResponse.NO:
+            console.log('NO');
+            break;
+         case StModalResponse.CLOSE:
+            console.log('CLOSE');
+            break;
+         default:
+            console.error('Error response not found');
       }
+      this._modalService.close();
    }
 }
 

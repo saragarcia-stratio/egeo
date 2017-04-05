@@ -4,8 +4,17 @@
 
 * Add st-radio and st-radio-group components
 
+## 1.3.3 (April 05, 2017)
+
+* export all elements of stModalInterface
+
+## 1.3.2 (April 05, 2017)
+
+* fix infinite loop in modal close
+
 ## 1.3.1 (April 03, 2017)
-* Fix st-modal, export StModalResponse
+
+* export stModalResponse
 
 ## 1.3.0 (April 03, 2017)
 

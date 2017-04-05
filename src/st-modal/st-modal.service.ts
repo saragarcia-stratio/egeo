@@ -37,10 +37,32 @@ export class StModalService {
       return this.notifyButtonInteraction.asObservable();
    }
 
+   showDeleteConfirmation(
+      message: string,
+      modalTitle: string,
+      okButton: string,
+      cancelButton: string,
+      qaTag?: string,
+      modalType?: StModalType
+   ): Observable<StModalResponse> {
+
+      let buttons: StModalButton[] = [
+         { icon: 'icon-trash', iconLeft: true, label: okButton, primary: true, response: StModalResponse.YES },
+         { icon: 'icon-circle-cross', iconLeft: true, label: cancelButton, primary: false, response: StModalResponse.NO }
+      ];
+      return this.show({
+         qaTag: qaTag ? qaTag : 'delete-confirmation',
+         modalType: modalType ? modalType : StModalType.WARNING,
+         modalWidth: StModalWidth.COMPACT,
+         mainText: StModalMainTextSize.BIG,
+         message,
+         modalTitle,
+         buttons
+      });
+   }
+
    close(): void {
       this.destroy();
-      this.notifyButtonInteraction.next(StModalResponse.CLOSE);
-      this.notifyButtonInteraction.complete();
    }
 
    /* INTERNAL METHODS FOR WORK WITH MODALS */
@@ -57,6 +79,8 @@ export class StModalService {
       if (this.dynamicModal) {
          this.dynamicModal.destroy();
          this.dynamicModal = undefined;
+         this.notifyButtonInteraction.next(StModalResponse.CLOSE);
+         this.notifyButtonInteraction.complete();
       }
    }
 

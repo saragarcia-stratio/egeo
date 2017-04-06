@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { By } from '@angular/platform-browser';
 import { dispatchEvent } from '@angular/platform-browser/testing/browser_util';
+import { RouterTestingModule } from '@angular/router/testing';
 
 // Component
 import { SubmenuComponent } from './submenu.component';
@@ -23,7 +23,7 @@ let de: DebugElement;
 })
 class DummyComponent { }
 
-let menu: Array<StSubMenuModel> = [
+let menu: StSubMenuModel[] = [
    {
       label: 'USER',
       link: '/navigation/header/test1/subtest1',

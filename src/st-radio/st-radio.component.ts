@@ -1,7 +1,7 @@
-import { Component, Input, Output, EventEmitter, OnInit, Optional } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Optional, Output } from '@angular/core';
 
-import { StRadioGroupComponent, RadioChange } from './st-radio-group.component';
 import { SelectOneDispatcher } from '../utils';
+import { RadioChange, StRadioGroupComponent } from './st-radio-group.component';
 
 let idUnique: number = 0;
 

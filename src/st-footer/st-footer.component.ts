@@ -1,4 +1,4 @@
-import { Component, Input, Output, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { StFooterLink } from './st-footer.model';
@@ -12,7 +12,7 @@ import { StFooterLink } from './st-footer.model';
 export class StFooterComponent {
 
   @Input() rightsText: string;
-  @Input() links: Array<StFooterLink> = [];
+  @Input() links: StFooterLink[] = [];
   @Input() qaTag: string;
   @Input() image: string;
   @Output() link: EventEmitter<StFooterLink> = new EventEmitter<StFooterLink>();

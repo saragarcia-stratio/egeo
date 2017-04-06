@@ -1,4 +1,4 @@
-import { Component, Input, Output, OnInit, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { StHorizontalTab } from './st-horizontal-tabs.model';
 
 @Component({
@@ -10,7 +10,7 @@ import { StHorizontalTab } from './st-horizontal-tabs.model';
 
 export class StHorizontalTabsComponent implements OnInit {
    @Input() activeOption: string;
-   @Input() options: Array<StHorizontalTab>;
+   @Input() options: StHorizontalTab[];
    @Input() qaTag: string;
    @Output() changedOption: EventEmitter<any> = new EventEmitter<any>();
 

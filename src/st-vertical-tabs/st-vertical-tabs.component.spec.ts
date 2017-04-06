@@ -1,8 +1,8 @@
-import { TestBed, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { Http } from '@angular/http';
 import { By } from '@angular/platform-browser';
 import { dispatchEvent } from '@angular/platform-browser/testing/browser_util';
-import { Http } from '@angular/http';
 
 import { StVerticalTabsComponent } from './st-vertical-tabs.component';
 
@@ -11,7 +11,7 @@ let comp: StVerticalTabsComponent;
 let fixture: ComponentFixture<StVerticalTabsComponent>;
 let de: DebugElement;
 
-let fakeOptions: Array<string> = ['tab 1', 'tab 2', 'tab 3'];
+let fakeOptions: string[] = ['tab 1', 'tab 2', 'tab 3'];
 let qaTag: string = 'vertical-tabs';
 
 

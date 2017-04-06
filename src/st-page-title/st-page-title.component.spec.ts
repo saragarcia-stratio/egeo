@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 // Component
-import { StPageTitleComponent } from './st-page-title.component';
 import { StButtonModule } from '../st-button';
+import { StPageTitleComponent } from './st-page-title.component';
 
 let component: StPageTitleComponent;
 let fixture: ComponentFixture<StPageTitleComponent>;

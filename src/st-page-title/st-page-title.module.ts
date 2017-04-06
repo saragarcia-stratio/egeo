@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { StPageTitleComponent } from './st-page-title.component';
 import { StButtonModule } from '../st-button';
+import { StPageTitleComponent } from './st-page-title.component';
 
 @NgModule({
    imports: [CommonModule, StButtonModule],

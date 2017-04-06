@@ -7,10 +7,10 @@ import {StTooltip} from './st-tooltip.component';
 
 let component: StTooltip;
 let fixture: ComponentFixture<StTooltip>;
-let fakeText: string = "This text will be displayed in our tooltip";
+let fakeText: string = 'This text will be displayed in our tooltip';
 let nativeElement: any;
 describe('StTooltip', () => {
-   beforeEach(()=> {
+   beforeEach(() => {
       TestBed.configureTestingModule({
          imports: [FormsModule, ReactiveFormsModule],
          declarations: [StTooltip]
@@ -27,7 +27,7 @@ describe('StTooltip', () => {
 
       fixture.detectChanges();
 
-      expect(nativeElement.querySelector(".st-tooltip .tooltip-content span").innerHTML).toEqual(fakeText);
+      expect(nativeElement.querySelector('.st-tooltip .tooltip-content span').innerHTML).toEqual(fakeText);
    });
 
    it('It can be configured to be displayed and hidden when user clicks on its associated content', () => {
@@ -39,13 +39,13 @@ describe('StTooltip', () => {
       fixture.detectChanges();
 
       expect(component.isActive).toBeTruthy();
-      expect(nativeElement.querySelector(".st-tooltip .tooltip-content.on-click")).toBeDefined();
+      expect(nativeElement.querySelector('.st-tooltip .tooltip-content.on-click')).toBeDefined();
 
       nativeElement.querySelector('.st-tooltip .tooltip-content').click();
       fixture.detectChanges();
 
       expect(component.isActive).toBeFalsy();
-      expect(nativeElement.querySelector(".st-tooltip .tooltip-content.on-click")).toBe(null);
+      expect(nativeElement.querySelector('.st-tooltip .tooltip-content.on-click')).toBe(null);
    });
 
    it('It can be configured to be displayed and hidden when user puts the mouse on its associated content', () => {
@@ -53,7 +53,7 @@ describe('StTooltip', () => {
       component.isActive = false;
       component.text = fakeText;
 
-      expect(nativeElement.querySelector(".st-tooltip .tooltip-content.on-hover")).toBeDefined();
+      expect(nativeElement.querySelector('.st-tooltip .tooltip-content.on-hover')).toBeDefined();
 
       nativeElement.querySelector('.st-tooltip .tooltip-content').dispatchEvent(new  Event('mouseenter'));
 

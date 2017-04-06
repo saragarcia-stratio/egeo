@@ -1,8 +1,8 @@
 import { DebugElement } from '@angular/core';
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { StInfoBoxComponent } from './st-info-box.component';
-import { TestBed, ComponentFixture, fakeAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { StInfoBoxComponent } from './st-info-box.component';
 
 
 let title: string = 'title';

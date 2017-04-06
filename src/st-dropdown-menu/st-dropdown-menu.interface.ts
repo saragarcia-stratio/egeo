@@ -9,7 +9,7 @@ export interface StDropDownMenuItem {
 
 export interface StDropDownMenuGroup {
    title?: string;
-   items: Array<StDropDownMenuItem>;
+   items: StDropDownMenuItem[];
 }
 
 export interface StDropDownMenuItemSchema {
@@ -21,5 +21,5 @@ export interface StDropDownMenuItemSchema {
 
 export interface StDropDownMenuGroupSchema {
    title?: TranslateableElement;
-   items: Array<StDropDownMenuItemSchema>;
+   items: StDropDownMenuItemSchema[];
 }

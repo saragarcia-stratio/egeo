@@ -1,8 +1,8 @@
-import { NgModule, ANALYZE_FOR_ENTRY_COMPONENTS } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ANALYZE_FOR_ENTRY_COMPONENTS, NgModule } from '@angular/core';
 
-import { StModal } from './st-modal.component';
 import { StButtonModule } from '../st-button';
+import { StModal } from './st-modal.component';
 
 @NgModule({
    imports: [CommonModule, StButtonModule],

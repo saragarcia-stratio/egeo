@@ -1,4 +1,4 @@
-import { Component, Input, Output, OnInit, OnChanges, SimpleChange, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange } from '@angular/core';
 
 @Component({
    selector: 'st-vertical-tabs',
@@ -8,7 +8,7 @@ import { Component, Input, Output, OnInit, OnChanges, SimpleChange, EventEmitter
 })
 export class StVerticalTabsComponent implements OnInit {
    @Input() activeOption: string;
-   @Input() options: Array<string>;
+   @Input() options: string[];
    @Input() qaTag: string;
    @Output() changeOption: EventEmitter<string> = new EventEmitter<string>();
 

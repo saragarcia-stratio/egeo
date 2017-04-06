@@ -1,12 +1,12 @@
 import {
-   TestBed,
-   inject
+   inject,
+   TestBed
 } from '@angular/core/testing';
 
-import { StToggleButtonsComponent } from './st-toggle-buttons.component';
 import {
    RouterTestingModule
 } from '@angular/router/testing';
+import { StToggleButtonsComponent } from './st-toggle-buttons.component';
 
 
 describe('StToggleButtonsComponent', () => {

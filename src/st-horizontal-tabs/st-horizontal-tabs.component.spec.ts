@@ -1,6 +1,6 @@
-import { StHorizontalTab } from './st-horizontal-tabs.model';
 import { TestBed } from '@angular/core/testing';
 import { Http } from '@angular/http';
+import { StHorizontalTab } from './st-horizontal-tabs.model';
 
 import { StHorizontalTabsComponent } from './st-horizontal-tabs.component';
 
@@ -15,7 +15,7 @@ describe('StHorizontalTabsComponent', () => {
    });
 
    let stHorizontalTabsComponent: StHorizontalTabsComponent;
-   let fakeOptions: Array<StHorizontalTab> = [
+   let fakeOptions: StHorizontalTab[] = [
       { text: 'tab 1', isDisabled: false },
       { text: 'tab 2', isDisabled: false },
       { text: 'tab 3', isDisabled: true }

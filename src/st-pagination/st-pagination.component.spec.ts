@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { StPaginationComponent } from './st-pagination.component';
 
-import { StDropdownModule } from '../st-dropdown';
 import { StButtonModule } from '../st-button';
+import { StDropdownModule } from '../st-dropdown';
 
 
 
@@ -59,10 +59,10 @@ describe('StPaginationComponent', () => {
       it('should be items equal to default per page options', () => {
          fixture.detectChanges();
          expect(component.items[0].value).toBe(20);
-      })
+      });
 
 
-   })
+   });
 
    describe('When update the pagination', () => {
 

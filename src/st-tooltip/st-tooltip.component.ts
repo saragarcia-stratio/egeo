@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, Renderer, ChangeDetectorRef, ChangeDetectionStrategy, OnDestroy} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, Renderer} from '@angular/core';
 
 import { EventWindowManager } from '../utils';
 

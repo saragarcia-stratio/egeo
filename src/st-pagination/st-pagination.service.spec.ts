@@ -1,8 +1,8 @@
 import { StPaginationService } from './st-pagination.service';
 
 
-function generateItems(n: Number): Array<any> {
-   let items: Array<any> = [];
+function generateItems(n: Number): any[] {
+   let items: any[] = [];
 
    for (let i = 1; i <= n; i++) {
       items.push({

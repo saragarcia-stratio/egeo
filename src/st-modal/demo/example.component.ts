@@ -1,7 +1,7 @@
-import { Component, ViewChild, ViewContainerRef, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
+import { StModalButton, StModalMainTextSize, StModalResponse, StModalType, StModalWidth } from '../st-modal.interface';
 import { StModalService } from '../st-modal.service';
-import { StModalType, StModalButton, StModalMainTextSize, StModalWidth, StModalResponse } from '../st-modal.interface';
 import { ModalTestComponent } from './modal-test.component';
 
 @Component({
@@ -48,7 +48,7 @@ export class ExampleComponent implements OnInit {
          qaTag: 'tag-message',
          modalTitle: 'Delete item',
          buttons: this.buttons,
-         message: message,
+         message,
          mainText: StModalMainTextSize.BIG,
          modalType: StModalType.WARNING
       }).subscribe((response) => this.evaluateResponse(response));
@@ -75,7 +75,7 @@ export class ExampleComponent implements OnInit {
          qaTag: 'tag-html',
          modalTitle: 'With HTML',
          buttons: this.buttons,
-         html: html,
+         html,
          mainText: StModalMainTextSize.MEDIUM,
          modalType: StModalType.INFO,
          contextualTitle: 'VALIDATION STATUS'
@@ -111,7 +111,7 @@ export class ExampleComponent implements OnInit {
          qaTag: 'tag-' + size,
          modalTitle: size,
          buttons: this.buttons,
-         message: message,
+         message,
          mainText: StModalMainTextSize.BIG,
          modalType: StModalType.INFO,
          modalWidth: width

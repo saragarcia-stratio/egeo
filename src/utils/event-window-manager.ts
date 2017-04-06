@@ -1,4 +1,4 @@
-import { Renderer, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef, ElementRef, Renderer } from '@angular/core';
 
 export abstract class EventWindowManager {
    public isActive: boolean;

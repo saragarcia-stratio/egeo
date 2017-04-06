@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 
 import { StDropDownMenuItem } from '../st-dropdown-menu';
 import { Paginate, PaginateTexts } from './st-pagination.interface';
@@ -13,7 +13,7 @@ export class StPaginationComponent implements OnInit, OnChanges {
 
    @Input() total: number;
    @Input() perPage: number = 20;
-   @Input() perPageOptions: Array<number> = [20, 50, 100];
+   @Input() perPageOptions: number[] = [20, 50, 100];
    @Input() currentPage: number = 1;
    @Input() label: PaginateTexts;
    @Input() qaTag: string;
@@ -62,9 +62,9 @@ export class StPaginationComponent implements OnInit, OnChanges {
 
    generateItems(): void {
       this.items = [];
-      for (let i = 0; i < this.perPageOptions.length; i++) {
-         this.items.push(this.generateItem(this.perPageOptions[i]));
-      }
+      this.perPageOptions.forEach((option) => {
+         this.items.push(this.generateItem(option));
+      });
    }
 
    generateItem(n: number): StDropDownMenuItem {

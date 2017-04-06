@@ -1,7 +1,7 @@
-import { EgeoResolveService } from './egeo-resolve.service';
-import { EgeoResolverKeys, TranslateServiceType, TranslateableElement } from './egeo-resolve-model';
-import { Observable, Observer } from 'rxjs';
 import * as _ from 'lodash';
+import { Observable, Observer } from 'rxjs';
+import { EgeoResolverKeys, TranslateableElement, TranslateServiceType } from './egeo-resolve-model';
+import { EgeoResolveService } from './egeo-resolve.service';
 
 interface TestStTranslateService {
    name: string;

@@ -1,23 +1,23 @@
 import {
-   Component,
-   Input,
-   Output,
-   EventEmitter,
-   ElementRef,
-   Renderer,
-   ViewChild,
    AfterViewInit,
+   ChangeDetectionStrategy,
+   ChangeDetectorRef,
+   Component,
+   ElementRef,
+   EventEmitter,
+   Input,
+   OnChanges,
    OnDestroy,
    OnInit,
-   OnChanges,
-   ChangeDetectorRef,
-   ChangeDetectionStrategy
+   Output,
+   Renderer,
+   ViewChild
 } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 
 import { EventWindowManager } from '../utils';
 
-import { StDropDownMenuItem, StDropDownMenuGroup } from '../st-dropdown-menu/st-dropdown-menu.interface';
+import { StDropDownMenuGroup, StDropDownMenuItem } from '../st-dropdown-menu/st-dropdown-menu.interface';
 
 @Component({
    selector: 'st-dropdown',
@@ -95,7 +95,7 @@ export class StDropdownComponent extends EventWindowManager implements AfterView
 
    private findSelected(): void {
       if (this.isStDropdownItem(this.items)) {
-         let item = this.items.find(object => object.selected === true);
+         let item = this.items.find((object) => object.selected === true);
          if (item) {
             this.button = item.label;
             this.cd.markForCheck();
@@ -103,23 +103,23 @@ export class StDropdownComponent extends EventWindowManager implements AfterView
       }
    }
 
-   private isStDropdownItem(items: Array<StDropDownMenuItem | StDropDownMenuGroup>): items is Array<StDropDownMenuItem> {
+   private isStDropdownItem(items: Array<StDropDownMenuItem | StDropDownMenuGroup>): items is StDropDownMenuItem[] {
       if (items && items.length > 0) {
-         return (<Array<StDropDownMenuGroup>>items)[0].items === undefined;
+         return (<StDropDownMenuGroup[]>items)[0].items === undefined;
       }
    }
 
    private updateSelected(item?: StDropDownMenuItem): void {
 
       if (this.isStDropdownItem(this.items)) {
-         let itemSelected = this.items.find(object => object.selected === true);
+         let itemSelected = this.items.find((object) => object.selected === true);
 
          if (itemSelected) {
             itemSelected.selected = false;
          }
 
          if (item) {
-            let element = this.items.find(i => i === item);
+            let element = this.items.find((i) => i === item);
             element.selected = true;
          }
       }

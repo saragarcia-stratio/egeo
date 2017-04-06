@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { Component, DebugElement } from '@angular/core';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { FormControl, FormsModule, NgControl, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-import { NgModel, NgControl, FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
 
 import { SelectOneDispatcher } from '../utils';
 
+
+// The rule is disabled because if not fails!!!!! not remove
 import { StRadioComponent } from './st-radio.component';
+// tslint:disable-next-line:ordered-imports
 import { StRadioGroupComponent } from './st-radio-group.component';
 
 describe('StRadioGroup', () => {
@@ -42,13 +44,11 @@ describe('StRadioGroup', () => {
       groupInstance = groupDebugElement.injector.get(StRadioGroupComponent);
 
       radioDebugElements = fixture.debugElement.queryAll(By.directive(StRadioComponent));
-      radioNativeElements = radioDebugElements.map(debugEl => debugEl.nativeElement);
-      radioInstances = radioDebugElements.map(debugEl => debugEl.componentInstance);
+      radioNativeElements = radioDebugElements.map((debugEl) => debugEl.nativeElement);
+      radioInstances = radioDebugElements.map((debugEl) => debugEl.componentInstance);
 
-      radioLabelElements = radioDebugElements
-         .map(debugEl => debugEl.query(By.css('label')).nativeElement);
-      radioInputElements = radioDebugElements
-         .map(debugEl => debugEl.query(By.css('input')).nativeElement);
+      radioLabelElements = radioDebugElements.map((debugEl) => debugEl.query(By.css('label')).nativeElement);
+      radioInputElements = radioDebugElements.map((debugEl) => debugEl.query(By.css('input')).nativeElement);
 
       groupNgControl = groupDebugElement.injector.get(NgControl);
 
@@ -95,12 +95,12 @@ describe('StRadioGroup', () => {
                   <st-radio *ngFor="let item of items" [value]="item.value">
                   {{item.label}}
                   </st-radio>
-            </st-radio-group>      
+            </st-radio-group>
       `
    })
    class RadioGroupWithModel {
       modelValue: string;
-      items: Array<any> = [
+      items: any[] = [
          { label: 'example1', value: '1' },
          { label: 'example2', value: '2' },
          { label: 'example3', value: '3' }
@@ -141,6 +141,7 @@ describe('StRadioGroup with FormControl', () => {
    });
 
 
+   // tslint:disable-next-line:max-classes-per-file
    @Component({
       template: `
          <st-radio-group [formControl]="formControl">

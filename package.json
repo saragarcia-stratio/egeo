@@ -61,6 +61,7 @@
     "@types/node": "7.0.5",
     "angular2-template-loader": "0.6.2",
     "awesome-typescript-loader": "3.1.2",
+    "codelyzer": "2.1.1",
     "commitizen": "2.9.6",
     "core-js": "2.4.1",
     "cross-env": "4.0.0",

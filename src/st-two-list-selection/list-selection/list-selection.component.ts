@@ -1,7 +1,7 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { StTwoListSelectionElement } from '../st-two-list-selection.model';
 import { CheckRequired, Required } from '../../decorators';
+import { StTwoListSelectionElement } from '../st-two-list-selection.model';
 
 @Component({
    selector: 'list-selection',
@@ -11,7 +11,7 @@ import { CheckRequired, Required } from '../../decorators';
 })
 export class ListSelectionComponent {
 
-   @Input() @Required() list: Array<StTwoListSelectionElement>;
+   @Input() @Required() list: StTwoListSelectionElement[];
    @Input() editable: boolean = false;
    @Input() @Required() title: string;
    @Input() @Required() searchPlaceholder: string;
@@ -20,7 +20,7 @@ export class ListSelectionComponent {
    @Output() selectItem: EventEmitter<StTwoListSelectionElement> = new EventEmitter<StTwoListSelectionElement>();
    @Output() search: EventEmitter<string> = new EventEmitter<string>();
 
-   scrollItems: Array<StTwoListSelectionElement> = [];
+   scrollItems: StTwoListSelectionElement[] = [];
    firstEl: number = 0;
 
    get searchQaTag(): string {

@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { StSubMenuModel } from '../st-header.model';
 
@@ -10,7 +10,7 @@ import { StSubMenuModel } from '../st-header.model';
 })
 export class SubmenuComponent {
 
-   @Input() submenu: Array<StSubMenuModel> = [];
+   @Input() submenu: StSubMenuModel[] = [];
    @Input() qaTag: string;
    @Input() offset: number = 0;
 

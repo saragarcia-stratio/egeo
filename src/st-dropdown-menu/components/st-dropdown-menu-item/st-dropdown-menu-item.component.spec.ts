@@ -1,9 +1,9 @@
+import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 
-import { StDropdownMenuItemComponent } from './st-dropdown-menu-item.component';
 import { StDropDownMenuItem } from '../../st-dropdown-menu.interface';
+import { StDropdownMenuItemComponent } from './st-dropdown-menu-item.component';
 
 let item: StDropDownMenuItem = {
    label: 'example 1',

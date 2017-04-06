@@ -11,13 +11,13 @@
  *
  * declare type ParameterDecorator = (target: Object, propertyKey: string | symbol, parameterIndex: number) => void;
  */
-
 import * as ReflectMetadata from 'reflect-metadata';
 
 import { EgeoUtils } from '../utils';
 
 const REQUIRED_METADATA = Symbol('EgeoRequire');
 
+// tslint:disable:only-arrow-functions
 export function Required(condition?: string): any {
    return function (target: any, name: string): any {
       const meta: any = Reflect.getOwnMetadata(REQUIRED_METADATA, target.constructor) || {};
@@ -50,12 +50,12 @@ export function CheckRequired(params?: ''): any {
 function checkRequired(target: any, scope: any): void {
    const meta: any = Reflect.getOwnMetadata(REQUIRED_METADATA, target);
    if (meta !== undefined) {
-      let inputs: Array<string> = getKeys(Object.keys(meta), meta, scope);
+      let inputs: string[] = getKeys(Object.keys(meta), meta, scope);
       EgeoUtils.validateInputs(scope, inputs, target.name);
    }
 }
 
-function getKeys(inputs: Array<string>, metadata: { [key: string]: EgeoMetadata }, scope: any): Array<string> {
+function getKeys(inputs: string[], metadata: { [key: string]: EgeoMetadata }, scope: any): string[] {
    return inputs.reduce((prev, curr) => {
       if (metadata[curr].requireCondition !== undefined) {
          if (checkConditionMetadata(scope, metadata[curr].requireCondition)) {
@@ -83,3 +83,4 @@ export interface EgeoMetadata {
    required?: boolean;
    requireCondition?: string;
 }
+// tslint:enabled

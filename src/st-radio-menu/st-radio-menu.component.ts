@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {StRadioMenuOption} from './st-radio-menu-option.interface';
 @Component({
    selector: 'st-radio-menu',
@@ -9,7 +9,7 @@ import {StRadioMenuOption} from './st-radio-menu-option.interface';
 
 export class StRadioMenuComponent {
    @Input() activeOption: StRadioMenuOption;
-   @Input() options: Array<StRadioMenuOption>;
+   @Input() options: StRadioMenuOption[];
    @Input() qaTag: string;
    @Output() changedOption: EventEmitter<any> = new EventEmitter<any>();
 

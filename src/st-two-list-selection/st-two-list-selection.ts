@@ -1,9 +1,9 @@
-import { SimpleChanges, ChangeDetectorRef, EventEmitter } from '@angular/core';
+import { ChangeDetectorRef, EventEmitter, SimpleChanges } from '@angular/core';
 import * as _ from 'lodash';
 
 import { StTwoListSelectionElement } from './st-two-list-selection.model';
 
-export type List = Array<StTwoListSelectionElement>;
+export type List = StTwoListSelectionElement[];
 export type IdList = Array<string | number>;
 
 export class StTwoListSelection {
@@ -27,11 +27,11 @@ export class StTwoListSelection {
    constructor(private _cd: ChangeDetectorRef) { }
 
    canActivateArrowLeft(): boolean {
-      return this.copySelectedElements && this.copySelectedElements.find(item => item.selected) !== undefined || false;
+      return this.copySelectedElements && this.copySelectedElements.find((item) => item.selected) !== undefined || false;
    }
 
    canActivateArrowRight(): boolean {
-      return this.copyAllElement && this.copyAllElement.find(item => item.selected) !== undefined || false;
+      return this.copyAllElement && this.copyAllElement.find((item) => item.selected) !== undefined || false;
    }
 
    // Check selected element
@@ -94,7 +94,7 @@ export class StTwoListSelection {
    }
 
    private reselect(list: List, ids: IdList): void {
-      list.forEach(item => {
+      list.forEach((item) => {
          if (_.includes(ids, item.id)) {
             item.selected = true;
          }
@@ -146,7 +146,7 @@ export class StTwoListSelection {
    }
 
    private moveIdsFromAllToSelected(all: List, selected: List, ids: IdList): List {
-      let items: List = all.filter(item => _.includes(ids, item.id));
+      let items: List = all.filter((item) => _.includes(ids, item.id));
       return _.xorBy(selected, _.cloneDeep(items), 'id');
    }
 

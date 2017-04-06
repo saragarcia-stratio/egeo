@@ -1,11 +1,11 @@
-import { NgModule, Type } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule, Type } from '@angular/core';
 import { Routes } from '@angular/router';
 
-import { ExampleComponent } from './example.component';
+import { StButtonModule } from '../../st-button';
 import { StModalModule } from '../st-modal.module';
 import { StModalService } from '../st-modal.service';
-import { StButtonModule } from '../../st-button';
+import { ExampleComponent } from './example.component';
 import { ModalTestComponent } from './modal-test.component';
 
 @NgModule({

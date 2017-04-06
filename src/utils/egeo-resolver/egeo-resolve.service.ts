@@ -1,34 +1,34 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import * as _ from 'lodash';
+import { Observable } from 'rxjs';
 
 import { EgeoResolverKeys, TranslateServiceType } from './egeo-resolve-model';
 
 @Injectable()
 export class EgeoResolveService {
 
-   getKeys(object: any, key: string): Array<EgeoResolverKeys> {
+   getKeys(object: any, key: string): EgeoResolverKeys[] {
       return this.searchInDeep(object, key);
    }
 
-   setKeys(object: any, resolved: Array<EgeoResolverKeys>): void {
-      resolved.forEach(element => _.set(object, element.path, element.resolved));
+   setKeys(object: any, resolved: EgeoResolverKeys[]): void {
+      resolved.forEach((element) => _.set(object, element.path, element.resolved));
    }
 
    translate(object: any, translateService: TranslateServiceType): Observable<any> {
-      let keys: Array<EgeoResolverKeys> = this.getKeys(object, 'translate'); // Get keys
-      let toTranslate: Array<string> = this.extractTranslationKeys(keys); // Extract keys for translate service
+      let keys: EgeoResolverKeys[] = this.getKeys(object, 'translate'); // Get keys
+      let toTranslate: string[] = this.extractTranslationKeys(keys); // Extract keys for translate service
       return translateService.get(toTranslate) // return object translation
-         .map(translation => this.remapObjectWithTranslations(translation, keys, object));
+         .map((translation) => this.remapObjectWithTranslations(translation, keys, object));
    }
 
-   translateArrayOfKeys(keys: Array<string>, translateService: TranslateServiceType): Observable<Array<string>> {
+   translateArrayOfKeys(keys: string[], translateService: TranslateServiceType): Observable<string[]> {
       return translateService.get(keys)
-         .map(translation => this.remapArrayWithTranslations(translation, keys));
+         .map((translation) => this.remapArrayWithTranslations(translation, keys));
    }
 
-   private remapArrayWithTranslations(translations: { [key: string]: string }, originalArray: Array<string>): Array<string> {
-      return originalArray.map(key => translations[key] ? translations[key] : key);
+   private remapArrayWithTranslations(translations: { [key: string]: string }, originalArray: string[]): string[] {
+      return originalArray.map((key) => translations[key] ? translations[key] : key);
    }
 
    private remapObjectWithTranslations(translations: { [key: string]: string }, resolverKeys: EgeoResolverKeys[], object: any): any {
@@ -46,15 +46,15 @@ export class EgeoResolveService {
       return translations[translationElementKey] ? translations[translationElementKey] : translationElementKey;
    }
 
-   private extractTranslationKeys(list: Array<EgeoResolverKeys>): Array<string> {
-      return list.map(element => <string>_.values(_.omit(element.toResolve, 'translate'))[0]);
+   private extractTranslationKeys(list: EgeoResolverKeys[]): string[] {
+      return list.map((element) => <string>_.values(_.omit(element.toResolve, 'translate'))[0]);
    }
 
-   private searchInDeep(object: any, key: string, path: string = ''): Array<EgeoResolverKeys> {
+   private searchInDeep(object: any, key: string, path: string = ''): EgeoResolverKeys[] {
       if (_.has(object, key)) { // If we found key, return object.
-         return [{ 'path': path, toResolve: object }];
+         return [{ path, toResolve: object }];
       }
-      let result: Array<EgeoResolverKeys> = [];
+      let result: EgeoResolverKeys[] = [];
 
       let i = 0;
       _.forEach(object, (value, objKey) => { // Search in deep by all elements

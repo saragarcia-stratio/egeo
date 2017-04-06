@@ -1,7 +1,7 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { StTwoListSelectionElement } from '../st-two-list-selection.model';
 import { CheckRequired, Required } from '../../decorators';
+import { StTwoListSelectionElement } from '../st-two-list-selection.model';
 
 @Component({
    selector: 'list-item',

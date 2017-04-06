@@ -1,13 +1,12 @@
-import { Component } from '@angular/core';
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { Component, DebugElement } from '@angular/core';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { FormControl, FormsModule, NgControl, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-import { NgControl, FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
 
 import { SelectOneDispatcher } from '../utils';
 
-import { StRadioComponent } from './st-radio.component';
 import { StRadioGroupComponent } from './st-radio-group.component';
+import { StRadioComponent } from './st-radio.component';
 
 describe('StRadioComponent', () => {
 

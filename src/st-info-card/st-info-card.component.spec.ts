@@ -19,7 +19,7 @@ describe('StInfoCardComponent', () => {
   });
 
   let stInfoCardComponent: StInfoCardComponent;
-  let fakeOptions: Array<string> = ['tab 1', 'tab 2', 'tab 3'];
+  let fakeOptions: string[] = ['tab 1', 'tab 2', 'tab 3'];
 
   beforeEach(() => {
     stInfoCardComponent = new StInfoCardComponent();

@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { StDropdownComponent } from './st-dropdown.component';
-import { StDropDownMenuItem } from '../st-dropdown-menu/st-dropdown-menu.interface';
 import { StDropdownMenuModule } from '../st-dropdown-menu';
+import { StDropDownMenuItem } from '../st-dropdown-menu/st-dropdown-menu.interface';
+import { StDropdownComponent } from './st-dropdown.component';
 
-let items: Array<StDropDownMenuItem> = [
+let items: StDropDownMenuItem[] = [
    {
       label: 'example 1',
       value: 1

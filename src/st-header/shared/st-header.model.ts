@@ -5,7 +5,7 @@ export interface StHeaderModel {
    label: string;
    link: string;
    isActive: boolean;
-   subMenus: Array<StSubMenuModel>;
+   subMenus: StSubMenuModel[];
    notifications?: number;
 }
 
@@ -21,7 +21,7 @@ export interface StHeaderModelSchema {
    label: TranslateableElement;
    link: string;
    isActive: boolean;
-   subMenus: Array<StSubMenuModelSchema>;
+   subMenus: StSubMenuModelSchema[];
    notifications?: number;
 }
 

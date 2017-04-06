@@ -1,16 +1,16 @@
 import {
-   Injectable,
-   ViewContainerRef,
-   Type,
-   ComponentRef,
    ComponentFactory,
-   ComponentFactoryResolver
+   ComponentFactoryResolver,
+   ComponentRef,
+   Injectable,
+   Type,
+   ViewContainerRef
 } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 /* local dependencies */
-import { StModalType, StModalWidth, StModalConfig, StModalMainTextSize, StModalResponse, StModalButton } from './st-modal.interface';
 import { StModal } from './st-modal.component';
+import { StModalButton, StModalConfig, StModalMainTextSize, StModalResponse, StModalType, StModalWidth } from './st-modal.interface';
 
 @Injectable()
 export class StModalService {

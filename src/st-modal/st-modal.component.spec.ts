@@ -1,13 +1,13 @@
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
-import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { dispatchEvent } from '@angular/platform-browser/testing/browser_util';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 // Component
-import { StModal } from './st-modal.component';
 import { StButtonModule } from '../st-button/st-button.module';
+import { StModal } from './st-modal.component';
 import { StModalButton, StModalConfig, StModalMainTextSize, StModalResponse, StModalType, StModalWidth } from './st-modal.interface';
 
 @Component({
@@ -55,7 +55,7 @@ function getInitialConfig(): StModalConfig {
       buttons: [],
       closeOnAccept: true,
       mainText: StModalMainTextSize.MEDIUM,
-      qaTag: qaTag
+      qaTag
    };
 }
 
@@ -371,7 +371,7 @@ describe('StModal', () => {
       let name: string = 'Test Name';
       let outFunc = jasmine.createSpy('outFunc');
       comp.component = ModalTestComponent;
-      comp.modalConfig.inputs = { name: name };
+      comp.modalConfig.inputs = { name };
       comp.modalConfig.outputs = { notify: outFunc };
       fixture.detectChanges();
 

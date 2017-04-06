@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { StHeaderModel } from '../st-header.model';
 
@@ -9,7 +9,7 @@ import { StHeaderModel } from '../st-header.model';
 })
 export class NavigationLinksComponent {
 
-   @Input() menu: Array<StHeaderModel> = [];
+   @Input() menu: StHeaderModel[] = [];
    @Input() qaTag: string;
 
    @Output() positionChange: EventEmitter<number> = new EventEmitter<number>();

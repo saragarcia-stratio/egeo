@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { dispatchEvent } from '@angular/platform-browser/testing/browser_util';
 
-import { StInputComponent } from './st-input.component';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StTooltip } from '../st-tooltip/st-tooltip.component';
-import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
+import { StInputComponent } from './st-input.component';
 
 let component: StInputComponent;
 let fixture: ComponentFixture<StInputComponent>;

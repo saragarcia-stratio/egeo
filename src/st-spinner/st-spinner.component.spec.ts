@@ -1,9 +1,9 @@
-import { DebugElement } from '@angular/core';
-import { By } from '@angular/platform-browser';
-import { StSpinnerComponent } from './st-spinner.component';
 import { CommonModule } from '@angular/common';
+import { DebugElement } from '@angular/core';
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
-import { TestBed, ComponentFixture, fakeAsync } from '@angular/core/testing';
+import { StSpinnerComponent } from './st-spinner.component';
 
 let fixture: ComponentFixture<StSpinnerComponent>;
 let comp: StSpinnerComponent;

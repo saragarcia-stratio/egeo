@@ -1,7 +1,7 @@
-import { Component, ChangeDetectionStrategy, Input, ChangeDetectorRef, ElementRef, OnInit, Output, EventEmitter } from '@angular/core';
-import { Router, Event } from '@angular/router';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Event, Router } from '@angular/router';
 
-import { StHeaderModel, StSubMenuModel, StHeaderUserMenuModel } from './shared';
+import { StHeaderModel, StHeaderUserMenuModel, StSubMenuModel } from './shared';
 
 @Component({
    selector: 'st-header',
@@ -19,14 +19,14 @@ export class StHeaderComponent implements OnInit {
 
    @Input() maxWidth: number;
 
-   @Input() menu: Array<StHeaderModel> = [];
+   @Input() menu: StHeaderModel[] = [];
 
    @Input() userMenu: StHeaderUserMenuModel | undefined;
    @Input() qaTag: string;
 
    @Output() contentChangeOffset: EventEmitter<number> = new EventEmitter<number>();
 
-   selectedSubmenu: Array<StSubMenuModel> = [];
+   selectedSubmenu: StSubMenuModel[] = [];
    navigationOffset: number = 0;
 
    private headerOffset: number = 0;
@@ -39,7 +39,7 @@ export class StHeaderComponent implements OnInit {
    ) { }
 
    public hasSubmenu(): boolean {
-      let menu: StHeaderModel | undefined = this.menu.find(menuOption => this._router.url.includes(menuOption.link));
+      let menu: StHeaderModel | undefined = this.menu.find((menuOption) => this._router.url.includes(menuOption.link));
       if (menu !== undefined && menu.subMenus !== undefined && menu.subMenus.length > 0) {
          this.selectedSubmenu = menu.subMenus;
          this.checkIfNotify(true);

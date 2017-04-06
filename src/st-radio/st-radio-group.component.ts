@@ -1,4 +1,4 @@
-import { Directive, Input, Output, EventEmitter, OnInit, ContentChildren, forwardRef, QueryList } from '@angular/core';
+import { ContentChildren, Directive, EventEmitter, forwardRef, Input, OnInit, Output, QueryList } from '@angular/core';
 
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { StRadioComponent } from './st-radio.component';
@@ -16,11 +16,12 @@ export class RadioChange {
 
 let _uniqueIdCounter = 0;
 
+// tslint:disable-next-line:max-classes-per-file
 @Directive({
    selector: 'st-radio-group',
    providers: [MD_RADIO_GROUP_CONTROL_VALUE_ACCESSOR],
    host: {
-      'role': 'radiogroup'
+      role: 'radiogroup'
    }
 })
 export class StRadioGroupComponent implements OnInit, ControlValueAccessor {
@@ -124,7 +125,7 @@ export class StRadioGroupComponent implements OnInit, ControlValueAccessor {
 
    private updateRadioName(): void {
       if (this._radios) {
-         this._radios.forEach(radio => {
+         this._radios.forEach((radio) => {
             radio.name = this.name;
          });
       }
@@ -135,7 +136,7 @@ export class StRadioGroupComponent implements OnInit, ControlValueAccessor {
 
       if (this._radios != null && !isAlreadySelected) {
          this._selected = null;
-         this._radios.forEach(radio => {
+         this._radios.forEach((radio) => {
             radio.checked = this.value === radio.value;
             if (radio.checked) {
                this._selected = radio;

@@ -1,8 +1,8 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import * as _ from 'lodash';
 
-import { Required, CheckRequired } from '../decorators';
-import { StTwoListSelectionElement, StTwoListSelectionConfig } from './st-two-list-selection.model';
+import { CheckRequired, Required } from '../decorators';
+import { StTwoListSelectionConfig, StTwoListSelectionElement } from './st-two-list-selection.model';
 
 @Component({
    selector: 'st-two-list-selection-view',
@@ -13,8 +13,8 @@ import { StTwoListSelectionElement, StTwoListSelectionConfig } from './st-two-li
 @CheckRequired()
 export class StTwoListSelectionViewComponent {
 
-   @Input() allElements: Array<StTwoListSelectionElement>;
-   @Input() @Required() selectedElements: Array<StTwoListSelectionElement>;
+   @Input() allElements: StTwoListSelectionElement[];
+   @Input() @Required() selectedElements: StTwoListSelectionElement[];
 
    @Output() selectAllElement: EventEmitter<StTwoListSelectionElement> = new EventEmitter<StTwoListSelectionElement>();
    @Output() selectSelectedElement: EventEmitter<StTwoListSelectionElement> = new EventEmitter<StTwoListSelectionElement>();

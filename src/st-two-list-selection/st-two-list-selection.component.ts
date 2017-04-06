@@ -1,19 +1,19 @@
 import {
-   Component,
    ChangeDetectionStrategy,
-   Input,
-   Output,
+   ChangeDetectorRef,
+   Component,
    EventEmitter,
-   OnInit,
+   Input,
    OnChanges,
-   SimpleChanges,
-   ChangeDetectorRef
+   OnInit,
+   Output,
+   SimpleChanges
 } from '@angular/core';
 import * as _ from 'lodash';
 
 import { CheckRequired, Required } from '../decorators';
-import { StTwoListSelectionElement, StTwoListSelectionConfig } from './st-two-list-selection.model';
 import { StTwoListSelection } from './st-two-list-selection';
+import { StTwoListSelectionConfig, StTwoListSelectionElement } from './st-two-list-selection.model';
 
 @Component({
    selector: 'st-two-list-selection',
@@ -41,9 +41,9 @@ import { StTwoListSelection } from './st-two-list-selection';
 @CheckRequired()
 export class StTwoListSelectionComponent extends StTwoListSelection implements OnInit, OnChanges {
 
-   @Input() @Required('editable') allElements: Array<StTwoListSelectionElement>;
-   @Input() @Required() selectedElements: Array<StTwoListSelectionElement>;
-   @Output() selectedElementsChange: EventEmitter<Array<StTwoListSelectionElement>> = new EventEmitter<Array<StTwoListSelectionElement>>();
+   @Input() @Required('editable') allElements: StTwoListSelectionElement[];
+   @Input() @Required() selectedElements: StTwoListSelectionElement[];
+   @Output() selectedElementsChange: EventEmitter<StTwoListSelectionElement[]> = new EventEmitter<StTwoListSelectionElement[]>();
 
    @Input() config: StTwoListSelectionConfig;
    @Input() editable: boolean = false;
@@ -67,11 +67,11 @@ export class StTwoListSelectionComponent extends StTwoListSelection implements O
       this.checkChanges(changes, 'allElements', 'selectedElements');
    }
 
-   get allList(): Array<StTwoListSelectionElement> {
+   get allList(): StTwoListSelectionElement[] {
       return this.copyAllElement;
    }
 
-   get selectedList(): Array<StTwoListSelectionElement> {
+   get selectedList(): StTwoListSelectionElement[] {
       return this.copySelectedElements;
    }
 }

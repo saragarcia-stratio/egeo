@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { StInfoBoxComponent } from './st-info-box.component';
 
 @NgModule({

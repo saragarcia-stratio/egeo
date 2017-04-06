@@ -1,12 +1,12 @@
 import {
-  TestBed,
-  inject
+  inject,
+  TestBed
 } from '@angular/core/testing';
 
-import { StTabBoxComponent } from './st-tab-box.component';
 import {
   RouterTestingModule
 } from '@angular/router/testing';
+import { StTabBoxComponent } from './st-tab-box.component';
 
 
 describe('StTabBoxComponent', () => {

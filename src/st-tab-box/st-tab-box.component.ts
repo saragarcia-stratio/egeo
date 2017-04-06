@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { StTab } from './st-tab-box.interface';
 
 @Component({
@@ -16,7 +16,7 @@ export class StTabBoxComponent {
   }
 
   onClick(selectedTab: StTab): void {
-    this.tabs = Object.assign([], this.tabs.map(tab => {
+    this.tabs = Object.assign([], this.tabs.map((tab) => {
       if (tab.label === selectedTab.label) {
         return Object.assign({}, tab, { active: true });
       } else {

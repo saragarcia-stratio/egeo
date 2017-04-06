@@ -1,4 +1,5 @@
 import {
+   AfterViewInit,
    ChangeDetectionStrategy,
    ChangeDetectorRef,
    Component,
@@ -7,12 +8,11 @@ import {
    OnChanges,
    OnDestroy,
    OnInit,
-   AfterViewInit,
    SimpleChange,
    SimpleChanges,
    ViewChildren
 } from '@angular/core';
-import { FormControl, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { StInputError } from './st-input.error.model';

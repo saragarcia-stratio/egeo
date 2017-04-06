@@ -1,20 +1,20 @@
 import {
+   ChangeDetectionStrategy,
    Component,
+   ComponentFactoryResolver,
    ComponentRef,
-   Input,
-   ViewContainerRef,
-   Output,
    EventEmitter,
-   ViewChild,
+   Input,
    OnDestroy,
    OnInit,
-   ComponentFactoryResolver,
-   ChangeDetectionStrategy
+   Output,
+   ViewChild,
+   ViewContainerRef
 } from '@angular/core';
 import * as _ from 'lodash';
 
 import { CheckRequired, Required } from '../decorators';
-import { StModalType, StModalWidth, StModalConfig, StModalButton, StModalMainTextSize, StModalResponse } from './st-modal.interface';
+import { StModalButton, StModalConfig, StModalMainTextSize, StModalResponse, StModalType, StModalWidth } from './st-modal.interface';
 
 @CheckRequired()
 @Component({

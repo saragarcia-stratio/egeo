@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { dispatchEvent } from '@angular/platform-browser/testing/browser_util';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -30,7 +30,7 @@ let userMenu: StHeaderUserMenuModel = {
    logoutPath: 'path'
 };
 
-let menu: Array<StHeaderModel> = [
+let menu: StHeaderModel[] = [
    {
       icon: 'icon-head',
       label: 'IDENTITIES',

@@ -1,11 +1,11 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { StFooterComponent } from './st-footer.component';
 import { StFooterLink } from './st-footer.model';
 
-let items: Array<StFooterLink> = [
+let items: StFooterLink[] = [
    {
       title: 'External Router',
       url: 'http://www.google.es'

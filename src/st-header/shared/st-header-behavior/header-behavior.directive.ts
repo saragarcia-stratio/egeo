@@ -1,4 +1,4 @@
-import { Directive, HostListener, Renderer, ElementRef } from '@angular/core';
+import { Directive, ElementRef, HostListener, Renderer } from '@angular/core';
 
 @Directive({ selector: '[stHeaderBehavior]' })
 export class StHeaderBehaviorDirective {

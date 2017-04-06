@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
 import { StPaginationComponent } from './st-pagination.component';
 import { StPaginationPipe } from './st-pagination.pipe';

@@ -1,16 +1,16 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { StHeaderComponent } from './st-header.component';
 import {
    AppNameComponent,
    NavigationLinksComponent,
+   StHeaderBehaviorDirective,
    SubmenuComponent,
    SubmenuPosDirective,
-   UserMenuComponent,
-   StHeaderBehaviorDirective
+   UserMenuComponent
 } from './shared';
+import { StHeaderComponent } from './st-header.component';
 
 @NgModule({
    imports: [CommonModule, RouterModule],

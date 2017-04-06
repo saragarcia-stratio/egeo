@@ -6,8 +6,8 @@ import {Http} from '@angular/http';
 import {
    RouterTestingModule
 } from '@angular/router/testing';
-import {StRadioMenuComponent} from './st-radio-menu.component';
 import {StRadioMenuOption} from './st-radio-menu-option.interface';
+import {StRadioMenuComponent} from './st-radio-menu.component';
 
 
 describe('StRadioMenuComponent', () => {

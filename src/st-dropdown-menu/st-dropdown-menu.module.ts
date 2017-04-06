@@ -1,8 +1,8 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 
-import { StDropdownMenuComponent } from './st-dropdown-menu.component';
 import { StDropdownMenuItemComponent } from './components';
+import { StDropdownMenuComponent } from './st-dropdown-menu.component';
 
 @NgModule({
    imports: [CommonModule],

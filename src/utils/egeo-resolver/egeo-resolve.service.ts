@@ -28,23 +28,22 @@ export class EgeoResolveService {
    }
 
    private remapArrayWithTranslations(translations: { [key: string]: string }, originalArray: Array<string>): Array<string> {
-      return originalArray.map(key => translations[key]);
+      return originalArray.map(key => translations[key] ? translations[key] : key);
    }
 
-   private remapObjectWithTranslations(translations: { [key: string]: string }, resolverKeys: Array<EgeoResolverKeys>, object: any): any {
+   private remapObjectWithTranslations(translations: { [key: string]: string }, resolverKeys: EgeoResolverKeys[], object: any): any {
       let newObj = _.cloneDeep(object);
       if (translations || _.keys(translations).length > 0) {
-         _.forEach(translations, (value, key) => {
-            let resolverKey: EgeoResolverKeys = this.getResolveItemByKey(resolverKeys, key);
-            _.set(newObj, resolverKey.path, value);
+         _.forEach(resolverKeys, (resolvKey, key) => {
+            _.set(newObj, resolvKey.path, this.getTranslationFromTranslatedKey(translations, resolvKey));
          });
       }
       return newObj;
    }
 
-   // Find a item
-   private getResolveItemByKey(list: Array<EgeoResolverKeys>, key: string): EgeoResolverKeys {
-      return list.find(item => _.values(_.omit(item.toResolve, 'translate'))[0] === key);
+   private getTranslationFromTranslatedKey(translations: { [key: string]: string }, resolverKey: EgeoResolverKeys): string {
+      let translationElementKey = resolverKey && resolverKey.toResolve && resolverKey.toResolve.key ? resolverKey.toResolve.key : '';
+      return translations[translationElementKey] ? translations[translationElementKey] : translationElementKey;
    }
 
    private extractTranslationKeys(list: Array<EgeoResolverKeys>): Array<string> {

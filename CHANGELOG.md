@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5.0 (upcoming)
+
+* Pending changelog
+
 ## 1.4.0 (upcoming)
 
 * Add st-radio and st-radio-group components

@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.4.1 (April 17, 2017)
+## 1.4.1 (upcoming)
 
 * fix AOT bug with StRadio Component
 

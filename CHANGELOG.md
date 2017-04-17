@@ -7,6 +7,7 @@
 * Bugfix #144 and #77
 * Update spinner styles to remove margins
 * Increase test coverage in all components
+* EgDeprecated decorator
 
 ## 1.3.3 (April 05, 2017)
 

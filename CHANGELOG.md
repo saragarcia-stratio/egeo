@@ -4,7 +4,7 @@
 
 * Pending changelog
 
-## 1.4.0 (upcoming)
+## 1.4.0 (April 17, 2017)
 
 * Add st-radio and st-radio-group components
 * Add test to EgeoResolve

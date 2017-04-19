@@ -10,6 +10,7 @@
 * Extract theme of vertical-tabs
 * Extract theme of search
 * Reduce bundle size
+* Add Breadcrumbs component 
 
 ## 1.4.1 (April 17, 2017)
 

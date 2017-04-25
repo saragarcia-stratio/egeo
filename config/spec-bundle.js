@@ -23,9 +23,9 @@ testing.TestBed.initTestEnvironment(
 );
 
 if (!COMPONENT_ENV) {
-  var testContext = require.context('../src', true, /\.spec\.ts/);
+  var testContext = require.context('../src/lib', true, /\.spec\.ts/);
 } else {
-  var testContext = require.context('../src' + '/' + COMPONENT_ENV, true, /\.spec\.ts/);
+  var testContext = require.context('../src/lib' + '/' + COMPONENT_ENV, true, /\.spec\.ts/);
 }
 
 function requireAll(requireContext) {

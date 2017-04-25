@@ -2,7 +2,7 @@
 
 ## 2.0.0 (upcoming)
 
-* Pending changelog
+* Update angular version to angular 4.0.3
 
 ## 1.5.0 (April 25, 2017)
 

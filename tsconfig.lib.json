@@ -16,7 +16,7 @@
       "dom"
    ],
    "include": [
-      "dist/src/**/*.ts"
+      "dist/packages/egeo/**/*.ts"
    ],
    "exclude": [
       "node_modules",

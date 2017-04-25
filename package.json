@@ -14,14 +14,14 @@
       "webpack:lib": "webpack --config config/webpack-components.js  --no-color --bail",
       "lint": "tslint -c ./tslint.json -e 'node_modules' --type-check -t stylish 'src/**/*.ts'",
       "replace": "json -I -f package.json -e",
-      "test": "cross-env NODE_ENV=test karma start",
+      "test": "karma start",
       "test:watch": "cross-env NODE_ENV=test karma start --auto-watch --no-single-run",
       "gulp": "gulp",
       "ngc": "ngc -p tsconfig.gulp.json",
       "commit": "git-cz"
    },
    "main": "dist/bundle/egeo.js",
-   "typings": "dist/src/index.d.ts",
+   "typings": "dist/packages/egeo/public_api.d.ts",
    "repository": {
       "type": "git",
       "url": "https://github.com/Stratio/egeo"

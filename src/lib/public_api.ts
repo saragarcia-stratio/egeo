@@ -1,3 +1,7 @@
+// EGEO MAIN MODULE
+export * from './egeo.module';
+
+
 export * from './decorators';
 export * from './pipes';
 export * from './st-button';
@@ -23,4 +27,3 @@ export * from './st-two-list-selection';
 export * from './st-vertical-tabs';
 export * from './st-radio';
 export * from './utils';
-export * from './egeo.module';

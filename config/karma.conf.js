@@ -1,8 +1,11 @@
+const path = require('path');
+const basePath = path.resolve(__dirname, '..');
+
 module.exports = function (config) {
    var testWebpackConfig = require('./webpack.test.js');
 
    var configuration = {
-      basePath: '',
+      basePath: basePath,
 
       frameworks: ['jasmine'],
 

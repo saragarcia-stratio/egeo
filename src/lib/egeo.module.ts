@@ -5,7 +5,7 @@ import { StModalService } from './st-modal';
 import { StPaginationService } from './st-pagination';
 import { EgeoResolveService, SelectOneDispatcher } from './utils';
 
-import { DECLARATIONS } from './modules';
+import { DECLARATIONS } from './barrels';
 
 
 @NgModule({

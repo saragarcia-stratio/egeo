@@ -15,7 +15,7 @@ module.exports = {
       extensions: ['.ts', '.js']
    },
 
-   entry: './src/index.ts',
+   entry: './src/lib/public_api.ts',
 
    output: {
       path: helpers.root('dist', 'bundle'),

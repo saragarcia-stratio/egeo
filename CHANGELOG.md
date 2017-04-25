@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.5.0 (upcoming)
+## 1.5.0 (April 25, 2017)
 
 * Extract theme of info-card
 * Extract theme of input

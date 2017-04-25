@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.0 (upcoming)
+
+* Pending changelog
+
 ## 1.5.0 (upcoming)
 
 * Extract theme of info-card

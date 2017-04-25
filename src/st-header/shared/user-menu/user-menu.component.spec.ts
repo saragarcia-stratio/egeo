@@ -1,7 +1,6 @@
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { dispatchEvent } from '@angular/platform-browser/testing/browser_util';
 import { RouterTestingModule } from '@angular/router/testing';
 
 // Component
@@ -62,7 +61,7 @@ describe('StHeader component', () => {
 
             expect(logout).toBeNull();
 
-            dispatchEvent(userName[1].nativeElement, 'click');
+            (userName[1].nativeElement as HTMLElement).click();
             fixture.detectChanges();
 
             logout = fixture.debugElement.query(By.css('.combo-list-item'));
@@ -77,11 +76,11 @@ describe('StHeader component', () => {
             let userName: DebugElement[] = fixture.debugElement.queryAll(By.css('.user-combo-element'));
             spyOn(comp, 'navigateToLogout');
 
-            dispatchEvent(userName[1].nativeElement, 'click');
+            (userName[1].nativeElement as HTMLElement).click();
             fixture.detectChanges();
 
             let logout: DebugElement = fixture.debugElement.query(By.css('.combo-list-item'));
-            dispatchEvent(logout.nativeElement, 'click');
+            logout.nativeElement.dispatchEvent(new Event('click'));
             fixture.detectChanges();
 
             expect(comp.navigateToLogout).toHaveBeenCalled();

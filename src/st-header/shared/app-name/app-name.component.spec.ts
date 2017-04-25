@@ -2,7 +2,6 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { dispatchEvent } from '@angular/platform-browser/testing/browser_util';
 
 // Component
 import { AppNameComponent } from './app-name.component';

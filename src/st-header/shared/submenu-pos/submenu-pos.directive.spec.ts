@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { dispatchEvent } from '@angular/platform-browser/testing/browser_util';
 
 // Directive
 import { SubmenuPosDirective } from './submenu-pos.directive';

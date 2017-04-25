@@ -114,7 +114,7 @@ describe('StRadioGroup with FormControl', () => {
 
    let component: RadioGroup;
    let groupDebugElement: DebugElement;
-   let groupInstance: StRadioComponent;
+   let groupInstance: StRadioGroupComponent;
 
    let fixture: ComponentFixture<RadioGroup>;
 

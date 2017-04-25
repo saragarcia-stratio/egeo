@@ -2,7 +2,6 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { Http } from '@angular/http';
 import { By } from '@angular/platform-browser';
-import { dispatchEvent } from '@angular/platform-browser/testing/browser_util';
 
 import { StVerticalTabsComponent } from './st-vertical-tabs.component';
 
@@ -54,7 +53,7 @@ describe('StVerticaltabsComponent', () => {
          try {
             fixture.detectChanges();
          } catch (error) {
-            expect(error.message).toContain('caused by: qaTag is a required field');
+            expect(error.message).toContain('qaTag is a required field');
          }
       });
 
@@ -77,7 +76,7 @@ describe('StVerticaltabsComponent', () => {
          fixture.detectChanges();
 
          let link: HTMLAnchorElement = fixture.debugElement.query(By.css(`#${qaTag}-tab-2`)).nativeElement;
-         dispatchEvent(link, 'click');
+         link.dispatchEvent(new Event('click'));
          fixture.detectChanges();
          tick();
 
@@ -92,7 +91,7 @@ describe('StVerticaltabsComponent', () => {
          comp.changeOption.subscribe((option: string) => outputOption = option);
 
          let link: HTMLAnchorElement = fixture.debugElement.query(By.css(`#${qaTag}-tab-2`)).nativeElement;
-         dispatchEvent(link, 'click');
+         link.dispatchEvent(new Event('click'));
          fixture.detectChanges();
          tick();
 

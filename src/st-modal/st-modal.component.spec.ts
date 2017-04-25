@@ -3,7 +3,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
-import { dispatchEvent } from '@angular/platform-browser/testing/browser_util';
 
 // Component
 import { StButtonModule } from '../st-button/st-button.module';
@@ -384,7 +383,7 @@ describe('StModal', () => {
 
       let divOut: HTMLDivElement = fixture.debugElement.query(By.css('#st-modal-test-out')).nativeElement;
       expect(divOut).toBeDefined();
-      dispatchEvent(divOut, 'click');
+      divOut.dispatchEvent(new Event('click'));
       fixture.detectChanges();
       expect(outFunc).toHaveBeenCalled();
       expect(outFunc).toHaveBeenCalledWith(name);
@@ -404,7 +403,7 @@ describe('StModal', () => {
 
       comp.click.subscribe(responseFunction);
 
-      dispatchEvent(htmlButton, 'click');
+      htmlButton.dispatchEvent(new Event('click'));
       fixture.detectChanges();
       expect(responseFunction).toHaveBeenCalled();
       expect(responseFunction).toHaveBeenCalledWith(button.response);
@@ -422,7 +421,7 @@ describe('StModal', () => {
 
       comp.click.subscribe(responseFunction);
 
-      dispatchEvent(htmlButton, 'click');
+      htmlButton.dispatchEvent(new Event('click'));
       fixture.detectChanges();
       expect(responseFunction).toHaveBeenCalled();
       expect(responseFunction).toHaveBeenCalledWith(button.response);
@@ -437,7 +436,7 @@ describe('StModal', () => {
 
       comp.close.subscribe(responseFunction);
 
-      dispatchEvent(htmlButton, 'click');
+      htmlButton.dispatchEvent(new Event('click'));
       fixture.detectChanges();
       expect(responseFunction).toHaveBeenCalled();
    });

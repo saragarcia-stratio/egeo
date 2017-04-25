@@ -1,7 +1,6 @@
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { dispatchEvent } from '@angular/platform-browser/testing/browser_util';
 
 // Component
 import { StButtonModule } from '../st-button';
@@ -61,7 +60,7 @@ describe('StPageTitleComponent', () => {
       let button: DebugElement = fixture.debugElement.query(By.css('button'));
       expect(button).toBeDefined();
 
-      dispatchEvent(button.nativeElement, 'click');
+      (button.nativeElement as HTMLButtonElement).click();
       fixture.detectChanges();
 
       expect(responseFunction).toHaveBeenCalled();

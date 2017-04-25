@@ -1,16 +1,6 @@
-import {
-   animate,
-   ChangeDetectionStrategy,
-   Component,
-   EventEmitter,
-   Input,
-   OnInit,
-   Output,
-   state,
-   style,
-   transition,
-   trigger
-} from '@angular/core';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
 import { StDropDownMenuGroup, StDropDownMenuItem } from './st-dropdown-menu.interface';
 
 @Component({

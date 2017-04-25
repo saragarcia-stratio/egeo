@@ -1,6 +1,7 @@
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { StDropdownMenuItemComponent } from './components';
 import { StDropdownMenuComponent } from './st-dropdown-menu.component';
@@ -25,6 +26,7 @@ describe('StDropdownMenuComponent', () => {
 
    beforeEach(() => {
       TestBed.configureTestingModule({
+         imports: [BrowserAnimationsModule],
          declarations: [StDropdownMenuComponent, StDropdownMenuItemComponent]
       });
 

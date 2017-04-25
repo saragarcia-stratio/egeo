@@ -2,7 +2,6 @@ import { DebugElement, SimpleChanges } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { dispatchEvent } from '@angular/platform-browser/testing/browser_util';
 
 // Component
 import { StSearchComponent } from './st-search.component';
@@ -77,7 +76,6 @@ describe('StSearchComponent', () => {
       let outputSearch: string = '';
       comp.search.subscribe((search: string) => outputSearch = search);
       input.value = result;
-      dispatchEvent(input, 'input');
       input.dispatchEvent(new Event('input'));
       fixture.detectChanges();
 
@@ -122,7 +120,7 @@ describe('StSearchComponent', () => {
       let input: DebugElement = fixture.debugElement.query(By.css('input'));
 
       input.nativeElement.value = 'te';
-      dispatchEvent(input.nativeElement, 'input');
+      input.nativeElement.dispatchEvent(new Event('input'));
       input.triggerEventHandler('keypress', { keyCode: 13 });
       fixture.detectChanges();
 
@@ -131,7 +129,7 @@ describe('StSearchComponent', () => {
       expect(responseFunction).toHaveBeenCalledWith('te');
 
       input.nativeElement.value = 'test';
-      dispatchEvent(input.nativeElement, 'input');
+      input.nativeElement.dispatchEvent(new Event('input'));
       input.triggerEventHandler('keypress', { which: 10 });
       fixture.detectChanges();
 
@@ -139,7 +137,7 @@ describe('StSearchComponent', () => {
       expect(responseFunction).toHaveBeenCalledTimes(1); // Not again
 
       input.nativeElement.value = 'test';
-      dispatchEvent(input.nativeElement, 'input');
+      input.nativeElement.dispatchEvent(new Event('input'));
       input.triggerEventHandler('keypress', { which: 13 });
       fixture.detectChanges();
 
@@ -159,7 +157,7 @@ describe('StSearchComponent', () => {
       let searchButton: DebugElement = fixture.debugElement.query(By.css('.st-search-icon'));
 
       input.nativeElement.value = 'te';
-      dispatchEvent(input.nativeElement, 'input');
+      input.nativeElement.dispatchEvent(new Event('input'));
       searchButton.triggerEventHandler('mousedown', {});
       fixture.detectChanges();
 
@@ -168,7 +166,7 @@ describe('StSearchComponent', () => {
       expect(responseFunction).toHaveBeenCalledWith('te');
 
       input.nativeElement.value = 'test';
-      dispatchEvent(input.nativeElement, 'input');
+      input.nativeElement.dispatchEvent(new Event('input'));
       searchButton.triggerEventHandler('mousedown', {});
       fixture.detectChanges();
 
@@ -189,7 +187,7 @@ describe('StSearchComponent', () => {
       let searchButton: DebugElement = fixture.debugElement.query(By.css('.st-search-icon'));
 
       input.nativeElement.value = 'test';
-      dispatchEvent(input.nativeElement, 'input');
+      input.nativeElement.dispatchEvent(new Event('input'));
       input.triggerEventHandler('keypress', { which: 13 });
       fixture.detectChanges();
 
@@ -215,7 +213,7 @@ describe('StSearchComponent', () => {
       let searchButton: DebugElement = fixture.debugElement.query(By.css('.st-search-icon'));
 
       input.nativeElement.value = 'test';
-      dispatchEvent(input.nativeElement, 'input');
+      input.nativeElement.dispatchEvent(new Event('input'));
 
       searchButton.triggerEventHandler('mousedown', {});
       fixture.detectChanges();
@@ -242,14 +240,14 @@ describe('StSearchComponent', () => {
       let input: DebugElement = fixture.debugElement.query(By.css('input'));
 
       input.nativeElement.value = 'test';
-      dispatchEvent(input.nativeElement, 'input');
-      dispatchEvent(input.nativeElement, 'focus');
+      input.nativeElement.dispatchEvent(new Event('input'));
+      input.nativeElement.dispatchEvent(new Event('focus'));
       fixture.detectChanges();
 
       let clearButton: DebugElement = fixture.debugElement.query(By.css('.icon-cross'));
       expect(comp.searchBox.value).toEqual('test');
 
-      dispatchEvent(clearButton.nativeElement, 'mousedown');
+      clearButton.nativeElement.dispatchEvent(new Event('mousedown'));
       expect(comp.searchBox.value).toEqual('');
    });
 
@@ -262,12 +260,12 @@ describe('StSearchComponent', () => {
 
       expect(comp.focus).toBeFalsy();
 
-      dispatchEvent(input.nativeElement, 'focus');
+      input.nativeElement.dispatchEvent(new Event('focus'));
       fixture.detectChanges();
 
       expect(comp.focus).toBeTruthy();
 
-      dispatchEvent(input.nativeElement, 'blur');
+      input.nativeElement.dispatchEvent(new Event('blur'));
       fixture.detectChanges();
 
       expect(comp.focus).toBeFalsy();
@@ -284,8 +282,8 @@ describe('StSearchComponent', () => {
       expect((<HTMLInputElement>input.nativeElement).value).toEqual('Initial value');
 
       let changes: SimpleChanges = {
-         value : {currentValue: 'new value', previousValue: 'Initial value', isFirstChange: () => true},
-         liveSearch : {currentValue: false, previousValue: true, isFirstChange: () => true}
+         value : {currentValue: 'new value', previousValue: 'Initial value', firstChange: true, isFirstChange: () => true},
+         liveSearch : {currentValue: false, previousValue: true, firstChange: true, isFirstChange: () => true}
       };
 
       comp.value = 'new value';
@@ -298,7 +296,7 @@ describe('StSearchComponent', () => {
 
 
       changes = {
-         liveSearch : {currentValue: true, previousValue: false, isFirstChange: () => false}
+         liveSearch : {currentValue: true, previousValue: false, firstChange: false, isFirstChange: () => false}
       };
       comp.ngOnChanges(changes);
       fixture.detectChanges();

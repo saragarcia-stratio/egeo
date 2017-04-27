@@ -5,6 +5,7 @@
    "author": "Stratio",
    "scripts": {
       "build": "gulp build:release",
+      "build:watch": "gulp release:watch",
       "lint": "gulp lint",
       "replace": "json -I -f package.json -e",
       "test": "gulp test:single-run",

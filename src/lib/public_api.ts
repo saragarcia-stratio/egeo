@@ -4,6 +4,7 @@ export * from './egeo.module';
 
 export * from './decorators/index';
 export * from './pipes/index';
+export * from './st-breadcrumbs/index';
 export * from './st-button/index';
 export * from './st-dropdown-menu/index';
 export * from './st-dropdown/index';

@@ -1,5 +1,5 @@
 import { DebugElement } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -20,70 +20,68 @@ let userMenu: StHeaderUserMenuModel = {
    logoutPath: 'path'
 };
 
-function buildComponent(): void {
-    TestBed.configureTestingModule({
-        imports: [RouterTestingModule],
-        declarations: [UserMenuComponent]
-    });
-
-    fixture = TestBed.createComponent(UserMenuComponent);
-    comp = fixture.componentInstance;
-
-    comp.userMenuModel = userMenu;
-
-    fixture.detectChanges();
-    fixture.autoDetectChanges(true);
-}
-
-
 describe('StHeader component', () => {
-    describe('UserMenu component', () => {
-        it('should be init correctly', () => {
-            buildComponent();
+   describe('UserMenu component', () => {
+      beforeEach(async(() => {
+         TestBed.configureTestingModule({
+            imports: [RouterTestingModule],
+            declarations: [UserMenuComponent]
+         })
+            .compileComponents();  // compile template and css
+      }));
 
-            let userName: DebugElement[] = fixture.debugElement.queryAll(By.css('.user-combo-element'));
-            let logout: DebugElement = fixture.debugElement.query(By.css('.combo-list-item'));
+      beforeEach(() => {
+         fixture = TestBed.createComponent(UserMenuComponent);
+         comp = fixture.componentInstance;
 
-            expect(userName).toBeDefined();
-            expect(userName.length).toEqual(3);
-            expect(userName[1]).toBeDefined();
-            expect((<HTMLSpanElement>userName[1].nativeElement).textContent).toEqual(userMenu.userName);
+         comp.userMenuModel = userMenu;
 
-            expect(logout).toBeNull();
-        });
+         fixture.detectChanges();
+         fixture.autoDetectChanges(true);
+      });
+      it('should be init correctly', () => {
 
-        it('should be show logout menu', () => {
-            buildComponent();
+         let userName: DebugElement[] = fixture.debugElement.queryAll(By.css('.user-combo-element'));
+         let logout: DebugElement = fixture.debugElement.query(By.css('.combo-list-item'));
 
-            let userName: DebugElement[] = fixture.debugElement.queryAll(By.css('.user-combo-element'));
-            let logout: DebugElement = fixture.debugElement.query(By.css('.combo-list-item'));
-            spyOn(comp, 'changeMenuState');
+         expect(userName).toBeDefined();
+         expect(userName.length).toEqual(3);
+         expect(userName[1]).toBeDefined();
+         expect((<HTMLSpanElement>userName[1].nativeElement).textContent).toEqual(userMenu.userName);
 
-            expect(logout).toBeNull();
+         expect(logout).toBeNull();
+      });
 
-            (userName[1].nativeElement as HTMLElement).click();
-            fixture.detectChanges();
+      it('should be show logout menu', () => {
 
-            logout = fixture.debugElement.query(By.css('.combo-list-item'));
+         let userName: DebugElement[] = fixture.debugElement.queryAll(By.css('.user-combo-element'));
+         let logout: DebugElement = fixture.debugElement.query(By.css('.combo-list-item'));
+         spyOn(comp, 'changeMenuState');
 
-            expect(logout).toBeDefined();
-            expect(comp.changeMenuState).toHaveBeenCalled();
-        });
+         expect(logout).toBeNull();
 
-         it('should be click on logout', () => {
-            buildComponent();
+         (userName[1].nativeElement as HTMLElement).click();
+         fixture.detectChanges();
 
-            let userName: DebugElement[] = fixture.debugElement.queryAll(By.css('.user-combo-element'));
-            spyOn(comp, 'navigateToLogout');
+         logout = fixture.debugElement.query(By.css('.combo-list-item'));
 
-            (userName[1].nativeElement as HTMLElement).click();
-            fixture.detectChanges();
+         expect(logout).toBeDefined();
+         expect(comp.changeMenuState).toHaveBeenCalled();
+      });
 
-            let logout: DebugElement = fixture.debugElement.query(By.css('.combo-list-item'));
-            logout.nativeElement.dispatchEvent(new Event('click'));
-            fixture.detectChanges();
+      it('should be click on logout', () => {
 
-            expect(comp.navigateToLogout).toHaveBeenCalled();
-        });
-    });
+         let userName: DebugElement[] = fixture.debugElement.queryAll(By.css('.user-combo-element'));
+         spyOn(comp, 'navigateToLogout');
+
+         (userName[1].nativeElement as HTMLElement).click();
+         fixture.detectChanges();
+
+         let logout: DebugElement = fixture.debugElement.query(By.css('.combo-list-item'));
+         logout.nativeElement.dispatchEvent(new Event('click'));
+         fixture.detectChanges();
+
+         expect(comp.navigateToLogout).toHaveBeenCalled();
+      });
+   });
 });

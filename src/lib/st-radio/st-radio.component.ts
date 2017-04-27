@@ -1,6 +1,6 @@
 import { Component, Input, EventEmitter, Output, OnInit, Optional } from '@angular/core';
 
-import { SelectOneDispatcher } from '../utils';
+import { SelectOneDispatcher } from '../utils/unique-dispatcher';
 import { StRadioGroupComponent } from './st-radio-group.component';
 import { RadioChange } from './st-radio.change';
 
@@ -9,8 +9,8 @@ let idUnique: number = 0;
 
 @Component({
    selector: 'st-radio',
-   templateUrl: 'st-radio.component.html',
-   styleUrls: ['st-radio.component.scss'],
+   templateUrl: './st-radio.component.html',
+   styleUrls: ['./st-radio.component.scss'],
    host: {
       '[class.sth-radio-checked]': 'checked',
       '[attr.id]': 'id'

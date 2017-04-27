@@ -1,9 +1,9 @@
 import { Component, DebugElement } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormControl, FormsModule, NgControl, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
-import { SelectOneDispatcher } from '../utils';
+import { SelectOneDispatcher } from '../utils/unique-dispatcher';
 
 
 // The rule is disabled because if not fails!!!!! not remove
@@ -26,15 +26,18 @@ describe('StRadioGroup', () => {
    let testComponent: RadioGroupWithModel;
    let groupNgControl: NgControl;
 
-   beforeEach(() => {
+   beforeEach(async(() => {
       TestBed.configureTestingModule({
          imports: [FormsModule, ReactiveFormsModule],
          declarations: [StRadioComponent, StRadioGroupComponent, RadioGroupWithModel],
          providers: [
             SelectOneDispatcher
          ]
-      });
+      })
+         .compileComponents();  // compile template and css
+   }));
 
+   beforeEach(() => {
       fixture = TestBed.createComponent(RadioGroupWithModel);
       fixture.detectChanges();
 
@@ -62,7 +65,7 @@ describe('StRadioGroup', () => {
       expect(groupInstance.name).toBeTruthy();
       for (let radio of radioInstances) {
          expect(radio.name).toBe(groupInstance.name);
-      };
+      }
    });
 
    it('should update the group value when one of the radios changes', () => {
@@ -121,7 +124,7 @@ describe('StRadioGroup with FormControl', () => {
    let compiled: any;
    let de: DebugElement;
 
-   beforeEach(() => {
+   beforeEach(async(() => {
       TestBed.configureTestingModule({
          imports: [
             ReactiveFormsModule,
@@ -131,8 +134,11 @@ describe('StRadioGroup with FormControl', () => {
          providers: [
             SelectOneDispatcher
          ]
-      });
+      })
+         .compileComponents();  // compile template and css
+   }));
 
+   beforeEach(() => {
       fixture = TestBed.createComponent(RadioGroup);
       groupDebugElement = fixture.debugElement.query(By.directive(StRadioGroupComponent));
       groupInstance = groupDebugElement.injector.get(StRadioGroupComponent);
@@ -151,7 +157,7 @@ describe('StRadioGroup with FormControl', () => {
    })
    class RadioGroup {
       formControl: FormControl = new FormControl();
-   };
+   }
 
    describe('When form control marked as disabled', () => {
 

@@ -1,4 +1,4 @@
-import { TranslateableElement } from '../utils';
+import { TranslateableElement } from '../utils/egeo-resolver/egeo-resolve-model';
 
 export interface StTwoListSelectionElement {
    id: string | number;

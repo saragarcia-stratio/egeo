@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { CheckRequired, Required } from '../decorators';
+import { CheckRequired, Required } from '../decorators/require-decorators';
 import { Order, ORDER_TYPE } from './shared/order';
 
 @CheckRequired()

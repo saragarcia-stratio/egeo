@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import * as _ from 'lodash';
 
-import { CheckRequired, Required } from '../decorators';
+import { CheckRequired, Required } from '../decorators/require-decorators';
 import { StTwoListSelection } from './st-two-list-selection';
 import { StTwoListSelectionConfig, StTwoListSelectionElement } from './st-two-list-selection.model';
 

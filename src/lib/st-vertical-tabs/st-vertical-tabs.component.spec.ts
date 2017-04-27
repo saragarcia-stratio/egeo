@@ -1,5 +1,5 @@
 import { DebugElement } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { Http } from '@angular/http';
 import { By } from '@angular/platform-browser';
 
@@ -15,11 +15,14 @@ let qaTag: string = 'vertical-tabs';
 
 
 describe('StVerticaltabsComponent', () => {
-   beforeEach(() => {
+   beforeEach(async(() => {
       TestBed.configureTestingModule({
          declarations: [StVerticalTabsComponent]
-      });
+      })
+         .compileComponents();  // compile template and css
+   }));
 
+   beforeEach(() => {
       fixture = TestBed.createComponent(StVerticalTabsComponent);
       comp = fixture.componentInstance;
 

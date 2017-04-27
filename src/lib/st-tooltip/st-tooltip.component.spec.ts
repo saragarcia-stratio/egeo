@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Component
@@ -9,13 +9,18 @@ let component: StTooltip;
 let fixture: ComponentFixture<StTooltip>;
 let fakeText: string = 'This text will be displayed in our tooltip';
 let nativeElement: any;
+
 describe('StTooltip', () => {
-   beforeEach(() => {
+
+   beforeEach(async(() => {
       TestBed.configureTestingModule({
          imports: [FormsModule, ReactiveFormsModule],
          declarations: [StTooltip]
-      });
+      })
+         .compileComponents();  // compile template and css
+   }));
 
+   beforeEach(() => {
       fixture = TestBed.createComponent(StTooltip);
       component = fixture.componentInstance;
       component.isActive = false;

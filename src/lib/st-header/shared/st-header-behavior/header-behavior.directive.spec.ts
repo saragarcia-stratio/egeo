@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DebugElement } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 // Directive
@@ -20,13 +20,14 @@ let de: DebugElement;
 
 describe('StHeader component', () => {
    describe('StHeader componentBehavior directive', () => {
+      beforeEach(async(() => {
+         TestBed.configureTestingModule({
+            declarations: [StHeaderBehaviorDirective, DummyComponent]
+         })
+            .compileComponents();  // compile template and css
+      }));
 
       beforeEach(() => {
-         TestBed.configureTestingModule({
-            imports: [],
-            declarations: [StHeaderBehaviorDirective, DummyComponent]
-         });
-
          fixture = TestBed.createComponent(DummyComponent);
          comp = fixture.componentInstance;
 

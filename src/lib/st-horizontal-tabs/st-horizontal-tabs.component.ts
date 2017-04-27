@@ -4,7 +4,7 @@ import { StHorizontalTab } from './st-horizontal-tabs.model';
 @Component({
    selector: 'st-horizontal-tabs',
    templateUrl: './st-horizontal-tabs.component.html',
-   styleUrls: ['./st-horizontal-tabs.component.css'],
+   styleUrls: ['./st-horizontal-tabs.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 

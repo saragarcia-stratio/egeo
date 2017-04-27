@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DebugElement } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -9,7 +9,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { NavigationLinksComponent } from './navigation-links.component';
 
 // Other
-import { SubmenuPosDirective } from '../submenu-pos';
+import { SubmenuPosDirective } from '../submenu-pos/submenu-pos.directive';
 
 // Model
 import { StHeaderModel } from '../st-header.model';
@@ -51,34 +51,33 @@ let menu: StHeaderModel[] = [
    }
 ];
 
-function buildComponent(): void {
-   TestBed.configureTestingModule({
-      imports: [
-         RouterTestingModule.withRoutes([
-            { path: 'navigation/header/test1', component: DummyComponent },
-            { path: 'navigation/header/test1/subtest1', component: DummyComponent },
-            { path: 'navigation/header/test1/subtest2', component: DummyComponent },
-            { path: 'navigation/header/test2', component: DummyComponent }
-         ])
-      ],
-      declarations: [SubmenuPosDirective, DummyComponent, NavigationLinksComponent]
-   });
-
-   fixture = TestBed.createComponent(NavigationLinksComponent);
-   comp = fixture.componentInstance;
-
-   comp.menu = menu;
-
-   fixture.autoDetectChanges(true);
-}
-
 
 describe('StHeader component', () => {
-
    describe('NavigationLink component', () => {
+      beforeEach(async(() => {
+         TestBed.configureTestingModule({
+            imports: [
+               RouterTestingModule.withRoutes([
+                  { path: 'navigation/header/test1', component: DummyComponent },
+                  { path: 'navigation/header/test1/subtest1', component: DummyComponent },
+                  { path: 'navigation/header/test1/subtest2', component: DummyComponent },
+                  { path: 'navigation/header/test2', component: DummyComponent }
+               ])
+            ],
+            declarations: [SubmenuPosDirective, DummyComponent, NavigationLinksComponent]
+         })
+            .compileComponents();  // compile template and css
+      }));
+      beforeEach(() => {
+         fixture = TestBed.createComponent(NavigationLinksComponent);
+         comp = fixture.componentInstance;
+
+         comp.menu = menu;
+
+         fixture.autoDetectChanges(true);
+      });
 
       it('should be init correctly', () => {
-         buildComponent();
          let option: HTMLLIElement = fixture.debugElement.query(By.css('.option')).nativeElement;
          let active: DebugElement = fixture.debugElement.query(By.css('.sth-active'));
          let outputPos: number;

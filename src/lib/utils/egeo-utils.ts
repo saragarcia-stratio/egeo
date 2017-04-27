@@ -18,5 +18,5 @@ export class EgeoUtils {
       } catch (err) {
          return value;
       }
-   };
+   }
 }

@@ -3,9 +3,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 @Component({
    selector: 'st-breadcrumbs',
    templateUrl: './st-breadcrumbs.html',
-   styleUrls: ['./st-breadcrumbs.css']
+   styleUrls: ['./st-breadcrumbs.scss']
 })
-
 export class StBreadCrumbs implements OnInit {
    @Input() options: string[];
    @Input() qaTag: string;

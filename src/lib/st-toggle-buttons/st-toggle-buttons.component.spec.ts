@@ -1,5 +1,5 @@
 import { DebugElement } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -20,12 +20,16 @@ let description: string = 'toogle test';
 let qaTag: string = 'toogle-test';
 
 describe('StToggleButtonsComponent', () => {
-   beforeEach(() => {
+
+   beforeEach(async(() => {
       TestBed.configureTestingModule({
          imports: [RouterTestingModule],
          declarations: [StToggleButtonsComponent]
-      });
+      })
+         .compileComponents();  // compile template and css
+   }));
 
+   beforeEach(() => {
       fixture = TestBed.createComponent(StToggleButtonsComponent);
       comp = fixture.componentInstance;
 

@@ -1,5 +1,5 @@
 import { DebugElement } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StInfoBoxComponent } from './st-info-box.component';
@@ -14,11 +14,14 @@ describe('StInfoBoxComponent', () => {
 
     let comp: StInfoBoxComponent;
 
-    beforeEach(() => {
-        TestBed.configureTestingModule({
-            declarations: [StInfoBoxComponent]
-        });
+   beforeEach(async(() => {
+      TestBed.configureTestingModule({
+         declarations: [StInfoBoxComponent]
+      })
+      .compileComponents();  // compile template and css
+   }));
 
+    beforeEach(() => {
         fixture = TestBed.createComponent(StInfoBoxComponent);
         comp = fixture.componentInstance;
     });

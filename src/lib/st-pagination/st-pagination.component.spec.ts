@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { StPaginationComponent } from './st-pagination.component';
 
-import { StButtonModule } from '../st-button';
-import { StDropdownModule } from '../st-dropdown';
+import { StButtonModule } from '../st-button/st-button.module';
+import { StDropdownModule } from '../st-dropdown/st-dropdown.module';
 
 
 
@@ -11,13 +11,15 @@ describe('StPaginationComponent', () => {
    let component: StPaginationComponent;
    let fixture: ComponentFixture<StPaginationComponent>;
 
-
-   beforeEach(() => {
+   beforeEach(async(() => {
       TestBed.configureTestingModule({
          imports: [StDropdownModule, StButtonModule],
          declarations: [StPaginationComponent]
-      });
+      })
+         .compileComponents();  // compile template and css
+   }));
 
+   beforeEach(() => {
       fixture = TestBed.createComponent(StPaginationComponent);
       component = fixture.componentInstance;
 

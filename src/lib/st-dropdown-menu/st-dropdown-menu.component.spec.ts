@@ -1,9 +1,9 @@
 import { DebugElement } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { StDropdownMenuItemComponent } from './components';
+import { StDropdownMenuItemComponent } from './st-dropdown-menu-item/st-dropdown-menu-item.component';
 import { StDropdownMenuComponent } from './st-dropdown-menu.component';
 import { StDropDownMenuItem } from './st-dropdown-menu.interface';
 
@@ -24,12 +24,15 @@ describe('StDropdownMenuComponent', () => {
    let fixture: ComponentFixture<StDropdownMenuComponent>;
    let de: DebugElement;
 
-   beforeEach(() => {
+   beforeEach(async(() => {
       TestBed.configureTestingModule({
          imports: [BrowserAnimationsModule],
          declarations: [StDropdownMenuComponent, StDropdownMenuItemComponent]
-      });
+      })
+      .compileComponents();  // compile template and css
+   }));
 
+   beforeEach(() => {
       fixture = TestBed.createComponent(StDropdownMenuComponent);
       component = fixture.componentInstance;
    });

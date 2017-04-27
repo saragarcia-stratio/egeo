@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { CheckRequired, Required } from '../../decorators';
+import { CheckRequired, Required } from '../../decorators/require-decorators';
 import { StTwoListSelectionElement } from '../st-two-list-selection.model';
 
 @Component({
    selector: 'list-selection',
    templateUrl: './list-selection.component.html',
-   styleUrls: ['./list-selection.component.scss'],
+   styleUrls: ['list-selection.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListSelectionComponent {

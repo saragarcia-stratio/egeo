@@ -1,9 +1,9 @@
 import { DebugElement } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 // Component
-import { StButtonModule } from '../st-button';
+import { StButtonModule } from '../st-button/st-button.module';
 import { StPageTitleComponent } from './st-page-title.component';
 
 let component: StPageTitleComponent;
@@ -11,12 +11,16 @@ let fixture: ComponentFixture<StPageTitleComponent>;
 
 
 describe('StPageTitleComponent', () => {
-   beforeEach(() => {
+
+   beforeEach(async(() => {
       TestBed.configureTestingModule({
          imports: [StButtonModule],
          declarations: [StPageTitleComponent]
-      });
+      })
+         .compileComponents();  // compile template and css
+   }));
 
+   beforeEach(() => {
       fixture = TestBed.createComponent(StPageTitleComponent);
       component = fixture.componentInstance;
       component.qaTag = 'test qaTag';

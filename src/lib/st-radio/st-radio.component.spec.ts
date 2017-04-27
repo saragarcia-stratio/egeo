@@ -1,9 +1,9 @@
 import { Component, DebugElement } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormControl, FormsModule, NgControl, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
-import { SelectOneDispatcher } from '../utils';
+import { SelectOneDispatcher } from '../utils/unique-dispatcher';
 
 import { StRadioGroupComponent } from './st-radio-group.component';
 import { StRadioComponent } from './st-radio.component';
@@ -15,14 +15,17 @@ describe('StRadioComponent', () => {
    let compiled: any;
    let de: DebugElement;
 
-   beforeEach(() => {
+   beforeEach(async(() => {
       TestBed.configureTestingModule({
          declarations: [StRadioComponent],
          providers: [
             SelectOneDispatcher
          ]
-      });
+      })
+         .compileComponents();  // compile template and css
+   }));
 
+   beforeEach(() => {
       fixture = TestBed.createComponent(StRadioComponent);
       component = fixture.componentInstance;
       compiled = fixture.debugElement.nativeElement;

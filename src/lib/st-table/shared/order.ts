@@ -1,4 +1,4 @@
-export enum ORDER_TYPE { ASC, DESC };
+export enum ORDER_TYPE { ASC, DESC }
 
 export class Order {
    constructor(

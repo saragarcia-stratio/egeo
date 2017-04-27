@@ -4,7 +4,7 @@ import { StTab } from './st-tab-box.interface';
 @Component({
    selector: 'st-tab-box',
    templateUrl: './st-tab-box.component.html',
-   styleUrls: ['./st-tab-box.component.css'],
+   styleUrls: ['./st-tab-box.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StTabBoxComponent {

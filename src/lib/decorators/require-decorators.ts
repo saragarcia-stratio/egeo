@@ -1,21 +1,18 @@
-/**
- * TYPESCRIPT DECORATORS:
- * https://github.com/Microsoft/TypeScript/blob/28041547784b5c5d73b50472bbafe39137fed7dd/src/lib/es5.d.ts#L1299-L1302
- *
- * declare type ClassDecorator = <TFunction extends Function>(target: TFunction) => TFunction | void;
- *
- * declare type PropertyDecorator = (target: Object, propertyKey: string | symbol) => void;
- *
- * declare type MethodDecorator = <T>(target: Object, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<T>)
- *       => TypedPropertyDescriptor<T> | void;
- *
- * declare type ParameterDecorator = (target: Object, propertyKey: string | symbol, parameterIndex: number) => void;
- */
 import * as ReflectMetadata from 'reflect-metadata';
 
-import { EgeoUtils } from '../utils';
+import { EgeoUtils } from '../utils/egeo-utils';
 
 const EGEO_METADATA = Symbol('EgeoLibraryMetadata');
+
+export const enum METADATA_TYPE { PROPERTY }
+
+export interface EgeoMetadata {
+   type: METADATA_TYPE;
+   required?: boolean;
+   requireCondition?: string;
+   deprecated?: boolean;
+   initialValue?: any;
+}
 
 // tslint:disable:only-arrow-functions
 export function Required(condition?: string): any {
@@ -136,13 +133,4 @@ function checkConditionMetadata(scope: any, key: string): boolean {
    }
 }
 
-export const enum METADATA_TYPE { PROPERTY };
-
-export interface EgeoMetadata {
-   type: METADATA_TYPE;
-   required?: boolean;
-   requireCondition?: string;
-   deprecated?: boolean;
-   initialValue?: any;
-}
 // tslint:enabled

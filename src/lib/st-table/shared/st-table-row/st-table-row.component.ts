@@ -20,10 +20,10 @@ export class StTableRowComponent {
 
    @HostListener('mouseover') onShowHoverMenu(): void {
       this.showHoverMenu = true;
-   };
+   }
 
    @HostListener('mouseout') onHideHoverMenu(): void {
       this.showHoverMenu = false;
-   };
+   }
 }
 

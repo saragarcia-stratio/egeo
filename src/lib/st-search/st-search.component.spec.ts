@@ -1,5 +1,5 @@
 import { DebugElement, SimpleChanges } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
@@ -18,12 +18,15 @@ let minLength: number = 0;
 
 describe('StSearchComponent', () => {
 
-   beforeEach(() => {
+   beforeEach(async(() => {
       TestBed.configureTestingModule({
          imports: [FormsModule, ReactiveFormsModule],
          declarations: [StSearchComponent]
-      });
+      })
+         .compileComponents();  // compile template and css
+   }));
 
+   beforeEach(() => {
       fixture = TestBed.createComponent(StSearchComponent);
       comp = fixture.componentInstance;
 
@@ -282,8 +285,8 @@ describe('StSearchComponent', () => {
       expect((<HTMLInputElement>input.nativeElement).value).toEqual('Initial value');
 
       let changes: SimpleChanges = {
-         value : {currentValue: 'new value', previousValue: 'Initial value', firstChange: true, isFirstChange: () => true},
-         liveSearch : {currentValue: false, previousValue: true, firstChange: true, isFirstChange: () => true}
+         value: { currentValue: 'new value', previousValue: 'Initial value', firstChange: true, isFirstChange: () => true },
+         liveSearch: { currentValue: false, previousValue: true, firstChange: true, isFirstChange: () => true }
       };
 
       comp.value = 'new value';
@@ -296,7 +299,7 @@ describe('StSearchComponent', () => {
 
 
       changes = {
-         liveSearch : {currentValue: true, previousValue: false, firstChange: false, isFirstChange: () => false}
+         liveSearch: { currentValue: true, previousValue: false, firstChange: false, isFirstChange: () => false }
       };
       comp.ngOnChanges(changes);
       fixture.detectChanges();

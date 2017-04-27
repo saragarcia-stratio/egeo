@@ -7,7 +7,7 @@ import 'rxjs/add/operator/debounceTime';
 @Component({
    selector: 'st-search',
    templateUrl: './st-search.component.html',
-   styleUrls: ['./st-search.component.css'],
+   styleUrls: ['./st-search.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StTableRowComponent } from './st-table-row.component';
 
@@ -7,19 +7,20 @@ let fixture: ComponentFixture<StTableRowComponent>;
 let component: StTableRowComponent;
 
 describe('StTableRowComponent', () => {
-   beforeEach(() => {
+   beforeEach(async(() => {
       TestBed.configureTestingModule({
          imports: [CommonModule, RouterTestingModule],
          declarations: [StTableRowComponent]
-      });
-   });
+      })
+         .compileComponents();  // compile template and css
+   }));
 
    beforeEach(() => {
       fixture = TestBed.createComponent(StTableRowComponent);
       component = fixture.componentInstance;
    });
 
-   it ('theme class is added to the component root', () => {
+   it('theme class is added to the component root', () => {
       expect(fixture.nativeElement.classList).toContain('sth-table-row');
    });
 

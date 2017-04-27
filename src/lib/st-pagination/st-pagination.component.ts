@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 
-import { StDropDownMenuItem } from '../st-dropdown-menu';
+import { StDropDownMenuItem } from '../st-dropdown-menu/st-dropdown-menu.interface';
 import { Paginate, PaginateTexts } from './st-pagination.interface';
 
 @Component({
    selector: 'st-pagination',
-   templateUrl: 'st-pagination.component.html',
-   styleUrls: ['st-pagination.component.scss'],
+   templateUrl: './st-pagination.component.html',
+   styleUrls: ['./st-pagination.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StPaginationComponent implements OnInit, OnChanges {

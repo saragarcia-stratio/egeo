@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { StFooterComponent } from './st-footer.component';
@@ -24,13 +24,16 @@ describe('StFooterComponent', () => {
    let component: StFooterComponent;
    let fixture: ComponentFixture<StFooterComponent>;
 
+   beforeEach(async(() => {
+      TestBed.configureTestingModule({
+         imports: [CommonModule, RouterTestingModule],
+         declarations: [StFooterComponent]
+      })
+         .compileComponents();  // compile template and css
+   }));
+
 
    beforeEach(() => {
-      TestBed.configureTestingModule({
-         imports: [ CommonModule, RouterTestingModule ],
-         declarations: [ StFooterComponent ]
-      });
-
       fixture = TestBed.createComponent(StFooterComponent);
       component = fixture.componentInstance;
 
@@ -54,7 +57,7 @@ describe('StFooterComponent', () => {
 
    describe('When modify input image', () => {
 
-      it ('Should not have a image as logo', () => {
+      it('Should not have a image as logo', () => {
          let imageElement = fixture.nativeElement.querySelector('img');
          expect(imageElement).toBeNull();
       });
@@ -71,7 +74,7 @@ describe('StFooterComponent', () => {
    describe('When check component Output', () => {
 
       it('Should click on a link in the menu and output the content of the link', () => {
-         let item: StFooterLink =    {
+         let item: StFooterLink = {
             title: 'External Router',
             url: 'http://www.google.es'
          };

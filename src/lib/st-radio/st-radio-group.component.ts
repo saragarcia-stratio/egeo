@@ -1,6 +1,6 @@
 import { ContentChildren, Directive, EventEmitter, forwardRef, Input, OnInit, Output, QueryList } from '@angular/core';
-
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
 import { StRadioComponent } from './st-radio.component';
 import { RadioChange } from './st-radio.change';
 

@@ -2,7 +2,8 @@
 
 ## 2.0.0 (upcoming)
 
-* Update angular version to angular 4.0.3
+* Update angular version to angular 4.1.0
+* Refactor of build method
 
 ## 1.5.0 (April 25, 2017)
 

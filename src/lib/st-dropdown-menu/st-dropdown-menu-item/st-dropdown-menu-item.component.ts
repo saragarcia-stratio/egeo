@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { StDropDownMenuItem } from '../../st-dropdown-menu.interface';
+import { StDropDownMenuItem } from '../st-dropdown-menu.interface';
 
 @Component({
    selector: 'st-dropdown-menu-item',
-   templateUrl: 'st-dropdown-menu-item.component.html',
-   styleUrls: ['st-dropdown-menu-item.component.scss']
+   templateUrl: './st-dropdown-menu-item.component.html',
+   styleUrls: ['./st-dropdown-menu-item.component.scss']
 })
 export class StDropdownMenuItemComponent implements OnInit {
 

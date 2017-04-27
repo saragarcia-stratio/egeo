@@ -1,6 +1,6 @@
 import { DebugElement } from '@angular/core';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 
@@ -60,7 +60,7 @@ function getInitialConfig(): StModalConfig {
 
 describe('StModal', () => {
 
-   beforeEach(() => {
+   beforeEach(async(() => {
       TestBed.configureTestingModule({
          imports: [StButtonModule],
          declarations: [StModal, ModalTestComponent]
@@ -68,8 +68,11 @@ describe('StModal', () => {
 
       TestBed.overrideModule(BrowserDynamicTestingModule, {
          set: { entryComponents: [ModalTestComponent] }
-      });
+      }).compileComponents();  // compile template and css
 
+   }));
+
+   beforeEach(() => {
       fixture = TestBed.createComponent(StModal);
       comp = fixture.componentInstance;
       comp.modalConfig = getInitialConfig();

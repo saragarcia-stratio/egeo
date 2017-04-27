@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import * as _ from 'lodash';
 
-import { CheckRequired, Required } from '../decorators';
+import { CheckRequired, Required } from '../decorators/require-decorators';
 import { StTwoListSelectionConfig, StTwoListSelectionElement } from './st-two-list-selection.model';
 
 @Component({

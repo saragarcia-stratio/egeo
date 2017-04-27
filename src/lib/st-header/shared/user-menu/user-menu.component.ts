@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, Renderer } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { EventWindowManager } from '../../../utils';
+import { EventWindowManager } from '../../../utils/event-window-manager';
 import { StHeaderUserMenuModel } from './user-menu.model';
 
 @Component({

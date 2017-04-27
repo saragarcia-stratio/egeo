@@ -13,7 +13,7 @@ import {
 } from '@angular/core';
 import * as _ from 'lodash';
 
-import { CheckRequired, Required } from '../decorators';
+import { CheckRequired, Required } from '../decorators/require-decorators';
 import { StModalButton, StModalConfig, StModalMainTextSize, StModalResponse, StModalType, StModalWidth } from './st-modal.interface';
 
 @CheckRequired()

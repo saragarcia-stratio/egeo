@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnI
 @Component({
    selector: 'st-vertical-tabs',
    templateUrl: './st-vertical-tabs.component.html',
-   styleUrls: ['./st-vertical-tabs.component.css'],
+   styleUrls: ['./st-vertical-tabs.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StVerticalTabsComponent implements OnInit {

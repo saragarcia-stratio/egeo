@@ -1,8 +1,8 @@
 import { DebugElement } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { StDropDownMenuItem } from '../../st-dropdown-menu.interface';
+import { StDropDownMenuItem } from '../st-dropdown-menu.interface';
 import { StDropdownMenuItemComponent } from './st-dropdown-menu-item.component';
 
 let item: StDropDownMenuItem = {
@@ -16,15 +16,16 @@ describe('StDropdownMenuItemComponent', () => {
    let fixture: ComponentFixture<StDropdownMenuItemComponent>;
    let de: DebugElement;
 
-   beforeEach(() => {
+   beforeEach(async(() => {
       TestBed.configureTestingModule({
          declarations: [StDropdownMenuItemComponent]
-      });
+      })
+         .compileComponents();  // compile template and css
+   }));
 
+   beforeEach(() => {
       fixture = TestBed.createComponent(StDropdownMenuItemComponent);
       component = fixture.componentInstance;
-
-
    });
 
    it('should throw an error for missing item attribute', () => {

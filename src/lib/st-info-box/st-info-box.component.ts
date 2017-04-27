@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 @Component({
    selector: 'st-info-box',
    templateUrl: './st-info-box.component.html',
-   styleUrls: ['./st-info-box.component.css'],
+   styleUrls: ['./st-info-box.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 

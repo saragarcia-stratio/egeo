@@ -16,14 +16,14 @@ import {
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
-import { EventWindowManager } from '../utils';
+import { EventWindowManager } from '../utils/event-window-manager';
 
 import { StDropDownMenuGroup, StDropDownMenuItem } from '../st-dropdown-menu/st-dropdown-menu.interface';
 
 @Component({
    selector: 'st-dropdown',
-   templateUrl: 'st-dropdown.component.html',
-   styleUrls: ['st-dropdown.component.scss'],
+   templateUrl: './st-dropdown.component.html',
+   styleUrls: ['./st-dropdown.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StDropdownComponent extends EventWindowManager implements AfterViewInit, OnDestroy, OnInit, OnChanges {
@@ -50,14 +50,14 @@ export class StDropdownComponent extends EventWindowManager implements AfterView
       @ViewChild('buttonId') buttonElement: ElementRef
    ) {
       super(renderer, cd, buttonElement);
-   };
+   }
 
    ngAfterViewInit(): void {
       setTimeout(() => {
          this.widthMenu = this.buttonElement.nativeElement.offsetWidth + 'px';
          this.cd.markForCheck();
       });
-   };
+   }
 
    ngOnInit(): void {
       if (undefined === this.items) {
@@ -66,7 +66,7 @@ export class StDropdownComponent extends EventWindowManager implements AfterView
 
       this.checkFirstSelected();
       this.findSelected();
-   };
+   }
 
    ngOnChanges(values: any): void {
       if (values.items) {
@@ -77,9 +77,9 @@ export class StDropdownComponent extends EventWindowManager implements AfterView
 
    ngOnDestroy(): void {
       this.closeElement();
-   };
+   }
 
-   public changeOption(item: StDropDownMenuItem): void {
+   changeOption(item: StDropDownMenuItem): void {
       this.active = !this.active;
       this.updateSelected(item);
 
@@ -87,12 +87,12 @@ export class StDropdownComponent extends EventWindowManager implements AfterView
          this.button = item.label;
       this.change.emit(item);
       this.closeElement();
-   };
+   }
 
-   public onClickEvent(event: MouseEvent): void {
+   onClickEvent(event: MouseEvent): void {
       this.openElement();
       this.click.emit(true);
-   };
+   }
 
    private findSelected(): void {
       if (this.isStDropdownItem(this.items)) {
@@ -135,7 +135,5 @@ export class StDropdownComponent extends EventWindowManager implements AfterView
             this.items[0].selected = true;
          }
       }
-
    }
-
 }

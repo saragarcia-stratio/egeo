@@ -1,5 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { StDropdownMenuModule } from '../st-dropdown-menu';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { StDropdownMenuModule } from '../st-dropdown-menu/st-dropdown-menu.module';
 import { StDropDownMenuItem } from '../st-dropdown-menu/st-dropdown-menu.interface';
 import { StDropdownComponent } from './st-dropdown.component';
 
@@ -19,13 +20,16 @@ describe('StDropdownComponent', () => {
    let component: StDropdownComponent;
    let fixture: ComponentFixture<StDropdownComponent>;
 
-
-   beforeEach(() => {
+   beforeEach(async(() => {
       TestBed.configureTestingModule({
          imports: [StDropdownMenuModule],
          declarations: [StDropdownComponent]
-      });
+      })
+         .compileComponents();  // compile template and css
+   }));
 
+
+   beforeEach(() => {
       fixture = TestBed.createComponent(StDropdownComponent);
       component = fixture.componentInstance;
 

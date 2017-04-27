@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { Order, ORDER_TYPE } from './shared/order';
@@ -11,12 +11,15 @@ let fakeFields = ['id', 'name', 'lastName', 'phone'];
 
 describe('StTableComponent', () => {
 
-   beforeEach(() => {
+   beforeEach(async(() => {
       TestBed.configureTestingModule({
          imports: [CommonModule, RouterTestingModule],
          declarations: [StTableComponent]
-      });
+      })
+         .compileComponents();  // compile template and css
+   }));
 
+   beforeEach(() => {
       fixture = TestBed.createComponent(StTableComponent);
       component = fixture.componentInstance;
       component.fields = fakeFields;
@@ -166,4 +169,4 @@ describe('StTableComponent', () => {
    });
 
 })
-;
+   ;

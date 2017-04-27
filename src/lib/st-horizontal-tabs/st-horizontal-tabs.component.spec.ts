@@ -1,18 +1,17 @@
-import { TestBed } from '@angular/core/testing';
+import { async, TestBed } from '@angular/core/testing';
 import { Http } from '@angular/http';
-import { StHorizontalTab } from './st-horizontal-tabs.model';
 
+import { StHorizontalTab } from './st-horizontal-tabs.model';
 import { StHorizontalTabsComponent } from './st-horizontal-tabs.component';
 
 
 describe('StHorizontalTabsComponent', () => {
-   beforeEach(() => {
+   beforeEach(async(() => {
       TestBed.configureTestingModule({
-         declarations: [StHorizontalTabsComponent],
-         imports: [],
-         providers: []
-      });
-   });
+         declarations: [StHorizontalTabsComponent]
+      })
+         .compileComponents();  // compile template and css
+   }));
 
    let stHorizontalTabsComponent: StHorizontalTabsComponent;
    let fakeOptions: StHorizontalTab[] = [

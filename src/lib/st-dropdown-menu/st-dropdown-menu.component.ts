@@ -5,8 +5,8 @@ import { StDropDownMenuGroup, StDropDownMenuItem } from './st-dropdown-menu.inte
 
 @Component({
    selector: 'st-dropdown-menu',
-   templateUrl: 'st-dropdown-menu.component.html',
-   styleUrls: ['st-dropdown-menu.component.scss'],
+   templateUrl: './st-dropdown-menu.component.html',
+   styleUrls: ['./st-dropdown-menu.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush,
    animations: [
       trigger('show', [

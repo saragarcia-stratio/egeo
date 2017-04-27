@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import { cloneDeep as _cloneDeep } from 'lodash';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { EgeoResolverKeys, TranslateableElement, TranslateServiceType } from './egeo-resolve-model';
@@ -214,9 +214,9 @@ describe('EgeoResolveService', () => {
    });
 
    it('should get keys', () => {
-      let copy = _.cloneDeep(testService);
+      let copy = _cloneDeep(testService);
       service.setKeys(copy, preparedSetKeys);
-      expect(copy).toEqual(expectedTranslatedKeys);
+      expect(copy).toEqual(expectedTranslatedKeys as any);
    });
 
    it('should translate array of keys', () => {

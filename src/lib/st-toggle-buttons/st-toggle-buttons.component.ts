@@ -4,7 +4,7 @@ import { StToggleButton } from './st-toggle-buttons.interface';
 @Component({
    selector: 'st-toggle-buttons',
    templateUrl: './st-toggle-buttons.component.html',
-   styleUrls: ['./st-toggle-buttons.component.css'],
+   styleUrls: ['./st-toggle-buttons.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StToggleButtonsComponent {

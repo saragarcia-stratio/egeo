@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, Renderer} from '@angular/core';
 
-import { EventWindowManager } from '../utils';
+import { EventWindowManager } from '../utils/event-window-manager';
 
 @Component({
    selector: 'st-tooltip',
    templateUrl: './st-tooltip.component.html',
-   styleUrls: ['./st-tooltip.component.css'],
+   styleUrls: ['./st-tooltip.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StTooltip extends EventWindowManager implements OnDestroy {

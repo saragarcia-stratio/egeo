@@ -1,4 +1,3 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { StDropDownMenuGroup, StDropDownMenuItem } from './st-dropdown-menu.interface';
@@ -7,25 +6,7 @@ import { StDropDownMenuGroup, StDropDownMenuItem } from './st-dropdown-menu.inte
    selector: 'st-dropdown-menu',
    templateUrl: './st-dropdown-menu.component.html',
    styleUrls: ['./st-dropdown-menu.component.scss'],
-   changeDetection: ChangeDetectionStrategy.OnPush,
-   animations: [
-      trigger('show', [
-         transition(':enter', [
-            style({ 'transform-origin': '100% 0', 'opacity': 0 }),
-            animate('0.15s', style({
-               opacity: 1,
-               transition: 'all 0.25s cubic-bezier(0.5, 1.8, 0.9, 0.8)'
-            }))
-         ]),
-         transition(':leave', [
-            style({ 'transform-origin': '100% 0', 'opacity': 1 }),
-            animate('0.15s', style({
-               opacity: 0,
-               transition: 'all 0.25s cubic-bezier(0.5, 1.8, 0.9, 0.8)'
-            }))
-         ])
-      ])
-   ]
+   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StDropdownMenuComponent implements OnInit {
 

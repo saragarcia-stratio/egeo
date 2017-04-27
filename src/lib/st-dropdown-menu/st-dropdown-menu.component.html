@@ -1,4 +1,4 @@
-<div class="sth-dropdown-menu dropdown-menu" *ngIf="active" [@show]="active">
+<div class="sth-dropdown-menu dropdown-menu" *ngIf="active" [ngClass]="{'active': active}">
    <ul *ngIf="!itemsGroup.length" [attr.aria-hidden]="!active" aria-label="submenu">
       <st-dropdown-menu-item (change)="onChange($event)" *ngFor="let i of items" [item]="i"></st-dropdown-menu-item>
    </ul>

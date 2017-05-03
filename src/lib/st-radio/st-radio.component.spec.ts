@@ -5,7 +5,7 @@ import { By } from '@angular/platform-browser';
 
 import { SelectOneDispatcher } from '../utils/unique-dispatcher';
 
-import { StRadioGroupComponent } from './st-radio-group.component';
+import { StRadioGroupComponent } from './st-radio.component';
 import { StRadioComponent } from './st-radio.component';
 
 describe('StRadioComponent', () => {

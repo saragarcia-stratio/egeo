@@ -3,6 +3,7 @@ import {
    Component,
    Input
 } from '@angular/core';
+
 import { StFormLabelStatus } from './st-form-label-status.enum';
 import { Required, CheckRequired } from '../../../decorators/require-decorators';
 
@@ -19,9 +20,7 @@ export class StFormLabelComponent {
    @Input() @Required() qaTag: string;
    @Input() contextualHelp: string;
    @Input() status: StFormLabelStatus;
-
-   constructor() {
-   }
+   @Input() name: string;
 
    getStatusClass(): string {
       switch (this.status) {

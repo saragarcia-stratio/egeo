@@ -1,1 +1,1 @@
-export enum StFormLabelStatus { FOCUS, ERROR, DISABLED}
+export enum StFormLabelStatus { FOCUS, ERROR, DISABLED }

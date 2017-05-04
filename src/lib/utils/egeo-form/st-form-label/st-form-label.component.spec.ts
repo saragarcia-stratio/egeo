@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+
 import { StFormLabelComponent } from './st-form-label.component';
 import { StTooltipModule } from '../../../st-tooltip/st-tooltip.module';
 import { StFormLabelStatus } from './st-form-label-status.enum';

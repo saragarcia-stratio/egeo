@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.0.1 (upcoming)
+## 2.0.1 (May 04, 2017)
 
 * fix st-textarea styles
 

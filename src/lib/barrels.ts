@@ -19,6 +19,7 @@ import { StSearchModule } from './st-search/st-search.module';
 import { StSpinnerModule } from './st-spinner/st-spinner.module';
 import { StTabBoxModule } from './st-tab-box/st-tab-box.module';
 import { StTableModule } from './st-table/st-table.module';
+import { StTextareaModule } from './st-textarea/st-textarea.module';
 import { StToggleButtonsModule } from './st-toggle-buttons/st-toggle-buttons.module';
 import { StTooltipModule } from './st-tooltip/st-tooltip.module';
 import { StTwoListSelectionModule } from './st-two-list-selection/st-two-list-selection.module';
@@ -51,5 +52,6 @@ export const DECLARATIONS: any[] = [
    StModalModule,
    StRadioModule,
    StSwitchModule,
-   StTableModule
+   StTableModule,
+   StTextareaModule
 ];

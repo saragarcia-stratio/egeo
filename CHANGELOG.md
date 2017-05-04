@@ -4,6 +4,7 @@
 
 * Update angular version to angular 4.1.0
 * Refactor of build method
+* Create textarea component
 * Create form label component
 * Create switch component
 * Bugfix #212 (St-table): Allow to introduce a model with id and label as header item

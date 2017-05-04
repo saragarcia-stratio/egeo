@@ -4,7 +4,7 @@
 
 * Pending changelog
 
-## 2.0.0 (upcoming)
+## 2.0.0 (May 04, 2017)
 
 * Update angular version to angular 4.1.0
 * Refactor of build method

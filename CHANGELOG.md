@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.0 (upcoming)
+
+* Pending changelog
+
 ## 2.0.0 (upcoming)
 
 * Update angular version to angular 4.1.0

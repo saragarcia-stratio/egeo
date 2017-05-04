@@ -23,6 +23,7 @@ export * from './st-spinner/index';
 export { StSwitchModule } from './st-switch/st-switch.module';
 export * from './st-table/index';
 export * from './st-tab-box/index';
+export * from './st-textarea/index';
 export * from './st-toggle-buttons/index';
 export * from './st-tooltip/index';
 export * from './st-two-list-selection/index';

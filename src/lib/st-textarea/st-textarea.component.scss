@@ -1,7 +1,7 @@
 .st-textarea-remove-default {
    outline: none;
    border: none;
-   width: 100%;
+   min-width: 100%;
 }
 
 .st-textarea-container {
@@ -87,8 +87,17 @@
 .st-textarea {
    width: 100%;
    height: 100%;
+   display: flex;
 }
 
 .st-textarea-error-layout {
    height: 15px;
+   position: absolute;
+   bottom: 0;
+}
+
+:host {
+   position: relative;
+   display: block;
+   padding-bottom: 20px;
 }

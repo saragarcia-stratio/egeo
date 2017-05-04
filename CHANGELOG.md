@@ -4,6 +4,10 @@
 
 * Pending changelog
 
+## 2.0.1 (upcoming)
+
+* fix st-textarea styles
+
 ## 2.0.0 (May 04, 2017)
 
 * Update angular version to angular 4.1.0

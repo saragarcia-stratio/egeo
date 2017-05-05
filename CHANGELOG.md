@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.0.2 (upcoming)
+## 2.0.2 (May 05, 2017)
 
 * fix st-textarea borders
 

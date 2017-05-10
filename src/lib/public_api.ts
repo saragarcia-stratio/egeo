@@ -91,7 +91,7 @@ export { StRadioMenuOption, StRadioMenuOptionSchema } from './st-radio-menu/st-r
 export { StSearchModule } from './st-search/st-search.module';
 
 // Spinner
-export {StSpinnerModule} from './st-spinner/st-spinner.module';
+export { StSpinnerModule } from './st-spinner/st-spinner.module';
 
 // Switch
 export { StSwitchModule } from './st-switch/st-switch.module';
@@ -128,3 +128,5 @@ export { StTwoListSelection } from './st-two-list-selection/st-two-list-selectio
 
 // Vertical tabs
 export { StVerticalTabsModule } from './st-vertical-tabs/st-vertical-tabs.module';
+
+export { StCheckboxModule } from './st-checkbox/st-checkbox.module';

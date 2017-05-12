@@ -39,8 +39,6 @@ task('library:watch', () => {
 task('library:build:esm', () => tsc(tsconfigBuild, { basePath: libraryRoot }));
 task('library:build:bundles', () => buildPackageBundles(esmMainFile, 'egeo'));
 
-task('library:build:esm:tests', () => tsc(tsconfigTests, { basePath: libraryRoot }));
-
 /**
  * Asset tasks. Building SaSS files and inlining CSS, HTML files into the ESM output.
  */

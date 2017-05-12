@@ -5,7 +5,7 @@ import { By } from '@angular/platform-browser';
 
 import { StCheckboxComponent } from './st-checkbox.component';
 
-fdescribe('StCheckboxComponent', () => {
+describe('StCheckboxComponent', () => {
 
    let component: StCheckboxComponent;
    let fixture: ComponentFixture<StCheckboxComponent>;

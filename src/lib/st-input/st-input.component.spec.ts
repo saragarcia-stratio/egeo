@@ -60,21 +60,19 @@ describe('StInputComponent', () => {
       expect(input.disabled).toBe(false);
    });
 
-   // TODO: Review this test because something is wrong
-   xit('Input should be focused naturally', () => {
+   it('Input should be focused naturally', () => {
       fixture.detectChanges();
       input.focus();
       expect(component.focus).toBe(true);
    });
 
    // TODO: Review this test because something is wrong
-   xit('Input should be focused as default', async(() => {
+   xit('Input should be focused as default', () => {
+      fixture.detectChanges();
       component.isFocused = true;
       fixture.detectChanges();
-      fixture.whenStable().then(() => {
-         expect(component.focus).toBe(true);
-      });
-   }));
+      expect(component.focus).toBe(true);
+   });
 });
 
 @Component({

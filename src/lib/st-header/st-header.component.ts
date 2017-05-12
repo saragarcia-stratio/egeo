@@ -21,7 +21,7 @@ export class StHeaderComponent implements OnInit {
 
    @Input() menu: StHeaderModel[] = [];
 
-   @Input() userMenu: StHeaderUserMenuModel | undefined;
+   @Input() userMenu: StHeaderUserMenuModel;
    @Input() qaTag: string;
 
    @Output() contentChangeOffset: EventEmitter<number> = new EventEmitter<number>();

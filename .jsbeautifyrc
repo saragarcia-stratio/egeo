@@ -9,7 +9,7 @@
       "allowed_file_extensions": ["html"],
       "brace_style": "collapse",
       "max_preserve_newlines": 10,
-      "wrap_line_length": 0,
+      "wrap_line_length": 150,
       "extra_liners": [],
       "indent_body_inner_html": true,
       "indent_handlebars": false,

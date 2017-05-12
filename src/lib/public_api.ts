@@ -122,7 +122,8 @@ export {
    StTwoListSelectionConfig,
    StTwoListSelectionConfigSchema,
    StTwoListSelectionElement,
-   StTwoListSelectionAction
+   StTwoListSelectionAction,
+   StTwoListSelectExtraLabelAction
 } from './st-two-list-selection/st-two-list-selection.model';
 export { StTwoListSelection } from './st-two-list-selection/st-two-list-selection';
 

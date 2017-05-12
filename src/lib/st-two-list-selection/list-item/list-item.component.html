@@ -1,4 +1,5 @@
-<li class="item" (click)="selectItem.emit(item)" [id]="itemQaTag">
+<div class="item sth-two-list__list-item" (click)="selectItem.emit(item)" [id]="itemQaTag">
    <input *ngIf="editable" type="checkbox" [checked]="selected" class="check">
    <span class="label">{{itemName}}</span>
-</li>
+   <span *ngIf="item.extraLabel" [innerHTML]="item.extraLabel" (click)="selectExtraLabel.emit({element: item, event: $event})"></span>
+</div>

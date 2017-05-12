@@ -4,6 +4,12 @@ export interface StTwoListSelectionElement {
    id: string | number;
    name: string;
    selected?: boolean;
+   extraLabel?: string;
+}
+
+export interface StTwoListSelectExtraLabelAction {
+   element: StTwoListSelectionElement;
+   event: Event;
 }
 
 export interface StTwoListSelectionAction {

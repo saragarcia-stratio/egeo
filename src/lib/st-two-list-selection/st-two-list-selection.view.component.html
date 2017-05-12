@@ -1,18 +1,25 @@
-<div class="st-two-list-selection">
+<div class="st-two-list sth-two-list">
    <!--ALL ELEMENTS-->
-   <list-selection *ngIf="editable" class="list all-list" [list]="allElements" [title]="allTitle" [searchPlaceholder]="allPlaceholder"
-      [qaTag]="allQaTag" [editable]="editable" (search)="searchOverAll.emit($event)" (selectItem)="selectAllElement.emit($event)">
+   <list-selection *ngIf="editable" class="list sth-two-list__list sth-two-list__all-list" [list]="allElements" [title]="allTitle" [searchPlaceholder]="allPlaceholder"
+       [qaTag]="allQaTag" [editable]="editable" (search)="searchOverAll.emit($event)" (selectItem)="selectAllElement.emit($event)" [important]="false" [hasSearch]="hasSearch"
+       (selectExtraLabel)="selectExtraLabelAll.emit($event)" [orderOptions]="orderAllOptions" (changeOrder)="changeOrderAll.emit($event)">
    </list-selection>
 
    <!--SELECTORS-->
    <div class="pick-buttons" *ngIf="editable">
-      <i class="icon-arrow2_right" [ngClass]="rightClass" (click)="moveToSelected.emit($event)"></i>
-      <i class="icon-arrow2_left" [ngClass]="leftClass" (click)="moveToAll.emit($event)"></i>
+      <st-button *ngIf="moveAllToSelectedButton" text="Move all to selected" typeClass="btnTool" subtypeClass="subtype4" [qaTag]="qaTag + '-left-all-button'"
+          leftIcon="icon-fast-forward" inputType="button" (click)="moveAllToSelected.emit($event)"></st-button>
+      <st-button text="Move to selected" typeClass="btnTool" subtypeClass="subtype4" [qaTag]="qaTag + '-left-button'" leftIcon="icon-arrow2_right" inputType="button"
+          (click)="moveToSelected.emit($event)"></st-button>
+      <st-button text="Move to all" typeClass="btnTool" subtypeClass="subtype4" [qaTag]="qaTag + '-right-button'" leftIcon="icon-arrow2_left" inputType="button"
+          (click)="moveToAll.emit($event)"></st-button>
+      <st-button *ngIf="moveAllToAllButton" text="Move all to all" typeClass="btnTool" subtypeClass="subtype4" [qaTag]="qaTag + '-right-all-button'" leftIcon="icon-rewind"
+          inputType="button" (click)="moveAllToAll.emit($event)"></st-button>
    </div>
 
    <!--SELECTED ELEMENTS-->
-   <list-selection class="list selected-list" [ngClass]="{'not-editable': !editable}" [list]="selectedElements" [title]="selectedTitle"
-      [searchPlaceholder]="selectedPlaceholder" [qaTag]="selectedQaTag" [editable]="editable" (search)="searchOverSelected.emit($event)"
-      (selectItem)="selectSelectedElement.emit($event)">
+   <list-selection class="list sth-two-list__list sth-two-list__selected-list" [ngClass]="{'not-editable': !editable}" [list]="selectedElements" [title]="selectedTitle"
+       [searchPlaceholder]="selectedPlaceholder" [qaTag]="selectedQaTag" [editable]="editable" (search)="searchOverSelected.emit($event)" (selectItem)="selectSelectedElement.emit($event)"
+       [important]="true" [hasSearch]="hasSearch" (selectExtraLabel)="selectExtraLabelSelected.emit($event)" [orderOptions]="orderSelectedOptions" (changeOrder)="changeOrderSelected.emit($event)">
    </list-selection>
 </div>

@@ -26,14 +26,6 @@ export class StTwoListSelection {
 
    constructor(private _cd: ChangeDetectorRef) { }
 
-   canActivateArrowLeft(): boolean {
-      return this.copySelectedElements && this.copySelectedElements.find((item) => item.selected) !== undefined || false;
-   }
-
-   canActivateArrowRight(): boolean {
-      return this.copyAllElement && this.copyAllElement.find((item) => item.selected) !== undefined || false;
-   }
-
    // Check selected element
    onSelectAllElement(selection: StTwoListSelectionElement): void {
       if (this.canSelect(selection, this.copyAllElement)) {
@@ -72,8 +64,18 @@ export class StTwoListSelection {
       this.emitter.emit(result);
    }
 
+   // Move all to selected
+   onMoveAllToSelected(event: Event): void {
+      this.emitter.emit(_.cloneDeep(this.originalAll));
+   }
 
-   protected init(all: List, selected: List, changeEmitter: EventEmitter<List>, sorted: 'id' | 'name'): void {
+   // Remove All from selected
+   onMoveAllToAll(event: Event): void {
+      this.emitter.emit([]);
+   }
+
+
+   init(all: List, selected: List, changeEmitter: EventEmitter<List>, sorted: 'id' | 'name'): void {
       this.emitter = changeEmitter;
       this.sortLists = sorted;
       this.originalAll = all;
@@ -81,7 +83,7 @@ export class StTwoListSelection {
       this.generateWorkLists();
    }
 
-   protected checkChanges(changes: SimpleChanges, allList: string, selectedList: string): void {
+   checkChanges(changes: SimpleChanges, allList: string, selectedList: string): void {
       if (changes[allList] !== undefined) {
          this.originalAll = changes[allList].currentValue;
       }
@@ -91,14 +93,6 @@ export class StTwoListSelection {
       if (changes[allList] !== undefined || changes[selectedList] !== undefined) {
          this.generateWorkLists();
       }
-   }
-
-   private reselect(list: List, ids: IdList): void {
-      list.forEach((item) => {
-         if (_.includes(ids, item.id)) {
-            item.selected = true;
-         }
-      });
    }
 
    private generateWorkLists(): void {

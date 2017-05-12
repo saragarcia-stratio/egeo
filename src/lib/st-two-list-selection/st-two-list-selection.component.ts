@@ -11,9 +11,10 @@ import {
 } from '@angular/core';
 import * as _ from 'lodash';
 
+import { StDropDownMenuItem } from '../st-dropdown-menu/st-dropdown-menu.interface';
 import { CheckRequired, Required } from '../decorators/require-decorators';
 import { StTwoListSelection } from './st-two-list-selection';
-import { StTwoListSelectionConfig, StTwoListSelectionElement } from './st-two-list-selection.model';
+import { StTwoListSelectionConfig, StTwoListSelectionElement, StTwoListSelectExtraLabelAction } from './st-two-list-selection.model';
 
 @Component({
    selector: 'st-two-list-selection',
@@ -24,9 +25,12 @@ import { StTwoListSelectionConfig, StTwoListSelectionElement } from './st-two-li
          [config]="config"
          [editable]="editable"
          [qaTag]="qaTag"
+         [hasSearch]="hasSearch"
+         [orderAllOptions]="orderAllOptions"
+         [orderSelectedOptions]="orderSelectedOptions"
 
-         [activeArrowLeft]="canActivateArrowLeft()"
-         [activeArrowRight]="canActivateArrowRight()"
+         [moveAllToSelectedButton]="moveAllToSelectedButton"
+         [moveAllToAllButton]="moveAllToAllButton"
 
          (selectAllElement)="onSelectAllElement($event)"
          (selectSelectedElement)="onSelectSelectedElement($event)"
@@ -34,6 +38,12 @@ import { StTwoListSelectionConfig, StTwoListSelectionElement } from './st-two-li
          (searchOverSelected)="onSearchOverSelected($event)"
          (moveToSelected)="onMoveToSelected($event)"
          (moveToAll)="onMoveToAll($event)"
+         (moveAllToSelected)="onMoveAllToSelected($event)"
+         (moveAllToAll)="onMoveAllToAll($event)"
+         (selectExtraLabelAll)="selectExtraLabelAll.emit($event)"
+         (selectExtraLabelSelected)="selectExtraLabelAll.emit($event)"
+         (changeOrderAll)="changeOrderAll.emit($event)"
+         (changeOrderSelected)="changeOrderSelected.emit($event)"
       ></st-two-list-selection-view>
    `,
    changeDetection: ChangeDetectionStrategy.OnPush
@@ -45,10 +55,21 @@ export class StTwoListSelectionComponent extends StTwoListSelection implements O
    @Input() @Required() selectedElements: StTwoListSelectionElement[];
    @Output() selectedElementsChange: EventEmitter<StTwoListSelectionElement[]> = new EventEmitter<StTwoListSelectionElement[]>();
 
+   @Output() selectExtraLabelAll: EventEmitter<StTwoListSelectExtraLabelAction> = new EventEmitter<StTwoListSelectExtraLabelAction>();
+   @Output() selectExtraLabelSelected: EventEmitter<StTwoListSelectExtraLabelAction> = new EventEmitter<StTwoListSelectExtraLabelAction>();
+   @Output() changeOrderAll: EventEmitter<StDropDownMenuItem> = new EventEmitter<StDropDownMenuItem>();
+   @Output() changeOrderSelected: EventEmitter<StDropDownMenuItem> = new EventEmitter<StDropDownMenuItem>();
+
    @Input() config: StTwoListSelectionConfig;
    @Input() editable: boolean = false;
    @Input() @Required() qaTag: string;
    @Input() sortBy: 'id' | 'name' = 'id';
+
+   @Input() moveAllToSelectedButton: boolean = true;
+   @Input() moveAllToAllButton: boolean = true;
+   @Input() hasSearch: boolean = true;
+   @Input() orderSelectedOptions: StDropDownMenuItem[] = [];
+   @Input() orderAllOptions: StDropDownMenuItem[] = [];
 
    constructor(private cd: ChangeDetectorRef) {
       super(cd);

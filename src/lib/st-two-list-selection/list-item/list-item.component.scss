@@ -1,5 +1,3 @@
-@import '../../../../node_modules/@stratio/egeo-ui-base/utils/colors';
-
 .item {
    display: flex;
    min-width: 100%;
@@ -9,7 +7,6 @@
    height: 35px;
    line-height: 35px;
    width: 100%;
-   border-bottom: 1px solid egeo-get-color(n3);
 }
 
 .check {

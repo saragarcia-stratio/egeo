@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
+import { StDropDownMenuItem } from '../../st-dropdown-menu/st-dropdown-menu.interface';
 import { CheckRequired, Required } from '../../decorators/require-decorators';
-import { StTwoListSelectionElement } from '../st-two-list-selection.model';
+import { StTwoListSelectionElement, StTwoListSelectExtraLabelAction } from '../st-two-list-selection.model';
 
 @Component({
    selector: 'list-selection',
    templateUrl: './list-selection.component.html',
-   styleUrls: ['list-selection.component.scss'],
+   styleUrls: ['./list-selection.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListSelectionComponent {
@@ -16,9 +17,14 @@ export class ListSelectionComponent {
    @Input() @Required() title: string;
    @Input() @Required() searchPlaceholder: string;
    @Input() @Required() qaTag: string;
+   @Input() important: boolean = false;
+   @Input() hasSearch: boolean = true;
+   @Input() orderOptions: StDropDownMenuItem[] = [];
 
    @Output() selectItem: EventEmitter<StTwoListSelectionElement> = new EventEmitter<StTwoListSelectionElement>();
+   @Output() selectExtraLabel: EventEmitter<StTwoListSelectExtraLabelAction> = new EventEmitter<StTwoListSelectExtraLabelAction>();
    @Output() search: EventEmitter<string> = new EventEmitter<string>();
+   @Output() changeOrder: EventEmitter<StDropDownMenuItem> = new EventEmitter<StDropDownMenuItem>();
 
    scrollItems: StTwoListSelectionElement[] = [];
    firstEl: number = 0;
@@ -29,5 +35,9 @@ export class ListSelectionComponent {
 
    get listQaTag(): string {
       return this.qaTag + '-list';
+   }
+
+   get hasOrder(): boolean {
+      return this.orderOptions && this.orderOptions.length > 0;
    }
 }

@@ -1,10 +1,4 @@
-@import '../../../node_modules/@stratio/egeo-ui-base/utils/typography';
-@import '../../../node_modules/@stratio/egeo-ui-base/utils/colors';
-
-.st-two-list-selection {
-   font-family: egeo-get-font(body);
-   font-size: egeo-get-font-size(body_medium);
-   color: egeo-get-color(n7);
+.st-two-list {
    width: 100%;
    display: flex;
    justify-content: space-between;
@@ -12,9 +6,8 @@
 }
 
 .list {
-   padding: 20px;
-   background-color: egeo-get-color(n0);
-   width: 40%;
+   padding: 33px 20px 20px 20px;
+   flex-grow: 1;
    min-height: 500px;
    overflow: auto;
 }
@@ -23,28 +16,15 @@
    width: 100%;
 }
 
-.all-list {
-   border: 1px solid egeo-get-color(n4);
-}
-
-.selected-list {
-   border: 1px solid egeo-get-color(a1);
-}
-
 .pick-buttons {
    display: flex;
    flex-direction: column;
    align-items: center;
-   width: 20%;
+   width: 73px;
+   min-width: 73px;
+   max-width: 73px;
    margin: auto;
-   font-size: 35px;
-   color: egeo-get-color(n4);
-   & i {
-      margin: 20px;
-      cursor: pointer;
+   st-button {
+      margin-bottom: 10px;
    }
-}
-
-.sth-two-list-selector-active {
-   color: egeo-get-color(a1);
 }

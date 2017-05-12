@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { CheckRequired, Required } from '../../decorators/require-decorators';
-import { StTwoListSelectionElement } from '../st-two-list-selection.model';
+import { StTwoListSelectionElement, StTwoListSelectExtraLabelAction } from '../st-two-list-selection.model';
 
 @Component({
    selector: 'list-item',
    templateUrl: './list-item.component.html',
-   styleUrls: ['list-item.component.scss'],
+   styleUrls: ['./list-item.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 @CheckRequired()
@@ -17,12 +17,9 @@ export class ListItemComponent {
    @Input() editable: boolean = false;
 
    @Output() selectItem: EventEmitter<StTwoListSelectionElement> = new EventEmitter<StTwoListSelectionElement>();
+   @Output() selectExtraLabel: EventEmitter<StTwoListSelectExtraLabelAction> = new EventEmitter<StTwoListSelectExtraLabelAction>();
 
    constructor() { }
-
-   onSelect(): void {
-      this.selectItem.emit(this.item);
-   }
 
    get itemName(): string {
       return this.item.name;

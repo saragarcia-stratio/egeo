@@ -24,6 +24,7 @@ export class StTwoListSelectionViewComponent {
    @Input() hasSearch: boolean = true;
    @Input() orderSelectedOptions: StDropDownMenuItem[] = [];
    @Input() orderAllOptions: StDropDownMenuItem[] = [];
+   @Input() mode: 'compact' | 'normal' = 'normal';
 
    @Output() selectAllElement: EventEmitter<StTwoListSelectionElement> = new EventEmitter<StTwoListSelectionElement>();
    @Output() selectSelectedElement: EventEmitter<StTwoListSelectionElement> = new EventEmitter<StTwoListSelectionElement>();

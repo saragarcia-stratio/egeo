@@ -15,6 +15,7 @@ export class ListItemComponent {
    @Input() @Required() item: StTwoListSelectionElement;
    @Input() @Required() qaTag: string;
    @Input() editable: boolean = false;
+   @Input() mode: 'compact' | 'normal' = 'normal';
 
    @Output() selectItem: EventEmitter<StTwoListSelectionElement> = new EventEmitter<StTwoListSelectionElement>();
    @Output() selectExtraLabel: EventEmitter<StTwoListSelectExtraLabelAction> = new EventEmitter<StTwoListSelectExtraLabelAction>();
@@ -29,8 +30,22 @@ export class ListItemComponent {
       return this.qaTag + '-item-' + this.item.id;
    }
 
-   get selected(): boolean {
-      return this.item.selected;
+   get checkQaTag(): string {
+      return this.qaTag + '-check-' + this.item.id;
    }
 
+   get selected(): boolean {
+      return this.item.selected ? true : false;
+   }
+
+   get itemMode(): string {
+      return this.mode === 'normal' ? 'item-normal sth-two-list-selection__item-normal' :
+         'item-compact sth-two-list-selection__item-compact';
+   }
+
+   emitOnSelect(event: Event): void {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      this.selectItem.emit(this.item);
+   }
 }

@@ -1,5 +1,7 @@
-<div class="item sth-two-list__list-item" (click)="selectItem.emit(item)" [id]="itemQaTag">
-   <input *ngIf="editable" type="checkbox" [checked]="selected" class="check">
-   <span class="label">{{itemName}}</span>
-   <span *ngIf="item.extraLabel" [innerHTML]="item.extraLabel" (click)="selectExtraLabel.emit({element: item, event: $event})"></span>
+<div class="item sth-two-list__list-item" [ngClass]="itemMode" (click)="emitOnSelect($event)" [id]="itemQaTag">
+   <span *ngIf="!editable" class="label">{{itemName}}</span>
+   <st-checkbox *ngIf="editable" [qaTag]="checkQaTag" [checked]="selected">
+      <span class="label">{{itemName}}</span>
+   </st-checkbox>
+   <span class="extraLabel" *ngIf="item.extraLabel" [innerHTML]="item.extraLabel" (click)="selectExtraLabel.emit({element: item, event: $event})"></span>
 </div>

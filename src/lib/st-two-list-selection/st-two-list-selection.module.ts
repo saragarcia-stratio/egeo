@@ -13,9 +13,10 @@ import { PipesModule } from '../pipes/pipes.module';
 import { StSearchModule } from '../st-search/st-search.module';
 import { StButtonModule } from '../st-button/st-button.module';
 import { StDropdownModule } from '../st-dropdown/st-dropdown.module';
+import { StCheckboxModule } from '../st-checkbox/st-checkbox.module';
 
 @NgModule({
-   imports: [CommonModule, StSearchModule, PipesModule, VirtualScrollModule, StButtonModule, StDropdownModule],
+   imports: [CommonModule, StSearchModule, PipesModule, VirtualScrollModule, StButtonModule, StDropdownModule, StCheckboxModule],
    declarations: [StTwoListSelectionViewComponent, StTwoListSelectionComponent, ListSelectionComponent, ListItemComponent],
    exports: [StTwoListSelectionComponent, StTwoListSelectionViewComponent]
 })

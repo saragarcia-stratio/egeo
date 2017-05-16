@@ -17,6 +17,7 @@ import { PipesModule } from '../pipes/pipes.module';
 import { StSearchModule } from '../st-search/st-search.module';
 import { StButtonModule } from '../st-button/st-button.module';
 import { StDropdownModule } from '../st-dropdown/st-dropdown.module';
+import { StCheckboxModule } from '../st-checkbox/st-checkbox.module';
 
 // Mdel
 import { StTwoListSelectionConfig, StTwoListSelectionElement } from './st-two-list-selection.model';
@@ -45,7 +46,7 @@ function generateData(numData: number): StTwoListSelectionElement[] {
 describe('StTwoListSelectionComponent', () => {
    beforeEach(async(() => {
       TestBed.configureTestingModule({
-         imports: [StSearchModule, PipesModule, VirtualScrollModule, StButtonModule, StDropdownModule],
+         imports: [StSearchModule, PipesModule, VirtualScrollModule, StButtonModule, StDropdownModule, StCheckboxModule],
          declarations: [StTwoListSelectionViewComponent, ListSelectionComponent, ListItemComponent]
       })
          .compileComponents();  // compile template and css

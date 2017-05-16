@@ -15,6 +15,7 @@ import { ListSelectionComponent } from './list-selection.component';
 // Order modules
 import { StSearchModule } from '../../st-search/st-search.module';
 import { StDropdownModule } from '../../st-dropdown/st-dropdown.module';
+import { StCheckboxModule } from '../../st-checkbox/st-checkbox.module';
 
 // Mdel
 import { StTwoListSelectionConfig, StTwoListSelectionElement } from '../st-two-list-selection.model';
@@ -41,7 +42,7 @@ let list: StTwoListSelectionElement[] = generateData(10);
 describe('StTwoListSelectionComponent', () => {
    beforeEach(async(() => {
       TestBed.configureTestingModule({
-         imports: [StSearchModule, VirtualScrollModule, StDropdownModule],
+         imports: [StSearchModule, VirtualScrollModule, StDropdownModule, StCheckboxModule],
          declarations: [ListSelectionComponent, ListItemComponent]
       })
          .compileComponents();  // compile template and css
@@ -60,6 +61,11 @@ describe('StTwoListSelectionComponent', () => {
          expect(comp.searchQaTag).toEqual(qaTag + '-search');
          expect(comp.listQaTag).toEqual(qaTag + '-list');
          expect(comp.hasOrder).toBeFalsy();
+         expect(comp.heightMode).toEqual(35);
+
+         comp.mode = 'compact';
+         fixture.detectChanges();
+         expect(comp.heightMode).toEqual(27);
       });
    });
 });

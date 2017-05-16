@@ -28,6 +28,7 @@ import { StTwoListSelectionConfig, StTwoListSelectionElement, StTwoListSelectExt
          [hasSearch]="hasSearch"
          [orderAllOptions]="orderAllOptions"
          [orderSelectedOptions]="orderSelectedOptions"
+         [mode]="mode"
 
          [moveAllToSelectedButton]="moveAllToSelectedButton"
          [moveAllToAllButton]="moveAllToAllButton"
@@ -64,6 +65,7 @@ export class StTwoListSelectionComponent extends StTwoListSelection implements O
    @Input() editable: boolean = false;
    @Input() @Required() qaTag: string;
    @Input() sortBy: 'id' | 'name' = 'id';
+   @Input() mode: 'compact' | 'normal' = 'normal';
 
    @Input() moveAllToSelectedButton: boolean = true;
    @Input() moveAllToAllButton: boolean = true;

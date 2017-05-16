@@ -20,6 +20,7 @@ export class ListSelectionComponent {
    @Input() important: boolean = false;
    @Input() hasSearch: boolean = true;
    @Input() orderOptions: StDropDownMenuItem[] = [];
+   @Input() mode: 'compact' | 'normal' = 'normal';
 
    @Output() selectItem: EventEmitter<StTwoListSelectionElement> = new EventEmitter<StTwoListSelectionElement>();
    @Output() selectExtraLabel: EventEmitter<StTwoListSelectExtraLabelAction> = new EventEmitter<StTwoListSelectExtraLabelAction>();
@@ -39,5 +40,9 @@ export class ListSelectionComponent {
 
    get hasOrder(): boolean {
       return this.orderOptions && this.orderOptions.length > 0;
+   }
+
+   get heightMode(): number {
+      return this.mode === 'normal' ? 35 : 27;
    }
 }

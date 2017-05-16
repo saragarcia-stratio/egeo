@@ -6,8 +6,11 @@ import { By } from '@angular/platform-browser';
 // Components
 import { ListItemComponent } from './list-item.component';
 
-// Mdel
+// Model
 import { StTwoListSelectionElement } from '../st-two-list-selection.model';
+
+// Other
+import { StCheckboxModule } from '../../st-checkbox/st-checkbox.module';
 
 let comp: ListItemComponent;
 let fixture: ComponentFixture<ListItemComponent>;
@@ -21,6 +24,7 @@ let element: StTwoListSelectionElement = {
 describe('StTwoListSelectionComponent', () => {
    beforeEach(async(() => {
       TestBed.configureTestingModule({
+         imports: [StCheckboxModule],
          declarations: [ListItemComponent]
       })
          .compileComponents();  // compile template and css
@@ -38,10 +42,15 @@ describe('StTwoListSelectionComponent', () => {
          fixture.detectChanges();
          expect(comp.itemName).toEqual(element.name);
          expect(comp.itemQaTag).toEqual(qaTag + '-item-' + element.id);
-         expect(comp.selected).toBe(undefined);
+         expect(comp.itemMode).toEqual('item-normal sth-two-list-selection__item-normal');
+         expect(comp.selected).toBe(false);
 
          let input: DebugElement = fixture.debugElement.query(By.css('input'));
          expect(input).toBeNull();
+
+         comp.mode = 'compact';
+         fixture.detectChanges();
+         expect(comp.itemMode).toEqual('item-compact sth-two-list-selection__item-compact');
       });
 
       it('Should emit when select item', () => {
@@ -70,11 +79,10 @@ describe('StTwoListSelectionComponent', () => {
          comp.item = extraItem;
          fixture.detectChanges();
 
-         let extraLabel: DebugElement[] = fixture.debugElement.queryAll(By.css('span'));
+         let extraLabel: DebugElement = fixture.debugElement.query(By.css('.extraLabel'));
          expect(extraLabel).toBeDefined();
-         expect(extraLabel.length).toBe(2);
-         expect((extraLabel[1].nativeElement as HTMLSpanElement).innerHTML).toEqual(extraItem.extraLabel);
-         (extraLabel[1].nativeElement as HTMLSpanElement).click();
+         expect((extraLabel.nativeElement as HTMLSpanElement).innerHTML).toEqual(extraItem.extraLabel);
+         (extraLabel.nativeElement as HTMLSpanElement).click();
          fixture.detectChanges();
          expect(outputSelect).toHaveBeenCalled();
       });

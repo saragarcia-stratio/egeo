@@ -4,7 +4,7 @@
 
 * Pending changelog
 
-## 2.1.0 (upcoming)
+## 2.1.0 (May 19, 2017)
 
 * Add st-checkbox component
 * Add st-two-list

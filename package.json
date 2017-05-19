@@ -12,10 +12,6 @@
     "test:watch": "karma start test/karma.conf.js --auto-watch --no-single-run",
     "commit": "git-cz"
   },
-  "pre-commit": [
-    "lint",
-    "test"
-  ],
   "main": "./dist/releases/egeo/bundles/egeo.umd.js",
   "module": "./dist/releases/egeo/@stratio/egeo.es5.js",
   "es2015": "./dist/releases/egeo/@stratio/egeo.js",
@@ -96,7 +92,6 @@
     "madge": "1.6.0",
     "node-sass": "4.5.2",
     "phantomjs-polyfill": "0.0.2",
-    "pre-commit": "1.2.2",
     "resolve-bin": "0.4.0",
     "rollup": "0.41.6",
     "rollup-plugin-bundle-size": "1.0.1",

@@ -18,6 +18,8 @@ test
 src
 web
 temp
+dist/bundles
+dist/packages
 
 .editorconfig
 .gitignore

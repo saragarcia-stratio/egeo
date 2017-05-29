@@ -7,5 +7,5 @@
              (selectExtraLabel)="selectExtraLabel.emit($event)" [mode]="mode"></list-item>
       </virtual-scroll>
    </div>
-   <st-dropdown *ngIf="hasOrder" class="orderCombo" button="Order" [items]="orderOptions" [firstSelected]="true" (change)="changeOrder.emit($event)"></st-dropdown>
+   <st-dropdown *ngIf="hasOrder" class="orderCombo" button="Order" [items]="orderOptions" (change)="changeOrder.emit($event)"></st-dropdown>
 </div>

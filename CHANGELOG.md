@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.1 (upcoming)
+
+* Bugfix #148 and #248
+
 ## 2.1.0 (May 19, 2017)
 
 * Add st-checkbox component

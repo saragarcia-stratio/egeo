@@ -2,6 +2,13 @@
 
 ## 2.2.0 (upcoming)
 
+* Bugfix st-two-list dropdown
+* Add style to st-two-list when select row
+* Refactor decorators now all start by St
+* Improvement in st-switch template
+
+## 2.1.1 (May 29, 2017)
+
 * Bugfix #148 and #248
 
 ## 2.1.0 (May 19, 2017)

@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.1.1 (upcoming)
+## 2.1.1 (May 29, 2017)
 
 * Bugfix #148 and #248
 

@@ -6,10 +6,12 @@
 * Add style to st-two-list when select row
 * Refactor decorators now all start by St
 * Improvement in st-switch template
+* Add st-pop component
 
 ## 2.1.1 (May 29, 2017)
 
 * Bugfix #148 and #248
+* Add St-pop Component
 
 ## 2.1.0 (May 19, 2017)
 

@@ -12,11 +12,11 @@ Some of the key points are:
 More info in <a href="https://github.com/FezVrasta/popper.js">Popper.js in github</a>
 
 
-| Property           | Type    |  Description                                                                 |
-|--------------------|-----------------------------------------------------------------------------|
-| `hidden`           | Boolean |  Show or hide the pop content, by default is hidden                          |
-| `placement`        | String  |  Determines the absolute position of pop content                             |
-| `gpuAcceleration`  | Enable GPU acceleration for pop content                                     |
+| Property           | Type    |  Description                                                      |
+|--------------------|---------|-------------------------------------------------------------------|
+| `hidden`           | Boolean |  Show or hide the pop content, by default is hidden               |
+| `placement`        | String  |  Determines the absolute position of pop content                  |
+| `gpuAcceleration`  | Boolean |   Enable GPU acceleration for pop content                         |
 
 ## How use
 
@@ -33,7 +33,7 @@ The content to be placed in popper mode
 ## Examples
 
 ```
-<st-pop hidden="false" placement="bottom">
+<st-pop [hidden]="false" placement="bottom">
    <div pop-button>Button</div>
    <div pop-content>Content</div>
 </st-pop>

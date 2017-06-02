@@ -1,6 +1,6 @@
 <label class="sth-form-label" [ngClass]="getStatusClass()"
        [attr.for]="name">
-   <div class="st-form-label__label st-form-label__label--{{labelPosition}}">
+   <div class="st-form-label__label" [ngClass]="getPositionClass()">
       <span>{{label}}</span>
       <st-tooltip *ngIf="contextualHelp" class="st-form-label__tooltip" [text]="contextualHelp"
                   [showOnClick]="showTooltipOnClick" (click)="onTooltipClick($event)"

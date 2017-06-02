@@ -41,4 +41,8 @@ export class StFormLabelComponent {
       event.stopPropagation();
       event.preventDefault();
    }
+
+   getPositionClass(): string {
+      return `st-form-label__label--${this.labelPosition} sth-form-label__label--${this.labelPosition}`;
+   }
 }

@@ -14,20 +14,8 @@ $st-switch__toggle-width: 35px;
 
       &--top {
          width: 100%;
-         padding-bottom: 2px;
+         margin-top: 10px;
       }
-
-      &--left {
-         padding-right: 12px;
-         float: left;
-         width: auto;
-      }
-
-      &--right {
-         padding-left: 12px;
-         float: right;
-      }
-
    }
 
    &__input {

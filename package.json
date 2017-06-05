@@ -1,6 +1,6 @@
 {
    "name": "@stratio/egeo",
-   "version": "2.1.0",
+   "version": "2.2.0",
    "description": "Egeo is an angular common components library",
    "author": "Stratio",
    "scripts": {
@@ -37,7 +37,7 @@
       "@angular/http": "~4.1.0",
       "@angular/platform-browser-dynamic": "~4.1.0",
       "@angular/router": "~4.1.0",
-      "@stratio/egeo-theme": "~0.9.0",
+      "@stratio/egeo-theme": "~0.10.0",
       "typescript": "~2.2.0"
    },
    "dependencies": {
@@ -58,8 +58,8 @@
       "@angular/platform-browser-dynamic": "4.1.2",
       "@angular/platform-server": "4.1.2",
       "@angular/router": "4.1.2",
-      "@stratio/egeo-theme": "0.9.0",
-      "@stratio/egeo-ui-base": "1.3.0",
+      "@stratio/egeo-theme": "0.10.0",
+      "@stratio/egeo-ui-base": "1.4.0",
       "@types/chalk": "0.4.31",
       "@types/fs-extra": "2.1.0",
       "@types/glob": "5.0.30",

@@ -4,7 +4,7 @@
 
 * Pending changelog
 
-## 2.2.0 (upcoming)
+## 2.2.0 (June 05, 2017)
 
 * Bugfix st-two-list dropdown
 * Add style to st-two-list when select row

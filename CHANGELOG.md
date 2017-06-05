@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.3.0 (upcoming)
+
+* Pending changelog
+
 ## 2.2.0 (upcoming)
 
 * Bugfix st-two-list dropdown

@@ -23,7 +23,8 @@ export class StTableComponent {
    public orderTypes: any = ORDER_TYPE;
 
    public onChangeOrder(field: StTableHeader): void {
-      if (field) {
+
+      if (field && this.isSortable(field)) {
          if (this.currentOrder && this.currentOrder.orderBy === field.id) {
             this.changeOrderDirection();
          } else {
@@ -31,6 +32,11 @@ export class StTableComponent {
          }
          this.changeOrder.emit(this.currentOrder);
       }
+
+   }
+
+   public isSortable(field: StTableHeader): boolean {
+      return field && field.sortable !== undefined ? field.sortable : this.sortable;
    }
 
    public getHeaderItemClass(field: StTableHeader): string {

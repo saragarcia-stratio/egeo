@@ -4,6 +4,10 @@
 
 * Pending changelog
 
+## 2.2.1 (upcoming)
+
+* Bugfix st-switch add name as input
+
 ## 2.2.0 (June 05, 2017)
 
 * Bugfix st-two-list dropdown

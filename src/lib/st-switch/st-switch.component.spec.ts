@@ -40,17 +40,6 @@ describe('StSwitchComponent', () => {
       }
    });
 
-   it('if qa tag is not introduced as input, it throws an error', () => {
-      component.qaTag = undefined;
-
-      try {
-         fixture.detectChanges();
-         expect(component.qaTag).toThrow();
-      } catch (error) {
-         expect(error.message).toContain('st-switch-component: field qaTag is a required field');
-      }
-   });
-
    it('qa tag is added as id to the clickable element', () => {
       let qaTag = 'fakeQATag';
       component.qaTag = qaTag;

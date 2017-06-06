@@ -25,13 +25,14 @@ import { StFormLabelStatus } from '../utils/egeo-form/st-form-label/st-form-labe
 
 @StEgeo()
 export class StSwitchComponent implements ControlValueAccessor {
-   @Input() @StRequired() qaTag: string;
+   @Input() qaTag: string;
    @Input() label: string;
    @Input() labelPosition: 'top' | 'right' | 'left' = 'top';
    @Input() contextualHelp: string;
    @Input() disabled: boolean;
+   @Input() name: string;
    @Output() change: EventEmitter<boolean> = new EventEmitter<boolean>();
-   
+
    public _stModel: boolean;
    private registeredOnChange: (_: any) => void;
 

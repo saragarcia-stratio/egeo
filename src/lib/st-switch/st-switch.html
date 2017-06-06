@@ -8,12 +8,11 @@
          <span class="st-switch__circle sth-switch__circle"></span>
       </div>
       <input class="st-switch__input"
-             data-qa-elem
              [name]="name"
              [attr.type]="'checkbox'"
-             [checked]="stModel"
+             [checked]="_stModel"
              (change)="onChange($event.target.checked)"
-             [attr.data-qa]="label + ' ' + name"
+             [attr.id]="label + ' ' + name"
       />
    </div>
    <ng-content></ng-content>

@@ -1,4 +1,4 @@
-<div class="item sth-two-list__list-item" [ngClass]="itemMode" (click)="emitOnSelect($event)" [id]="itemQaTag">
+<div class="item sth-two-list__list-item" [ngClass]="itemMode" (click)="emitOnSelect($event)" [attr.id]="itemQaTag" [title]="itemName">
    <span *ngIf="!editable" class="label">{{itemName}}</span>
    <st-checkbox *ngIf="editable" [qaTag]="checkQaTag" [checked]="selected">
       <span class="label">{{itemName}}</span>

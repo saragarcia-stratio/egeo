@@ -4,7 +4,12 @@
 
 * Pending changelog
 
-## 2.2.1 (upcoming)
+## 2.2.2 (June 06, 2017)
+
+* Bugfix st-two-list remove min height
+* Bugfix st-two-list no wrap long lines
+
+## 2.2.1 (June 06, 2017)
 
 * Bugfix st-switch add name as input
 

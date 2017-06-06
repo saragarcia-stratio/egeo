@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.2.2 (upcoming)
+## 2.2.2 (June 06, 2017)
 
 * Bugfix st-two-list remove min height
 * Bugfix st-two-list no wrap long lines

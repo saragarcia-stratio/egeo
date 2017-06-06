@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.2.1 (upcoming)
+## 2.2.1 (June 06, 2017)
 
 * Bugfix st-switch add name as input
 

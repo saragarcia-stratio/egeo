@@ -10,8 +10,8 @@
       <input class="st-switch__input"
              [name]="name"
              [attr.type]="'checkbox'"
-             [checked]="_stModel"
-             (change)="onChange($event.target.checked)"
+             [checked]="stModel"
+             (change)="onChange($event)"
              [attr.id]="label + ' ' + name"
       />
    </div>

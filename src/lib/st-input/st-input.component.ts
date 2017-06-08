@@ -40,6 +40,7 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
    @Input() contextualHelp: string;
    @Input() maxLength: number;
    @Input() isFocused: boolean = false;
+   @Input() readonly: boolean = false;
 
    @ViewChildren('input') vc: any;
 

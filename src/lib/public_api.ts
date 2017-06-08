@@ -22,6 +22,12 @@ export { StBreadcrumbsModule } from './st-breadcrumbs/st-breadcrumbs.module';
 // Button
 export { StButtonModule } from './st-button/st-button.module';
 
+// Checkbox
+export { StCheckboxModule } from './st-checkbox/st-checkbox.module';
+
+// Combobox
+export { StComboboxModule } from './st-combobox/st-combobox.module';
+
 // Dropdown
 export { StDropdownModule } from './st-dropdown/st-dropdown.module';
 
@@ -130,5 +136,4 @@ export { StTwoListSelection } from './st-two-list-selection/st-two-list-selectio
 // Vertical tabs
 export { StVerticalTabsModule } from './st-vertical-tabs/st-vertical-tabs.module';
 
-export { StCheckboxModule } from './st-checkbox/st-checkbox.module';
 export { StPopModule } from './st-pop/st-pop.module';

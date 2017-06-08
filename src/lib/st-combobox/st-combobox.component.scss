@@ -1,16 +1,32 @@
+.arrow {
+   position: absolute;
+   right: 5px;
+   top: 11px;
+}
+
+.st-combobox__pop-content {
+   z-index: 9;
+}
+
+.st-combobox .combo-menu {
+   display: block;
+}
+
 .st-input-remove-default {
    outline: none;
    border: none;
    width: 100%;
+   text-overflow: ellipsis;
+   overflow: hidden;
+   padding-right: 25px;
+   white-space: nowrap;
 }
 
 .st-input-container {
-   padding-bottom: 6px;
+   height: 41px;
+   margin-top: -8px; // This two lines it's by
+   padding-top: 8px; // UX/Design required behaivor
    position: relative;
-}
-
-.st-input-container ::placeholder {
-   padding-left: 3px;
 }
 
 .st-input-container :invalid {
@@ -22,20 +38,11 @@
    height: 25px;
 }
 
-.st-input-container .st-input-title {
-   padding: 0;
-   position: relative;
-   margin-bottom: 7px;
-   display: block;
-   float: left;
-   width: 100%;
-}
-
 .st-input-container .st-input-normal-bar {
    position: absolute;
    width: 100%;
    left: 0;
-   bottom: -2px;
+   bottom: -1px;
 }
 
 .st-input-container .st-input-normal-bar::before,
@@ -43,7 +50,7 @@
    content: "";
    height: 2px;
    width: 0;
-   bottom: 0;
+   bottom: -1px;
    position: absolute;
 }
 
@@ -67,7 +74,7 @@
    content: "";
    height: 2px;
    width: 0;
-   bottom: 0;
+   bottom: -1px;
    position: absolute;
 }
 
@@ -82,10 +89,6 @@
 .st-input-container .st-input-remove-default:focus~.st-input-bar:before,
 .st-input-container .st-input-remove-default:focus~.st-input-bar:after {
    width: 50%;
-}
-
-.st-input {
-   width: 100%;
 }
 
 .st-input-error-layout {

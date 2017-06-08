@@ -8,6 +8,24 @@ import { StRadioComponent, StRadioGroupComponent } from './st-radio.component';
 
 describe('StRadioGroup', () => {
 
+   @Component({
+      template: `
+            <st-radio-group [(ngModel)]="modelValue" (change)="lastEvent = $event">
+                  <st-radio *ngFor="let item of items" [value]="item.value">
+                  {{item.label}}
+                  </st-radio>
+            </st-radio-group>
+      `
+   })
+   class RadioGroupWithModel {
+      modelValue: string;
+      items: any[] = [
+         { label: 'example1', value: '1' },
+         { label: 'example2', value: '2' },
+         { label: 'example3', value: '3' }
+      ];
+   }
+
    let fixture: ComponentFixture<RadioGroupWithModel>;
    let compiled: any;
    let groupDebugElement: DebugElement;
@@ -86,29 +104,22 @@ describe('StRadioGroup', () => {
 
       expect(groupNgControl.touched).toBe(true);
    });
-
-   @Component({
-      template: `
-            <st-radio-group [(ngModel)]="modelValue" (change)="lastEvent = $event">
-                  <st-radio *ngFor="let item of items" [value]="item.value">
-                  {{item.label}}
-                  </st-radio>
-            </st-radio-group>
-      `
-   })
-   class RadioGroupWithModel {
-      modelValue: string;
-      items: any[] = [
-         { label: 'example1', value: '1' },
-         { label: 'example2', value: '2' },
-         { label: 'example3', value: '3' }
-      ];
-   }
-
 });
 
 
 describe('StRadioGroup with FormControl', () => {
+
+    // tslint:disable-next-line:max-classes-per-file
+   @Component({
+      template: `
+         <st-radio-group [formControl]="formControl">
+            <st-radio value="1">One</st-radio>
+         </st-radio-group>
+      `
+   })
+   class RadioGroup {
+      formControl: FormControl = new FormControl();
+   }
 
    let component: RadioGroup;
    let groupDebugElement: DebugElement;
@@ -140,19 +151,6 @@ describe('StRadioGroup with FormControl', () => {
       component = fixture.componentInstance;
       compiled = fixture.debugElement.nativeElement;
    });
-
-
-   // tslint:disable-next-line:max-classes-per-file
-   @Component({
-      template: `
-         <st-radio-group [formControl]="formControl">
-            <st-radio value="1">One</st-radio>
-         </st-radio-group>
-      `
-   })
-   class RadioGroup {
-      formControl: FormControl = new FormControl();
-   }
 
    describe('When form control marked as disabled', () => {
 

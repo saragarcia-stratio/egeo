@@ -15,9 +15,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { SelectOneDispatcher } from '../utils/unique-dispatcher';
 import { RadioChange } from './st-radio.change';
 
-
 export const MD_RADIO_GROUP_CONTROL_VALUE_ACCESSOR: any = {
    provide: NG_VALUE_ACCESSOR,
+   // tslint:disable-next-line:no-use-before-declare
    useExisting: forwardRef(() => StRadioGroupComponent),
    multi: true
 };
@@ -80,6 +80,7 @@ export class StRadioGroupComponent implements OnInit, ControlValueAccessor {
       this._disabled = (value != null && value !== false) ? true : null;
    }
 
+   // tslint:disable-next-line:no-use-before-declare
    @ContentChildren(forwardRef(() => StRadioComponent))
    _radios: QueryList<StRadioComponent> = null;
 

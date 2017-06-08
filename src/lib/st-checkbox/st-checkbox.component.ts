@@ -3,6 +3,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export const CHECKBOX_CONTROL_ACCESSOR: any = {
    provide: NG_VALUE_ACCESSOR,
+   // tslint:disable-next-line:no-use-before-declare
    useExisting: forwardRef(() => StCheckboxComponent),
    multi: true
 };
@@ -60,7 +61,7 @@ export class StCheckboxComponent implements ControlValueAccessor {
       }
    }
 
-   handleChange($event): void {
+   handleChange($event: Event): void {
       $event.stopPropagation();
    }
 

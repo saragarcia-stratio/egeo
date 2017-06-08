@@ -170,13 +170,13 @@ export class StDropdownComponent extends EventWindowManager implements AfterView
             }
 
             if (item) {
-               let element = i.items.find((i) => i === item);
+               let element = i.items.find(el => el === item);
 
                if (element)
                   element.selected = true;
             }
 
-         })
+         });
       }
 
    }

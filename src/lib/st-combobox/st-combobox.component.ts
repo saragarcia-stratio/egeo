@@ -146,11 +146,11 @@ export class StComboboxComponent extends EventWindowManager implements ControlVa
       return this.showError() ? 'st-input-error-bar sth-input-error-bar' : 'st-input-normal-bar sth-input-normal-bar';
    }
 
-   onFocus(): void {
+   onFocus(event: Event): void {
       this.isFocused = true;
    }
 
-   onFocusOut(): void {
+   onFocusOut(event: Event): void {
       this.isFocused = false;
    }
 

@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import {
+   ChangeDetectionStrategy,
+   ChangeDetectorRef,
+   Component,
+   EventEmitter,
+   Input,
+   OnChanges,
+   OnInit,
+   Output
+} from '@angular/core';
 
 import { StDropDownMenuItem } from '../st-dropdown-menu/st-dropdown-menu.interface';
 import { Paginate, PaginateTexts } from './st-pagination.interface';
@@ -10,7 +19,6 @@ import { Paginate, PaginateTexts } from './st-pagination.interface';
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StPaginationComponent implements OnInit, OnChanges {
-
    @Input() total: number;
    @Input() perPage: number = 20;
    @Input() perPageOptions: number[] = [20, 50, 100];
@@ -29,9 +37,7 @@ export class StPaginationComponent implements OnInit, OnChanges {
    public lastItem: number;
    public items: StDropDownMenuItem[] = [];
 
-   constructor(
-      private cd: ChangeDetectorRef
-   ) {
+   constructor(private cd: ChangeDetectorRef) {
       if (!this.label) {
          this.label = {
             display: 'Display',
@@ -57,22 +63,22 @@ export class StPaginationComponent implements OnInit, OnChanges {
       if (values.currentPage || values.perPage) {
          this.updatePages(false);
       }
-
    }
 
    generateItems(): void {
       this.items = [];
-      this.perPageOptions.forEach((option) => {
+      this.perPageOptions.forEach(option => {
          this.items.push(this.generateItem(option));
       });
    }
 
    generateItem(n: number): StDropDownMenuItem {
-      return ({
-         label: `${this.label.display} ${n} ${this.label.element} ${this.label.perPage}`,
+      return {
+         label: `${this.label.display} ${n} ${this.label.element} ${this.label
+            .perPage}`,
          value: n,
          selected: this.checkSelected(n)
-      });
+      };
    }
 
    checkSelected(value: number): boolean {
@@ -84,7 +90,6 @@ export class StPaginationComponent implements OnInit, OnChanges {
    }
 
    showItemsPerPage(): boolean {
-
       if (this.showPerPage) {
          return true;
       }
@@ -111,8 +116,7 @@ export class StPaginationComponent implements OnInit, OnChanges {
    }
 
    updatePages(emit: boolean = true): void {
-
-      this.lastItem = (this.perPage * this.currentPage);
+      this.lastItem = this.perPage * this.currentPage;
 
       if (this.currentPage === 1) {
          this.firstItem = this.currentPage;
@@ -150,5 +154,4 @@ export class StPaginationComponent implements OnInit, OnChanges {
          return 'themeA';
       }
    }
-
 }

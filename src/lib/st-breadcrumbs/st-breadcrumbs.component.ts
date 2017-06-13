@@ -20,18 +20,20 @@ export class StBreadCrumbs implements OnInit {
       if (this.options.length <= 6) {
          return [...this.options];
       } else {
-         return this.options.slice(0, 1).concat(['...']).concat(this.options.slice(-4));
+         return this.options
+            .slice(0, 1)
+            .concat(['...'])
+            .concat(this.options.slice(-4));
       }
    }
 
    public onSelect(index: number): void {
-
       if (index + 1 < this.options.length) {
          if (this.options.length <= 6 || index === 0) {
             this.changeOption.emit(index);
          } else {
             let calculatedIndex: number;
-            calculatedIndex = this.options.length - (6 - (index));
+            calculatedIndex = this.options.length - (6 - index);
             this.changeOption.emit(calculatedIndex);
          }
       }

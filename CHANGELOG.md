@@ -4,6 +4,7 @@
 
 * Bugfix st-switch component emits event twice
 * New component st-combobox
+* Add new feature in st-page-title: Editable Title
 
 ## 2.2.2 (June 06, 2017)
 

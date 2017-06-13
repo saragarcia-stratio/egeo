@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.3.0 (upcoming)
+## 2.3.0 (June 13, 2017)
 
 * Bugfix st-switch component emits event twice
 * New component st-combobox

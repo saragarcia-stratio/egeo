@@ -1,16 +1,14 @@
-<section class="st-radio-menu">
-  <ul class="st-radio-menu__list">
-    <li *ngFor="let option of options; let i = index;" class="st-radio-menu__option">
+<section class="st-radio-menu sth-radio-menu">
+   <ul class="st-radio-menu__list">
+      <li *ngFor="let option of options; let i = index;" class="st-radio-menu__option">
 
-      <div class="st-radio-menu__option" (click)="activateOption(option)"
-           [ngClass]="{'st-radio-menu__option--active': isActive(option),
-           'st-radio-menu__option--no-active': !isActive(option) && activeOption}"
-           [attr.id]="qaTag + '-option-' + i">
-        <input type="radio" name="{{option.value}}"
-               [value]="option"
-               [(ngModel)]="activeOption"
-        ><span class="st-radio-menu__option-text">{{ option.label }}</span>
-      </div>
-    </li>
-  </ul>
+         <div class="st-radio-menu__option sth-radio-menu-option" (click)="activateOption(option)" [ngClass]="{'active': isActive(option),
+           'no-active': !isActive(option) && activeOption}" [attr.id]="qaTag + '-option-' + i">
+
+            <st-radio [name]="option.label" [value]="option.value" [checked]="checkedOption(option)">
+               <span class="st-radio-menu__option-text">{{ option.label }}</span>
+            </st-radio>
+         </div>
+      </li>
+   </ul>
 </section>

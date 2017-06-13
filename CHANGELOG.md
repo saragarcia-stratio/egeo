@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.4.0 (upcoming)
+
+* Pending changelog
+
 ## 2.3.0 (upcoming)
 
 * Bugfix st-switch component emits event twice

@@ -1,4 +1,4 @@
-@Library('libpipelines@master') _
+@Library('libpipelines@fix/releaseChangelog2') _
 
 hose {
     EMAIL = 'front'
@@ -7,6 +7,7 @@ hose {
     RELEASETIMEOUT = 30
     REPOSITORY = 'github.com/egeo'
     LANG = 'typescript'
+    FOSS = true
 
     DEV = { config ->
 

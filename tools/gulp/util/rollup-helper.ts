@@ -3,6 +3,8 @@ import { LICENSE_BANNER } from '../constants';
 // There are no type definitions available for these imports.
 const rollup = require('rollup');
 const bundleSize = require('rollup-plugin-bundle-size');
+const stripBanner = require('rollup-plugin-strip-banner');
+
 
 const ROLLUP_GLOBALS = {
    // Angular dependencies
@@ -59,7 +61,8 @@ export function createRollupBundle(config: BundleConfig): Promise<any> {
       external: Object.keys(ROLLUP_GLOBALS),
       entry: config.entry,
       plugins: [
-         bundleSize()
+         bundleSize(),
+         stripBanner()
       ]
    };
 

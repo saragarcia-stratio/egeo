@@ -18,11 +18,7 @@
 <div class="list-selection">
    <p class="title sth-two-list__list-title" [ngClass]="{'sth-two-list__important-title': important}">{{title}}</p>
    <st-search class="search" *ngIf="hasSearch" [placeholder]="searchPlaceholder" [qaTag]="searchQaTag" (search)="search.emit($event)"></st-search>
-   <div class="list" [ngClass]="{'with-order': hasOrder}">
-      <virtual-scroll [items]="list" (update)="scrollItems = $event" [childHeight]="heightMode">
-         <list-item *ngFor="let item of scrollItems; let i = index" [item]="item" (selectItem)="selectItem.emit(item)" [qaTag]="listQaTag" [editable]="editable"
-             (selectExtraLabel)="selectExtraLabel.emit($event)" [mode]="mode"></list-item>
-      </virtual-scroll>
-   </div>
+   <list-scroll [list]="list" [mode]="mode" (selectItem)="selectItem.emit($event)" [qaTag]="listQaTag" [editable]="editable" [qaTag]="listQaTag" [editable]="editable"
+             (selectExtraLabel)="selectExtraLabel.emit($event)"></list-scroll>
    <st-dropdown *ngIf="hasOrder" class="orderCombo" button="Order" [items]="orderOptions" (change)="changeOrder.emit($event)"></st-dropdown>
 </div>

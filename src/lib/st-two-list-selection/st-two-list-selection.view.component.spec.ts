@@ -25,6 +25,7 @@ import {
 // Components
 import { ListItemComponent } from './list-item/list-item.component';
 import { ListSelectionComponent } from './list-selection/list-selection.component';
+import { ListScrollComponent } from './list-scroll/list-scroll.component';
 import { StTwoListSelectionViewComponent } from './st-two-list-selection.view.component';
 
 // Order modules
@@ -62,7 +63,7 @@ describe('StTwoListSelectionComponent', () => {
    beforeEach(async(() => {
       TestBed.configureTestingModule({
          imports: [StSearchModule, PipesModule, VirtualScrollModule, StButtonModule, StDropdownModule, StCheckboxModule],
-         declarations: [StTwoListSelectionViewComponent, ListSelectionComponent, ListItemComponent]
+         declarations: [StTwoListSelectionViewComponent, ListSelectionComponent, ListItemComponent, ListScrollComponent]
       })
          .compileComponents();  // compile template and css
    }));

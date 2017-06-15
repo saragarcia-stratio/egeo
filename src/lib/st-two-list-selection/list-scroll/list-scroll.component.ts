@@ -20,39 +20,26 @@ import { StEgeo, StRequired } from '../../decorators/require-decorators';
 import { StTwoListSelectionElement, StTwoListSelectExtraLabelAction } from '../st-two-list-selection.model';
 
 @Component({
-   selector: 'list-selection',
-   templateUrl: './list-selection.component.html',
-   styleUrls: ['./list-selection.component.scss'],
+   selector: 'list-scroll',
+   templateUrl: './list-scroll.component.html',
+   styleUrls: ['./list-scroll.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ListSelectionComponent {
+export class ListScrollComponent {
 
    @Input() @StRequired() list: StTwoListSelectionElement[];
    @Input() editable: boolean = false;
-   @Input() @StRequired() title: string;
-   @Input() @StRequired() searchPlaceholder: string;
    @Input() @StRequired() qaTag: string;
-   @Input() important: boolean = false;
-   @Input() hasSearch: boolean = true;
-   @Input() orderOptions: StDropDownMenuItem[] = [];
    @Input() mode: 'compact' | 'normal' = 'normal';
 
    @Output() selectItem: EventEmitter<StTwoListSelectionElement> = new EventEmitter<StTwoListSelectionElement>();
    @Output() selectExtraLabel: EventEmitter<StTwoListSelectExtraLabelAction> = new EventEmitter<StTwoListSelectExtraLabelAction>();
    @Output() search: EventEmitter<string> = new EventEmitter<string>();
-   @Output() changeOrder: EventEmitter<StDropDownMenuItem> = new EventEmitter<StDropDownMenuItem>();
 
    scrollItems: StTwoListSelectionElement[] = [];
-
-   get searchQaTag(): string {
-      return this.qaTag + '-search';
-   }
+   firstEl: number = 0;
 
    get listQaTag(): string {
-      return this.qaTag + '-list';
-   }
-
-   get hasOrder(): boolean {
-      return this.orderOptions && this.orderOptions.length > 0;
+      return this.qaTag + '-scroll-list';
    }
 }

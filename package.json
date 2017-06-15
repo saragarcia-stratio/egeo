@@ -37,11 +37,11 @@
     "@angular/http": "~4.1.0",
     "@angular/platform-browser-dynamic": "~4.1.0",
     "@angular/router": "~4.1.0",
-    "@stratio/egeo-theme": "~0.10.0",
+    "@stratio/egeo-theme": "~0.11.0",
     "typescript": "~2.2.0"
   },
   "dependencies": {
-    "angular2-virtual-scroll": "0.1.5",
+    "angular2-virtual-scroll": "0.1.7",
     "lodash": "4.17.4",
     "popper.js": "1.9.9",
     "reflect-metadata": "0.1.10"

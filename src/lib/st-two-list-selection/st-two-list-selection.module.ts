@@ -20,6 +20,7 @@ import { VirtualScrollModule } from 'angular2-virtual-scroll';
 // Components
 import { ListItemComponent } from './list-item/list-item.component';
 import { ListSelectionComponent } from './list-selection/list-selection.component';
+import { ListScrollComponent } from './list-scroll/list-scroll.component';
 import { StTwoListSelectionComponent } from './st-two-list-selection.component';
 import { StTwoListSelectionViewComponent } from './st-two-list-selection.view.component';
 
@@ -32,7 +33,7 @@ import { StCheckboxModule } from '../st-checkbox/st-checkbox.module';
 
 @NgModule({
    imports: [CommonModule, StSearchModule, PipesModule, VirtualScrollModule, StButtonModule, StDropdownModule, StCheckboxModule],
-   declarations: [StTwoListSelectionViewComponent, StTwoListSelectionComponent, ListSelectionComponent, ListItemComponent],
+   declarations: [StTwoListSelectionViewComponent, StTwoListSelectionComponent, ListSelectionComponent, ListItemComponent, ListScrollComponent],
    exports: [StTwoListSelectionComponent, StTwoListSelectionViewComponent]
 })
 export class StTwoListSelectionModule { }

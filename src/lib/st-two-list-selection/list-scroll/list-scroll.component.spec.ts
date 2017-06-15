@@ -25,8 +25,7 @@ import {
 
 // Components
 import { ListItemComponent } from '../list-item/list-item.component';
-import { ListScrollComponent } from '../list-scroll/list-scroll.component';
-import { ListSelectionComponent } from './list-selection.component';
+import { ListScrollComponent } from './list-scroll.component';
 
 // Order modules
 import { StSearchModule } from '../../st-search/st-search.module';
@@ -36,8 +35,8 @@ import { StCheckboxModule } from '../../st-checkbox/st-checkbox.module';
 // Mdel
 import { StTwoListSelectionConfig, StTwoListSelectionElement } from '../st-two-list-selection.model';
 
-let comp: ListSelectionComponent;
-let fixture: ComponentFixture<ListSelectionComponent>;
+let comp: ListScrollComponent;
+let fixture: ComponentFixture<ListScrollComponent>;
 let de: DebugElement;
 
 let listTitle: 'All';
@@ -59,24 +58,22 @@ describe('StTwoListSelectionComponent', () => {
    beforeEach(async(() => {
       TestBed.configureTestingModule({
          imports: [StSearchModule, VirtualScrollModule, StDropdownModule, StCheckboxModule],
-         declarations: [ListSelectionComponent, ListItemComponent, ListScrollComponent]
+         declarations: [ListScrollComponent, ListItemComponent]
       })
          .compileComponents();  // compile template and css
    }));
 
    beforeEach(() => {
-      fixture = TestBed.createComponent(ListSelectionComponent);
+      fixture = TestBed.createComponent(ListScrollComponent);
       comp = fixture.componentInstance;
       comp.qaTag = qaTag;
 
    });
 
-   describe('ListSelectionComponent', () => {
+   describe('ListScrollComponent', () => {
       it('Should init correctly', () => {
          fixture.detectChanges();
-         expect(comp.searchQaTag).toEqual(qaTag + '-search');
-         expect(comp.listQaTag).toEqual(qaTag + '-list');
-         expect(comp.hasOrder).toBeFalsy();
+         expect(comp.listQaTag).toEqual(qaTag + '-scroll-list');
       });
    });
 });

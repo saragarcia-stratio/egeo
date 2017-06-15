@@ -63,6 +63,7 @@
                   </goals>
                   <phase>generate-sources</phase>
                   <configuration>
+                     <npmRegistryURL>http://sodio.stratio.com/repository/publicnpm/</npmRegistryURL>
                      <arguments>install --no-optional --loglevel=error --depth=0</arguments>
                   </configuration>
                </execution>

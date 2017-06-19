@@ -58,7 +58,7 @@
                   </goals>
                   <phase>generate-sources</phase>
                   <configuration>
-                     <npmRegistryURL>${customnpmRegistryURL}</npmRegistryURL>
+                     <npmRegistryURL>http://sodio.stratio.com/repository/publicnpm/</npmRegistryURL>
                      <arguments>install --no-optional --loglevel=error --depth=0</arguments>
                   </configuration>
                </execution>
@@ -100,7 +100,6 @@
                   </goals>
                   <phase>deploy</phase>
                   <configuration>
-                     <npmRegistryURL>http://sodio.stratio.com/repository/strationpmjs/</npmRegistryURL>
                      <arguments>publish</arguments>
                   </configuration>
                </execution>
@@ -118,7 +117,6 @@
          <properties>
             <customnodeDownloadRoot>${nodeURL}/node/</customnodeDownloadRoot>
             <customnpmDownloadRoot>${nodeURL}/npm/${npmVer}/</customnpmDownloadRoot>
-            <customnpmRegistryURL>http://sodio.stratio.com/repository/publicnpm/</customnpmRegistryURL>
          </properties>
       </profile>
    </profiles>

@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.3.1 (upcoming)
+
+* Fix st-two-list styles
+* Fix AoT compilation
+
 ## 2.3.0 (June 13, 2017)
 
 * Bugfix st-switch component emits event twice

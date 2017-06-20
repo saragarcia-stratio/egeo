@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.3.1 (upcoming)
+## 2.3.1 (June 20, 2017)
 
 * Fix st-two-list styles
 * Fix AoT compilation

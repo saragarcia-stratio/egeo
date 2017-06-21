@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.3.1 (upcoming)
+
+* Fix st-comobobox validations
+
 ## 2.3.1 (June 20, 2017)
 
 * Fix st-two-list styles

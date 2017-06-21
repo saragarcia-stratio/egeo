@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.3.2 (upcoming)
+## 2.3.2 (June 21, 2017)
 
 * Fix st-comobobox validations
 

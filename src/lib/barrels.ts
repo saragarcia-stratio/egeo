@@ -23,6 +23,7 @@ import { StDropdownModule } from './st-dropdown/st-dropdown.module';
 import { StFooterModule } from './st-footer/st-footer.module';
 import { StFormLabelModule } from './utils/egeo-form/st-form-label/st-form-label.module';
 import { StHeaderModule } from './st-header/st-header.module';
+import { StHelpModule } from './st-help/st-help.module';
 import { StHorizontalTabsModule } from './st-horizontal-tabs/st-horizontal-tabs.module';
 import { StInfoBoxModule } from './st-info-box/st-info-box.module';
 import { StInfoCardModule } from './st-info-card/st-info-card.module';
@@ -56,6 +57,7 @@ export const DECLARATIONS: any[] = [
    StFooterModule,
    StFormLabelModule,
    StHeaderModule,
+   StHelpModule,
    StHorizontalTabsModule,
    StInfoBoxModule,
    StInfoCardModule,

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.4.1 (upcoming)
+
+**Fixed bugs:**
+
+* Fix popper imports
+
 ## 2.4.0 (June 29, 2017)
 
 **Fixed bugs:**

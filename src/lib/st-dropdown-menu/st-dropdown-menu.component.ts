@@ -83,7 +83,9 @@ export class StDropdownMenuComponent implements OnInit, AfterViewInit {
    }
 
    ngAfterViewInit(): void {
-      this.updateWidth();
+      setTimeout(() => {
+         this.updateWidth();
+      }, 0);
    }
 
    checkGroup(): void {
@@ -100,7 +102,7 @@ export class StDropdownMenuComponent implements OnInit, AfterViewInit {
       this.change.emit(value);
    }
 
-   @HostListener('window:resize', ['$event']) onResize(event: Event) {
+   @HostListener('window:resize', ['$event']) onResize(event: Event): void {
       this.updateWidth();
    }
 

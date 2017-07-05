@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.4.2 (upcoming)
+
+**Fixed bugs:**
+
+* Fix Search with autocomplete emit twice
+
 ## 2.4.1 (June 30, 2017)
 
 **Fixed bugs:**

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.4.3 (upcoming)
+
+**Fixed bugs:**
+
+* Fix when resolve not found any translateable element and pass empty array to translate
+
 ## 2.4.2 (July 05, 2017)
 
 **Fixed bugs:**

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.4.4 (upcoming)
+
+**Fixed bugs:**
+
+* Add missing tslib dependency
+
 ## 2.4.3 (July 11, 2017)
 
 **Fixed bugs:**

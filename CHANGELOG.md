@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.4.4 (upcoming)
+## 2.4.4 (July 13, 2017)
 
 **Fixed bugs:**
 

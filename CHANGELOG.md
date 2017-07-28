@@ -17,6 +17,7 @@
 **New features:**
 * st-toggle-buttons: Add an optional id to the interface
 * st-breadcrumbs: Add component st-breadcrumbs item, add Ng-Content option
+* st-input: Add input value and output change
 
 ## 2.5.0 (July 13, 2017)
 

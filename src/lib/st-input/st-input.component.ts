@@ -18,11 +18,13 @@ import {
    ChangeDetectionStrategy,
    ChangeDetectorRef,
    Component,
+   EventEmitter,
    forwardRef,
    Input,
    OnChanges,
    OnDestroy,
    OnInit,
+   Output,
    SimpleChange,
    SimpleChanges,
    ViewChildren
@@ -31,17 +33,17 @@ import {
    ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validators,
    ValidatorFn
 } from '@angular/forms';
-import {Subscription} from 'rxjs/Subscription';
+import { Subscription } from 'rxjs/Subscription';
 
-import {StInputError} from './st-input.error.model';
+import { StInputError } from './st-input.error.model';
 
 @Component({
    selector: 'st-input',
    templateUrl: './st-input.component.html',
    styleUrls: ['./st-input.component.scss'],
    providers: [
-      {provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => StInputComponent), multi: true},
-      {provide: NG_VALIDATORS, useExisting: forwardRef(() => StInputComponent), multi: true}
+      { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => StInputComponent), multi: true },
+      { provide: NG_VALIDATORS, useExisting: forwardRef(() => StInputComponent), multi: true }
    ],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -61,6 +63,16 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
    @Input() max: number;
    @Input() isFocused: boolean = false;
    @Input() readonly: boolean = false;
+   @Input()
+   get value(): any {
+      return this._value;
+   }
+
+   set value(value: any) {
+      this._value = value;
+   }
+
+   @Output() change: EventEmitter<any> = new EventEmitter<any>();
 
    @ViewChildren('input') vc: any;
 
@@ -70,6 +82,7 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
    public errorMessage: string = undefined;
 
    private sub: Subscription;
+   private _value: any;
    private valueChangeSub: Subscription;
    private internalInputModel: any = '';
 
@@ -155,6 +168,13 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
 
    onFocusOut(event: Event): void {
       this.focus = false;
+   }
+
+   onChangeEvent(event: Event): void {
+      this._value = this.vc.first.nativeElement.value;
+      this.change.emit(this.value);
+      event.stopPropagation();
+      event.preventDefault();
    }
 
    // When status change call this function to check if have errors

@@ -50,10 +50,9 @@ const ROLLUP_GLOBALS = {
    'rxjs/add/operator/takeUntil': 'Rx.Observable.prototype',
    'rxjs/add/operator/toPromise': 'Rx.Observable.prototype',
 
-      // Other dependencies
+   // Other dependencies
    'lodash/index': 'lodash',
-   'angular2-virtual-scroll': 'angular2-virtual-scroll',
-   'popper.js/dist/umd/popper.js': 'Popper'
+   'angular2-virtual-scroll': 'angular2-virtual-scroll'
 };
 
 export type BundleConfig = {

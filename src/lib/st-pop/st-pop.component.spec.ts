@@ -23,8 +23,8 @@ import { StPopComponent } from './st-pop.component';
    selector: 'test-component',
    template: `
       <st-pop [hidden]="hidden" [placement]="placement">
-         <div pop-button>Button</div>
-         <div pop-content>Content</div>
+         <div pop-button id="button"><button style="height:30px; width:20px">Button</button></div>
+         <div pop-content id="content">Content</div>
       </st-pop>
    `
 })
@@ -62,6 +62,56 @@ describe('StPopComponent', () => {
       component.hidden = true;
       fixture.detectChanges();
       expect(fixture.debugElement.nativeElement.querySelector('[hidden]')).toBeDefined();
+   });
+
+   it('should get correct coords', () => {
+      component.hidden = false;
+
+      component.placement = 'top';
+      fixture.detectChanges();
+      let content: HTMLElement = fixture.debugElement.nativeElement.querySelector('#content');
+      expect(content.style.transform).toEqual('translate3d(10px, -30px, 0px)');
+
+      component.placement = 'top-start';
+      fixture.detectChanges();
+      content = fixture.debugElement.nativeElement.querySelector('#content');
+      expect(content.style.transform).toEqual('translate3d(0px, -30px, 0px)');
+
+      component.placement = 'top-end';
+      fixture.detectChanges();
+      content = fixture.debugElement.nativeElement.querySelector('#content');
+      expect(content.style.transform).toEqual('translate3d(20px, -30px, 0px)');
+
+      component.placement = 'bottom';
+      fixture.detectChanges();
+      content = fixture.debugElement.nativeElement.querySelector('#content');
+      expect(content.style.transform).toEqual('translate3d(10px, 0px, 0px)');
+
+      component.placement = 'bottom-start';
+      fixture.detectChanges();
+      content = fixture.debugElement.nativeElement.querySelector('#content');
+      expect(content.style.transform).toEqual('translate3d(0px, 0px, 0px)');
+
+      component.placement = 'bottom-end';
+      fixture.detectChanges();
+      content = fixture.debugElement.nativeElement.querySelector('#content');
+      expect(content.style.transform).toEqual('translate3d(20px, 0px, 0px)');
+
+      component.placement = 'unknown';
+      fixture.detectChanges();
+      content = fixture.debugElement.nativeElement.querySelector('#content');
+      expect(content.style.transform).toEqual('translate3d(0px, 0px, 0px)');
+   });
+
+
+   it('should get init without button', () => {
+      component.hidden = false;
+      let button: HTMLElement = fixture.debugElement.nativeElement.querySelector('#button');
+      button.innerHTML = '';
+
+      fixture.detectChanges();
+      let content: HTMLElement = fixture.debugElement.nativeElement.querySelector('#content');
+      expect(content.style.transform).toBeUndefined();
    });
 
 });

@@ -13,11 +13,19 @@
 * st-combobox: Renamed to st-select
 * st-search: Remove searchOnlyOnClick and hasClearButton parameters
 * st-breadcrumbs: Rename output event changeOption to select
+* st-pop: Remove option to position in left or right
+* st-pop: Remove input gpuAcceleration
+* st-dropdown-menu: Remove option to position in left or right
 
 **New features:**
+
 * st-toggle-buttons: Add an optional id to the interface
 * st-breadcrumbs: Add component st-breadcrumbs item, add Ng-Content option
 * st-input: Add input value and output change
+
+**Refactor:**
+
+* st-pop: Remove popperjs library and implement our solution
 
 ## 2.5.0 (July 13, 2017)
 

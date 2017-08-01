@@ -13,46 +13,89 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Component, ElementRef, OnInit, Input, ViewEncapsulation } from '@angular/core';
-import Popper from 'popper.js/dist/umd/popper.js';
+import {
+   Component,
+   ElementRef,
+   OnInit,
+   Input,
+   ChangeDetectionStrategy,
+   OnChanges,
+   SimpleChanges
+} from '@angular/core';
+import { startsWith as _startsWith } from 'lodash';
 
-export type PopperPlacement = 'top' | 'top-start' | 'top-end' |
-   'right' | 'right-start' | 'right-end' |
-   'bottom' | 'bottom-start' | 'bottom-end' |
-   'left' | 'left-start' | 'left-end';
+export type StPopPlacement = 'top' | 'top-start' | 'top-end' |
+   'bottom' | 'bottom-start' | 'bottom-end';
 
+type StCoords = { x: number, y: number, z: number };
+
+/**
+ * @description {Component} [Pop]
+ *
+ * The pop is a component for manage floating elements like popups or dropdown-menu. This element need two element inside,
+ * a button element that launch popper and a content element that whose position will be relativo to button element.
+ *
+ * @example
+ *
+ * <st-pop [hidden]="false" placement="bottom">
+ *    <div pop-button>Button</div>
+ *    <div pop-content>Content</div>
+ * </st-pop>
+ */
 @Component({
    selector: 'st-pop',
-   encapsulation: ViewEncapsulation.None,
-   templateUrl: './st-pop.component.html'
+   templateUrl: './st-pop.component.html',
+   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StPopComponent implements OnInit {
 
-   @Input() placement: PopperPlacement = 'left';
+   /** @Input { 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end'}
+    * [placement='bottom-start'] Define position of content relative to button
+    */
+   @Input() placement: StPopPlacement = 'bottom-start';
+   /** @Input {boolean} [hidden=true] TRUE: show pop content, FALSE: hide pop content */
    @Input() hidden: boolean = true;
-   @Input() gpuAcceleration: boolean = true;
 
-   private popper: any;
+
+   private button: ClientRect;
+   private content: ElementRef;
 
    constructor(private el: ElementRef) { }
 
    ngOnInit(): void {
-      let options: Popper.PopperOptions = {
-            placement: this.placement,
-            removeOnDestroy: true,
-            modifiers: {
-               applyStyle: {
-                  gpuAcceleration: this.gpuAcceleration
-               }
-            }
-      };
-
-      this.popper = new Popper(
-         this.el.nativeElement.querySelector('[pop-button]'),
-         this.el.nativeElement.querySelector('[pop-content]'),
-         options
-      );
-
+      this.calculatePosition();
    }
 
+   ngOnChanges(changes: SimpleChanges): void {
+      this.calculatePosition();
+   }
+
+   private calculatePosition(): void {
+      const buttonParentEl: HTMLElement = this.el.nativeElement.querySelector('[pop-button]');
+      const contentEl: HTMLElement = this.el.nativeElement.querySelector('[pop-content]');
+      const buttonEl: Element | undefined = buttonParentEl && buttonParentEl.firstElementChild ?
+         buttonParentEl.firstElementChild : undefined;
+      if (buttonEl) {
+         const coords: StCoords = this.getCoords(buttonEl);
+
+         contentEl.style.position = 'absolute';
+         contentEl.style.transform = `translate3d(${coords.x}px, ${coords.y}px, ${coords.z}px)`;
+      }
+   }
+
+   private getCoords(buttonEl: Element): StCoords {
+      const coords: StCoords = { x: 0, y: 0, z: 0 };
+      const clientRect: ClientRect = buttonEl.getBoundingClientRect();
+
+      if (_startsWith(this.placement, 'top')) {
+         coords.y = clientRect.height * -1;
+         coords.x = this.placement === 'top' ? coords.x = clientRect.width / 2 : coords.x;
+         coords.x = this.placement === 'top-end' ? coords.x = clientRect.width : coords.x;
+      } else if (_startsWith(this.placement, 'bottom')) {
+         coords.x = this.placement === 'bottom' ? coords.x = clientRect.width / 2 : coords.x;
+         coords.x = this.placement === 'bottom-end' ? coords.x = clientRect.width : coords.x;
+      }
+
+      return coords;
+   }
 }

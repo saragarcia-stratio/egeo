@@ -14,8 +14,7 @@
  * limitations under the License.
  */
 import { Component } from '@angular/core';
-
-import { StDropDownMenuItem, StDropDownMenuGroup } from '../../st-dropdown-menu/st-dropdown-menu.interface';
+import { StDropDownMenuItem, StDropDownMenuGroup } from '@stratio/egeo';
 
 @Component({
    selector: 'st-dropdown-demo',

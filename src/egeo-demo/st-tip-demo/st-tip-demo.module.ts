@@ -13,23 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { StDemoGeneratorModule, StTipModule } from '@stratio/egeo';
 
-import { StDemoGeneratorModule } from '../../utils/demo-generator/demo-generator.module';
-import { StPopModule } from '../../st-pop/st-pop.module';
-import { StDropdownMenuModule } from '../st-dropdown-menu.module';
-import { StDropdownMenuComponent } from '../st-dropdown-menu.component';
-import { StDropdownMenuDemoComponent } from './st-dropdown-menu-demo';
-
+import { StTipDemoComponent } from './st-tip-demo.component';
 
 @NgModule({
    imports: [
       CommonModule,
-      StDropdownMenuModule,
-      StPopModule,
-      StDemoGeneratorModule.withComponents({ components: [StDropdownMenuDemoComponent, StDropdownMenuComponent] })
+      StTipModule,
+      StDemoGeneratorModule.withComponents({ components: [StTipDemoComponent] })
    ],
-   declarations: [StDropdownMenuDemoComponent]
+   declarations: [StTipDemoComponent]
 })
-export class StDropdownMenuDemoModule { }
+export class StTipDemoModule { }

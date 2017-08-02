@@ -16,23 +16,20 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StDemoGeneratorModule, StTreeModule, StButtonModule, StInputModule } from '@stratio/egeo';
 
-import { StDemoGeneratorModule } from '../../utils/demo-generator/demo-generator.module';
-import { StButtonModule } from '../../st-button/st-button.module';
-import { StSelectModule } from '../st-select.module';
-import { StSelectComponent } from '../st-select.component';
-import { SelectDemoComponent } from './select-demo';
-
+import { StTreeDemoComponent } from './st-tree-demo';
 
 @NgModule({
    imports: [
       CommonModule,
-      StSelectModule,
+      StTreeModule,
       FormsModule,
-      StButtonModule,
       ReactiveFormsModule,
-      StDemoGeneratorModule.withComponents({ components: [SelectDemoComponent, StSelectComponent] })
+      StButtonModule,
+      StInputModule,
+      StDemoGeneratorModule.withComponents({ components: [StTreeDemoComponent] })
    ],
-   declarations: [SelectDemoComponent]
+   declarations: [StTreeDemoComponent]
 })
-export class StSelectDemoModule { }
+export class StTreeDemoModule { }

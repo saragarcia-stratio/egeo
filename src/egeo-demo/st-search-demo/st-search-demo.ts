@@ -14,32 +14,13 @@
  * limitations under the License.
  */
 import { Component } from '@angular/core';
-import * as _ from 'lodash';
-
-import { StDropDownMenuItem } from '../../st-dropdown-menu/st-dropdown-menu.interface';
+import { cloneDeep as _cloneDeep } from 'lodash';
+import { StDropDownMenuItem } from '@stratio/egeo';
 
 @Component({
    selector: 'st-search-demo',
    templateUrl: './st-search-demo.html',
-   styles: [`
-      .search-container {
-         width: 210px;
-         margin-bottom: 50px;
-      }
-      .search-example {
-         margin-bottom: 20px;
-      }
-      h3 {
-         margin-bottom: 5px;
-         padding: 0;
-      }
-      .option {
-          margin-bottom: 10px;
-      }
-      .option-value {
-         margin-left: 5px;
-      }
-   `]
+   styleUrls: ['./st-search-demo.scss']
 })
 export class StSearchDemoComponent {
    public placeholder: string = 'Text for search';
@@ -78,7 +59,7 @@ export class StSearchDemoComponent {
    }
 
    filter(filterValue: string): void {
-      this.filteredMenu = _.clone(this.menu.filter(country => country.label.toLowerCase().search(filterValue.toLowerCase()) > -1));
+      this.filteredMenu = _cloneDeep(this.menu.filter(country => country.label.toLowerCase().search(filterValue.toLowerCase()) > -1));
    }
 
    searchWithAutocompleteSearch(searchValue: string): void {

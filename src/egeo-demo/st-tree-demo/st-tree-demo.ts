@@ -20,40 +20,24 @@ import {
    get as _get,
    set as _set
 } from 'lodash';
-
-import { StNodeTree, StNodeTreeChange } from '../st-tree.model';
-import { StInputError } from '../../st-input/st-input.error.model';
-
+import { StNodeTree, StNodeTreeChange, StInputError } from '@stratio/egeo';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
    selector: 'st-tree-demo',
-   templateUrl: 'st-tree-demo.html',
-   styles: [`
-      .tree-background-A {
-         background-color: #f5f5f5;
-         padding: 20px;
-      }
-      .tree-background-B {
-         background-color: #efefef;
-         padding: 20px;
-      }
-      .tree-container {
-         overflow: auto;
-         height: 500px;
-      }
-   `]
+   templateUrl: './st-tree-demo.html',
+   styleUrls: ['./st-tree-demo.scss']
 })
 
 export class StTreeDemoComponent implements OnInit {
    public treeForm: FormGroup;
    public nodeForm: FormGroup;
-   public treeModel: TreeModel = { levels: 10, nodes: 50, max: undefined, name: 'Node'};
-   public nodeModel: NodeModel = { name: 'New name', path: 'children[0]'};
+   public treeModel: TreeModel = { levels: 10, nodes: 50, max: undefined, name: 'Node' };
+   public nodeModel: NodeModel = { name: 'New name', path: 'children[0]' };
    public forceTreeValidations: boolean = false;
    public forceNodeValidations: boolean = false;
-   public errors: StInputError = { generic: 'Error'};
+   public errors: StInputError = { generic: 'Error' };
 
    public treeA: StNodeTree = {
       name: 'hdfs',

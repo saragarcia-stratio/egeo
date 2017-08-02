@@ -63,7 +63,6 @@ export { StCheckboxModule } from './st-checkbox/st-checkbox.module';
 
 // Dropdown
 export { StDropdownModule } from './st-dropdown/st-dropdown.module';
-export { StDropdownDemoModule } from './st-dropdown/demo/st-dropdown-demo.module';
 
 // Dropdown menu
 export {
@@ -73,8 +72,6 @@ export {
    StDropDownMenuItemSchema
 } from './st-dropdown-menu/st-dropdown-menu.interface';
 export { StDropdownMenuModule } from './st-dropdown-menu/st-dropdown-menu.module';
-export { StDropdownMenuDemoModule } from './st-dropdown-menu/demo/st-dropdown-menu-demo.module';
-
 
 // Footers
 export { StFooterModule } from './st-footer/st-footer.module';
@@ -93,7 +90,6 @@ export { StHeaderModule } from './st-header/st-header.module';
 
 // Help
 export { StHelpModule } from './st-help/st-help.module';
-export { StHelpDemoModule } from './st-help/st-help-demo.module';
 
 // Horizontal Tabs
 export {
@@ -106,7 +102,6 @@ export {
 
 // Info box
 export { StInfoBoxModule } from './st-info-box/st-info-box.module';
-export { StInfoBoxDemoModule } from './st-info-box/st-info-box-demo.module';
 
 // Info card
 export { StInfoCardModule } from './st-info-card/st-info-card.module';
@@ -127,7 +122,6 @@ export {
    StItemListConfig,
    StItemListConfigSchema
 } from './st-item-list/st-item-list.model';
-export { StItemListDemoModule } from './st-item-list/demo/st-item-list-demo.module';
 
 // Modal
 export {
@@ -167,11 +161,9 @@ export {
 
 // Search
 export { StSearchModule } from './st-search/st-search.module';
-export { StSearchDemoModule } from './st-search/demo/st-search-demo.module';
 
 // Select
 export { StSelectModule } from './st-select/st-select.module';
-export { StSelectDemoModule } from './st-select/demo/select-demo.module';
 
 // Spinner
 export { StSpinnerModule } from './st-spinner/st-spinner.module';
@@ -197,7 +189,6 @@ export { StTextareaModule } from './st-textarea/st-textarea.module';
 
 // Tip
 export { StTipModule } from './st-tip/st-tip.module';
-export { StTipDemoModule } from './st-tip/st-tip-demo.module';
 
 // Toogle buttons
 export {
@@ -214,7 +205,6 @@ export { StTooltipModule } from './st-tooltip/st-tooltip.module';
 // Tree
 export { StTreeModule } from './st-tree/st-tree.module';
 export { StNodeTree, StNodeTreeChange } from './st-tree/st-tree.model';
-export { StTreeDemoModule } from './st-tree/demo/st-tree-demo.module';
 
 // Two list selection
 export {

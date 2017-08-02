@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 import { Component } from '@angular/core';
-
 import { STALERT_SEVERITY, StAlertsService } from '@stratio/egeo';
 
 @Component({

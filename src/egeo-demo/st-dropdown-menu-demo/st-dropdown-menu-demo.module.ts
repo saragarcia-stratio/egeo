@@ -13,23 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { StDemoGeneratorModule, StPopModule, StDropdownMenuModule } from '@stratio/egeo';
 
-import { StDemoGeneratorModule } from '../../utils/demo-generator/demo-generator.module';
-import { StDropdownModule } from '../st-dropdown.module';
-import { StDropdownComponent } from '../st-dropdown.component';
-import { StDropdownDemoComponent } from './st-dropdown-demo';
+import { StDropdownMenuDemoComponent } from './st-dropdown-menu-demo';
 
 
 @NgModule({
    imports: [
       CommonModule,
-      StDropdownModule,
-      StDemoGeneratorModule.withComponents({ components: [StDropdownDemoComponent, StDropdownComponent] })
+      StDropdownMenuModule,
+      StPopModule,
+      StDemoGeneratorModule.withComponents({ components: [StDropdownMenuDemoComponent] })
    ],
-   declarations: [StDropdownDemoComponent]
+   declarations: [StDropdownMenuDemoComponent]
 })
-export class StDropdownDemoModule { }
-
+export class StDropdownMenuDemoModule { }

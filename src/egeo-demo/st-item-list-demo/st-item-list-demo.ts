@@ -16,9 +16,7 @@
  */
 import { Component } from '@angular/core';
 import { times as _times, filter as _filter } from 'lodash';
-
-import { StItemListElement, StItemListConfig } from '../st-item-list.model';
-import { StItemListComponent } from '../st-item-list.component';
+import { StItemListElement, StItemListConfig } from '@stratio/egeo';
 
 @Component({
    selector: 'st-item-list-demo',

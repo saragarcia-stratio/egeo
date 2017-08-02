@@ -15,21 +15,12 @@
  */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
-
-import { StDropDownMenuItem } from '../../st-dropdown-menu/st-dropdown-menu.interface';
+import { StDropDownMenuItem } from '@stratio/egeo';
 
 @Component({
    selector: 'select-demo',
    templateUrl: 'select-demo.html',
-   styles: [`
-            p span {
-               color: #999;
-            }
-            h2 {
-               white-space: nowrap;
-               width: 100%;
-            }
-   `]
+   styleUrls: ['./select-demo.scss']
 })
 
 export class SelectDemoComponent {

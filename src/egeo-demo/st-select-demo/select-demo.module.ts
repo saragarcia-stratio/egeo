@@ -15,18 +15,21 @@
  */
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StDemoGeneratorModule, StButtonModule, StSelectModule } from '@stratio/egeo';
 
-import { StDemoGeneratorModule } from '../../utils/demo-generator/demo-generator.module';
-import { StItemListModule } from '../st-item-list.module';
-import { StItemListComponent } from '../st-item-list.component';
-import { StItemListDemoComponent } from './st-item-list-demo';
+import { SelectDemoComponent } from './select-demo';
+
 
 @NgModule({
    imports: [
       CommonModule,
-      StItemListModule,
-      StDemoGeneratorModule.withComponents({ components: [StItemListDemoComponent, StItemListComponent] })
+      StSelectModule,
+      FormsModule,
+      StButtonModule,
+      ReactiveFormsModule,
+      StDemoGeneratorModule.withComponents({ components: [SelectDemoComponent] })
    ],
-   declarations: [StItemListDemoComponent]
+   declarations: [SelectDemoComponent]
 })
-export class StItemListDemoModule { }
+export class StSelectDemoModule { }

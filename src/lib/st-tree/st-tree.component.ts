@@ -44,8 +44,16 @@ import { EgeoResolveService } from '../utils/egeo-resolver/egeo-resolve.service'
  * Up to 5 depth levels can be displayed at a time. To avoid a horizontal scroll,
  * from the 5th level will be collapsing previous levels, starting with the first parent.
  *
+ * @model
+ *
+ *   [Node of tree] {./st-tree.model.ts#StNodeTree}
+ *   [Object emited on changes] {./st-tree.model.ts#StNodeTreeChange}
+ *
  * @example
  *
+ * {html}
+ *
+ * ```
  * <st-tree
  *    [tree]="treeA"
  *    [maxLevel]="treeModel.max"
@@ -55,6 +63,8 @@ import { EgeoResolveService } from '../utils/egeo-resolver/egeo-resolve.service'
  *    (navigatePrevious)="onNavigatePrevious($event)"
  *    [changeStreamNotification]="notificationChangeStream">
  * </st-tree>
+ * ```
+ *
  */
 @StEgeo()
 @Component({

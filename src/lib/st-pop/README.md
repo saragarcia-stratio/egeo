@@ -4,15 +4,17 @@
 
 ## Inputs
 
-| Property  | Type                                                                                                                            | Required | Description                                                            |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------- | -------- | ---------------------------------------------------------------------- |
-| placement | &#39;top&#39; \| &#39;top-start&#39; \| &#39;top-end&#39; \| &#39;bottom&#39; \| &#39;bottom-start&#39; \| &#39;bottom-end&#39; | False    | Define position of content relative to button, default: 'bottom-start' |
-| hidden    | Boolean                                                                                                                         | False    | TRUE: show pop content, FALSE: hide pop content, default: true         |
+| Property  | Type                                                                                                                            | Req   | Description                                     | Default        |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------- | ----- | ----------------------------------------------- | -------------- |
+| placement | &#39;top&#39; \| &#39;top-start&#39; \| &#39;top-end&#39; \| &#39;bottom&#39; \| &#39;bottom-start&#39; \| &#39;bottom-end&#39; | False | Define position of content relative to button   | 'bottom-start' |
+| hidden    | Boolean                                                                                                                         | False | TRUE: show pop content, FALSE: hide pop content | true           |
 
 ## Example
-```
-<st-pop [hidden]="false" placement="bottom">
+```html
+<st-pop [hidden]="false"
+      placement="bottom">
     <div pop-button>Button</div>
     <div pop-content>Content</div>
 </st-pop>
-```
+````
+

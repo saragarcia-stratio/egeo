@@ -37,10 +37,14 @@ type StCoords = { x: number, y: number, z: number };
  *
  * @example
  *
+ * {html}
+ *
+ * ```
  * <st-pop [hidden]="false" placement="bottom">
  *    <div pop-button>Button</div>
  *    <div pop-content>Content</div>
  * </st-pop>
+ * ```
  */
 @Component({
    selector: 'st-pop',

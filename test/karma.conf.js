@@ -91,9 +91,16 @@ module.exports = function(config) {
          "src/lib/**/*.ts": ["karma-typescript"],
          "test/**/*.ts": ["karma-typescript"]
       },
-      reporters: ['mocha', 'karma-typescript'],
+      reporters: ['mocha', 'karma-typescript', 'junit'],
       mochaReporter: {
          ignoreSkipped: args && args.length > 0
+      },
+
+      // the default configuration
+      junitReporter: {
+         outputDir: 'target/surefire-reports', // results will be saved as $outputDir/$browserName.xml
+         outputFile: undefined, // if included, results will be saved as $outputDir/$browserName/$outputFile
+         suite: ''
       },
 
       logLevel: config.LOG_INFO,

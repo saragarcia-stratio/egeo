@@ -32,7 +32,7 @@
       (navigatePrevious)="onNavigatePrevious($event)"
       [changeStreamNotification]="notificationChangeStream">
 </st-tree>
-````
+```
 
 ## Models
 *StNodeTree*
@@ -44,7 +44,7 @@ export class StNodeTree {
     expanded ? : boolean;
     selected ? : boolean;
 }
-````
+```
 
 *StNodeTreeChange*
 ```typescript
@@ -52,5 +52,5 @@ export class StNodeTreeChange {
     node: StNodeTree;
     path: string;
 }
-````
+```
 

@@ -73,10 +73,17 @@ module.exports = function(config) {
                'subdirectory': '.',
                'filename': 'coverage.xml'
             },
+            'lcovonly':  {
+               'directory': 'target',
+               'subdirectory': '.',
+               'filename': 'lcovUT.info'
+            },
+            'html': {
+               'directory': 'target',
+               'subdirectory': '.'
+            },
             'text-summary': null,
-            'html': './target/coverage/html',
             'json': './target/coverage',
-            'lcovonly': './target/lcovUT.info'
          }
       },
 

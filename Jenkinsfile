@@ -17,6 +17,7 @@ hose {
 
         parallel(QC: {
             doStaticAnalysis(config)
+            doCoverallsAnalysis(config)
         }, DEPLOY: {
             doDeploy(config)
         }, failFast: config.FAILFAST)

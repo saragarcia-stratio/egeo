@@ -13,22 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { StDemoGeneratorModule, StTreeModule, StInputModule } from '@stratio/egeo';
 
-import { StTreeDemoComponent } from './st-tree-demo';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { StDemoGeneratorModule, StModalModule, StModalService } from '@stratio/egeo';
+
+import { StModalDemoComponent } from './st-modal-demo.component';
+import { StModalDemoTestComponent } from './st-modal-test-demo.component';
 
 @NgModule({
    imports: [
       CommonModule,
-      StTreeModule,
-      FormsModule,
-      ReactiveFormsModule,
-      StInputModule,
-      StDemoGeneratorModule.withComponents({ components: [StTreeDemoComponent] })
+      StModalModule.withComponents([StModalDemoTestComponent]),
+      StDemoGeneratorModule.withComponents({
+         components: [StModalDemoComponent]
+      })
    ],
-   declarations: [StTreeDemoComponent]
+   declarations: [StModalDemoComponent, StModalDemoTestComponent],
+   providers: [StModalService]
 })
-export class StTreeDemoModule { }
+export class StModalDemoModule { }

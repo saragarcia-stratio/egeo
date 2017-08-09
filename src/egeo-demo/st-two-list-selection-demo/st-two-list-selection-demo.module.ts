@@ -18,8 +18,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
    StDemoGeneratorModule,
-   StTwoListSelectionModule,
-   StButtonModule
+   StTwoListSelectionModule
 } from '@stratio/egeo';
 
 import { StTwoListSelectionDemoComponent } from './st-two-list-selection-demo';
@@ -27,7 +26,6 @@ import { StTwoListSelectionDemoComponent } from './st-two-list-selection-demo';
 @NgModule({
    imports: [
       CommonModule,
-      StButtonModule,
       StTwoListSelectionModule,
       StDemoGeneratorModule.withComponents({ components: [StTwoListSelectionDemoComponent] })
    ],

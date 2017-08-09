@@ -18,7 +18,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
    StDemoGeneratorModule,
-   StButtonModule,
    StAlertsModule,
    StAlertsService
 } from '@stratio/egeo';
@@ -31,7 +30,6 @@ import { StAlertsDemoComponent } from './st-alerts-demo';
    imports: [
       CommonModule,
       StAlertsModule,
-      StButtonModule,
       StDemoGeneratorModule.withComponents({ components: [StAlertsDemoComponent] })
    ],
    declarations: [StAlertsDemoComponent],

@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (C) 2016 Stratio (http://stratio.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,22 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { StDemoGeneratorModule, StTreeModule, StInputModule } from '@stratio/egeo';
+.list-items {
+   margin: 0;
+   padding: 0;
+   list-style: none;
 
-import { StTreeDemoComponent } from './st-tree-demo';
+   li {
+      background-color: #dedede;
+      border-bottom: 1px solid #fff;
+      font-size: 14px;
+      font-family: open-sans;
+      padding: 5px;
+   }
 
-@NgModule({
-   imports: [
-      CommonModule,
-      StTreeModule,
-      FormsModule,
-      ReactiveFormsModule,
-      StInputModule,
-      StDemoGeneratorModule.withComponents({ components: [StTreeDemoComponent] })
-   ],
-   declarations: [StTreeDemoComponent]
-})
-export class StTreeDemoModule { }
+}

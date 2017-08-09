@@ -28,7 +28,10 @@
       <br>
    </form>
 
-
-   <st-button text="ENABLE SWITCH" qaTag="enable-button" inputType="button" (click)="form.controls['switch'].enable()"></st-button>
-   <st-button text="DISABLE SWITCH" qaTag="disable-button" inputType="button" subtypeClass="subtype2" (click)="form.controls['switch'].disable()"></st-button>
+   <button class="button button-sq1" (click)="form.controls['switch'].enable()">
+      <span>ENABLE SWITCH</span>
+   </button>
+   <button class="button button-sq2" (click)="form.controls['switch'].disable()">
+      <span>DISABLE SWITCH</span>
+   </button>
 </section>

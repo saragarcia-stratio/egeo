@@ -15,26 +15,15 @@
     limitations under the License.
 
 -->
-<st-alerts [showInConsole]="true"></st-alerts>
+<section class="container-fluid col-md-24">
+   <h3>Pagination with pipe</h3>
 
-<br>
-<br>
+   <ul class="list-items">
+      <li *ngFor="let item of items | paginate: { perPage: perPage, currentPage: page }">
+         {{ item.label }}
+      </li>
+   </ul>
 
-<button class="button button-sq1" (click)="showError()">
-   <i class="icon-circle-check"></i>
-   <span>show error</span>
-</button>
-<br>
-<br>
+   <st-pagination [total]="items.length" [perPage]="50" [currentPage]="page" (change)="onChangePage($event)"></st-pagination>
 
-<button class="button button-sq2" (click)="showWarning()">
-   <i class="icon-circle-check"></i>
-   <span>show warning</span>
-</button><br>
-<br>
-
-<button class="button button-sq3" (click)="showSuccess()">
-   <i class="icon-circle-check"></i>
-   <span>show success</span>
-</button>
-<br>
+</section>

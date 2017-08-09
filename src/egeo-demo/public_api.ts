@@ -25,6 +25,9 @@ export { StDropdownMenuDemoModule } from './st-dropdown-menu-demo/st-dropdown-me
 export { StHelpDemoModule } from './st-help-demo/st-help-demo.module';
 export { StInfoBoxDemoModule } from './st-info-box-demo/st-info-box-demo.module';
 export { StItemListDemoModule } from './st-item-list-demo/st-item-list-demo.module';
+export { StModalDemoModule } from './st-modal-demo/st-modal-demo.module';
+export { StPaginationDemoModule } from './st-pagination-demo/st-pagination-demo.module';
+export { StPageTitleDemoModule } from './st-page-title-demo/st-page-title-demo.module';
 export { StSearchDemoModule } from './st-search-demo/st-search-demo.module';
 export { StSelectDemoModule } from './st-select-demo/select-demo.module';
 export { StTreeDemoModule } from './st-tree-demo/st-tree-demo.module';

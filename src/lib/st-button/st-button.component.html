@@ -15,8 +15,9 @@
     limitations under the License.
 
 -->
-<button #myInput [attr.type]="inputType" class="st-button sth-button" [attr.id]="qaTag" [attr.disabled]="isDisabled ? true : null" [ngClass]="getButtonTypeClass()" (click)="onClickEvent($event)">
-   <i class="st-button__icon {{leftIcon}}" *ngIf="leftIcon"></i>
-   <span class="st-button__text">{{text}}</span>
-   <i class="st-button__icon {{rightIcon}}" *ngIf="rightIcon"></i>
+<button [attr.type]="inputType" class="button" [attr.id]="qaTag" [attr.disabled]="isDisabled ? true : null"
+   [ngClass]="getButtonTypeClass()" (click)="onClickEvent($event)" [title]="text">
+   <i [ngClass]="leftIcon" *ngIf="leftIcon"></i>
+   <span class="st-button__text">{{internalText}}</span>
+   <i [ngClass]="rightIcon" *ngIf="rightIcon"></i>
 </button>

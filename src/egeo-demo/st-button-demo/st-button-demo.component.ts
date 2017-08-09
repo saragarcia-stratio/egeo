@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 import { Component } from '@angular/core';
+import { StHorizontalTab } from '@stratio/egeo';
 
 @Component({
    selector: 'st-button-demo',
@@ -22,5 +23,23 @@ import { Component } from '@angular/core';
 })
 
 export class StButtonDemoComponent {
-   constructor() { }
+   public options: StHorizontalTab[] = [
+      { text: 'NEW WAY', isDisabled: false },
+      { text: 'OLD WAY', isDisabled: false }
+   ];
+
+   public active: string = 'NEW WAY';
+
+   public onChangeOption(option: string): void {
+      this.active = option;
+      console.log(option);
+   }
+
+   public test1(): void {
+      console.log('You clicked the button 1!');
+   }
+
+   public test2(): void {
+      console.log('You clicked the button 2!');
+   }
 }

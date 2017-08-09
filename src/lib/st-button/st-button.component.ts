@@ -13,15 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { AfterViewInit, Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'st-button',
-  templateUrl: './st-button.component.html',
-  styleUrls: ['./st-button.component.scss']
+   selector: 'st-button',
+   templateUrl: './st-button.component.html'
 })
 
-export class StButtonComponent {
+export class StButtonComponent implements OnInit {
    @Input() inputType: string = 'button'; // button / submit / reset
    @Input() isDisabled: boolean = false;
    @Input() leftIcon: string;
@@ -34,28 +33,64 @@ export class StButtonComponent {
 
    @Output() onClick: EventEmitter<any> = new EventEmitter();
 
-   constructor() {}
+   public internalText: string = '';
 
-   public getButtonTypeClass(): string {
-      let cssClass: string;
-
-      if (this.typeClass) {
-        cssClass = 'st-button--' + this.typeClass + ' sth-button--' + this.typeClass;
+   ngOnInit(): void {
+      if (this.typeClass !== 'btnTool') {
+         this.internalText = this.text;
       }
-
-      if (this.subtypeClass) {
-        cssClass = cssClass + ' ' +  'st-button--' + this.typeClass + '-'
-                   + this.subtypeClass + ' sth-button--' + this.typeClass + '-' + this.subtypeClass;
-      }
-
-      if (this.themeClass) {
-        cssClass = cssClass + ' ' + 'st-button--' + this.themeClass + ' sth-button--' + this.themeClass;
-      }
-
-      return cssClass;
    }
 
+   public getButtonTypeClass(): string {
+      console.log(this.typeClass, this.themeClass, this.subtypeClass);
+
+      if (this.typeClass === 'btnMain') {
+         switch (this.subtypeClass) {
+            case 'subtype1': return `button-sq1`;
+            case 'subtype2': return `button-sq2`;
+            case 'subtype3': return `button-sq3`;
+            case 'subtype4': return `button-sq4`;
+            default: return `button-sq1`;
+         }
+      } else if (this.typeClass === 'btnLink') {
+         if (this.themeClass === 'themeB') {
+            switch (this.subtypeClass) {
+               case 'subtype1': return `button-lk3`;
+               case 'subtype2': return `button-lk4`;
+               default: return `button-lk3`;
+            }
+         } else {
+            switch (this.subtypeClass) {
+               case 'subtype1': return `button-lk1`;
+               case 'subtype2': return `button-lk2`;
+               default: return `button-lk1`;
+            }
+         }
+      } else if (this.typeClass === 'btnTool') {
+         if (this.themeClass === 'themeB') {
+            switch (this.subtypeClass) {
+               case 'subtype1': return `button-rd4`;
+               case 'subtype2': return `button-rd5`;
+               case 'subtype3': return `button-rd6`;
+               default: return `button-rd4`;
+            }
+         } else {
+            switch (this.subtypeClass) {
+               case 'subtype1': return `button-rd1`;
+               case 'subtype2': return `button-rd2`;
+               case 'subtype3': return `button-rd3`;
+               case 'subtype4': return `button-rd7`;
+               default: return `button-rd1`;
+            }
+
+         }
+      }
+
+      return 'button-sq1';
+   }
+
+
    public onClickEvent(event: any): void {
-     this.onClick.emit(event);
+      this.onClick.emit(event);
    }
 }

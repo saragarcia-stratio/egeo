@@ -13,22 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { StDemoGeneratorModule, StTreeModule, StInputModule } from '@stratio/egeo';
 
-import { StTreeDemoComponent } from './st-tree-demo';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { StDemoGeneratorModule, StPaginationModule } from '@stratio/egeo';
+
+import { StPaginationDemoComponent } from './st-pagination-demo.component';
 
 @NgModule({
    imports: [
       CommonModule,
-      StTreeModule,
-      FormsModule,
-      ReactiveFormsModule,
-      StInputModule,
-      StDemoGeneratorModule.withComponents({ components: [StTreeDemoComponent] })
+      StPaginationModule,
+      StDemoGeneratorModule.withComponents({
+         components: [StPaginationDemoComponent]
+      })
    ],
-   declarations: [StTreeDemoComponent]
+   declarations: [StPaginationDemoComponent],
+   providers: []
 })
-export class StTreeDemoModule { }
+export class StPaginationDemoModule { }

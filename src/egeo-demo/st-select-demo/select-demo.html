@@ -29,7 +29,10 @@
       </div>
       <br>
       <br>
-      <st-button inputType="submit" text="Submit" qaTag="button-submit" leftIcon="icon-circle-check"></st-button>
+      <button class="button button-sq1">
+         <i class="icon-circle-check"></i>
+         <span>Submit</span>
+      </button>
       <br>
       <br>
       <div *ngIf="templateDrivenForm.valid">
@@ -56,7 +59,10 @@
       </div>
       <br>
       <br>
-      <st-button inputType="submit" text="Submit" qaTag="button-submit" leftIcon="icon-circle-check"></st-button>
+      <button class="button button-sq1">
+         <i class="icon-circle-check"></i>
+         <span>Submit</span>
+      </button>
       <br>
       <br>
       <div *ngIf="reactiveForm.valid">
@@ -66,11 +72,15 @@
          <h2>Form status: INVALID</h2>
       </div>
    </form>
-
    <br>
-   <st-button inputType="button" subtypeClass="subtype3" text="Force validations" qaTag="button-validate" leftIcon="icon-circle-check" (onClick)="changeForceValidations()"></st-button>
-   <st-button inputType="button" subtypeClass="subtype2" text="Change disable status" qaTag="button-disable" leftIcon="icon-circle-check" (onClick)="changeDisabled()"></st-button>
-
+   <button class="button button-sq3" (click)="changeForceValidations()">
+      <i class="icon-circle-check"></i>
+      <span>Force validations</span>
+   </button>
+   <button class="button button-sq2" (click)="changeDisabled()">
+      <i class="icon-circle-check"></i>
+      <span>Change disable status</span>
+   </button>
    <div>
       {{model | json}}
    </div>

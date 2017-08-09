@@ -18,7 +18,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {
    StDemoGeneratorModule,
-   StButtonModule,
    StSwitchModule
 } from '@stratio/egeo';
 
@@ -28,7 +27,6 @@ import { StSwitchDemoComponent } from './st-switch-demo';
    imports: [
       CommonModule,
       StSwitchModule,
-      StButtonModule,
       ReactiveFormsModule,
       FormsModule,
       StDemoGeneratorModule.withComponents({ components: [StSwitchDemoComponent] })

@@ -23,5 +23,4 @@ import { StButtonComponent } from './st-button.component';
    declarations: [ StButtonComponent ],
    exports: [ StButtonComponent ]
 })
-export class StButtonModule {
-}
+export class StButtonModule {}

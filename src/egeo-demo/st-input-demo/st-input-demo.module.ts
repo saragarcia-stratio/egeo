@@ -17,6 +17,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StDemoGeneratorModule, StInputModule } from '@stratio/egeo';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { StInputDemoComponent } from './st-input-demo';
 
@@ -26,7 +27,9 @@ import { StInputDemoComponent } from './st-input-demo';
       StInputModule,
       StDemoGeneratorModule.withComponents({
          components: [StInputDemoComponent]
-      })
+      }),
+      FormsModule,
+      ReactiveFormsModule
    ],
    declarations: [StInputDemoComponent],
    providers: []

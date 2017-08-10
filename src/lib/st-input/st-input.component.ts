@@ -130,6 +130,7 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
    // When value is received from outside
    writeValue(value: any): void {
       this.internalInputModel = value;
+      this._value = value;
       this.internalControl.setValue(value);
    }
 

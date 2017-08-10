@@ -16,3 +16,8 @@
 
 -->
 <st-input type="text" name="Name" placeholder="Enter your name" value="Peter"></st-input>
+
+
+<form [formGroup]="myForm" novalidate>
+   <st-input type="text" formControlName="name" placeholder="Enter your name"></st-input>
+</form>

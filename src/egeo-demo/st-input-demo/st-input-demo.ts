@@ -14,10 +14,20 @@
  * limitations under the License.
  */
 import { Component } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
    selector: 'st-input-demo',
    templateUrl: 'st-input-demo.html'
 })
 export class StInputDemoComponent {
+   private myForm: FormGroup;
+
+   constructor(private fb: FormBuilder) {
+      this.myForm = fb.group({
+         name: new FormControl('', [])
+      });
+
+      this.myForm.valueChanges.subscribe(res => console.log(res));
+   }
 }

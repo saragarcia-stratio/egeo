@@ -68,6 +68,13 @@ describe('StInputComponent', () => {
       expect(input.getAttribute('type')).toContain('number');
    });
 
+   it('Input has attribute value', () => {
+      component.value = 'name';
+      fixture.detectChanges();
+      expect(input.value).toContain('name');
+   });
+
+
    it('Input should be disabled', () => {
       fixture.detectChanges();
 

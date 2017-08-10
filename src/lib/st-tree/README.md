@@ -23,6 +23,8 @@
 | navigatePrevious | Event            | Notify click over three dots to indicate that user wants to go up in tree structrure |
 
 ## Example
+
+
 ```html
 <st-tree [tree]="treeA"
       [maxLevel]="treeModel.max"
@@ -35,7 +37,9 @@
 ```
 
 ## Models
-*StNodeTree*
+
+*Node of tree* (StNodeTree)
+
 ```typescript
 export class StNodeTree {
     name: string;
@@ -46,7 +50,8 @@ export class StNodeTree {
 }
 ```
 
-*StNodeTreeChange*
+*Object emited on changes* (StNodeTreeChange)
+
 ```typescript
 export class StNodeTreeChange {
     node: StNodeTree;

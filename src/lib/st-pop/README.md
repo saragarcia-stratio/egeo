@@ -10,6 +10,8 @@
 | hidden    | Boolean                                                                                                                         | False | TRUE: show pop content, FALSE: hide pop content | true           |
 
 ## Example
+
+
 ```html
 <st-pop [hidden]="false"
       placement="bottom">

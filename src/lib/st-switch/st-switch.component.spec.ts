@@ -67,6 +67,14 @@ describe('StSwitchComponent', () => {
       expect(clickableElement.click).toBeDefined();
    });
 
+   it('qa tag for the label is generated using the qa tag', () => {
+      let qaTag = 'fakeQATag';
+      component.qaTag = qaTag;
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('#' + qaTag + '-label')).not.toBeNull();
+   });
+
    describe('Should update its class when disabled attribute changes', () => {
       beforeEach(() => {
          component.stModel = model;
@@ -110,9 +118,9 @@ describe('StSwitchComponent', () => {
          fixture.detectChanges();
 
          let switchBox: HTMLDivElement = fixture.nativeElement.querySelector('.st-switch__toggle');
+
          switchBox.click();
          fixture.detectChanges();
-         fixture.changeDetectorRef.markForCheck();
 
          expect(component.stModel).toBeTruthy();
          expect(component.change.emit).toHaveBeenCalledWith(true);
@@ -120,7 +128,6 @@ describe('StSwitchComponent', () => {
 
          switchBox.click();
          fixture.detectChanges();
-         fixture.changeDetectorRef.markForCheck();
 
          expect(component.stModel).toBeFalsy();
          expect(component.change.emit).toHaveBeenCalledWith(false);
@@ -136,7 +143,6 @@ describe('StSwitchComponent', () => {
          let switchBox: HTMLDivElement = fixture.nativeElement.querySelector('.st-switch__toggle');
          switchBox.click();
          fixture.detectChanges();
-         fixture.changeDetectorRef.markForCheck();
 
          expect(component.stModel).toBeFalsy();
          expect(component.change.emit).not.toHaveBeenCalled();
@@ -144,7 +150,6 @@ describe('StSwitchComponent', () => {
 
          switchBox.click();
          fixture.detectChanges();
-         fixture.changeDetectorRef.markForCheck();
 
          expect(component.stModel).toBeFalsy();
          expect(component.change.emit).not.toHaveBeenCalled();
@@ -159,7 +164,6 @@ describe('StSwitchComponent', () => {
       it('label is placed on top, when labelPosition is "top"', () => {
          component.labelPosition = 'top';
          fixture.detectChanges();
-         fixture.changeDetectorRef.markForCheck();
          let label: HTMLElement = fixture.nativeElement.querySelector('.st-form-label__label');
 
          expect(label.classList).toContain('st-form-label__label--top');
@@ -168,7 +172,6 @@ describe('StSwitchComponent', () => {
       it('label is placed on the left, when labelPosition is "left"', () => {
          component.labelPosition = 'left';
          fixture.detectChanges();
-         fixture.changeDetectorRef.markForCheck();
          let label: HTMLElement = fixture.nativeElement.querySelector('.st-form-label__label');
 
          expect(label.classList).toContain('st-form-label__label--left');

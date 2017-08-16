@@ -44,11 +44,11 @@ export class StSwitchComponent implements ControlValueAccessor {
    @Input() label: string;
    @Input() labelPosition: 'top' | 'right' | 'left' = 'top';
    @Input() contextualHelp: string;
-   @Input() disabled: boolean;
    @Input() name: string;
    @Output() change: EventEmitter<boolean> = new EventEmitter<boolean>();
 
    private _stModel: boolean;
+   private _disabled: boolean;
    private registeredOnChange: (_: any) => void;
 
    constructor(private _cd: ChangeDetectorRef) {
@@ -64,10 +64,24 @@ export class StSwitchComponent implements ControlValueAccessor {
       this._cd.markForCheck();
    }
 
+   @Input()
+   get disabled(): boolean {
+      return this._disabled;
+   }
+
+   set disabled(disabled: boolean) {
+      this._disabled = disabled;
+      this._cd.markForCheck();
+   }
+
    getLabelStatus(): StFormLabelStatus {
       if (this.disabled) {
          return StFormLabelStatus.DISABLED;
       }
+   }
+
+   get labelQaTag(): string {
+     return (this.qaTag || '') + '-label';
    }
 
    // load external change
@@ -85,7 +99,6 @@ export class StSwitchComponent implements ControlValueAccessor {
 
    setDisabledState(disable: boolean): void {
       this.disabled = disable;
-      this._cd.markForCheck();
    }
 
    onChange(event: MouseEvent): void {

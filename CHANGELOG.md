@@ -1,6 +1,6 @@
 # Changelog
 
-## 3.0.0 (upcoming)
+## 3.0.0 (August 18, 2017)
 
 **Fixed bugs:**
 

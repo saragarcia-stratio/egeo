@@ -2,6 +2,10 @@
 
 ## 4.0.0 (upcoming)
 
+**Fixed bugs:**
+
+* st-breadcrumbs: Fix qaTags
+
 **Documentation:**
 
 * Update license

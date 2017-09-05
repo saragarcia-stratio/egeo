@@ -5,6 +5,7 @@
 **Fixed bugs:**
 
 * st-breadcrumbs: Fix qaTags
+* st-dropdown: Fix qaTags
 
 **Documentation:**
 

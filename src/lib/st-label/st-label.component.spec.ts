@@ -25,13 +25,14 @@ let fixture: ComponentFixture<TestStLabelComponent>;
 let labelContent: string = 'label content';
 let labelId: string = 'label-id';
 let nativeElement: any;
+let template: string = '';
 let tooltipText: string = 'Label tooltip text';
 
-function createTestComponent(template?: string): Promise<ComponentFixture<TestStLabelComponent>> {
-   if (template) {
+function createTestComponent(customTemplate?: string): Promise<ComponentFixture<TestStLabelComponent>> {
+   if (customTemplate) {
       TestBed.overrideComponent(TestStLabelComponent, {
          set: {
-            template: template
+            template: customTemplate
          }
       });
    }
@@ -52,7 +53,7 @@ describe('StLabel', () => {
    }));
 
    it('Exist an element with class .content that contains label content', async(() => {
-      let template = '<label st-label>' + labelContent + '</label>';
+      template = '<label st-label>' + labelContent + '</label>';
       createTestComponent(template).then(() => {
          fixture = TestBed.createComponent(TestStLabelComponent);
          fixture.detectChanges();
@@ -62,7 +63,7 @@ describe('StLabel', () => {
    }));
 
    it('Label content does not have an id if original tag does not', async(() => {
-      let template = '<label st-label>' + labelContent + '</label>';
+      template = '<label st-label>' + labelContent + '</label>';
       createTestComponent(template).then(() => {
          fixture = TestBed.createComponent(TestStLabelComponent);
          fixture.detectChanges();
@@ -72,7 +73,7 @@ describe('StLabel', () => {
    }));
 
    it('Exist an element with same id as label plus sufix -text that contains label content', async(() => {
-      let template = '<label st-label id="' + labelId + '">' + labelContent + '</label>';
+      template = '<label st-label id="' + labelId + '">' + labelContent + '</label>';
       createTestComponent(template).then(() => {
          fixture = TestBed.createComponent(TestStLabelComponent);
          fixture.detectChanges();
@@ -90,13 +91,13 @@ describe('StLabel', () => {
       });
    }));
 
-   it('It has to display a text in its tooltip', () => {
-      let template = '<label st-label id="' + labelId + '" tooltip="' + tooltipText + '">' + labelContent + '</label>';
+   it('It has to display a text in its tooltip', async(() => {
+      template = '<label st-label id="' + labelId + '" tooltip="' + tooltipText + '">' + labelContent + '</label>';
       createTestComponent(template).then(() => {
          fixture = TestBed.createComponent(TestStLabelComponent);
          fixture.detectChanges();
          nativeElement = fixture.nativeElement;
-         expect(nativeElement.querySelector('#' + labelId + '-tooltip .st-tooltip-content-text').textContent).toContain(tooltipText);
+         expect(nativeElement.querySelector('.st-tooltip-content-text').textContent).toContain(tooltipText);
       });
-   });
+   }));
 });

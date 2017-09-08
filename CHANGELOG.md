@@ -6,11 +6,8 @@
 
 * st-breadcrumbs: Fix qaTags
 * st-dropdown: Fix qaTags
-
-**Documentation:**
-
-* Update license
-* st-checkbox: added demo
+* st-page-title: Fix bug when page is refreshed, the editable page title is displayed wrong
+* st-search: Send an empty search when the user presses the cross button
 
 **New features:**
 
@@ -27,15 +24,16 @@
 * st-header: Remove disable parameter of menu and submenu model
 * st-header: Models change of name
 * st-header: Change general behaivor and design
-
-**Fixed bugs:**
-
-* st-page-title: Fix bug when page is refreshed, the editable page title is displayed wrong
-* st-search: Send an empty search when the user presses the cross button
-
-**Breaking changes:**
-
 * st-input-adjustable: Rename directive 'StInputAdjustable' to st-input-adjustable
+
+**Documentation:**
+
+* Update license
+* st-checkbox: added demo
+
+**Others**
+
+* Theme is now part of this repository. egeo-theme is deprecated.
 
 ## 3.0.1 (September 01, 2017)
 

@@ -33,7 +33,8 @@ task('aot:deps', sequenceTask(
    'clean',
    'build:devapp',
    ['egeo:build-release', 'egeo-demo:build-release'],
-   'aot:copy-release'
+   'aot:copy-release',
+   'build:styles'
 ));
 
 // As a workaround for https://github.com/angular/angular/issues/12249, we need to

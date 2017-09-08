@@ -32,7 +32,7 @@ const HMR = helpers.hasProcessFlag('hot');
 module.exports = function(options) {
    sourceFolder = helpers.root();
    tsconfigFile = helpers.root('tsconfig-build.json');
-   stylesFiles = [helpers.root('app'), helpers.root('../lib'), helpers.root('../egeo-demo')];
+   stylesFiles = [helpers.root('app'), helpers.root('../lib'), helpers.root('../egeo-demo'), helpers.root('../theme')];
    indexFile = helpers.root('index.html');
    modules = [sourceFolder, helpers.root('../../node_modules'), helpers.root('../lib'), helpers.root('../egeo-demo')];
    alias = {
@@ -89,7 +89,16 @@ module.exports = function(options) {
             },
             {
                test: /\.scss$/,
-               use: ['to-string-loader', 'css-loader', 'sass-loader'],
+               use: ['to-string-loader', 'css-loader',
+               {
+                  loader: 'postcss-loader',
+                  options: {
+                    config: {
+                      path: helpers.root('postcss.config.js')
+                    }
+                  }
+                },
+                'sass-loader'],
                include: stylesFiles
             },
             {
@@ -103,7 +112,7 @@ module.exports = function(options) {
             },
             {
                test: /\.(ttf|eot|svg|woff|woff2|ico)$/,
-               use: 'file-loader?name=assets/fonts/[name].[ext]'
+               use: 'file-loader?name=assets/fonts/[name]/[name].[ext]'
             }
          ],
 

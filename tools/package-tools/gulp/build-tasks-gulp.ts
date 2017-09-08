@@ -73,6 +73,7 @@ export function createPackageBuildTasks(packageName: string, requiredPackages: s
     */
    task(`${packageName}:build-release:clean`, sequenceTask('clean', `${packageName}:build-release`));
    task(`${packageName}:build-release`, [`${packageName}:build`], () => composeRelease(packageName));
+
    /**
     * TypeScript compilation tasks. Tasks are creating ESM, FESM, UMD bundles for releases.
     */

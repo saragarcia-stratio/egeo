@@ -1,0 +1,52 @@
+/**
+ * © 2017 Stratio Big Data Inc., Sucursal en España.
+ *
+ * This software is licensed under the Apache License, Version 2.0.
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the terms of the License for more details.
+ *
+ * SPDX-License-Identifier: Apache-2.0.
+ */
+@import '../../../node_modules/@stratio/egeo-ui-base/utils/typography';
+@import '../constants/colors';
+
+.sth-two-list__list-item {
+   border-bottom: 1px solid $neutral-04;
+}
+
+.sth-two-list__list-title {
+   font-weight: egeo-get-font-weight(bold);
+   font-family: egeo-get-font(body);
+   font-size: egeo-get-font-size(body_large);
+   color: $neutral-08;
+   &.sth-two-list__important-title {
+      color: $neutral-09;
+   }
+}
+
+.sth-two-list {
+   font-family: egeo-get-font(body);
+   font-size: egeo-get-font-size(body_medium);
+   color: $neutral-09;
+}
+
+.sth-two-list__list {
+   background-color: $neutral-00;
+}
+
+.sth-two-list__all-list {
+   border: 1px solid $neutral-03;
+}
+
+.sth-two-list__selected-list {
+   border: 1px solid $neutral-07;
+}
+
+.sth-two-list-selection__item-normal {
+   font-size: egeo-get-font-size(body_small);
+}
+
+.sth-two-list-selection__item-compact {
+   font-size: egeo-get-font-size(body_xsmall);
+}

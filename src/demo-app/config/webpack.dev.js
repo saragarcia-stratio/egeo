@@ -36,9 +36,7 @@ module.exports = function (options) {
          sourceMapFilename: '[name].map',
          chunkFilename: '[id].chunk.js',
          library: 'ac_[name]',
-         libraryTarget: 'var',
-
-
+         libraryTarget: 'var'
       },
  module: {
       rules: [

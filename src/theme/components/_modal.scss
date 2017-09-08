@@ -1,0 +1,69 @@
+/**
+ * © 2017 Stratio Big Data Inc., Sucursal en España.
+ *
+ * This software is licensed under the Apache License, Version 2.0.
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the terms of the License for more details.
+ *
+ * SPDX-License-Identifier: Apache-2.0.
+ */
+@import '../../../node_modules/@stratio/egeo-ui-base/utils/typography';
+@import '../constants/colors';
+
+.sth-modal {
+   background-color: rgba($neutral-13, 0.4);
+}
+
+.sth-modal-content {
+   background-color: $neutral-02;
+   border: 1px solid rgba($neutral-13, 0.2);
+   box-shadow: 0 4px 8px 0 rgba($neutral-13, 0.2), 0 6px 20px 0 rgba($neutral-13, 0.19);
+}
+
+.sth-modal-header {
+   background-color: $neutral-03;
+   font-family: egeo-get-font(heading);
+   &.st-modal-warning {
+      color: $status-warning-default;
+   }
+   &.st-modal-info {
+      color: $brand;
+   }
+   &.st-modal-neutral {
+      color: $neutral-09;
+   }
+}
+
+.sth-modal-close-button {
+   color: $neutral-09;
+   font-size: egeo-get-font-size(icon_xlarge);
+}
+
+.sth-modal-title {
+   & i {
+      font-size: egeo-get-font-size(icon_large);
+   }
+   & p {
+      font-size: egeo-get-font-size(head_large);
+   }
+}
+
+.sth-modal-body {
+   font-family: egeo-get-font(body);
+   color: $neutral-10;
+}
+
+.sth-modal-message-big {
+   font-size: egeo-get-font-size(body_xxlarge);
+}
+
+.sth-modal-message-medium {
+   font-size: egeo-get-font-size(body_medium);
+}
+
+.sth-modal-contextual {
+   background-color: $neutral-04;
+   color: $neutral-08;
+   font-size: egeo-get-font-size(head_xxsmall);
+}

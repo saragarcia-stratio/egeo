@@ -1,0 +1,59 @@
+/**
+ * © 2017 Stratio Big Data Inc., Sucursal en España.
+ *
+ * This software is licensed under the Apache License, Version 2.0.
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the terms of the License for more details.
+ *
+ * SPDX-License-Identifier: Apache-2.0.
+ */
+@import '../../../node_modules/@stratio/egeo-ui-base/utils/typography';
+@import '../constants/colors';
+
+.sth-horizontal-tabs__option--disabled {
+   opacity: .5;
+}
+
+.sth-horizontal-tabs__option--disabled>a {
+   cursor: default;
+}
+
+.sth-horizontal-tabs__option:hover:not(.sth-horizontal-tabs__option--disabled)>a {
+   color: $neutral-13;
+}
+
+.sth-horizontal-tabs__list {
+   border-bottom: 1px solid $neutral-04;
+}
+
+.sth-horizontal-tabs__option__text {
+   color: $neutral-08;
+   text-decoration: none;
+   font-family: egeo-get-font(heading);
+   font-size: 15px;
+   text-transform: uppercase;
+
+   &:hover {
+      text-decoration: none;
+      color: $neutral-13;
+   }
+   &:focus {
+      text-decoration: none;
+      outline: none;
+   }
+}
+
+.sth-horizontal-tabs__option--active {
+   background-color: $neutral-00;
+   border: 1px solid $neutral-04;
+   border-bottom-color: $neutral-00;
+   text-decoration: none;
+   &:focus {
+      text-decoration: none;
+      outline: none;
+   }
+   >.sth-horizontal-tabs__option__text {
+      color: $neutral-13 !important;
+   }
+}

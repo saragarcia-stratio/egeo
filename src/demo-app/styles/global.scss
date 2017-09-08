@@ -8,8 +8,10 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-$egeo-sanitize: true;
-@import '../../../node_modules/@stratio/egeo-ui-base/vendors/sanitize';
 
-@import '../../../node_modules/@stratio/egeo-theme/egeo-grid.min.css';
-@import '../../../node_modules/@stratio/egeo-theme/egeo-theme-stratio.css';
+$egeo-fontface-src: '/assets/fonts';
+@import '../../theme/constants/index';
+
+@import '../../theme/vendors/sanitize';
+@import '../../theme/grid/grid';
+@import '../../theme/theme';

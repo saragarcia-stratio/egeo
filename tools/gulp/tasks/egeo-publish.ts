@@ -116,6 +116,7 @@ task(':publish', async () => {
 task('publish', sequenceTask(
    ':publish:whoami',
    ':publish:build-releases',
+   'build:styles',
    'validate-release:check-bundles',
    ':publish'
 ));

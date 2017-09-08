@@ -24,6 +24,7 @@ export { StLabelDemoModule } from './st-label-demo/index';
 export { StModalDemoModule } from './st-modal-demo/st-modal-demo.module';
 export { StPageTitleDemoModule } from './st-page-title-demo/st-page-title-demo.module';
 export { StPaginationDemoModule } from './st-pagination-demo/st-pagination-demo.module';
+export { StRadioDemoModule } from './st-radio-demo/st-radio-demo.module';
 export { StSearchDemoModule } from './st-search-demo/st-search-demo.module';
 export { StSelectDemoModule } from './st-select-demo/select-demo.module';
 export { StSwitchDemoModule } from './st-switch-demo/st-switch-demo.module';

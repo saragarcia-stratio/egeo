@@ -31,10 +31,10 @@ const tsconfigFile = join(demoAppOut, 'tsconfig-aot.json');
 /** Builds the demo-app and egeo. To be able to run NGC, apply the metadata workaround. */
 task('aot:deps', sequenceTask(
    'clean',
-   'build:devapp',
    ['egeo:build-release', 'egeo-demo:build-release'],
-   'aot:copy-release',
-   'build:styles'
+   'build:styles',
+   'build:devapp',
+   'aot:copy-release'
 ));
 
 // As a workaround for https://github.com/angular/angular/issues/12249, we need to

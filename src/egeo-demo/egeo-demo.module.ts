@@ -8,4 +8,19 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-export { SharedModule } from './shared.module';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+
+import { routing } from './egeo-demo.routes';
+import { StMainDemoComponent } from './main/main';
+import { EGEO_DEMO_MODULES } from './barrels';
+
+@NgModule({
+   imports: [
+      CommonModule,
+      routing,
+      ...EGEO_DEMO_MODULES
+   ],
+   declarations: [StMainDemoComponent]
+})
+export class EgeoDemoModule { }

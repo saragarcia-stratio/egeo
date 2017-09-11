@@ -11,16 +11,6 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-
-/* App Root */
-import { AppComponent } from './app/app.component';
-
-/* Other modules Imports */
-import { routing } from './app/app.routing';
-import { SharedModule } from './app/shared/shared.module';
-import { LayoutComponent } from './app/layout/layout.component';
-import { MainComponent } from './app/main/main';
-
 // Hot Loader
 import { AppStore, State } from './app/app.store';
 import {
@@ -30,7 +20,10 @@ import {
 } from '@angularclass/hmr';
 
 import { EgeoModule } from '@stratio/egeo';
+import { EgeoDemoModule } from '@stratio/egeo-demo';
 
+import { AppComponent } from './app/app.component';
+import { routing } from './app/app.routing';
 // Libs and external dependencies
 import 'rxjs';
 import './styles/global.scss';
@@ -40,13 +33,11 @@ import './styles/global.scss';
       BrowserModule,
       HttpModule,
       routing,
-      SharedModule,
-      EgeoModule.forRoot()
+      EgeoModule.forRoot(),
+      EgeoDemoModule
    ],
    declarations: [
-      AppComponent,
-      LayoutComponent,
-      MainComponent
+      AppComponent
    ],
    entryComponents: [AppComponent],
    providers: [AppStore]

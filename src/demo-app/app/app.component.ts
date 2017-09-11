@@ -8,14 +8,14 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
+import { EGEO_DEMO_MENU, EgeoDemoMenu } from '@stratio/egeo-demo';
 
 @Component({
    selector: 'app',
    templateUrl: './app.component.html',
-   styleUrls: ['./app.component.scss'],
-   encapsulation: ViewEncapsulation.None
+   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
+   public menu: EgeoDemoMenu[] = EGEO_DEMO_MENU || [];
 }

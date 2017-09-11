@@ -4,6 +4,7 @@
 - [ ] You fill the milestone value
 - [ ] You add some label
 - [ ] Have example running in demo app
+- [ ] Review id on demo is the same of egeo folder
 
 ### Code
 - [ ] Pass Sass lint task

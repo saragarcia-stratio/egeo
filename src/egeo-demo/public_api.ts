@@ -8,6 +8,10 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
+export { EGEO_DEMO_MODULES } from './barrels';
+export { EGEO_DEMO_MENU, EgeoDemoMenu } from './egeo-demo.routes';
+export { EgeoDemoModule } from './egeo-demo.module';
+
 export { StAlertsDemoModule } from './st-alert-demo/st-alerts-demo.module';
 export { StBreadcrumbsDemoModule } from './st-breadcrumbs-demo/st-breadcrumbs-demo.module';
 export { StButtonDemoModule } from './st-button-demo/st-button-demo.module';

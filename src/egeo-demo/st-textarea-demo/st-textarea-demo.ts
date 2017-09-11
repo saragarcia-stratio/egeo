@@ -16,7 +16,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
    templateUrl: 'st-textarea-demo.html'
 })
 export class StTextareaDemoComponent {
-   private myForm: FormGroup;
+   public myForm: FormGroup;
 
    constructor(private fb: FormBuilder) {
       this.myForm = fb.group({

@@ -10,4 +10,10 @@
     SPDX-License-Identifier: Apache-2.0.
 
 -->
-<router-outlet></router-outlet>
+<nav class="side-menu">
+   <a *ngFor="let option of menu" routerLinkActive="menu-active" [routerLink]="option.path" class="menu-option">{{option.name}}</a>
+</nav>
+
+<div class="main-content">
+   <router-outlet></router-outlet>
+</div>

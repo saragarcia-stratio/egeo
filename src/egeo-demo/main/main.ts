@@ -1,4 +1,4 @@
-/**
+/*
  * © 2017 Stratio Big Data Inc., Sucursal en España.
  *
  * This software is licensed under the Apache License, Version 2.0.
@@ -8,17 +8,10 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-a {
-   color: #37b5e4;
-   &:hover {
-      text-decoration: underline;
-   }
-}
+import { Component } from '@angular/core';
 
-.main-content {
-   min-height: 100vh;
-   width: 100%;
-   display: flex;
-   flex-direction: column;
-   padding: 30px;
-}
+@Component({
+   selector: 'egeo-demo-main',
+   templateUrl: './main.html'
+})
+export class StMainDemoComponent { }

@@ -135,7 +135,6 @@ export function buildAppTask(appName: string): any {
     .filter(taskName => gulp.hasTask(taskName));
 
   return sequenceTask(
-    'egeo:clean-build',
     [...buildTasks]
   );
 }

@@ -8,10 +8,11 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
+
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { StLabelModule } from './../st-label/st-label.module';
 
-import { StFormLabelModule } from '../utils/egeo-form/st-form-label/st-form-label.module';
 import { StSwitchComponent } from './st-switch.component';
 
 let fixture: ComponentFixture<StSwitchComponent>;
@@ -23,7 +24,7 @@ describe('StSwitchComponent', () => {
 
    beforeEach(async(() => {
       TestBed.configureTestingModule({
-         imports: [FormsModule, ReactiveFormsModule, StFormLabelModule],
+         imports: [FormsModule, ReactiveFormsModule, StLabelModule],
          declarations: [StSwitchComponent]
       })
          .compileComponents();  // compile template and css
@@ -50,25 +51,33 @@ describe('StSwitchComponent', () => {
       }
    });
 
-   it('qa tag is added as id to the clickable element', () => {
+   it('if has qa tag, is added as id to the clickable element', () => {
       let qaTag = 'fakeQATag';
       component.qaTag = qaTag;
       fixture.detectChanges();
       fixture.changeDetectorRef.markForCheck();
 
-      let clickableElement: HTMLElement = fixture.nativeElement.querySelector('#' + qaTag);
+      let clickableElement: HTMLElement = fixture.nativeElement.querySelector('#' + qaTag + '-label');
 
+      expect(fixture.nativeElement.querySelector('#' + qaTag + '-label')).not.toBeNull();
       expect(clickableElement).toBeDefined();
       expect(clickableElement.click).toBeDefined();
    });
 
-   it('qa tag for the label is generated using the qa tag', () => {
-      let qaTag = 'fakeQATag';
-      component.qaTag = qaTag;
+   it('if has not qa tag, name is added as id to the clickable element', () => {
+      let nameImput = 'demo';
+      component.qaTag = undefined;
+      component.name = nameImput;
       fixture.detectChanges();
+      fixture.changeDetectorRef.markForCheck();
 
-      expect(fixture.nativeElement.querySelector('#' + qaTag + '-label')).not.toBeNull();
+      let clickableElement: HTMLElement = fixture.nativeElement.querySelector('#' + nameImput + '-label');
+
+      expect(fixture.nativeElement.querySelector('#' + nameImput + '-label')).not.toBeNull();
+      expect(clickableElement).toBeDefined();
+      expect(clickableElement.click).toBeDefined();
    });
+
 
    describe('Should update its class when disabled attribute changes', () => {
       beforeEach(() => {
@@ -150,37 +159,6 @@ describe('StSwitchComponent', () => {
          expect(component.change.emit).not.toHaveBeenCalled();
          expect(switchBox.classList).toContain('st-switch--off');
       });
-   });
-
-   describe('label is positioned according to the input labelPosition', () => {
-      beforeEach(() => {
-         component.stModel = false;
-      });
-      it('label is placed on top, when labelPosition is "top"', () => {
-         component.labelPosition = 'top';
-         fixture.detectChanges();
-         let label: HTMLElement = fixture.nativeElement.querySelector('.st-form-label__label');
-
-         expect(label.classList).toContain('st-form-label__label--top');
-      });
-
-      it('label is placed on the left, when labelPosition is "left"', () => {
-         component.labelPosition = 'left';
-         fixture.detectChanges();
-         let label: HTMLElement = fixture.nativeElement.querySelector('.st-form-label__label');
-
-         expect(label.classList).toContain('st-form-label__label--left');
-      });
-
-      it('label is placed on the right, when labelPosition is "right"', () => {
-         component.labelPosition = 'right';
-         fixture.detectChanges();
-         fixture.changeDetectorRef.markForCheck();
-         let label: HTMLElement = fixture.nativeElement.querySelector('.st-form-label__label');
-
-         expect(label.classList).toContain('st-form-label__label--right');
-      });
-
    });
 
    it('Callback function is initialized on registerOnChange function in order to be called when there is a change', () => {

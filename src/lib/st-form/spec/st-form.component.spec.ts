@@ -1,3 +1,4 @@
+import { StTooltip } from './../../st-tooltip/st-tooltip.component';
 /*
  * © 2017 Stratio Big Data Inc., Sucursal en España.
  *
@@ -46,17 +47,22 @@ describe('StFormComponent', () => {
             }
          }
       });
-
       it('tooltips are generated using their descriptions', () => {
          for (let propertyId in JSON_SCHEMA.properties) {
             if (JSON_SCHEMA.properties.hasOwnProperty(propertyId)) {
                let property: any = JSON_SCHEMA.properties[propertyId];
-               let tooltip: HTMLElement = fixture.nativeElement.querySelector('#' + propertyId + '-label-contextual-help');
+
+               let tooltip: HTMLElement;
+               if (propertyId === 'boolean') {
+                  tooltip = fixture.nativeElement.querySelector('#' + propertyId + '-tooltip');
+               } else {
+                  tooltip = fixture.nativeElement.querySelector('#' + propertyId + '-label-contextual-help');
+               }
 
                if (property.description) {
-                  let tooltipText: Element = (<Element> tooltip.parentNode).querySelector('.sth-tooltip-content-text');
+                  let tooltipText: Element = (<Element>tooltip.parentNode).querySelector('.sth-tooltip-content-text');
                   expect(tooltipText.innerHTML).toBe(property.description);
-               }else {
+               } else {
                   expect(tooltip).toBeNull();
                }
             }

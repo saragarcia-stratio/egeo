@@ -17,37 +17,38 @@ export class EgeoDemoMenu {
    id: string;
    name: string;
    path: string;
+   moduleLazyLoad: string;
 }
 
 export const EGEO_DEMO_MENU: EgeoDemoMenu[] = [
-   { id: 'st-main', name: 'Main', path: 'main-demo' },
-   { id: 'st-alerts', name: 'Alerts', path: 'alerts-demo' },
-   { id: 'st-breadcrumbs', name: 'Breadcrumbs', path: 'breadcrumbs' },
-   { id: 'st-button', name: 'Button', path: 'button-demo' },
-   { id: 'st-checkbox', name: 'Checkbox', path: 'checkbox-demo' },
-   { id: 'st-dropdown-menu', name: 'Dropdown menu', path: 'dropdown-menu-demo' },
-   { id: 'st-dropdown', name: 'Dropdown', path: 'dropdown-demo' },
-   { id: 'st-form', name: 'Form', path: 'form-demo' },
-   { id: 'st-header', name: 'Header', path: 'header-demo' },
-   { id: 'st-help', name: 'Help', path: 'help-demo' },
-   { id: 'st-info-box', name: 'Info Box', path: 'info-box-demo' },
-   { id: 'st-input', name: 'Input', path: 'input' },
-   { id: 'st-item-list', name: 'Item List', path: 'item-list-demo' },
-   { id: 'st-label', name: 'Label', path: 'label-demo' },
-   { id: 'st-modal', name: 'Modal', path: 'modal-demo' },
-   { id: 'st-page-title', name: 'Page Title', path: 'page-title-demo' },
-   { id: 'st-pagination', name: 'Pagination', path: 'pagination-demo' },
-   { id: 'st-radio-menu', name: 'Radio Menu', path: 'radio-menu-demo' },
-   { id: 'st-radio', name: 'Radio', path: 'radio-demo' },
-   { id: 'st-search', name: 'Search', path: 'search-demo' },
-   { id: 'st-select', name: 'Select', path: 'select-demo' },
-   { id: 'st-switch', name: 'Switch', path: 'switch-demo' },
-   { id: 'st-table', name: 'Table', path: 'table-demo' },
-   { id: 'st-textarea', name: 'Textarea', path: 'textarea' },
-   { id: 'st-tip', name: 'Tip', path: 'tip-demo' },
-   { id: 'st-tooltip', name: 'Tooltip', path: 'tooltip-demo' },
-   { id: 'st-tree', name: 'Tree', path: 'tree-demo' },
-   { id: 'st-two-list-selection', name: 'Two List Selection', path: 'two-list-selection-demo' }
+   { id: 'st-main', name: 'Main', path: 'main-demo', moduleLazyLoad: '' },
+   { id: 'st-alerts', name: 'Alerts', path: 'alerts-demo', moduleLazyLoad: 'StAlertsDemoModule' },
+   { id: 'st-breadcrumbs', name: 'Breadcrumbs', path: 'breadcrumbs', moduleLazyLoad: 'StBreadcrumbsDemoModule' },
+   { id: 'st-button', name: 'Button', path: 'button-demo', moduleLazyLoad: 'StButtonDemoModule' },
+   { id: 'st-checkbox', name: 'Checkbox', path: 'checkbox-demo', moduleLazyLoad: 'StCheckboxDemoModule' },
+   { id: 'st-dropdown-menu', name: 'Dropdown menu', path: 'dropdown-menu-demo', moduleLazyLoad: 'StDropdownMenuDemoModule' },
+   { id: 'st-dropdown', name: 'Dropdown', path: 'dropdown-demo', moduleLazyLoad: 'StDropdownDemoModule' },
+   { id: 'st-form', name: 'Form', path: 'form-demo', moduleLazyLoad: 'StFormDemoModule' },
+   { id: 'st-header', name: 'Header', path: 'header-demo', moduleLazyLoad: 'StHeaderDemoModule' },
+   { id: 'st-help', name: 'Help', path: 'help-demo', moduleLazyLoad: 'StHelpDemoModule' },
+   { id: 'st-info-box', name: 'Info Box', path: 'info-box-demo', moduleLazyLoad: 'StInfoBoxDemoModule' },
+   { id: 'st-input', name: 'Input', path: 'input', moduleLazyLoad: 'StInputDemoModule' },
+   { id: 'st-item-list', name: 'Item List', path: 'item-list-demo', moduleLazyLoad: 'StItemListDemoModule' },
+   { id: 'st-label', name: 'Label', path: 'label-demo', moduleLazyLoad: 'StLabelDemoModule' },
+   { id: 'st-modal', name: 'Modal', path: 'modal-demo', moduleLazyLoad: 'StModalDemoModule' },
+   { id: 'st-page-title', name: 'Page Title', path: 'page-title-demo', moduleLazyLoad: 'StPageTitleDemoModule' },
+   { id: 'st-pagination', name: 'Pagination', path: 'pagination-demo', moduleLazyLoad: 'StPaginationDemoModule' },
+   { id: 'st-radio-menu', name: 'Radio Menu', path: 'radio-menu-demo', moduleLazyLoad: 'StRadioMenuDemoModule' },
+   { id: 'st-radio', name: 'Radio', path: 'radio-demo', moduleLazyLoad: 'StRadioDemoModule' },
+   { id: 'st-search', name: 'Search', path: 'search-demo', moduleLazyLoad: 'StSearchDemoModule' },
+   { id: 'st-select', name: 'Select', path: 'select-demo', moduleLazyLoad: 'StSelectDemoModule' },
+   { id: 'st-switch', name: 'Switch', path: 'switch-demo', moduleLazyLoad: 'StSwitchDemoModule' },
+   { id: 'st-table', name: 'Table', path: 'table-demo', moduleLazyLoad: 'StTableDemoModule' },
+   { id: 'st-textarea', name: 'Textarea', path: 'textarea', moduleLazyLoad: 'StTextareaDemoModule' },
+   { id: 'st-tip', name: 'Tip', path: 'tip-demo', moduleLazyLoad: 'StTipDemoModule' },
+   { id: 'st-tooltip', name: 'Tooltip', path: 'tooltip-demo', moduleLazyLoad: 'StTooltipDemoModule' },
+   { id: 'st-tree', name: 'Tree', path: 'tree-demo', moduleLazyLoad: 'StTreeDemoModule' },
+   { id: 'st-two-list-selection', name: 'Two List Selection', path: 'two-list-selection-demo', moduleLazyLoad: 'StTwoListSelectionDemoModule' }
 ];
 
 // tslint:disable:max-line-length

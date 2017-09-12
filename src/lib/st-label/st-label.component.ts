@@ -20,13 +20,17 @@ import { Component, ElementRef, Input } from '@angular/core';
 export class StLabelComponent {
    @Input() tooltip: string;
 
-   public idText: string;
-   public idTooltip: string;
+   private host: any;
 
    constructor(private el: ElementRef) {
-      const id = this.el.nativeElement.id;
+      this.host = this.el.nativeElement;
       this.tooltip = '';
-      this.idText = id ? id + '-text' : '';
-      this.idTooltip = id ? id + '-tooltip' : '';
+   }
+
+   getId(sufix?: string): string {
+      if (this.host.id) {
+         return this.host.id + sufix;
+      }
+      return '';
    }
 }

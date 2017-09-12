@@ -10,12 +10,12 @@
     SPDX-License-Identifier: Apache-2.0.
 
 -->
-<span class="content" [attr.id]="idText">
+<span class="content" [attr.id]="getId('-text')">
    <ng-content></ng-content>
 </span>
 <st-tooltip
       *ngIf="tooltip"
-      [qaTag]="idTooltip"
+      [qaTag]="getId('-tooltip')"
       [text]="tooltip">
    <span class="icon-help2"></span>
 </st-tooltip>

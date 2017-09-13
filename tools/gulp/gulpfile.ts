@@ -20,5 +20,6 @@ import './tasks/default';
 import './tasks/egeo-publish';
 import './tasks/generate-theme';
 import './tasks/lint';
+import './tasks/others';
 import './tasks/payload';
 import './tasks/validate-release';

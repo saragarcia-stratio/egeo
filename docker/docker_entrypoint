@@ -1,0 +1,7 @@
+#!/bin/sh
+
+printf "Starting nginx... Egeo Starter should running...\n * App port: 8080\n"
+nginx
+
+echo "Pulling log"
+tail -f  /var/log/nginx/access.log

@@ -1,0 +1,33 @@
+{
+   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+   "project": {
+     "name": "demo-app"
+   },
+   "apps": [
+     {
+       "root": "src/demo-app",
+       "outDir": "dist/demo-app",
+       "assets": [
+         { "glob": "**/*.*", "input": "../../assets/fonts", "output": "./assets/fonts" }
+       ],
+       "index": "index.html",
+       "main": "main.ts",
+       "polyfills": "polyfills.ts",
+       "tsconfig": "tsconfig-build.json",
+       "prefix": "",
+       "styles": [
+         "styles.scss"
+       ],
+       "scripts": [],
+       "environmentSource": "environments/environment.ts",
+       "environments": {
+         "dev": "environments/environment.ts",
+         "prod": "environments/environment.prod.ts"
+       }
+     }
+   ],
+   "defaults": {
+     "styleExt": "scss",
+     "component": {}
+   }
+ }

@@ -8,8 +8,15 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-describe(`App`, () => {
-  it(`should be initialized`, () => {
-    expect(true).toBeDefined(true);
-  });
-});
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+export const routes: Routes = [
+   { path: '', pathMatch: 'full', redirectTo: 'main-demo' }
+];
+
+@NgModule({
+   imports: [RouterModule.forRoot(routes, { useHash: true })],
+   exports: [RouterModule]
+})
+export class AppRoutingModule { }

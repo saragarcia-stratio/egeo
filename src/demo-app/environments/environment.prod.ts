@@ -8,11 +8,6 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { ModuleWithProviders } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-export const routes: Routes = [
-   { path: '', pathMatch: 'full', redirectTo: 'main-demo'}
-];
-
-export const routing: ModuleWithProviders = RouterModule.forRoot(routes, { useHash: true });
+export const environment = {
+  production: true
+};

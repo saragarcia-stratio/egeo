@@ -10,77 +10,22 @@
  */
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
-// Hot Loader
-import { AppStore, State } from './app/app.store';
-import {
-   removeNgStyles,
-   createNewHosts,
-   createInputTransfer
-} from '@angularclass/hmr';
-
+import { RouterModule } from '@angular/router';
 import { EgeoModule } from '@stratio/egeo';
 import { EgeoDemoModule } from '@stratio/egeo-demo';
 
 import { AppComponent } from './app/app.component';
-import { routing } from './app/app.routing';
-// Libs and external dependencies
-import 'rxjs';
-import './styles/global.scss';
+import { AppRoutingModule } from './app/app-routing.module';
 
 @NgModule({
    imports: [
       BrowserModule,
-      HttpModule,
-      routing,
+      AppRoutingModule,
+      RouterModule,
       EgeoModule.forRoot(),
       EgeoDemoModule
    ],
-   declarations: [
-      AppComponent
-   ],
-   entryComponents: [AppComponent],
-   providers: [AppStore]
+   declarations: [AppComponent],
+   bootstrap: [AppComponent]
 })
-export class DemoAppModule {
-   constructor(public appRef: ApplicationRef, public appStore: AppStore) { }
-
-   ngDoBootstrap(): void {
-      this.appRef.bootstrap(AppComponent);
-   }
-
-   hmrOnInit(store: any): void {
-      if (!store || !store.state) {
-         return;
-      }
-      console.log('HMR store', JSON.stringify(store, undefined, 2));
-      // restore state
-      this.appStore.setState(store.state);
-      // restore input values
-      if ('restoreInputValues' in store) {
-         store.restoreInputValues();
-      }
-      this.appRef.tick();
-      Object.keys(store).forEach(prop => delete store[prop]);
-   }
-
-   hmrOnDestroy(store: any): void {
-      const cmpLocation = this.appRef.components.map(
-         cmp => cmp.location.nativeElement
-      );
-      const currentState = this.appStore.getState();
-      store.state = currentState;
-      // recreate elements
-      store.disposeOldHosts = createNewHosts(cmpLocation);
-      // save input values
-      store.restoreInputValues = createInputTransfer();
-      // remove styles
-      removeNgStyles();
-   }
-
-   hmrAfterDestroy(store: any): void {
-      // display new elements
-      store.disposeOldHosts();
-      delete store.disposeOldHosts;
-   }
-}
+export class DemoAppModule { }

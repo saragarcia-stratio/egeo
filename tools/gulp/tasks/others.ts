@@ -1,4 +1,4 @@
-/**
+/*
  * © 2017 Stratio Big Data Inc., Sucursal en España.
  *
  * This software is licensed under the Apache License, Version 2.0.
@@ -8,33 +8,15 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-
-$egeo-fontface-src: '/assets/fonts';
-@import '../../theme/constants/index';
-
-@import '../../theme/vendors/sanitize';
-@import '../../theme/grid/grid';
-@import '../../theme/theme';
+import { task } from 'gulp';
+import { mkdirpSync } from 'fs-extra';
 
 
-body {
-   color: $neutral-08;
-   font-family: $egeo-nunito-sans;
-   line-height: 1.5;
-}
+import {composeRelease, buildConfig, sequenceTask} from 'build-tools';
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-   padding: 0 0 25px;
-}
+const { outputDir } = buildConfig;
 
-main {
-   .page-title:first-child {
-      margin-top: 0;
-      padding-top: 0;
-   }
-}
+task('demo-app:create-dist', (done) => {
+   mkdirpSync(outputDir);
+   done();
+});

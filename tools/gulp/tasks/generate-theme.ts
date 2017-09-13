@@ -27,6 +27,7 @@ const constantsSourceFile = join(themeSourceFolder, 'constants', '_index.scss');
 
 const packageOut = join(outputDir, 'releases', 'egeo', 'theme');
 const constantsOutputFile = 'constants.scss';
+const themeScssOutputFile = 'egeo-theme-stratio.scss';
 
 
 // Tasks
@@ -38,13 +39,18 @@ task('styles:copy-fonts', () => src(join(assetsSource, '/**/*')).pipe(dest(join(
 
 task('styles:constans', () => {
    const allScssGlob = join(themeSourceFolder, '**/*.scss');
-   // Instantiates the SCSS bundler and bundles all imports of the specified entry point SCSS file.
-   // A glob of all SCSS files in the library will be passed to the bundler. The bundler takes an
-   // array of globs, which will match SCSS files that will be only included once in the bundle.
    return new Bundler().Bundle(constantsSourceFile, [allScssGlob]).then(result => {
       mkdirpSync(packageOut);
       writeFileSync(join(packageOut, constantsOutputFile), result.bundledContent);
    });
 });
 
-task('build:styles', ['styles:copy-fonts', 'styles:theme', 'styles:grid', 'styles:sanitize', 'styles:constans']);
+task('styles:theme:scss', () => {
+   const allScssGlob = join(themeSourceFolder, '**/*.scss');
+   return new Bundler().Bundle(themeSourceFile, [allScssGlob]).then(result => {
+      mkdirpSync(packageOut);
+      writeFileSync(join(packageOut, themeScssOutputFile), result.bundledContent);
+   });
+});
+
+task('build:styles', ['styles:copy-fonts', 'styles:theme', 'styles:grid', 'styles:sanitize', 'styles:constans', 'styles:theme:scss']);

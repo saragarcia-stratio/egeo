@@ -1,4 +1,3 @@
-[![Stories in Ready](https://badge.waffle.io/Stratio/egeo.svg?label=ready&title=Ready)](http://waffle.io/Stratio/egeo)
 [![Coverage Status](https://coveralls.io/repos/github/Stratio/egeo/badge.svg?branch=karma-config)](https://coveralls.io/github/Stratio/egeo?branch=karma-config)
 
 <div align="center">
@@ -9,11 +8,9 @@
 
 EGEO is the open-source component library used to build Stratio's UI. The goals are to reduce the time and complexity of interface building being more productive, improving the experience based in apply the same patterns and visuals across the whole Stratio applications being more consistent, and create a common and unified visual language that helps us to understand each other better laying the foundation for scalable growth.
 
-In this repository, you'll find UI components, services and utilities but this is only one part of the project. You can discover more in:
+In this repository, you'll find UI components, services, utilities and our official theme. You can discover more in:
 
 * [egeo-web](https://github.com/Stratio/egeo-web): The official website of Egeo where documentation will be available soon.
-* [egeo-ui-base](https://github.com/Stratio/egeo-ui-base): A Sass library that helps us to build our styles, including a rewritten Sass version of [flexboxgrid](http://flexboxgrid.com/).
-* [egeo-theme](https://github.com/Stratio/egeo-theme): The egeo components are thematizable. This is the official theme used in the Stratio's applications.
 * [egeo-starter](https://github.com/Stratio/egeo-starter): A Boilerplate project prepared for work with Egeo 2.x, Angular 4.x, TypeScript, Webpack, Karma, Jasmine and Sass.
 
 ## Table of contents
@@ -33,7 +30,7 @@ In this repository, you'll find UI components, services and utilities but this i
 
 This repo includes the components, services, and utilities built in Angular. The library is compiled with AoT for distribution and each component is provided as a module that can be imported separately in your project.
 
-* Documentation website (soon)
+* [Egeo website](https://stratio.github.io/egeo-web)
 
 ## Getting Started
 
@@ -49,7 +46,7 @@ What your app will need to work with Egeo:
 * angular/forms ~4.2.0",
 * angular/http ~4.2.0",
 * angular/platform-browser-dynamic ~4.2.0",
-* angular/Router ~3.4.6
+* angular/Router ~4.2.0
 
 ### Installing
 
@@ -95,7 +92,7 @@ npm run start
 
 ### How to Test
 
-There is a command to start the karma server and launch the whole tests written for the librery.
+There is a command to start the karma server and launch the whole tests written for the library.
 
 ```
 yarn test

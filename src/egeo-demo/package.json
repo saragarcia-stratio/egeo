@@ -34,7 +34,6 @@
       "@angular/http": "~4.2.0",
       "@angular/platform-browser-dynamic": "~4.2.0",
       "@angular/router": "~4.2.0",
-      "@stratio/egeo": "~2.5.0",
-      "@stratio/egeo-theme": "~0.14.0"
+      "@stratio/egeo": "~4.0.0"
    }
 }

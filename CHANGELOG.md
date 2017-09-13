@@ -15,6 +15,7 @@
 * st-label: New component based on label native tag
 * st-header: Menu notifies navigation
 * st-table: Add functionality to select rows optionally
+* st-breadcrumb: Add input for define max elements to show
 
 **Breaking changes:**
 
@@ -35,6 +36,7 @@
 * st-radio: Apply new style according to UX specifications
 * st-table: Apply new style according to UX specifications
 * st-switch: Apply new style.
+* st-breadcrumb: Apply new style according to UX specifications
 
 **Documentation:**
 

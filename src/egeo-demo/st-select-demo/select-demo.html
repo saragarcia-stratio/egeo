@@ -11,71 +11,115 @@
 
 -->
 <section class="container-liquid">
-   <h2>TEMPLATE DRIVEN EXAMPLE</h2>
-   <form #templateDrivenForm="ngForm" novalidate autocomplete="off"class="col-md-10">
+   <h1>TEMPLATE DRIVEN EXAMPLE</h1>
+   <form #templateDrivenForm="ngForm" novalidate autocomplete="off" class="col-md-3">
       <div class="form-group">
 
-         <st-select [options]="options" qaTag="combo-option1-template-example" label="Option 1" name="option1-template" contextualHelp="Select option from list"
-             placeholder="Select option" [errorRequiredMessage]="errorMessage" [forceValidations]="forceValidations" [(ngModel)]="model.option1" required></st-select>
-         <br>
-         <st-select [options]="options" qaTag="combo-option2-template-example" label="Option 2" name="option2-template" placeholder="Select option" [errorRequiredMessage]="errorMessage"
-             [forceValidations]="forceValidations" [(ngModel)]="model.option2" required></st-select>
+         <st-select
+            [options]="options"
+            qaTag="combo-option1-template-example"
+            label="Label 1"
+            name="option1-template"
+            contextualHelp="Select option from list"
+            placeholder="Select option"
+            [errorRequiredMessage]="errorMessage"
+            [forceValidations]="forceValidations"
+            [(ngModel)]="model.option1"
+            required
+         ></st-select>
+
+         <div class="separator"></div>
+
+         <st-select
+            [options]="options"
+            qaTag="combo-option2-template-example"
+            label="Label 2"
+            name="option2-template"
+            contextualHelp="Select option from list"
+            placeholder="Select option"
+            [errorRequiredMessage]="errorMessage"
+            [forceValidations]="forceValidations"
+            [(ngModel)]="model.option2"
+            disabled
+         ></st-select>
 
       </div>
-      <br>
-      <br>
-      <button class="button button-sq1">
-         <i class="icon-circle-check"></i>
+
+      <div class="separator"></div>
+      <div class="separator"></div>
+
+      <button class="button button-primary">
          <span>Submit</span>
       </button>
-      <br>
-      <br>
-      <div *ngIf="templateDrivenForm.valid">
-         <h2>Form status: VALID</h2>
-      </div>
-      <div *ngIf="!templateDrivenForm.valid">
-         <h2>Form status: INVALID</h2>
-      </div>
+
+      <div class="separator"></div>
+      <div class="separator"></div>
+
+      <p *ngIf="templateDrivenForm.valid">Form status: VALID</p>
+      <p *ngIf="!templateDrivenForm.valid">Form status: INVALID</p>
    </form>
 
-   <br>
-   <br>
+   <div class="separator"></div>
+   <div class="separator"></div>
 
-   <h2>MODEL DRIVEN / REACTIVE EXAMPLE</h2>
-   <form [formGroup]="reactiveForm" novalidate autocomplete="off" class="col-md-10">
+   <h1>MODEL DRIVEN / REACTIVE EXAMPLE</h1>
+   <form [formGroup]="reactiveForm" novalidate autocomplete="off" class="col-md-3">
       <div class="form-group">
 
-         <st-select [options]="options" qaTag="combo-option1-template-example" label="Option 1" name="option1" contextualHelp="Select option from list" placeholder="Select option"
-             [errorRequiredMessage]="errorMessage" [forceValidations]="forceValidations" formControlName="option1"></st-select>
-         <br>
-         <st-select [options]="options" qaTag="combo-option2-template-example" label="Option 2" name="option2" placeholder="Select option" [errorRequiredMessage]="errorMessage"
-             [forceValidations]="forceValidations" formControlName="option2"></st-select>
+         <st-select
+            [options]="options"
+            qaTag="combo-option1-template-example"
+            label="Option 1" name="option1"
+            contextualHelp="Select option from list"
+            placeholder="Select option"
+            [errorRequiredMessage]="errorMessage"
+            [forceValidations]="forceValidations"
+            formControlName="option1"
+         ></st-select>
+
+         <div class="separator"></div>
+
+         <st-select
+            [options]="options"
+            qaTag="combo-option2-template-example"
+            label="Option 2"
+            name="option2"
+            placeholder="Select option"
+            [errorRequiredMessage]="errorMessage"
+            [forceValidations]="forceValidations"
+            formControlName="option2"
+         ></st-select>
 
       </div>
-      <br>
-      <br>
-      <button class="button button-sq1">
-         <i class="icon-circle-check"></i>
+
+      <div class="separator"></div>
+
+      <button class="button button-primary">
          <span>Submit</span>
       </button>
-      <br>
-      <br>
+
+      <div class="separator"></div>
+
       <div *ngIf="reactiveForm.valid">
-         <h2>Form status: VALID</h2>
+         <p>Form status: VALID</p>
       </div>
       <div *ngIf="!reactiveForm.valid">
-         <h2>Form status: INVALID</h2>
+         <p>Form status: INVALID</p>
       </div>
    </form>
-   <br>
-   <button class="button button-sq3" (click)="changeForceValidations()">
-      <i class="icon-circle-check"></i>
+
+   <div class="separator"></div>
+
+   <button class="button button-primary" (click)="changeForceValidations()">
       <span>Force validations</span>
    </button>
-   <button class="button button-sq2" (click)="changeDisabled()">
-      <i class="icon-circle-check"></i>
+
+   <button class="button button-secondary-gray" (click)="changeDisabled()">
       <span>Change disable status</span>
    </button>
+
+   <div class="separator"></div>
+
    <div>
       {{model | json}}
    </div>

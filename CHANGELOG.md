@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.2 (upcoming)
+
+**Fixed bugs:**
+
+* st-button: Update internal text value when change input 
+
 ## 3.0.1 (September 01, 2017)
 
 **Fixed bugs:**

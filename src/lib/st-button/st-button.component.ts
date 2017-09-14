@@ -13,14 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import {
+   Component,
+   EventEmitter,
+   Input,
+   Output,
+   OnInit,
+   OnChanges,
+   SimpleChanges
+} from '@angular/core';
 
 @Component({
    selector: 'st-button',
    templateUrl: './st-button.component.html'
 })
 
-export class StButtonComponent implements OnInit {
+export class StButtonComponent implements OnInit, OnChanges {
    @Input() inputType: string = 'button'; // button / submit / reset
    @Input() isDisabled: boolean = false;
    @Input() leftIcon: string;
@@ -36,8 +44,12 @@ export class StButtonComponent implements OnInit {
    public internalText: string = '';
 
    ngOnInit(): void {
-      if (this.typeClass !== 'btnTool') {
-         this.internalText = this.text;
+      this.updateText(this.text);
+   }
+
+   ngOnChanges(changes: SimpleChanges): void {
+      if (changes && changes.text) {
+         this.updateText(changes.text.currentValue);
       }
    }
 
@@ -91,5 +103,11 @@ export class StButtonComponent implements OnInit {
 
    public onClickEvent(event: any): void {
       this.onClick.emit(event);
+   }
+
+   private updateText(text: string): void {
+      if (this.typeClass !== 'btnTool') {
+         this.internalText = this.text;
+      }
    }
 }

@@ -22,12 +22,11 @@ import { StTwoListSelectionViewComponent } from './st-two-list-selection.view.co
 // Order modules
 import { PipesModule } from '../pipes/pipes.module';
 import { StSearchModule } from '../st-search/st-search.module';
-import { StButtonModule } from '../st-button/st-button.module';
 import { StDropdownModule } from '../st-dropdown/st-dropdown.module';
 import { StCheckboxModule } from '../st-checkbox/st-checkbox.module';
 
 @NgModule({
-   imports: [CommonModule, StSearchModule, PipesModule, VirtualScrollModule, StButtonModule, StDropdownModule, StCheckboxModule],
+   imports: [CommonModule, StSearchModule, PipesModule, VirtualScrollModule, StDropdownModule, StCheckboxModule],
    declarations: [StTwoListSelectionViewComponent, StTwoListSelectionComponent, ListSelectionComponent, ListItemComponent, ListScrollComponent],
    exports: [StTwoListSelectionComponent, StTwoListSelectionViewComponent]
 })

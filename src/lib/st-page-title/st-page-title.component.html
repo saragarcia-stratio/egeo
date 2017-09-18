@@ -11,9 +11,11 @@
 
 -->
 <div class="st-page-title sth-page-title">
-   <st-button *ngIf="leftButton" text="Tool subtype4" typeClass="btnTool" subtypeClass="subtype4" qaTag="{{qaTag}}-left-button"
-      leftIcon="{{leftButton}}" class="button-box sth-page-title-button-box" inputType="button" (click)="onClickedButton()">
-   </st-button>
+   <div class="sth-page-title-button-box button-box" *ngIf="leftButton">
+      <button class="button button-toolbar st-temporal-button-style" [attr.id]="qaTag + '-left-button'" (click)="onClickedButton()" type="button">
+         <i [ngClass]="leftButton"></i>
+      </button>
+   </div>
    <div class="main-title sth-page-title-main-title">
       <span *ngIf="hasPreTitle()" class="sth-page-title-pre-title">{{preTitle}}: </span>
       <span *ngIf="!editable" class="sth-page-title-title">{{title}}</span>
@@ -23,9 +25,10 @@
          <span class="error_text sth-error-text" *ngIf="errorMessage">{{errorMessage}}</span>
 
          <span class="sth-page-title-title title" (click)="onClickEdit()" [ngClass]="{'sth-error': error}">
-          <input type="text" (keyup)="onEdit($event)" (focus)="onFocus($event)" (blur)="onBlur($event)" [(ngModel)]="title" #input st-input-adjustable placeholder="{{placeholder}}" [maxlength]="maxlength" [minlength]="minlength" [disabled]="disabled" [readOnly]="readOnly" />
-          <i *ngIf="!focus" class="button-edit sth-button-edit icon-edit"></i>
-        </span>
+            <input type="text" (keyup)="onEdit($event)" (focus)="onFocus($event)" (blur)="onBlur($event)" [(ngModel)]="title" #input st-input-adjustable placeholder="{{placeholder}}"
+                [maxlength]="maxlength" [minlength]="minlength" [disabled]="disabled" [readOnly]="readOnly" />
+            <i *ngIf="!focus" class="button-edit sth-button-edit icon-edit"></i>
+         </span>
 
       </div>
 

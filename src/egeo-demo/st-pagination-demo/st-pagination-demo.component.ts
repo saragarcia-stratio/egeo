@@ -9,6 +9,7 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 import { Component, OnInit } from '@angular/core';
+import { Paginate } from '@stratio/egeo';
 
 @Component({
    selector: 'st-pagination-demo',
@@ -45,9 +46,8 @@ export class StPaginationDemoComponent implements OnInit {
       return items;
    }
 
-   onChangePage($event: any): void {
-      this.perPage = $event.perPage;
-      this.page = $event.currentPage;
+   onChangePage(changePageEvent: Paginate): void {
+      this.perPage = changePageEvent.perPage;
+      this.page = changePageEvent.currentPage;
    }
-
 }

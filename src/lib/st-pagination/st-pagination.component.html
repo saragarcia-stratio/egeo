@@ -19,10 +19,12 @@
       <p class="sth-pagination-pages">{{firstItem}}-{{lastItem}} {{label.of || 'of'}} {{total}}</p>
 
       <div class="buttons">
-         <st-button typeClass="btnTool" subtypeClass="subtype4" attr.id="{{'buttonPrev' + qaTag}}" leftIcon="icon-arrow2_left" inputType="button"
-            (onClick)="prevPage()" [isDisabled]="disablePrevButton"></st-button>
-         <st-button typeClass="btnTool" subtypeClass="subtype4" attr.id="{{'buttonNext' + qaTag}}" leftIcon="icon-arrow2_right" inputType="button"
-            (onClick)="nextPage()" [isDisabled]="disableNextButton"></st-button>
+         <button class="button button-toolbar" [attr.id]="'buttonPrev' + qaTag" [disabled]="disablePrevButton" type="button" (click)="prevPage()">
+            <i class="icon-arrow2_left"></i>
+         </button>
+         <button class="button button-toolbar" [attr.id]="'buttonNext' + qaTag" [disabled]="disableNextButton" type="button" (click)="nextPage()">
+            <i class="icon-arrow2_right"></i>
+         </button>
       </div>
    </div>
 </div>

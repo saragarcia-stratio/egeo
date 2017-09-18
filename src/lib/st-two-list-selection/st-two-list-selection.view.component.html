@@ -19,14 +19,10 @@
 
    <!--SELECTORS-->
    <div class="pick-buttons" *ngIf="editable">
-      <st-button *ngIf="moveAllToSelectedButton" text="Move all to selected" typeClass="btnTool" subtypeClass="subtype4" [qaTag]="qaTag + '-left-all-button'"
-          leftIcon="icon-fast-forward" inputType="button" (click)="moveAllToSelected.emit($event)"></st-button>
-      <st-button text="Move to selected" typeClass="btnTool" subtypeClass="subtype4" [qaTag]="qaTag + '-left-button'" leftIcon="icon-arrow2_right" inputType="button"
-          (click)="moveToSelected.emit($event)"></st-button>
-      <st-button text="Move to all" typeClass="btnTool" subtypeClass="subtype4" [qaTag]="qaTag + '-right-button'" leftIcon="icon-arrow2_left" inputType="button"
-          (click)="moveToAll.emit($event)"></st-button>
-      <st-button *ngIf="moveAllToAllButton" text="Move all to all" typeClass="btnTool" subtypeClass="subtype4" [qaTag]="qaTag + '-right-all-button'" leftIcon="icon-rewind"
-          inputType="button" (click)="moveAllToAll.emit($event)"></st-button>
+      <button *ngIf="moveAllToSelectedButton" class="button button-toolbar" type="button" title="Move all to selected" (click)="moveAllToSelected.emit($event)" [attr.id]="qaTag + '-left-all-button'"><i class="icon-fast-forward"></i></button>
+      <button class="button button-toolbar" type="button" title="Move to selected" (click)="moveToSelected.emit($event)" [attr.id]="qaTag + '-left-button'"><i class="icon-arrow2_right"></i></button>
+      <button class="button button-toolbar" type="button" title="Move to all" (click)="moveToAll.emit($event)" [attr.id]="qaTag + '-right-button'"><i class="icon-arrow2_left"></i></button>
+      <button *ngIf="moveAllToAllButton" class="button button-toolbar" type="button" title="Move all to all" (click)="moveAllToAll.emit($event)" [attr.id]="qaTag + '-right-all-button'"><i class="icon-rewind"></i></button>
    </div>
 
    <!--SELECTED ELEMENTS-->

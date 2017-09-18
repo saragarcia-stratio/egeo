@@ -15,7 +15,6 @@ import { By } from '@angular/platform-browser';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 
 // Component
-import { StButtonModule } from '../st-button/st-button.module';
 import { StModal } from './st-modal.component';
 import { StModalButton, StModalConfig, StModalMainTextSize, StModalResponse, StModalType, StModalWidth } from './st-modal.interface';
 
@@ -72,7 +71,6 @@ describe('StModal', () => {
 
    beforeEach(async(() => {
       TestBed.configureTestingModule({
-         imports: [StButtonModule],
          declarations: [StModal, ModalTestComponent]
       });
 
@@ -237,32 +235,15 @@ describe('StModal', () => {
       expect(comp.hasButtons()).toBeTruthy();
    });
 
-   it('should get buttons', () => {
-      comp.modalConfig.message = message;
-      let iconLeft: StModalButton = { icon: 'left', iconLeft: true, label: 'label', response: StModalResponse.YES };
-      let iconRight: StModalButton = { icon: 'right', iconLeft: false, label: 'label', response: StModalResponse.YES };
-      fixture.detectChanges();
-
-      // Left icons
-      expect(comp.getButtonIcon(true, undefined)).toEqual('');
-      expect(comp.getButtonIcon(true, iconLeft)).toEqual(iconLeft.icon);
-      expect(comp.getButtonIcon(true, iconRight)).toEqual('');
-
-      // Right icons
-      expect(comp.getButtonIcon(false, undefined)).toEqual('');
-      expect(comp.getButtonIcon(false, iconLeft)).toEqual('');
-      expect(comp.getButtonIcon(false, iconRight)).toEqual(iconRight.icon);
-   });
-
    it('should get button subtype', () => {
       comp.modalConfig.message = message;
       let subtype1: StModalButton = { label: 'label', primary: true, response: StModalResponse.YES };
       let subtype2: StModalButton = { label: 'label', primary: false, response: StModalResponse.YES };
       fixture.detectChanges();
 
-      expect(comp.getButtonSubtype(undefined)).toEqual('subtype2');
-      expect(comp.getButtonSubtype(subtype1)).toEqual('subtype1');
-      expect(comp.getButtonSubtype(subtype2)).toEqual('subtype2');
+      expect(comp.getButtonType(undefined)).toEqual('button-secondary-gray');
+      expect(comp.getButtonType(subtype1)).toEqual('button-primary');
+      expect(comp.getButtonType(subtype2)).toEqual('button-secondary-gray');
    });
 
    it('should get buttons', () => {

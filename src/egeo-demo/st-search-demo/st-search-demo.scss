@@ -8,6 +8,12 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
+
+.search-demo {
+   display: flex;
+   flex-direction: column;
+}
+
 .search-container {
    width: 210px;
    margin-bottom: 50px;

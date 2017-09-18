@@ -25,7 +25,7 @@ export class StPageTitleDemoComponent {
 
    constructor() {}
 
-   public editTitle(value: string) {
+   public editTitle(value: string): void {
       if (value.length === this.maxlength) {
          this.error = true;
          this.errorMsg = 'Error filling page title input';
@@ -34,5 +34,4 @@ export class StPageTitleDemoComponent {
          this.errorMsg = '';
       }
    }
-
 }

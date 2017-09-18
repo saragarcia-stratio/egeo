@@ -33,6 +33,17 @@
 
 .sth-page-title-button-box {
    border-right: 2px solid $neutral-06;
+
+   .st-temporal-button-style {
+      border-radius: 100%;
+      border: 2px solid $neutral-08;
+      &:active {
+         box-shadow: 0 0 0 2px $brand;
+      }
+      &:hover {
+         border: 2px solid $neutral-09 !important;
+      }
+   }
 }
 
 

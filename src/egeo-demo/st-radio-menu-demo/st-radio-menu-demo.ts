@@ -13,7 +13,8 @@ import { StRadioMenuOption } from '@stratio/egeo';
 
 @Component({
    selector: 'st-radio-menu-demo',
-   templateUrl: './st-radio-menu-demo.html'
+   templateUrl: './st-radio-menu-demo.html',
+   styleUrls: ['./st-radio-menu-demo.scss']
 })
 export class StRadioMenuDemoComponent {
    options: Array<StRadioMenuOption>;

@@ -14,7 +14,6 @@ import { By } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 // Component
-import { StButtonModule } from '../st-button/st-button.module';
 import { StPageTitleComponent } from './st-page-title.component';
 
 let component: StPageTitleComponent;
@@ -25,7 +24,7 @@ describe('StPageTitleComponent', () => {
    beforeEach(
       async(() => {
          TestBed.configureTestingModule({
-            imports: [StButtonModule, FormsModule],
+            imports: [FormsModule],
             declarations: [StPageTitleComponent]
          }).compileComponents(); // compile template and css
       })

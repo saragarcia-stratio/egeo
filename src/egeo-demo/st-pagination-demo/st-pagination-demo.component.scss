@@ -8,6 +8,12 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
+
+.pagination-demo {
+   display: flex;
+   flex-direction: column;
+}
+
 .list-items {
    margin: 0;
    padding: 0;

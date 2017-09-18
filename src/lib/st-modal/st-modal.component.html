@@ -29,16 +29,13 @@
          <div *ngIf="isComplexMessageModal()" [innerHTML]="getHTML()" id="st-modal-message-html"></div>
          <div #stModalBody id="st-modal-message-component"></div>
          <div *ngIf="hasButtons()" class="st-modal-buttons">
-            <st-button *ngFor="let button of getButtons(); let idx = index"
-               [text]="button.label"
-               [leftIcon]="getButtonIcon(true, button)"
-               [rightIcon]="getButtonIcon(false, button)"
-               [qaTag]="'st-modal-button-' + idx"
-               [subtypeClass]="getButtonSubtype(button)"
-               [inputType]="button"
-               (onClick)="clickButton(idx, button)"
-            ></st-button>
-      </div>
+            <button *ngFor="let button of getButtons(); let idx = index" [attr.id]="'st-modal-button-' + idx" class="button" [ngClass]="getButtonType(button)" (click)="clickButton(idx, button)"
+                type="button">
+               <i *ngIf="button.icon && button.iconLeft" [ngClass]="button.icon"></i>
+               <span>{{button.label}}</span>
+               <i *ngIf="button.icon && !button.iconLeft" [ngClass]="button.icon"></i>
+            </button>
+         </div>
       </div>
    </div>
 </div>

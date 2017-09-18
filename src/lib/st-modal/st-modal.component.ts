@@ -118,19 +118,8 @@ export class StModal implements OnDestroy, OnInit {
       return this.modalConfig.buttons && this.modalConfig.buttons.length > 0;
    }
 
-   getButtonIcon(left: boolean, button: StModalButton): string {
-      if (button && button.icon) {
-         if (button.iconLeft && left) {
-            return button.icon;
-         } else if (!button.iconLeft && !left) {
-            return button.icon;
-         }
-      }
-      return '';
-   }
-
-   getButtonSubtype(button: StModalButton): string {
-      return button && button.primary ? 'subtype1' : 'subtype2';
+   getButtonType(button: StModalButton): string {
+      return button && button.primary ? 'button-primary' : 'button-secondary-gray';
    }
 
    getButtons(): StModalButton[] {

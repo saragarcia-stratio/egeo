@@ -11,10 +11,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { StPaginationComponent } from './st-pagination.component';
 
-import { StButtonModule } from '../st-button/st-button.module';
 import { StDropdownModule } from '../st-dropdown/st-dropdown.module';
-
-
 
 describe('StPaginationComponent', () => {
 
@@ -23,7 +20,7 @@ describe('StPaginationComponent', () => {
 
    beforeEach(async(() => {
       TestBed.configureTestingModule({
-         imports: [StDropdownModule, StButtonModule],
+         imports: [StDropdownModule],
          declarations: [StPaginationComponent]
       })
          .compileComponents();  // compile template and css

@@ -13,8 +13,7 @@ import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core
 import { FormControl, FormsModule, NgControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
-import { StFormLabelModule } from '../utils/egeo-form/st-form-label/st-form-label.module';
-import { StFormLabelStatus } from '../utils/egeo-form/st-form-label/st-form-label-status.enum';
+import { StLabelModule } from '../st-label/st-label.module';
 import { StDropdownMenuModule } from '../st-dropdown-menu/st-dropdown-menu.module';
 import { StSelectComponent } from './st-select.component';
 
@@ -43,7 +42,7 @@ describe('StSelect', () => {
 
    beforeEach(async(() => {
       TestBed.configureTestingModule({
-         imports: [FormsModule, ReactiveFormsModule, StFormLabelModule, StDropdownMenuModule],
+         imports: [FormsModule, ReactiveFormsModule, StLabelModule, StDropdownMenuModule],
          declarations: [StSelectComponent]
       })
          .compileComponents();  // compile template and css
@@ -191,29 +190,6 @@ describe('StSelect', () => {
       expect(component.onClickButton).toHaveBeenCalledTimes(1);
       expect(component.isActive).toBeTruthy();
    });
-
-   it('st-select should change between normal and disable StFormLabelStatus', () => {
-      component.options = options;
-      fixture.detectChanges();
-      expect(component.getLabelStatus()).toEqual(StFormLabelStatus.FOCUS);
-
-      component.setDisabledState(true);
-      fixture.detectChanges();
-      expect(component.getLabelStatus()).toEqual(StFormLabelStatus.DISABLED);
-   });
-
-   it('st-select should change between error and disable StFormLabelStatus', () => {
-      spyOn(component, 'showError').and.returnValue(true);
-      component.options = options;
-      fixture.detectChanges();
-
-      expect(component.getLabelStatus()).toEqual(StFormLabelStatus.ERROR);
-
-      component.setDisabledState(true);
-      fixture.detectChanges();
-      expect(component.getLabelStatus()).toEqual(StFormLabelStatus.DISABLED);
-   });
-
 
    it('st-select should return error only in certain cases', () => {
       component.options = options;

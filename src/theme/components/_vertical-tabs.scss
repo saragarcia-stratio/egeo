@@ -8,7 +8,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-@import '../../../node_modules/@stratio/egeo-ui-base/utils/typography';
+@import '../constants/fonts';
 @import '../constants/colors';
 
 .sth-vertical-tabs__option {
@@ -24,8 +24,8 @@
 .sth-vertical-tabs__option__text {
    cursor: pointer;
    color: $neutral-08;
-   font-family: egeo-get-font(heading);
-   font-size: egeo-get-font-size(head_xxsmall);
+   font-family: $egeo-nunito-sans;
+   font-size: $egeo-font-size-xsmall;
    font-weight: 400;
    text-align: left;
    text-transform: uppercase;

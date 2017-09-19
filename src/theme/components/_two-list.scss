@@ -8,7 +8,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-@import '../../../node_modules/@stratio/egeo-ui-base/utils/typography';
+@import '../constants/fonts';
 @import '../constants/colors';
 
 .sth-two-list__list-item {
@@ -16,9 +16,9 @@
 }
 
 .sth-two-list__list-title {
-   font-weight: egeo-get-font-weight(bold);
-   font-family: egeo-get-font(body);
-   font-size: egeo-get-font-size(body_large);
+   font-weight: 600;
+   font-family: $egeo-nunito-sans;
+   font-size: $egeo-font-size-small;
    color: $neutral-08;
    &.sth-two-list__important-title {
       color: $neutral-09;
@@ -26,8 +26,8 @@
 }
 
 .sth-two-list {
-   font-family: egeo-get-font(body);
-   font-size: egeo-get-font-size(body_medium);
+   font-family: $egeo-nunito-sans;
+   font-size: $egeo-font-size-xsmall;
    color: $neutral-09;
 }
 
@@ -44,9 +44,9 @@
 }
 
 .sth-two-list-selection__item-normal {
-   font-size: egeo-get-font-size(body_small);
+   font-size: $egeo-font-size-xxsmall;
 }
 
 .sth-two-list-selection__item-compact {
-   font-size: egeo-get-font-size(body_xsmall);
+   font-size: $egeo-font-size-xxxsmall;
 }

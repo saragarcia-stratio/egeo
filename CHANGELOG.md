@@ -46,6 +46,7 @@
 * st-textarea: Apply new style according to UX specifications
 * st-input: Apply new style according to UX specifications
 * st-input: Refactor styles to can be applied to a native input
+* All: Removed all references old fonts in all components
 
 **Documentation:**
 
@@ -56,10 +57,15 @@
 * st-horizontal-tabs: Added demo
 * st-select: Added demo
 * st-textarea: Added demo
+* st-footer: Added demo
+* st-info-card: Added demo
+* st-toggle-buttons: Added demo
+* st-vertical-tabs: Added demo
 
 **Others**
 
-* Theme is now part of this repository. egeo-theme is deprecated.
+* egeo-theme is now part of this repository and old repo it's deprecated
+* egeo-ui-base is integrated now on theme and old repo it's deprecated
 
 
 ## 3.0.2 (September 14, 2017)

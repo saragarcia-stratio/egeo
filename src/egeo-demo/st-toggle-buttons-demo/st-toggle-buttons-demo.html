@@ -10,8 +10,6 @@
     SPDX-License-Identifier: Apache-2.0.
 
 -->
-<st-vertical-tabs class="side-menu" [options]="options" (changeOption)="onChangeOption($event)" qaTag="sidebar"></st-vertical-tabs>
-
-<div class="main-content">
-   <router-outlet></router-outlet>
-</div>
+<section class="container-fluid">
+   <st-toggle-buttons class="toggle-buttons" [tabs]="tabs" [description]="description" (select)="onSelectTab($event)" qaTag="toggle-buttons"></st-toggle-buttons>
+</section>

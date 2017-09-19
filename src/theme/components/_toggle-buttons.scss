@@ -8,18 +8,18 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-@import '../../../node_modules/@stratio/egeo-ui-base/utils/typography';
+@import '../constants/fonts';
 @import '../constants/colors';
 
 .sth-toggle-buttons__description {
-   font-size: egeo-get-font-size("body_xsmall");
+   font-size: $egeo-font-size-xxsmall;
 }
 
 .sth-toggle-buttons__tab {
    color: $neutral-09;
    background: $neutral-03;
    cursor: pointer;
-   font-size: egeo-get-font-size("body_xsmall");
+   font-size: $egeo-font-size-xxsmall;
 }
 
 .sth-toggle-buttons__tab:hover {

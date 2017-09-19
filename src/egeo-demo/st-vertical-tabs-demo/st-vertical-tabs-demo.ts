@@ -11,18 +11,17 @@
 import { Component } from '@angular/core';
 
 @Component({
-   selector: 'st-button-demo',
-   templateUrl: './st-button-demo.component.html',
-   styleUrls: ['./st-button-demo.component.scss']
+   selector: 'st-vertical-tabs-demo',
+   templateUrl: './st-vertical-tabs-demo.html',
+   styleUrls: ['./st-vertical-tabs-demo.scss']
 })
 
-export class StButtonDemoComponent {
+export class StVerticalTabsDemoComponent {
+   public options: Array<string> = ['Service', 'Nodes', 'Cassandra'];
+   public active: string = this.options[0];
+   public qaTag: string = 'vertical-tabs-example';
 
-   public test1(): void {
-      console.log('You clicked the button 1!');
-   }
-
-   public test2(): void {
-      console.log('You clicked the button 2!');
+   public onChangeOption(active: string): void {
+      this.active = active;
    }
 }

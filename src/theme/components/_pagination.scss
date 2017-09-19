@@ -8,11 +8,11 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-@import '../../../node_modules/@stratio/egeo-ui-base/utils/typography';
+ @import '../constants/fonts';
 @import '../constants/colors';
 
 .sth-pagination {
-   font-family: egeo-get-font(body);
+   font-family: $egeo-nunito-sans;
    background: $neutral-02;
 
    &.themeA {
@@ -25,6 +25,6 @@
 }
 
 .sth-pagination-pages {
-   font-size: egeo-get-font-size(body_xsmall);
+   font-size: $egeo-font-size-xxsmall;
    color: $neutral-09
 }

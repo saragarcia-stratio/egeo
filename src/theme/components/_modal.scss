@@ -8,7 +8,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-@import '../../../node_modules/@stratio/egeo-ui-base/utils/typography';
+@import '../constants/fonts';
 @import '../constants/colors';
 
 .sth-modal {
@@ -23,7 +23,7 @@
 
 .sth-modal-header {
    background-color: $neutral-03;
-   font-family: egeo-get-font(heading);
+   font-family: $egeo-nunito-sans;
    &.st-modal-warning {
       color: $status-warning-default;
    }
@@ -37,33 +37,33 @@
 
 .sth-modal-close-button {
    color: $neutral-09;
-   font-size: egeo-get-font-size(icon_xlarge);
+   font-size: $egeo-font-size-xxlarge;
 }
 
 .sth-modal-title {
    & i {
-      font-size: egeo-get-font-size(icon_large);
+      font-size: $egeo-font-size-xlarge;
    }
    & p {
-      font-size: egeo-get-font-size(head_large);
+      font-size: $egeo-font-size-xxlarge;
    }
 }
 
 .sth-modal-body {
-   font-family: egeo-get-font(body);
+   font-family: $egeo-nunito-sans;
    color: $neutral-10;
 }
 
 .sth-modal-message-big {
-   font-size: egeo-get-font-size(body_xxlarge);
+   font-size: $egeo-font-size-large;
 }
 
 .sth-modal-message-medium {
-   font-size: egeo-get-font-size(body_medium);
+   font-size: $egeo-font-size-xsmall;
 }
 
 .sth-modal-contextual {
    background-color: $neutral-04;
    color: $neutral-08;
-   font-size: egeo-get-font-size(head_xxsmall);
+   font-size: $egeo-font-size-xsmall;
 }

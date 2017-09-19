@@ -8,20 +8,18 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-@import '../../../node_modules/@stratio/egeo-ui-base/utils/typography';
+ @import '../constants/fonts';
 @import '../constants/colors';
 
 .sth-search ::placeholder {
-   font-family: egeo-get-font(body);
-   font-weight: egeo-get-font-weight(normal);
-   font-size: egeo-get-font-size(body_medium);
+   font-family: $egeo-nunito-sans;
+   font-size: $egeo-font-size-xsmall;
    color: $neutral-08;
 }
 
 .sth-search .sth-search-input {
-   font-family: egeo-get-font(body);
-   font-weight: egeo-get-font-weight(normal);
-   font-size: egeo-get-font-size(body_medium);
+   font-family: $egeo-nunito-sans;
+   font-size: $egeo-font-size-xsmall;
    background-color: $neutral-00;
    color: $neutral-09;
    border: 1px solid $neutral-04;
@@ -32,7 +30,7 @@
 }
 
 .sth-search-icon {
-   font-size: egeo-get-font-size(icon_small);
+   font-size: $egeo-font-size-small;
    color: $neutral-08;
 }
 

@@ -8,7 +8,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-@import '../../../node_modules/@stratio/egeo-ui-base/utils/typography';
+ @import '../constants/fonts';
 @import '../constants/colors';
 
 .sth-page-title {
@@ -16,9 +16,8 @@
 }
 
 .sth-page-title-main-title {
-  font-family: egeo-get-font(heading);
-  font-size: egeo-get-font-size(head_xxxlarge);
-  font-weight: egeo-get-font-weight(normal);
+  font-family: $egeo-nunito-sans;
+  font-size: $egeo-font-size-giant;
 }
 
 .sth-page-title-title {
@@ -37,11 +36,17 @@
    .st-temporal-button-style {
       border-radius: 100%;
       border: 2px solid $neutral-08;
+      height: 30px;
+      width: 30px;
       &:active {
          box-shadow: 0 0 0 2px $brand;
       }
       &:hover {
          border: 2px solid $neutral-09 !important;
+      }
+      & i {
+         padding: 0;
+         font-size: $egeo-font-size-xxsmall;
       }
    }
 }

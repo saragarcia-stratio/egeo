@@ -10,16 +10,17 @@
  */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StDemoGeneratorModule } from '@stratio/egeo';
+import { StDemoGeneratorModule, StTabBoxModule } from '@stratio/egeo';
 
-import { StButtonDemoComponent } from './st-button-demo.component';
+import { StTabBoxDemoComponent } from './st-tab-box-demo';
 
 @NgModule({
    imports: [
       CommonModule,
-      StDemoGeneratorModule.withComponents({ components: [StButtonDemoComponent] })
+      StTabBoxModule,
+      StDemoGeneratorModule.withComponents({ components: [StTabBoxDemoComponent] })
    ],
-   declarations: [StButtonDemoComponent],
+   declarations: [StTabBoxDemoComponent],
    providers: []
 })
-export class StButtonDemoModule { }
+export class StTabBoxDemoModule { }

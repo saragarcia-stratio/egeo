@@ -10,16 +10,19 @@
  */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StDemoGeneratorModule } from '@stratio/egeo';
+import { StDemoGeneratorModule, StFooterModule } from '@stratio/egeo';
 
-import { StButtonDemoComponent } from './st-button-demo.component';
+import { StFooterDemoComponent } from './st-footer-demo';
+
+
 
 @NgModule({
    imports: [
       CommonModule,
-      StDemoGeneratorModule.withComponents({ components: [StButtonDemoComponent] })
+      StFooterModule,
+      StDemoGeneratorModule.withComponents({ components: [StFooterDemoComponent] })
    ],
-   declarations: [StButtonDemoComponent],
-   providers: []
+   declarations: [StFooterDemoComponent]
 })
-export class StButtonDemoModule { }
+export class StFooterDemoModule { }
+

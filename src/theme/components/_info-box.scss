@@ -8,7 +8,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-@import '../../../node_modules/@stratio/egeo-ui-base/utils/typography';
+@import '../constants/fonts';
 @import '../constants/colors';
 
 .sth-info-box {
@@ -22,8 +22,8 @@
 
 .sth-info-box__header__icon {
    text-align: center;
-   font-family: egeo-get-font(icon);
-   font-size: egeo-get-font-size(icon_medium);
+   font-family: $egeo-stratio-icons;
+   font-size: $egeo-font-size-large;
    color: $neutral-09;
 }
 
@@ -31,5 +31,5 @@
    text-align: center;
    color: $neutral-09;
    text-transform: uppercase;
-   font-family: egeo-get-font(heading);
+   font-family: $egeo-nunito-sans;
 }

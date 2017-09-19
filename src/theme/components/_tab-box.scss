@@ -8,7 +8,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-@import '../../../node_modules/@stratio/egeo-ui-base/utils/typography';
+@import '../constants/fonts';
 @import '../constants/colors';
 
 .sth-tab-box-left-shadow {
@@ -24,10 +24,10 @@
 }
 
 .sth-tab-box__tab {
-   font-family: egeo-get-font(heading);
+   font-family: $egeo-nunito-sans;
    text-transform: uppercase;
    color: $neutral-08;
-   font-size: egeo-get-font-size("body_xsmall");
+   font-size: $egeo-font-size-xxsmall;
    background: $neutral-04;
    background: linear-gradient(180deg, #e4e4e4 0%, #e4e4e4 74%, #d2d2d2 100%, #d2d2d2 100%);
 }

@@ -8,13 +8,13 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-@import '../../../node_modules/@stratio/egeo-ui-base/utils/typography';
+ @import '../constants/fonts';
 @import '../constants/colors';
 
 .sth-info-card__title {
-   font-size: egeo-get-font-size(body_xxlarge);
+   font-size: $egeo-font-size-large;
+   font-weight: normal;
    color: $neutral-12;
-   font-weight: egeo-get-font-weight(light);
    text-overflow: ellipsis;
 }
 
@@ -23,14 +23,14 @@
 }
 
 .sth-info-card__description {
-   font-size: egeo-get-font-size(body_small);
+   font-size: $egeo-font-size-xxsmall;
    color: $neutral-08;
    text-align: justify;
 }
 
 .sth-info-card__arrow {
    color: $brand;
-   font-size: egeo-get-font-size(icon_small);
+   font-size: $egeo-font-size-medium;
    visibility: hidden;
    margin-right: 40px;
    transition: all 0.2s;
@@ -39,12 +39,12 @@
 
 .sth-info-card__arrow:before {
    content: '\e605';
-   font-family: egeo-get-font(icon);
+   font-family: $egeo-stratio-icons;
 }
 
 .sth-info-card {
    background-color: $neutral-03;
-   font-family: egeo-get-font(body);
+   font-family: $egeo-nunito-sans;
 }
 
 .sth-info-card:hover {

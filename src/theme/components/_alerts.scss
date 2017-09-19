@@ -8,13 +8,13 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-@import '../../../node_modules/@stratio/egeo-ui-base/utils/typography';
+@import '../constants/fonts';
 @import '../constants/colors';
 
 .sth-alert-box {
    width: 100%;
    color: $neutral-00;
-   font-family: egeo-get-font(body);
+   font-family: $egeo-nunito-sans;
    min-height: 100px;
    display: block;
    position: relative;
@@ -32,7 +32,7 @@
    }
 
    .sth-alert-box-close-button {
-      font-size: egeo-get-font-size(icon_xlarge);
+      font-size: $egeo-font-size-xlarge;
       position: absolute;
       top: 13px;
       right: 13px;
@@ -46,15 +46,15 @@
       height: 16px;
       width: 16px;
       line-height: 16px;
-      font-size: egeo-get-font-size(icon_xsmall);
+      font-size: $egeo-font-size-xsmall;
    }
 
    &-message {
       padding: 20px 50px 30px 40px;
       text-align: left;
       &-header {
-         font-size: egeo-get-font-size(body_large);
-         font-weight: egeo-get-font-weight(bold);
+         font-size: $egeo-font-size-small;
+         font-weight: 600;
          margin-bottom: 10px;
          &-title {
             height: 22px;
@@ -62,7 +62,7 @@
          }
       }
       &-body {
-         font-size: egeo-get-font-size(body_small);
+         font-size: $egeo-font-size-xxsmall;
          line-height: 1.29;
       }
       &-footer {

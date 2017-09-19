@@ -8,6 +8,7 @@
        "root": "src/demo-app",
        "outDir": "dist/demo-app",
        "assets": [
+         "assets",
          { "glob": "**/*.*", "input": "../../assets/fonts", "output": "./assets/fonts" }
        ],
        "index": "index.html",

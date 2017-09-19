@@ -11,18 +11,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-   selector: 'st-button-demo',
-   templateUrl: './st-button-demo.component.html',
-   styleUrls: ['./st-button-demo.component.scss']
+   selector: 'st-info-card-demo',
+   templateUrl: './st-info-card-demo.html',
+   styleUrls: ['./st-info-card-demo.scss']
 })
 
-export class StButtonDemoComponent {
-
-   public test1(): void {
-      console.log('You clicked the button 1!');
-   }
-
-   public test2(): void {
-      console.log('You clicked the button 2!');
-   }
-}
+export class StInfoCardDemoComponent {}

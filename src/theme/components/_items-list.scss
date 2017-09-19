@@ -8,14 +8,14 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-@import '../../../node_modules/@stratio/egeo-ui-base/utils/typography';
+@import '../constants/fonts';
 @import '../constants/colors';
 
 .sth-item-list {
    &__title {
-      font-family: egeo-get-font(body);
-      font-size: egeo-get-font-size(body_large);
-      font-weight: egeo-get-font-weight(bold);
+      font-family: $egeo-nunito-sans;
+      font-size: $egeo-font-size-small;
+      font-weight: 600;
       color: $neutral-08;
    }
    &.themeA {
@@ -29,14 +29,14 @@
 
 .sth-item-list__item {
    border-top: 1px solid $neutral-04;
-   font-family: egeo-get-font(body);
-   font-size: egeo-get-font-size(body_small);
+   font-family: $egeo-nunito-sans;
+   font-size: $egeo-font-size-xxsmall;
    color: $neutral-08;
    &:hover {
       background-color: rgba($brand, 0.1);
    }
    &--selected {
       background-color: $neutral-04;
-      font-weight: egeo-get-font-weight(bold);
+      font-weight: 600;
    }
 }

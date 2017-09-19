@@ -9,20 +9,24 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 import { Component } from '@angular/core';
+import { StTab } from '@stratio/egeo';
 
 @Component({
-   selector: 'st-button-demo',
-   templateUrl: './st-button-demo.component.html',
-   styleUrls: ['./st-button-demo.component.scss']
+   selector: 'st-tab-box-demo',
+   templateUrl: './st-tab-box-demo.html',
+   styleUrls: ['./st-tab-box-demo.scss']
 })
 
-export class StButtonDemoComponent {
+export class StTabBoxDemoComponent {
+   tabs: StTab[];
+   selectedTab: StTab;
 
-   public test1(): void {
-      console.log('You clicked the button 1!');
+   constructor() {
+      this.tabs = [{ label: 'Tab1', active: true }, { label: 'Tab2', active: false }];
+      this.selectedTab = this.tabs[0];
    }
 
-   public test2(): void {
-      console.log('You clicked the button 2!');
+   onSelectTab(tab: StTab): void {
+      this.selectedTab = tab;
    }
 }

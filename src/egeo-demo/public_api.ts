@@ -20,6 +20,7 @@ export { StDropdownDemoModule } from './st-dropdown-demo/st-dropdown-demo.module
 export { StDropdownMenuDemoModule } from './st-dropdown-menu-demo/st-dropdown-menu-demo.module';
 export { StFooterDemoModule } from './st-footer-demo/st-footer-demo.module';
 export { StFormDemoModule } from './st-form-demo/st-form-demo.module';
+import { StGridDemoModule } from './st-grid-demo/st-grid-demo.module';
 export { StHeaderDemoModule } from './st-header-demo/st-header-demo.module';
 export { StHelpDemoModule } from './st-help-demo/st-help-demo.module';
 import { StHorizontalTabsDemoModule } from './st-horizontal-tabs-demo/st-horizontal-tabs-demo.module';

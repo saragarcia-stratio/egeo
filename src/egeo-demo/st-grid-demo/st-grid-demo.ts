@@ -1,4 +1,4 @@
-/**
+/*
  * © 2017 Stratio Big Data Inc., Sucursal en España.
  *
  * This software is licensed under the Apache License, Version 2.0.
@@ -8,22 +8,12 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-@import '../../theme/constants/fonts';
+import { Component } from '@angular/core';
 
-:host {
-   display: flex;
-   width: 100%;
-}
+@Component({
+   selector: 'st-grid-demo',
+   templateUrl: './st-grid-demo.html',
+   styleUrls: ['./st-grid-demo.scss']
+})
 
-.side-menu {
-   width: 300px;
-   min-width: 300px;
-   padding: 30px;
-   font-family: $egeo-nunito-sans;
-}
-
-.main-content {
-   padding: 30px;
-   width: 100%;
-   display: flex;
-}
+export class StGridDemoComponent { }

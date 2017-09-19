@@ -8,22 +8,22 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-@import '../../theme/constants/fonts';
+@import '../../theme/constants/index';
 
-:host {
-   display: flex;
-   width: 100%;
-}
-
-.side-menu {
-   width: 300px;
-   min-width: 300px;
-   padding: 30px;
+.grid-example {
    font-family: $egeo-nunito-sans;
+   font-size: $egeo-font-size-small;
+   margin-bottom: 40px;
 }
 
-.main-content {
-   padding: 30px;
-   width: 100%;
-   display: flex;
+.example {
+   .row {
+      background-color: rgba(188, 231, 246, 0.5);
+      ;
+   }
+   .box {
+      margin: 10px 0;
+      background-color: rgba(55, 181, 228, 0.5);
+      color: black;
+   }
 }

@@ -27,15 +27,15 @@
    },
    "homepage": "https://github.com/Stratio/egeo#readme",
    "peerDependencies": {
-      "@angular/common": "~4.2.0",
-      "@angular/core": "~4.2.0",
-      "@angular/forms": "~4.2.0",
-      "@angular/http": "~4.2.0",
-      "@angular/platform-browser-dynamic": "~4.2.0",
-      "@angular/router": "~4.2.0"
+      "@angular/common": "~4.4.3",
+      "@angular/core": "~4.4.3",
+      "@angular/forms": "~4.4.3",
+      "@angular/http": "~4.4.3",
+      "@angular/platform-browser-dynamic": "~4.4.3",
+      "@angular/router": "~4.4.3"
    },
    "dependencies": {
-      "angular2-virtual-scroll": "0.1.7",
+      "angular2-virtual-scroll": "0.3.0",
       "lodash": "4.17.4",
       "reflect-metadata": "0.1.10",
       "tslib": "1.7.1"

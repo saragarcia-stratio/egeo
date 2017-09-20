@@ -100,6 +100,10 @@ export const JSON_SCHEMA: any = {
          'description': 'You can enable or disable this property',
          'type': 'boolean',
          'default': true
+      },
+      'noDescription': {
+         'title': 'Property without description',
+         'type': 'string'
       }
    },
    'required': [

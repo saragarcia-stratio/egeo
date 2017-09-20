@@ -21,7 +21,6 @@ import {
    NG_VALUE_ACCESSOR
 } from '@angular/forms';
 import { StEgeo, StRequired } from '../decorators/require-decorators';
-import { StFormLabelStatus } from '../utils/egeo-form/st-form-label/st-form-label-status.enum';
 
 @Component({
    selector: 'st-switch',

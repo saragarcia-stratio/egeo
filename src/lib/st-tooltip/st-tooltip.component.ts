@@ -8,45 +8,36 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, Renderer} from '@angular/core';
-
-import { EventWindowManager } from '../utils/event-window-manager';
+import { Component, ElementRef, HostBinding, HostListener, Input } from '@angular/core';
 
 @Component({
-   selector: 'st-tooltip',
-   templateUrl: './st-tooltip.component.html',
+   selector: '[st-tooltip]',
    styleUrls: ['./st-tooltip.component.scss'],
-   changeDetection: ChangeDetectionStrategy.OnPush
+   templateUrl: './st-tooltip.component.html'
 })
-export class StTooltip extends EventWindowManager implements OnDestroy {
+export class StTooltipComponent {
 
-   @Input() text: string = '';
-   @Input() showOnClick: boolean;
-   @Input() qaTag: string;
+   @HostBinding('class.st-tooltip') classTooltip: boolean;
+   @HostBinding('class.st-tooltip-on') classTooltipOn: boolean;
 
-   constructor(private elementRef: ElementRef, private renderer: Renderer, private cd: ChangeDetectorRef) {
-      super(renderer, cd, elementRef);
+   private _showOnClick: boolean;
+   get showOnClick(): boolean {
+      return this._showOnClick;
    }
 
-   openTooltip(): void {
-      this.openElement();
+   @Input('showOnClick')
+   set showOnClick(value: boolean) {
+      this._showOnClick = value;
+      this.classTooltip = !value;
    }
 
-   openTooltipOnHover(): void {
-      if (!this.showOnClick) {
-         this.forceCloseOther();
-         this.isActive = true;
-      }
+   @HostListener('document:click', ['$event']) onClick(event: Event): void {
+      this.classTooltipOn = this.showOnClick && this.el.nativeElement.contains(event.target);
    }
 
-   closeTooltipOnHover(): void {
-      if (!this.showOnClick) {
-         this.isActive = false;
-      }
+   constructor(private el: ElementRef) {
+      this.classTooltip = true;
+      this.classTooltipOn = false;
+      this.showOnClick = false;
    }
-
-   ngOnDestroy(): void {
-      this.closeElement();
-   }
-
 }

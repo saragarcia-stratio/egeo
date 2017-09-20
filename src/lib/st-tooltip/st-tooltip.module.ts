@@ -11,11 +11,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { StTooltip } from './st-tooltip.component';
+import { StTooltipComponent } from './st-tooltip.component';
 
 @NgModule({
-   imports: [CommonModule],
-   declarations: [StTooltip],
-   exports: [StTooltip]
+   declarations: [StTooltipComponent],
+   exports: [StTooltipComponent],
+   imports: [CommonModule]
 })
+
 export class StTooltipModule { }

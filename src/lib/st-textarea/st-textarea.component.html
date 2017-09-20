@@ -10,8 +10,7 @@
     SPDX-License-Identifier: Apache-2.0.
 
 -->
-
-<label st-label [tooltip]="contextualHelp" class="st-textarea-title"
+<label st-label [attr.title]="contextualHelp" class="st-textarea-title"
        [ngClass]="{error: showError(), active: focus, disabled: isDisabled}" [attr.for]="name">
    {{label}}
 </label>

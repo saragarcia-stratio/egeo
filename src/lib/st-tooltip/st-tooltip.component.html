@@ -10,10 +10,4 @@
     SPDX-License-Identifier: Apache-2.0.
 
 -->
-<span class="st-tooltip">
-   <span class="st-tooltip-content sth-tooltip-content" [ngClass]="{'on-hover':!showOnClick, 'on-click':showOnClick && isActive}"
-         (click)="openTooltip()" (mouseenter)="openTooltipOnHover()" (mouseleave)="closeTooltipOnHover()">
-      <a [attr.id]="qaTag" class="st-tooltip-content-link sth-tooltip-content-link"><ng-content></ng-content></a>
-      <span class="st-tooltip-content-text sth-tooltip-content-text">{{text}}</span>
-   </span>
-</span>
+<span title=""><ng-content></ng-content></span>

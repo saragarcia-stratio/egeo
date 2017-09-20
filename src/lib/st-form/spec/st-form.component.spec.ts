@@ -1,4 +1,3 @@
-import { StTooltip } from './../../st-tooltip/st-tooltip.component';
 /*
  * © 2017 Stratio Big Data Inc., Sucursal en España.
  *
@@ -19,6 +18,7 @@ import { PipesModule } from '../../pipes/pipes.module';
 import { StInputModule } from '../../st-input/st-input.module';
 import { StFormDirectiveModule } from '../../directives/form/form-directives.module';
 import { StSwitchModule } from '../../st-switch/st-switch.module';
+import { StTooltipComponent } from '../../st-tooltip/st-tooltip.component';
 
 let component: StFormComponent;
 let fixture: ComponentFixture<StFormComponent>;
@@ -52,14 +52,14 @@ describe('StFormComponent', () => {
          for (let propertyId in JSON_SCHEMA.properties) {
             if (JSON_SCHEMA.properties.hasOwnProperty(propertyId)) {
                let property: any = JSON_SCHEMA.properties[propertyId];
-
-               let tooltip: HTMLElement = fixture.nativeElement.querySelector('#' + propertyId + '-label-tooltip');
-
-               if (property.description) {
-                  let tooltipText: Element = (<Element>tooltip.parentNode).querySelector('.st-tooltip-content-text');
-                  expect(tooltipText.innerHTML).toBe(property.description);
-               } else {
-                  expect(tooltip).toBeNull();
+               let input: HTMLElement = fixture.nativeElement.querySelector('#' + propertyId);
+               if (input) {
+                  let tooltip: Element = (<Element>input.parentNode).querySelector('label');
+                  if (property.description) {
+                     expect(tooltip.getAttribute('title')).toBe(property.description);
+                  } else {
+                     expect(tooltip.getAttribute('title')).toBeNull();
+                  }
                }
             }
          }

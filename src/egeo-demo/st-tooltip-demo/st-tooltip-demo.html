@@ -12,30 +12,11 @@
 -->
 <section class="container-liquid">
    <div class="col-sm-8 contains-tooltip">
-      <h3>Label with icon (Showing on click)</h3>
-      <st-tooltip text="Ports 5666, 9042 and 9160 must be accessible from the Stratio Admin." [showOnClick]="true" [qaTag]="qaTag + '-example1-contextual-help'">
-         <span>Port</span>
-          <span class="icon-help2"></span>
-      </st-tooltip>
-   </div>
-   <div class="col-sm-8 contains-tooltip">
-      <h3>Label with icon 2 (Showing on click)</h3>
-      <st-tooltip text="only one tooltip should be open at the same time" [showOnClick]="true" [qaTag]="qaTag + '-example2-contextual-help'">
-         <span> Port 2</span>
-         <span class="icon-help2"></span>
-      </st-tooltip>
-   </div>
-   <div class="col-sm-8 contains-tooltip">
-      <h3>Icon (Showing on hover)</h3>
-      <st-tooltip text="This is the tooltip activated on hover" [showOnClick]="false" [qaTag]="qaTag + '-example3-contextual-help'">
-          <span class="icon-help1"></span>
-      </st-tooltip>
+      <h3>Icon</h3>
+      <span st-tooltip id="example1" class="icon-help1" title="This is the tooltip activated on hover"></span>
    </div>
 
    <div class="col-sm-8 contains-tooltip">
-      <h3>Icon 2 (Showing on hover)</h3>
-      <st-tooltip text="This is the tooltip activated on hover" [showOnClick]="false" [qaTag]="qaTag + '-example3-contextual-help'">
-         <span class="icon-help1"></span>
-      </st-tooltip>
+      <h3 st-tooltip id="example2" title="This is the tooltip activated on hover">Label <span class="icon-help1"></span></h3>
    </div>
 </section>

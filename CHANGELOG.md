@@ -34,6 +34,8 @@
 * st-horizontal-tabs: Removed functionality to display disabled tabs
 * st-button: Removed component now use native tag and classes
 * st-select: Output emitted when select is changed is now the value of the option instead of the entire option
+* st-form-label: Deleted, replaced by st-label
+* st-tooltip: New behaviour based on native tag
 
 **Refactor**
 

@@ -8,46 +8,40 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-.st-tooltip-content {
-   display: block;
-   cursor: pointer;
-   width: 100%;
-   float: left;
-}
+:host {
+   &.st-tooltip,
+   &.st-tooltip-on {
+      position: relative;
 
-.st-tooltip-content-text {
-   position: absolute;
-   width: 100%;
-   max-width: 240px;
-   padding: 6px;
-   line-height: 20px;
-   visibility: hidden;
-   border-radius: 0;
-}
+      &:before {
+         content: attr(title);
+      }
 
-.st-tooltip-content-text:before {
-   content: '';
-   position: absolute;
-   top: 100%;
-   left: 12px;
-   width: 0;
-   height: 0;
-}
+      &:after {
+         content: " ";
+      }
 
-.st-tooltip-content-text:after {
-   content: '';
-   position: absolute;
-   top: 100%;
-   left: 13px;
-   width: 0;
-   height: 0;
-}
+      &:before,
+      &:after {
+         pointer-events: none;
+         position: absolute;
+      }
+   }
 
-.st-tooltip-content:hover.on-hover .st-tooltip-content-text,
-.st-tooltip-content.on-click .st-tooltip-content-text {
-   visibility: visible;
-   opacity: 1;
-   bottom: 25px;
-   left: 0;
-   z-index: 999;
+   &.st-tooltip {
+      &:before,
+      &:after {
+         opacity: 0;
+         visibility: hidden;
+      }
+   }
+
+   &.st-tooltip:hover,
+   &.st-tooltip-on {
+      &:before,
+      &:after {
+         opacity: 1;
+         visibility: visible;
+      }
+   }
 }

@@ -9,93 +9,91 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
 
-// Component
-import { StTooltip } from './st-tooltip.component';
+import { StTooltipComponent } from './st-tooltip.component';
 
+@Component({
+   template: `<span st-tooltip></st-tooltip>`
+})
+class TestStTooltipComponent { }
 
-let component: StTooltip;
-let fixture: ComponentFixture<StTooltip>;
-let fakeText: string = 'This text will be displayed in our tooltip';
+const id: string = 'tooltipId';
+const originalContent: string = 'This is the original element content';
+const tooltipText: string = 'This text will be displayed in our tooltip';
+
+let component: StTooltipComponent;
+let fixture: ComponentFixture<TestStTooltipComponent>;
 let nativeElement: any;
+let template: string = '';
+
+function createTestComponent(customTemplate?: string): Promise<ComponentFixture<TestStTooltipComponent>> {
+   if (customTemplate) {
+      TestBed.overrideComponent(TestStTooltipComponent, {
+         set: {
+            template: customTemplate
+         }
+      });
+   }
+   return TestBed.compileComponents();
+}
 
 describe('StTooltip', () => {
 
    beforeEach(async(() => {
       TestBed.configureTestingModule({
-         imports: [FormsModule, ReactiveFormsModule],
-         declarations: [StTooltip]
-      })
-         .compileComponents();  // compile template and css
+         declarations: [
+            StTooltipComponent,
+            TestStTooltipComponent
+         ]
+      });
    }));
 
-   beforeEach(() => {
-      fixture = TestBed.createComponent(StTooltip);
-      component = fixture.componentInstance;
-      component.isActive = false;
-      nativeElement = fixture.nativeElement;
-   });
+   it('It has to display content inside a span without a title', async(() => {
+      template = '<span st-tooltip id="' + id + '" title="' + tooltipText + '">' + originalContent + '</span>';
+      createTestComponent(template).then(() => {
+         fixture = TestBed.createComponent(TestStTooltipComponent);
+         nativeElement = fixture.nativeElement;
+         fixture.detectChanges();
 
-   it('It has to display a text in its dialog', () => {
-      component.text = fakeText;
+         let tooltip: Element = nativeElement.querySelector('.st-tooltip');
+         expect(tooltip).toBeDefined();
 
-      fixture.detectChanges();
+         let span: Element = tooltip.querySelector('span');
+         expect(span.getAttribute('title')).toBe('');
+         expect(span.innerHTML).toContain(originalContent);
+      });
+   }));
 
-      expect(nativeElement.querySelector('.st-tooltip .st-tooltip-content span').innerHTML).toEqual(fakeText);
-   });
+   it('It can be configured to be displayed and hidden when user clicks on its associated content', async(() => {
+      template = '<span st-tooltip id="' + id + '" title="' + tooltipText + '">' + originalContent + '</span>';
+      createTestComponent(template).then(() => {
+         fixture = TestBed.createComponent(TestStTooltipComponent);
+         nativeElement = fixture.nativeElement;
+         fixture.detectChanges();
 
-   it('It can be configured to be displayed and hidden when user clicks on its associated content', () => {
-      component.showOnClick = true;
-      component.isActive = false;
-      component.text = fakeText;
+         let tooltip: Element = nativeElement.querySelector('.st-tooltip');
+         expect(tooltip).toBeDefined();
 
-      nativeElement.querySelector('.st-tooltip .st-tooltip-content').click();
-      fixture.detectChanges();
+         let span: Element = tooltip.querySelector('span');
+         expect(span.getAttribute('title')).toBe('');
+         expect(span.innerHTML).toContain(originalContent);
+      });
+   }));
 
-      expect(component.isActive).toBeTruthy();
-      expect(nativeElement.querySelector('.st-tooltip .st-tooltip-content.on-click')).toBeDefined();
+   it('It can be configured to be displayed and hidden when user puts the mouse on its associated content', async(() => {
+      template = '<span st-tooltip id="' + id + '" title="' + tooltipText + '">' + originalContent + '</span>';
+      createTestComponent(template).then(() => {
+         fixture = TestBed.createComponent(TestStTooltipComponent);
+         nativeElement = fixture.nativeElement;
+         fixture.detectChanges();
 
-      nativeElement.querySelector('.st-tooltip .st-tooltip-content').click();
-      fixture.detectChanges();
+         let tooltip: Element = nativeElement.querySelector('.st-tooltip');
+         expect(tooltip).toBeDefined();
 
-      expect(component.isActive).toBeFalsy();
-      expect(nativeElement.querySelector('.st-tooltip .st-tooltip-content.on-click')).toBe(null);
-   });
-
-   it('It can be configured to be displayed and hidden when user puts the mouse on its associated content', () => {
-      component.showOnClick = false;
-      component.isActive = false;
-      component.text = fakeText;
-
-      expect(nativeElement.querySelector('.st-tooltip .st-tooltip-content.on-hover')).toBeDefined();
-
-      nativeElement.querySelector('.st-tooltip .st-tooltip-content').dispatchEvent(new Event('mouseenter'));
-
-      fixture.detectChanges();
-      expect(component.isActive).toBeTruthy();
-
-      nativeElement.querySelector('.st-tooltip .st-tooltip-content').dispatchEvent(new Event('mouseleave'));
-      fixture.detectChanges();
-
-      expect(component.isActive).toBeFalsy();
-   });
-
-   it('It can be configured to be displayed and hidden when user clicks and hover', () => {
-      component.showOnClick = true;
-      component.isActive = false;
-      component.text = fakeText;
-
-      expect(nativeElement.querySelector('.st-tooltip .st-tooltip-content.on-hover')).toBeNull();
-
-      nativeElement.querySelector('.st-tooltip .st-tooltip-content').dispatchEvent(new Event('mouseenter'));
-
-      fixture.detectChanges();
-      expect(component.isActive).toBeFalsy();
-
-      nativeElement.querySelector('.st-tooltip .st-tooltip-content').dispatchEvent(new Event('mouseleave'));
-      fixture.detectChanges();
-
-      expect(component.isActive).toBeFalsy();
-   });
+         let span: Element = tooltip.querySelector('span');
+         expect(span.getAttribute('title')).toBe('');
+         expect(span.innerHTML).toContain(originalContent);
+      });
+   }));
 });

@@ -8,29 +8,15 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { Component, ElementRef, Input } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { StTooltipComponent } from '../st-tooltip';
 
 @Component({
    host: {class: 'st-label'},
    selector: '[st-label]',
-   styleUrls: ['./st-label.component.scss'],
+   styleUrls: ['../st-tooltip/st-tooltip.component.scss'],
    templateUrl: './st-label.component.html'
 })
 
-export class StLabelComponent {
-   @Input() tooltip: string;
-
-   private host: any;
-
-   constructor(private el: ElementRef) {
-      this.host = this.el.nativeElement;
-      this.tooltip = '';
-   }
-
-   getId(sufix?: string): string {
-      if (this.host.id) {
-         return this.host.id + sufix;
-      }
-      return '';
-   }
-}
+export class StLabelComponent extends StTooltipComponent { }

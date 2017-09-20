@@ -16,7 +16,6 @@ import { StDropdownMenuModule } from './st-dropdown-menu/st-dropdown-menu.module
 import { StDropdownModule } from './st-dropdown/st-dropdown.module';
 import { StFooterModule } from './st-footer/st-footer.module';
 import { StFormDirectiveModule } from './directives/form/form-directives.module';
-import { StFormLabelModule } from './utils/egeo-form/st-form-label/st-form-label.module';
 import { StFormModule } from './st-form/st-form.module';
 import { StHeaderModule } from './st-header/st-header.module';
 import { StHelpModule } from './st-help/st-help.module';
@@ -56,7 +55,6 @@ export const DECLARATIONS: any[] = [
    StDropdownModule,
    StFooterModule,
    StFormDirectiveModule,
-   StFormLabelModule,
    StFormModule,
    StHeaderModule,
    StHelpModule,

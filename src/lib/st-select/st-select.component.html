@@ -12,7 +12,7 @@
 -->
 <div class="st-select" [attr.id]="qaTag">
 
-   <label st-label [ngClass]="{error: showError(), active: isFocused, disabled: disabled}" name="name" [attr.id]="qaTag + '-label'" [tooltip]="tooltip">
+   <label st-label [ngClass]="{error: showError(), active: isFocused, disabled: disabled}" name="name" [attr.id]="qaTag + '-label'" [attr.title]="tooltip">
       {{label}}
    </label>
 

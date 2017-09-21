@@ -4,7 +4,7 @@
 
 * Pending changelog
 
-## 4.0.0 (upcoming)
+## 4.0.0 (September 21, 2017)
 
 **Fixed bugs:**
 

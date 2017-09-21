@@ -40,7 +40,26 @@ export class StWidgetComponent {
 
    public widgetId: string;
 
+   private _draggable: boolean = false;
+   private _dragging: boolean = false;
+
    constructor(private el: ElementRef) {
       this.widgetId = this.el.nativeElement.id ? this.el.nativeElement.id + '-widget' : undefined;
+   }
+
+   public get dragging(): boolean {
+      return this._dragging;
+   }
+
+   public set dragging(value: boolean) {
+      this._dragging = value;
+   }
+
+   public get draggable(): boolean {
+      return this._draggable;
+   }
+
+   public set draggable(value: boolean) {
+      this._draggable = value;
    }
 }

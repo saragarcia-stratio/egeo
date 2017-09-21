@@ -17,6 +17,4 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class StWidgetDemoComponent {
-
-}
+export class StWidgetDemoComponent {}

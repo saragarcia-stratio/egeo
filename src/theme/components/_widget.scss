@@ -24,10 +24,15 @@
       border-bottom: $border;
       .drag-drop-action{
          color: $action-secondary-04;
+
       }
       .setting-action{
          font-size: $egeo-font-size-large;
          color: $action-secondary-04;
+
+         :hover{
+            color: $action-secondary-07
+         }
       }
    }
 
@@ -39,5 +44,9 @@
 
    &__body .resize-action::after{
       border: 1px solid $action-secondary-03;
+   }
+   &.dragging{
+      border-color: $input-field-onfocus;
+      box-shadow:  0 1px 4px 2px $neutral-05;
    }
 }

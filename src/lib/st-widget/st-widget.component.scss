@@ -41,6 +41,7 @@ $height-header: 50px;
          .setting-action {
             cursor: pointer;
             float: right;
+            visibility: hidden;
          }
       }
 
@@ -61,6 +62,7 @@ $height-header: 50px;
             overflow: hidden;
             position: absolute;
             right: 6px;
+            visibility: hidden;
             width: 20px;
 
          }
@@ -78,6 +80,15 @@ $height-header: 50px;
          height: 100%;
          width: 100%;
          overflow: hidden;
+      }
+
+      &:hover{
+
+         .resize-action,
+         .setting-action{
+            visibility: visible;
+         }
+
       }
    }
 

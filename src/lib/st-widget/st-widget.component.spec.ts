@@ -11,6 +11,7 @@
 
 import { ComponentFixture, async, TestBed } from '@angular/core/testing';
 import { Component, DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 import { StWidgetComponent } from './st-widget.component';
 
@@ -71,16 +72,50 @@ describe('StWidgetComponent', () => {
       });
    }));
 
-
-   it('If host element has not defined id , Element Id should be NULL', async(() => {
-      template = '<st-widget></st-widget>';
+   it('when element is initilialized, both draggable and dragging variable are false', async(() => {
+      template = '<st-widget id="' + elementId + '"></st-widget>';
 
       createTestComponent(template).then(() => {
          fixture = TestBed.createComponent(TestStWidgetComponent);
          fixture.detectChanges();
          nativeElement = fixture.nativeElement;
 
-         expect(nativeElement.querySelector('#' + elementId + '-widget')).toBeNull();
+         expect(nativeElement.draggable).toBeFalsy();
+         expect(nativeElement.dragging).toBeFalsy();
+      });
+   }));
+
+   it('when we interact with mouse event , draggable variable should change its value', async(() => {
+      template = '<st-widget id="' + elementId + '"></st-widget>';
+
+      createTestComponent(template).then(() => {
+         fixture = TestBed.createComponent(TestStWidgetComponent);
+         fixture.detectChanges();
+         nativeElement = fixture.nativeElement;
+         let el = fixture.debugElement.query(By.css('.st-widget'));
+
+         el.triggerEventHandler('mousedown', nativeElement.draggable = true);
+         expect(nativeElement.draggable).toBeTruthy();
+
+         el.triggerEventHandler('mousedup', nativeElement.draggable = false);
+         expect(nativeElement.draggable).toBeFalsy();
+      });
+   }));
+
+   it('when we interact with drag event, dragging variable should change its value', async(() => {
+      template = '<st-widget id="' + elementId + '"></st-widget>';
+
+      createTestComponent(template).then(() => {
+         fixture = TestBed.createComponent(TestStWidgetComponent);
+         fixture.detectChanges();
+         nativeElement = fixture.nativeElement;
+         let el = fixture.debugElement.query(By.css('.st-widget'));
+
+         el.triggerEventHandler('dragstart', nativeElement.dragging = true);
+         expect(nativeElement.dragging).toBeTruthy();
+
+         el.triggerEventHandler('dragend', nativeElement.dragging = false);
+         expect(nativeElement.dragging).toBeFalsy();
       });
    }));
 });

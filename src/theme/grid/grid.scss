@@ -148,6 +148,7 @@
       flex-direction: row;
       margin: 0 -#{$egeo-grid---half-gutter-width};
       max-width: calc(100% + #{$egeo-grid---gutter-width});
+      flex-wrap: wrap;
    }
 
    .row.reverse {

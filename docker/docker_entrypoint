@@ -1,6 +1,6 @@
 #!/bin/sh
 
-printf "Starting nginx... Egeo Starter should running...\n * App port: 8080\n"
+printf "Starting nginx... Egeo Starter should running...\n * App port: 9502\n"
 nginx
 
 echo "Pulling log"

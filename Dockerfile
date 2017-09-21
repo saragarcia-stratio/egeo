@@ -18,7 +18,7 @@ COPY docker/nginx.conf /etc/nginx/nginx.conf
 
 RUN chmod 755 /docker_entrypoint
 
-EXPOSE 8080
+EXPOSE 9502
 
 ENTRYPOINT ["/docker_entrypoint"]
 

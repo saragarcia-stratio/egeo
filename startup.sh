@@ -8,7 +8,16 @@ while true; do
     read -p "Do you want to download the latest of repo? (CAUTION!!! This erase any local change) [y/n] " yn
     case $yn in
         [Yy]* ) git checkout -- . && git clean -fd && git pull; break;;
-        [Nn]* ) exit;;
+        [Nn]* ) echo "continue"; break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+while true; do
+    read -p "Do you want to reinstall packages? [y/n] " yn
+    case $yn in
+        [Yy]* ) npm i; break;;
+        [Nn]* ) echo "continue"; break;;
         * ) echo "Please answer yes or no.";;
     esac
 done
@@ -24,6 +33,6 @@ fi
 
 # Generate docker and run
 docker build -t egeo-demos .
-docker run -p 8080:8080 -itd egeo-demos
+docker run -p 9502:9502 -itd egeo-demos
 
 set -x

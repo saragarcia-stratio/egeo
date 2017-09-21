@@ -8,7 +8,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-@import '../../theme/constants/fonts';
+@import '../../theme/constants/index';
 
 :host {
    display: flex;
@@ -26,4 +26,18 @@
    padding: 30px;
    width: 100%;
    display: flex;
+}
+
+.behind-notification {
+   position: absolute;
+   top: 5px;
+   right: 5px;
+   padding: 5px 15px;
+   font-family: $egeo-nunito-sans-bold;
+   color: $neutral-01;
+   background-color: $status-warning-default;
+
+   &:hover {
+      background-color: $status-warning-hover;
+   }
 }

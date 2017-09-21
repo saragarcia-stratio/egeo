@@ -13,3 +13,9 @@ declare var module: NodeModule;
 interface NodeModule {
   id: string;
 }
+
+interface Window { egeo_demo: CONFIG; }
+
+interface CONFIG {
+   CREATION_DATE: Date;
+}

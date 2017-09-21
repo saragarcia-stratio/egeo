@@ -11,21 +11,25 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
 import { EgeoModule } from '@stratio/egeo';
 import { EgeoDemoModule } from '@stratio/egeo-demo';
 
 import { AppComponent } from './app/app.component';
 import { AppRoutingModule } from './app/app-routing.module';
+import { AppService } from './app/app.service';
 
 @NgModule({
    imports: [
       BrowserModule,
       AppRoutingModule,
       RouterModule,
+      HttpModule,
       EgeoModule.forRoot(),
       EgeoDemoModule
    ],
    declarations: [AppComponent],
+   providers: [AppService],
    bootstrap: [AppComponent]
 })
 export class DemoAppModule { }

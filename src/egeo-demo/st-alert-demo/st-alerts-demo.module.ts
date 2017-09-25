@@ -18,8 +18,6 @@ import {
 
 import { StAlertsDemoComponent } from './st-alerts-demo';
 
-
-
 @NgModule({
    imports: [
       CommonModule,

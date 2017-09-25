@@ -13,10 +13,12 @@ import { CommonModule } from '@angular/common';
 import { StBreadcrumbsModule, StDemoGeneratorModule } from '@stratio/egeo';
 
 import { StBreadcrumbsDemoComponent } from './st-breadcrumbs-demo';
+import { StDemoLoggerModule } from '../shared/st-demo-logger/st-demo-logger.module';
 
 @NgModule({
    imports: [
       CommonModule,
+      StDemoLoggerModule.withService(),
       StBreadcrumbsModule,
       StDemoGeneratorModule.withComponents({
          components: [StBreadcrumbsDemoComponent]
@@ -25,4 +27,4 @@ import { StBreadcrumbsDemoComponent } from './st-breadcrumbs-demo';
    declarations: [StBreadcrumbsDemoComponent],
    providers: []
 })
-export class StBreadcrumbsDemoModule {}
+export class StBreadcrumbsDemoModule { }

@@ -17,7 +17,7 @@
 -->
 <st-dropdown-menu [items]="items" [qaTag]="qaTag + 'menu'" (change)="changeOption($event)" [ngClass]="themeClass" class="sth-dropdown-menu" [active]="isActive" [placement]="'top-start'">
    <div class="sth-dropdown-container" [style.width]="width + 'px'">
-      <button tabindex="0" [style.width]="width + 'px'" [attr.aria-expanded]="isActive" [attr.id]="qaTag + 'button'" aria-haspopup="true" class="button sth-dropdown-button"
+      <button type="button" tabindex="0" [style.width]="width + 'px'" [attr.aria-expanded]="isActive" [attr.id]="qaTag + 'button'" aria-haspopup="true" class="button sth-dropdown-button"
           [ngClass]="themeClass" #buttonId (click)="onClickEvent($event)" [disabled]="disabled">
          <span>{{button}}</span>
          <i class="icon-arrow4_down"></i>

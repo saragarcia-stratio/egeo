@@ -1,6 +1,12 @@
 # Changelog
 
-## 2.5.1 (upcoming)
+## 2.5.2 (upcoming)
+
+**Fixed bugs:**
+
+* st-dropdown: Fix bug by clicking on the dropdown within a form, avoiding sending it.
+
+## 2.5.1 (September 07, 2017)
 
 **Fixed bugs:**
 

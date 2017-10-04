@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.5.2 (upcoming)
+## 2.5.2 (October 04, 2017)
 
 **Fixed bugs:**
 

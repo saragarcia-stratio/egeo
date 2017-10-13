@@ -8,37 +8,67 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-@import '../../../node_modules/@stratio/egeo-ui-base/utils/typography';
-@import '../constants/colors';
 
-.sth-dropdown-menu {
-   background-color: $neutral-00;
-   font-family: egeo-get-font(body);
-   font-weight: egeo-get-font-weight(normal);
-   font-size: egeo-get-font-size(body_small);
-   color: $brand;
-}
+ @import '../utils/forms';
 
-.sth-dropdown-menu-parent {
-   h3 {
-      font-size: egeo-get-font-size(body_xxxsmall);
-      border-bottom: 1px solid $neutral-04;
-   }
-}
+ %select-dropdown-menu-title {
+    color: $action-secondary-06;
+    font-family: $egeo-nunito-sans-light;
+    font-size: $egeo-font-size-xxsmall;
+    line-height: $egeo-line-height-xxxsmall;
+ }
+ %select-dropdown-menu-default {
+    color: $action-secondary-07;
+    font-family: $egeo-nunito-sans;
+    font-size: $egeo-font-size-xsmall;
+    line-height: $egeo-line-height-xsmall;
+ }
 
-.sth-dropdown-menu-item {
-   font-size: egeo-get-font-size(body_xsmall);
-   color: $neutral-08;
-   &:hover {
-      color: $brand;
-      background-color: $neutral-02;
-   }
-}
+ .st-dropdown-menu {
+    background-color: $neutral-00;
+    border-radius: 4px;
+    border: solid 1px $neutral-07;
 
-.sth-dropdown-menu-without-results {
-   font-family: egeo-get-font(body);
-   font-size: egeo-get-font-size(body_xxsmall);
-   line-height: 1.5;
-   text-align: left;
-   color: $neutral-09;
-}
+    &.active {
+       border-color: $input-field-onfocus;
+    }
+
+    ul {
+       list-style: none;
+       overflow-y: auto;
+    }
+
+    h3 span {
+       @extend %select-dropdown-menu-title;
+       padding:13px 15px 2px;
+       display: flex;
+       border-bottom: 1px solid $action-secondary-03;
+    }
+
+    .st-dropdown-menu-item {
+       padding: 9px 15px;
+       color: $action-secondary-07;
+       font-family: $egeo-nunito-sans;
+       font-size: $egeo-font-size-xsmall;
+       line-height: $egeo-line-height-xsmall;
+
+       &:hover {
+          background-color: $action-primary-light;
+       }
+
+       &.selected {
+         background-color: $action-primary-light;
+      }
+
+       i {
+          display: inline-flex;
+          margin-right: 4px;
+       }
+
+       span {
+          @extend %select-dropdown-menu-default;
+          display: inline-flex;
+          white-space: nowrap;
+       }
+    }
+ }

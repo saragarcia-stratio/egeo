@@ -9,91 +9,29 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 
-/// tipography EXTENDS (@extend %button-label-regular;):
-
 @import '../utils/forms';
-
-%select-dropdown-default {
-   color: $action-secondary-07;
-   font-family: $egeo-nunito-sans;
-   font-size: $egeo-font-size-xsmall;
-   line-height: $egeo-line-height-xsmall;
-}
-
-/// STYLES:
 .st-select {
 
    .st-label {
-      @extend %form-label-default;
       display: flex;
       width: 100%;
    }
 
-   .combo-menu {
+   &.st-select-opened {
       .st-input {
-         position: relative;
-         display: block;
-         background-color: $neutral-00;
-         border-radius: 4px;
-         border:solid 1px $neutral-07;
-         height: 40px;
-
-         &.active {
-            border-color: $input-field-onfocus;
-
-            i {
-               color: $action-primary-default;
-            }
-         }
-
-         &.disabled {
-            border-color: $neutral-05;
-            color: $neutral-05;
-            i {
-               color: $neutral-05;
-            }
-         }
-
-         &.error {
-            border-color: $input-field-error;
-            .st-input-remove-default {
-               color: $status-critical-default;
-            }
-         }
-
-         .arrow {
-            position: absolute;
-            right: 15px;
-            top: 12px;
-         }
-
+         border-bottom: none;
       }
-
-      .dropdown-menu {
-         background-color: $neutral-00;
-         border-radius:0 0 4px 4px;
-         border: solid 1px $neutral-07;
-         border-top: none;
-         position: absolute;
-         top: 35px;
-         padding: 0;
-
-         &.active,
-         &.active ul {
-            border-color: $input-field-onfocus;
-         }
-
-         .sth-dropdown-menu-item {
-            @extend %select-dropdown-default;
-         }
-
-         ul {
-            margin-top: 2px !important;
-            border-top: solid 1px $neutral-07;
-         }
+      .st-label {
+         color: $action-primary-default;
+      }
+      .arrow {
+         color: $action-primary-default;
+      }
+      .st-input {
+         border-radius: 4px 4px 0 0;
+      }
+      .st-dropdown-menu {
+         border-radius: 0 0 4px 4px;
       }
    }
 }
-
-
-

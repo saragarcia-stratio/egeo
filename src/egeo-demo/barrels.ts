@@ -12,7 +12,6 @@ import { StAlertsDemoModule } from './st-alert-demo/st-alerts-demo.module';
 import { StBreadcrumbsDemoModule } from './st-breadcrumbs-demo/st-breadcrumbs-demo.module';
 import { StButtonDemoModule } from './st-button-demo/st-button-demo.module';
 import { StCheckboxDemoModule } from './st-checkbox-demo/st-checkbox-demo.module';
-import { StDropdownDemoModule } from './st-dropdown-demo/st-dropdown-demo.module';
 import { StDropdownMenuDemoModule } from './st-dropdown-menu-demo/st-dropdown-menu-demo.module';
 import { StFileButtonDemoModule } from './st-file-button-demo/st-file-button-demo.module';
 import { StFooterDemoModule } from './st-footer-demo/st-footer-demo.module';
@@ -55,7 +54,6 @@ export const EGEO_DEMO_MODULES: any[] = [
    StBreadcrumbsDemoModule,
    StButtonDemoModule,
    StCheckboxDemoModule,
-   StDropdownDemoModule,
    StDropdownMenuDemoModule,
    StFileButtonDemoModule,
    StFooterDemoModule,

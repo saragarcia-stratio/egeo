@@ -16,10 +16,6 @@
     @extend %st-form-control;
  }
 
-.st-textarea-title {
-   @extend %form-label-default;
-}
-
 .st-textarea-error-message {
    font-size: $egeo-font-size-xxxsmall;
    color: $status-critical-default;

@@ -8,20 +8,8 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { Component } from '@angular/core';
-
-@Component({
-   selector: 'st-button-demo',
-   templateUrl: './st-button-demo.component.html'
-})
-
-export class StButtonDemoComponent {
-
-   public test1(): void {
-      console.log('You clicked the button 1!');
-   }
-
-   public test2(): void {
-      console.log('You clicked the button 2!');
-   }
+export enum StPopPlacement { TOP, TOP_START, TOP_END, BOTTOM, BOTTOM_START, BOTTOM_END }
+export class StPopOffset {
+   x?: number = 0;
+   y?: number = 0;
 }

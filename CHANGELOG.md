@@ -1,6 +1,6 @@
 # Changelog
 
-## 4.1.0 (upcoming)
+## 5.0.0 (upcoming)
 
 **Fixed bugs:**
 

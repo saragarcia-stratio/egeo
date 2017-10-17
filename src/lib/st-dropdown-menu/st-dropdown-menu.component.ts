@@ -52,7 +52,7 @@ export class StDropdownMenuComponent implements AfterViewInit, OnChanges {
    /** @Input {StDropDownMenuItem[] | StDropDownMenuGroup[]} [items=\[\]] List of items or groups of them to show in menu */
    @Input() items: StDropDownMenuItem[] | StDropDownMenuGroup[] = [];
    /* tslint:disable-next-line:max-line-length */
-   /** @Input {StPopPlacement} [placement=StPopPlacement.BOTOM_START] Posible possitions of menu with respect element to attach */
+   /** @Input {StPopPlacement} [placement=StPopPlacement.BOTTOM_START] Possible positions of menu with respect element to attach */
    @Input() placement: StPopPlacement = StPopPlacement.BOTTOM_START;
    /** @Input {string} [emptyListMessage=''] Message to show in case of empty list */
    @Input() emptyListMessage: string = '';
@@ -65,7 +65,7 @@ export class StDropdownMenuComponent implements AfterViewInit, OnChanges {
    /** @Input {boolean} [styleSelected=true] If true, move selected item to top in menu when open */
    @Input() styleSelected: boolean = true;
    /** @Input {StPopOffset} [offset={x: 0 , y: 0}] For position with offset in x o y axis */
-   @Input() offset: StPopOffset = { y: 0 };
+   @Input() offset: StPopOffset = { x: 0, y: 0 };
 
    /** @output {StDropDownMenuItem} [change] Event emitted when user select an item */
    @Output() change: EventEmitter<StDropDownMenuItem> = new EventEmitter<StDropDownMenuItem>();
@@ -73,7 +73,7 @@ export class StDropdownMenuComponent implements AfterViewInit, OnChanges {
    @ViewChild('buttonId') buttonElement: ElementRef;
    @ViewChild('itemList') itemListElement: ElementRef;
 
-   widthMenu: string;
+   widthMenu: string = '0px';
 
    private _itemHeight: number = 42;
 
@@ -93,11 +93,11 @@ export class StDropdownMenuComponent implements AfterViewInit, OnChanges {
    }
 
    get menuMaxHeight(): string {
-      return `${this._itemHeight * this.itemsBeforeScroll}px`;
+      return this.itemsBeforeScroll ? `${this._itemHeight * this.itemsBeforeScroll}px` : null;
    }
 
    getItemId(value: any | undefined): string | null {
-      return this.componentId !== null ? `${this.componentId}-option-${this.getItemValueMerged(value)}` : null;
+      return this.componentId !== null && value !== undefined ? `${this.componentId}-option-${this.getItemValueMerged(value)}` : null;
    }
 
    isDropDownGroup(value: StDropDownMenuItem[] | StDropDownMenuGroup[]): value is StDropDownMenuGroup[] {
@@ -130,19 +130,17 @@ export class StDropdownMenuComponent implements AfterViewInit, OnChanges {
    @HostListener('window:resize')
    @HostListener('window:load')
    updateWidth(): void {
-      if (this.buttonElement && this.buttonElement.nativeElement) {
-         const button: HTMLElement = this.buttonElement.nativeElement;
+      const button: HTMLElement = this.buttonElement.nativeElement;
 
-         if (button.children && button.children.length > 0) {
-            this.widthMenu = button.children[0].getBoundingClientRect().width + 'px';
-         } else {
-            this.widthMenu = button.getBoundingClientRect().width + 'px';
-         }
+      if (button.children && button.children.length > 0) {
+         this.widthMenu = button.children[0].getBoundingClientRect().width + 'px';
+      } else {
+         this.widthMenu = button.getBoundingClientRect().width + 'px';
       }
       this.cd.markForCheck();
    }
 
    private getItemValueMerged(value: any): string {
-      return value ? value.toString().replace(/\s+/g, '_') : '';
+      return value.toString().replace(/\s+/g, '_');
    }
 }

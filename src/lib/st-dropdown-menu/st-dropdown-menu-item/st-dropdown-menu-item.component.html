@@ -12,12 +12,11 @@
 -->
 <li
    [attr.tabindex]="index"
+   [ngClass]="{'selected': isSelected}"
    class="st-dropdown-menu-item"
    (click)="onChangeItem()"
    (keyup.enter)="onChangeItem()"
-   [ngClass]="{'selected': isSelected && styleSelected}"
    *ngIf="hasItem">
-
-      <i *ngIf="item && item.icon" [ngClass]="item.icon"></i>
-      <span *ngIf="item">{{item.label}}</span>
+      <i *ngIf="hasIcon" [ngClass]="icon"></i>
+      <span>{{item.label}}</span>
 </li>

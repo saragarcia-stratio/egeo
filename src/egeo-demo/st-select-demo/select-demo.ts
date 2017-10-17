@@ -28,7 +28,7 @@ export class SelectDemoComponent {
    reactiveForm: FormGroup; // our model driven form
    reactiveErrorMessage: string | undefined = undefined;
 
-   private _disabled: boolean = false;
+   disabled: boolean = false;
 
    constructor(private _fb: FormBuilder) {
       this.options.push({label: 'Select an option', value: undefined});
@@ -54,7 +54,15 @@ export class SelectDemoComponent {
    }
 
    changeDisabled(): void {
-      this._disabled ? this.reactiveForm.get('option1').enable() : this.reactiveForm.get('option1').disable();
+      const controlName: string = 'option1';
+      this.disabled = !this.disabled;
+      if (this.disabled) {
+         this.reactiveForm.get(controlName).disable();
+         this.templateDrivenForm.controls[controlName].disable();
+      } else {
+         this.reactiveForm.get(controlName).enable();
+         this.templateDrivenForm.controls[controlName].enable();
+      }
    }
 
    onSubmitReactiveForm(): void {

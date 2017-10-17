@@ -25,7 +25,7 @@
          &:focus {
             color: $action-primary-default;
          }
-         &:disabled {
+         &[disabled] {
             color: $neutral-06;
          }
       }
@@ -37,6 +37,9 @@
          }
          &:disabled {
             border-color: $neutral-06;
+         }
+         &:disabled:placeholder {
+            color: $neutral-05;
          }
       }
    }

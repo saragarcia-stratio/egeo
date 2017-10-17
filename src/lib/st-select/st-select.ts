@@ -50,7 +50,7 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor {
    @Input() label: string = '';
    @Input() tooltip: string | null = null;
    @Input() errorMessage: string | undefined = undefined;
-   @Input() selected: StDropDownMenuItem | undefined = undefined;
+   @Input() selected: StDropDownMenuItem = undefined;
 
    @Output() expand: EventEmitter<boolean> = new EventEmitter<boolean>();
    @Output() select: EventEmitter<any> = new EventEmitter<any>();
@@ -135,7 +135,7 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor {
    }
 
    /*
-   ****** Control value accesor && validate methods ******
+   ****** Control value accessor && validate methods ******
    */
 
    // Set the function to be called when the control receives a change event.
@@ -173,31 +173,35 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor {
 
    onButtonKeyPress(event: KeyboardEvent): void {
       if (event.keyCode === 13) {
-         this.toogleButton();
+         this.toggleButton();
       }
    }
    onButtonClick(): void {
-      this.toogleButton();
-      if (this._inputHTMLElement) {
+      if (!this._isDisabled) {
+         this.toggleButton();
          this.expandedMenu ? this._inputHTMLElement.focus() : this._inputHTMLElement.blur();
       }
    }
 
    @HostListener('document:click', ['$event'])
    onClickOutside(event: Event): void {
-      this.expandedMenu = this.expandedMenu && this.buttonElement.nativeElement.contains(event.target);
-      this.expand.emit(this.expandedMenu); // Notify expand change
+      const expandNewValue: boolean = this.expandedMenu && this.buttonElement.nativeElement.contains(event.target);
+      if (expandNewValue !== this.expandedMenu) {
+         this.expandedMenu = expandNewValue;
+         this.expand.emit(this.expandedMenu); // Notify expand change
+      }
    }
 
    onChangeOption(option: StDropDownMenuItem): void {
       this.selected = option && option.value !== undefined ? option : undefined;
+      const value: any = option && option.value !== undefined ? option.value : undefined;
       if (this.onChange) {
-         this.onChange(option.value);
+         this.onChange(value);
       }
       if (this.onTouched) {
          this.onTouched();
       }
-      this.select.emit(option.value);
+      this.select.emit(value);
    }
 
    /*
@@ -223,7 +227,7 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor {
       return this.options && this.options.length > 0 && _has((items as StDropDownMenuGroup[])[0], 'items');
    }
 
-   private toogleButton(): void {
+   private toggleButton(): void {
       this.expandedMenu = !this.expandedMenu;
       this.expand.emit(this.expandedMenu); // Notify expand change
    }
@@ -243,14 +247,5 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor {
             }
          }));
       }
-   }
-
-   // Check if options are a instance of StDropDownMenuItem
-   private isDropdownItem(item: StDropDownMenuItem | StDropDownMenuGroup): item is StDropDownMenuItem {
-      return this.options && this.options.length > 0 && !_has((item as StDropDownMenuGroup), 'items');
-   }
-   // Check if options are a instance of StDropDownMenuGroup
-   private isDropdownGroup(item: StDropDownMenuItem | StDropDownMenuGroup): item is StDropDownMenuGroup {
-      return this.options && this.options.length > 0 && _has((item as StDropDownMenuGroup), 'items');
    }
 }

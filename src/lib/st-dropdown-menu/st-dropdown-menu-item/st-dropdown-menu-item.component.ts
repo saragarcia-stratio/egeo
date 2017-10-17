@@ -8,15 +8,9 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import {
-   Component,
-   EventEmitter,
-   Input,
-   Output
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { StDropDownMenuItem } from '../st-dropdown-menu.interface';
-
 
 @Component({
    selector: 'st-dropdown-menu-item',
@@ -30,21 +24,21 @@ export class StDropdownMenuItemComponent {
 
    @Output() change: EventEmitter<StDropDownMenuItem> = new EventEmitter<StDropDownMenuItem>();
 
-   constructor() { }
-
    onChangeItem(): void {
       this.change.emit(this.item);
    }
 
    get isSelected(): boolean {
-      return (this.hasItem && this.item.selected) ||
-         (this.hasItem && this.selectedItem !== undefined && this.item.value === this.selectedItem.value);
+      return (this.hasItem && this.item.selected && this.styleSelected) ||
+         (this.hasItem && this.selectedItem !== undefined && this.item.value === this.selectedItem.value && this.styleSelected);
    }
 
-   get icon(): string | undefined {
-      if (this.hasItem) {
-         return this.item.icon;
-      }
+   get icon(): string {
+      return this.hasIcon ? this.item.icon : '';
+   }
+
+   get hasIcon(): boolean {
+      return this.hasItem && this.item.icon !== undefined && this.item.icon !== null;
    }
 
    get hasItem(): boolean {

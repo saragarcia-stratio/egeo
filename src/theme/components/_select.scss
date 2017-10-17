@@ -17,6 +17,14 @@
       width: 100%;
    }
 
+   .arrow[disabled] {
+      color: $neutral-05;
+   }
+
+   .st-input:focus::placeholder {
+      color: $neutral-07;
+   }
+
    &.st-select-opened {
       .st-input {
          border-bottom: none;

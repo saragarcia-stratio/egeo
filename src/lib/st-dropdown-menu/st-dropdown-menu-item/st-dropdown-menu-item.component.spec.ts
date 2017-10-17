@@ -22,7 +22,7 @@ const item: StDropDownMenuItem = {
 
 describe('StDropdownMenuItemComponent', () => {
 
-   let component: StDropdownMenuItemComponent;
+   let comp: StDropdownMenuItemComponent;
    let fixture: ComponentFixture<StDropdownMenuItemComponent>;
 
    beforeEach(async(() => {
@@ -35,26 +35,170 @@ describe('StDropdownMenuItemComponent', () => {
 
    beforeEach(() => {
       fixture = TestBed.createComponent(StDropdownMenuItemComponent);
-      component = fixture.componentInstance;
+      comp = fixture.componentInstance;
    });
 
-   it('should show value 1 in item in component', () => {
-      component.item = item;
+   it(`should not show anything if not have item`, () => {
+      comp.item = undefined;
       fixture.detectChanges();
-      expect(true).toBe(true);
-      // component.item = item;
-      // fixture.detectChanges();
-      // expect(component.item.value).toBe(1);
+      expect(comp.hasItem).toBeFalsy();
+      expect(comp.hasIcon).toBeFalsy();
+      expect(comp.icon).toEqual('');
+      expect(comp.index).toEqual(0);
+      expect(comp.isSelected).toBeFalsy();
+      expect(comp.styleSelected).toBeTruthy();
+
+      expect((fixture.debugElement.nativeElement as HTMLElement).children.length).toEqual(0);
+      expect((fixture.debugElement.nativeElement as HTMLElement).querySelector('li')).toBeNull();
    });
 
-   // it('should click item and dispatch event change with value of item', () => {
-   //    spyOn(component.change, 'emit');
-   //    component.item = item;
-   //    let itemElement = fixture.nativeElement.querySelector('li');
-   //    itemElement.dispatchEvent(new Event('click'));
-   //    fixture.detectChanges();
-   //    expect(component.change.emit).toHaveBeenCalledWith(item);
-   // });
+   it('should show a item without icon', () => {
+      comp.item = item;
+      fixture.detectChanges();
+      expect(comp.hasItem).toBeTruthy();
+      expect(comp.hasIcon).toBeFalsy();
+      expect(comp.icon).toEqual('');
+      expect(comp.index).toEqual(0);
+      expect(comp.isSelected).toBeFalsy();
+      expect(comp.styleSelected).toBeTruthy();
 
+      expect((fixture.debugElement.nativeElement as HTMLElement).children.length).toEqual(1);
+      expect((fixture.debugElement.nativeElement as HTMLElement).querySelector('li')).toBeDefined();
+      expect((fixture.debugElement.nativeElement as HTMLElement).querySelector('span').innerText).toEqual(item.label);
+   });
 
+   it('should show a item without icon', () => {
+      comp.item = Object.assign({}, { icon: 'icon' }, item);
+      fixture.detectChanges();
+      expect(comp.hasItem).toBeTruthy();
+      expect(comp.hasIcon).toBeTruthy();
+      expect(comp.icon).toEqual(comp.item.icon);
+      expect(comp.index).toEqual(0);
+      expect(comp.isSelected).toBeFalsy();
+      expect(comp.styleSelected).toBeTruthy();
+
+      expect((fixture.debugElement.nativeElement as HTMLElement).children.length).toEqual(1);
+      expect((fixture.debugElement.nativeElement as HTMLElement).querySelector('li')).toBeDefined();
+      expect((fixture.debugElement.nativeElement as HTMLElement).querySelector('i')).toBeDefined();
+      expect((fixture.debugElement.nativeElement as HTMLElement).querySelector('i').classList).toContain(comp.item.icon);
+      expect((fixture.debugElement.nativeElement as HTMLElement).querySelector('span').innerText).toEqual(item.label);
+   });
+
+   it('should add selected class if element is selected', () => {
+      comp.item = item;
+      comp.selectedItem = item;
+      fixture.detectChanges();
+      expect(comp.hasItem).toBeTruthy();
+      expect(comp.hasIcon).toBeFalsy();
+      expect(comp.icon).toEqual('');
+      expect(comp.index).toEqual(0);
+      expect(comp.isSelected).toBeTruthy();
+      expect(comp.styleSelected).toBeTruthy();
+
+      expect((fixture.debugElement.nativeElement as HTMLElement).children.length).toEqual(1);
+      expect((fixture.debugElement.nativeElement as HTMLElement).querySelector('li')).toBeDefined();
+      expect((fixture.debugElement.nativeElement as HTMLElement).querySelector('li').classList).toContain('selected');
+      expect((fixture.debugElement.nativeElement as HTMLElement).querySelector('span').innerText).toEqual(item.label);
+   });
+
+   it('should add selected class if element is selected by property', () => {
+      comp.item = Object.assign({}, { selected: true }, item);
+      fixture.detectChanges();
+      expect(comp.hasItem).toBeTruthy();
+      expect(comp.hasIcon).toBeFalsy();
+      expect(comp.icon).toEqual('');
+      expect(comp.index).toEqual(0);
+      expect(comp.isSelected).toBeTruthy();
+      expect(comp.styleSelected).toBeTruthy();
+
+      expect((fixture.debugElement.nativeElement as HTMLElement).children.length).toEqual(1);
+      expect((fixture.debugElement.nativeElement as HTMLElement).querySelector('li')).toBeDefined();
+      expect((fixture.debugElement.nativeElement as HTMLElement).querySelector('li').classList).toContain('selected');
+      expect((fixture.debugElement.nativeElement as HTMLElement).querySelector('span').innerText).toEqual(item.label);
+   });
+
+   it('should not add selected class if element is selected and styleSelected is false', () => {
+      comp.item = item;
+      comp.selectedItem = item;
+      comp.styleSelected = false;
+      fixture.detectChanges();
+      expect(comp.hasItem).toBeTruthy();
+      expect(comp.hasIcon).toBeFalsy();
+      expect(comp.icon).toEqual('');
+      expect(comp.index).toEqual(0);
+      expect(comp.isSelected).toBeFalsy();
+      expect(comp.styleSelected).toBeFalsy();
+
+      const li: DebugElement = fixture.debugElement.query(By.css('li'));
+      const span: DebugElement = fixture.debugElement.query(By.css('span'));
+
+      expect((fixture.debugElement.nativeElement as HTMLElement).children.length).toEqual(1);
+      expect(li).toBeDefined();
+      expect(li.nativeElement).toBeDefined();
+      expect(li.nativeElement.classList).not.toContain('selected');
+      expect(span.nativeElement).toBeDefined();
+      expect(span.nativeElement.innerText).toEqual(item.label);
+   });
+
+   it('should not add selected class if element is selected by property and styleSelected is false', () => {
+      comp.item = Object.assign({}, { selected: true }, item);
+      comp.styleSelected = false;
+      fixture.detectChanges();
+      expect(comp.hasItem).toBeTruthy();
+      expect(comp.hasIcon).toBeFalsy();
+      expect(comp.icon).toEqual('');
+      expect(comp.index).toEqual(0);
+      expect(comp.isSelected).toBeFalsy();
+      expect(comp.styleSelected).toBeFalsy();
+
+      const li: DebugElement = fixture.debugElement.query(By.css('li'));
+      const span: DebugElement = fixture.debugElement.query(By.css('span'));
+
+      expect((fixture.debugElement.nativeElement as HTMLElement).children.length).toEqual(1);
+      expect(li).toBeDefined();
+      expect(li.nativeElement).toBeDefined();
+      expect(li.nativeElement.classList).not.toContain('selected');
+      expect(span).toBeDefined();
+      expect(span.nativeElement).toBeDefined();
+      expect(span.nativeElement.innerText).toEqual(item.label);
+   });
+
+   it('should emit on change', () => {
+      spyOn(comp.change, 'emit');
+      comp.item = item;
+      fixture.detectChanges();
+
+      comp.onChangeItem();
+      expect(comp.change.emit).toHaveBeenCalled();
+      expect(comp.change.emit).toHaveBeenCalledWith(comp.item);
+   });
+
+   it('should emit on click', () => {
+      spyOn(comp.change, 'emit');
+      comp.item = item;
+      fixture.detectChanges();
+
+      let li: DebugElement = fixture.debugElement.query(By.css('li'));
+      expect(li).toBeDefined();
+      expect(li.nativeElement).toBeDefined();
+
+      (li.nativeElement as HTMLLIElement).click();
+      expect(comp.change.emit).toHaveBeenCalled();
+      expect(comp.change.emit).toHaveBeenCalledWith(comp.item);
+   });
+
+   it('should emit on press enter', () => {
+      spyOn(comp.change, 'emit');
+      comp.item = item;
+      fixture.detectChanges();
+
+      let li: DebugElement = fixture.debugElement.query(By.css('li'));
+      expect(li).toBeDefined();
+      expect(li.nativeElement).toBeDefined();
+
+      li.triggerEventHandler('keyup.enter', {});
+      fixture.detectChanges();
+      expect(comp.change.emit).toHaveBeenCalled();
+      expect(comp.change.emit).toHaveBeenCalledWith(comp.item);
+   });
 });

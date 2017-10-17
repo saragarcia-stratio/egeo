@@ -11,7 +11,7 @@
 
 -->
 <section class="container-liquid">
-   <st-select placeholder="Select option" [options]="options">
+   <st-select placeholder="Select option" [options]="options" [disabled]="disabled">
    </st-select>
 
    <div class="separator"></div>
@@ -46,7 +46,7 @@
          <div class="separator"></div>
 
          <p>Form value: {{ templateDrivenForm.value | json }}</p>
-         <p>Form status: {{ templateDrivenForm.valid ? 'VALID' : 'INVALID' }}</p>
+         <p>Form status: {{ templateDrivenForm.disabled ? 'DISABLED' : templateDrivenForm.valid ? 'VALID' : 'INVALID' }}</p>
       </div>
    </form>
 
@@ -77,5 +77,9 @@
       <p>Form value: {{ reactiveForm.value | json }}</p>
       <p>Form status: {{ reactiveForm.status | json }}</p>
    </form>
+
+   <br>
+   <br>
+   <button class="button button-primary" (click)="changeDisabled()">Change disable</button>
 
 </section>

@@ -28,9 +28,9 @@ export class StDemoLoggerService {
    public notifyAlert(severity: StDemoLoggerSeverity, message: string): void;
    public notifyAlert(severityOrLog: StDemoLogger | StDemoLoggerSeverity, message?: string): void {
       if (severityOrLog instanceof StDemoLogger) {
-         this._logList.unshift(severityOrLog);
+         this._logList.push(severityOrLog);
       } else {
-         this._logList.unshift({ severity: severityOrLog, message });
+         this._logList.push({ severity: severityOrLog, message });
       }
       // First check if its over limit
       this.checkLogListCapacity();
@@ -43,6 +43,9 @@ export class StDemoLoggerService {
    }
 
    private checkLogListCapacity(): void {
-      this._logList = this._logList.length > this._maxMessages ? this._logList.slice(0, this._maxMessages) : this._logList;
+      const firstToShow: number = this._logList.length - this._maxMessages;
+      if (firstToShow > 0) {
+         this._logList = this._logList.slice(firstToShow);
+      }
    }
 }

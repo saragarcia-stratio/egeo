@@ -14,10 +14,12 @@ import { StDemoGeneratorModule, StModalModule, StModalService } from '@stratio/e
 
 import { StModalDemoComponent } from './st-modal-demo.component';
 import { StModalDemoTestComponent } from './st-modal-test-demo.component';
+import {StDemoLoggerModule} from '../shared/st-demo-logger/st-demo-logger.module';
 
 @NgModule({
    imports: [
       CommonModule,
+      StDemoLoggerModule.withService(),
       StModalModule.withComponents([StModalDemoTestComponent]),
       StDemoGeneratorModule.withComponents({
          components: [StModalDemoComponent]

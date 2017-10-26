@@ -11,13 +11,14 @@
 import { CommonModule } from '@angular/common';
 import { ANALYZE_FOR_ENTRY_COMPONENTS, NgModule } from '@angular/core';
 
-import { StModal } from './st-modal.component';
+import { StModalComponent } from './st-modal.component';
+import { StModalButtonsComponent } from './st-modal-buttons/st-modal-buttons';
 
 @NgModule({
    imports: [CommonModule],
-   exports: [StModal],
-   declarations: [StModal],
-   entryComponents: [StModal],
+   declarations: [StModalComponent, StModalButtonsComponent],
+   exports: [StModalComponent],
+   entryComponents: [StModalComponent],
    providers: []
 })
 export class StModalModule {

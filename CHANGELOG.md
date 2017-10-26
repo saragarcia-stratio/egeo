@@ -2,13 +2,34 @@
 
 ## 5.0.0 (upcoming)
 
+**New features:**
+
+* st-file-button: Create component to upload files
+* st-modal: New parameter fullscreen for fullscreen modals
+* st-modal: New parameter messageTitle to add a title before messages
+* st-modal: New parameter maxWidth to define modal max width
+* st-modal: New parameter closeOnClick in StModalButton, for close modal when click this button
+* st-modal: New parameter leftIcon and rightIcon in StModalButton to add icons to buttons
+* st-modal: New parameter response in StModalButton to pass a callback function to one button
+
 **Fixed bugs:**
 
 * st-tooltip: fix empty title bug
 
-**New features:**
+**Breaking changes:**
 
-* st-file-button: Create component to upload files
+* st-modal: Refactor styles
+* st-modal: Remove main text
+* st-modal: Remove modal type
+* st-modal: Remove modal width
+* st-modal: Remove qaTag
+* st-modal: Remove closeOnAccept
+* st-modal: In StModalButton change response by responseValue
+* st-modal: In StModalButton remove icon
+* st-modal: In StModalButton remove iconLeft
+* st-modal: In StModalButton remove primary
+* st-modal: In StModalButton remove closeOnAccept
+* st-modal: Modified params to showDeleteConfirmation
 
 ## 4.0.0 (September 21, 2017)
 

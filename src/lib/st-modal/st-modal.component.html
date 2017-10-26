@@ -10,32 +10,30 @@
     SPDX-License-Identifier: Apache-2.0.
 
 -->
-<div class="st-modal sth-modal">
-   <div class="st-modal-content sth-modal-content" [ngStyle]="getModalSize()">
-      <div class="sth-modal-header st-modal-header" [ngClass]="getTitleClass()" [ngStyle]="{height: getHeaderHeight()}">
-         <div class="st-modal-contextual sth-modal-contextual" *ngIf="hasContextualTitle()">{{contextualTitle}}</div>
-         <div class="st-modal-title sth-modal-title">
-            <i *ngIf="hasIcon()" [ngClass]="getIcon()"></i>
-            <p id="st-modal-title">{{getTitle()}}</p>
-         </div>
-         <div (click)="closeModal($event)" class="st-modal-close-button sth-modal-close-button" id="st-modal-close-button">
-            <i class="icon-circle-cross"></i>
+<div class="st-modal-container">
+   <section class="st-modal" [ngClass]="{'st-modal-fullscreen': isFullscreen}" [ngStyle]="modalStyles">
+      <div class="st-modal-header">
+         <div class="container">
+            <p class="title">{{title}}</p>
+            <st-modal-buttons *ngIf="isFullscreen" [buttonConfig]="buttons" [fullscreen]="isFullscreen" (click)="click.emit($event)"></st-modal-buttons>
          </div>
       </div>
-      <div class="st-modal-body sth-modal-body" [ngClass]="mainTextSize">
-         <div *ngIf="isMessageModal()" class="message">
-            <p id="st-modal-message-plain">{{message}}</p>
-         </div>
-         <div *ngIf="isComplexMessageModal()" [innerHTML]="getHTML()" id="st-modal-message-html"></div>
-         <div #stModalBody id="st-modal-message-component"></div>
-         <div *ngIf="hasButtons()" class="st-modal-buttons">
-            <button *ngFor="let button of getButtons(); let idx = index" [attr.id]="'st-modal-button-' + idx" class="button" [ngClass]="getButtonType(button)" (click)="clickButton(idx, button)"
-                type="button">
-               <i *ngIf="button.icon && button.iconLeft" [ngClass]="button.icon"></i>
-               <span>{{button.label}}</span>
-               <i *ngIf="button.icon && !button.iconLeft" [ngClass]="button.icon"></i>
-            </button>
+      <div class="st-modal-body">
+         <div class="container">
+
+            <div *ngIf="isMessageModal" class="message">
+               <h1 id="st-modal-message-plain-title" class="st-modal-message-plain-title">{{messageTitle}}</h1>
+               <p id="st-modal-message-plain-message" class="st-modal-message-plain-message" >{{message}}</p>
+            </div>
+            <div *ngIf="isComplexMessageModal" [innerHTML]="html" id="st-modal-message-html"></div>
+            <div #stModalBody id="st-modal-message-component"></div>
+
          </div>
       </div>
-   </div>
+      <footer class="st-modal-footer">
+         <div class="container">
+            <st-modal-buttons *ngIf="!isFullscreen" [buttonConfig]="buttons" (click)="click.emit($event)"></st-modal-buttons>
+         </div>
+      </footer>
+   </section>
 </div>

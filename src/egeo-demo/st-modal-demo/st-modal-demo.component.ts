@@ -13,13 +13,12 @@ import {
    StModalService,
    StModalConfig,
    StModalButton,
-   StModalWidth,
-   StModalMainTextSize,
-   StModalType,
    StModalResponse
 } from '@stratio/egeo';
 
+import {StDemoLoggerSeverity} from '../shared/st-demo-logger/st-demo-loger.model';
 import { StModalDemoTestComponent } from './st-modal-test-demo.component';
+import {StDemoLoggerService} from '../shared/st-demo-logger/st-demo-logger.service';
 
 @Component({
    selector: 'modal-example',
@@ -30,11 +29,13 @@ export class StModalDemoComponent implements AfterViewInit {
    @ViewChild('loadModal', { read: ViewContainerRef }) target: ViewContainerRef;
 
    private buttons: StModalButton[] = [
-      { icon: 'icon-trash', iconLeft: true, label: 'Delete', primary: true, response: StModalResponse.YES },
-      { icon: 'icon-circle-cross', iconLeft: true, label: 'Cancel', response: StModalResponse.NO }
+      { label: 'Cancel', classes: 'button-secondary-line', responseValue: StModalResponse.NO, closeOnClick: true },
+      { label: 'Confirm', classes: 'button-primary', responseValue: StModalResponse.YES, closeOnClick: true }
    ];
 
-   constructor(private _modalService: StModalService) { }
+   constructor(private _modalService: StModalService, private _logger: StDemoLoggerService) {
+      this._logger.maxMessages = 15;
+    }
 
    ngAfterViewInit(): void {
       this._modalService.container = this.target;
@@ -42,16 +43,16 @@ export class StModalDemoComponent implements AfterViewInit {
 
    showModal(): void {
 
-      const message: string = 'Are you sure of delete this?';
+      const message: string = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+      porttitor non nulla quis rhoncus. Cras vitae pretium arcu, ac semper justo.`;
 
       this._modalService.show({
-         qaTag: 'tag-message',
-         modalTitle: 'Delete item',
+         modalTitle: 'Title',
          buttons: this.buttons,
+         messageTitle: 'Copy',
          message: message,
-         mainText: StModalMainTextSize.BIG,
-         modalType: StModalType.WARNING
-      }).subscribe((response) => console.log(this.evaluateResponse(response)));
+         maxWidth: 600
+      }).subscribe((response) => this._logger.notifyAlert(StDemoLoggerSeverity.INFO, this.evaluateResponse(response)));
    }
 
    showModalWithHtml(): void {
@@ -71,57 +72,48 @@ export class StModalDemoComponent implements AfterViewInit {
       </div>
       `;
       this._modalService.show({
-         qaTag: 'tag-html',
          modalTitle: 'With HTML',
          buttons: this.buttons,
          html: html,
-         mainText: StModalMainTextSize.MEDIUM,
-         modalType: StModalType.INFO,
-         contextualTitle: 'VALIDATION STATUS'
-      }).subscribe((response) => console.log(this.evaluateResponse(response)));
+         maxWidth: 600
+      }).subscribe((response) => this._logger.notifyAlert(StDemoLoggerSeverity.INFO, this.evaluateResponse(response)));
    }
 
    showModalWithComponent(): void {
-      this._modalService.show(
-         {
-            qaTag: 'tag-complex',
-            modalTitle: 'With component',
-            buttons: this.buttons,
-            modalType: StModalType.NEUTRAL,
-            contextualTitle: 'CONTEXTUAL TITLE'
-         },
-         StModalDemoTestComponent
-      ).subscribe((response) => console.log(this.evaluateResponse(response)));
+      this._modalService.show({
+         modalTitle: 'With component',
+         buttons: this.buttons,
+         maxWidth: 600
+      }, StModalDemoTestComponent)
+      .subscribe((response) => this._logger.notifyAlert(StDemoLoggerSeverity.INFO, this.evaluateResponse(response)));
    }
 
-   showModalBySize(size: string): void {
-      let width: StModalWidth = StModalWidth.COMPACT;
-      if (size === 'compact') {
-         width = StModalWidth.COMPACT;
-      } else if (size === 'regular') {
-         width = StModalWidth.REGULAR;
-      } else if (size === 'large') {
-         width = StModalWidth.LARGE;
-      }
-
+   showFullscreenModal(): void {
       const message: string = 'Are you sure of delete this?';
 
       this._modalService.show({
-         qaTag: 'tag-' + size,
-         modalTitle: size,
+         modalTitle: 'Title for this full-screen modal view',
          buttons: this.buttons,
-         message: message,
-         mainText: StModalMainTextSize.BIG,
-         modalType: StModalType.INFO,
-         modalWidth: width
-      }).subscribe((response) => console.log(this.evaluateResponse(response)));
+         fullscreen: true
+      }, StModalDemoTestComponent)
+      .subscribe((response) => this._logger.notifyAlert(StDemoLoggerSeverity.INFO, this.evaluateResponse(response)));
+   }
+
+   showDeleteConfirmation(): void {
+      this._modalService.showDeleteConfirmation(
+         'Delete',
+         'Delete confirmation',
+         'Are you sure you want to delete this item?',
+         'Delete',
+         'Cancel'
+      ).subscribe((response) => this._logger.notifyAlert(StDemoLoggerSeverity.INFO, this.evaluateResponse(response)));
    }
 
    private evaluateResponse(response: StModalResponse): string {
       switch (response) {
-         case StModalResponse.YES: return 'YES';
-         case StModalResponse.NO: return 'NO';
-         case StModalResponse.CLOSE: return 'CLOSE';
+         case StModalResponse.YES: return 'Click on confirm';
+         case StModalResponse.NO: return 'Click on cancel';
+         case StModalResponse.CLOSE: return 'Get event close';
          default: return 'Error response not found';
       }
    }

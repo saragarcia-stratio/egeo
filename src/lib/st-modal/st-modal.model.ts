@@ -8,32 +8,31 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { TranslateableElement } from '../utils/egeo-resolver/egeo-resolve-model';
-
-export enum StModalType { INFO, WARNING, NEUTRAL }
-export enum StModalWidth { COMPACT, REGULAR, LARGE }
-export enum StModalMainTextSize { BIG, MEDIUM }
 export enum StModalResponse { YES, NO, CLOSE }
 
 export class StModalButton {
-   icon?: string;
-   iconLeft?: boolean;
-   primary?: boolean;
+   response?: Function;
+   responseValue?: StModalResponse;
+   leftIcon?: string;
+   rightIcon?: string;
+   classes?: string;
+   closeOnClick?: boolean;
    label: string;
-   response: StModalResponse;
 }
 
 export class StModalConfig {
-   contextualTitle?: string;
+   fullscreen?: boolean;
    modalTitle?: string;
+   messageTitle?: string;
    message?: string;
    html?: string;
-   mainText?: StModalMainTextSize;
-   modalType?: StModalType;
-   modalWidth?: StModalWidth;
    inputs?: Object;
    outputs?: Object;
    buttons?: StModalButton[];
-   closeOnAccept?: boolean;
-   qaTag: string;
+   maxWidth?: number;
+}
+
+export class StModalButtonResponse {
+   response: StModalResponse;
+   close: boolean;
 }

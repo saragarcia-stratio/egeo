@@ -8,17 +8,16 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 
 // Component
-import { StModalButton, StModalConfig, StModalMainTextSize, StModalResponse, StModalType, StModalWidth } from './st-modal.model';
+import { StModalButton, StModalConfig, StModalResponse, StModalButtonResponse } from './st-modal.model';
 import { StModalService } from './st-modal.service';
 
 @Component({ selector: 'st-modal-test', template: `<h1>Hello World</h1>` }) export class ModalTestComponent { }
 
-let notifySubject: Subject<StModalResponse> = new Subject<StModalResponse>();
-let closeSubject: Subject<Event> = new Subject<Event>();
+let notifySubject: Subject<StModalButtonResponse> = new Subject<StModalButtonResponse>();
 let cfr: any;
 let containerRef: any;
 let clearFunction: any;
@@ -26,203 +25,223 @@ let destroyFunction: any;
 let detectChangesFunction: any;
 let instanceObj: any;
 
+describe('StModal', () => {
+   describe('StModalService', () => {
+      let service: StModalService;
 
-describe('StModalService', () => {
-   let service: StModalService;
+      beforeEach(() => {
+         destroyFunction = jasmine.createSpy('destroy');
+         detectChangesFunction = jasmine.createSpy('detectChanges');
+         clearFunction = jasmine.createSpy('clear');
+         cfr = {
+            resolveComponentFactory: jasmine.createSpy('resolveComponentFactory').and.returnValue('fake-resolver')
+         };
+         instanceObj = {
+            click: notifySubject.asObservable(),
+            modalConfig: '',
+            component: ''
+         };
 
-   beforeEach(() => {
-      destroyFunction = jasmine.createSpy('destroy');
-      detectChangesFunction = jasmine.createSpy('detectChanges');
-      clearFunction = jasmine.createSpy('clear');
-      cfr = {
-         resolveComponentFactory: jasmine.createSpy('resolveComponentFactory').and.returnValue('fake-resolver')
-      };
-      instanceObj = {
-         close: closeSubject.asObservable(),
-         click: notifySubject.asObservable(),
-         modalConfig: '',
-         component: ''
-      };
+         containerRef = {
+            clear: clearFunction,
+            createComponent: jasmine.createSpy('createComponent').and.returnValue({
+               instance: instanceObj,
+               destroy: destroyFunction,
+               changeDetectorRef: { detectChanges: detectChangesFunction }
+            })
+         };
+      });
 
-      containerRef = {
-         clear: clearFunction,
-         createComponent: jasmine.createSpy('createComponent').and.returnValue({
-            instance: instanceObj,
-            destroy: destroyFunction,
-            changeDetectorRef: { detectChanges: detectChangesFunction }
-         })
-      };
-   });
+      it('should be close modal', () => {
+         const responseFunction = jasmine.createSpy('response');
+         service = new StModalService(cfr);
+         service.container = containerRef;
 
-   it('should be close modal', () => {
-      service = new StModalService(cfr);
-      service.container = containerRef;
+         service.show({ message: 'message' }).subscribe(responseFunction);
 
-      let responseFunction = jasmine.createSpy('response');
+         service.close();
+         expect(responseFunction).toHaveBeenCalled();
+         expect(responseFunction).toHaveBeenCalledWith(StModalResponse.CLOSE);
 
-      service.show({ qaTag: 'tag-message', message: 'message' }).subscribe(responseFunction);
+         expect(clearFunction).toHaveBeenCalled();
+         expect(containerRef.createComponent).toHaveBeenCalled();
+         expect(destroyFunction).toHaveBeenCalled();
 
-      service.close();
-      expect(responseFunction).toHaveBeenCalled();
-      expect(responseFunction).toHaveBeenCalledWith(StModalResponse.CLOSE);
+         service.container = undefined;
+         service.close();
+      });
 
-      expect(clearFunction).toHaveBeenCalled();
-      expect(containerRef.createComponent).toHaveBeenCalled();
-      expect(destroyFunction).toHaveBeenCalled();
+      it('should be thrown an error when init twice', () => {
+         service = new StModalService(cfr);
+         service.container = containerRef;
 
-      service.container = undefined;
-      service.close();
-   });
+         service.show({ message: 'message' });
+         try {
+            expect(service.show({ message: 'message' })).toThrow();
+         } catch (error) {
+            expect(error.message).toEqual(
+               `[ERROR]: StModalService => Can't create modal beacause already exists one. Are you sure that you call close method?)`
+            );
+         }
+      });
 
-   it('should be thrown an error when init twice', () => {
-      service = new StModalService(cfr);
-      service.container = containerRef;
+      it('should be thrown an error when init without container', () => {
+         service = new StModalService(cfr);
 
-      service.show({ qaTag: 'tag-message', message: 'message' });
-      try {
-         expect(service.show({ qaTag: 'tag-message', message: 'message' })).toThrow();
-      } catch (error) {
-         expect(error.message).toEqual(
-            `[ERROR]: StModalService => Can't create modal beacause already exists one. Are you sure that you call close method?)`
-         );
-      }
-   });
+         try {
+            expect(service.show({ message: 'message' })).toThrow();
+         } catch (error) {
+            expect(error.message).toEqual(
+               `[ERROR]: StModalService => Cant find container, are you sure you declarate in MAIN APP component in html and typescript?`
+            );
+         }
+      });
 
-   it('should be thrown an error when init without container', () => {
-      service = new StModalService(cfr);
+      it('should be thrown an error when init without html nor message nor component', () => {
+         service = new StModalService(cfr);
+         service.container = containerRef;
 
-      try {
-         expect(service.show({ qaTag: 'tag-message', message: 'message' })).toThrow();
-      } catch (error) {
-         expect(error.message).toEqual(
-            `[ERROR]: StModalService => Cant find container, are you sure you declarate in MAIN APP component in html and typescript?`
-         );
-      }
-   });
+         try {
+            expect(service.show({})).toThrow();
+         } catch (error) {
+            expect(error.message).toEqual(`[ERROR]: StModalService => Can't find message, html or component to show in modal`);
+         }
+      });
 
-   it('should be thrown an error when init without html nor message nor component', () => {
-      service = new StModalService(cfr);
-      service.container = containerRef;
+      it('should be test all posible default configurations', () => {
+         service = new StModalService(cfr);
+         service.container = containerRef;
 
-      try {
-         expect(service.show({ qaTag: 'tag-message' })).toThrow();
-      } catch (error) {
-         expect(error.message).toEqual(`[ERROR]: StModalService => Can't find message, html or component to show in modal`);
-      }
-   });
+         const allConfig: StModalConfig = {
+            inputs: {},
+            outputs: {},
+            modalTitle: 'TITLE',
+            buttons: [{ label: 'test button', closeOnClick: false }],
+            messageTitle: 'test title',
+            message: 'test message',
+            html: '<h1>Title</h1>',
+            fullscreen: true,
+            maxWidth: 600
+         };
 
-   it('should be thrown an error when init without qaTag', () => {
-      service = new StModalService(cfr);
-      service.container = containerRef;
+         const minConfig: StModalConfig = {
+            message: 'test message',
+            modalTitle: 'TITLE',
+            messageTitle: 'test title'
+         };
 
-      try {
-         expect(service.show({ qaTag: undefined, message: 'message' })).toThrow();
-      } catch (error) {
-         expect(error.message).toEqual(`[ERROR]: StModalService => qaTag is a required field`);
-      }
-   });
+         const defaultConfig: StModalConfig = {
+            fullscreen: false,
+            inputs: {},
+            outputs: {},
+            modalTitle: 'Default title',
+            messageTitle: 'Default subtitle',
+            buttons: [],
+            message: undefined,
+            html: undefined,
+            maxWidth: undefined
+         };
 
-   it('should be test all posible default configurations', () => {
-      service = new StModalService(cfr);
-      service.container = containerRef;
+         service.show(allConfig);
+         expect(instanceObj.modalConfig).toEqual(allConfig);
 
-      let allConfig: StModalConfig = {
-         inputs: {},
-         outputs: {},
-         modalTitle: 'TITLE',
-         modalType: StModalType.INFO,
-         modalWidth: StModalWidth.LARGE,
-         buttons: [{ label: 'button', response: StModalResponse.YES }],
-         closeOnAccept: false,
-         mainText: StModalMainTextSize.BIG,
-         message: 'test message',
-         html: '<h1>Title</h1>',
-         contextualTitle: 'contextual',
-         qaTag: 'test'
-      };
+         service.close();
+         service.show(minConfig);
+         expect(instanceObj.modalConfig).toEqual(Object.assign({}, defaultConfig, minConfig));
+      });
 
-      let minConfig: StModalConfig = { message: 'test message', qaTag: 'test' };
-      let defaultConfig: StModalConfig = {
-         inputs: {},
-         outputs: {},
-         modalTitle: 'DEFAULT TITLE',
-         modalType: StModalType.NEUTRAL,
-         modalWidth: StModalWidth.COMPACT,
-         buttons: [],
-         closeOnAccept: true,
-         mainText: StModalMainTextSize.MEDIUM,
-         message: minConfig.message,
-         html: undefined,
-         contextualTitle: undefined,
-         qaTag: minConfig.qaTag
-      };
+      it('should generate a delete confirmation modal config', () => {
+         const okButton: string = 'Delete';
+         const cancelButton: string = 'Cancel';
+         const deleteModalTitle: string = 'delete modal title';
+         const deleteMessageTitle: string = 'delete message title';
+         const deleteMessage: string = 'delete message';
+         service = new StModalService(cfr);
+         service.container = containerRef;
 
+         const buttons: StModalButton[] = [
+            { label: okButton, classes: 'button-critical', responseValue: StModalResponse.YES, closeOnClick: true },
+            { label: cancelButton, classes: 'button-secondary-gray', responseValue: StModalResponse.NO, closeOnClick: true }
+         ];
 
-      service.show(allConfig);
-      expect(instanceObj.modalConfig).toEqual(allConfig);
+         const deleteConfig: StModalConfig = {
+            fullscreen: false,
+            inputs: {},
+            outputs: {},
+            modalTitle: deleteModalTitle,
+            messageTitle: deleteMessageTitle,
+            buttons: buttons,
+            message: deleteMessage,
+            html: undefined,
+            maxWidth: 600
+         };
 
-      service.close();
-      service.show(minConfig);
-      expect(instanceObj.modalConfig).toEqual(defaultConfig);
-   });
+         service.showDeleteConfirmation(deleteModalTitle, deleteMessageTitle, deleteMessage, okButton, cancelButton);
+         expect(instanceObj.modalConfig).toEqual(deleteConfig);
+         service.close();
 
-   it('should test if resolve component factory return undefined', () => {
-      let mycfr: any = { resolveComponentFactory: jasmine.createSpy('resolveComponentFactory').and.returnValue(undefined) };
-      service = new StModalService(mycfr);
-      service.container = containerRef;
+         service.showDeleteConfirmation(deleteModalTitle, deleteMessageTitle, deleteMessage, okButton, cancelButton, 500);
+         expect(instanceObj.modalConfig).toEqual(Object.assign({}, deleteConfig, { maxWidth: 500 }));
+      });
 
-      service.show({ qaTag: 'tag', message: 'message' });
+      it('should test if resolve component factory return undefined', () => {
+         let mycfr: any = { resolveComponentFactory: jasmine.createSpy('resolveComponentFactory').and.returnValue(undefined) };
+         service = new StModalService(mycfr);
+         service.container = containerRef;
 
-      expect(clearFunction).toHaveBeenCalledTimes(0);
-      expect(containerRef.createComponent).toHaveBeenCalledTimes(0);
-   });
+         service.show({ message: 'message' });
+
+         expect(clearFunction).toHaveBeenCalledTimes(0);
+         expect(containerRef.createComponent).toHaveBeenCalledTimes(0);
+      });
 
 
-   it('should be manage buttons response', () => {
-      service = new StModalService(cfr);
-      service.container = containerRef;
+      it('should be manage buttons response', () => {
+         service = new StModalService(cfr);
+         service.container = containerRef;
 
-      let responseFunction = jasmine.createSpy('response');
-      service.show({ qaTag: 'tag', message: 'message', closeOnAccept: false }).subscribe(responseFunction);
+         let responseFunction = jasmine.createSpy('response');
+         service.show({ message: 'message' }).subscribe(responseFunction);
 
-      notifySubject.next(StModalResponse.YES);
-      expect(responseFunction).toHaveBeenCalled();
-      expect(responseFunction).toHaveBeenCalledWith(StModalResponse.YES);
+         notifySubject.next({ response: StModalResponse.YES, close: false });
+         expect(responseFunction).toHaveBeenCalled();
+         expect(responseFunction).toHaveBeenCalledWith(StModalResponse.YES);
 
-      notifySubject.next(StModalResponse.NO);
-      expect(responseFunction).toHaveBeenCalled();
-      expect(responseFunction).toHaveBeenCalledWith(StModalResponse.NO);
-   });
+         notifySubject.next({ response: StModalResponse.NO, close: false });
+         expect(responseFunction).toHaveBeenCalled();
+         expect(responseFunction).toHaveBeenCalledWith(StModalResponse.NO);
+      });
 
-   it('should be manage buttons response with close on accept', () => {
-      service = new StModalService(cfr);
-      service.container = containerRef;
+      it('should be manage buttons response with close on accept', () => {
+         service = new StModalService(cfr);
+         service.container = containerRef;
 
-      let responseFunction = jasmine.createSpy('response');
-      service.show({ qaTag: 'tag', message: 'message', closeOnAccept: true }).subscribe(responseFunction);
+         let responseFunction = jasmine.createSpy('response');
+         service.show({ message: 'message' }).subscribe(responseFunction);
 
-      notifySubject.next(StModalResponse.NO);
-      expect(responseFunction).toHaveBeenCalled();
-      expect(responseFunction).toHaveBeenCalledTimes(1);
-      expect(responseFunction).toHaveBeenCalledWith(StModalResponse.NO);
+         notifySubject.next({ response: StModalResponse.NO, close: false });
+         expect(responseFunction).toHaveBeenCalled();
+         expect(responseFunction).toHaveBeenCalledTimes(1);
+         expect(responseFunction).toHaveBeenCalledWith(StModalResponse.NO);
 
-      notifySubject.next(StModalResponse.YES);
-      expect(responseFunction).toHaveBeenCalled();
-      expect(responseFunction).toHaveBeenCalledTimes(3); // One for yes and one for close
-      expect(responseFunction).toHaveBeenCalledWith(StModalResponse.YES);
-      expect(responseFunction).toHaveBeenCalledWith(StModalResponse.CLOSE);
-   });
+         notifySubject.next({ response: StModalResponse.YES, close: true });
+         expect(responseFunction).toHaveBeenCalled();
+         expect(responseFunction).toHaveBeenCalledTimes(3); // One for yes and one for close
+         expect(responseFunction).toHaveBeenCalledWith(StModalResponse.YES);
+         expect(responseFunction).toHaveBeenCalledWith(StModalResponse.CLOSE);
+      });
 
       it('should be manage buttons response with close when close modal', () => {
-      service = new StModalService(cfr);
-      service.container = containerRef;
+         service = new StModalService(cfr);
+         service.container = containerRef;
 
-      let responseFunction = jasmine.createSpy('response');
-      service.show({ qaTag: 'tag', message: 'message', closeOnAccept: true }).subscribe(responseFunction);
+         let responseFunction = jasmine.createSpy('response');
+         service.show({ message: 'message' }).subscribe(responseFunction);
 
-      closeSubject.next(new Event('click'));
-      expect(responseFunction).toHaveBeenCalled();
-      expect(responseFunction).toHaveBeenCalledTimes(1);
-      expect(responseFunction).toHaveBeenCalledWith(StModalResponse.CLOSE);
+         service.close();
+         expect(responseFunction).toHaveBeenCalled();
+         expect(responseFunction).toHaveBeenCalledTimes(1);
+         expect(responseFunction).toHaveBeenCalledWith(StModalResponse.CLOSE);
+      });
    });
 });

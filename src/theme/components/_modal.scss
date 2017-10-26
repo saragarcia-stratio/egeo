@@ -8,62 +8,79 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
+
 @import '../constants/fonts';
 @import '../constants/colors';
 
-.sth-modal {
-   background-color: rgba($neutral-13, 0.4);
+.st-modal-overlay {
+   overflow: hidden !important;
 }
 
-.sth-modal-content {
-   background-color: $neutral-02;
-   border: 1px solid rgba($neutral-13, 0.2);
-   box-shadow: 0 4px 8px 0 rgba($neutral-13, 0.2), 0 6px 20px 0 rgba($neutral-13, 0.19);
-}
+.st-modal-container {
+   background-color: rgba($neutral-13, 0.3);
 
-.sth-modal-header {
-   background-color: $neutral-03;
-   font-family: $egeo-nunito-sans;
-   &.st-modal-warning {
-      color: $status-warning-default;
+   .st-modal {
+      background-color: $neutral-00;
+      box-shadow: 0 1px 10px 0 rgba($neutral-10, 0.8);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+
+      .container {
+         padding: 0;
+      }
+
+      &.st-modal-fullscreen {
+         border-radius: 0;
+         .st-modal-header {
+            border-radius: 0;
+            background-color: $neutral-00;
+         }
+         background-color: $neutral-02;
+      }
+
+      .st-modal-header {
+         background-color: $neutral-02;
+         padding: 0 30px;
+         border-radius: 4px 4px 0 0;
+
+         .title {
+            text-align: left;
+            font-family: $egeo-nunito-sans-extraBold;
+            font-size: $egeo-font-size-medium;
+            line-height: $egeo-line-height-medium;
+            color: $neutral-13;
+            white-space: nowrap;
+         }
+      }
+
+      .st-modal-body {
+         padding: 30px;
+         .st-modal-message-plain-title {
+            font-family: $egeo-nunito-sans-light;
+            font-size: $egeo-font-size-xxlarge;
+            line-height: $egeo-line-height-xxxlarge;
+            text-align: left;
+            color: $action-secondary-07;
+            margin-bottom: 15px;
+            font-weight: 300;
+         }
+         .st-modal-message-plain-message {
+            font-family: $egeo-nunito-sans;
+            font-size: $egeo-font-size-small;
+            line-height: $egeo-line-height-small;
+            text-align: left;
+            color: $neutral-11;
+         }
+      }
+
+      .st-modal-footer {
+         padding: 30px;
+      }
+      .st-modal-buttons {
+         button {
+            margin-left: 30px;
+         }
+      }
    }
-   &.st-modal-info {
-      color: $brand;
-   }
-   &.st-modal-neutral {
-      color: $neutral-09;
-   }
-}
-
-.sth-modal-close-button {
-   color: $neutral-09;
-   font-size: $egeo-font-size-xxlarge;
-}
-
-.sth-modal-title {
-   & i {
-      font-size: $egeo-font-size-xlarge;
-   }
-   & p {
-      font-size: $egeo-font-size-xxlarge;
-   }
-}
-
-.sth-modal-body {
-   font-family: $egeo-nunito-sans;
-   color: $neutral-10;
-}
-
-.sth-modal-message-big {
-   font-size: $egeo-font-size-large;
-}
-
-.sth-modal-message-medium {
-   font-size: $egeo-font-size-xsmall;
-}
-
-.sth-modal-contextual {
-   background-color: $neutral-04;
-   color: $neutral-08;
-   font-size: $egeo-font-size-xsmall;
 }

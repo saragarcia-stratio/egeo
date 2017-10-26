@@ -20,14 +20,14 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
 /* local dependencies */
-import { StModal } from './st-modal.component';
-import { StModalButton, StModalConfig, StModalMainTextSize, StModalResponse, StModalType, StModalWidth } from './st-modal.model';
+import { StModalComponent } from './st-modal.component';
+import { StModalButton, StModalConfig, StModalResponse, StModalButtonResponse } from './st-modal.model';
 
 @Injectable()
 export class StModalService {
 
    private _containerRef: ViewContainerRef = undefined;
-   private dynamicModal: ComponentRef<StModal> = undefined;
+   private dynamicModal: ComponentRef<StModalComponent> = undefined;
    private notifyButtonInteraction: Subject<StModalResponse>;
 
    constructor(private _cfr: ComponentFactoryResolver) { }
@@ -49,26 +49,25 @@ export class StModalService {
    }
 
    showDeleteConfirmation(
-      message: string,
       modalTitle: string,
+      messageTitle: string,
+      message: string,
       okButton: string,
       cancelButton: string,
-      qaTag?: string,
-      modalType?: StModalType
+      maxWidth: number = 600
    ): Observable<StModalResponse> {
 
-      let buttons: StModalButton[] = [
-         { icon: 'icon-trash', iconLeft: true, label: okButton, primary: true, response: StModalResponse.YES },
-         { icon: 'icon-circle-cross', iconLeft: true, label: cancelButton, primary: false, response: StModalResponse.NO }
+      const buttons: StModalButton[] = [
+         { label: okButton, classes: 'button-critical', responseValue: StModalResponse.YES, closeOnClick: true },
+         { label: cancelButton, classes: 'button-secondary-gray', responseValue: StModalResponse.NO, closeOnClick: true }
       ];
       return this.show({
-         qaTag: qaTag ? qaTag : 'delete-confirmation',
-         modalType: modalType ? modalType : StModalType.WARNING,
-         modalWidth: StModalWidth.COMPACT,
-         mainText: StModalMainTextSize.BIG,
+         fullscreen: false,
          message,
+         messageTitle,
          modalTitle,
-         buttons
+         buttons,
+         maxWidth
       });
    }
 
@@ -78,10 +77,10 @@ export class StModalService {
 
    /* INTERNAL METHODS FOR WORK WITH MODALS */
    private createModal(modalConfig: StModalConfig, component?: Type<any>): void {
-      let stModalFactory: ComponentFactory<StModal> = this._cfr.resolveComponentFactory(StModal);
+      let stModalFactory: ComponentFactory<StModalComponent> = this._cfr.resolveComponentFactory(StModalComponent);
       if (stModalFactory) {
          this._containerRef.clear();
-         this.dynamicModal = this._containerRef.createComponent<StModal>(stModalFactory);
+         this.dynamicModal = this._containerRef.createComponent<StModalComponent>(stModalFactory);
          this.bindVars(modalConfig, component);
       }
    }
@@ -98,20 +97,15 @@ export class StModalService {
    private bindVars(modalConfig: StModalConfig, component: Type<any>): void {
       this.dynamicModal.instance.component = component;
 
-      this.dynamicModal.instance.close.subscribe((event: MouseEvent) => this.onClose(event));
-      this.dynamicModal.instance.click.subscribe((response: StModalResponse) => this.notify(response, modalConfig.closeOnAccept));
+      this.dynamicModal.instance.click.subscribe(this.notify.bind(this));
       this.dynamicModal.instance.modalConfig = modalConfig;
 
       this.dynamicModal.changeDetectorRef.detectChanges();
    }
 
-   private onClose(event: MouseEvent): void {
-      this.close();
-   }
-
-   private notify(response: StModalResponse, closeOnAccept?: boolean): void {
-      this.notifyButtonInteraction.next(response);
-      if (closeOnAccept && response === StModalResponse.YES) {
+   private notify(buttonResponse: StModalButtonResponse): void {
+      this.notifyButtonInteraction.next(buttonResponse.response);
+      if (buttonResponse.close) {
          this.close();
       }
    }
@@ -131,22 +125,23 @@ export class StModalService {
    }
 
    private createConfig(config: StModalConfig): StModalConfig {
-      if (config.qaTag === undefined || config.qaTag.length === 0) {
-         throw new Error(`[ERROR]: StModalService => qaTag is a required field`);
-      }
-      return {
-         inputs: config.inputs !== undefined ? config.inputs : {},
-         outputs: config.outputs !== undefined ? config.outputs : {},
-         modalTitle: config.modalTitle !== undefined && config.modalTitle.length > 0 ? config.modalTitle : 'DEFAULT TITLE',
-         modalType: config.modalType !== undefined ? config.modalType : StModalType.NEUTRAL,
-         modalWidth: config.modalWidth !== undefined ? config.modalWidth : StModalWidth.COMPACT,
-         buttons: config.buttons !== undefined ? config.buttons : [],
-         closeOnAccept: config.closeOnAccept !== undefined ? config.closeOnAccept : true,
-         mainText: config.mainText !== undefined ? config.mainText : StModalMainTextSize.MEDIUM,
-         message: config.message, // Because undefined is a valid value
-         html: config.html, // Because undefined is a valid value
-         contextualTitle: config.contextualTitle, // Because undefined is a valid value
-         qaTag: config.qaTag // Beacuse is required and checked before
+      const defaultConfig: StModalConfig = {
+         fullscreen: false,
+         inputs: {},
+         outputs: {},
+         modalTitle: 'Default title',
+         messageTitle: 'Default subtitle',
+         buttons: [],
+         message: undefined,
+         html: undefined,
+         maxWidth: undefined
       };
+      const checkedConfig: StModalConfig = Object.assign({}, defaultConfig, config);
+      checkedConfig.buttons = this.checkButtons(checkedConfig.buttons);
+      return checkedConfig;
+   }
+
+   private checkButtons(buttons: StModalButton[]): StModalButton[] {
+      return buttons.map(button => Object.assign({}, { label: 'Button', closeOnClick: false }, button));
    }
 }

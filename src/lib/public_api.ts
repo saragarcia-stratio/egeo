@@ -114,6 +114,15 @@ export {
    StItemListConfigSchema
 } from './st-item-list/st-item-list.model';
 
+// Launcher
+export { StLauncherModule } from './st-launcher/st-launcher.module';
+export {
+   StLauncherItem,
+   StLauncherItemSchema,
+   StLauncherGroup,
+   StLauncherGroupSchema
+ } from './st-launcher/st-launcher.model';
+
 // Modal
 export {
    StModalButton,

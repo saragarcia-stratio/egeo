@@ -25,6 +25,7 @@ import { StInfoCardDemoModule } from './st-info-card-demo/st-info-card-demo.modu
 import { StInputDemoModule } from './st-input-demo/st-input-demo.module';
 import { StItemListDemoModule } from './st-item-list-demo/st-item-list-demo.module';
 import { StLabelDemoModule } from './st-label-demo/st-label-demo.module';
+import { StLauncherDemoModule } from './st-launcher-demo/st-launcher-demo.module';
 import { StModalDemoModule } from './st-modal-demo/st-modal-demo.module';
 import { StPageTitleDemoModule } from './st-page-title-demo/st-page-title-demo.module';
 import { StPaginationDemoModule } from './st-pagination-demo/st-pagination-demo.module';
@@ -67,6 +68,7 @@ export const EGEO_DEMO_MODULES: any[] = [
    StInputDemoModule,
    StItemListDemoModule,
    StLabelDemoModule,
+   StLauncherDemoModule,
    StModalDemoModule,
    StPageTitleDemoModule,
    StPaginationDemoModule,

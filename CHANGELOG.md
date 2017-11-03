@@ -12,6 +12,7 @@
 * st-modal: New parameter leftIcon and rightIcon in StModalButton to add icons to buttons
 * st-modal: New parameter response in StModalButton to pass a callback function to one button
 * st-sidebar: Create component to navigate through different sections 
+* st-launcher: Create component to display and launch different instances
 
 **Fixed bugs:**
 

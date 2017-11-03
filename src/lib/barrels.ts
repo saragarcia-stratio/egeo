@@ -26,6 +26,7 @@ import { StInfoCardModule } from './st-info-card/st-info-card.module';
 import { StInputModule } from './st-input/st-input.module';
 import { StItemListModule } from './st-item-list/st-item-list.module';
 import { StLabelModule } from './st-label/index';
+import { StLauncherModule } from './st-launcher/st-launcher.module';
 import { StModalModule } from './st-modal/st-modal.module';
 import { StPageTitleModule } from './st-page-title/st-page-title.module';
 import { StPaginationModule } from './st-pagination/st-pagination.module';
@@ -67,6 +68,7 @@ export const DECLARATIONS: any[] = [
    StInputModule,
    StItemListModule,
    StLabelModule,
+   StLauncherModule,
    StModalModule,
    StPageTitleModule,
    StPaginationModule,

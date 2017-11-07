@@ -8,7 +8,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 
 import { StTooltipComponent } from '../st-tooltip';
 
@@ -19,4 +19,8 @@ import { StTooltipComponent } from '../st-tooltip';
    templateUrl: './st-label.component.html'
 })
 
-export class StLabelComponent extends StTooltipComponent { }
+export class StLabelComponent extends StTooltipComponent {
+   constructor(private _el: ElementRef) {
+      super(_el);
+   }
+ }

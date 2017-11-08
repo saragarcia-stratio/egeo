@@ -21,15 +21,14 @@ import { StDropDownMenuItem } from '@stratio/egeo';
 export class SelectDemoComponent {
    @ViewChild('templateDrivenForm') public templateDrivenForm: NgForm;
 
-   public options: StDropDownMenuItem[] = [];
-   public forceValidations: boolean = false;
-   public isDisabled: boolean = false;
-   public errorMessage: string = 'Error, this field is required';
-   public model: any = {
-      option1: null,
-      option2: null
+   options: StDropDownMenuItem[] = [];
+   model: any = {
+      option1: null
    };
-   public reactiveForm: FormGroup; // our model driven form
+   reactiveForm: FormGroup; // our model driven form
+   reactiveErrorMessage: string | undefined = undefined;
+
+   disabled: boolean = false;
 
    constructor(private _fb: FormBuilder) {
       this.options.push({label: 'Select an option', value: undefined});
@@ -40,31 +39,44 @@ export class SelectDemoComponent {
          });
       }
       this.model.option1 = 3;
-      this.model.option2 = 2;
+
+      this.options[5].selected = true;
 
       this.reactiveForm = this._fb.group({
-         'option1': [this.model.option1, [Validators.required]],
-         'option2': [this.model.option2, [Validators.required]]
+         option1: [this.model.option1, Validators.required]
       });
    }
 
-   changeForceValidations(): void {
-      this.forceValidations = true;
+   onSelect(value: any): void {
+      if (value === undefined) {
+         this.model.option1 = undefined;
+      }
    }
 
    changeDisabled(): void {
-      this.isDisabled = !this.isDisabled;
-      if (this.isDisabled) {
-         this.reactiveForm.get('option1').disable();
-         this.templateDrivenForm.form.get('option1-template').disable();
+      const controlName: string = 'option1';
+      this.disabled = !this.disabled;
+      if (this.disabled) {
+         this.reactiveForm.get(controlName).disable();
+         this.templateDrivenForm.controls[controlName].disable();
       } else {
-         this.reactiveForm.get('option1').enable();
-         this.templateDrivenForm.form.get('option1-template').enable();
+         this.reactiveForm.get(controlName).enable();
+         this.templateDrivenForm.controls[controlName].enable();
       }
    }
 
    onSubmitReactiveForm(): void {
       this.model.option1 = this.reactiveForm.value.option1;
       this.model.option2 = this.reactiveForm.value.option2;
+   }
+
+   changeOptions(): void {
+      this.options = [];
+      for (let i: number = 0; i < 10; i++) {
+         this.options.push({
+            label: `new options-${i}`,
+            value: (10 + i)
+         });
+      }
    }
 }

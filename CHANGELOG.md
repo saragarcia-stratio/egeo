@@ -13,6 +13,14 @@
 * st-modal: New parameter response in StModalButton to pass a callback function to one button
 * st-sidebar: Create component to navigate through different sections 
 * st-launcher: Create component to display and launch different instances
+* st-pop: Add offset input to move floating component
+* st-pop: Change placement type to define with enum
+* st-dropdown-menu: Add offset and change placement type input for adapt to st-pop
+* st-dropdown-menu: Add input to select item with input
+* st-dropdown-menu: Add input to move selected on top when show
+* st-dropdown-menu: Add input to apply selected style
+* st-select: Add output for emit when expand menu named expand
+* st-select: Add output for emit when select an item named select
 
 **Fixed bugs:**
 
@@ -20,6 +28,14 @@
 
 **Breaking changes:**
 
+* st-dropdown: Removed component
+* st-dropdown-menu: Remove qaTag now read from id if exists
+* st-dropdown-menu: Refactor styles
+* st-select: Refactor component and add new styles
+* st-select: Remove input qaTag now read from id if exists
+* st-select: Rename input errorRequiredMessage to errorMessage
+* st-select: Rename input selectedValue to selected
+* st-select: Remove input forceValidations
 * st-modal: Refactor styles
 * st-modal: Remove main text
 * st-modal: Remove modal type

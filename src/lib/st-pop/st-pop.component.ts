@@ -44,6 +44,7 @@ type StCoords = { x: number, y: number, z: number };
  */
 @Component({
    selector: 'st-pop',
+   styleUrls: ['./st-pop.component.scss'],
    templateUrl: './st-pop.component.html',
    changeDetection: ChangeDetectionStrategy.OnPush
 })

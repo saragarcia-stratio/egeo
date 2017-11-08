@@ -142,6 +142,9 @@ export { StPaginationPipe } from './st-pagination/st-pagination.pipe';
 export { StPaginationService } from './st-pagination/st-pagination.service';
 export { StPaginationModule } from './st-pagination/st-pagination.module';
 
+// Pop Over
+export { StPopOverModule } from './st-pop-over/st-pop-over.module';
+
 // Radio
 export { StRadioModule } from './st-radio/st-radio.module';
 export { RadioChange } from './st-radio/st-radio.change';

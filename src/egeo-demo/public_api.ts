@@ -32,6 +32,7 @@ export { StLauncherDemoModule } from './st-launcher-demo/st-launcher-demo.module
 export { StModalDemoModule } from './st-modal-demo/st-modal-demo.module';
 export { StPageTitleDemoModule } from './st-page-title-demo/st-page-title-demo.module';
 export { StPaginationDemoModule } from './st-pagination-demo/st-pagination-demo.module';
+export { StPopOverDemoModule } from './st-pop-over-demo/st-pop-over-demo.module';
 export { StRadioDemoModule } from './st-radio-demo/st-radio-demo.module';
 export { StSearchDemoModule } from './st-search-demo/st-search-demo.module';
 export { StRadioMenuDemoModule } from './st-radio-menu-demo/st-radio-menu-demo.module';

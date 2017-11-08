@@ -30,6 +30,7 @@ import { StModalModule } from './st-modal/st-modal.module';
 import { StPageTitleModule } from './st-page-title/st-page-title.module';
 import { StPaginationModule } from './st-pagination/st-pagination.module';
 import { StPopModule } from './st-pop/st-pop.module';
+import { StPopOverModule } from './st-pop-over/st-pop-over.module';
 import { StRadioMenuModule } from './st-radio-menu/st-radio-menu.module';
 import { StRadioModule } from './st-radio/st-radio.module';
 import { StSearchModule } from './st-search/st-search.module';
@@ -71,6 +72,7 @@ export const DECLARATIONS: any[] = [
    StPageTitleModule,
    StPaginationModule,
    StPopModule,
+   StPopOverModule,
    StRadioMenuModule,
    StRadioModule,
    StSearchModule,

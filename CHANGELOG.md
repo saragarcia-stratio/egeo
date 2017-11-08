@@ -21,6 +21,7 @@
 * st-dropdown-menu: Add input to apply selected style
 * st-select: Add output for emit when expand menu named expand
 * st-select: Add output for emit when select an item named select
+* st-pop-over: Create component to pop over a content with a title
 
 **Fixed bugs:**
 

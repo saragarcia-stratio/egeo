@@ -10,7 +10,12 @@
     SPDX-License-Identifier: Apache-2.0.
 
 -->
-<ng-content select=[pop-button]></ng-content>
-<div [hidden]="hidden" class="content">
-   <ng-content select=[pop-content]></ng-content>
-</div>
+<st-pop [hidden]="hidden" placement="bottom-start" class="test">
+   <div pop-content [style.z-index]="9" class="content st-pop-over__content">
+      <div class="st-pop-over__title">
+         <span >{{title}}</span>
+      </div>
+      <span class="arrow st-pop-over__arrow"></span>
+      <ng-content select=[pop-over-content]></ng-content>
+   </div>
+</st-pop>

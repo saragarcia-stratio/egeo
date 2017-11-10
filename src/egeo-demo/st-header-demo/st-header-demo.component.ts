@@ -9,28 +9,27 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { StHeaderMenuOption } from '@stratio/egeo';
+import { StHeaderMenuOption, StLauncherGroup } from '@stratio/egeo';
 
-import { HEADER_MENU } from './st-header-demo.model';
+import { HEADER_MENU, LAUNCHER_ITEMS } from './st-header-demo.model';
 
 @Component({
    selector: 'st-header-demo',
    templateUrl: './st-header-demo.component.html',
-   styles: [`
-      .header-container {
-         width: 100%;
-         position: relative;
-      }
-      .content-after-header {
-         padding-top: 90px;
-      }
-   `],
+   styleUrls: ['./st-header-demo.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StHeaderDemoComponent {
 
    public height: string;
+   public launcherTitle: string = 'Services';
    public headerMenuSchema: StHeaderMenuOption[] = HEADER_MENU;
+   public launcherItems: StLauncherGroup[] = LAUNCHER_ITEMS;
+   public hideUserMenu: boolean = true;
 
    constructor(private _cd: ChangeDetectorRef) {}
+
+   onMenuClick(): void {
+      this.hideUserMenu = !this.hideUserMenu;
+   }
 }

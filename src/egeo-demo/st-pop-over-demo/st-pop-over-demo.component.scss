@@ -25,6 +25,9 @@
 
 .pop-over-demo-content {
    padding: 30px;
+   display: flex;
+   flex-wrap: nowrap;
+   white-space: nowrap;
 }
 
 .pop-over-demo-componet {

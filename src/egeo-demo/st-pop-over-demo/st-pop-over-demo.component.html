@@ -13,11 +13,12 @@
 <section class="container-liquid">
    <div class="pop-over-demo-container">
       <div class="pop-over-demo-items">
-         <button class="pop-over-demo-button button button-primary" (click)="onClick()">
+         <st-pop-over class="pop-over-demo-componet" qaTag="pop-over-demo" [title]="title" [hidden]="hidden">
+
+         <button pop-over-button class="pop-over-demo-button button button-primary" (click)="onClick()">
             <span>Pop Over</span>
          </button>
 
-         <st-pop-over class="pop-over-demo-componet" qaTag="pop-over-demo" [title]="title" [hidden]="hidden">
             <div pop-over-content class="pop-over-demo-content">
                <span>{{content}}</span>
             </div>

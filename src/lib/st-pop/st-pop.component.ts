@@ -11,11 +11,12 @@
 import {
    Component,
    ElementRef,
-   OnInit,
+   AfterViewInit,
    Input,
    ChangeDetectionStrategy,
    OnChanges,
-   SimpleChanges
+   SimpleChanges,
+   HostListener
 } from '@angular/core';
 import { startsWith as _startsWith } from 'lodash';
 
@@ -48,7 +49,7 @@ type StCoords = { x: number, y: number, z: number };
    templateUrl: './st-pop.component.html',
    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StPopComponent implements OnInit {
+export class StPopComponent implements AfterViewInit, OnChanges {
 
    /** @Input {StPopPlacement} [placement=StPopPlacement.BOTOM_START] Define position of content relative to button */
    @Input() placement: StPopPlacement = StPopPlacement.BOTTOM_START;
@@ -56,14 +57,15 @@ export class StPopComponent implements OnInit {
    @Input() hidden: boolean = true;
    /** @Input {StPopOffset} [offset={x: 0 , y: 0}] For position with offset in x o y axis */
    @Input() offset: StPopOffset = { x: 0, y: 0 };
-
+   /** @Input {boolean} [openToLeft=false] For calculate all position from right corner */
+   @Input() openToLeft: boolean = false;
 
    private button: ClientRect;
    private content: ElementRef;
 
    constructor(private el: ElementRef) { }
 
-   ngOnInit(): void {
+   ngAfterViewInit(): void {
       this.calculatePosition();
    }
 
@@ -71,9 +73,13 @@ export class StPopComponent implements OnInit {
       this.calculatePosition();
    }
 
+   private getContentElement(): HTMLElement {
+      return this.el.nativeElement.querySelector('[pop-content]');
+   }
+
    private calculatePosition(): void {
       const buttonParentEl: HTMLElement = this.el.nativeElement.querySelector('[pop-button]');
-      const contentEl: HTMLElement = this.el.nativeElement.querySelector('[pop-content]');
+      const contentEl: HTMLElement = this.getContentElement();
       const buttonEl: Element | undefined = buttonParentEl && buttonParentEl.firstElementChild ?
          buttonParentEl.firstElementChild : undefined;
       if (buttonEl) {
@@ -84,8 +90,14 @@ export class StPopComponent implements OnInit {
       }
    }
 
+   @HostListener('window:load')
+   private updateWidth(): void {
+      this.calculatePosition();
+   }
+
    private getCoords(buttonEl: Element): StCoords {
       const coords: StCoords = { x: 0, y: 0, z: 0 };
+      const direction: number = this.openToLeft ? this.getContentElement().getBoundingClientRect().width : 0;
       const clientRect: ClientRect = buttonEl.getBoundingClientRect();
 
       switch (this.placement) {
@@ -110,8 +122,8 @@ export class StPopComponent implements OnInit {
             break;
       }
 
+      coords.x = coords.x + this.offset.x - direction;
       coords.y = coords.y + this.offset.y;
-      coords.x = coords.x + this.offset.x;
 
       return coords;
    }

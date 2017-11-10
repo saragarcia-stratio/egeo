@@ -1,13 +1,15 @@
 # Pop (Component)
 
-   The pop is a component for manage floating elements like popups or dropdown-menu. This element need two element inside,a button element that launch popper and a content element that whose position will be relativo to button element.
+   The pop is a component for manage floating elements like popups or dropdown-menu. This element need two element inside, a button element that launch popper and a content element that whose position will be relativo to button element.
 
 ## Inputs
 
-| Property  | Type                                                                                                                            | Req   | Description                                     | Default        |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------- | ----- | ----------------------------------------------- | -------------- |
-| placement | &#39;top&#39; \| &#39;top-start&#39; \| &#39;top-end&#39; \| &#39;bottom&#39; \| &#39;bottom-start&#39; \| &#39;bottom-end&#39; | False | Define position of content relative to button   | 'bottom-start' |
-| hidden    | Boolean                                                                                                                         | False | TRUE: show pop content, FALSE: hide pop content | true           |
+| Property   | Type           | Req   | Description                                     | Default                    |
+| ---------- | -------------- | ----- | ----------------------------------------------- | -------------------------- |
+| placement  | StPopPlacement | False | Define position of content relative to button   | StPopPlacement.BOTOM_START |
+| hidden     | Boolean        | False | TRUE: show pop content, FALSE: hide pop content | true                       |
+| offset     | StPopOffset    | False | For position with offset in x o y axis          | {x: 0 , y: 0}              |
+| openToLeft | Boolean        | False | For calculate all position from right corner    | false                      |
 
 ## Example
 

@@ -1,0 +1,25 @@
+@import '../../theme/constants/index';
+
+.header-container {
+   width: 100%;
+   position: relative;
+}
+.content-after-header {
+   padding-top: 90px;
+}
+
+.app-selector-container {
+   width: 20px;
+   height: 20px;
+
+   .app-selector {
+      font-size: $egeo-font-size-large;
+      text-align: left;
+      color: $neutral-00;
+   }
+}
+
+
+.button {
+   padding: 15px 30px;
+}

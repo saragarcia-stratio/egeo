@@ -23,7 +23,23 @@
          </svg>
       </div>
       <div class="sth-header-user-menu">
-         <button class="button button-primary">Test Button</button>
+         <st-pop-over qaTag="pop" [title]="launcherTitle" [hidden]="hideUserMenu">
+            <div pop-over-button class="app-selector-container">
+               <i class="app-selector icon-grid3" (click)="onMenuClick()"></i>
+            </div>
+               <div pop-over-content class="launcher-container">
+                  <st-launcher
+                     qaTag="launcher-demo"
+                     [items]="launcherItems"
+                     [groupLimit]="4"
+                     [groupLimitLabel]="'View more'">
+                  </st-launcher>
+                  <div>
+                     <button class="button button-link-primary">Add service</button>
+                     <button class="button button-link-primary">Access to DC/OS</button>
+                  </div>
+               </div>
+         </st-pop-over>
       </div>
 
    </st-header>

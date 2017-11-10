@@ -10,6 +10,8 @@
  */
 import { Component, Input } from '@angular/core';
 
+import { StPopOffset, StPopPlacement } from '../st-pop/st-pop.model';
+
 /**
  * @description {Component} Pop Over
  *
@@ -38,7 +40,13 @@ export class StPopOverComponent {
    @Input() title: string;
    /** @input {boolean} [hidden=false] Show or hide the pop over */
    @Input() hidden: boolean = false;
+   /** @Input {StPopOffset} [offset={x: 0 , y: 0}] For position with offset in x o y axis */
+   @Input() offset: StPopOffset = { x: 0, y: 0 };
 
-   constructor() {
+   public placement: StPopPlacement = StPopPlacement.BOTTOM;
+   private defaultOffset: StPopOffset = { x: 21.5, y: 24.5 };
+
+   get popOffset(): StPopOffset {
+      return { x: (this.offset.x + this.defaultOffset.x), y: (this.offset.y + this.defaultOffset.y) };
    }
 }

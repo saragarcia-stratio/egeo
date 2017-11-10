@@ -13,7 +13,9 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import {
    StDemoGeneratorModule,
-   StHeaderModule
+   StHeaderModule,
+   StPopOverModule,
+   StLauncherModule
 } from '@stratio/egeo';
 
 import { StHeaderDemoComponent } from './st-header-demo.component';
@@ -26,6 +28,8 @@ import { routing } from './st-header-demo.routing';
       CommonModule,
       RouterModule,
       StHeaderModule,
+      StPopOverModule,
+      StLauncherModule,
       StDemoGeneratorModule.withComponents({ components: [StHeaderDemoComponent] }),
       routing
    ],

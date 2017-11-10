@@ -8,7 +8,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { StHeaderMenuOption } from '@stratio/egeo';
+import { StHeaderMenuOption, StLauncherGroup } from '@stratio/egeo';
 
 export const HEADER_MENU: Array<StHeaderMenuOption> = [
    {
@@ -57,3 +57,55 @@ export const LONG_CONTENT: string = `
 <br><p>Morbi et lectus venenatis, hendrerit nulla vitae, tempus nisl. Ut posuere velit sed lorem tincidunt, nec vestibulum mauris ullamcorper. Ut auctor nisl non hendrerit sagittis. Morbi tristique quis sem nec sagittis. Proin ornare, purus nec iaculis congue, tortor nunc pharetra elit, sit amet consectetur nisl lorem ullamcorper tortor. Integer tincidunt sodales mollis. Fusce a tincidunt arcu, porttitor cursus est.</p>
 <br><p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla lobortis fringilla justo a tincidunt. Quisque ut aliquam nibh. Curabitur consequat euismod enim. Vivamus pretium augue non placerat scelerisque. Suspendisse blandit dolor vitae arcu vestibulum, quis pellentesque quam lobortis. Quisque sapien turpis, dignissim vitae tellus at, luctus facilisis magna. Nulla pretium condimentum luctus.</p>
 `;
+
+export const LAUNCHER_ITEMS: StLauncherGroup[] = [
+   {
+      label: 'Egeo',
+      items: [{
+         label: 'Egeo',
+         url: 'https://github.com/Stratio/egeo'
+      },
+      {
+         label: 'Egeo Web',
+         url: 'https://github.com/Stratio/egeo-web'
+      },
+      {
+         label: 'Egeo Starter',
+         url: 'https://github.com/Stratio/egeo-starter'
+      }]
+   },
+   {
+      label: 'Angular',
+      items: [{
+         label: 'Docs',
+         url: 'https://angular.io/docs'
+      },
+      {
+         label: 'Github',
+         url: 'https://github.com/angular/angular'
+      }]
+   },
+   {
+      label: 'Stratio',
+      items: [{
+         label: 'Stratio',
+         url: 'http://www.stratio.com/'
+      },
+      {
+         label: 'Linkedn',
+         url: 'https://www.linkedin.com/company/5122962/'
+      },
+      {
+         label: 'Twitter',
+         url: 'https://twitter.com/stratiobd'
+      },
+      {
+         label: 'Youtube',
+         url: 'https://www.youtube.com/channel/UCuzJA_GlT3TQaU5DyRwDOVw'
+      },
+      {
+         label: 'Paradigma Digital',
+         url: 'https://www.paradigmadigital.com'
+      }]
+   }
+];

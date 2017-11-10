@@ -25,7 +25,8 @@
 
 **Fixed bugs:**
 
-* st-tooltip: fix empty title bug
+* st-tooltip: Fix empty title bug
+* st-header: Fix user menu width
 
 **Breaking changes:**
 

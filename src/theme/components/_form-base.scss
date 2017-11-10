@@ -19,32 +19,30 @@
 }
 
 .st-form-field {
-   &:not(.ng-invalid) {
-      .st-label {
-         color: $neutral-08;
-         &:focus {
-            color: $action-primary-default;
-         }
-         &[disabled] {
-            color: $neutral-06;
-         }
+   .st-label {
+      color: $neutral-08;
+      &:focus {
+         color: $action-primary-default;
       }
-
-      input,
-      text-area {
-         &:focus {
-            border-color: $action-primary-default;
-         }
-         &:disabled {
-            border-color: $neutral-06;
-         }
-         &:disabled:placeholder {
-            color: $neutral-05;
-         }
+      &[disabled] {
+         color: $neutral-06;
       }
    }
 
-   &.ng-invalid {
+   input,
+   text-area {
+      &:focus {
+         border-color: $action-primary-default;
+      }
+      &:disabled {
+         border-color: $neutral-06;
+      }
+      &:disabled:placeholder {
+         color: $neutral-05;
+      }
+   }
+
+   &.ng-invalid:not(.ng-pristine) {
       .st-label {
          color: $status-critical-default;
       }

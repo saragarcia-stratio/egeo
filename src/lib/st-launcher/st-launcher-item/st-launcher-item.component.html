@@ -22,7 +22,7 @@
 
 <div *ngIf="item.expanded && item.items.length">
    <div *ngFor="let subitem of itemsFiltered" class="st-launcher__item" (click)="select.emit(subitem)">
-      <span>{{subitem.label}}</span>
+      <span [title]="subitem.label" class="item-label">{{subitem.label}}</span>
    </div>
    <div *ngIf="limit !== undefined && limit < item.items.length" class="st-launcher__more" (click)="view.emit(item)">
       <span>{{limitLabel}}</span>

@@ -122,8 +122,8 @@ export class StPopComponent implements AfterViewInit, OnChanges {
             break;
       }
 
-      coords.x = coords.x + this.offset.x - direction;
-      coords.y = coords.y + this.offset.y;
+      coords.x = Math.ceil(coords.x + this.offset.x - direction);
+      coords.y = Math.ceil(coords.y + this.offset.y);
 
       return coords;
    }

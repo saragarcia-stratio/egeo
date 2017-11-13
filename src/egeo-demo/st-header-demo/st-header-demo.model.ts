@@ -66,11 +66,11 @@ export const LAUNCHER_ITEMS: StLauncherGroup[] = [
          url: 'https://github.com/Stratio/egeo'
       },
       {
-         label: 'Egeo Web',
+         label: 'Egeo Web (Esta web esta deprecada por lo que ya no tiene mantenimiento)',
          url: 'https://github.com/Stratio/egeo-web'
       },
       {
-         label: 'Egeo Starter',
+         label: 'Egeo.Starter.asdasdas.asdasd.asd.asd.asgfg.df.gdf.gdf.gtw.rtwefds',
          url: 'https://github.com/Stratio/egeo-starter'
       }]
    },

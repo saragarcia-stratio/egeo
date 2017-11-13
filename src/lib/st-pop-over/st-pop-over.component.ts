@@ -40,11 +40,11 @@ export class StPopOverComponent {
    @Input() title: string;
    /** @input {boolean} [hidden=false] Show or hide the pop over */
    @Input() hidden: boolean = false;
-   /** @Input {StPopOffset} [offset={x: 0 , y: 0}] For position with offset in x o y axis */
-   @Input() offset: StPopOffset = { x: 0, y: 0 };
+   /** @Input {StPopOffset} [offset={x: 0 , y: 17}] For position with offset in x o y axis */
+   @Input() offset: StPopOffset = { x: 0, y: 17 };
 
    public placement: StPopPlacement = StPopPlacement.BOTTOM;
-   private defaultOffset: StPopOffset = { x: 21.5, y: 24.5 };
+   private defaultOffset: StPopOffset = { x: 21, y: 8 };
 
    get popOffset(): StPopOffset {
       return { x: (this.offset.x + this.defaultOffset.x), y: (this.offset.y + this.defaultOffset.y) };

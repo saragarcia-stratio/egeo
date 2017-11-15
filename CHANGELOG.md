@@ -4,7 +4,7 @@
 
 * Pending changelog
 
-## 5.0.0 (upcoming)
+## 5.0.0 (November 15, 2017)
 
 **New features:**
 

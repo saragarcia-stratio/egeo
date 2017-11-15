@@ -8,7 +8,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { NO_ERRORS_SCHEMA, DebugElement } from '@angular/core';
+import { NO_ERRORS_SCHEMA, DebugElement, ElementRef } from '@angular/core';
 import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -60,76 +60,92 @@ class WindowMock {
 let windowMock: WindowMock = new WindowMock();
 
 class WindowRefMock {
- get nativeWindow (): any {
-        return windowMock;
-    }
+   get nativeWindow(): any {
+      return windowMock;
+   }
 }
 
-describe('StHeaderComponent', () => {
-   beforeEach(async(() => {
-      TestBed.configureTestingModule({
-         declarations: [
-            StHeaderComponent,
-            StHeaderMenuComponent,
-            StHeaderMenuOptionComponent
-         ],
-         schemas: [NO_ERRORS_SCHEMA],
-         providers: [
-            { provide: Router, useClass: RouterStub },
-            { provide: StWindowRefService, useClass: WindowRefMock }
-         ]
-      })
-         .compileComponents();  // compile template and css
-   }));
+describe('StHeader', () => {
+   describe('StHeaderComponent', () => {
+      beforeEach(async(() => {
+         TestBed.configureTestingModule({
+            declarations: [
+               StHeaderComponent,
+               StHeaderMenuComponent,
+               StHeaderMenuOptionComponent
+            ],
+            schemas: [NO_ERRORS_SCHEMA],
+            providers: [
+               { provide: Router, useClass: RouterStub },
+               { provide: StWindowRefService, useClass: WindowRefMock }
+            ]
+         })
+            .compileComponents();  // compile template and css
+      }));
 
-   beforeEach(() => {
-      fixture = TestBed.createComponent(StHeaderComponent);
-      comp = fixture.componentInstance;
-   });
+      beforeEach(() => {
+         fixture = TestBed.createComponent(StHeaderComponent);
+         comp = fixture.componentInstance;
+      });
 
-   it('should be able to init correctly', () => {
-      windowMock.setInnerWidth(2000);
-      comp.menu = menu;
-      fixture.elementRef.nativeElement.id = null;
-      fixture.detectChanges();
+      it('Should be able to init correctly', () => {
+         windowMock.setInnerWidth(2000);
+         comp.menu = menu;
+         fixture.elementRef.nativeElement.id = null;
+         fixture.detectChanges();
 
-      expect(comp.id).toEqual('st-header');
-   });
+         expect(comp.id).toEqual('st-header');
+      });
 
-   it('should be able to select a menu option', inject([Router], (router: Router) => {
-      windowMock.setInnerWidth(2000);
-      spyOn(router, 'navigate');
-      let responseFunction = jasmine.createSpy('response');
-      comp.selectMenu.subscribe(responseFunction);
+      it('Should be able to select a menu option', inject([Router], (router: Router) => {
+         windowMock.setInnerWidth(2000);
+         spyOn(router, 'navigate');
+         let responseFunction = jasmine.createSpy('response');
+         comp.selectMenu.subscribe(responseFunction);
 
-      comp.menu = menu;
-      fixture.detectChanges();
+         comp.menu = menu;
+         fixture.detectChanges();
 
-      comp.onSelectMenu('test');
-      expect(router.navigate).toHaveBeenCalled();
-      expect(router.navigate).toHaveBeenCalledWith(['test']);
-      expect(responseFunction).toHaveBeenCalled();
-      expect(responseFunction).toHaveBeenCalledWith('test');
+         comp.onSelectMenu('test');
+         expect(router.navigate).toHaveBeenCalled();
+         expect(router.navigate).toHaveBeenCalledWith(['test']);
+         expect(responseFunction).toHaveBeenCalled();
+         expect(responseFunction).toHaveBeenCalledWith('test');
 
-      expect(comp.showMenuNames).toBeTruthy();
+         expect(comp.showMenuNames).toBeTruthy();
 
-      windowMock.setInnerWidth(1000);
-      window.dispatchEvent(new Event('resize'));
-      fixture.detectChanges();
-      expect(comp.showMenuNames).toBeTruthy();
-   }));
+         windowMock.setInnerWidth(1000);
+         window.dispatchEvent(new Event('resize'));
+         fixture.detectChanges();
+         expect(comp.showMenuNames).toBeTruthy();
+      }));
 
-   it(`should hide the menu labels when they doesn't fit on the screen`, () => {
-      windowMock.setInnerWidth(2000);
-      comp.menu = menu;
-      fixture.detectChanges();
+      it(`Should hide the menu labels when they doesn't fit on the screen`, () => {
+         windowMock.setInnerWidth(2000);
+         comp.menu = menu;
+         fixture.detectChanges();
 
-      expect(comp.showMenuNames).toBeTruthy();
+         expect(comp.showMenuNames).toBeTruthy();
 
-      windowMock.setInnerWidth(50);
-      comp.onResize();
-      fixture.detectChanges();
+         windowMock.setInnerWidth(50);
+         comp.onResize();
+         fixture.detectChanges();
 
-      expect(comp.showMenuNames).toBeFalsy();
+         expect(comp.showMenuNames).toBeFalsy();
+      });
+
+      it(`Should get user menu width`, () => {
+         const userMenu = document.createElement('div');
+         const userMenuChild = document.createElement('div');
+         userMenuChild.appendChild(document.createTextNode('User Menu'));
+         userMenu.appendChild(userMenuChild);
+         spyOn(userMenuChild, 'getBoundingClientRect').and.returnValue({width: 100});
+
+         comp.menu = menu;
+         comp.userMenuContainer = new ElementRef(userMenu);
+         fixture.detectChanges();
+
+         expect(comp.userMenuElementWidth).toEqual(100);
+      });
    });
 });

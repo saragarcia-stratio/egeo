@@ -17,12 +17,13 @@ import {
    ChangeDetectorRef,
    ElementRef,
    Output,
-   EventEmitter
+   EventEmitter,
+   HostListener,
+   ViewChild
 } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
-import { EventWindowManager } from '../../utils/event-window-manager';
 import { StDropDownMenuItem } from '../../st-dropdown-menu/st-dropdown-menu.interface';
 import { StHeaderMenuOption } from '../st-header.model';
 
@@ -31,23 +32,20 @@ import { StHeaderMenuOption } from '../st-header.model';
    templateUrl: './menu-option.html',
    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StHeaderMenuOptionComponent extends EventWindowManager implements OnDestroy {
+export class StHeaderMenuOptionComponent implements OnDestroy {
 
    @Input() option: StHeaderMenuOption;
    @Input() showMenuName: boolean;
 
    @Output() selectMenu: EventEmitter<string> = new EventEmitter<string>();
 
+   @ViewChild('menu') menu: ElementRef;
+   public isActive: boolean = false;
+
    private subscription: Subscription;
    private actualPath: string = '';
 
-   constructor(
-      private renderer: Renderer,
-      private cd: ChangeDetectorRef,
-      private elementRef: ElementRef,
-      private router: Router
-   ) {
-      super(renderer, cd, elementRef);
+   constructor(private elementRef: ElementRef, private router: Router) {
       this.subscription = this.router.events.subscribe((event) => this.onRouterEvent(event));
       this.actualPath = this.router.url;
    }
@@ -70,20 +68,34 @@ export class StHeaderMenuOptionComponent extends EventWindowManager implements O
       })) : [];
    }
 
+   public get isRouteActive(): boolean {
+      return this.router.url.indexOf(this.option.link) > -1;
+   }
+
    public ngOnDestroy(): void {
-      this.closeElement();
-      if (this.subscription) {
-         this.subscription.unsubscribe();
+      this.isActive = false;
+      this.subscription.unsubscribe();
+   }
+
+   public onMenuClick(): void {
+      if (this.hasSubmenu) {
+         this.isActive = !this.isActive;
+      } else {
+         this.selectMenu.emit(this.option.link);
       }
    }
 
-   public changeStatus(event: Event): void {
-      this.openElement();
+   public changeOption(selected: StDropDownMenuItem): void {
+      this.isActive = false;
+      this.selectMenu.emit(selected.value);
    }
 
-   public changeOption(selected: StDropDownMenuItem): void {
-      this.closeElement();
-      this.selectMenu.emit(selected.value);
+   @HostListener('document:click', ['$event'])
+   onClickOutside(event: Event): void {
+      const isMyComponent: boolean = this.isActive && this.menu.nativeElement.contains(event.target);
+      if (!isMyComponent && this.isActive) {
+         this.isActive = false;
+      }
    }
 
    private onRouterEvent(event: any): void {

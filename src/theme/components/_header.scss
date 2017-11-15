@@ -65,7 +65,7 @@
          padding-right: 30px;
          align-items: center;
          height: 70px;
-         width: 100%
+         flex-grow: 1;
       }
    }
 }
@@ -77,7 +77,11 @@
    align-content: flex-end;
 
    .sth-header-menu-item {
-      padding: 0px 15px;
+      padding: 0;
+      margin-right: 45px;
+      &:last-child {
+         margin-right: 0;
+      }
    }
 }
 

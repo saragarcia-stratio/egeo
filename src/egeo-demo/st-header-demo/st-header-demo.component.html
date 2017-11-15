@@ -10,6 +10,7 @@
     SPDX-License-Identifier: Apache-2.0.
 
 -->
+
 <div class="header-container">
    <st-header [menu]="headerMenuSchema" id="header">
       <div class="sth-header-logo">
@@ -22,23 +23,20 @@
             </g>
          </svg>
       </div>
-      <div class="sth-header-user-menu">
-         <st-pop-over qaTag="pop" [title]="launcherTitle" [hidden]="hideUserMenu">
+      <div class="sth-header-user-menu" #launcher>
+         <st-pop-over qaTag="pop" [title]="launcherTitle" [hidden]="!showLauncherMenu">
             <div pop-over-button class="app-selector-container">
                <i class="app-selector icon-grid3" (click)="onMenuClick()"></i>
             </div>
-               <div pop-over-content class="launcher-container">
-                  <st-launcher
-                     qaTag="launcher-demo"
-                     [items]="launcherItems"
-                     [groupLimit]="4"
-                     [groupLimitLabel]="'View more'">
-                  </st-launcher>
-                  <div>
-                     <button class="button button-link-primary">Add service</button>
-                     <button class="button button-link-primary">Access to DC/OS</button>
-                  </div>
+            <div pop-over-content class="launcher-container">
+               <st-launcher qaTag="launcher-demo" [items]="launcherItems" [groupLimit]="4" [groupLimitLabel]="'View more'">
+               </st-launcher>
+               <div class="button-groups">
+                  <button class="button button-link-primary">
+                     <i class="icon-plus"></i>Add service</button>
+                  <button class="button button-link-primary">Access to DC/OS</button>
                </div>
+            </div>
          </st-pop-over>
       </div>
 

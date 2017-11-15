@@ -44,7 +44,7 @@ let menu: StHeaderMenuOption[] = [
 ];
 
 
-describe('StHeaderComponent', () => {
+describe('StHeader', () => {
    describe('StHeaderMenuComponent', () => {
       beforeEach(async(() => {
          TestBed.configureTestingModule({

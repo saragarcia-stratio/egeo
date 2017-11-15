@@ -8,7 +8,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, ElementRef, ViewChild, HostListener } from '@angular/core';
 import { StHeaderMenuOption, StLauncherGroup } from '@stratio/egeo';
 
 import { HEADER_MENU, LAUNCHER_ITEMS } from './st-header-demo.model';
@@ -25,11 +25,23 @@ export class StHeaderDemoComponent {
    public launcherTitle: string = 'Services';
    public headerMenuSchema: StHeaderMenuOption[] = HEADER_MENU;
    public launcherItems: StLauncherGroup[] = LAUNCHER_ITEMS;
-   public hideUserMenu: boolean = true;
+   public showLauncherMenu: boolean = false;
+
+   @ViewChild('launcher') launcherElement: ElementRef;
 
    constructor(private _cd: ChangeDetectorRef) {}
 
    onMenuClick(): void {
-      this.hideUserMenu = !this.hideUserMenu;
+      this.showLauncherMenu = !this.showLauncherMenu;
+   }
+
+   @HostListener('document:click', ['$event'])
+   onClickOutside(event: Event): void {
+      const expandNewValue: boolean = this.showLauncherMenu && this.launcherElement &&
+      this.launcherElement.nativeElement.contains(event.target);
+
+      if (expandNewValue !== this.showLauncherMenu) {
+         this.showLauncherMenu = expandNewValue;
+      }
    }
 }

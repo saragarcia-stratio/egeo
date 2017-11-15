@@ -9,22 +9,19 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 import {
+   AfterViewInit,
    ChangeDetectionStrategy,
-   ChangeDetectorRef,
    Component,
    ElementRef,
    EventEmitter,
-   Input,
-   OnInit,
-   Output,
-   ViewChild,
    HostListener,
-   AfterViewInit
+   Input,
+   Output,
+   ViewChild
 } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { StHeaderMenuOption, StHeaderSubMenuOption } from './st-header.model';
-import { StDropDownMenuItem } from '../st-dropdown-menu/st-dropdown-menu.interface';
+import { StHeaderMenuOption } from './st-header.model';
 import { StWindowRefService } from '../utils/window-service';
 
 
@@ -75,18 +72,15 @@ export class StHeaderComponent implements AfterViewInit {
    public showMenuNames: boolean = true;
 
    private _headerSize: number = 0;
-   private _window: Window;
 
    constructor(
-      private _cd: ChangeDetectorRef,
       private _router: Router,
       private _windowServiceRef: StWindowRefService,
-      private _el: ElementRef) {
-      this._window = _windowServiceRef.nativeWindow;
-   }
+      private _el: ElementRef
+   ) { }
 
    public ngAfterViewInit(): void {
-      this._headerSize = this.headerFixPart.nativeElement.scrollWidth + this.userMenuContainer.nativeElement.scrollWidth + 20;
+      this._headerSize = this.headerFixPart.nativeElement.getBoundingClientRect().width + this.userMenuElementWidth + 20;
       this.checkMenuLabelVisibility();
    }
 
@@ -108,13 +102,22 @@ export class StHeaderComponent implements AfterViewInit {
       return `${this.id}-menu`;
    }
 
+   public get userMenuElementWidth(): number {
+      const userMenuContainer: HTMLElement = this.userMenuContainer.nativeElement;
+
+      if (userMenuContainer.children && userMenuContainer.children.length > 0) {
+         return userMenuContainer.children[0].getBoundingClientRect().width;
+      } else {
+         return userMenuContainer.getBoundingClientRect().width;
+      }
+   }
+
    private checkMenuLabelVisibility(): void {
-      let windowSize: number = this._window.innerWidth;
-      let canShowMenuNames = this._headerSize <= windowSize;
+      const windowSize: number = this._windowServiceRef.nativeWindow.innerWidth;
+      const canShowMenuNames = this._headerSize <= windowSize;
 
       if (this.showMenuNames !== canShowMenuNames) {
          this.showMenuNames = canShowMenuNames;
-         this._cd.markForCheck();
       }
    }
 }

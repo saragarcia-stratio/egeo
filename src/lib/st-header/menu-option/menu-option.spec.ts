@@ -37,7 +37,7 @@ let comp: StHeaderMenuOptionComponent;
 let fixture: ComponentFixture<StHeaderMenuOptionComponent>;
 let de: DebugElement;
 
-describe('StHeaderComponent', () => {
+describe('StHeader', () => {
    describe('StHeaderMenuOptionComponent', () => {
       beforeEach(async(() => {
          TestBed.configureTestingModule({
@@ -118,18 +118,28 @@ describe('StHeaderComponent', () => {
          let arrow: HTMLElement = fixture.debugElement.query(By.css('.sth-header-menu-option-arrow')).nativeElement;
          arrow.click();
          fixture.detectChanges();
+         expect(comp.isActive).toBeTruthy();
+
+         document.body.click();
+         fixture.detectChanges();
+         expect(comp.isActive).toBeFalsy();
+
+         // Open whith name
+         const menu: HTMLElement = fixture.debugElement.query(By.css('.sth-header-menu-option')).nativeElement;
+         menu.click();
+         fixture.detectChanges();
 
          expect(comp.isActive).toBeTruthy();
       });
 
       it('should select a submenu', () => {
-         let responseFunction = jasmine.createSpy('response');
+         const responseFunction = jasmine.createSpy('response');
          comp.selectMenu.subscribe(responseFunction);
          comp.option = fakeMenuWithSubmenu;
          comp.showMenuName = true;
 
          fixture.detectChanges();
-         let arrow: HTMLElement = fixture.debugElement.query(By.css('.sth-header-menu-option-arrow')).nativeElement;
+         const arrow: HTMLElement = fixture.debugElement.query(By.css('.sth-header-menu-option-arrow')).nativeElement;
          arrow.click();
          fixture.detectChanges();
 
@@ -137,32 +147,54 @@ describe('StHeaderComponent', () => {
          comp.changeOption(comp.submenuList[0]);
          fixture.detectChanges();
 
-         expect(comp.isActive).toEqual(false);
+         expect(comp.isActive).toBeFalsy();
          expect(responseFunction).toHaveBeenCalled();
          expect(responseFunction).toHaveBeenCalledWith(comp.submenuList[0].value);
       });
 
+      it('should select a menu', () => {
+         const responseFunction = jasmine.createSpy('response');
+         comp.selectMenu.subscribe(responseFunction);
+         comp.option = fakeMenu;
+         comp.showMenuName = true;
+
+         fixture.detectChanges();
+         const menuOption: HTMLElement = fixture.debugElement.query(By.css('.sth-header-menu-option')).nativeElement;
+         menuOption.click();
+         fixture.detectChanges();
+
+         expect(comp.isActive).toBeFalsy();
+         expect(responseFunction).toHaveBeenCalled();
+         expect(responseFunction).toHaveBeenCalledWith(comp.option.link);
+      });
+
        it('should update the active menu option in navigation event', inject([Router], (router: RouterStub) => {
-          let expectedSubmenuList: StDropDownMenuItem[] = [{
+          const expectedSubmenuList: StDropDownMenuItem[] = [{
             label: fakeMenuWithSubmenu.subMenus[0].label,
             value: fakeMenuWithSubmenu.subMenus[0].link,
             selected: false
          }];
          comp.option = fakeMenuWithSubmenu;
          comp.showMenuName = true;
+         router.url = 'test';
 
          fixture.detectChanges();
          expect(comp.submenuList).toEqual(expectedSubmenuList);
+         expect(comp.isRouteActive).toBeFalsy();
 
          router.launchNewEvent(new NavigationStart(0, 'submenu1'));
          fixture.detectChanges();
          expect(comp.submenuList).toEqual(expectedSubmenuList);
+         expect(comp.isRouteActive).toBeFalsy();
 
          router.launchNewEvent(new NavigationEnd(0, 'submenu1', 'submenu1'));
+         router.url = 'fakePath/submenu1';
          fixture.detectChanges();
          expectedSubmenuList[0].selected = true;
          expect(comp.submenuList).toEqual(expectedSubmenuList);
+         expect(comp.isRouteActive).toBeTruthy();
       }));
+
        it('should be destroyed without subscription', inject([Router], (router: RouterStub) => {
          comp.option = fakeMenuWithSubmenu;
          comp.showMenuName = true;

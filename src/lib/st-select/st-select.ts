@@ -11,6 +11,7 @@
 import {
    AfterViewInit,
    ChangeDetectionStrategy,
+   ChangeDetectorRef,
    Component,
    ElementRef,
    EventEmitter,
@@ -70,7 +71,8 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor {
 
    constructor(
       private _selectElement: ElementRef,
-      private _injector: Injector
+      private _injector: Injector,
+      private _cd: ChangeDetectorRef
    ) { }
 
    // TODO: MOVE THIS TO FORM-BASE
@@ -152,11 +154,13 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor {
    writeValue(newValue: any): void {
       if (!this.selected || this.selected.value !== newValue) {
          this.selected = this.findByProperty('value', newValue);
+         this._cd.markForCheck();
       }
    }
 
    setDisabledState(disabled: boolean): void {
       this._isDisabled = disabled;
+      this._cd.markForCheck();
    }
 
    /*
@@ -202,6 +206,7 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor {
          this.onTouched();
       }
       this.select.emit(value);
+      this._cd.markForCheck();
    }
 
    /*
@@ -230,6 +235,7 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor {
    private toggleButton(): void {
       this.expandedMenu = !this.expandedMenu;
       this.expand.emit(this.expandedMenu); // Notify expand change
+      this._cd.markForCheck();
    }
 
    // TODO: Remove when remove from StDropDownMenuItem model the selected property

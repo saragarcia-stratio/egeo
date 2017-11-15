@@ -30,6 +30,7 @@
 
 **Breaking changes:**
 
+* icons: Update new version of icon library
 * st-header: Change submenu behaviour, now act as arrow no navigate to first option
 * st-dropdown: Removed component
 * st-dropdown-menu: Remove qaTag now read from id if exists

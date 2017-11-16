@@ -19,7 +19,7 @@ import { StWindowRefService } from '../utils/window-service';
 import { StHeaderComponent } from './st-header.component';
 import { StHeaderMenuComponent } from './menu/menu';
 import { StHeaderMenuOptionComponent } from './menu-option/menu-option';
-import { StHeaderMenuOption } from './st-header.model';
+import { StHeaderMenuOption, StHeaderSelection } from './st-header.model';
 
 
 let comp: StHeaderComponent;
@@ -56,6 +56,7 @@ class WindowMock {
    setInnerWidth(newValue: number): void {
       this.innerWidth = newValue;
    }
+   open(_url?: string, _target?: string, _features?: string, _replace?: boolean): void { }
 }
 let windowMock: WindowMock = new WindowMock();
 
@@ -106,7 +107,11 @@ describe('StHeader', () => {
          comp.menu = menu;
          fixture.detectChanges();
 
-         comp.onSelectMenu('test');
+         const responseValue: StHeaderSelection = {
+            link: 'test'
+         };
+
+         comp.onSelectMenu(responseValue);
          expect(router.navigate).toHaveBeenCalled();
          expect(router.navigate).toHaveBeenCalledWith(['test']);
          expect(responseFunction).toHaveBeenCalled();
@@ -120,7 +125,67 @@ describe('StHeader', () => {
          expect(comp.showMenuNames).toBeTruthy();
       }));
 
-      it(`Should hide the menu labels when they doesn't fit on the screen`, () => {
+      it('Should be able to select a menu option without navigate', inject([Router], (router: Router) => {
+         windowMock.setInnerWidth(2000);
+         spyOn(router, 'navigate');
+         let responseFunction = jasmine.createSpy('response');
+         comp.selectMenu.subscribe(responseFunction);
+
+         comp.menu = menu;
+         comp.navigateByDefault = false;
+         fixture.detectChanges();
+
+         const responseValue: StHeaderSelection = { link: 'test' };
+
+         comp.onSelectMenu(responseValue);
+         expect(router.navigate).not.toHaveBeenCalled();
+         expect(responseFunction).toHaveBeenCalled();
+         expect(responseFunction).toHaveBeenCalledWith('test');
+      }));
+
+      it('Should be able to open external link in new page',
+         inject([Router, StWindowRefService], (router: Router, windowRefService: StWindowRefService) => {
+            windowMock.setInnerWidth(2000);
+            spyOn(router, 'navigate');
+            spyOn(windowRefService.nativeWindow, 'open');
+            const responseFunction = jasmine.createSpy('response');
+            comp.selectMenu.subscribe(responseFunction);
+
+            comp.menu = menu;
+            fixture.detectChanges();
+
+            const responseValue: StHeaderSelection = { link: 'test', external: true, openInNewPage: true };
+
+            comp.onSelectMenu(responseValue);
+            expect(router.navigate).not.toHaveBeenCalled();
+            expect(responseFunction).toHaveBeenCalled();
+            expect(responseFunction).toHaveBeenCalledWith('test');
+            expect(windowRefService.nativeWindow.open).toHaveBeenCalled();
+            expect(windowRefService.nativeWindow.open).toHaveBeenCalledWith('test', '_blank');
+         }));
+
+      it('Should be able to open external link in the same page',
+         inject([Router, StWindowRefService], (router: Router, windowRefService: StWindowRefService) => {
+            windowMock.setInnerWidth(2000);
+            spyOn(router, 'navigate');
+            spyOn(windowRefService.nativeWindow, 'open');
+            const responseFunction = jasmine.createSpy('response');
+            comp.selectMenu.subscribe(responseFunction);
+
+            comp.menu = menu;
+            fixture.detectChanges();
+
+            const responseValue: StHeaderSelection = { link: 'test', external: true, openInNewPage: false };
+
+            comp.onSelectMenu(responseValue);
+            expect(router.navigate).not.toHaveBeenCalled();
+            expect(responseFunction).toHaveBeenCalled();
+            expect(responseFunction).toHaveBeenCalledWith('test');
+            expect(windowRefService.nativeWindow.open).toHaveBeenCalled();
+            expect(windowRefService.nativeWindow.open).toHaveBeenCalledWith('test', '_self');
+         }));
+
+      it(`Should hide the menu labels when they don't fit on the screen`, () => {
          windowMock.setInnerWidth(2000);
          comp.menu = menu;
          fixture.detectChanges();
@@ -139,7 +204,7 @@ describe('StHeader', () => {
          const userMenuChild = document.createElement('div');
          userMenuChild.appendChild(document.createTextNode('User Menu'));
          userMenu.appendChild(userMenuChild);
-         spyOn(userMenuChild, 'getBoundingClientRect').and.returnValue({width: 100});
+         spyOn(userMenuChild, 'getBoundingClientRect').and.returnValue({ width: 100 });
 
          comp.menu = menu;
          comp.userMenuContainer = new ElementRef(userMenu);

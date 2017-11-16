@@ -8,14 +8,48 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
+
+import {StDropDownMenuItem} from '../st-dropdown-menu/st-dropdown-menu.interface';
+import { TranslateableElement } from '../utils/egeo-resolver/egeo-resolve-model';
+
 export class StHeaderMenuOption {
    icon: string; // Icon to show on left of menu label
    label: string; // Menu label to show
-   link: string; // Link to navigate when click
    subMenus: StHeaderSubMenuOption[]; // List of submenu options
+   link: string;
+   external?: boolean;
+   openInNewPage?: boolean;
 }
 
 export class StHeaderSubMenuOption {
    label: string; // Label to show
-   link: string; // Link to navigate when click
+   link: string;
+   external?: boolean;
+   openInNewPage?: boolean;
+}
+
+export class StHeaderSelection {
+   link: string;
+   external?: boolean;
+   openInNewPage?: boolean;
+}
+
+export class StHeaderMenuItem extends StDropDownMenuItem {
+   selection: StHeaderSelection;
+}
+
+export class StHeaderMenuOptionSchema {
+   icon: string; // Icon to show on left of menu label
+   label: TranslateableElement; // Menu label to show
+   subMenus: StHeaderSubMenuOptionSchema[]; // List of submenu options
+   link: string;
+   external?: boolean;
+   openInNewPage?: boolean;
+}
+
+export class StHeaderSubMenuOptionSchema {
+   label: TranslateableElement; // Label to show
+   link: string;
+   external?: boolean;
+   openInNewPage?: boolean;
 }

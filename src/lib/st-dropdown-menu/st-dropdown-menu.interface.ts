@@ -15,6 +15,7 @@ export class StDropDownMenuItem {
    value: any;
    icon?: string;
    selected?: boolean;
+   [key: string]: any; // To do model more extensible if any other component needs to send more data
 }
 
 export class StDropDownMenuGroup {

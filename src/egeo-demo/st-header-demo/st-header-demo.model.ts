@@ -33,13 +33,17 @@ export const HEADER_MENU: Array<StHeaderMenuOption> = [
    {
       icon: 'icon-layers',
       label: 'Security',
-      link: '/header-demo/test4',
+      link: 'http://www.google.es',
+      external: true,
+      openInNewPage: false,
       subMenus: []
    },
    {
       icon: 'icon-layers',
       label: 'Glossaries',
-      link: '/header-demo/test5',
+      link: 'http://www.stratio.com',
+      external: true,
+      openInNewPage: true,
       subMenus: []
    }
 ];

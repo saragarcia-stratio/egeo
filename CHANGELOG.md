@@ -2,7 +2,11 @@
 
 ## 6.0.0 (upcoming)
 
-* Pending changelog
+**New features:**
+
+* st-header: New input "navigateByDefault" for prevent navigation when click 
+* st-header: Add new parameter "external" to model to define external links
+* st-header: Add new parameter "openInNewPage" to model to define if open new tab when navigate to link 
 
 ## 5.0.0 (November 15, 2017)
 

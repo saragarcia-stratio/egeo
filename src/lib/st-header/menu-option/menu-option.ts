@@ -24,8 +24,7 @@ import {
 import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
-import { StDropDownMenuItem } from '../../st-dropdown-menu/st-dropdown-menu.interface';
-import { StHeaderMenuOption } from '../st-header.model';
+import { StHeaderMenuOption, StHeaderSubMenuOption, StHeaderSelection, StHeaderMenuItem } from '../st-header.model';
 
 @Component({
    selector: 'st-header-menu-option',
@@ -37,7 +36,7 @@ export class StHeaderMenuOptionComponent implements OnDestroy {
    @Input() option: StHeaderMenuOption;
    @Input() showMenuName: boolean;
 
-   @Output() selectMenu: EventEmitter<string> = new EventEmitter<string>();
+   @Output() selectMenu: EventEmitter<StHeaderSelection> = new EventEmitter<StHeaderSelection>();
 
    @ViewChild('menu') menu: ElementRef;
    public isActive: boolean = false;
@@ -60,11 +59,16 @@ export class StHeaderMenuOptionComponent implements OnDestroy {
       return this.option.subMenus && this.option.subMenus.length > 0;
    }
 
-   public get submenuList(): StDropDownMenuItem[] {
+   public get submenuList(): StHeaderMenuItem[] {
       return this.hasSubmenu ? this.option.subMenus.map(_ => ({
          label: _.label,
          value: _.link,
-         selected: this.actualPath === _.link
+         selected: this.actualPath === _.link,
+         selection: {
+            link: _.link,
+            external: _.external,
+            openInNewPage: _.openInNewPage
+         } as StHeaderSelection
       })) : [];
    }
 
@@ -81,13 +85,17 @@ export class StHeaderMenuOptionComponent implements OnDestroy {
       if (this.hasSubmenu) {
          this.isActive = !this.isActive;
       } else {
-         this.selectMenu.emit(this.option.link);
+         this.selectMenu.emit({
+            link: this.option.link,
+            external: this.option.external,
+            openInNewPage: this.option.openInNewPage
+         });
       }
    }
 
-   public changeOption(selected: StDropDownMenuItem): void {
+   public changeOption(selected: StHeaderMenuItem): void {
       this.isActive = false;
-      this.selectMenu.emit(selected.value);
+      this.selectMenu.emit(selected.selection);
    }
 
    @HostListener('document:click', ['$event'])

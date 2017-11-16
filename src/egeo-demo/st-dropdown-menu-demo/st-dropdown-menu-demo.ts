@@ -51,21 +51,22 @@ export class StDropdownMenuDemoComponent {
    }
 
    private generateNormal(): StDropDownMenuItem[] {
-      return Array.from(Array<StDropDownMenuItem>(5)).map((value, i) => ({
+      return Array.from(Array<StDropDownMenuItem>(5)).map((_value, i) => ({
          label: `Option ${i}`,
-         value: `option-${i}`
+         value: `option-${i}`,
+         test: 'test'
       }));
    }
 
    private generateWithScroll(): StDropDownMenuItem[] {
-      return Array.from(Array<StDropDownMenuItem>(20)).map((value, i) => ({
+      return Array.from(Array<StDropDownMenuItem>(20)).map((_value, i) => ({
          label: `Option ${i}`,
          value: `option-${i}`
       }));
    }
 
    private generateLargeText(): StDropDownMenuItem[] {
-      return Array.from(Array<StDropDownMenuItem>(10)).map((value, i) => ({
+      return Array.from(Array<StDropDownMenuItem>(10)).map((_value, i) => ({
          label: i === 3 ? `Option ${i} with large text that not fit in button size` : `Option ${i}`,
          value: `option-${i}`
       }));

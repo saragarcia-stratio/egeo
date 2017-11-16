@@ -15,9 +15,8 @@ import { By } from '@angular/platform-browser';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 
 import { RouterStub } from '../../tests/router-stub';
-import { StDropDownMenuItem } from '../../st-dropdown-menu/st-dropdown-menu.interface';
 import { StHeaderMenuOptionComponent } from './menu-option';
-import { StHeaderMenuOption } from '../st-header.model';
+import { StHeaderMenuOption, StHeaderSelection, StHeaderMenuItem } from '../st-header.model';
 
 let fakeMenu: StHeaderMenuOption = {
    icon: 'icon-check',
@@ -73,10 +72,15 @@ describe('StHeader', () => {
 
          fixture.detectChanges();
 
-         let expectedSubmenuList: StDropDownMenuItem[] = [{
+         let expectedSubmenuList: StHeaderMenuItem[] = [{
             label: fakeMenuWithSubmenu.subMenus[0].label,
             value: fakeMenuWithSubmenu.subMenus[0].link,
-            selected: false
+            selected: false,
+            selection: {
+               link: fakeMenuWithSubmenu.subMenus[0].link,
+               external: undefined,
+               openInNewPage: undefined
+            }
          }];
 
          expect(comp.qaId).toContain(fakeMenu.label.toLowerCase());
@@ -84,11 +88,16 @@ describe('StHeader', () => {
          expect(comp.submenuList).toEqual(expectedSubmenuList);
       });
 
-       it('should be initialized correctly with submenu elements and one active', inject([Router], (router: RouterStub)  => {
-         let expectedSubmenuList: StDropDownMenuItem[] = [{
+      it('should be initialized correctly with submenu elements and one active', inject([Router], (router: RouterStub) => {
+         let expectedSubmenuList: StHeaderMenuItem[] = [{
             label: fakeMenuWithSubmenu.subMenus[0].label,
             value: fakeMenuWithSubmenu.subMenus[0].link,
-            selected: true
+            selected: true,
+            selection: {
+               link: fakeMenuWithSubmenu.subMenus[0].link,
+               external: undefined,
+               openInNewPage: undefined
+            }
          }];
 
          comp.option = fakeMenuWithSubmenu;
@@ -109,10 +118,15 @@ describe('StHeader', () => {
 
          fixture.detectChanges();
 
-         let expectedSubmenuList: StDropDownMenuItem[] = [{
+         let expectedSubmenuList: StHeaderMenuItem[] = [{
             label: fakeMenuWithSubmenu.subMenus[0].label,
             value: fakeMenuWithSubmenu.subMenus[0].link,
-            selected: false
+            selected: false,
+            selection: {
+               link: fakeMenuWithSubmenu.subMenus[0].link,
+               external: undefined,
+               openInNewPage: undefined
+            } as StHeaderSelection
          }];
 
          let arrow: HTMLElement = fixture.debugElement.query(By.css('.sth-header-menu-option-arrow')).nativeElement;
@@ -149,11 +163,16 @@ describe('StHeader', () => {
 
          expect(comp.isActive).toBeFalsy();
          expect(responseFunction).toHaveBeenCalled();
-         expect(responseFunction).toHaveBeenCalledWith(comp.submenuList[0].value);
+         expect(responseFunction).toHaveBeenCalledWith(comp.submenuList[0].selection);
       });
 
       it('should select a menu', () => {
          const responseFunction = jasmine.createSpy('response');
+         const responseValue: StHeaderSelection = {
+            link: fakeMenu.link,
+            external: undefined,
+            openInNewPage: undefined
+         };
          comp.selectMenu.subscribe(responseFunction);
          comp.option = fakeMenu;
          comp.showMenuName = true;
@@ -165,14 +184,19 @@ describe('StHeader', () => {
 
          expect(comp.isActive).toBeFalsy();
          expect(responseFunction).toHaveBeenCalled();
-         expect(responseFunction).toHaveBeenCalledWith(comp.option.link);
+         expect(responseFunction).toHaveBeenCalledWith(responseValue);
       });
 
-       it('should update the active menu option in navigation event', inject([Router], (router: RouterStub) => {
-          const expectedSubmenuList: StDropDownMenuItem[] = [{
+      it('should update the active menu option in navigation event', inject([Router], (router: RouterStub) => {
+         const expectedSubmenuList: StHeaderMenuItem[] = [{
             label: fakeMenuWithSubmenu.subMenus[0].label,
             value: fakeMenuWithSubmenu.subMenus[0].link,
-            selected: false
+            selected: false,
+            selection: {
+               link: fakeMenuWithSubmenu.subMenus[0].link,
+               external: undefined,
+               openInNewPage: undefined
+            } as StHeaderSelection
          }];
          comp.option = fakeMenuWithSubmenu;
          comp.showMenuName = true;
@@ -195,7 +219,7 @@ describe('StHeader', () => {
          expect(comp.isRouteActive).toBeTruthy();
       }));
 
-       it('should be destroyed without subscription', inject([Router], (router: RouterStub) => {
+      it('should be destroyed without subscription', inject([Router], (router: RouterStub) => {
          comp.option = fakeMenuWithSubmenu;
          comp.showMenuName = true;
 

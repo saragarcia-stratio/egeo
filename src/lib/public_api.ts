@@ -70,7 +70,12 @@ export { StFooterModule } from './st-footer/st-footer.module';
 export { StFooterLink } from './st-footer/st-footer.model';
 
 // Header
-export { StHeaderMenuOption, StHeaderSubMenuOption } from './st-header/st-header.model';
+export {
+   StHeaderMenuOption,
+   StHeaderSubMenuOption,
+   StHeaderMenuOptionSchema,
+   StHeaderSubMenuOptionSchema
+} from './st-header/st-header.model';
 export { StHeaderModule } from './st-header/st-header.module';
 
 // Help

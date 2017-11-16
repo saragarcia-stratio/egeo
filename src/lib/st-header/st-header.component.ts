@@ -21,7 +21,7 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { StHeaderMenuOption } from './st-header.model';
+import { StHeaderMenuOption, StHeaderSelection } from './st-header.model';
 import { StWindowRefService } from '../utils/window-service';
 
 
@@ -62,6 +62,8 @@ export class StHeaderComponent implements AfterViewInit {
 
    /** @Input {StHeaderMenuOption[]} [menu] Array with menu option to show */
    @Input() menu: StHeaderMenuOption[] = [];
+   /** @Input {StHeaderMenuOption[]} [menu] Array with menu option to show */
+   @Input() navigateByDefault: boolean = true;
    /** @Output {string} [selectMenu] Notify any menu option selection */
    @Output() selectMenu: EventEmitter<string> = new EventEmitter<string>();
 
@@ -93,9 +95,15 @@ export class StHeaderComponent implements AfterViewInit {
       return this._el.nativeElement.id || 'st-header';
    }
 
-   public onSelectMenu(link: string): void {
-      this._router.navigate([link]);
-      this.selectMenu.emit(link);
+   public onSelectMenu(selected: StHeaderSelection): void {
+      if (this.navigateByDefault) {
+         if (selected.external) {
+            this._windowServiceRef.nativeWindow.open(selected.link, selected.openInNewPage ? '_blank' : '_self');
+         } else {
+            this._router.navigate([selected.link]);
+         }
+      }
+      this.selectMenu.emit(selected.link);
    }
 
    public get menuContainerId(): string {

@@ -73,203 +73,204 @@ class TestDropdownComponent {
    onChange(item: StDropDownMenuItem): void { this.selected = item; }
 }
 
-describe('StDropdownMenuComponent', () => {
+describe('StDropdownMenu', () => {
+   describe('Component', () => {
 
-   let comp: StDropdownMenuComponent;
-   let fixture: ComponentFixture<StDropdownMenuComponent>;
+      let comp: StDropdownMenuComponent;
+      let fixture: ComponentFixture<StDropdownMenuComponent>;
 
-   beforeEach(async(() => {
-      TestBed.configureTestingModule({
-         declarations: [StDropdownMenuComponent],
-         schemas: [NO_ERRORS_SCHEMA]
-      })
-         .compileComponents();  // compile template and css
-   }));
+      beforeEach(async(() => {
+         TestBed.configureTestingModule({
+            declarations: [StDropdownMenuComponent],
+            schemas: [NO_ERRORS_SCHEMA]
+         })
+            .compileComponents();  // compile template and css
+      }));
 
-   beforeEach(() => {
-      fixture = TestBed.createComponent(StDropdownMenuComponent);
-      comp = fixture.componentInstance;
-   });
+      beforeEach(() => {
+         fixture = TestBed.createComponent(StDropdownMenuComponent);
+         comp = fixture.componentInstance;
+      });
 
-   it('should init correctly', () => {
-      comp.items = simpleItems;
-      (fixture.elementRef.nativeElement as HTMLElement).id = null;
-      fixture.detectChanges();
+      it('Should init correctly', () => {
+         comp.items = simpleItems;
+         fixture.elementRef.nativeElement.id = null;
+         fixture.detectChanges();
 
-      const defaultMaxHeight: number = comp.itemsBeforeScroll * 42; // 42 it's default row height
+         const defaultMaxHeight: number = comp.itemsBeforeScroll * 42; // 42 it's default row height
 
-      expect(comp.active).toBeFalsy();
-      expect(comp.items).toEqual(simpleItems);
-      expect(comp.placement).toEqual(StPopPlacement.BOTTOM_START);
-      expect(comp.emptyListMessage).toEqual('');
-      expect(comp.selectedItem).toBeUndefined();
-      expect(comp.itemsBeforeScroll).toEqual(8);
-      expect(comp.moveSelected).toBeTruthy();
-      expect(comp.styleSelected).toBeTruthy();
-      expect(comp.offset).toEqual({ x: 0, y: 0 });
+         expect(comp.active).toBeFalsy();
+         expect(comp.items).toEqual(simpleItems);
+         expect(comp.placement).toEqual(StPopPlacement.BOTTOM_START);
+         expect(comp.emptyListMessage).toEqual('');
+         expect(comp.selectedItem).toBeUndefined();
+         expect(comp.itemsBeforeScroll).toEqual(8);
+         expect(comp.moveSelected).toBeTruthy();
+         expect(comp.styleSelected).toBeTruthy();
+         expect(comp.offset).toEqual({ x: 0, y: 0 });
 
-      expect(comp.componentId).toBeNull();
-      expect(comp.menuId).toBeNull();
-      expect(comp.getItemId('test')).toBeNull();
+         expect(comp.componentId).toBeNull();
+         expect(comp.menuId).toBeNull();
+         expect(comp.getItemId('test')).toBeNull();
 
-      expect(comp.isItemGroup).toBeFalsy();
-      expect(comp.menuMaxHeight).toEqual(`${defaultMaxHeight}px`);
-   });
+         expect(comp.isItemGroup).toBeFalsy();
+         expect(comp.menuMaxHeight).toEqual(`${defaultMaxHeight}px`);
+      });
 
-   it('should get max height', () => {
-      comp.items = simpleItems;
-      (fixture.elementRef.nativeElement as HTMLElement).id = null;
-      fixture.detectChanges();
+      it('Should get max height', () => {
+         comp.items = simpleItems;
+         fixture.elementRef.nativeElement.id = null;
+         fixture.detectChanges();
 
-      const defaultMaxHeight: number = comp.itemsBeforeScroll * defaultRowHeight; // 42 it's default row height
-      expect(comp.menuMaxHeight).toEqual(`${defaultMaxHeight}px`);
+         const defaultMaxHeight: number = comp.itemsBeforeScroll * defaultRowHeight; // 42 it's default row height
+         expect(comp.menuMaxHeight).toEqual(`${defaultMaxHeight}px`);
 
-      comp.itemsBeforeScroll = undefined;
-      fixture.detectChanges();
-      expect(comp.menuMaxHeight).toBeNull();
-   });
+         comp.itemsBeforeScroll = undefined;
+         fixture.detectChanges();
+         expect(comp.menuMaxHeight).toBeNull();
+      });
 
-   it('should propagate ids', () => {
-      comp.items = simpleItems;
-      const id: string = 'test-id';
-      (fixture.elementRef.nativeElement as HTMLElement).id = id;
-      fixture.detectChanges();
+      it('Should propagate ids', () => {
+         comp.items = simpleItems;
+         const id: string = 'test-id';
+         (fixture.elementRef.nativeElement as HTMLElement).id = id;
+         fixture.detectChanges();
 
-      expect(comp.componentId).toEqual(id);
-      expect(comp.menuId).toEqual(`${id}-menu`);
-      expect(comp.getItemId('test')).toEqual(`${id}-option-test`);
-   });
+         expect(comp.componentId).toEqual(id);
+         expect(comp.menuId).toEqual(`${id}-menu`);
+         expect(comp.getItemId('test')).toEqual(`${id}-option-test`);
+      });
 
-   it('should propagate ids to menu without label', () => {
-      comp.items = simpleItems;
-      const id: string = 'test-id';
-      (fixture.elementRef.nativeElement as HTMLElement).id = id;
-      fixture.detectChanges();
+      it('Should propagate ids to menu without label', () => {
+         comp.items = simpleItems;
+         const id: string = 'test-id';
+         (fixture.elementRef.nativeElement as HTMLElement).id = id;
+         fixture.detectChanges();
 
-      expect(comp.componentId).toEqual(id);
-      expect(comp.menuId).toEqual(`${id}-menu`);
-      expect(comp.getItemId(undefined)).toBeNull();
-   });
+         expect(comp.componentId).toEqual(id);
+         expect(comp.menuId).toEqual(`${id}-menu`);
+         expect(comp.getItemId(undefined)).toBeNull();
+      });
 
-   it('should show options when active it\'s true', () => {
-      comp.items = simpleItems;
-      comp.active = false;
-      const id: string = 'test-id';
-      (fixture.elementRef.nativeElement as HTMLElement).id = id;
-      fixture.detectChanges();
+      it('Should show options when active it\'s true', () => {
+         comp.items = simpleItems;
+         comp.active = false;
+         const id: string = 'test-id';
+         (fixture.elementRef.nativeElement as HTMLElement).id = id;
+         fixture.detectChanges();
 
-      let items: DebugElement[] = fixture.debugElement.queryAll(By.css('st-dropdown-menu-item'));
-      expect(items).toBeDefined();
-      expect(items.length).toBeDefined();
-      expect(items.length).toEqual(0);
+         let items: DebugElement[] = fixture.debugElement.queryAll(By.css('st-dropdown-menu-item'));
+         expect(items).toBeDefined();
+         expect(items.length).toBeDefined();
+         expect(items.length).toEqual(0);
 
-      comp.active = true;
-      fixture.detectChanges();
+         comp.active = true;
+         fixture.detectChanges();
 
-      items = fixture.debugElement.queryAll(By.css('st-dropdown-menu-item'));
-      expect(items).toBeDefined();
-      expect(items.length).toBeDefined();
-      expect(items.length).toEqual(comp.items.length);
-   });
+         items = fixture.debugElement.queryAll(By.css('st-dropdown-menu-item'));
+         expect(items).toBeDefined();
+         expect(items.length).toBeDefined();
+         expect(items.length).toEqual(comp.items.length);
+      });
 
-   it('should show empty list message', () => {
-      comp.items = [];
-      comp.active = false;
-      comp.emptyListMessage = 'Test message';
-      const id: string = 'test-id';
-      (fixture.elementRef.nativeElement as HTMLElement).id = id;
-      fixture.detectChanges();
+      it('Should show empty list message', () => {
+         comp.items = [];
+         comp.active = false;
+         comp.emptyListMessage = 'Test message';
+         const id: string = 'test-id';
+         (fixture.elementRef.nativeElement as HTMLElement).id = id;
+         fixture.detectChanges();
 
-      let item: DebugElement = fixture.debugElement.query(By.css('.without-results'));
-      expect(item).toBeNull();
+         let item: DebugElement = fixture.debugElement.query(By.css('.without-results'));
+         expect(item).toBeNull();
 
-      comp.active = true;
-      fixture.detectChanges();
+         comp.active = true;
+         fixture.detectChanges();
 
-      item = fixture.debugElement.query(By.css('.without-results'));
-      expect(item).toBeDefined();
-      expect(item.nativeElement).toBeDefined();
-      expect((item.nativeElement as HTMLDivElement).innerText).toEqual(comp.emptyListMessage);
-   });
+         item = fixture.debugElement.query(By.css('.without-results'));
+         expect(item).toBeDefined();
+         expect(item.nativeElement).toBeDefined();
+         expect((item.nativeElement as HTMLDivElement).innerText).toEqual(comp.emptyListMessage);
+      });
 
-   it('should show title of group menu', () => {
-      comp.items = groupedItems;
-      comp.active = false;
-      fixture.detectChanges();
+      it('Should show title of group menu', () => {
+         comp.items = groupedItems;
+         comp.active = false;
+         fixture.detectChanges();
 
-      let titles: DebugElement[] = fixture.debugElement.queryAll(By.css('h3'));
-      expect(titles).toBeDefined();
-      expect(titles.length).toBeDefined();
-      expect(titles.length).toEqual(0);
+         let titles: DebugElement[] = fixture.debugElement.queryAll(By.css('h3'));
+         expect(titles).toBeDefined();
+         expect(titles.length).toBeDefined();
+         expect(titles.length).toEqual(0);
 
-      comp.active = true;
-      fixture.detectChanges();
+         comp.active = true;
+         fixture.detectChanges();
 
-      titles = fixture.debugElement.queryAll(By.css('h3'));
-      expect(titles).toBeDefined();
-      expect(titles.length).toBeDefined();
-      expect(titles.length).toEqual(2);
-      expect((titles[0].nativeElement as HTMLElement).children[0].textContent).toEqual(groupedItems[0].title);
-      expect((titles[1].nativeElement as HTMLElement).children[0].textContent).toEqual(groupedItems[1].title);
-   });
+         titles = fixture.debugElement.queryAll(By.css('h3'));
+         expect(titles).toBeDefined();
+         expect(titles.length).toBeDefined();
+         expect(titles.length).toEqual(2);
+         expect((titles[0].nativeElement as HTMLElement).children[0].textContent).toEqual(groupedItems[0].title);
+         expect((titles[1].nativeElement as HTMLElement).children[0].textContent).toEqual(groupedItems[1].title);
+      });
 
-   it('should show options when active it\'s true and with a group menu', () => {
-      comp.items = groupedItems;
-      comp.active = false;
-      const id: string = 'test-id';
-      (fixture.elementRef.nativeElement as HTMLElement).id = id;
-      const totalItems: number = groupedItems.reduce((count, act) => count + act.items.length, 0);
-      fixture.detectChanges();
+      it('Should show options when active it\'s true and with a group menu', () => {
+         comp.items = groupedItems;
+         comp.active = false;
+         const id: string = 'test-id';
+         (fixture.elementRef.nativeElement as HTMLElement).id = id;
+         const totalItems: number = groupedItems.reduce((count, act) => count + act.items.length, 0);
+         fixture.detectChanges();
 
-      let items: DebugElement[] = fixture.debugElement.queryAll(By.css('st-dropdown-menu-item'));
-      expect(items).toBeDefined();
-      expect(items.length).toBeDefined();
-      expect(items.length).toEqual(0);
+         let items: DebugElement[] = fixture.debugElement.queryAll(By.css('st-dropdown-menu-item'));
+         expect(items).toBeDefined();
+         expect(items.length).toBeDefined();
+         expect(items.length).toEqual(0);
 
-      comp.active = true;
-      fixture.detectChanges();
+         comp.active = true;
+         fixture.detectChanges();
 
-      items = fixture.debugElement.queryAll(By.css('st-dropdown-menu-item'));
-      expect(items).toBeDefined();
-      expect(items.length).toBeDefined();
-      expect(items.length).toEqual(totalItems);
-   });
+         items = fixture.debugElement.queryAll(By.css('st-dropdown-menu-item'));
+         expect(items).toBeDefined();
+         expect(items.length).toBeDefined();
+         expect(items.length).toEqual(totalItems);
+      });
 
-   it('should show empty list message with a group menu', () => {
-      comp.items = emptyGroup;
-      comp.active = false;
-      comp.emptyListMessage = 'Test message';
-      const id: string = 'test-id';
-      (fixture.elementRef.nativeElement as HTMLElement).id = id;
-      fixture.detectChanges();
+      it('Should show empty list message with a group menu', () => {
+         comp.items = emptyGroup;
+         comp.active = false;
+         comp.emptyListMessage = 'Test message';
+         const id: string = 'test-id';
+         (fixture.elementRef.nativeElement as HTMLElement).id = id;
+         fixture.detectChanges();
 
-      let item: DebugElement = fixture.debugElement.query(By.css('.without-results'));
-      expect(item).toBeNull();
+         let item: DebugElement = fixture.debugElement.query(By.css('.without-results'));
+         expect(item).toBeNull();
 
-      comp.active = true;
-      fixture.detectChanges();
+         comp.active = true;
+         fixture.detectChanges();
 
-      item = fixture.debugElement.query(By.css('.without-results'));
-      expect(item).toBeDefined();
-      expect(item.nativeElement).toBeDefined();
-      expect((item.nativeElement as HTMLDivElement).innerText).toEqual(comp.emptyListMessage);
-   });
+         item = fixture.debugElement.query(By.css('.without-results'));
+         expect(item).toBeDefined();
+         expect(item.nativeElement).toBeDefined();
+         expect((item.nativeElement as HTMLDivElement).innerText).toEqual(comp.emptyListMessage);
+      });
 
-   it('should propagate emit on select', () => {
-      comp.items = simpleItems;
-      comp.active = true;
-      const id: string = 'test-id';
-      (fixture.elementRef.nativeElement as HTMLElement).id = id;
-      spyOn(comp.change, 'emit');
+      it('Should propagate emit on select', () => {
+         comp.items = simpleItems;
+         comp.active = true;
+         const id: string = 'test-id';
+         (fixture.elementRef.nativeElement as HTMLElement).id = id;
+         spyOn(comp.change, 'emit');
 
-      fixture.whenStable().then(() => {
-         comp.onChange(simpleItems[0]);
-         expect(comp.change.emit).toHaveBeenCalled();
-         expect(comp.change.emit).toHaveBeenCalledWith(simpleItems[0]);
+         fixture.whenStable().then(() => {
+            comp.onChange(simpleItems[0]);
+            expect(comp.change.emit).toHaveBeenCalled();
+            expect(comp.change.emit).toHaveBeenCalledWith(simpleItems[0]);
+         });
       });
    });
-});
-describe('StDropdownMenuComponent', () => {
+
    describe('Instance', () => {
       let instanceTestFixture: ComponentFixture<TestDropdownComponent>;
       let instanceTestComp: TestDropdownComponent;
@@ -289,7 +290,7 @@ describe('StDropdownMenuComponent', () => {
          instanceTestFixture.destroy();
       });
 
-      it('should adjust to button width when have button element', () => {
+      it('Should adjust to button width when have button element', () => {
          instanceTestComp.items = simpleItems;
          instanceTestComp.active = false;
          instanceTestFixture.detectChanges();
@@ -297,7 +298,7 @@ describe('StDropdownMenuComponent', () => {
          expect(instanceTestComp.dropdownItem.widthMenu).toEqual(instanceTestComp.dropdownWidth);
       });
 
-      it('should have scroll to 0 in menu when without it\'s selected', () => {
+      it('Should have scroll to 0 in menu when without it\'s selected', () => {
          instanceTestComp.items = simpleItems;
          instanceTestComp.active = true;
          instanceTestFixture.detectChanges();
@@ -306,7 +307,7 @@ describe('StDropdownMenuComponent', () => {
          expect(ul.scrollTop).toBe(0);
       });
 
-      it('should have scroll to 0 in menu', () => {
+      it('Should have scroll to 0 in menu', () => {
          instanceTestComp.items = simpleItems;
          instanceTestComp.active = true;
          instanceTestComp.selected = simpleItems[0];
@@ -316,7 +317,7 @@ describe('StDropdownMenuComponent', () => {
          expect(ul.scrollTop).toBe(0);
       });
 
-      it('should have scroll to 0 in menu when item list it\'s empty ', () => {
+      it('Should have scroll to 0 in menu when item list it\'s empty ', () => {
          instanceTestComp.items = [];
          instanceTestComp.active = true;
          instanceTestComp.selected = simpleItems[0];
@@ -324,6 +325,37 @@ describe('StDropdownMenuComponent', () => {
 
          let ul: HTMLInputElement = instanceTestFixture.debugElement.query(By.css('ul')).nativeElement;
          expect(ul.scrollTop).toBe(0);
+      });
+
+      it('Should emit the same object as input on select (Extra parameters)', () => {
+         const itemsWithExtraParamas: StDropDownMenuItem[] = [
+            { label: 'example 1', value: 1, extraparam: 'test' },
+            { label: 'example 2', value: 2, extraparam: true, extraparam2: 'data' },
+            { label: 'example 3', value: 3, extraparam: { test: 'test' } }
+         ];
+         instanceTestComp.items = itemsWithExtraParamas;
+         spyOn(instanceTestComp, 'onChange');
+         instanceTestComp.active = true;
+         instanceTestFixture.detectChanges();
+
+         const items: DebugElement[] = instanceTestFixture.debugElement.queryAll(By.css('.st-dropdown-menu-item'));
+         expect(items).toBeDefined();
+         expect(items.length).toEqual(3);
+
+         (items[0].nativeElement as HTMLElement).click();
+         instanceTestFixture.detectChanges();
+         expect(instanceTestComp.onChange).toHaveBeenCalled();
+         expect(instanceTestComp.onChange).toHaveBeenCalledWith(itemsWithExtraParamas[0]);
+
+         (items[1].nativeElement as HTMLElement).click();
+         instanceTestFixture.detectChanges();
+         expect(instanceTestComp.onChange).toHaveBeenCalled();
+         expect(instanceTestComp.onChange).toHaveBeenCalledWith(itemsWithExtraParamas[1]);
+
+         (items[2].nativeElement as HTMLElement).click();
+         instanceTestFixture.detectChanges();
+         expect(instanceTestComp.onChange).toHaveBeenCalled();
+         expect(instanceTestComp.onChange).toHaveBeenCalledWith(itemsWithExtraParamas[2]);
       });
    });
 });

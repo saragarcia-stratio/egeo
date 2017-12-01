@@ -6,6 +6,7 @@
 
 * st-modal: Removed space when modal does not have buttons
 * st-modal: Reorder buttons in delete confirmation modal
+* st-widget: Hide unused buttons
 
 **New features:**
 

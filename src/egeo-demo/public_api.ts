@@ -19,7 +19,6 @@ export { StCheckboxDemoModule } from './st-checkbox-demo/st-checkbox-demo.module
 export { StDropdownMenuDemoModule } from './st-dropdown-menu-demo/st-dropdown-menu-demo.module';
 export { StFooterDemoModule } from './st-footer-demo/st-footer-demo.module';
 export { StFormDemoModule } from './st-form-demo/st-form-demo.module';
-import { StGridDemoModule } from './st-grid-demo/st-grid-demo.module';
 export { StHeaderDemoModule } from './st-header-demo/st-header-demo.module';
 export { StHelpDemoModule } from './st-help-demo/st-help-demo.module';
 import { StHorizontalTabsDemoModule } from './st-horizontal-tabs-demo/st-horizontal-tabs-demo.module';
@@ -49,7 +48,3 @@ export { StTreeDemoModule } from './st-tree-demo/st-tree-demo.module';
 export { StTwoListSelectionDemoModule } from './st-two-list-selection-demo/st-two-list-selection-demo.module';
 export { StVerticalTabsDemoModule } from './st-vertical-tabs-demo/st-vertical-tabs-demo.module';
 export { StWidgetDemoModule } from './st-widget-demo/st-widget-demo.module';
-
-
-// Theme
-export { StIconsDemoModule } from './theme/st-icons-demo/st-icons-demo.module';

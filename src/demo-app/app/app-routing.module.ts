@@ -11,8 +11,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import {environment} from '../environments/environment';
+
+const mainRoute = environment.production ? 'main-demo' : '/components/demo/alerts-demo';
+
 export const routes: Routes = [
-   { path: '', pathMatch: 'full', redirectTo: 'main-demo' }
+   { path: '', pathMatch: 'full', redirectTo: mainRoute },
+   { path: 'main-demo', loadChildren: './modules/general/general.module#GeneralModule' },
+   { path: 'components', loadChildren: './modules/demos/demo.module#DemoModule'},
+   { path: 'theme', loadChildren: './modules/theme/theme.module#ThemeModule'}
 ];
 
 @NgModule({

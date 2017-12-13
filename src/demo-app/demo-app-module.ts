@@ -13,8 +13,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { EgeoModule } from '@stratio/egeo';
-import { EgeoDemoModule } from '@stratio/egeo-demo';
 
+import { SharedModule } from './app/shared/shared.module';
 import { AppComponent } from './app/app.component';
 import { AppRoutingModule } from './app/app-routing.module';
 import { AppService } from './app/app.service';
@@ -26,7 +26,7 @@ import { AppService } from './app/app.service';
       RouterModule,
       HttpModule,
       EgeoModule.forRoot(),
-      EgeoDemoModule
+      SharedModule
    ],
    declarations: [AppComponent],
    providers: [AppService],

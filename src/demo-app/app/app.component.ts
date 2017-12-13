@@ -9,9 +9,6 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { StVerticalTabsModule } from '@stratio/egeo';
-import { EGEO_DEMO_MENU, EgeoDemoMenu } from '@stratio/egeo-demo';
 
 import { AppService } from './app.service';
 import { environment } from '../environments/environment';
@@ -22,21 +19,13 @@ import { environment } from '../environments/environment';
    styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-   public menu: EgeoDemoMenu[] = EGEO_DEMO_MENU || [];
-   public options: Array<string> = EGEO_DEMO_MENU.map(_ => _.name);
-   public active: string = this.menu[0].name;
+
    public areNewVersion: boolean = false;
 
-   constructor(private _router: Router, private _appService: AppService) {
+   constructor(private _appService: AppService) {
       if (environment.production) {
          this._appService.getLastUpdateDate().subscribe(masterDate => this.checkNewVersion(masterDate));
       }
-   }
-
-   public onChangeOption(active: string): void {
-      this.active = active;
-      const selectedOption: EgeoDemoMenu | undefined = this.menu.find(_ => _.name === active);
-      this._router.navigate([selectedOption ? selectedOption.path : '']);
    }
 
    public hideNotification(): void {

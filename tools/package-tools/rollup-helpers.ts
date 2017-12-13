@@ -13,7 +13,6 @@ import { buildConfig } from './build-config';
 // There are no type definitions available for these imports.
 const rollup = require('rollup');
 const rollupNodeResolutionPlugin = require('rollup-plugin-node-resolve');
-const bundleSize = require('rollup-plugin-bundle-size');
 const stripBanner = require('rollup-plugin-strip-banner');
 
 const ROLLUP_GLOBALS = {
@@ -77,30 +76,30 @@ export function createRollupBundle(config: BundleConfig): Promise<any> {
    const bundleOptions: any = {
       context: 'this',
       external: Object.keys(ROLLUP_GLOBALS),
-      entry: config.entry
+      input: config.entry
    };
 
    const writeOptions = {
       // Keep the moduleId empty because we don't want to force developers to a specific moduleId.
       moduleId: '',
-      moduleName: config.moduleName || 'egeo',
+      name: config.moduleName || 'egeo',
       banner: buildConfig.licenseBanner,
       format: config.format,
-      dest: config.dest,
+      file: config.dest,
       globals: ROLLUP_GLOBALS,
-      sourceMap: true
+      sourcemap: true
    };
 
    // When creating a UMD, we want to exclude tslib from the `external` bundle option so that it
    // is inlined into the bundle.
    if (config.format === 'umd') {
-      bundleOptions.plugins = [rollupNodeResolutionPlugin(), bundleSize(), stripBanner()];
+      bundleOptions.plugins = [rollupNodeResolutionPlugin(), stripBanner()];
 
       const external = Object.keys(ROLLUP_GLOBALS);
       external.splice(external.indexOf('tslib'), 1);
       bundleOptions.external = external;
    } else {
-      bundleOptions.plugins = [bundleSize(), stripBanner()];
+      bundleOptions.plugins = [stripBanner()];
    }
 
    return rollup.rollup(bundleOptions).then((bundle: any) => bundle.write(writeOptions));

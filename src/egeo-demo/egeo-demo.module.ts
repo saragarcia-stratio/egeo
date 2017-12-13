@@ -12,7 +12,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { routing } from './egeo-demo.routes';
-import { StMainDemoComponent } from './main/main';
 import { EGEO_DEMO_MODULES } from './barrels';
 
 @NgModule({
@@ -20,7 +19,6 @@ import { EGEO_DEMO_MODULES } from './barrels';
       CommonModule,
       routing,
       ...EGEO_DEMO_MODULES
-   ],
-   declarations: [StMainDemoComponent]
+   ]
 })
 export class EgeoDemoModule { }

@@ -21,6 +21,7 @@ body {
    color: $neutral-08;
    font-family: $egeo-nunito-sans;
    font-size: 16px;
+   overflow-y: hidden;
 }
 
 main {
@@ -28,4 +29,24 @@ main {
       margin-top: 0;
       padding-top: 0;
    }
+}
+
+.page-title {
+   border-bottom: 2px solid;
+   border-color: $brand;
+   color: $action-secondary-07;
+   display: inline-block;
+   font-family: $egeo-nunito-sans;
+   font-size: $egeo-font-size-xxlarge;
+   font-weight: normal;
+   margin: 0 0 25px;
+   padding: 0 0 8px;
+}
+
+.app-limit {
+   max-width: 78.125rem;
+   min-width: 48rem;
+   display: flex;
+   flex-wrap: nowrap;
+   flex-grow: 1;
 }

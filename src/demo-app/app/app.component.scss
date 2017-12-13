@@ -13,19 +13,16 @@
 :host {
    display: flex;
    width: 100%;
+   height: 100vh;
 }
 
-.side-menu {
-   width: 300px;
-   min-width: 300px;
-   padding: 30px;
-   font-family: $egeo-nunito-sans;
-}
 
-.main-content {
-   padding: 30px;
-   width: 100%;
+.app-content {
+   margin-top: 60px;
    display: flex;
+   width: 100%;
+   overflow-y: auto;
+   background-color: $neutral-01;
 }
 
 .behind-notification {

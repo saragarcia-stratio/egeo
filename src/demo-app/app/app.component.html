@@ -12,8 +12,10 @@
 -->
 <div *ngIf="areNewVersion" class="behind-notification" (click)="hideNotification()">YOUR CODE IS BEHIND MASTER</div>
 
-<st-vertical-tabs class="side-menu" [options]="options" (changeOption)="onChangeOption($event)" qaTag="sidebar"></st-vertical-tabs>
+<demo-header></demo-header>
 
-<div class="main-content">
-   <router-outlet></router-outlet>
+<div class="app-content">
+   <div class="app-limit">
+      <router-outlet></router-outlet>
+   </div>
 </div>

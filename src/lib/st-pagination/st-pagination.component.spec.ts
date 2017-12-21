@@ -10,7 +10,7 @@
  */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { StPaginationComponent } from './st-pagination.component';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { NO_ERRORS_SCHEMA, SimpleChange } from '@angular/core';
 
 describe('StPaginationComponent', () => {
 
@@ -135,11 +135,7 @@ describe('StPaginationComponent', () => {
 
          fixture.componentInstance.total = 300;
 
-         let values = {
-            total: 300
-         };
-
-         component.ngOnChanges(values);
+         component.ngOnChanges({ total: new SimpleChange(50, 300, false) });
          fixture.detectChanges();
 
          expect(component.items.length).toBe(3);

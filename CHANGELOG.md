@@ -7,6 +7,9 @@
 * st-modal: Removed space when modal does not have buttons
 * st-modal: Reorder buttons in delete confirmation modal
 * st-breadcrumbs: Remove left padding from the first item and right padding to the last one
+* st-pop: In some cases pop menu is hidden under other elements
+* st-select: When the selected option is changed from outside via the input 'selected' but there are not any option marked as selected in model, selected is set to undefined
+* general: Preserve z-index value when build
 
 **New features:**
 

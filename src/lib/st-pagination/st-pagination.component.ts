@@ -16,7 +16,8 @@ import {
    Input,
    OnChanges,
    OnInit,
-   Output
+   Output,
+   SimpleChanges
 } from '@angular/core';
 
 import { StDropDownMenuItem } from '../st-dropdown-menu/st-dropdown-menu.interface';
@@ -65,13 +66,13 @@ export class StPaginationComponent implements OnInit, OnChanges {
       this.generateItems();
    }
 
-   ngOnChanges(values: any): void {
-      if (values.total) {
+   ngOnChanges(changes: SimpleChanges): void {
+      if (changes.total && !changes.total.firstChange) {
          this.generateItems();
          this.updatePages(false);
       }
 
-      if (values.currentPage || values.perPage) {
+      if (changes.currentPage || changes.perPage) {
          this.updatePages(false);
       }
    }
@@ -83,6 +84,7 @@ export class StPaginationComponent implements OnInit, OnChanges {
          value: option
       }));
       this.selectedItem = this.items.find(item => item.value === this.perPage);
+      this.cd.markForCheck();
    }
 
    showItemsPerPage(): boolean {

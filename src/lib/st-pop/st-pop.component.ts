@@ -85,7 +85,6 @@ export class StPopComponent implements AfterViewInit, OnChanges {
       if (buttonEl) {
          const coords: StCoords = this.getCoords(buttonEl);
 
-         contentEl.style.position = 'absolute';
          contentEl.style.transform = `translate3d(${coords.x}px, ${coords.y}px, ${coords.z}px)`;
       }
    }

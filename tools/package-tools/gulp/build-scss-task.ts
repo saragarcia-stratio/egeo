@@ -22,7 +22,7 @@ const gulpSassBundle = require('scss-bundle');
 
 const postCssPlugins = [
    autoprefixer({ browsers: ['IE 11'] }),
-   cssnano({ reduceIdents: false })
+   cssnano({ reduceIdents: false, zindex: false })
 ];
 
 /** Create a gulp task that builds SCSS files. */

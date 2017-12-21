@@ -20,6 +20,7 @@
 * st-progress-bar: create component
 * st-widget: Implement loading state
 * st-foreground-notifications: create component
+* st-fullscreen-layout: Create new component
 
  **Breaking changes:**
 

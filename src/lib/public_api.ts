@@ -88,6 +88,9 @@ export { StHelpModule } from './st-help/st-help.module';
 // Dynamic form
 export { StFormModule } from './st-form/st-form.module';
 
+// Fullscreen layout
+export { StFullscreenLayoutModule } from './st-fullscreen-layout/st-fullscreen-layout.module';
+
 // Horizontal Tabs
 export {
    StHorizontalTabsModule
@@ -127,7 +130,7 @@ export {
    StLauncherItemSchema,
    StLauncherGroup,
    StLauncherGroupSchema
- } from './st-launcher/st-launcher.model';
+} from './st-launcher/st-launcher.model';
 
 // Modal
 export {

@@ -152,7 +152,8 @@ export class StModalService {
          buttons: [],
          message: undefined,
          html: undefined,
-         maxWidth: undefined
+         maxWidth: undefined,
+         empty: false
       };
       const checkedConfig: StModalConfig = Object.assign({}, defaultConfig, config);
       checkedConfig.buttons = this.checkButtons(checkedConfig.buttons);

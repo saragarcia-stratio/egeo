@@ -8,6 +8,10 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
+import { ComponentRef } from '@angular/core';
+
+import { StModalComponent } from './st-modal.component';
+
 export enum StModalResponse { YES, NO, CLOSE }
 export enum StModalBasicType { DELETE, CONFIRM, INFO }
 
@@ -31,6 +35,7 @@ export class StModalConfig {
    outputs?: Object;
    buttons?: StModalButton[];
    maxWidth?: number;
+   empty?: boolean;
 }
 
 export class StModalButtonResponse {

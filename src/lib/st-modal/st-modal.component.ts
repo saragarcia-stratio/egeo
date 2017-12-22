@@ -16,10 +16,11 @@ import {
    EventEmitter,
    Input,
    OnDestroy,
-   OnInit,
+   AfterViewInit,
    Output,
    ViewChild,
-   ViewContainerRef
+   ViewContainerRef,
+   Renderer2
 } from '@angular/core';
 
 import { StEgeo, StRequired } from '../decorators/require-decorators';
@@ -32,15 +33,21 @@ import { StWindowRefService } from '../utils/window-service';
    styleUrls: ['./st-modal.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StModalComponent implements OnDestroy, OnInit {
+export class StModalComponent implements OnDestroy, AfterViewInit {
    @Input() modalConfig: StModalConfig;
    @Input() component: any;
    @Output() click: EventEmitter<StModalButtonResponse> = new EventEmitter<StModalButtonResponse>();
-   @ViewChild('stModalBody', { read: ViewContainerRef }) target: ViewContainerRef;
+   @ViewChild('stModalBody', { read: ViewContainerRef }) targetContent: ViewContainerRef;
+   @ViewChild('stModalBodyEmpty', { read: ViewContainerRef }) targetEmpty: ViewContainerRef;
+
+   target: ViewContainerRef;
 
    private componentRef: ComponentRef<any>;
 
-   constructor(private cfr: ComponentFactoryResolver, private windowRef: StWindowRefService) { }
+   constructor(
+      private cfr: ComponentFactoryResolver,
+      private windowRef: StWindowRefService
+   ) { }
 
    get isFullscreen(): boolean {
       return this.modalConfig.fullscreen;
@@ -81,8 +88,13 @@ export class StModalComponent implements OnDestroy, OnInit {
       return {};
    }
 
+   get emptyModal(): boolean {
+      return this.modalConfig && this.modalConfig.empty;
+   }
+
    /** DYNAMIC MODAL BODY COMPONENT LOAD */
-   ngOnInit(): void {
+   ngAfterViewInit(): void {
+      this.target = this.emptyModal ? this.targetEmpty : this.targetContent;
       if (this.component && !(this.modalConfig.html || this.modalConfig.message)) {
          this.loadBody();
       }

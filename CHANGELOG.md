@@ -22,6 +22,7 @@
 * st-foreground-notifications: create component
 * st-fullscreen-layout: Create new component
 * st-tag-input: create component
+* st-modal: New empty option to declare a modal without content
 
  **Breaking changes:**
 

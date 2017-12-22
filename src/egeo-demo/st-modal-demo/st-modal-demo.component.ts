@@ -20,6 +20,7 @@ import {
 import { StDemoLoggerSeverity } from '../shared/st-demo-logger/st-demo-loger.model';
 import { StModalDemoTestComponent } from './st-modal-test-demo.component';
 import { StModalDemoTestButtonsComponent } from './st-modal-test-buttons-demo.component';
+import { StModalDemoTestFullscreenLayoutComponent } from './st-modal-test-fullscreen-layout.component';
 import { StDemoLoggerService } from '../shared/st-demo-logger/st-demo-logger.service';
 
 @Component({
@@ -108,6 +109,17 @@ export class StModalDemoComponent implements AfterViewInit {
          buttons: this.buttons,
          fullscreen: true
       }, StModalDemoTestComponent)
+         .subscribe((response) => this._logger.notifyAlert(StDemoLoggerSeverity.INFO, this.evaluateResponse(response)));
+   }
+
+   showFullscreenModalWithComponentAndWithoutContent(): void {
+      this._modalService.show({
+         modalTitle: 'With component',
+         maxWidth: 600,
+         fullscreen: true,
+         empty: true,
+         outputs: { close: this.onCloseModalWithoutButtons.bind(this) }
+      }, StModalDemoTestFullscreenLayoutComponent)
          .subscribe((response) => this._logger.notifyAlert(StDemoLoggerSeverity.INFO, this.evaluateResponse(response)));
    }
 

@@ -11,7 +11,10 @@
 
 -->
 <div class="st-modal-container">
-   <section class="st-modal" [ngClass]="{'st-modal-fullscreen': isFullscreen}" [ngStyle]="modalStyles">
+   <section class="st-modal" [ngClass]="{'st-modal-fullscreen': isFullscreen}" [ngStyle]="modalStyles" [hidden]="emptyModal">
+      <div #stModalBodyEmpty></div>
+   </section>
+   <section class="st-modal" [ngClass]="{'st-modal-fullscreen': isFullscreen}" [ngStyle]="modalStyles" [hidden]="!emptyModal">
       <div class="st-modal-header">
          <div class="container">
             <p class="title">{{title}}</p>
@@ -23,7 +26,7 @@
 
             <div *ngIf="isMessageModal" class="message">
                <h1 id="st-modal-message-plain-title" class="st-modal-message-plain-title">{{messageTitle}}</h1>
-               <p id="st-modal-message-plain-message" class="st-modal-message-plain-message" >{{message}}</p>
+               <p id="st-modal-message-plain-message" class="st-modal-message-plain-message">{{message}}</p>
             </div>
             <div *ngIf="isComplexMessageModal" [innerHTML]="html" id="st-modal-message-html"></div>
             <div #stModalBody id="st-modal-message-component"></div>

@@ -127,7 +127,8 @@ describe('StModal', () => {
             message: 'test message',
             html: '<h1>Title</h1>',
             fullscreen: true,
-            maxWidth: 600
+            maxWidth: 600,
+            empty: false
          };
 
          const minConfig: StModalConfig = {
@@ -145,7 +146,8 @@ describe('StModal', () => {
             buttons: [],
             message: undefined,
             html: undefined,
-            maxWidth: undefined
+            maxWidth: undefined,
+            empty: false
          };
 
          service.show(allConfig);
@@ -179,7 +181,8 @@ describe('StModal', () => {
             buttons: buttons,
             message: deleteMessage,
             html: undefined,
-            maxWidth: 600
+            maxWidth: 600,
+            empty: false
          };
 
          service.showBasicModal(StModalBasicType.DELETE, deleteModalTitle, deleteMessageTitle, deleteMessage, okButton, cancelButton);

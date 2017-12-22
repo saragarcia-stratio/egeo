@@ -54,7 +54,8 @@ const defaultConfig: StModalConfig = {
    buttons: [],
    message: undefined,
    html: undefined,
-   maxWidth: undefined
+   maxWidth: undefined,
+   empty: false
 };
 
 const windowMock: any = {
@@ -278,7 +279,7 @@ describe('StModal', () => {
          expect(outFunc).toHaveBeenCalled();
          expect(outFunc).toHaveBeenCalledWith(name);
 
-         comp.ngOnInit();
+         comp.ngAfterViewInit();
       });
    });
 });

@@ -10,23 +10,39 @@
  */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StDemoGeneratorModule, StModalModule, StModalService } from '@stratio/egeo';
+import {
+   StDemoGeneratorModule,
+   StModalModule,
+   StModalService,
+   StFullscreenLayoutModule
+} from '@stratio/egeo';
 
 import { StModalDemoComponent } from './st-modal-demo.component';
 import { StModalDemoTestComponent } from './st-modal-test-demo.component';
 import { StModalDemoTestButtonsComponent } from './st-modal-test-buttons-demo.component';
+import { StModalDemoTestFullscreenLayoutComponent } from './st-modal-test-fullscreen-layout.component';
 import { StDemoLoggerModule } from '../shared/st-demo-logger/st-demo-logger.module';
 
 @NgModule({
    imports: [
       CommonModule,
+      StFullscreenLayoutModule,
       StDemoLoggerModule.withService(),
-      StModalModule.withComponents([StModalDemoTestComponent, StModalDemoTestButtonsComponent]),
+      StModalModule.withComponents([
+         StModalDemoTestComponent,
+         StModalDemoTestButtonsComponent,
+         StModalDemoTestFullscreenLayoutComponent
+      ]),
       StDemoGeneratorModule.withComponents({
          components: [StModalDemoComponent]
       })
    ],
-   declarations: [StModalDemoComponent, StModalDemoTestComponent, StModalDemoTestButtonsComponent],
+   declarations: [
+      StModalDemoComponent,
+      StModalDemoTestComponent,
+      StModalDemoTestButtonsComponent,
+      StModalDemoTestFullscreenLayoutComponent
+   ],
    providers: [StModalService]
 })
 export class StModalDemoModule { }

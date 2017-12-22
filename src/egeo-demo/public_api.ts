@@ -41,6 +41,7 @@ export { StSelectDemoModule } from './st-select-demo/select-demo.module';
 export { StSwitchDemoModule } from './st-switch-demo/st-switch-demo.module';
 export { StTabBoxDemoModule } from './st-tab-box-demo/st-tab-box-demo.module';
 export { StTableDemoModule } from './st-table-demo/st-table-demo.module';
+export { StTagInputDemoModule } from './st-tag-input-demo/st-tag-input-demo.module';
 export { StTextareaDemoModule } from './st-textarea-demo/st-textarea-demo.module';
 export { StTipDemoModule } from './st-tip-demo/st-tip-demo.module';
 export { StToggleButtonsDemoModule } from './st-toggle-buttons-demo/st-toggle-buttons-demo.module';

@@ -1,0 +1,103 @@
+<!--
+
+    © 2017 Stratio Big Data Inc., Sucursal en España.
+
+    This software is licensed under the Apache License, Version 2.0.
+    This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+    without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+    See the terms of the License for more details.
+
+    SPDX-License-Identifier: Apache-2.0.
+
+-->
+
+<h1>MODEL DRIVEN / REACTIVE EXAMPLE</h1>
+<form [formGroup]="reactiveForm" novalidate (ngSubmit)="onSubmitReactiveForm()">
+
+    <st-tag-input
+        class="st-form-field"
+        name="tag-input-reactive"
+        formControlName="tag-input-reactive"
+        [label]="'Tag Input'"
+        [id]="'tag-input-reactive-demo'"
+        [placeholder]="'This is a Tag Input component help'"
+        [tooltip]="'This is a Tag Input component tooltip'">
+    </st-tag-input>
+
+    <div class="separator"></div>
+
+    <st-tag-input
+        class="st-form-field"
+        name="tag-input-reactive-required"
+        formControlName="tag-input-reactive-required"
+        [errorMessage]="errorReactiveMessage"
+        [label]="'Tag Input Required'"
+        [id]="'tag-input-reactive-required-demo'"
+        [placeholder]="'This is a Tag Input component help'"
+        [tooltip]="'This is a Tag Input component tooltip'">
+    </st-tag-input>
+
+    <div class="separator"></div>
+
+    <st-tag-input
+        class="st-form-field"
+        name="tag-input-reactive-disabled"
+        formControlName="tag-input-reactive-disabled"
+        [label]="'Tag Input Disabled'"
+        [id]="'tag-input-reactive-disabled-demo'"
+        [placeholder]="'This is a Tag Input component help'"
+        [tooltip]="'This is a Tag Input component tooltip'">
+    </st-tag-input>
+
+    <div class="separator"></div>
+
+    <button class="button button-primary"><span>Validar</span></button>
+</form>
+
+<div class="separator"></div>
+<div class="separator"></div>
+<div class="separator"></div>
+
+<h1>TEMPLATE DRIVEN EXAMPLE</h1>
+<form #templateDrivenForm="ngForm" novalidate autocomplete="off" (ngSubmit)="onSubmitTemplateDrivenForm()">
+
+    <st-tag-input
+        class="st-form-field"
+        name="tag-input-template-driven"
+        [(ngModel)]="tags.templateDriven"
+        [label]="'Tag Input'"
+        [id]="'tag-input-template-driven-demo'"
+        [placeholder]="'This is a Tag Input component help'"
+        [tooltip]="'This is a Tag Input component tooltip'">
+    </st-tag-input>
+
+    <div class="separator"></div>
+
+    <st-tag-input
+        class="st-form-field"
+        name="tag-input-template-driven-required"
+        [(ngModel)]="tags.templateDrivenRequired"
+        [errorMessage]="errorTemplateDriveMessage"
+        required
+        [label]="'Tag Input Required'"
+        [id]="'tag-input-template-driven-required-demo'"
+        [placeholder]="'This is a Tag Input component help'"
+        [tooltip]="'This is a Tag Input component tooltip'">
+    </st-tag-input>
+
+    <div class="separator"></div>
+
+    <st-tag-input
+        class="st-form-field"
+        name="tag-input-template-driven-disabled"
+        [(ngModel)]="tags.templateDrivenDisabled"
+        [label]="'Tag Input Disabled'"
+        [id]="'tag-input-template-driven-disabled-demo'"
+        [placeholder]="'This is a Tag Input component help'"
+        [tooltip]="'This is a Tag Input component tooltip'">
+    </st-tag-input>
+    
+    <div class="separator"></div>
+
+    <button class="button button-primary"><span>Validar</span></button>
+</form>

@@ -21,6 +21,7 @@
 * st-widget: Implement loading state
 * st-foreground-notifications: create component
 * st-fullscreen-layout: Create new component
+* st-tag-input: create component
 
  **Breaking changes:**
 

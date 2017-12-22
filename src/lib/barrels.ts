@@ -42,6 +42,7 @@ import { StSpinnerModule } from './st-spinner/st-spinner.module';
 import { StSwitchModule } from './st-switch/st-switch.module';
 import { StTabBoxModule } from './st-tab-box/st-tab-box.module';
 import { StTableModule } from './st-table/st-table.module';
+import { StTagInputModule } from './st-tag-input/st-tag-input.module';
 import { StTextareaModule } from './st-textarea/st-textarea.module';
 import { StTipModule } from './st-tip/st-tip.module';
 import { StToggleButtonsModule } from './st-toggle-buttons/st-toggle-buttons.module';
@@ -86,6 +87,7 @@ export const DECLARATIONS: any[] = [
    StSwitchModule,
    StTabBoxModule,
    StTableModule,
+   StTagInputModule,
    StTextareaModule,
    StTipModule,
    StToggleButtonsModule,

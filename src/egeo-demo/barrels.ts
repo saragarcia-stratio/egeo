@@ -39,6 +39,7 @@ import { StSidebarDemoModule } from './st-sidebar-demo/st-sidebar-demo.module';
 import { StSwitchDemoModule } from './st-switch-demo/st-switch-demo.module';
 import { StTabBoxDemoModule } from './st-tab-box-demo/st-tab-box-demo.module';
 import { StTableDemoModule } from './st-table-demo/st-table-demo.module';
+import { StTagInputDemoModule } from './st-tag-input-demo/st-tag-input-demo.module';
 import { StTextareaDemoModule } from './st-textarea-demo/st-textarea-demo.module';
 import { StTipDemoModule } from './st-tip-demo/st-tip-demo.module';
 import { StToggleButtonsDemoModule } from './st-toggle-buttons-demo/st-toggle-buttons-demo.module';
@@ -82,6 +83,7 @@ export const EGEO_DEMO_MODULES: any[] = [
    StSwitchDemoModule,
    StTabBoxDemoModule,
    StTableDemoModule,
+   StTagInputDemoModule,
    StTextareaDemoModule,
    StTipDemoModule,
    StToggleButtonsDemoModule,

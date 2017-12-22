@@ -198,6 +198,9 @@ export { StTableModule } from './st-table/st-table.module';
 export { StTableHeader } from './st-table/shared/table-header.interface';
 export { Order, ORDER_TYPE } from './st-table/shared/order';
 
+// Tag Input
+export { StTagInputModule } from './st-tag-input/st-tag-input.module';
+
 // Textarea
 export {
    StTextareaError,

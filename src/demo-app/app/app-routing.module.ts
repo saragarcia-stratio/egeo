@@ -17,6 +17,7 @@ const mainRoute = environment.production ? 'main-demo' : '/components/demo/alert
 
 export const routes: Routes = [
    { path: '', pathMatch: 'full', redirectTo: mainRoute },
+   { path: 'home', loadChildren: './modules/home/home.module#HomeModule' },
    { path: 'main-demo', loadChildren: './modules/general/general.module#GeneralModule' },
    { path: 'components', loadChildren: './modules/demos/demo.module#DemoModule'},
    { path: 'theme', loadChildren: './modules/theme/theme.module#ThemeModule'}

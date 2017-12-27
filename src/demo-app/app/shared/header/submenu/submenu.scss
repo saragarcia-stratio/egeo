@@ -28,13 +28,16 @@ li {
    list-style: none;
    padding: 0 25px;
    cursor: pointer;
-   color: $action-secondary-04;
+   color: $neutral-07;
    font-family: $egeo-nunito-sans;
    font-size: $egeo-font-size-medium;
+   line-height: $egeo-line-height-xxsmall;
    font-weight: normal;
    align-items: center;
+   text-align: left;
    outline: none;
    height: 100%;
+
 
    &:hover {
       color: $action-primary-light;

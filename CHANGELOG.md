@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.0.0 (upcoming)
+
+* Pending changelog
+
 ## 6.0.0 (upcoming)
 
 **Fixed bugs:**

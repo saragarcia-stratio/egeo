@@ -1,6 +1,6 @@
 # Changelog
 
-## 6.0.0 (upcoming)
+## 6.0.0 (December 28, 2017)
 
 **Fixed bugs:**
 

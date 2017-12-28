@@ -27,6 +27,7 @@
  **Breaking changes:**
 
 * st-modal: Removed function showDeleteConfirmation
+* icons: Update icons
 
 ## 5.0.0 (November 15, 2017)
 

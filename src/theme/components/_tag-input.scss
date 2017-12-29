@@ -21,10 +21,6 @@
       &.active {
          color: $input-field-onfocus;
       }
-  
-      &.disabled {
-         color: $neutral-05;
-      }
    }
 
    &__input {
@@ -39,7 +35,8 @@
          border-color: $input-field-onfocus;
       }
   
-      &.disabled {
+      &[disabled] {
+         pointer-events: none;
          border-color: $neutral-05;
       }
    }
@@ -67,5 +64,24 @@
 
    &__placeholder {
       color: $neutral-07;
+
+      &[disabled] {
+         color: $neutral-05;
+      }
+   }
+
+   &.st-tag-input--autocomplete {
+      .st-tag-input {
+         &__input {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+         }
+      }
+
+      .st-dropdown-menu {
+         margin-top: -1px;
+         border-top-left-radius: 0;
+         border-top-right-radius: 0;
+      }
    }
 }

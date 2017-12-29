@@ -13,11 +13,12 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { StTagInputComponent } from './st-tag-input.component';
+import { StDropdownMenuModule } from '../st-dropdown-menu/st-dropdown-menu.module';
 import { StLabelModule } from '../st-label/st-label.module';
+import { StTagInputComponent } from './st-tag-input.component';
 
 @NgModule({
-   imports: [CommonModule, FormsModule, ReactiveFormsModule, StLabelModule],
+   imports: [CommonModule, FormsModule, ReactiveFormsModule, StLabelModule, StDropdownMenuModule],
    declarations: [StTagInputComponent],
    exports: [StTagInputComponent]
 })

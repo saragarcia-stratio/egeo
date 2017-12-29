@@ -46,20 +46,26 @@ describe('StTagInputComponent', () => {
       expect(comp.placeholder).toBeNull();
       expect(comp.tooltip).toBeNull();
       expect(comp.errorMessage).toBeNull();
+      expect(comp.withAutocomplete).toBeFalsy();
+      expect(comp.autocompleteList).toEqual([]);
 
       expect(comp.innerInputContent).toEqual('');
       expect(comp.items).toEqual([]);
+      expect(comp.expandedMenu).toBeFalsy();
 
       expect(comp.hasLabel).toBeFalsy();
       expect(comp.hasFocus).toBeFalsy();
       expect(comp.hasError).toBeFalsy();
       expect(comp.hasPlaceholder).toBeFalsy();
+      expect(comp.hasAutocomplete).toBeFalsy();
+      expect(comp.disableValue).toBeNull('');
       expect(comp.isValidInput).toBeTruthy();
       expect(comp.tagSelected).toBeNull();
       expect(comp.selectId).toBeNull();
       expect(comp.inputId).toBeNull();
       expect(comp.labelId).toBeNull();
       expect(comp.tagId).toBeNull();
+      expect(comp.listId).toBeNull();
    });
 
    it('Should propagate id to internal elements', () => {
@@ -72,6 +78,7 @@ describe('StTagInputComponent', () => {
       const label: HTMLElement = fixture.debugElement.query(By.css('.st-label')).nativeElement;
       const tag: HTMLElement = fixture.debugElement.query(By.css('.tag-item')).nativeElement;
       const input: HTMLElement = fixture.debugElement.query(By.css('.inner-input')).nativeElement;
+      const list: HTMLElement = fixture.debugElement.query(By.css('st-dropdown-menu')).nativeElement;
 
       expect(comp.selectId).toEqual(id);
 
@@ -83,6 +90,9 @@ describe('StTagInputComponent', () => {
 
       expect(comp.tagId).toEqual(`${id}-tag-`);
       expect(tag.getAttribute('id')).toContain(`${id}-tag-`);
+
+      expect(comp.listId).toEqual(`${id}-autocomplete`);
+      expect(list.getAttribute('id')).toContain(`${id}-autocomplete`);
    });
 
    it('Should not have a label', () => {
@@ -346,6 +356,127 @@ describe('StTagInputComponent', () => {
       fixture.detectChanges();
 
       expect(comp.innerInputContent).toBe('');
+   });
+
+   it('Should set disabled with a empty tag list', () => {
+      const id: string = 'test-id';
+      (fixture.elementRef.nativeElement as HTMLElement).id = id;
+      comp.label = 'Test';
+      comp.placeholder = 'Test help';
+
+      comp.setDisabledState(true);
+      fixture.detectChanges();
+
+      expect(comp.disableValue).toEqual('');
+
+      const input: HTMLInputElement = fixture.debugElement.query(By.css('.inner-input')).nativeElement;
+      spyOn(input, 'focus');
+
+      expect(comp.hasPlaceholder).toBeTruthy();
+      expect(comp.hasFocus).toBeFalsy();
+      expect(input.focus).not.toHaveBeenCalled();
+
+      const container: HTMLLabelElement = fixture.debugElement.query(By.css('.st-input')).nativeElement;
+      container.click();
+      fixture.detectChanges();
+
+      expect(comp.hasPlaceholder).toBeTruthy();
+      expect(comp.hasFocus).toBeFalsy();
+      expect(input.focus).not.toHaveBeenCalled();
+   });
+
+   it('Should set disabled with tag list', () => {
+      const id: string = 'test-id';
+      (fixture.elementRef.nativeElement as HTMLElement).id = id;
+      comp.label = 'Test';
+      comp.items = _cloneDeep(simpleTags);
+
+      comp.setDisabledState(true);
+      fixture.detectChanges();
+
+      expect(comp.disableValue).toEqual('');
+      expect(comp.hasFocus).toBeFalsy();
+      expect(comp.tagSelected).toBeNull();
+
+      const tag: HTMLElement = fixture.debugElement.query(By.css('.tag-item')).nativeElement;
+      tag.focus();
+      fixture.detectChanges();
+
+      expect(comp.hasFocus).toBeFalsy();
+      expect(comp.tagSelected).toBeNull();
+   });
+
+   it('Should be display autocomplete list with autocomplete', () => {
+      const id: string = 'test-id';
+      (fixture.elementRef.nativeElement as HTMLElement).id = id;
+      comp.label = 'Test';
+      comp.autocompleteList = [{ value: '1', label: '1' }, { value: '2', label: '2' }];
+      comp.withAutocomplete = true;
+      fixture.detectChanges();
+
+      expect(comp.expandedMenu).toBeFalsy();
+      expect(comp.hasAutocomplete).toBeFalsy();
+
+      comp.onInputText('New Tag');
+      comp.autocompleteList = [{ value: '1', label: '1' }, { value: '2', label: '2' }, { value: '2', label: '2' }];
+      fixture.detectChanges();
+
+      expect(comp.expandedMenu).toBeTruthy();
+      expect(comp.hasAutocomplete).toBeTruthy();
+
+      comp.onInputText('');
+      fixture.detectChanges();
+
+      expect(comp.expandedMenu).toBeFalsy();
+      expect(comp.hasAutocomplete).toBeFalsy();
+   });
+
+   it('Should be add tag from autocomplete list ', () => {
+      const id: string = 'test-id';
+      (fixture.elementRef.nativeElement as HTMLElement).id = id;
+      comp.label = 'Test';
+      comp.autocompleteList = [{ value: '1', label: '1' }, { value: '2', label: '2' }];
+      comp.withAutocomplete = true;
+      comp.items = _cloneDeep(simpleTags);
+      fixture.detectChanges();
+
+      expect(comp.items.length).toEqual(simpleTags.length);
+
+      comp.onListSelect(comp.autocompleteList[0]);
+      fixture.detectChanges();
+
+      expect(comp.items.length).toEqual(simpleTags.length + 1);
+      expect(comp.items[comp.items.length - 1]).toEqual('1');
+   });
+
+   it('Should be add tag when click outsied with autocomplete list ', () => {
+      const id: string = 'test-id';
+      (fixture.elementRef.nativeElement as HTMLElement).id = id;
+      comp.label = 'Test';
+      comp.autocompleteList = [{ value: '1', label: '1' }, { value: '2', label: '2' }];
+      comp.withAutocomplete = true;
+      comp.items = _cloneDeep(simpleTags);
+      fixture.detectChanges();
+
+      expect(comp.items.length).toEqual(simpleTags.length);
+      expect(comp.expandedMenu).toBeFalsy();
+      expect(comp.hasAutocomplete).toBeFalsy();
+
+      comp.onInputText('New Tag');
+      fixture.detectChanges();
+
+      expect(comp.expandedMenu).toBeTruthy();
+      expect(comp.hasAutocomplete).toBeTruthy();
+
+      let div = document.createElement('div');
+      document.body.appendChild(div);
+      div.click();
+      fixture.detectChanges();
+
+      expect(comp.items.length).toEqual(simpleTags.length + 1);
+      expect(comp.items[comp.items.length - 1]).toEqual('New Tag');
+      expect(comp.expandedMenu).toBeFalsy();
+      expect(comp.hasAutocomplete).toBeFalsy();
    });
 });
 

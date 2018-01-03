@@ -10,6 +10,8 @@
  */
 import { task } from 'gulp';
 import { mkdirpSync } from 'fs-extra';
+import { readFileSync, readdirSync, writeFileSync } from 'fs';
+import { join } from 'path';
 
 
 import {composeRelease, buildConfig, sequenceTask} from 'build-tools';
@@ -18,5 +20,16 @@ const { outputDir } = buildConfig;
 
 task('demo-app:create-dist', (done) => {
    mkdirpSync(outputDir);
+   done();
+});
+
+task('demo-app:replace:assets', (done) => {
+   const distPath: string = join(outputDir, 'demo-app');
+   const cssFiles: string[] = readdirSync(distPath).filter(name => name.endsWith('.css'));
+   cssFiles.map(file => {
+      const filePath: string = join(distPath, file);
+      const content = readFileSync(filePath, 'utf-8').replace(/\/assets/g, 'assets');
+      writeFileSync(filePath, content, 'utf-8');
+   });
    done();
 });

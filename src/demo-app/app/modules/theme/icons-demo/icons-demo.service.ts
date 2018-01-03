@@ -21,7 +21,7 @@ export class IconsDemoService {
    constructor(private http: Http) { }
 
    getIconList(): Observable<IconDemoModel[]> {
-      return this.http.get(location.pathname + 'assets/_stratio_fonticon.scss')
+      return this.http.get(location.pathname + 'assets/icons.scss')
          .map(response => response.text())
          .map(text => this.getIconClasses(text));
    }

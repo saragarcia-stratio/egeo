@@ -8,11 +8,17 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 
 @Component({
    selector: 'demo-home',
    templateUrl: './home.html',
    styleUrls: ['./home.scss']
 })
-export class HomeComponent { }
+export class HomeComponent implements AfterViewInit {
+   @ViewChild('background') background: ElementRef;
+
+   ngAfterViewInit(): void {
+      (this.background.nativeElement as HTMLDivElement).style.backgroundImage = 'url(assets/images/bg-cover-egeo.png)';
+   }
+ }

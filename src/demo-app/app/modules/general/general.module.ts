@@ -11,20 +11,41 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
+import { MarkdownToHtmlModule } from 'markdown-to-html-pipe';
 
-import { GeneralComponent } from './general';
 import { SharedModule } from '../../shared/shared.module';
+import { GeneralComponent } from './general';
+import { AboutComponent } from './about/about';
+import { GettingStartedComponent } from './getting-started/getting-started';
+import { ChangelogService } from './changelog/changelog.service';
+import { ChangelogComponent } from './changelog/changelog';
 
 export const routes: Routes = [
-   { path: '', component: GeneralComponent }
+   {
+      path: '', component: GeneralComponent, children: [
+         { path: '', pathMatch: 'full', redirectTo: 'about' },
+         { path: 'about', component: AboutComponent },
+         { path: 'getting-started', component: GettingStartedComponent },
+         { path: 'changelog', component: ChangelogComponent }
+      ]
+   }
 ];
 
 @NgModule({
    imports: [
       CommonModule,
       RouterModule.forChild(routes),
-      SharedModule
+      SharedModule,
+      MarkdownToHtmlModule
    ],
-   declarations: [GeneralComponent]
+   declarations: [
+      GeneralComponent,
+      AboutComponent,
+      GettingStartedComponent,
+      ChangelogComponent
+   ],
+   providers: [
+      ChangelogService
+   ]
 })
 export class GeneralModule { }

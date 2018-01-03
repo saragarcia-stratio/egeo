@@ -10,35 +10,34 @@
  */
 @import '../../../../theme/constants/index';
 
+
 :host {
+   width: 100%;
+}
+
+.content {
    display: flex;
-   flex-direction: column;
-   height: 100%;
-   font-family: $egeo-nunito-sans;
-   color: $neutral-10;
-   padding-left: 20px;
-}
+   flex-direction: row;
+   flex-wrap: nowrap;
+   width: 100%;
 
-li {
-   &:before {
-      content: '-';
-      margin-right: .5em;
+   .side-menu {
+      width: 200px;
+      height: calc(100vh - 60px);
+      overflow-y: auto;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      background-color: $neutral-00;
+      z-index: 9;
    }
-}
 
-a {
-   color: $brand;
-   &:hover {
-      text-decoration: underline;
+   .main-content {
+      width: 100%;
+      display: flex;
+      flex-grow: 1;
+      margin-left: 240px;
+      margin-top: 20px;
+      margin-bottom: 100px;
    }
-}
-
-ul {
-   list-style: none;
-   padding: 0 0 15px 25px;
-}
-
-p {
-   font-size: $egeo-font-size-xsmall;
-   padding: 0 0 15px;
 }

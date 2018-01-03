@@ -21,7 +21,7 @@ export class ColorsService {
    constructor(private http: Http) { }
 
    getColorsList(): Observable<Color[]> {
-      return this.http.get(location.pathname + 'assets/_colors.scss')
+      return this.http.get(location.pathname + 'assets/colors.scss')
          .map(response => response.text())
          .map(text => this.getColors(text));
    }

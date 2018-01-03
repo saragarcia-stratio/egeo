@@ -35,6 +35,7 @@ li {
    color: $action-secondary-06;
    white-space: nowrap;
    position: relative;
+   padding-bottom: 6px;
 
    &:hover {
       background-color:  rgba($action-primary-default, 0.2);

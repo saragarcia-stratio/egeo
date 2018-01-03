@@ -50,3 +50,25 @@ main {
    flex-wrap: nowrap;
    flex-grow: 1;
 }
+
+.changelog {
+   font-family: $egeo-nunito-sans;
+   color: $neutral-10;
+   ul {
+      list-style: none;
+      padding: 0 0 15px 25px;
+   }
+   li {
+      &:before {
+         content: '-';
+         margin-right: .5em;
+      }
+   }
+   p {
+      font-size: $egeo-font-size-xsmall;
+      padding: 0 0 10px;
+   }
+   h2 {
+      margin-bottom: 15px;
+   }
+}

@@ -10,8 +10,9 @@
        "assets": [
          "assets",
          { "glob": "**/*.*", "input": "../../assets/fonts", "output": "./assets/fonts" },
-         { "glob": "_stratio_fonticon.scss", "input": "../theme/vendors/fonts", "output": "./assets" },
-         { "glob": "*.scss", "input": "../theme/constants", "output": "./assets" }
+         { "glob": "_stratio_fonticon.scss", "input": "../theme/vendors/fonts", "output": "./assets/icons.scss" },
+         { "glob": "_colors.scss", "input": "../theme/constants", "output": "./assets/colors.scss" },
+         { "glob": "CHANGELOG.md", "input": "../../", "output": "./assets" }
        ],
        "index": "index.html",
        "main": "main.ts",

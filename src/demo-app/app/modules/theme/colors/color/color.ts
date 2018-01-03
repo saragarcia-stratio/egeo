@@ -33,9 +33,10 @@ export class ColorDemoComponent {
    @ViewChild('nameEl') textElement: ElementRef;
 
    onClick(): void {
-      const result: boolean = copyToClipboard(this.color.name);
+      const name: string = `$${this.color.name}`;
+      const result: boolean = copyToClipboard(name);
       if (result) {
-         this.copyColorName.emit(this.color.name);
+         this.copyColorName.emit(name);
       }
    }
 

@@ -16,6 +16,7 @@ import { DemoLayoutComponent } from './demo-layout/demo-layout';
 import { SharedModule } from '../../shared/shared.module';
 
 export const routes: Routes = [
+   { path: '', redirectTo: 'demo/alerts-demo' },
    {
       path: '', component: DemoLayoutComponent, children: [
          { path: 'demo', loadChildren: './demo-loader.module#DemoLoaderModule' }

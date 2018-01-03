@@ -15,7 +15,7 @@ export class Option {
 
 
 export const HEADER_OPTIONS: Option[] = [
-   { name: 'General Info', url: '/main-demo' },
+   { name: 'General Info', url: '/general' },
    { name: 'Components', url: '/components' },
    { name: 'Theme', url: '/theme' }
 ];

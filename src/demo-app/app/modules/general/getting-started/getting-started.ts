@@ -10,19 +10,9 @@
  */
 import { Component } from '@angular/core';
 
-import { DemoSideMenu } from '../../shared/menu/menu.model';
-
 @Component({
-   selector: 'general-layout',
-   templateUrl: './general.html',
-   styleUrls: ['./general.scss']
+   selector: 'getting-started-demo',
+   templateUrl: './getting-started.html',
+   styleUrls: ['./getting-started.scss']
 })
-export class GeneralComponent {
-
-   public menu: DemoSideMenu[] = [
-      {label: 'About', url: '/general/about'},
-      {label: 'Getting Started', url: '/general/getting-started'},
-      {label: 'Changelog', url: '/general/changelog'}
-   ];
-
-}
+export class GettingStartedComponent { }

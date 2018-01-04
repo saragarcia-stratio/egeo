@@ -18,7 +18,6 @@ export class StPaginationService {
    private lastItem: number;
 
    constructor() {
-
    }
 
    newPage(items: any[], currentPage: number, perPage: number): any[] {
@@ -41,5 +40,4 @@ export class StPaginationService {
 
       return Object.assign([], items.slice(this.initItem, this.lastItem));
    }
-
 }

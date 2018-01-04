@@ -2,7 +2,21 @@
 
 ## 7.0.0 (upcoming)
 
-* Pending changelog
+**Fixed bugs:**
+
+* st-select: Fix duplicate event "select" when user selected text inside input
+
+**New features:**
+
+* st-tag-input: Add autocomplete and disable features
+
+**Breaking changes:**
+
+* st-pagination: Remove "showPerPage", "hidePerPage" and "theme" inputs. Remove "qaTag" to use "attr.id". Change "perPageOptions" type from number[] to PaginateOptions[]
+
+**Refactor**
+
+* st-pagination: Apply new style and behaviour according to UX specifications
 
 ## 6.0.0 (December 28, 2017)
 

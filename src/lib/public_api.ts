@@ -148,6 +148,7 @@ export { StPageTitleModule } from './st-page-title/st-page-title.module';
 // Pagination
 export {
    Paginate,
+   PaginateOptions,
    PaginateTexts,
    PaginateTextsSchema
 } from './st-pagination/st-pagination.interface';

@@ -11,20 +11,15 @@
  @import '../constants/fonts';
 @import '../constants/colors';
 
-.sth-pagination {
+.st-pagination {
    font-family: $egeo-nunito-sans;
-   background: $neutral-02;
 
-   &.themeA {
-      background: $neutral-02;
+   &__label {
+      font-size: $egeo-font-size-xxsmall;
+      color: $neutral-09
    }
 
-   &.themeB {
-      background: $neutral-00;
+   &__selector {
+      margin-right: 25px;
    }
-}
-
-.sth-pagination-pages {
-   font-size: $egeo-font-size-xxsmall;
-   color: $neutral-09
 }

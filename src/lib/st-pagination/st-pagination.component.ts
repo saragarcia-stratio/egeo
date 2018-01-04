@@ -17,11 +17,12 @@ import {
    OnChanges,
    OnInit,
    Output,
-   SimpleChanges
+   SimpleChanges,
+   ElementRef
 } from '@angular/core';
 
 import { StDropDownMenuItem } from '../st-dropdown-menu/st-dropdown-menu.interface';
-import { Paginate, PaginateTexts } from './st-pagination.interface';
+import { Paginate, PaginateOptions, PaginateTexts } from './st-pagination.interface';
 
 @Component({
    selector: 'st-pagination',
@@ -30,15 +31,17 @@ import { Paginate, PaginateTexts } from './st-pagination.interface';
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StPaginationComponent implements OnInit, OnChanges {
-   @Input() total: number;
-   @Input() perPage: number = 20;
-   @Input() perPageOptions: number[] = [20, 50, 100];
    @Input() currentPage: number = 1;
-   @Input() label: PaginateTexts;
-   @Input() qaTag: string;
-   @Input() showPerPage: boolean = false;
-   @Input() hidePerPage: boolean = false;
-   @Input() theme: string = 'themeA';
+   @Input() perPage: number = 20;
+   @Input() total: number;
+
+   @Input() label: PaginateTexts =  {
+      element: 'Rows', perPage: 'per page', of: 'of'
+   };
+
+   @Input() perPageOptions: PaginateOptions[] = [
+      { value: 20, showFrom: 0 }, { value: 50, showFrom: 50 }, { value: 200, showFrom: 200 }
+   ];
 
    @Output() change: EventEmitter<Paginate> = new EventEmitter<Paginate>();
 
@@ -49,16 +52,31 @@ export class StPaginationComponent implements OnInit, OnChanges {
    public items: StDropDownMenuItem[] = [];
    public selectedItem: StDropDownMenuItem;
 
-   constructor(private cd: ChangeDetectorRef) {
-      if (!this.label) {
-         this.label = {
-            display: 'Display',
-            element: 'elements',
-            perPage: 'per page',
-            of: 'of'
-         };
-         this.cd.markForCheck();
-      }
+   constructor(
+      private _cd: ChangeDetectorRef,
+      private _paginationElement: ElementRef
+   ) {
+   }
+
+   get hasOptions(): boolean {
+      return this.items && this.items.length > 1;
+   }
+
+   get paginationId(): string | null {
+      const pagination: HTMLElement = this._paginationElement.nativeElement;
+      return pagination.getAttribute('id') !== null ? pagination.id : null;
+   }
+
+   get selectId(): string {
+      return this.paginationId !== null ? `${this.paginationId}-select` : null;
+   }
+
+   get buttonPrevId(): string {
+      return this.paginationId !== null ? `${this.paginationId}-prev` : null;
+   }
+
+   get buttonNextId(): string {
+      return this.paginationId !== null ? `${this.paginationId}-next` : null;
    }
 
    ngOnInit(): void {
@@ -78,29 +96,14 @@ export class StPaginationComponent implements OnInit, OnChanges {
    }
 
    generateItems(): void {
-      this.items = this.perPageOptions.map(option => ({
-         label: `${this.label.display} ${option} ${this.label.element} ${this.label
-            .perPage}`,
-         value: option
-      }));
-      this.selectedItem = this.items.find(item => item.value === this.perPage);
-      this.cd.markForCheck();
-   }
+      this.items = [];
+      this.perPageOptions.forEach(this.addPageOption.bind(this));
 
-   showItemsPerPage(): boolean {
-      if (this.showPerPage) {
-         return true;
+      if (this.items.length) {
+         this.selectedItem = this.items.find(item => item.value === this.perPage) || this.items[0];
       }
 
-      if (this.hidePerPage) {
-         return false;
-      }
-
-      if (this.total <= 50) {
-         return false;
-      }
-
-      return true;
+      this._cd.markForCheck();
    }
 
    nextPage(): void {
@@ -144,5 +147,14 @@ export class StPaginationComponent implements OnInit, OnChanges {
       this.perPage = perPage;
       this.updatePages();
       this.selectedItem = this.items.find(item => item.value === this.perPage);
+   }
+
+   private addPageOption(option: PaginateOptions): void {
+      if (this.total && (!option.showFrom || option.showFrom <= this.total)) {
+         this.items.push({
+            label: `${option.value}`,
+            value: option.value
+         });
+      }
    }
 }

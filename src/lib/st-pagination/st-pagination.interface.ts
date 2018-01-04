@@ -15,15 +15,18 @@ export interface Paginate {
    perPage: number;
 }
 
+export interface PaginateOptions {
+   value: number;
+   showFrom?: number;
+}
+
 export interface PaginateTexts {
-   display: string;
    element: string;
    perPage: string;
    of: string;
 }
 
 export interface PaginateTextsSchema {
-   display: TranslateableElement;
    element: TranslateableElement;
    perPage: TranslateableElement;
    of: TranslateableElement;

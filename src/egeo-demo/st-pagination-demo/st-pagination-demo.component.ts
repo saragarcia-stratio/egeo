@@ -19,18 +19,15 @@ import { Paginate } from '@stratio/egeo';
 export class StPaginationDemoComponent implements OnInit {
 
    public page: number = 1;
-   public perPage: number = 20;
+   public perPage: number = 50;
    public title: string = 'pagination';
    public items: Array<any> = [];
-   public items2: Array<any> = [];
 
    constructor(
    ) { }
 
    ngOnInit(): void {
-      this.items = this.generateItems(100);
-      this.items2 = this.generateItems(50);
-
+      this.setItems(100);
    }
 
    generateItems(n: number): Array<any> {
@@ -38,12 +35,17 @@ export class StPaginationDemoComponent implements OnInit {
 
       for (let i = 1; i <= n; i++) {
          items.push({
-            label: 'Example' + i,
+            label: 'Example ' + i,
             value: i
          });
       }
 
       return items;
+   }
+
+   setItems(n: number): void {
+      this.items = this.generateItems(n);
+      this.page = 1;
    }
 
    onChangePage(changePageEvent: Paginate): void {

@@ -41,6 +41,7 @@
          [attr.name]="inputName"
          [placeholder]="placeholder"
          [value]="selectedValue"
+         (select)="$event.stopPropagation()"
       />
       <i class="icon-arrow2_down arrow" [ngClass]="{'with-label': hasLabel}" [attr.disabled]="disableValue"></i>
    </div>

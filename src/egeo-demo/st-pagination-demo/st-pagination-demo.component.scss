@@ -9,9 +9,13 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 
-.pagination-demo {
-   display: flex;
-   flex-direction: column;
+h1 {
+   font-family: 'Nunito Sans Bold';
+   font-size: 20px;
+   margin-bottom: 20px;
+   padding: 0;
+   line-height: 25px;
+   font-weight: lighter;
 }
 
 .list-items {
@@ -20,11 +24,24 @@
    list-style: none;
 
    li {
-      background-color: #dedede;
-      border-bottom: 1px solid #fff;
+      border-bottom: 1px solid #dedede;
       font-size: 14px;
       font-family: open-sans;
       padding: 5px;
    }
+}
 
+.pagination {
+   padding: 15px 0;
+}
+
+.separator {
+   display: block;
+   margin: 10px;
+   overflow: hidden;
+}
+
+button {
+   float: right;
+   margin-left: 10px;
 }

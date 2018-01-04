@@ -10,7 +10,6 @@
  */
 import { StPaginationService } from './st-pagination.service';
 
-
 function generateItems(n: Number): any[] {
    let items: any[] = [];
 
@@ -38,13 +37,11 @@ describe('StPaginationService', () => {
       expect(items.length).toBe(20);
    });
 
-
    it('should change the page and first item value should be 20', () => {
       let items = generateItems(200);
       items = service.newPage(items, 2, 20);
       expect(items[0].value).toBe(21);
    });
-
 
    it('should show the last items of the list', () => {
       let items = generateItems(200);
@@ -57,7 +54,4 @@ describe('StPaginationService', () => {
       items = service.newPage(items, 50, 300);
       expect(items.length).toBe(200);
    });
-
-
-
 });

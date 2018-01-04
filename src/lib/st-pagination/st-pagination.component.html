@@ -10,19 +10,20 @@
     SPDX-License-Identifier: Apache-2.0.
 
 -->
-<div class="sth-pagination pagination" [ngClass]="theme">
-   <div class="selector" *ngIf="showItemsPerPage()">
-      <st-select [options]="items" [selected]="selectedItem" (select)="onChangePerPage($event)" attr.id="{{'dropdown' + qaTag}}"></st-select>
+<div class="st-pagination pagination">
+   <div *ngIf="hasOptions" class="label st-pagination__selector">
+      <p class="st-pagination__label">{{label.element}} {{label.perPage}}</p>
+      <st-select [options]="items" [selected]="selectedItem" (select)="onChangePerPage($event)" [attr.id]="selectId"></st-select>
    </div>
 
-   <div class="navigator sth-pagination-navigator">
-      <p class="sth-pagination-pages">{{firstItem}}-{{lastItem}} {{label.of || 'of'}} {{total}}</p>
+   <div class="label">
+      <p class="st-pagination__label">{{firstItem}}-{{lastItem}} {{label.of || 'of'}} {{total}}</p>
 
       <div class="buttons">
-         <button class="button button-toolbar" [attr.id]="'buttonPrev' + qaTag" [disabled]="disablePrevButton" type="button" (click)="prevPage()">
+         <button class="button button-toolbar" [attr.id]="buttonPrevId" [disabled]="disablePrevButton" type="button" (click)="prevPage()">
             <i class="icon-arrow2_left"></i>
          </button>
-         <button class="button button-toolbar" [attr.id]="'buttonNext' + qaTag" [disabled]="disableNextButton" type="button" (click)="nextPage()">
+         <button class="button button-toolbar" [attr.id]="buttonNextId" [disabled]="disableNextButton" type="button" (click)="nextPage()">
             <i class="icon-arrow2_right"></i>
          </button>
       </div>

@@ -8,17 +8,34 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
+
 .content {
-   display: inline-block;
+    display: inline-block;
 }
 
 .arrow {
-   position: relative;
-   width: 13px;
-   height: 13px;
-   bottom: 47px;
-   transform: rotate(-45deg);
-   float: right;
-   margin-right: 15px;
-   border-radius: 2px;
+    position: relative;
+    width: 13px;
+    height: 13px;
+    bottom: 47px;
+    transform: rotate(-45deg);
+    float: right;
+    margin-right: 15px;
+    border-radius: 2px;
 }
+
+.st-pop-over__title {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.st-pop-over__setting-action {
+    margin-left: auto;
+}
+
+
+.arrow-with-config {
+   bottom: 56px;
+}
+

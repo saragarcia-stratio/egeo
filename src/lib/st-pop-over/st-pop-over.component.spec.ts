@@ -30,7 +30,7 @@ describe('StPopOverComponent', () => {
          imports: [StPopModule],
          declarations: [StPopOverComponent, StPopOverComponent]
       })
-      .compileComponents();  // compile template and css
+         .compileComponents();  // compile template and css
    }));
 
    beforeEach(() => {
@@ -61,5 +61,34 @@ describe('StPopOverComponent', () => {
 
       let itemElement = fixture.nativeElement.querySelector('[hidden]');
       expect(itemElement).toBeDefined();
+   });
+
+   it('It has to hide settings button when showSettingBtn input is false', () => {
+      component.showSettingBtn = false;
+      fixture.detectChanges();
+
+      let itemElement = fixture.nativeElement.querySelector('.st-pop-over__setting-action');
+      expect(itemElement).toBeNull();
+   });
+
+   it('It has to display settings button when showSettingBtn input is true', () => {
+      component.showSettingBtn = true;
+      fixture.detectChanges();
+
+      let itemElement = fixture.nativeElement.querySelector('.st-pop-over__setting-action');
+      expect(itemElement).not.toBeNull();
+   });
+
+   it('It has to display settings button when showSettingBtn input is true', () => {
+      component.showSettingBtn = true;
+      fixture.detectChanges();
+
+      spyOn(component.clickConfig, 'emit');
+
+      let itemElement = fixture.nativeElement.querySelector('.st-pop-over__setting-action');
+      itemElement.click();
+      fixture.detectChanges();
+
+      expect(component.clickConfig.emit).toHaveBeenCalled();
    });
 });

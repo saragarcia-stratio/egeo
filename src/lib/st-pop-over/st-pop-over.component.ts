@@ -8,7 +8,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { StPopOffset, StPopPlacement } from '../st-pop/st-pop.model';
 
@@ -42,6 +42,11 @@ export class StPopOverComponent {
    @Input() hidden: boolean = false;
    /** @Input {StPopOffset} [offset={x: 0 , y: 17}] For position with offset in x o y axis */
    @Input() offset: StPopOffset = { x: 0, y: 17 };
+   /** @Input {boolean} [settings=false] when true, settings icon is displayed    */
+   @Input() showSettingBtn?: boolean = false;
+
+   /** @Output {Event} [click] Notify event click */
+   @Output() clickConfig: EventEmitter<Event> = new EventEmitter<Event>();
 
    public placement: StPopPlacement = StPopPlacement.BOTTOM;
    private defaultOffset: StPopOffset = { x: 21, y: 8 };

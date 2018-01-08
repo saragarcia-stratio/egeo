@@ -8,33 +8,33 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
+
 @import '../constants/colors';
 @import '../constants/fonts';
-
 .st-pop-over {
-
-   &__content {
-      background-color: $neutral-00;
-      border-radius: 4px;
-      box-shadow: 0 2px 4px 0 $neutral-05;
-      border: solid 1px $action-secondary-03;
-   }
-
-   &__title {
-      font-family: $egeo-nunito-sans;
-      font-size: $egeo-font-size-xxxsmall;
-      line-height: $egeo-line-height-xxxsmall;
-      text-transform: uppercase;
-      color: $action-secondary-06;
-      border-bottom: solid 1px $action-secondary-03;
-      padding: 15px 30px 6px 30px;
-   }
-
-   &__arrow {
-      background-color: $neutral-00;
-      border: 1px solid $neutral-08;
-      border-bottom-width: 0;
-      border-left-width: 0;
-      transition: margin-top 0.4s;
-   }
+    &__content {
+        background-color: $neutral-00;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px 0 $neutral-05;
+        border: solid 1px $action-secondary-03;
+    }
+    &__title {
+        font-family: $egeo-nunito-sans;
+        font-size: $egeo-font-size-xxxsmall;
+        line-height: $egeo-line-height-xxxsmall;
+        text-transform: uppercase;
+        color: $action-secondary-06;
+        border-bottom: solid 1px $action-secondary-03;
+        padding: 15px 30px 6px 30px;
+    }
+    &__arrow {
+        background-color: $neutral-00;
+        border: 1px solid $neutral-08;
+        border-bottom-width: 0;
+        border-left-width: 0;
+        transition: margin-top 0.4s;
+    }
+    &__setting-action {
+        font-size: $egeo-font-size-medium;
+    }
 }

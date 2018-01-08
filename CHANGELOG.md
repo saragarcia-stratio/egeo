@@ -9,6 +9,7 @@
 **New features:**
 
 * st-tag-input: Add autocomplete and disable features
+* st-pop-over: Add optional settings button
 
 **Breaking changes:**
 

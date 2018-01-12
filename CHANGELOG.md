@@ -4,7 +4,7 @@
 
 * Pending changelog
 
-## 7.0.0 (upcoming)
+## 7.0.0 (January 12, 2018)
 
 **Fixed bugs:**
 

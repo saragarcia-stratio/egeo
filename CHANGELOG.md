@@ -4,7 +4,7 @@
 
 * Pending changelog
 
-## 8.0.0 (upcoming)
+## 8.0.0 (January 24, 2018)
 
 **Fixed bugs:**
 

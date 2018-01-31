@@ -6,9 +6,6 @@
 
 * st-tag-input: Add functionality to not allow user to type values with invalid format
 
-**Fixed bugs:**
-
-* st-input: Add a gray color to text when it is disabled and it has value
 
 ## 8.0.0 (January 24, 2018)
 

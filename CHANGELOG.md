@@ -2,7 +2,10 @@
 
 ## 8.2.0 (upcoming)
 
-* Pending changelog
+**Fixed bugs:**
+
+* st-header: Fix z-index 
+
 
 
 ## 8.1.1 (February 02, 2018)

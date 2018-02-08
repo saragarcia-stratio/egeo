@@ -8,17 +8,22 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { StDemoGeneratorModule, StFormListModule } from '@stratio/egeo';
+import { StFormListDemoComponent } from './st-form-list-demo';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { StInputComponent } from './st-input.component';
-import { StLabelModule } from '../st-label/st-label.module';
-import { StFormDirectiveModule } from '../directives/form/form-directives.module';
-
 @NgModule({
-   imports: [CommonModule, FormsModule, ReactiveFormsModule, StLabelModule, StFormDirectiveModule],
-   declarations: [StInputComponent],
-   exports: [StInputComponent]
+   imports: [
+      CommonModule,
+      FormsModule,
+      ReactiveFormsModule,
+      StFormListModule,
+      StDemoGeneratorModule.withComponents({ components: [StFormListDemoComponent] })
+   ],
+   declarations: [StFormListDemoComponent]
 })
-export class StInputModule { }
+export class StFormListDemoModule {
+}
+

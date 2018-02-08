@@ -18,7 +18,6 @@ import { PipesModule } from '../../pipes/pipes.module';
 import { StInputModule } from '../../st-input/st-input.module';
 import { StFormDirectiveModule } from '../../directives/form/form-directives.module';
 import { StSwitchModule } from '../../st-switch/st-switch.module';
-import { StTooltipComponent } from '../../st-tooltip/st-tooltip.component';
 
 let component: StFormComponent;
 let fixture: ComponentFixture<StFormComponent>;
@@ -46,39 +45,45 @@ describe('StFormComponent', () => {
                expect(fixture.nativeElement.querySelector('#' + propertyId)).not.toBeNull();
             }
          }
+
       });
 
       it('tooltips are generated using their descriptions', () => {
-         for (let propertyId in JSON_SCHEMA.properties) {
-            if (JSON_SCHEMA.properties.hasOwnProperty(propertyId)) {
-               let property: any = JSON_SCHEMA.properties[propertyId];
-               let input: HTMLElement = fixture.nativeElement.querySelector('#' + propertyId);
-               if (input) {
-                  let tooltip: Element = (<Element>input.parentNode).querySelector('label');
+         fixture.whenStable().then(() => {
+            fixture.detectChanges();
+            for (let propertyId in JSON_SCHEMA.properties) {
+               if (JSON_SCHEMA.properties.hasOwnProperty(propertyId)) {
+                  let property: any = JSON_SCHEMA.properties[propertyId];
+
+                  let label: HTMLElement = fixture.nativeElement.querySelector('#' + propertyId + '-label');
+
                   if (property.description) {
-                     expect(tooltip.getAttribute('title')).toBe(property.description);
+                     expect(label.title).toBe(property.description);
                   } else {
-                     expect(tooltip.getAttribute('title')).toBeNull();
+                     expect(label.title).toBe('');
                   }
                }
             }
-         }
+         });
       });
 
       it('controls are displayed with their default value and label', () => {
-         for (let propertyId in JSON_SCHEMA.properties) {
-            if (JSON_SCHEMA.properties.hasOwnProperty(propertyId)) {
-               let property: any = JSON_SCHEMA.properties[propertyId];
-               if (property.default) {
-                  if (property.type === 'boolean') {
-                     expect(fixture.nativeElement.querySelector('#' + propertyId + '-input').checked).toBe(property.default);
-                  } else {
-                     expect(fixture.nativeElement.querySelector('#' + propertyId).value).toBe(property.default.toString());
+         fixture.whenStable().then(() => {
+            fixture.detectChanges();
+            for (let propertyId in JSON_SCHEMA.properties) {
+               if (JSON_SCHEMA.properties.hasOwnProperty(propertyId)) {
+                  let property: any = JSON_SCHEMA.properties[propertyId];
+                  if (property.default) {
+                     if (property.type === 'boolean') {
+                        expect(fixture.nativeElement.querySelector('#' + propertyId + '-input').checked).toBe(property.default);
+                     } else {
+                        expect(fixture.nativeElement.querySelector('#' + propertyId).value).toBe(property.default.toString());
+                     }
                   }
+                  expect(fixture.nativeElement.innerHTML).toContain(property.title);
                }
-               expect(fixture.nativeElement.innerHTML).toContain(property.title);
             }
-         }
+         });
       });
    });
 

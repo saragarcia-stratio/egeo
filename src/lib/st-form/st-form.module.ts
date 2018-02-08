@@ -10,19 +10,30 @@
  */
 import { CommonModule }  from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { StFormComponent } from './st-form.component';
-import { StFormFieldComponent } from './st-form-field/st-form-field.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { StInputModule } from '../st-input/st-input.module';
 import { StFormDirectiveModule } from '../directives/form/form-directives.module';
+import { StFormFieldModule } from './st-form-field/st-form-field.module';
+import { StSelectModule } from '../st-select/st-select.module';
 import { StSwitchModule } from '../st-switch/st-switch.module';
 
 @NgModule({
-   imports: [CommonModule, FormsModule, ReactiveFormsModule, StInputModule, StSwitchModule, PipesModule, StFormDirectiveModule],
-   declarations: [StFormComponent, StFormFieldComponent],
-   exports: [StFormComponent]
+   imports: [
+      CommonModule,
+      FormsModule,
+      StFormFieldModule,
+      ReactiveFormsModule,
+      StInputModule,
+      PipesModule,
+      StSelectModule,
+      StFormDirectiveModule,
+      StSwitchModule
+   ],
+   declarations: [StFormComponent],
+   exports: [StFormComponent, StFormFieldModule]
 })
 
 export class StFormModule {

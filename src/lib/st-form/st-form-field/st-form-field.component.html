@@ -11,26 +11,28 @@
 
 -->
 <st-input *ngIf="hasType('input')"
-          [name]="name"
+          #templateModel="ngModel"
           [fieldType]="type"
           [label]="label"
+          [name]="schema.key"
           [placeholder]="placeholder"
+          [(ngModel)]="value"
           [contextualHelp]="description"
-          [formControl]="formControl"
           [errors]="errorMessages"
-          [min]="min"
           [max]="max"
+          [min]="min"
           [minlength]="minLength"
           [maxlength]="maxLength"
           [required]="required"
-          [qaTag]="schema.key">
+          [pattern]="pattern"
+          [qaTag]="qaTag">
 </st-input>
 
 <st-switch *ngIf="hasType('boolean')"
            [label]="schema.value.title"
+           #templateModel="ngModel"
+           [(ngModel)]="value"
            [name]="schema.key"
            [contextualHelp]="schema.value.description"
-           [formControl]="formControl"
-           [stModel]="formControl.value"
-           [qaTag]="schema.key">
+           [qaTag]="qaTag">
 </st-switch>

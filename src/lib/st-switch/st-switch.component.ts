@@ -13,14 +13,14 @@ import {
    Input,
    ChangeDetectionStrategy,
    forwardRef,
-   ChangeDetectorRef, Output, EventEmitter, OnInit
+   ChangeDetectorRef, Output, EventEmitter
 } from '@angular/core';
 import {
    FormControl,
    ControlValueAccessor,
-   NG_VALUE_ACCESSOR
+   NG_VALUE_ACCESSOR, NG_VALIDATORS
 } from '@angular/forms';
-import { StEgeo, StRequired } from '../decorators/require-decorators';
+import { StEgeo } from '../decorators/require-decorators';
 
 @Component({
    selector: 'st-switch',
@@ -28,7 +28,8 @@ import { StEgeo, StRequired } from '../decorators/require-decorators';
    templateUrl: './st-switch.html',
    styleUrls: ['./st-switch.scss'],
    providers: [
-      { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => StSwitchComponent), multi: true }
+      { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => StSwitchComponent), multi: true },
+      { provide: NG_VALIDATORS, useExisting: forwardRef(() => StSwitchComponent), multi: true }
    ],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -41,20 +42,20 @@ export class StSwitchComponent implements ControlValueAccessor {
    @Input() contextualHelp: string;
    @Output() change: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-   private _stModel: boolean;
+   private _value: boolean;
    private _disabled: boolean;
    private registeredOnChange: (_: any) => void;
 
    constructor(private _cd: ChangeDetectorRef) {
    }
 
-   @Input() @StRequired()
-   get stModel(): boolean {
-      return this._stModel;
+   @Input()
+   get value(): boolean {
+      return this._value;
    }
 
-   set stModel(value: boolean) {
-      this._stModel = value;
+   set value(value: boolean) {
+      this._value = value;
       this._cd.markForCheck();
    }
 
@@ -76,11 +77,13 @@ export class StSwitchComponent implements ControlValueAccessor {
       return `${this.name}-input`;
    }
 
+   validate(control: FormControl): any {}
+
    // load external change
    writeValue(value: boolean): void {
       if (!this._disabled) {
-         this._stModel = value;
-         this.change.emit(this._stModel);
+         this._value = value;
+         this.change.emit(this._value);
          if (this.registeredOnChange) {
             this.registeredOnChange(value);
          }
@@ -103,7 +106,7 @@ export class StSwitchComponent implements ControlValueAccessor {
    onChange(event: MouseEvent): void {
       event.stopPropagation();
       let value: boolean = (<HTMLInputElement>event.target).checked;
-      this._stModel = value;
+      this._value = value;
       this.writeValue(value);
    }
 }

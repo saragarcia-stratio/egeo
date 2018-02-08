@@ -17,6 +17,7 @@ import { StFileButtonModule } from './st-file-button/st-file-button.module';
 import { StFooterModule } from './st-footer/st-footer.module';
 import { StFormDirectiveModule } from './directives/form/form-directives.module';
 import { StFormModule } from './st-form/st-form.module';
+import { StFormListModule } from './st-form-list/st-form-list.module';
 import { StFullscreenLayoutModule } from './st-fullscreen-layout/st-fullscreen-layout.module';
 import { StHeaderModule } from './st-header/st-header.module';
 import { StHelpModule } from './st-help/st-help.module';
@@ -51,6 +52,7 @@ import { StTreeModule } from './st-tree/st-tree.module';
 import { StTwoListSelectionModule } from './st-two-list-selection/st-two-list-selection.module';
 import { StVerticalTabsModule } from './st-vertical-tabs/st-vertical-tabs.module';
 import { StWidgetModule } from './st-widget/st-widget.module';
+import { StFormFieldModule } from './st-form/st-form-field/st-form-field.module';
 
 export const DECLARATIONS: any[] = [
    PipesModule,
@@ -62,6 +64,8 @@ export const DECLARATIONS: any[] = [
    StFooterModule,
    StFormDirectiveModule,
    StFormModule,
+   StFormFieldModule,
+   StFormListModule,
    StFullscreenLayoutModule,
    StHeaderModule,
    StHelpModule,

@@ -12,13 +12,23 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { StInputComponent } from './st-input.component';
-import { StLabelModule } from '../st-label/st-label.module';
+import { PipesModule } from '../pipes/pipes.module';
 import { StFormDirectiveModule } from '../directives/form/form-directives.module';
+import { StFormListComponent } from './st-form-list.component';
+import { StFormFieldModule } from '../st-form/st-form-field/st-form-field.module';
 
 @NgModule({
-   imports: [CommonModule, FormsModule, ReactiveFormsModule, StLabelModule, StFormDirectiveModule],
-   declarations: [StInputComponent],
-   exports: [StInputComponent]
+   imports: [
+      CommonModule,
+      FormsModule,
+      ReactiveFormsModule,
+      StFormFieldModule,
+      PipesModule,
+      StFormDirectiveModule
+   ],
+   declarations: [StFormListComponent],
+   exports: [StFormListComponent]
 })
-export class StInputModule { }
+
+export class StFormListModule {
+}

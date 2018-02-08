@@ -10,51 +10,77 @@
  */
 import {
    Component,
-   ChangeDetectionStrategy,
    OnInit,
-   Input
+   Input,
+   forwardRef,
+   ChangeDetectionStrategy,
+   ChangeDetectorRef,
+   ViewChild
 } from '@angular/core';
-import {
-   ControlValueAccessor, FormControl, Validators, ValidatorFn
-} from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl, NG_VALIDATORS, NgModel } from '@angular/forms';
 
-import { StEgeo, StRequired } from '../../decorators/require-decorators';
 import { StInputError } from '../../st-input/st-input.error.model';
+import { StEgeo, StRequired } from '../../decorators/require-decorators';
 
+@StEgeo()
 @Component({
    selector: 'st-form-field',
    templateUrl: './st-form-field.component.html',
    styleUrls: ['./st-form-field.component.scss'],
+   providers: [
+      { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => StFormFieldComponent), multi: true },
+      { provide: NG_VALIDATORS, useExisting: forwardRef(() => StFormFieldComponent), multi: true }
+   ],
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-@StEgeo()
 export class StFormFieldComponent implements ControlValueAccessor, OnInit {
    @Input() @StRequired() schema: any;
    @Input() required: boolean = false;
-   @Input() formControl: FormControl = new FormControl();
    @Input() errorMessages: StInputError;
+   @Input() qaTag: string;
+   @Input() name: string;
+   @ViewChild('templateModel') templateModel: NgModel;
 
+   @Input()
+   get value(): any {
+      return this._value;
+   }
+
+   set value(value: any) {
+      this._value = value;
+      this.onChange(this.value);
+      this._cd.markForCheck();
+   }
+
+   public disabled: boolean = false; // To check disable
+   public focus: boolean = false;
+   public errorMessage: string = undefined;
    public type: string;
 
-   private registeredOnChange: (_: any) => void;
+   private _value: any;
 
-   constructor() {
+
+   constructor(private _cd: ChangeDetectorRef) {
+   }
+
+   onChange = (_: any) => {
+   }
+
+   onTouched = () => {
+   }
+
+   validate(control: FormControl): any {
+      if (this.templateModel && this.templateModel.control && this.templateModel.control.validator) {
+         return this.templateModel.control.validator(control);
+      }
    }
 
    ngOnInit(): void {
-      let validationList: ValidatorFn[] = [];
-
       this.type = this.schema.value.type === 'string' ? 'text' : this.schema.value.type;
-      if (this.required) {
-         validationList.push(Validators.required);
+      if (this.schema.value.default !== undefined && this._value === undefined) {
+         this.value = this.schema.value.default;
       }
-      if (this.schema.value.pattern) {
-         validationList.push(Validators.pattern(this.schema.value.pattern));
-      }
-
-      this.formControl.validator = Validators.compose(validationList);
-
       if (!this.errorMessages) {
          this.errorMessages = {
             generic: 'Error',
@@ -68,33 +94,12 @@ export class StFormFieldComponent implements ControlValueAccessor, OnInit {
       }
    }
 
-   writeValue(value: any): void {
-      this.onChange(value);
-   }
-
-   registerOnChange(fn: (_: any) => void): void {
-      this.registeredOnChange = fn;
-   }
-
-   registerOnTouched(fn: () => void): void {
-   }
-
-   onChange(value: any): void {
-      if (this.registeredOnChange) {
-         this.registeredOnChange(value);
-      }
-   }
-
    get min(): number {
       return this.schema.value.exclusiveMinimum ? this.schema.value.minimum + 1 : this.schema.value.minimum;
    }
 
    get max(): number {
       return this.schema.value.exclusiveMaximum ? this.schema.value.maximum - 1 : this.schema.value.maximum;
-   }
-
-   get name(): string {
-      return this.schema.key;
    }
 
    get label(): string {
@@ -117,6 +122,9 @@ export class StFormFieldComponent implements ControlValueAccessor, OnInit {
       return this.schema.value.maxLength;
    }
 
+   get pattern(): string {
+      return this.schema.value.pattern;
+   }
 
    hasType(type: string): boolean {
       switch (type) {
@@ -127,4 +135,23 @@ export class StFormFieldComponent implements ControlValueAccessor, OnInit {
       }
    }
 
+   writeValue(value: any): void {
+      if (value !== undefined) {
+         this.value = value;
+         this.onChange(this.value);
+         this._cd.markForCheck();
+      }
+   }
+
+   registerOnChange(fn: (_: any) => void): void {
+      this.onChange = fn;
+   }
+
+   registerOnTouched(fn: () => void): void {
+      this.onTouched = fn;
+   }
+
+   setDisabledState(disable: boolean): void {
+   }
 }
+

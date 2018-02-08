@@ -1,0 +1,18 @@
+<div [formGroup]="form">
+   <div *ngFor="let control of form.controls; let i=index" class="st-form-list__row">
+      <st-form-field class="st-form-list__row-item"
+                     [formGroupName]="i"
+                     *ngFor="let property of schema.properties | stObjectToArray"
+                     [schema]="property"
+                     [formControl]="control.controls[property.key]"
+                     [(ngModel)]="value[i][property.key]"
+                     name="{{property.key}}"
+                     qaTag="{{property.key}}"
+                     [required]="isRequired(property.key)">
+      </st-form-field>
+      <i class="icon-cross remove-button" (click)="removeItem(i)"></i>
+   </div>
+</div>
+<button class="button button-link-primary" (click)="addItem()">
+   <i class="icon-circle-cross"></i><span>{{buttonLabel}}</span>
+</button>

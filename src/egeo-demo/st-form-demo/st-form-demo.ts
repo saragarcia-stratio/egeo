@@ -8,10 +8,10 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-
+import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { NgForm, FormGroup, FormControl } from '@angular/forms';
 import { JSON_SCHEMA } from './json-schema';
+import { StInputError } from '@stratio/egeo';
 
 @Component({
    selector: 'st-form-demo',
@@ -19,15 +19,37 @@ import { JSON_SCHEMA } from './json-schema';
 })
 export class StFormDemoComponent {
    public jsonSchema: any;
-   public form: FormGroup;
+   public model: any = {};
+   public reactiveForm: FormGroup = new FormGroup({ 'genericNumberInput': new FormControl(this.model.genericNumberInput) });
+   public errors: StInputError;
 
-   constructor() {
+   @ViewChild('templateDrivenForm') public templateDrivenForm: NgForm;
+
+   constructor(private _cd: ChangeDetectorRef) {
       this.jsonSchema = JSON_SCHEMA;
-      this.form = new FormGroup({});
+      this.errors = {
+         generic: 'Error',
+         required: 'This field is required',
+         minLength: 'The field min length is ' + this.jsonSchema.properties['genericNumberInput'].minLength,
+         maxLength: 'The field max length is ' + this.jsonSchema.properties['genericNumberInput'].maxLength,
+         min: 'The number has to be higher than ' + this.jsonSchema.properties['genericNumberInput'].min,
+         max: 'The number has to be minor than ' + this.jsonSchema.properties['genericNumberInput'].max,
+         pattern: 'Invalid value'
+      };
    }
 
+   showFormStatus(): void {
+      console.log(this.reactiveForm);
+   }
 
-   public showFormStatus(): void {
-      console.log({valid: this.form.valid, model: this.form.value});
+   updateModel(): void {
+      this.templateDrivenForm.controls['genericNumberInput'].setValue(1);
+      this.templateDrivenForm.controls['requiredNumber'].setValue(2);
+
+      this._cd.markForCheck();
+   }
+
+   onChange(model: any): void {
+      this.model = model;
    }
 }

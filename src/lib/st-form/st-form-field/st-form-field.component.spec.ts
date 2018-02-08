@@ -10,13 +10,14 @@
  */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
-
 import { PipesModule } from '../../pipes/pipes.module';
 import { JSON_SCHEMA } from '../spec/resources/json-schema';
+
 import { StFormDirectiveModule } from '../../directives/form/form-directives.module';
 import { StFormFieldComponent } from './st-form-field.component';
 import { StInputModule } from '../../st-input/st-input.module';
 import { StSwitchModule } from '../../st-switch/st-switch.module';
+import { ChangeDetectionStrategy } from '@angular/core';
 
 let component: StFormFieldComponent;
 let fixture: ComponentFixture<StFormFieldComponent>;
@@ -29,6 +30,9 @@ describe('StFormFieldComponent', () => {
          imports: [FormsModule, ReactiveFormsModule, StInputModule, StSwitchModule, PipesModule, StFormDirectiveModule],
          declarations: [StFormFieldComponent]
       })
+         .overrideComponent(StFormFieldComponent, {
+            set: { changeDetection: ChangeDetectionStrategy.Default }
+         })
          .compileComponents();  // compile template and css
    }));
 
@@ -39,6 +43,9 @@ describe('StFormFieldComponent', () => {
    });
 
    describe('should be able to render inputs with their validations', () => {
+      beforeEach(() => {
+         component.qaTag = 'genericNumberInput';
+      });
 
       describe('number input', () => {
          let input: HTMLInputElement;
@@ -49,8 +56,7 @@ describe('StFormFieldComponent', () => {
             numberInputProperty = JSON_SCHEMA.properties.genericNumberInput;
             minValue = numberInputProperty.minimum;
             maxValue = numberInputProperty.maximum;
-            component.schema = {key: 'genericNumberInput', value: numberInputProperty};
-            component.formControl = formControl;
+            component.schema = { key: 'genericNumberInput', value: numberInputProperty };
          });
 
          it('if user tries to type text, input value is not updated', () => {
@@ -225,16 +231,6 @@ describe('StFormFieldComponent', () => {
                expect(fixture.nativeElement.querySelector('#genericNumberInput').parentNode.parentNode.querySelector('.st-input-error-layout span')).toBeNull();
             });
          });
-
-         it('When form control is updated externally, it is updated', () => {
-            formControl.setValue(5);
-
-            fixture.detectChanges();
-
-            input = fixture.nativeElement.querySelector('#genericNumberInput');
-
-            expect(input.value).toBe('5');
-         });
       });
 
       describe('text input', () => {
@@ -247,12 +243,13 @@ describe('StFormFieldComponent', () => {
             textInputProperty = JSON_SCHEMA.properties.genericTextInput;
             minLength = textInputProperty.minLength;
             maxLength = textInputProperty.maxLength;
-            component.schema = {key: 'genericTextInput', value: textInputProperty};
+            component.schema = { key: 'genericTextInput', value: textInputProperty };
+            component.qaTag = 'genericTextInput';
             formControl = new FormControl('');
-            component.formControl = formControl;
             fixture.detectChanges();
             input = fixture.nativeElement.querySelector('#genericTextInput');
          });
+
          it('required validation', () => {
             component.required = true;
             fixture.detectChanges();
@@ -272,7 +269,6 @@ describe('StFormFieldComponent', () => {
 
             fixture.detectChanges();
 
-
             expect(fixture.nativeElement.querySelector('.st-input-error-layout span')).toBeNull();
          });
 
@@ -286,14 +282,12 @@ describe('StFormFieldComponent', () => {
 
             fixture.detectChanges();
 
-
             expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML).toBe('The field min length is ' + minLength);
 
             input.value = 'a'.repeat(minLength);
             input.dispatchEvent(new Event('input'));
 
             fixture.detectChanges();
-
 
             expect(fixture.nativeElement.querySelector('.st-input-error-layout span')).toBeNull();
          });
@@ -317,13 +311,12 @@ describe('StFormFieldComponent', () => {
             input.blur();
             fixture.detectChanges();
 
-
             expect(fixture.nativeElement.querySelector('.st-input-error-layout span')).toBeNull();
          });
 
          it('pattern validation', () => {
             input.focus();
-            input.value = 'bbbb';
+            input.value = 'bbb';
             input.dispatchEvent(new Event('input'));
             input.blur();
 
@@ -341,15 +334,6 @@ describe('StFormFieldComponent', () => {
             expect(fixture.nativeElement.querySelector('.st-input-error-layout span')).toBeNull();
          });
 
-         it('When form control is updated externally, it is updated', () => {
-            formControl.setValue('aa');
-
-            fixture.detectChanges();
-
-            input = fixture.nativeElement.querySelector('#genericTextInput');
-
-            expect(input.value).toBe('aa');
-         });
       });
 
    });
@@ -360,9 +344,9 @@ describe('StFormFieldComponent', () => {
 
       beforeEach(() => {
          booleanProperty = JSON_SCHEMA.properties.boolean;
-         component.schema = {key: 'boolean', value: booleanProperty};
-         formControl = new FormControl(true);
-         component.formControl = formControl;
+         component.schema = { key: 'boolean', value: booleanProperty };
+         component.qaTag = 'boolean-input';
+
          fixture.detectChanges();
 
          switchElement = fixture.nativeElement.querySelector('#boolean-input');
@@ -382,15 +366,18 @@ describe('StFormFieldComponent', () => {
          fixture = TestBed.createComponent(StFormFieldComponent);
          component = fixture.componentInstance;
 
-         component.schema = {key: 'boolean', value: {type: 'boolean', description: undefined}};
-         component.formControl = formControl;
+         component.schema = { key: 'boolean', value: { type: 'boolean', description: undefined } };
          fixture.detectChanges();
 
          expect(fixture.nativeElement.querySelector('#boolean-label-tooltip')).toBeNull();
       });
 
       it('if schema contains a default value, switch has to be initialized with it', () => {
-         expect(switchElement.checked).toBe(booleanProperty.default);
+         fixture.whenStable().then(() => {
+            fixture.detectChanges();
+
+            expect(fixture.nativeElement.querySelector('#boolean-input').checked).toBe(booleanProperty.default);
+         });
       });
 
       it('if switch is disabled, when user clicks on it, it does not change', () => {

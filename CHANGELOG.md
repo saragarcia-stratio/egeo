@@ -9,7 +9,7 @@
 **Fixed bugs:**
 
 * st-header: Fix z-index 
-
+* st-tag-input: Fix tag input bug when user types more than one line of values
 
 ## 8.1.1 (February 02, 2018)
 

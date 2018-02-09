@@ -8,16 +8,15 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-
- @import '../utils/forms';
+@import '../utils/forms';
 
 .st-tag-input {
 
    &__label {
-      &.error{
+      &.error {
          color: $status-critical-default;
       }
-  
+
       &.active {
          color: $input-field-onfocus;
       }
@@ -26,15 +25,16 @@
    &__input {
       min-height: 40px;
       padding: 5px 15px 1px 15px !important;
+      height: 100% !important;
 
       &.error {
          border-color: $status-critical-default;
       }
-  
+
       &.active {
          border-color: $input-field-onfocus;
       }
-  
+
       &[disabled] {
          pointer-events: none;
          border-color: $neutral-05;

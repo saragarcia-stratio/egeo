@@ -6,6 +6,10 @@
 
 * st-form-list: Allow to generate list of items dynamically
 
+**Others**
+
+* Update version of the Stratio Icon Font
+
 **Fixed bugs:**
 
 * st-header: Fix z-index 

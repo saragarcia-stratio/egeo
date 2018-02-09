@@ -18,3 +18,5 @@
 <p>Form status: {{ formArray.disabled ? 'DISABLED' : formArray.valid ? 'VALID' : 'INVALID' }}</p>
 
 Model:  {{model | json}}
+<br>
+<button class="button button-primary" (click)="onChangeDisabledForm()"> DISABLE/ENABLE FORM ARRAY</button>

@@ -9,7 +9,7 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 import { Component, Input, ChangeDetectionStrategy, OnInit } from '@angular/core';
-import { ControlValueAccessor, FormGroup, FormArray, FormControl } from '@angular/forms';
+import { FormGroup, FormArray, FormControl } from '@angular/forms';
 
 /**
  * @description {Component} [Form list]
@@ -38,17 +38,11 @@ import { ControlValueAccessor, FormGroup, FormArray, FormControl } from '@angula
 export class StFormListComponent implements OnInit {
    /** @Input {any} [schema=''] JSON schema of items */
    @Input() schema: any;
-   /** @Input {string} [buttonLabel='Add'] String displayed in the button to add more items */
-   @Input() buttonLabel: string = 'Add';
+   /** @Input {string} [buttonLabel='Add one more item'] String displayed in the button to add more items */
+   @Input() buttonLabel: string = 'Add one more item';
 
    public _value: any[] = [];
    public _form: FormArray = new FormArray([]);
-
-   onTouched = () => {
-   }
-
-   onChange: any = () => {
-   }
 
    /** @Input {any[]} [value=''] Current list value */
    @Input()
@@ -59,7 +53,6 @@ export class StFormListComponent implements OnInit {
    set value(value: any[]) {
       this._value = value;
       this.updateForm();
-      this.onChange(this._value);
    }
 
    /** @Input {FormGroup} [form=''] Form group */
@@ -79,7 +72,6 @@ export class StFormListComponent implements OnInit {
    addItem(): void {
       this._value.push({});
       this._form.push(this.generateItemFormGroup());
-      this.onChange(this._value);
    }
 
    removeItem(position: number): void {
@@ -104,7 +96,6 @@ export class StFormListComponent implements OnInit {
       }
       return formGroup;
    }
-
 
    private updateForm(): void {
       this._form.reset();

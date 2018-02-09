@@ -37,12 +37,13 @@ describe('[StFormList]', () => {
    beforeEach(() => {
       fixture = TestBed.createComponent(StFormListComponent);
       component = fixture.componentInstance;
+      component.schema = TWO_INPUTS_JSON_SCHEMA;
+      fixture.detectChanges();
    });
 
    describe('should allow to customize the label of the button to add more items', () => {
       it('if button label is not introduced as input, a default label is displayed', () => {
-         fixture.detectChanges();
-         expect(fixture.nativeElement.querySelector('.button.button-link-primary').innerText).toContain('Add');
+         expect(fixture.nativeElement.querySelector('.button.button-link-primary').innerText).toContain('Add one more item');
       });
 
       it('if label is introduced as input, it is added to the button', () => {
@@ -52,7 +53,6 @@ describe('[StFormList]', () => {
 
          expect(fixture.nativeElement.querySelector('.button.button-link-primary').innerText).toContain(buttonLabel);
       });
-
    });
 
    describe('should be able to create an array of items', () => {
@@ -62,6 +62,7 @@ describe('[StFormList]', () => {
       });
 
       it('array is loaded according to the model introduced as input', () => {
+         component.form.reset();
          component.value = [...fakeModel];
          fixture.detectChanges();
 
@@ -90,6 +91,7 @@ describe('[StFormList]', () => {
 
    describe('user can add new items to list', () => {
       it('item is loaded according to the json schema displaying with a default value if exists', () => {
+         component.form.reset();
          component.schema = TWO_INPUTS_JSON_SCHEMA;
          fixture.detectChanges();
          fixture.nativeElement.querySelector('.button.button-link-primary').click();
@@ -97,8 +99,6 @@ describe('[StFormList]', () => {
 
          fixture.whenStable().then(() => {
             fixture.detectChanges();
-            fixture.changeDetectorRef.markForCheck();
-
             let controls = fixture.nativeElement.querySelectorAll('input');
             expect(controls.length).toBe(Object.keys(TWO_INPUTS_JSON_SCHEMA.properties).length);
             for (let i = 0; i < Object.keys(TWO_INPUTS_JSON_SCHEMA.properties).length; ++i) {
@@ -126,6 +126,26 @@ describe('[StFormList]', () => {
          expect(component.value.length).toBe(fakeModel.length - 1);
          expect(component.value).toEqual([...fakeModel].slice(0, fakeModel.length - 1));
          expect(component.form.controls.length).toBe(fakeModel.length - 1);
+      });
+   });
+
+   describe('when form list is disabled', () => {
+      beforeEach(() => {
+         component.schema = TWO_INPUTS_JSON_SCHEMA;
+         fixture.detectChanges();
+         component.form.disable();
+         fixture.detectChanges();
+      });
+      it('fields are displayed as disabled', () => {
+         let inputs: HTMLInputElement[] = fixture.nativeElement.querySelectorAll('input');
+
+         for (let i = 0; i < inputs.length; ++i) {
+            expect(inputs[i].disabled).toBeTruthy();
+         }
+      });
+
+      it('button to add new items has to be hidden', () => {
+         expect(fixture.nativeElement.querySelector('.button.button-link-primary')).toBeNull();
       });
    });
 });

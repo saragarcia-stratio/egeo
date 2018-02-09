@@ -9,7 +9,7 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
-import { FormArray, NgForm } from '@angular/forms';
+import { FormArray, NgForm, FormGroup } from '@angular/forms';
 
 @Component({
    selector: 'st-form-list-demo',
@@ -36,7 +36,6 @@ export class StFormListDemoComponent {
             'title': 'Required text with a text of 2-6 characters',
             'description': 'This is a generic text',
             'type': 'string',
-            'default': 'Generic text',
             'minLength': 2,
             'maxLength': 6
          }
@@ -46,10 +45,24 @@ export class StFormListDemoComponent {
       ]
    };
 
+   public form: FormGroup = new FormGroup({});
    public formArray: FormArray = new FormArray([]);
 
    public model: Array<any> = [
       { genericNumberInput: 8, genericTextInput: 'este es el ngmodel ' },
       { genericNumberInput: 20, genericTextInput: 'fake text 2' }
    ];
+
+   constructor() {
+      this.form.addControl('list', this.formArray);
+   }
+
+   onChangeDisabledForm(): void {
+      if (this.formArray.disabled) {
+         this.formArray.enable();
+
+      } else {
+         this.formArray.disable();
+      }
+   }
 }

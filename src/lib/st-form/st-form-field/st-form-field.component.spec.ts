@@ -9,15 +9,16 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
 import { PipesModule } from '../../pipes/pipes.module';
 import { JSON_SCHEMA } from '../spec/resources/json-schema';
-
 import { StFormDirectiveModule } from '../../directives/form/form-directives.module';
 import { StFormFieldComponent } from './st-form-field.component';
 import { StInputModule } from '../../st-input/st-input.module';
 import { StSwitchModule } from '../../st-switch/st-switch.module';
-import { ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { StFormFieldModule } from './st-form-field.module';
+import { CommonModule } from '@angular/common';
 
 let component: StFormFieldComponent;
 let fixture: ComponentFixture<StFormFieldComponent>;
@@ -402,4 +403,52 @@ describe('StFormFieldComponent', () => {
          expect(Boolean(switchElement.checked)).toBe(!previousValue);
       });
    });
+
 });
+
+
+@Component({
+   template: `
+      <form [formGroup]="reactiveForm" novalidate>
+         <st-form-field [schema]="schema" formControlName="formField">
+         </st-form-field>
+      </form>
+      `
+})
+class FormFieldInReactiveFormComponent {
+   public schema: any = { key: 'genericNumberInput', value: JSON_SCHEMA.properties.genericNumberInput };
+   public reactiveForm: FormGroup = new FormGroup({ 'formField': new FormControl() });
+}
+
+
+describe('StFormFieldComponent in reactive form', () => {
+   let reactiveFixture: ComponentFixture<FormFieldInReactiveFormComponent>;
+   let reactiveComp: FormFieldInReactiveFormComponent;
+
+   beforeEach(async(() => {
+      TestBed.configureTestingModule({
+         imports: [FormsModule, CommonModule, ReactiveFormsModule, StFormFieldModule, PipesModule, StFormDirectiveModule],
+         declarations: [FormFieldInReactiveFormComponent]
+      })
+         .overrideComponent(StFormFieldComponent, {
+            set: { changeDetection: ChangeDetectionStrategy.Default }
+         })
+         .compileComponents();  // compile template and css
+   }));
+
+   beforeEach(() => {
+      reactiveFixture = TestBed.createComponent(FormFieldInReactiveFormComponent);
+      reactiveComp = reactiveFixture.componentInstance;
+      reactiveFixture.detectChanges();
+   });
+
+   it('form field can be disabled', async() => {
+      reactiveComp.reactiveForm.disable();
+
+      reactiveFixture.whenStable().then(() => {
+         reactiveFixture.detectChanges();
+         expect(reactiveFixture.nativeElement.querySelector('input').disabled).toBeTruthy();
+      });
+   });
+});
+

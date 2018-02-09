@@ -152,6 +152,13 @@ export class StFormFieldComponent implements ControlValueAccessor, OnInit {
    }
 
    setDisabledState(disable: boolean): void {
+      if (this.templateModel && this.templateModel.control) {
+         if (disable) {
+            this.templateModel.control.disable();
+         } else {
+            this.templateModel.control.enable();
+         }
+      }
    }
 }
 

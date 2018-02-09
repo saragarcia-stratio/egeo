@@ -14,16 +14,9 @@
    <st-form [schema]="jsonSchema" [(ngModel)]="model" name="generated">
    </st-form>
 </form>
-<form [formGroup]="reactiveForm" novalidate>
-   <st-form-field [schema]="{key: 'genericNumberInput', value: jsonSchema.properties['genericNumberInput']}"
-                  formControlName="genericNumberInput"
-                  [(ngModel)]="model['genericNumberInput']"
-                  [required]="true">
-   </st-form-field>
-</form>
-
 
 <br>
+
 <button class="button button-secondary-gray" (click)="showFormStatus()">
    <span>Show form status</span>
 </button>

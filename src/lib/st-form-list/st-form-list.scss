@@ -3,6 +3,7 @@
 
    &__row {
       display: flex;
+      position: relative;
 
       :first-child {
          margin-right: 10px;
@@ -22,13 +23,13 @@
 
       &:first-of-type {
          .remove-button {
-            padding-top: 25px;
+            margin-top: 25px;
          }
       }
 
       &:not(first-of-type) {
          .remove-button {
-            padding-top: 6px;
+            margin-top: 6px;
          }
       }
    }
@@ -47,4 +48,7 @@
    vertical-align: middle;
    padding-left: 15px;
    cursor: pointer;
+   position: absolute;
+   right:  -30px;
+   top: 0;
 }

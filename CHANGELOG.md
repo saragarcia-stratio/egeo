@@ -10,14 +10,16 @@
 
 * st-form-list: Allow to generate list of items dynamically
 
-**Others**
-
-* Update version of the Stratio Icon Font
-
 **Fixed bugs:**
 
 * st-header: Fix z-index 
 * st-tag-input: Fix tag input bug when user types more than one line of values
+* st-input: Fix error when forceValidations is true and form control is not defined yet 
+ 
+**Others**
+
+* Update version of the Stratio Icon Font
+
 
 ## 8.1.1 (February 02, 2018)
 

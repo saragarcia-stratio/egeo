@@ -8,9 +8,9 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { Component, DebugElement, OnInit } from '@angular/core';
+import { Component, DebugElement, OnInit, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators, FormControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { StInputComponent } from './st-input.component';
@@ -101,7 +101,7 @@ describe('StInputComponent', () => {
    template: `
       <form [formGroup]="reactiveForm" novalidate autocomplete="off" (ngSubmit)="onSubmitReactiveForm()" class="col-md-6">
          <div class="form-group">
-           <st-input
+           <st-input #input
                   label="Description"
                   placeholder="Module description"
                   [forceValidations]="forceValidations"
@@ -139,6 +139,8 @@ class FormReactiveComponent implements OnInit {
       max: 'The number has to be minor than: ' + this.max,
       pattern: 'Invalid value'
    };
+
+   @ViewChild('input') input: StInputComponent;
 
    constructor(private _fb: FormBuilder) { }
 
@@ -416,6 +418,22 @@ describe('StInputComponent in reactive form', () => {
       errorMessage = reactiveFixture.debugElement.query(By.css('.st-input-error-message'));
       expect(errorMessage).toBeDefined();
       expect((<HTMLSpanElement>errorMessage.nativeElement).textContent).toEqual('error');
+   });
+
+   it ('if internal control is not defined, when event is listened adn force validations is true it does not do anything', () => {
+      spyOn(reactiveComp.input, 'writeValue');
+      reactiveComp.input.internalControl = undefined;
+
+      reactiveComp.input.forceValidations = true;
+      reactiveComp.input.ngOnChanges({});
+
+      expect(reactiveComp.input.writeValue).not.toHaveBeenCalled();
+
+
+      reactiveComp.input.internalControl = new FormControl();
+      reactiveComp.input.ngOnChanges({});
+
+      expect(reactiveComp.input.writeValue).toHaveBeenCalled();
    });
 });
 

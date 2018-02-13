@@ -9,24 +9,18 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 import {
-   AfterViewInit,
    ChangeDetectionStrategy,
    ChangeDetectorRef,
    Component,
-   EventEmitter,
    forwardRef,
    Input,
    OnChanges,
    OnDestroy,
    OnInit,
-   Output,
-   SimpleChange,
-   SimpleChanges,
    ViewChildren
 } from '@angular/core';
 import {
-   ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validators,
-   ValidatorFn
+   ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR
 } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -94,7 +88,7 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
    }
 
    ngOnChanges(change: any): void {
-      if (this.forceValidations) {
+      if (this.forceValidations && this.internalControl) {
          this.writeValue(this.internalControl.value);
       }
       this._cd.markForCheck();

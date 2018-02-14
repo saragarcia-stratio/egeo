@@ -77,11 +77,11 @@ describe('[StFormList]', () => {
             let itemProperties = Object.keys(TWO_INPUTS_JSON_SCHEMA.properties);
             for (let i = 0; i < rows.length; ++i) {
                let inputs: HTMLInputElement[] = rows[i].querySelectorAll('input');
-               expect(inputs[0].id).toBe(itemProperties[0]);
+               expect(inputs[0].id).toBe(itemProperties[0] + '-' + i);
                expect(inputs[0].value).toEqual(String(fakeModel[i][itemProperties[0]]));
                expect((<FormGroup>component.form.controls[i]).controls[itemProperties[0]].value).toEqual(fakeModel[i][itemProperties[0]]);
 
-               expect(inputs[1].id).toBe(itemProperties[1]);
+               expect(inputs[1].id).toBe(itemProperties[1] + '-' + i);
                expect(inputs[1].value).toEqual(String(fakeModel[i][itemProperties[1]]));
                expect((<FormGroup>component.form.controls[i]).controls[itemProperties[1]].value).toEqual(fakeModel[i][itemProperties[1]]);
             }
@@ -103,7 +103,7 @@ describe('[StFormList]', () => {
             expect(controls.length).toBe(Object.keys(TWO_INPUTS_JSON_SCHEMA.properties).length);
             for (let i = 0; i < Object.keys(TWO_INPUTS_JSON_SCHEMA.properties).length; ++i) {
                let property: string = Object.keys(TWO_INPUTS_JSON_SCHEMA.properties)[i];
-               expect(fixture.nativeElement.querySelector('#' + property)).not.toBeNull();
+               expect(fixture.nativeElement.querySelector('#' + property + '-0')).not.toBeNull();
                expect(controls[i].value).toEqual(String(TWO_INPUTS_JSON_SCHEMA.properties[property].default));
             }
          });
@@ -146,6 +146,38 @@ describe('[StFormList]', () => {
 
       it('button to add new items has to be hidden', () => {
          expect(fixture.nativeElement.querySelector('.button.button-link-primary')).toBeNull();
+      });
+   });
+
+
+   describe('when value is changed, it should emit an event', () => {
+      beforeEach(() => {
+         component.value = fakeModel;
+         fixture.detectChanges();
+         spyOn(component.change, 'emit');
+      });
+
+      it('if user removes a row, event is emitted', () => {
+         component.removeItem(0);
+
+         expect(component.change.emit).toHaveBeenCalledWith(component.value);
+      });
+
+      it('if user adds a row, event is emitted', () => {
+         component.addItem();
+
+         expect(component.change.emit).toHaveBeenCalledWith(component.value);
+      });
+
+      it('if user modifies a value in a row, event is emitted', () => {
+         let input: HTMLInputElement = fixture.nativeElement.querySelector('#genericTextInput-1');
+
+         input.value = 'edited text';
+         input.dispatchEvent(new Event('input'));
+
+         fixture.detectChanges();
+
+         expect(component.change.emit).toHaveBeenCalledWith(component.value);
       });
    });
 });

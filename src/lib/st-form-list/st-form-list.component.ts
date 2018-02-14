@@ -8,7 +8,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { Component, Input, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormArray, FormControl } from '@angular/forms';
 
 /**
@@ -21,7 +21,8 @@ import { FormGroup, FormArray, FormControl } from '@angular/forms';
  * {html}
  *
  * ```
- *  <st-form-list [schema]="jsonSchema" [(value)]="model" [(form)]="formArray" buttonLabel="Add item">
+ *  <st-form-list [schema]="jsonSchema" [(value)]="model" [(form)]="formArray" buttonLabel="Add item"
+ *  (change)="onValueChange($event)">
  *  </st-form-list>
  * ```
  *
@@ -40,6 +41,9 @@ export class StFormListComponent implements OnInit {
    @Input() schema: any;
    /** @Input {string} [buttonLabel='Add one more item'] String displayed in the button to add more items */
    @Input() buttonLabel: string = 'Add one more item';
+
+   /** @Output {any[]} [change] Notify any value change */
+   @Output() change: EventEmitter<any[]> = new EventEmitter<any[]>();
 
    public _value: any[] = [];
    public _form: FormArray = new FormArray([]);
@@ -72,11 +76,13 @@ export class StFormListComponent implements OnInit {
    addItem(): void {
       this._value.push({});
       this._form.push(this.generateItemFormGroup());
+      this.change.emit(this._value);
    }
 
    removeItem(position: number): void {
       this._form.removeAt(position);
       this._value.splice(position, 1);
+      this.change.emit(this._value);
    }
 
    isRequired(propertyName: string): boolean {
@@ -95,6 +101,13 @@ export class StFormListComponent implements OnInit {
          formGroup.addControl(properties[i], new FormControl(value));
       }
       return formGroup;
+   }
+
+   onModelChange(value: any, position: number, propertyName: string): void {
+      if (this._value && this._value[position]) {
+         this._value[position][propertyName] = value;
+         this.change.emit(this._value);
+      }
    }
 
    private updateForm(): void {

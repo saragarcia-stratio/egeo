@@ -65,4 +65,8 @@ export class StFormListDemoComponent {
          this.formArray.disable();
       }
    }
+
+   onValueChange(value: any[]): void {
+      console.log('new value', value);
+   }
 }

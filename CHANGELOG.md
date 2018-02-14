@@ -5,10 +5,13 @@
 **New features:**
 
 * st-draggable-card: Create component
+* st-form-list: Emit an event when value is changed
 
 **Fixed bugs:**
 
 * Add missing class to 'icon-move-to-folder' icon 
+* st-form-list: Remove duplicated ids
+
 
 ## 8.2.0 (February 13, 2018)
 

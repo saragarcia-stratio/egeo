@@ -11,7 +11,7 @@
 
 -->
 
-<st-form-list [schema]="jsonSchema" [(value)]="model" [(form)]="formArray"></st-form-list>
+<st-form-list [schema]="jsonSchema" [(value)]="model" [(form)]="formArray" (change)="onValueChange($event)"></st-form-list>
 <br>
 
 <p>Form value: {{ formArray.value | json }}</p>

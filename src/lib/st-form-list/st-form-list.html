@@ -5,9 +5,10 @@
                      *ngFor="let property of schema.properties | stObjectToArray"
                      [schema]="property"
                      [formControl]="control.controls[property.key]"
-                     [(ngModel)]="value[i][property.key]"
+                     [value]="value[i][property.key]"
+                     (ngModelChange)="onModelChange($event, i, property.key)"
                      name="{{property.key}}"
-                     qaTag="{{property.key}}"
+                     qaTag="{{property.key  + '-' + i}}"
                      [required]="isRequired(property.key)">
       </st-form-field>
       <i class="icon-cross remove-button" (click)="removeItem(i)"></i>

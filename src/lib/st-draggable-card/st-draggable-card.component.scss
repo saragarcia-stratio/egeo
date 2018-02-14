@@ -9,13 +9,23 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 
-// z-index
 
-// This positions have to be sorted in a descendant order. When you add a new position, make sure they are sorted correctly.
-$modal-z-index: 10000 !default;
-$alert-z-index: 9000 !default;
-$fullscreen-z-index: 8000 !default;
-$header-z-index: 7000 !default;
+.st-draggable-card {
+   width: 100%;
+   height: 100%;
+   padding: 30px 30px 30px 15px;
+   display: flex;
 
+   .drag-button {
+      display: block;
+      vertical-align: middle;
+      margin-right: 15px;
+      align-self: center;
+   }
+
+   .content {
+      display: block;
+   }
+}
 
 

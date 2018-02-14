@@ -53,6 +53,11 @@ export { StBreadcrumbsModule } from './st-breadcrumbs/st-breadcrumbs.module';
 // Checkbox
 export { StCheckboxModule } from './st-checkbox/st-checkbox.module';
 
+// Draggable car
+export {
+   StDraggableCardModule
+} from './st-draggable-card/st-draggable-card.module';
+
 // Dropdown menu
 export {
    StDropDownMenuGroup,

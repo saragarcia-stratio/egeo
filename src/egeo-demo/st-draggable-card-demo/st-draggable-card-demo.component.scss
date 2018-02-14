@@ -8,14 +8,19 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
+.card {
+   display: inline-block;
+   margin: 2px;
+   height: 100px;
+   width: 100%;
+}
 
-// z-index
-
-// This positions have to be sorted in a descendant order. When you add a new position, make sure they are sorted correctly.
-$modal-z-index: 10000 !default;
-$alert-z-index: 9000 !default;
-$fullscreen-z-index: 8000 !default;
-$header-z-index: 7000 !default;
-
-
-
+.card-container {
+   display: block;
+   float: left;
+   width: 250px;
+   min-height: 150px;
+   border: 1px solid gray;
+   background-color: white;
+   padding:20px;
+}

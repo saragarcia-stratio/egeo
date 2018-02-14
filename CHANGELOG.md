@@ -2,7 +2,13 @@
 
 ## 8.3.0 (upcoming)
 
-* Pending changelog
+**New features:**
+
+* st-draggable-card: Create component
+
+**Fixed bugs:**
+
+* Add missing class to 'icon-move-to-folder' icon 
 
 ## 8.2.0 (February 13, 2018)
 

@@ -49,6 +49,7 @@ import { StTreeDemoModule } from './st-tree-demo/st-tree-demo.module';
 import { StTwoListSelectionDemoModule } from './st-two-list-selection-demo/st-two-list-selection-demo.module';
 import { StVerticalTabsDemoModule } from './st-vertical-tabs-demo/st-vertical-tabs-demo.module';
 import { StWidgetDemoModule } from './st-widget-demo/st-widget-demo.module';
+import { StDraggableCardDemoModule } from './st-draggable-card-demo/st-draggable-card-demo.module';
 
 
 export const EGEO_DEMO_MODULES: any[] = [
@@ -57,6 +58,7 @@ export const EGEO_DEMO_MODULES: any[] = [
    StBreadcrumbsDemoModule,
    StButtonDemoModule,
    StCheckboxDemoModule,
+   StDraggableCardDemoModule,
    StDropdownMenuDemoModule,
    StFileButtonDemoModule,
    StFooterDemoModule,

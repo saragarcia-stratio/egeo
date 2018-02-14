@@ -1,4 +1,4 @@
-/**
+/*
  * © 2017 Stratio Big Data Inc., Sucursal en España.
  *
  * This software is licensed under the Apache License, Version 2.0.
@@ -8,14 +8,14 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
+import { CommonModule }  from '@angular/common';
+import { NgModule } from '@angular/core';
 
-// z-index
+import { StDraggableCardComponent } from './st-draggable-card.component';
 
-// This positions have to be sorted in a descendant order. When you add a new position, make sure they are sorted correctly.
-$modal-z-index: 10000 !default;
-$alert-z-index: 9000 !default;
-$fullscreen-z-index: 8000 !default;
-$header-z-index: 7000 !default;
-
-
-
+@NgModule({
+   imports: [ CommonModule ],
+   declarations: [ StDraggableCardComponent ],
+   exports: [ StDraggableCardComponent ]
+})
+export class StDraggableCardModule {}

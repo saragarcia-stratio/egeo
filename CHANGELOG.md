@@ -1,5 +1,12 @@
 # Changelog
 
+## 8.3.1 (upcoming)
+
+**Fixed bugs:**
+
+* st-form-list: Fixed model loading when it is initialized
+
+
 ## 8.3.0 (February 14, 2018)
 
 **New features:**

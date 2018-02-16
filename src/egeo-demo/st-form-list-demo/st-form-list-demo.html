@@ -11,12 +11,12 @@
 
 -->
 
-<st-form-list [schema]="jsonSchema" [(value)]="model" [(form)]="formArray" (change)="onValueChange($event)"></st-form-list>
-<br>
-
-<p>Form value: {{ formArray.value | json }}</p>
-<p>Form status: {{ formArray.disabled ? 'DISABLED' : formArray.valid ? 'VALID' : 'INVALID' }}</p>
-
-Model:  {{model | json}}
-<br>
+<st-form-list [schema]="jsonSchema" [value]="model" [(form)]="formArray" (change)="onValueChange($event)"></st-form-list>
+<br><br><br>
 <button class="button button-primary" (click)="onChangeDisabledForm()"> DISABLE/ENABLE FORM ARRAY</button>
+<br><br><br>
+<h1>FORM VALUE:</h1> <p>{{ formArray.value | json }}</p>
+<br>
+<h1>FORM STATUS: {{ formArray.disabled ? 'DISABLED' : formArray.valid ? 'VALID' : 'INVALID' }}</h1>
+<br>
+<h1> MODEL:  </h1> <p>{{model | json}} </p>

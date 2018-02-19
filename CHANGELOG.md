@@ -1,6 +1,6 @@
 # Changelog
 
-## 8.3.1 (upcoming)
+## 8.3.1 (February 19, 2018)
 
 **Fixed bugs:**
 

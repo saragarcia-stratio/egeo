@@ -58,6 +58,16 @@
    }
 }
 
+.st-checkbox.st-label {
+   font-size: $egeo-font-size-xsmall !important;
+   line-height: $egeo-line-height-xsmall !important;
+   font-family: $egeo-nunito-sans !important;
+}
+
+.st-checkbox:not(.disabled).st-label {
+   color: $action-secondary-07 !important;
+}
+
 .st-checkbox.disabled {
    color: $neutral-05;
    .custom-checkbox {

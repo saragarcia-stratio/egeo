@@ -10,14 +10,15 @@
  */
 import { CommonModule }  from '@angular/common';
 import { NgModule } from '@angular/core';
-import {FormsModule, NgForm, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 import { StFormFieldComponent } from './st-form-field.component';
 import { StInputModule } from '../../st-input/st-input.module';
-import { StSwitchModule } from '../../st-switch/st-switch.module';
 import { StFormDirectiveModule } from '../../directives/form/form-directives.module';
+import { StCheckboxModule } from '../../st-checkbox/st-checkbox.module';
 
 @NgModule({
-   imports: [CommonModule, FormsModule, ReactiveFormsModule, StInputModule, StSwitchModule, StFormDirectiveModule],
+   imports: [CommonModule, FormsModule, ReactiveFormsModule, StInputModule, StCheckboxModule, StFormDirectiveModule],
    declarations: [StFormFieldComponent],
    exports: [StFormFieldComponent]
 })

@@ -18,7 +18,6 @@ import {
    ViewChild
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl, NG_VALIDATORS, NgModel } from '@angular/forms';
-
 import { StInputError } from '../../st-input/st-input.error.model';
 import { StEgeo, StRequired } from '../../decorators/require-decorators';
 
@@ -31,7 +30,8 @@ import { StEgeo, StRequired } from '../../decorators/require-decorators';
       { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => StFormFieldComponent), multi: true },
       { provide: NG_VALIDATORS, useExisting: forwardRef(() => StFormFieldComponent), multi: true }
    ],
-   changeDetection: ChangeDetectionStrategy.OnPush
+   changeDetection: ChangeDetectionStrategy.OnPush,
+   host: {class: 'st-form-field'}
 })
 
 export class StFormFieldComponent implements ControlValueAccessor, OnInit {
@@ -56,10 +56,8 @@ export class StFormFieldComponent implements ControlValueAccessor, OnInit {
    public disabled: boolean = false; // To check disable
    public focus: boolean = false;
    public errorMessage: string = undefined;
-   public type: string;
 
    private _value: any;
-
 
    constructor(private _cd: ChangeDetectorRef) {
    }
@@ -77,7 +75,6 @@ export class StFormFieldComponent implements ControlValueAccessor, OnInit {
    }
 
    ngOnInit(): void {
-      this.type = this.schema.value.type === 'string' ? 'text' : this.schema.value.type;
       if (this.schema.value.default !== undefined && this._value === undefined) {
          this.value = this.schema.value.default;
       }
@@ -91,6 +88,17 @@ export class StFormFieldComponent implements ControlValueAccessor, OnInit {
             max: 'The number has to be minor than ' + this.max,
             pattern: 'Invalid value'
          };
+      }
+   }
+
+   get type(): string {
+      switch (this.schema.value.type) {
+         case 'string':
+            return 'text';
+         case 'integer':
+            return 'number';
+         default:
+            return this.schema.value.type;
       }
    }
 
@@ -129,7 +137,7 @@ export class StFormFieldComponent implements ControlValueAccessor, OnInit {
    hasType(type: string): boolean {
       switch (type) {
          case 'input':
-            return this.type === 'text' || this.type === 'number';
+            return this.type === 'text' || this.type === 'number' || this.type === 'integer';
          default:
             return this.type === type;
       }
@@ -158,6 +166,15 @@ export class StFormFieldComponent implements ControlValueAccessor, OnInit {
          } else {
             this.templateModel.control.enable();
          }
+      }
+   }
+
+   getInputStep(): string {
+      if (this.schema.value.type === 'number') {
+         return '0.1';
+      } else {
+         return '1';
+
       }
    }
 }

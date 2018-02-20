@@ -2,7 +2,9 @@
 
 ## 8.4.0 (upcoming)
 
-* Pending changelog
+* st-form: Adapt it to display checkboxes, integer and number inputs
+* st-checkbox: Allow to display a tooltip in its label
+
 
 ## 8.3.0 (February 14, 2018)
 

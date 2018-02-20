@@ -10,15 +10,19 @@
     SPDX-License-Identifier: Apache-2.0.
 
 -->
-<form #templateDrivenForm="ngForm" novalidate>
-   <st-form [schema]="jsonSchema" [(ngModel)]="model" name="generated">
+<form #templateDrivenForm novalidate>
+   <st-form [schema]="jsonSchema" [(ngModel)]="model" name="generated" #formModel="ngModel">
    </st-form>
 </form>
-
 <br>
 
-<button class="button button-secondary-gray" (click)="showFormStatus()">
+<button class="button button-primary" (click)="showFormStatus()">
    <span>Show form status</span>
+</button>
+
+
+<button class="button button-secondary-gray" (click)="changeFormStatus()">
+   <span>Disable/Enable form</span>
 </button>
 
 

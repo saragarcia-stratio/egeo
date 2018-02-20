@@ -11,7 +11,7 @@
 
 -->
 <form #form="ngForm" novalidate>
-   <st-form-field *ngFor="let property of schema.properties | stObjectToArray"
+   <st-form-field *ngFor="let property of schema.properties | stObjectToArray" class="form-field"
                   [schema]="property"
                   [name]="property.key"
                   [ngModel]="value[property.key]"

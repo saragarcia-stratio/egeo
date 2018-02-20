@@ -10,8 +10,9 @@
  */
 import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { NgForm, FormGroup, FormControl } from '@angular/forms';
-import { JSON_SCHEMA } from './json-schema';
 import { StInputError } from '@stratio/egeo';
+
+import { JSON_SCHEMA } from './json-schema';
 
 @Component({
    selector: 'st-form-demo',
@@ -24,6 +25,7 @@ export class StFormDemoComponent {
    public errors: StInputError;
 
    @ViewChild('templateDrivenForm') public templateDrivenForm: NgForm;
+   @ViewChild('formModel') public formModel: NgForm;
 
    constructor(private _cd: ChangeDetectorRef) {
       this.jsonSchema = JSON_SCHEMA;
@@ -51,5 +53,13 @@ export class StFormDemoComponent {
 
    onChange(model: any): void {
       this.model = model;
+   }
+
+   changeFormStatus(): void {
+      if (this.formModel.control.enabled) {
+         this.formModel.control.disable();
+      } else {
+         this.formModel.control.enable();
+      }
    }
 }

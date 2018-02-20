@@ -11,12 +11,22 @@
 export const JSON_SCHEMA: any = {
    '$schema': 'http://json-schema.org/schema#',
    'properties': {
+      'genericIntegerInput': {
+         'title': 'Generic number',
+         'description': 'Generic input description',
+         'type': 'integer',
+         'default': 5,
+         'minimum': 6,
+         'maximum': 10,
+         'exclusiveMinimum': false,
+         'exclusiveMaximum': false
+      },
       'genericNumberInput': {
          'title': 'Generic number',
          'description': 'Generic input description',
          'type': 'number',
-         'default': 5,
-         'minimum': 6,
+         'default': 1,
+         'minimum': 0.5,
          'maximum': 10,
          'exclusiveMinimum': false,
          'exclusiveMaximum': false
@@ -24,30 +34,30 @@ export const JSON_SCHEMA: any = {
       'requiredNumber': {
          'title': 'Required number',
          'description': 'Required input description',
-         'type': 'number',
+         'type': 'integer',
          'default': 5
       },
       'minNumber': {
          'title': 'Min number',
          'description': 'Min number input description',
          'type': 'number',
-         'default': 28017,
+         'default': 8.6,
          'minimum': 6
       },
       'maxNumber': {
          'title': 'Max number',
          'description': 'Max number input description',
          'type': 'number',
-         'default': 28017,
-         'maximum': 5
+         'default': 7.6,
+         'maximum': 6
       },
       'minAndMaxNumber': {
          'title': 'Number in a range',
          'description': 'This number has to be between 7 and 19',
          'type': 'number',
-         'default': 28017,
+         'default': 8.6,
          'minimum': 6,
-         'maximum': 20,
+         'maximum': 10,
          'exclusiveMinimum': true,
          'exclusiveMaximum': true
       },
@@ -107,6 +117,6 @@ export const JSON_SCHEMA: any = {
       }
    },
    'required': [
-      'url', 'genericNumberInput', 'requiredNumber', 'requiredText'
+      'url', 'genericNumberInput', 'genericIntegerInput', 'requiredNumber', 'requiredText'
    ]
 };

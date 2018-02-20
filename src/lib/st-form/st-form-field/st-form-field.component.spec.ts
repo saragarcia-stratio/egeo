@@ -10,15 +10,15 @@
  */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { PipesModule } from '../../pipes/pipes.module';
 import { JSON_SCHEMA } from '../spec/resources/json-schema';
 import { StFormDirectiveModule } from '../../directives/form/form-directives.module';
 import { StFormFieldComponent } from './st-form-field.component';
 import { StInputModule } from '../../st-input/st-input.module';
-import { StSwitchModule } from '../../st-switch/st-switch.module';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { StFormFieldModule } from './st-form-field.module';
-import { CommonModule } from '@angular/common';
+import { StCheckboxModule } from '../../st-checkbox/st-checkbox.module';
 
 let component: StFormFieldComponent;
 let fixture: ComponentFixture<StFormFieldComponent>;
@@ -28,7 +28,7 @@ describe('StFormFieldComponent', () => {
 
    beforeEach(async(() => {
       TestBed.configureTestingModule({
-         imports: [FormsModule, ReactiveFormsModule, StInputModule, StSwitchModule, PipesModule, StFormDirectiveModule],
+         imports: [FormsModule, ReactiveFormsModule, StInputModule, StCheckboxModule, PipesModule, StFormDirectiveModule],
          declarations: [StFormFieldComponent]
       })
          .overrideComponent(StFormFieldComponent, {
@@ -45,7 +45,205 @@ describe('StFormFieldComponent', () => {
 
    describe('should be able to render inputs with their validations', () => {
       beforeEach(() => {
-         component.qaTag = 'genericNumberInput';
+         component.qaTag = 'genericIntegerInput';
+      });
+
+      describe('integer input', () => {
+         let input: HTMLInputElement;
+         let numberInputProperty: any;
+         let minValue: number;
+         let maxValue: number;
+         beforeEach(() => {
+            numberInputProperty = JSON_SCHEMA.properties.genericIntegerInput;
+            minValue = numberInputProperty.minimum;
+            maxValue = numberInputProperty.maximum;
+            component.schema = { key: 'genericIntegerInput', value: numberInputProperty };
+         });
+
+         it('should add a step of 0.1 to input', () => {
+            fixture.detectChanges();
+            input = fixture.nativeElement.querySelector('#genericIntegerInput');
+
+            expect(input.step).toBe('1');
+         });
+
+         it('if user tries to type text, input value is not updated', () => {
+            fixture.detectChanges();
+            input = fixture.nativeElement.querySelector('#genericIntegerInput');
+
+            input.focus();
+            input.value = 'fake test';
+            input.blur();
+
+            fixture.detectChanges();
+
+            expect(input.value).toBe('');
+         });
+
+         it('required input', () => {
+            fixture.detectChanges();
+            input = fixture.nativeElement.querySelector('#genericIntegerInput');
+            component.required = true;
+            fixture.detectChanges();
+
+            input.focus();
+            input.value = '';
+            input.dispatchEvent(new Event('input'));
+            input.blur();
+
+            fixture.detectChanges();
+
+            expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML).toBe('This field is required');
+
+            input.focus();
+            input.value = '7';
+            input.dispatchEvent(new Event('input'));
+            input.blur();
+
+            fixture.detectChanges();
+
+            expect(fixture.nativeElement.querySelector('.st-input-error-layout span')).toBeNull();
+         });
+
+         it('min integer validation', () => {
+            fixture.detectChanges();
+            input = fixture.nativeElement.querySelector('#genericIntegerInput');
+            input.focus();
+            input.value = (minValue - 1).toString();
+            input.dispatchEvent(new Event('input'));
+            input.blur();
+
+            fixture.detectChanges();
+
+            expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML).toBe('The number has to be higher than ' + minValue);
+
+            input.value = minValue.toString();
+            input.dispatchEvent(new Event('input'));
+
+            fixture.detectChanges();
+
+            expect(fixture.nativeElement.querySelector('.st-input-error-layout span')).toBeNull();
+         });
+
+         it('max integer validation', () => {
+            fixture.detectChanges();
+            input = fixture.nativeElement.querySelector('#genericIntegerInput');
+            input.value = (maxValue + 1).toString();
+            input.dispatchEvent(new Event('input'));
+
+            input.blur();
+
+            fixture.detectChanges();
+
+            expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML)
+               .toBe('The number has to be minor than ' + maxValue);
+
+            input.value = maxValue.toString();
+            input.dispatchEvent(new Event('input'));
+
+            fixture.detectChanges();
+
+            expect(fixture.nativeElement.querySelector('.st-input-error-layout span')).toBeNull();
+         });
+
+         describe('integer has to be between a certain range', () => {
+
+            it('if minimum is exclusive, when user puts a value equal or minor than the minimum, validation error is displayed', () => {
+               numberInputProperty.exclusiveMinimum = true;
+               fixture.detectChanges();
+
+               input = fixture.nativeElement.querySelector('#genericIntegerInput');
+
+               input.focus();
+               // minor than the minimum
+               input.value = (minValue - 1).toString();
+               input.dispatchEvent(new Event('input'));
+               input.blur();
+
+               fixture.detectChanges();
+
+
+               expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML)
+                  .toBe('The number has to be higher than ' + (minValue + 1));
+
+               // equal to the minimum
+               input.value = minValue.toString();
+               input.dispatchEvent(new Event('input'));
+
+               fixture.detectChanges();
+
+               expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML)
+                  .toBe('The number has to be higher than ' + (minValue + 1));
+            });
+
+            it('if minimum is not exclusive, when user puts a value equal to the minimum, input will be valid', () => {
+               numberInputProperty.exclusiveMinimum = false;
+               fixture.detectChanges();
+
+               input = fixture.nativeElement.querySelector('#genericIntegerInput');
+
+               input.focus();
+
+               // minor than the minimum
+               input.value = minValue.toString();
+               input.dispatchEvent(new Event('input'));
+
+               input.blur();
+
+               fixture.detectChanges();
+
+
+               expect(fixture.nativeElement.querySelector('.st-input-error-layout span')).toBeNull();
+            });
+
+            it('if maximum is exclusive, when user puts a value equal or major than the maximum, validation error is displayed', () => {
+               numberInputProperty.exclusiveMaximum = true;
+               fixture.detectChanges();
+
+               input = fixture.nativeElement.querySelector('#genericIntegerInput');
+
+               input.focus();
+               // major than the maximum
+               input.value = (maxValue + 1).toString();
+               input.dispatchEvent(new Event('input'));
+               input.blur();
+
+               fixture.detectChanges();
+
+               expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML)
+                  .toBe('The number has to be minor than ' + (maxValue - 1));
+
+               // equal to the maximum
+               input.value = maxValue.toString();
+               input.dispatchEvent(new Event('input'));
+               fixture.detectChanges();
+
+
+               expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML)
+                  .toBe('The number has to be minor than ' + (maxValue - 1));
+            });
+
+            it('if maximum is not exclusive, when user puts a value equal to the maximum, input will be valid', () => {
+               numberInputProperty.exclusiveMaximum = false;
+               fixture.detectChanges();
+               input = fixture.nativeElement.querySelector('#genericIntegerInput');
+
+               input.focus();
+
+               // minor than the minimum
+               input.value = maxValue.toString();
+               input.dispatchEvent(new Event('input'));
+
+               input.blur();
+
+               fixture.detectChanges();
+
+               expect(fixture.nativeElement.querySelector('#genericIntegerInput').
+               parentNode.parentNode.querySelector('.st-input-error-layout span')).toBeNull();
+            });
+         });
+
+
       });
 
       describe('number input', () => {
@@ -53,11 +251,21 @@ describe('StFormFieldComponent', () => {
          let numberInputProperty: any;
          let minValue: number;
          let maxValue: number;
+
          beforeEach(() => {
             numberInputProperty = JSON_SCHEMA.properties.genericNumberInput;
             minValue = numberInputProperty.minimum;
             maxValue = numberInputProperty.maximum;
             component.schema = { key: 'genericNumberInput', value: numberInputProperty };
+            component.qaTag = 'genericNumberInput';
+         });
+
+         it('should add a step of 0.1 to input', () => {
+            fixture.detectChanges();
+
+            input = fixture.nativeElement.querySelector('#genericNumberInput');
+
+            expect(input.step).toBe('0.1');
          });
 
          it('if user tries to type text, input value is not updated', () => {
@@ -86,7 +294,8 @@ describe('StFormFieldComponent', () => {
 
             fixture.detectChanges();
 
-            expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML).toBe('This field is required');
+            expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML)
+               .toBe('This field is required');
 
             input.focus();
             input.value = '7';
@@ -108,7 +317,8 @@ describe('StFormFieldComponent', () => {
 
             fixture.detectChanges();
 
-            expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML).toBe('The number has to be higher than ' + minValue);
+            expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML)
+               .toBe('The number has to be higher than ' + minValue);
 
             input.value = minValue.toString();
             input.dispatchEvent(new Event('input'));
@@ -121,21 +331,20 @@ describe('StFormFieldComponent', () => {
          it('max number validation', () => {
             fixture.detectChanges();
             input = fixture.nativeElement.querySelector('#genericNumberInput');
-            input.value = (maxValue + 1).toString();
+            input.value = (maxValue + 0.8).toString();
             input.dispatchEvent(new Event('input'));
 
             input.blur();
 
             fixture.detectChanges();
 
-
-            expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML).toBe('The number has to be minor than ' + maxValue);
+            expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML)
+               .toBe('The number has to be minor than ' + maxValue);
 
             input.value = maxValue.toString();
             input.dispatchEvent(new Event('input'));
 
             fixture.detectChanges();
-
 
             expect(fixture.nativeElement.querySelector('.st-input-error-layout span')).toBeNull();
          });
@@ -146,12 +355,11 @@ describe('StFormFieldComponent', () => {
                numberInputProperty.exclusiveMinimum = true;
                fixture.detectChanges();
 
-
                input = fixture.nativeElement.querySelector('#genericNumberInput');
 
                input.focus();
                // minor than the minimum
-               input.value = (minValue - 1).toString();
+               input.value = (minValue - 0.6).toString();
                input.dispatchEvent(new Event('input'));
                input.blur();
 
@@ -197,13 +405,14 @@ describe('StFormFieldComponent', () => {
 
                input.focus();
                // major than the maximum
-               input.value = (maxValue + 1).toString();
+               input.value = (maxValue + 0.2).toString();
                input.dispatchEvent(new Event('input'));
                input.blur();
 
                fixture.detectChanges();
 
-               expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML).toBe('The number has to be minor than ' + (maxValue - 1));
+               expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML)
+                  .toBe('The number has to be minor than ' + (maxValue - 1));
 
                // equal to the maximum
                input.value = maxValue.toString();
@@ -211,7 +420,8 @@ describe('StFormFieldComponent', () => {
                fixture.detectChanges();
 
 
-               expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML).toBe('The number has to be minor than ' + (maxValue - 1));
+               expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML)
+                  .toBe('The number has to be minor than ' + (maxValue - 1));
             });
 
             it('if maximum is not exclusive, when user puts a value equal to the maximum, input will be valid', () => {
@@ -339,8 +549,8 @@ describe('StFormFieldComponent', () => {
 
    });
 
-   describe('should be able to render switches with their validations', () => {
-      let switchElement: HTMLInputElement;
+   describe('should be able to render checkboxes with their validations', () => {
+      let checkBoxElement: HTMLInputElement;
       let booleanProperty: any;
 
       beforeEach(() => {
@@ -350,11 +560,11 @@ describe('StFormFieldComponent', () => {
 
          fixture.detectChanges();
 
-         switchElement = fixture.nativeElement.querySelector('#boolean-input');
+         checkBoxElement = fixture.nativeElement.querySelector('#boolean-input');
       });
 
       it('label is displayed', () => {
-         let label: HTMLElement = fixture.nativeElement.querySelector('.st-label');
+         let label: HTMLElement = fixture.nativeElement.querySelector('label');
          expect(label.innerHTML).toContain(booleanProperty.title);
       });
 
@@ -373,34 +583,12 @@ describe('StFormFieldComponent', () => {
          expect(fixture.nativeElement.querySelector('#boolean-label-tooltip')).toBeNull();
       });
 
-      it('if schema contains a default value, switch has to be initialized with it', () => {
+      it('if schema contains a default value, checkbox has to be initialized with it', () => {
          fixture.whenStable().then(() => {
             fixture.detectChanges();
 
             expect(fixture.nativeElement.querySelector('#boolean-input').checked).toBe(booleanProperty.default);
          });
-      });
-
-      it('if switch is disabled, when user clicks on it, it does not change', () => {
-         formControl.disable();
-         let previousValue: boolean = Boolean(fixture.nativeElement.querySelector('#boolean-input').checked);
-         fixture.detectChanges();
-
-         fixture.nativeElement.querySelector('#boolean-input').click();
-         fixture.detectChanges();
-
-         expect(Boolean(fixture.nativeElement.querySelector('#boolean-input').checked)).toBe(previousValue);
-      });
-
-      it('if switch is enabled, when user clicks on it, it has to change', () => {
-         formControl.enable();
-         fixture.detectChanges();
-
-         let previousValue: boolean = Boolean(switchElement.checked);
-         switchElement.click();
-
-         expect(Boolean(switchElement.checked)).not.toBe(previousValue);
-         expect(Boolean(switchElement.checked)).toBe(!previousValue);
       });
    });
 
@@ -410,25 +598,28 @@ describe('StFormFieldComponent', () => {
 @Component({
    template: `
       <form [formGroup]="reactiveForm" novalidate>
-         <st-form-field [schema]="schema" formControlName="formField">
+         <st-form-field [schema]="schema"  [qaTag]="qaTag" formControlName="formField">
          </st-form-field>
       </form>
-      `
+      `,
+   changeDetection: ChangeDetectionStrategy.Default
 })
-class FormFieldInReactiveFormComponent {
-   public schema: any = { key: 'genericNumberInput', value: JSON_SCHEMA.properties.genericNumberInput };
+class FormReactiveFormComponent {
+   @Input() schema: any = { key: 'genericNumberInput', value: JSON_SCHEMA.properties.genericNumberInput };
+   @Input() qaTag: string;
+
    public reactiveForm: FormGroup = new FormGroup({ 'formField': new FormControl() });
 }
 
 
 describe('StFormFieldComponent in reactive form', () => {
-   let reactiveFixture: ComponentFixture<FormFieldInReactiveFormComponent>;
-   let reactiveComp: FormFieldInReactiveFormComponent;
+   let reactiveFixture: ComponentFixture<FormReactiveFormComponent>;
+   let reactiveComp: FormReactiveFormComponent;
 
    beforeEach(async(() => {
       TestBed.configureTestingModule({
          imports: [FormsModule, CommonModule, ReactiveFormsModule, StFormFieldModule, PipesModule, StFormDirectiveModule],
-         declarations: [FormFieldInReactiveFormComponent]
+         declarations: [FormReactiveFormComponent]
       })
          .overrideComponent(StFormFieldComponent, {
             set: { changeDetection: ChangeDetectionStrategy.Default }
@@ -437,12 +628,12 @@ describe('StFormFieldComponent in reactive form', () => {
    }));
 
    beforeEach(() => {
-      reactiveFixture = TestBed.createComponent(FormFieldInReactiveFormComponent);
+      reactiveFixture = TestBed.createComponent(FormReactiveFormComponent);
       reactiveComp = reactiveFixture.componentInstance;
       reactiveFixture.detectChanges();
    });
 
-   it('form field can be disabled', async() => {
+   it('input can be disabled', async() => {
       reactiveComp.reactiveForm.disable();
 
       reactiveFixture.whenStable().then(() => {
@@ -450,5 +641,45 @@ describe('StFormFieldComponent in reactive form', () => {
          expect(reactiveFixture.nativeElement.querySelector('input').disabled).toBeTruthy();
       });
    });
+
+   describe('checkbox can be disabled', () => {
+      beforeEach(() => {
+         reactiveComp.schema = { key: 'boolean', value: JSON_SCHEMA.properties.boolean };
+         reactiveComp.qaTag = 'boolean';
+         reactiveFixture.detectChanges();
+      });
+
+      it('if checkbox is disabled, when user clicks on it, it does not change', () => {
+         reactiveFixture.whenStable().then(() => {
+            reactiveComp.reactiveForm.disable();
+            reactiveFixture.detectChanges();
+
+            let previousValue: boolean = Boolean(reactiveFixture.nativeElement.querySelector('#boolean').checked);
+
+            reactiveFixture.nativeElement.querySelector('#boolean').click();
+            reactiveFixture.detectChanges();
+
+            expect(Boolean(reactiveFixture.nativeElement.querySelector('#boolean').checked)).toBe(previousValue);
+         });
+      });
+
+      it('if checkbox is enabled, when user clicks on it, it has to change', () => {
+         reactiveFixture.detectChanges();
+         reactiveFixture.whenStable().then(() => {
+            reactiveComp.reactiveForm.enable();
+            reactiveFixture.detectChanges();
+            let checkBoxElement: HTMLInputElement = reactiveFixture.nativeElement.querySelector('#boolean');
+            let previousValue: boolean = Boolean(checkBoxElement.checked);
+
+            checkBoxElement.click();
+
+            reactiveFixture.detectChanges();
+
+            expect(Boolean(checkBoxElement.checked)).not.toBe(previousValue);
+            expect(Boolean(checkBoxElement.checked)).toBe(!previousValue);
+         });
+      });
+   });
+
 });
 

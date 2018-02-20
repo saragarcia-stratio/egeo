@@ -25,14 +25,17 @@
           [maxlength]="maxLength"
           [required]="required"
           [pattern]="pattern"
+          [step]="getInputStep()"
           [qaTag]="qaTag">
 </st-input>
 
-<st-switch *ngIf="hasType('boolean')"
-           [label]="schema.value.title"
-           #templateModel="ngModel"
-           [(ngModel)]="value"
-           [name]="schema.key"
-           [contextualHelp]="schema.value.description"
-           [qaTag]="qaTag">
-</st-switch>
+<st-checkbox *ngIf="hasType('boolean')"
+             #templateModel="ngModel"
+             [(ngModel)]="value"
+             [checked]="value"
+             [value]="value"
+             [name]="schema.key"
+             [contextualHelp]="description"
+             [qaTag]="qaTag">
+   {{schema.value.title}}
+</st-checkbox>

@@ -9,15 +9,19 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Component, ViewChild } from '@angular/core';
+import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { StFormComponent } from '../st-form.component';
 import { JSON_SCHEMA } from './resources/json-schema';
 import { StFormFieldComponent } from '../st-form-field/st-form-field.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PipesModule } from '../../pipes/pipes.module';
 import { StInputModule } from '../../st-input/st-input.module';
 import { StFormDirectiveModule } from '../../directives/form/form-directives.module';
-import { StSwitchModule } from '../../st-switch/st-switch.module';
+import { StFormModule } from '../st-form.module';
+import { StTooltipModule } from '../../st-tooltip/st-tooltip.module';
+import { StCheckboxModule } from '../../st-checkbox/st-checkbox.module';
+import { StFormFieldModule } from '../st-form-field/st-form-field.module';
+import { CommonModule } from '@angular/common';
 
 let component: StFormComponent;
 let fixture: ComponentFixture<StFormComponent>;
@@ -25,7 +29,7 @@ let fixture: ComponentFixture<StFormComponent>;
 describe('StFormComponent', () => {
    beforeEach(async(() => {
       TestBed.configureTestingModule({
-         imports: [FormsModule, ReactiveFormsModule, StInputModule, StSwitchModule, PipesModule, StFormDirectiveModule],
+         imports: [FormsModule, ReactiveFormsModule, StInputModule, StCheckboxModule, StTooltipModule, PipesModule, StFormDirectiveModule],
          declarations: [StFormComponent, StFormFieldComponent]
       })
          .compileComponents();  // compile template and css
@@ -45,7 +49,6 @@ describe('StFormComponent', () => {
                expect(fixture.nativeElement.querySelector('#' + propertyId)).not.toBeNull();
             }
          }
-
       });
 
       it('tooltips are generated using their descriptions', () => {
@@ -74,11 +77,7 @@ describe('StFormComponent', () => {
                if (JSON_SCHEMA.properties.hasOwnProperty(propertyId)) {
                   let property: any = JSON_SCHEMA.properties[propertyId];
                   if (property.default) {
-                     if (property.type === 'boolean') {
-                        expect(fixture.nativeElement.querySelector('#' + propertyId + '-input').checked).toBe(property.default);
-                     } else {
-                        expect(fixture.nativeElement.querySelector('#' + propertyId).value).toBe(property.default.toString());
-                     }
+                     expect(fixture.nativeElement.querySelector('#' + propertyId).value).toBe(property.default.toString());
                   }
                   expect(fixture.nativeElement.innerHTML).toContain(property.title);
                }
@@ -86,6 +85,66 @@ describe('StFormComponent', () => {
          });
       });
    });
+});
 
 
+@Component({
+   template: `
+      <form novalidate>
+         <st-form [schema]="schema" [(ngModel)]="model" name="generated" #formModel="ngModel">
+         </st-form>
+      </form>
+      `
+})
+class FormInTemplateDrivenFormComponent {
+   public schema: any = JSON_SCHEMA;
+   public model: any = {};
+   @ViewChild('formModel') public formModel: NgForm;
+}
+
+
+describe('StFormComponent in templateDriven form', () => {
+   let templateDrivenFixture: ComponentFixture<FormInTemplateDrivenFormComponent>;
+   let templateDrivenComp: FormInTemplateDrivenFormComponent;
+
+   beforeEach(async(() => {
+      TestBed.configureTestingModule({
+         imports: [FormsModule, CommonModule, ReactiveFormsModule, StFormModule, StFormFieldModule, StInputModule, StCheckboxModule],
+         declarations: [FormInTemplateDrivenFormComponent]
+      })
+         .compileComponents();  // compile template and css
+   }));
+
+   beforeEach(() => {
+      templateDrivenFixture = TestBed.createComponent(FormInTemplateDrivenFormComponent);
+      templateDrivenComp = templateDrivenFixture.componentInstance;
+   });
+
+   it('form can be disabled from outside', () => {
+      templateDrivenFixture.detectChanges();
+      templateDrivenFixture.whenStable().then(() => {
+         templateDrivenComp.formModel.control.disable();
+         templateDrivenFixture.detectChanges();
+         for (let propertyId in JSON_SCHEMA.properties) {
+            if (JSON_SCHEMA.properties.hasOwnProperty(propertyId)) {
+               expect(templateDrivenFixture.nativeElement.querySelector('#' + propertyId).disabled).toBeTruthy();
+            }
+         }
+      });
+   });
+
+   it('form can be enabled after being disabled from outside', () => {
+      templateDrivenFixture.detectChanges();
+      templateDrivenFixture.whenStable().then(() => {
+         templateDrivenComp.formModel.control.disable();
+         templateDrivenFixture.detectChanges();
+         templateDrivenComp.formModel.control.enable();
+         templateDrivenFixture.detectChanges();
+         for (let propertyId in JSON_SCHEMA.properties) {
+            if (JSON_SCHEMA.properties.hasOwnProperty(propertyId)) {
+               expect(templateDrivenFixture.nativeElement.querySelector('#' + propertyId).disabled).toBeFalsy();
+            }
+         }
+      });
+   });
 });

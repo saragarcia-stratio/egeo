@@ -17,13 +17,12 @@ import {
    ChangeDetectorRef,
    ViewChild
 } from '@angular/core';
-import {
-   ControlValueAccessor, NG_VALUE_ACCESSOR, FormGroup, FormControl, NgForm
-} from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgForm } from '@angular/forms';
 
 @Component({
    selector: 'st-form',
    templateUrl: './st-form.component.html',
+   styleUrls: ['./st-form.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush,
    providers: [
       { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => StFormComponent), multi: true }
@@ -34,8 +33,6 @@ export class StFormComponent implements ControlValueAccessor, OnInit {
    @Input() schema: any;
    @Input() name: string;
    @ViewChild('form') form: NgForm;
-
-   public formGroup: FormGroup = new FormGroup({});
 
    private _value: any = {};
 
@@ -70,7 +67,6 @@ export class StFormComponent implements ControlValueAccessor, OnInit {
          if (property.default && this._value[propertyName] === undefined) {
             this._value[propertyName] = property.default;
          }
-         this.formGroup.addControl(propertyName, new FormControl(this._value[propertyName] || property.default || null));
       });
    }
 
@@ -89,7 +85,6 @@ export class StFormComponent implements ControlValueAccessor, OnInit {
       this._value[property] = value;
       this.onChange(this.value);
       this._cd.markForCheck();
-
    }
 
    // Registry the change function to propagate internal model changes
@@ -102,8 +97,13 @@ export class StFormComponent implements ControlValueAccessor, OnInit {
       this.onTouched = fn;
    }
 
-   // Allows Angular to disable the list.
-   setDisabledState(isDisabled: boolean): void {
+   // Allows Angular to disable the form.
+   setDisabledState(disable: boolean): void {
+      if (disable) {
+         this.form.control.disable();
+      } else {
+         this.form.control.enable();
+      }
    }
 
 }

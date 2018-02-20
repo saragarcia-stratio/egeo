@@ -52,6 +52,7 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
    @Input() max: number;
    @Input() isFocused: boolean = false;
    @Input() readonly: boolean = false;
+   @Input() step: string;
 
    @Input()
    get value(): any {

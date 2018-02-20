@@ -65,6 +65,8 @@ export class StCheckboxComponent implements ControlValueAccessor {
    @Input() readonly: boolean;
    /** @Input {any} [value=''] The value of the checkbox */
    @Input() value: any;
+   /** @Input {string} [contextualHelp=''] Information displayed at a tooltip */
+   @Input() contextualHelp: string;
    /** @Output {{ checked: boolean, value: any }} [change=''] This is emitted when user clicks on the checkbox */
    @Output() change: EventEmitter<any> = new EventEmitter<any>();
 
@@ -79,6 +81,10 @@ export class StCheckboxComponent implements ControlValueAccessor {
    _controlValueAccessorChangeFn: (value: any) => void = (value) => { };
 
    onTouched: () => any = () => { };
+
+   get labelQaTag(): string {
+      return (this.qaTag || this.name) + '-label';
+   }
 
    handleClick(): void {
       if (!this.readonly) {
@@ -96,6 +102,7 @@ export class StCheckboxComponent implements ControlValueAccessor {
 
    writeValue(value: any): void {
       this._checked = value;
+      this._changeDetectorRef.markForCheck();
    }
 
    registerOnChange(fn: (value: any) => void): void {

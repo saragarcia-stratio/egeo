@@ -12,11 +12,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { StPopComponent } from './st-pop.component';
+import { StWindowRefService } from '../utils/window-service';
 
 @NgModule({
    imports: [CommonModule],
    exports: [StPopComponent],
    declarations: [StPopComponent],
-   providers: []
+   providers: [StWindowRefService]
 })
 export class StPopModule { }

@@ -37,6 +37,8 @@ export class StDropdownMenuDemoComponent {
       this.menus.push(this.generateLargeText());
       this.menus.push(this.generateGroup());
       this.menus.push(this.generateGroupWithScroll());
+
+
    }
 
    changeActive(position: number): void {

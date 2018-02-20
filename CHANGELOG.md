@@ -5,6 +5,10 @@
 * st-form: Adapt it to display checkboxes, integer and number inputs
 * st-checkbox: Allow to display a tooltip in its label
 
+**Fixed bugs:**
+
+* st-pop: Floating element is relocated when user scrolls page
+
 
 ## 8.3.0 (February 14, 2018)
 

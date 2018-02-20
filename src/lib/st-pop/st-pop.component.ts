@@ -16,11 +16,13 @@ import {
    ChangeDetectionStrategy,
    OnChanges,
    SimpleChanges,
-   HostListener
+   ChangeDetectorRef,
+   HostListener,
+   OnDestroy,
+   NgZone
 } from '@angular/core';
-import { startsWith as _startsWith } from 'lodash';
-
 import { StPopOffset, StPopPlacement } from './st-pop.model';
+import { StWindowRefService } from '../utils/window-service';
 
 
 // Internal type
@@ -49,21 +51,34 @@ type StCoords = { x: number, y: number, z: number };
    templateUrl: './st-pop.component.html',
    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StPopComponent implements AfterViewInit, OnChanges {
+export class StPopComponent implements AfterViewInit, OnChanges, OnDestroy {
 
    /** @Input {StPopPlacement} [placement=StPopPlacement.BOTOM_START] Define position of content relative to button */
    @Input() placement: StPopPlacement = StPopPlacement.BOTTOM_START;
-   /** @Input {boolean} [hidden=true] TRUE: show pop content, FALSE: hide pop content */
-   @Input() hidden: boolean = true;
+
    /** @Input {StPopOffset} [offset={x: 0 , y: 0}] For position with offset in x o y axis */
    @Input() offset: StPopOffset = { x: 0, y: 0 };
    /** @Input {boolean} [openToLeft=false] For calculate all position from right corner */
    @Input() openToLeft: boolean = false;
+   /** @Input {boolean} [hidden=true] TRUE: show pop content, FALSE: hide pop content */
+   @Input() hidden: boolean = true;
+
 
    private button: ClientRect;
    private content: ElementRef;
+   private scrollListener: (event: any) => void;
 
-   constructor(private el: ElementRef) { }
+   constructor(private el: ElementRef, private _windowRefService: StWindowRefService, private _cd: ChangeDetectorRef, private ngZone: NgZone) {
+      this.scrollListener = (event: any) => {
+         this.offset.x = -(event.target.scrollLeft);
+         this.offset.y = -(event.target.scrollTop);
+         this.calculatePosition();
+         this._cd.markForCheck();
+      };
+      this.ngZone.runOutsideAngular(() => {
+         _windowRefService.nativeWindow.addEventListener('scroll', this.scrollListener, true);
+      });
+   }
 
    ngAfterViewInit(): void {
       this.calculatePosition();
@@ -71,6 +86,10 @@ export class StPopComponent implements AfterViewInit, OnChanges {
 
    ngOnChanges(changes: SimpleChanges): void {
       this.calculatePosition();
+   }
+
+   ngOnDestroy(): void {
+      this._windowRefService.nativeWindow.removeEventListener('scroll', this.scrollListener, true);
    }
 
    private getContentElement(): HTMLElement {
@@ -89,6 +108,7 @@ export class StPopComponent implements AfterViewInit, OnChanges {
          contentEl.style.transform = `translate3d(${coords.x}px, ${coords.y}px, ${coords.z}px)`;
       }
    }
+
 
    @HostListener('window:load')
    private updateWidth(): void {

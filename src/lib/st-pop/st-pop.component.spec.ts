@@ -8,36 +8,47 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { DebugElement, Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-
 import { StPopComponent } from './st-pop.component';
-import { StPopPlacement } from './st-pop.model';
+import { StPopPlacement, StPopOffset } from './st-pop.model';
+import { StWindowRefService } from '../utils/window-service';
+
+class WindowRefMock {
+   get nativeWindow(): any {
+      return window;
+   }
+}
 
 @Component({
    selector: 'test-component',
    template: `
-      <st-pop [hidden]="hidden" [placement]="placement">
-         <div pop-button id="button"><button style="height:30px; width:20px">Button</button></div>
-         <div pop-content id="content">Content</div>
-      </st-pop>
+      <div style="height:100px; overflow:auto; max-height: 60px; width: 100px">
+         <st-pop style="height:1000px; display: block; width: 200px" #popComponent [hidden]="hidden" [placement]="placement">
+            <div pop-button id="button"><button style="height:30px; width:20px">Button</button></div>
+            <div pop-content id="content"  >Content</div>
+         </st-pop>
+      </div>
    `
 })
 class TestComponent {
    @Input() hidden: boolean = true;
    @Input() placement: StPopPlacement = StPopPlacement.TOP;
+
+   @ViewChild('popComponent') popComponent: StPopComponent;
 }
 
 describe('StPopComponent', () => {
 
    let component: TestComponent;
    let fixture: ComponentFixture<TestComponent>;
-   let de: DebugElement;
 
    beforeEach(async(() => {
       TestBed.configureTestingModule({
-         declarations: [StPopComponent, TestComponent]
+         declarations: [StPopComponent, TestComponent],
+         providers: [
+            { provide: StWindowRefService, useClass: WindowRefMock }
+         ]
       })
          .compileComponents();  // compile template and css
    }));
@@ -46,7 +57,6 @@ describe('StPopComponent', () => {
       fixture = TestBed.createComponent(TestComponent);
       component = fixture.componentInstance;
    });
-
 
    it('should show the content of the pop', () => {
       component.hidden = false;
@@ -94,7 +104,6 @@ describe('StPopComponent', () => {
       expect(content.style.transform).toEqual('translate3d(20px, 0px, 0px)');
    });
 
-
    it('should get init without button', () => {
       component.hidden = false;
       let button: HTMLElement = fixture.debugElement.nativeElement.querySelector('#button');
@@ -105,4 +114,59 @@ describe('StPopComponent', () => {
       expect(content.style.transform).toBeUndefined();
    });
 
+   describe('should be able to listen window scroll and update the item position', () => {
+      let previousPos: StPopOffset;
+      let scrollEvent: Event;
+      let parentDiv: HTMLDivElement;
+
+      beforeEach(() => {
+         component.popComponent.hidden = false;
+         previousPos = component.popComponent.offset;
+         scrollEvent = new CustomEvent('scroll');
+         parentDiv = fixture.nativeElement.querySelector('div');
+      });
+
+      it('if user scrolls page vertically, item position is updated', () => {
+         parentDiv.scrollTop = 5;
+
+         fixture.detectChanges();
+         parentDiv.dispatchEvent(scrollEvent);
+
+         fixture.detectChanges();
+
+         expect(component.popComponent.offset.y).toBe(-5);
+         expect(component.popComponent.offset.x).toBe(previousPos.x);
+
+         parentDiv.scrollTop = 80;
+         fixture.detectChanges();
+         parentDiv.dispatchEvent(scrollEvent);
+
+         fixture.detectChanges();
+
+         expect(component.popComponent.offset.y).toBe(-80);
+         expect(component.popComponent.offset.x).toBe(previousPos.x);
+      });
+
+      it('if user scrolls page horizontally, item position is updated', () => {
+         parentDiv.scrollLeft = 10;
+
+         fixture.detectChanges();
+         parentDiv.dispatchEvent(scrollEvent);
+
+         fixture.detectChanges();
+
+         expect(component.popComponent.offset.y).toBe(previousPos.y);
+         expect(component.popComponent.offset.x).toBe(-10);
+
+         parentDiv.scrollLeft = 100;
+
+         fixture.detectChanges();
+         parentDiv.dispatchEvent(scrollEvent);
+
+         fixture.detectChanges();
+
+         expect(component.popComponent.offset.y).toBe(previousPos.y);
+         expect(component.popComponent.offset.x).toBe(-100);
+      });
+   });
 });

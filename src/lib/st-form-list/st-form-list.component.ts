@@ -55,7 +55,7 @@ export class StFormListComponent implements OnInit {
    }
 
    set value(value: any[]) {
-      this._value = value;
+      this._value = JSON.parse(JSON.stringify(value));
       this.updateForm();
    }
 

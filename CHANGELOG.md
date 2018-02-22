@@ -1,5 +1,12 @@
 # Changelog
 
+## 8.3.2 (upcoming)
+
+**Fixed bugs:**
+
+* st-form-list: Add a provisional solution to make it stateless
+
+
 ## 8.3.1 (February 19, 2018)
 
 **Fixed bugs:**

@@ -9,11 +9,11 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { StFormComponent } from '../st-form.component';
 import { JSON_SCHEMA } from './resources/json-schema';
-import { StFormFieldComponent } from '../st-form-field/st-form-field.component';
+
 import { PipesModule } from '../../pipes/pipes.module';
 import { StInputModule } from '../../st-input/st-input.module';
 import { StFormDirectiveModule } from '../../directives/form/form-directives.module';
@@ -22,6 +22,7 @@ import { StTooltipModule } from '../../st-tooltip/st-tooltip.module';
 import { StCheckboxModule } from '../../st-checkbox/st-checkbox.module';
 import { StFormFieldModule } from '../st-form-field/st-form-field.module';
 import { CommonModule } from '@angular/common';
+import { StCheckboxComponent } from '../../st-checkbox/st-checkbox.component';
 
 let component: StFormComponent;
 let fixture: ComponentFixture<StFormComponent>;
@@ -29,13 +30,20 @@ let fixture: ComponentFixture<StFormComponent>;
 describe('StFormComponent', () => {
    beforeEach(async(() => {
       TestBed.configureTestingModule({
-         imports: [FormsModule, ReactiveFormsModule, StInputModule, StCheckboxModule, StTooltipModule, PipesModule, StFormDirectiveModule],
-         declarations: [StFormComponent, StFormFieldComponent]
+         imports: [FormsModule, ReactiveFormsModule, StInputModule, StCheckboxModule, StFormFieldModule, StTooltipModule, PipesModule, StFormDirectiveModule],
+         declarations: [StFormComponent]
       })
+      // remove this block when the issue #12313 of Angular is fixed
+         .overrideComponent(StCheckboxComponent, {
+            set: { changeDetection: ChangeDetectionStrategy.Default }
+         })
          .compileComponents();  // compile template and css
    }));
 
    beforeEach(() => {
+      spyOn(window, 'setTimeout').and.callFake((func) => {
+         func();
+      });
       fixture = TestBed.createComponent(StFormComponent);
       component = fixture.componentInstance;
       component.schema = Object.assign({}, JSON_SCHEMA);
@@ -72,12 +80,13 @@ describe('StFormComponent', () => {
 
       it('controls are displayed with their default value and label', () => {
          fixture.whenStable().then(() => {
-            fixture.detectChanges();
+
             for (let propertyId in JSON_SCHEMA.properties) {
                if (JSON_SCHEMA.properties.hasOwnProperty(propertyId)) {
                   let property: any = JSON_SCHEMA.properties[propertyId];
+                  let element: any = fixture.nativeElement.querySelector('#' + propertyId);
                   if (property.default) {
-                     expect(fixture.nativeElement.querySelector('#' + propertyId).value).toBe(property.default.toString());
+                        expect(element.value).toBe(property.default.toString());
                   }
                   expect(fixture.nativeElement.innerHTML).toContain(property.title);
                }

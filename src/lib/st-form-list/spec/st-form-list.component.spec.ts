@@ -1,12 +1,15 @@
+import { CommonModule } from '@angular/common';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule, FormArray, FormGroup } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { FormsModule, ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 import { StFormListComponent } from '../st-form-list.component';
 import { TWO_INPUTS_JSON_SCHEMA } from './resources/two-inputs-json-schema';
 import { PipesModule } from '../../pipes/pipes.module';
 import { StFormDirectiveModule } from '../../directives/form/form-directives.module';
 import { StFormFieldModule } from '../../st-form/st-form-field/st-form-field.module';
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy } from '@angular/core';
+import { StFormListModule } from '../st-form-list.module';
+import { StInputModule } from '../../st-input/st-input.module';
+import { StCheckboxModule } from '../../st-checkbox/st-checkbox.module';
 
 let component: StFormListComponent;
 let fixture: ComponentFixture<StFormListComponent>;
@@ -16,7 +19,6 @@ let fakeModel: Array<any> = [
 ];
 
 describe('[StFormList]', () => {
-
    beforeEach(async(() => {
       TestBed.configureTestingModule({
          imports: [FormsModule, StFormFieldModule, CommonModule,
@@ -24,6 +26,7 @@ describe('[StFormList]', () => {
             ReactiveFormsModule,
             StFormFieldModule,
             PipesModule,
+            StInputModule,
             StFormDirectiveModule],
          declarations: [StFormListComponent]
       })
@@ -35,6 +38,9 @@ describe('[StFormList]', () => {
    }));
 
    beforeEach(() => {
+      spyOn(window, 'setTimeout').and.callFake((func) => {
+         func();
+      });
       fixture = TestBed.createComponent(StFormListComponent);
       component = fixture.componentInstance;
       component.schema = TWO_INPUTS_JSON_SCHEMA;
@@ -62,7 +68,6 @@ describe('[StFormList]', () => {
       });
 
       it('array is loaded according to the model introduced as input', () => {
-         component.form.reset();
          component.value = [...fakeModel];
          fixture.detectChanges();
 
@@ -72,34 +77,34 @@ describe('[StFormList]', () => {
             let rows = fixture.nativeElement.querySelectorAll('.st-form-list__row');
 
             expect(rows.length).toBe(fakeModel.length);
-            expect(component.form.controls.length).toBe(fakeModel.length);
 
             let itemProperties = Object.keys(TWO_INPUTS_JSON_SCHEMA.properties);
             for (let i = 0; i < rows.length; ++i) {
                let inputs: HTMLInputElement[] = rows[i].querySelectorAll('input');
                expect(inputs[0].id).toBe(itemProperties[0] + '-' + i);
                expect(inputs[0].value).toEqual(String(fakeModel[i][itemProperties[0]]));
-               expect((<FormGroup>component.form.controls[i]).controls[itemProperties[0]].value).toEqual(fakeModel[i][itemProperties[0]]);
 
                expect(inputs[1].id).toBe(itemProperties[1] + '-' + i);
                expect(inputs[1].value).toEqual(String(fakeModel[i][itemProperties[1]]));
-               expect((<FormGroup>component.form.controls[i]).controls[itemProperties[1]].value).toEqual(fakeModel[i][itemProperties[1]]);
             }
          });
       });
    });
 
    describe('user can add new items to list', () => {
+
       it('item is loaded according to the json schema displaying with a default value if exists', () => {
-         component.form.reset();
+         component.value = [];
          component.schema = TWO_INPUTS_JSON_SCHEMA;
          fixture.detectChanges();
+
          fixture.nativeElement.querySelector('.button.button-link-primary').click();
          fixture.detectChanges();
-
          fixture.whenStable().then(() => {
             fixture.detectChanges();
+
             let controls = fixture.nativeElement.querySelectorAll('input');
+
             expect(controls.length).toBe(Object.keys(TWO_INPUTS_JSON_SCHEMA.properties).length);
             for (let i = 0; i < Object.keys(TWO_INPUTS_JSON_SCHEMA.properties).length; ++i) {
                let property: string = Object.keys(TWO_INPUTS_JSON_SCHEMA.properties)[i];
@@ -108,65 +113,78 @@ describe('[StFormList]', () => {
             }
          });
       });
+
+      it('event is emitted with the position of the removed item and the updated model', () => {
+         component.value = [...fakeModel];
+         component.schema = TWO_INPUTS_JSON_SCHEMA;
+
+         fixture.detectChanges();
+
+         spyOn(component.add, 'emit');
+         fixture.nativeElement.querySelector('.button.button-link-primary').click();
+         fixture.detectChanges();
+
+         expect(component.add.emit).toHaveBeenCalledWith({position: fakeModel.length, model: component.value});
+      });
+
    });
 
-   describe('user can remove a item from list', () => {
-      it('item is loaded according to the json schema displaying with a default value if exists', () => {
-         component.form = new FormArray([]);
+   describe('user can remove an item from list', () => {
+      let removeButtons: any[];
+
+      beforeEach(() => {
          component.schema = TWO_INPUTS_JSON_SCHEMA;
          component.value = [...fakeModel];
 
-         expect(component.form.controls.length).toBe(fakeModel.length);
-
          fixture.detectChanges();
-         let removeButtons: any[] = fixture.nativeElement.querySelectorAll('.remove-button');
+         removeButtons = fixture.nativeElement.querySelectorAll('.remove-button');
+
+         spyOn(component.remove, 'emit');
+      });
+
+      it('model and form are updated', () => {
          removeButtons[1].click();
          fixture.detectChanges();
 
          expect(component.value.length).toBe(fakeModel.length - 1);
          expect(component.value).toEqual([...fakeModel].slice(0, fakeModel.length - 1));
-         expect(component.form.controls.length).toBe(fakeModel.length - 1);
+         expect(fixture.nativeElement.querySelectorAll('.st-form-list__row').length).toBe(fakeModel.length - 1);
+      });
+
+
+      it('event is emitted with the position of the removed item and the updated model', () => {
+         removeButtons[1].click();
+         fixture.detectChanges();
+
+         expect(component.remove.emit).toHaveBeenCalledWith({position: 1, model: component.value});
+
+         removeButtons[0].click();
+         fixture.detectChanges();
+
+         expect(component.remove.emit).toHaveBeenCalledWith({position: 0, model: component.value});
       });
    });
-
-   describe('when form list is disabled', () => {
-      beforeEach(() => {
-         component.schema = TWO_INPUTS_JSON_SCHEMA;
-         fixture.detectChanges();
-         component.form.disable();
-         fixture.detectChanges();
-      });
-      it('fields are displayed as disabled', () => {
-         let inputs: HTMLInputElement[] = fixture.nativeElement.querySelectorAll('input');
-
-         for (let i = 0; i < inputs.length; ++i) {
-            expect(inputs[i].disabled).toBeTruthy();
-         }
-      });
-
-      it('button to add new items has to be hidden', () => {
-         expect(fixture.nativeElement.querySelector('.button.button-link-primary')).toBeNull();
-      });
-   });
-
 
    describe('when value is changed, it should emit an event', () => {
       beforeEach(() => {
          component.value = fakeModel;
          fixture.detectChanges();
-         spyOn(component.change, 'emit');
+
+         spyOn(component.valueChange, 'emit');
       });
 
       it('if user removes a row, event is emitted', () => {
-         component.removeItem(0);
+         fixture.whenStable().then(() => {
+            component.removeItem(0);
 
-         expect(component.change.emit).toHaveBeenCalledWith(component.value);
+            expect(component.valueChange.emit).toHaveBeenCalledWith(component.value);
+         });
       });
 
       it('if user adds a row, event is emitted', () => {
          component.addItem();
 
-         expect(component.change.emit).toHaveBeenCalledWith(component.value);
+         expect(component.valueChange.emit).toHaveBeenCalledWith(component.value);
       });
 
       it('if user modifies a value in a row, event is emitted', () => {
@@ -177,8 +195,93 @@ describe('[StFormList]', () => {
 
          fixture.detectChanges();
 
-         expect(component.change.emit).toHaveBeenCalledWith(component.value);
+         expect(component.valueChange.emit).toHaveBeenCalledWith(component.value);
       });
    });
+
+   it('When users leaves an input, an event is emitted with the current value', () => {
+      spyOn(component.blur, 'emit');
+      component.value = fakeModel;
+      fixture.detectChanges();
+
+      let htmlInput: HTMLInputElement = fixture.nativeElement.querySelector('input');
+
+      htmlInput.dispatchEvent(new Event('focus'));
+      htmlInput.value = '6';
+      fixture.detectChanges();
+
+      htmlInput.dispatchEvent(new Event('blur'));
+      fixture.detectChanges();
+
+      expect(component.blur.emit).toHaveBeenCalledWith(component.value);
+   });
+
+});
+
+@Component({
+   template: `
+      <form [formGroup]="reactiveForm" novalidate>
+         <st-form-list [schema]="schema" [(ngModel)]="value" formControlName="list">
+         </st-form-list>
+      </form>
+      `
+})
+class FormReactiveFormListComponent {
+   @Input() schema: any = TWO_INPUTS_JSON_SCHEMA;
+   @Input() qaTag: string;
+   @Input() value: any[];
+
+   public reactiveForm: FormGroup = new FormGroup({ 'list': new FormControl() });
+}
+
+
+describe('StFormListComponent in reactive form', () => {
+
+   let reactiveFixture: ComponentFixture<FormReactiveFormListComponent>;
+   let reactiveComp: FormReactiveFormListComponent;
+
+   beforeEach(async(() => {
+      TestBed.configureTestingModule({
+         imports: [CommonModule,
+            FormsModule,
+            ReactiveFormsModule,
+            PipesModule,
+            StFormDirectiveModule, StFormListModule, StFormFieldModule, StInputModule, StCheckboxModule],
+         declarations: [FormReactiveFormListComponent]
+      })
+         .compileComponents();  // compile template and css
+   }));
+
+   beforeEach(() => {
+      reactiveFixture = TestBed.createComponent(FormReactiveFormListComponent);
+      reactiveComp = reactiveFixture.componentInstance;
+      reactiveFixture.detectChanges();
+   });
+
+   describe('when form list is disabled', () => {
+      beforeEach(() => {
+         reactiveComp.schema = TWO_INPUTS_JSON_SCHEMA;
+         reactiveComp.value = fakeModel;
+         reactiveFixture.detectChanges();
+         reactiveComp.reactiveForm.disable();
+         reactiveFixture.detectChanges();
+      });
+
+      it('fields are displayed as disabled', () => {
+         let inputs: HTMLInputElement[] = reactiveFixture.nativeElement.querySelectorAll('input');
+
+         for (let i = 0; i < inputs.length; ++i) {
+            expect(inputs[i].disabled).toBeTruthy();
+         }
+      });
+
+      it('button to add new items has to be hidden', () => {
+         reactiveFixture.whenStable().then(() => {
+            reactiveFixture.detectChanges();
+            expect(reactiveFixture.nativeElement.querySelector('.button.button-link-primary')).toBeNull();
+         });
+      });
+   });
+
 });
 

@@ -95,6 +95,16 @@ describe('StInputComponent', () => {
       expect(component.focus).toBe(true);
    });
 
+   it('When user leaves input, it emits an event', () => {
+      spyOn(component.blur, 'emit');
+
+      input.dispatchEvent(new Event('focus'));
+      fixture.detectChanges();
+      input.dispatchEvent(new Event('blur'));
+      fixture.detectChanges();
+
+      expect(component.blur.emit).toHaveBeenCalledTimes(1);
+   });
 });
 
 @Component({
@@ -420,7 +430,7 @@ describe('StInputComponent in reactive form', () => {
       expect((<HTMLSpanElement>errorMessage.nativeElement).textContent).toEqual('error');
    });
 
-   it ('if internal control is not defined, when event is listened adn force validations is true it does not do anything', () => {
+   it ('if internal control is not defined, when event is listened and force validations is true it does not do anything', () => {
       spyOn(reactiveComp.input, 'writeValue');
       reactiveComp.input.internalControl = undefined;
 

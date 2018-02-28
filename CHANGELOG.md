@@ -8,6 +8,11 @@
 **Fixed bugs:**
 
 * st-pop: Floating element is relocated when user scrolls page
+* st-form: Fixed the form validations
+
+**Breaking changes:**
+
+* st-form-list: Now, it emits the events: add, remove, valueChange and blur
 
 
 ## 8.3.0 (February 14, 2018)

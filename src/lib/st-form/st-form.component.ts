@@ -11,13 +11,19 @@
 import {
    Component,
    Input,
-   OnInit,
-   ChangeDetectionStrategy,
+   Output,
    forwardRef,
-   ChangeDetectorRef,
-   ViewChild
+   ViewChild,
+   EventEmitter,
+   ChangeDetectionStrategy
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgForm } from '@angular/forms';
+import {
+   ControlValueAccessor,
+   NG_VALUE_ACCESSOR,
+   NgForm,
+   NG_VALIDATORS,
+   FormControl
+} from '@angular/forms';
 
 @Component({
    selector: 'st-form',
@@ -25,49 +31,45 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgForm } from '@angular/forms'
    styleUrls: ['./st-form.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush,
    providers: [
-      { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => StFormComponent), multi: true }
+      { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => StFormComponent), multi: true },
+      { provide: NG_VALIDATORS, useExisting: forwardRef(() => StFormComponent), multi: true }
    ]
 })
 
-export class StFormComponent implements ControlValueAccessor, OnInit {
+export class StFormComponent implements ControlValueAccessor {
    @Input() schema: any;
    @Input() name: string;
+
+   @Output() valueChange: EventEmitter<any> = new EventEmitter<any>();
+
    @ViewChild('form') form: NgForm;
 
+   public innerValue: any = {};
    private _value: any = {};
-
-   @Input()
-   get value(): any {
-      return this._value;
-   }
-
-   set value(value: any) {
-      if (value && value !== this._value) {
-         this._value = value;
-         this.onChange(this.value);
-         this._cd.markForCheck();
-      }
-   }
-
 
    // Function to call when the value changes.
    onChange(_: any): void {
-      this._cd.markForCheck();
    }
 
    onTouched = () => {
    }
 
-   constructor(private _cd: ChangeDetectorRef) {
-   }
+   validate(control: FormControl): any {
+      let errors: any = null;
+      if (this.form) {
+         Object.keys(this.form.controls).forEach((propertyName) => {
+            if (this.form.controls[propertyName] && this.form.controls[propertyName].errors) {
+               if (!errors) {
+                  errors = {};
+               }
+               errors[propertyName] = this.form.controls[propertyName].errors;
+            }
+         });
 
-   ngOnInit(): void {
-      Object.keys(this.schema.properties).forEach(propertyName => {
-         let property: any = this.schema.properties[propertyName];
-         if (property.default && this._value[propertyName] === undefined) {
-            this._value[propertyName] = property.default;
-         }
-      });
+         this.form.control.setErrors(errors);
+      }
+      return errors;
+
    }
 
    isRequired(propertyName: string): boolean {
@@ -76,15 +78,16 @@ export class StFormComponent implements ControlValueAccessor, OnInit {
 
    // When value is received from outside
    writeValue(value: any): void {
-      this._value = value;
       this.onChange(value);
-      this._cd.markForCheck();
+      this.innerValue = value;
    }
 
    onChangeProperty(value: any, property: string): void {
-      this._value[property] = value;
-      this.onChange(this.value);
-      this._cd.markForCheck();
+      setTimeout(() => {
+         this._value[property] = value;
+         this.valueChange.emit(this._value);
+         this.onChange(this._value);
+      });
    }
 
    // Registry the change function to propagate internal model changes

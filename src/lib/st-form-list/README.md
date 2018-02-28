@@ -4,28 +4,30 @@
 
 ## Inputs
 
-| Property    | Type      | Req   | Description                                      | Default             |
-| ----------- | --------- | ----- | ------------------------------------------------ | ------------------- |
-| schema      | Any       | False | JSON schema of items                             | ''                  |
-| buttonLabel | String    | False | String displayed in the button to add more items | 'Add one more item' |
-| value       | Any[]     | False | Current list value                               | ''                  |
-| form        | FormGroup | False | Form group                                       | ''                  |
+| Property    | Type   | Req   | Description                                      | Default             |
+| ----------- | ------ | ----- | ------------------------------------------------ | ------------------- |
+| schema      | Any    | False | JSON schema of items                             | ''                  |
+| buttonLabel | String | False | String displayed in the button to add more items | 'Add one more item' |
 
 ## Outputs
 
-| Property | Type  | Description             |
-| -------- | ----- | ----------------------- |
-| change   | Any[] | Notify any value change |
+| Property    | Type   | Description                                                    |
+| ----------- | ------ | -------------------------------------------------------------- |
+| valueChange | Any[]  | Notify any value change                                        |
+| add         | Number | Notify the position of the added item and the modified model   |
+| remove      | Number | Notify the position of the removed item and the modified model |
+| blur        | Any[]  | Notify when user leaves a field                                |
 
 ## Example
 
 
 ```html
 <st-form-list [schema]="jsonSchema"
-      [(value)]="model"
-      [(form)]="formArray"
-      buttonLabel="Add item"
-      (change)="onValueChange($event)">
+      [ngModel]="model1"
+      name="list"
+      (blur)="onBlur($event)"
+      (add)="onAddItem($event)"
+      (remove)="onRemoveItem($event)">
 </st-form-list>
 ```
 

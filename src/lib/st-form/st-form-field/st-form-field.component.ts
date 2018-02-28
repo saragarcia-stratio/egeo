@@ -12,9 +12,10 @@ import {
    Component,
    OnInit,
    Input,
+   Output,
    forwardRef,
    ChangeDetectionStrategy,
-   ChangeDetectorRef,
+   EventEmitter,
    ViewChild
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl, NG_VALIDATORS, NgModel } from '@angular/forms';
@@ -31,7 +32,7 @@ import { StEgeo, StRequired } from '../../decorators/require-decorators';
       { provide: NG_VALIDATORS, useExisting: forwardRef(() => StFormFieldComponent), multi: true }
    ],
    changeDetection: ChangeDetectionStrategy.OnPush,
-   host: {class: 'st-form-field'}
+   host: { class: 'st-form-field' }
 })
 
 export class StFormFieldComponent implements ControlValueAccessor, OnInit {
@@ -42,30 +43,24 @@ export class StFormFieldComponent implements ControlValueAccessor, OnInit {
    @Input() name: string;
    @ViewChild('templateModel') templateModel: NgModel;
 
-   @Input()
-   get value(): any {
-      return this._value;
-   }
-
-   set value(value: any) {
-      this._value = value;
-      this.onChange(this.value);
-      this._cd.markForCheck();
-   }
+   @Input() value: any;
+   @Output() valueChange: EventEmitter<any> = new EventEmitter<any>();
+   @Output() blur: EventEmitter<any> = new EventEmitter<any>();
 
    public disabled: boolean = false; // To check disable
    public focus: boolean = false;
    public errorMessage: string = undefined;
-
-   private _value: any;
-
-   constructor(private _cd: ChangeDetectorRef) {
-   }
+   private innerValue: any;
 
    onChange = (_: any) => {
    }
 
    onTouched = () => {
+   }
+
+   setValue(value: any): void {
+      this.onChange(value);
+      this.valueChange.emit(value);
    }
 
    validate(control: FormControl): any {
@@ -75,9 +70,12 @@ export class StFormFieldComponent implements ControlValueAccessor, OnInit {
    }
 
    ngOnInit(): void {
-      if (this.schema.value.default !== undefined && this._value === undefined) {
-         this.value = this.schema.value.default;
-      }
+      setTimeout(() => {
+         if (this.schema.value.default !== undefined && (this.innerValue === undefined || this.innerValue === null)) {
+            this.innerValue = this.schema.value.default;
+            this.onChange(this.innerValue );
+         }
+      });
       if (!this.errorMessages) {
          this.errorMessages = {
             generic: 'Error',
@@ -145,9 +143,9 @@ export class StFormFieldComponent implements ControlValueAccessor, OnInit {
 
    writeValue(value: any): void {
       if (value !== undefined) {
-         this.value = value;
-         this.onChange(this.value);
-         this._cd.markForCheck();
+         this.innerValue = value;
+         this.valueChange.emit(value);
+         this.onChange(value);
       }
    }
 
@@ -174,8 +172,11 @@ export class StFormFieldComponent implements ControlValueAccessor, OnInit {
          return '0.1';
       } else {
          return '1';
-
       }
+   }
+
+   onBlur(): void {
+      this.blur.emit();
    }
 }
 

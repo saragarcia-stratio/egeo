@@ -16,7 +16,8 @@
           [label]="label"
           [name]="schema.key"
           [placeholder]="placeholder"
-          [(ngModel)]="value"
+          [ngModel]="innerValue"
+          (ngModelChange)="setValue($event)"
           [contextualHelp]="description"
           [errors]="errorMessages"
           [max]="max"
@@ -26,14 +27,16 @@
           [required]="required"
           [pattern]="pattern"
           [step]="getInputStep()"
-          [qaTag]="qaTag">
+          [qaTag]="qaTag"
+          (blur)="onBlur()">
 </st-input>
 
 <st-checkbox *ngIf="hasType('boolean')"
              #templateModel="ngModel"
-             [(ngModel)]="value"
-             [checked]="value"
-             [value]="value"
+             [ngModel]="innerValue"
+             (ngModelChange)="setValue($event)"
+             [checked]="innerValue"
+             [value]="innerValue"
              [name]="schema.key"
              [contextualHelp]="description"
              [qaTag]="qaTag">

@@ -8,8 +8,24 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { Component, Input, ChangeDetectionStrategy, OnInit, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormArray, FormControl } from '@angular/forms';
+import {
+   Component,
+   Input,
+   ChangeDetectionStrategy,
+   EventEmitter,
+   Output,
+   forwardRef,
+   ChangeDetectorRef
+} from '@angular/core';
+import {
+   NG_VALUE_ACCESSOR,
+   ControlValueAccessor,
+   FormControl,
+   NG_VALIDATORS,
+   FormGroup,
+   FormArray
+} from '@angular/forms';
+import { cloneDeep as _cloneDeep } from 'lodash';
 
 /**
  * @description {Component} [Form list]
@@ -21,9 +37,11 @@ import { FormGroup, FormArray, FormControl } from '@angular/forms';
  * {html}
  *
  * ```
- *  <st-form-list [schema]="jsonSchema" [(value)]="model" [(form)]="formArray" buttonLabel="Add item"
- *  (change)="onValueChange($event)">
- *  </st-form-list>
+ *
+ * <st-form-list [schema]="jsonSchema" [ngModel]="model1" name="list"
+ * (blur)="onBlur($event)" (add)="onAddItem($event)" (remove)="onRemoveItem($event)">
+ * </st-form-list>
+ *
  * ```
  *
  *
@@ -32,57 +50,68 @@ import { FormGroup, FormArray, FormControl } from '@angular/forms';
    selector: 'st-form-list',
    templateUrl: './st-form-list.html',
    styleUrls: ['./st-form-list.scss'],
-   host: { class: 'st-form-list' },
-   changeDetection: ChangeDetectionStrategy.OnPush
+   changeDetection: ChangeDetectionStrategy.OnPush,
+   providers: [
+      { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => StFormListComponent), multi: true },
+      { provide: NG_VALIDATORS, useExisting: forwardRef(() => StFormListComponent), multi: true }
+   ]
 })
 
-export class StFormListComponent implements OnInit {
+export class StFormListComponent implements ControlValueAccessor {
    /** @Input {any} [schema=''] JSON schema of items */
    @Input() schema: any;
    /** @Input {string} [buttonLabel='Add one more item'] String displayed in the button to add more items */
    @Input() buttonLabel: string = 'Add one more item';
 
-   /** @Output {any[]} [change] Notify any value change */
-   @Output() change: EventEmitter<any[]> = new EventEmitter<any[]>();
+   /** @Output {any[]} [valueChange] Notify any value change */
+   @Output() valueChange: EventEmitter<any> = new EventEmitter<any>();
 
-   public _value: any[] = [];
-   public _form: FormArray = new FormArray([]);
+   /** @Output {number} [add]  Notify the position of the added item and the modified model */
+   @Output() add: EventEmitter<{position: number, model: any[]}> = new EventEmitter<{position: number, model: any[]}>();
 
-   /** @Input {any[]} [value=''] Current list value */
-   @Input()
-   get value(): any[] {
+   /** @Output {number} [remove] Notify the position of the removed item and the modified model */
+   @Output() remove:  EventEmitter<{position: number, model: any[]}> = new EventEmitter<{position: number, model: any[]}>();
+
+   /** @Output {any[]} [blur] Notify when user leaves a field */
+   @Output() blur: EventEmitter<any[]> = new EventEmitter<any[]>();
+
+   public formArray: FormArray = new FormArray([]);
+   private _value: any[] = [];
+
+   constructor(private _cd: ChangeDetectorRef) {
+   }
+
+   @Input() get value(): any {
       return this._value;
    }
 
-   set value(value: any[]) {
-      this._value = value;
-      this.updateForm();
+   set value(value: any) {
+      if (value !== this._value) {
+         this._value = _cloneDeep(value);
+         this.updateForm();
+         this.onChange(value);
+      }
    }
 
-   /** @Input {FormGroup} [form=''] Form group */
-   @Input()
-   get form(): FormArray {
-      return this._form;
+   // Function to call when the value changes.
+   onChange(_: any): void {
    }
 
-   set form(form: FormArray) {
-      this._form = form;
-   }
-
-   ngOnInit(): void {
-      this.updateForm();
+   onTouched = () => {
    }
 
    addItem(): void {
       this._value.push({});
-      this._form.push(this.generateItemFormGroup());
-      this.change.emit(this._value);
+      this.formArray.push(this.generateItemFormGroup());
+      this.valueChange.emit(this._value);
+      this.add.emit({ position: this._value.length - 1, model: this._value });
    }
 
    removeItem(position: number): void {
-      this._form.removeAt(position);
+      this.formArray.removeAt(position);
       this._value.splice(position, 1);
-      this.change.emit(this._value);
+      this.valueChange.emit(this._value);
+      this.remove.emit({ position: position, model: this._value });
    }
 
    isRequired(propertyName: string): boolean {
@@ -103,20 +132,79 @@ export class StFormListComponent implements OnInit {
       return formGroup;
    }
 
-   onModelChange(value: any, position: number, propertyName: string): void {
-      if (this._value && this._value[position]) {
-         this._value[position][propertyName] = value;
-         this.change.emit(this._value);
+   validate(control: FormControl): any {
+      let errors: any = null;
+
+      if (this.formArray) {
+         for (let i = 0; i < this.formArray.controls.length; ++i) {
+            let rowFormGroup: FormGroup = <FormGroup> this.formArray.controls[i];
+            Object.keys(rowFormGroup.controls).forEach((propertyName) => {
+               if (rowFormGroup.controls[propertyName] && rowFormGroup.controls[propertyName].errors) {
+                  if (!errors) {
+                     errors = [];
+                  }
+                  if (!errors[i]) {
+                     errors[i] = {};
+                  }
+                  errors[i][propertyName] = rowFormGroup.controls[propertyName].errors;
+               }
+            });
+         }
+      }
+      return errors;
+   }
+
+   onChangeProperty(value: any, rowPosition: number, property: string): void {
+      let previousValue = this._value[rowPosition][property];
+      this._value[rowPosition][property] = value;
+      this.valueChange.emit(this._value);
+
+      if (previousValue !== value) {
+         setTimeout(() => {
+            this.onChange(this._value);
+         });
+      }
+   }
+
+   onBlur(): void {
+      this.blur.emit(this._value);
+   }
+
+// When value is received from outside
+   writeValue(value: any): void {
+      if (value && this._value !== value) {
+         this._value = _cloneDeep(value);
+         this.updateForm();
+         this._cd.markForCheck();
+      }
+   }
+
+// Registry the change function to propagate internal model changes
+   registerOnChange(fn: (_: any) => void): void {
+      this.onChange = fn;
+   }
+
+   registerOnTouched(fn: any): void {
+      this.onTouched = fn;
+   }
+
+
+// Allows Angular to disable the form.
+   setDisabledState(disable: boolean): void {
+      if (disable) {
+         this.formArray.disable();
+      } else {
+         this.formArray.enable();
       }
    }
 
    private updateForm(): void {
-      this._form.reset();
-      this._form.controls = [];
+      this.formArray.reset();
+      this.formArray.controls = [];
 
       if (this._value) {
          for (let i = 0; i < this._value.length; ++i) {
-            this._form.push(this.generateItemFormGroup(i));
+            this.formArray.push(this.generateItemFormGroup(i));
          }
       }
    }

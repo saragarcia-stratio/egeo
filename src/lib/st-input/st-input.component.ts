@@ -17,13 +17,12 @@ import {
    OnChanges,
    OnDestroy,
    OnInit,
-   ViewChildren
+   ViewChildren,
+   EventEmitter,
+   Output
 } from '@angular/core';
-import {
-   ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR
-} from '@angular/forms';
+import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
-
 import { StInputError } from './st-input.error.model';
 
 @Component({
@@ -63,6 +62,9 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
       this._value = value;
    }
 
+   /** @Output {} [blur] Notify when user leaves a field */
+   @Output() blur: EventEmitter<any> = new EventEmitter<any>();
+
    @ViewChildren('input') vc: any;
 
    public disabled: boolean = false; // To check disable
@@ -75,10 +77,14 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
    private valueChangeSub: Subscription;
    private internalInputModel: any = '';
 
-   constructor(private _cd: ChangeDetectorRef) { }
+   constructor(private _cd: ChangeDetectorRef) {
+   }
 
-   onChange = (_: any) => { };
-   onTouched = () => { };
+   onChange = (_: any) => {
+   }
+
+   onTouched = () => {
+   }
 
 
    validate(control: FormControl): any {
@@ -156,8 +162,12 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
       this.focus = true;
    }
 
-   onFocusOut(event: Event): void {
+   onFocusOut(event: Event, emitEvent: boolean): void {
       this.focus = false;
+
+      if (emitEvent) {
+         this.blur.emit();
+      }
    }
 
    // When status change call this function to check if have errors

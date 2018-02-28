@@ -15,12 +15,6 @@
          margin-bottom: 20px;
       }
 
-      & > :not(:first-child) {
-         label {
-            display: none;
-         }
-      }
-
       &:first-of-type {
          .remove-button {
             margin-top: 25px;

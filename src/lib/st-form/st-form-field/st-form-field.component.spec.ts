@@ -243,7 +243,19 @@ describe('StFormFieldComponent', () => {
             });
          });
 
+         it ('When user leaves it, it emits an event', () => {
+            fixture.detectChanges();
+            input = fixture.nativeElement.querySelector('#genericIntegerInput');
 
+            spyOn(component.blur, 'emit');
+
+            input.dispatchEvent(new Event('focus'));
+            fixture.detectChanges();
+            input.dispatchEvent(new Event('blur'));
+            fixture.detectChanges();
+
+            expect(component.blur.emit).toHaveBeenCalledTimes(1);
+         });
       });
 
       describe('number input', () => {
@@ -442,6 +454,19 @@ describe('StFormFieldComponent', () => {
                expect(fixture.nativeElement.querySelector('#genericNumberInput').parentNode.parentNode.querySelector('.st-input-error-layout span')).toBeNull();
             });
          });
+
+         it ('When user leaves it, it emits an event', () => {
+            spyOn(component.blur, 'emit');
+            fixture.detectChanges();
+
+            input = fixture.nativeElement.querySelector('#genericNumberInput');
+            input.dispatchEvent(new Event('focus'));
+            fixture.detectChanges();
+            input.dispatchEvent(new Event('blur'));
+            fixture.detectChanges();
+
+            expect(component.blur.emit).toHaveBeenCalledTimes(1);
+         });
       });
 
       describe('text input', () => {
@@ -545,6 +570,16 @@ describe('StFormFieldComponent', () => {
             expect(fixture.nativeElement.querySelector('.st-input-error-layout span')).toBeNull();
          });
 
+         it ('When user leaves it, it emits an event', () => {
+            spyOn(component.blur, 'emit');
+
+            input.dispatchEvent(new Event('focus'));
+            fixture.detectChanges();
+            input.dispatchEvent(new Event('blur'));
+            fixture.detectChanges();
+
+            expect(component.blur.emit).toHaveBeenCalledTimes(1);
+         });
       });
 
    });

@@ -20,8 +20,7 @@ import { JSON_SCHEMA } from './json-schema';
 })
 export class StFormDemoComponent {
    public jsonSchema: any;
-   public model: any = {};
-   public reactiveForm: FormGroup = new FormGroup({ 'genericNumberInput': new FormControl(this.model.genericNumberInput) });
+   public model: any = {genericNumberInput: 2017};
    public errors: StInputError;
 
    @ViewChild('templateDrivenForm') public templateDrivenForm: NgForm;
@@ -41,17 +40,9 @@ export class StFormDemoComponent {
    }
 
    showFormStatus(): void {
-      console.log(this.reactiveForm);
+      console.log(this.formModel.valid);
    }
-
-   updateModel(): void {
-      this.templateDrivenForm.controls['genericNumberInput'].setValue(1);
-      this.templateDrivenForm.controls['requiredNumber'].setValue(2);
-
-      this._cd.markForCheck();
-   }
-
-   onChange(model: any): void {
+      onChange(model: any): void {
       this.model = model;
    }
 

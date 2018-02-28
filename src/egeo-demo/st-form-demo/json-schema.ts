@@ -15,7 +15,7 @@ export const JSON_SCHEMA: any = {
          'title': 'Generic number',
          'description': 'Generic input description',
          'type': 'integer',
-         'default': 5,
+         'default': 8,
          'minimum': 6,
          'maximum': 10,
          'exclusiveMinimum': false,
@@ -48,7 +48,7 @@ export const JSON_SCHEMA: any = {
          'title': 'Max number',
          'description': 'Max number input description',
          'type': 'number',
-         'default': 7.6,
+         'default': 5,
          'maximum': 6
       },
       'minAndMaxNumber': {
@@ -61,21 +61,14 @@ export const JSON_SCHEMA: any = {
          'exclusiveMinimum': true,
          'exclusiveMaximum': true
       },
-
       'genericTextInput': {
          'title': 'Required text',
          'description': 'This is a required text with a length of 2-6 characters and only the character a is valid',
          'type': 'string',
-         'default': 'Generic text',
+         'default': 'aa',
          'minLength': 2,
          'maxLength': 6,
          'pattern': '(a)+'
-      },
-      'requiredText': {
-         'title': 'Required text',
-         'description': 'This is a required text',
-         'type': 'string',
-         'default': '5'
       },
       'minLengthText': {
          'title': 'Text with a max length',

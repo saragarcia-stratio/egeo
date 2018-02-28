@@ -9,15 +9,19 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
-import { FormArray, NgForm, FormGroup } from '@angular/forms';
+import { FormArray, NgForm, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
    selector: 'st-form-list-demo',
    templateUrl: 'st-form-list-demo.html',
-   changeDetection: ChangeDetectionStrategy.OnPush
+   styleUrls: ['./st-form-list-demo.scss'],
+
 })
 export class StFormListDemoComponent {
-   @ViewChild('templateForm') templateForm: NgForm;
+   @ViewChild('formModel') public formModel: NgForm;
+   @ViewChild('templateDrivenForm') public templateDrivenForm: NgForm;
+
+   public reactiveForm: FormGroup;
 
    public jsonSchema: any = {
       '$schema': 'http://json-schema.org/schema#',
@@ -26,18 +30,17 @@ export class StFormListDemoComponent {
             'title': 'Required number between 6-10',
             'description': 'Generic input description',
             'type': 'number',
-            'default': 5,
-            'minimum': 6,
+            'default': 6,
+            'minimum': 1,
             'maximum': 10,
             'exclusiveMinimum': false,
             'exclusiveMaximum': false
          },
          'genericTextInput': {
-            'title': 'Required text with a text of 2-6 characters',
+            'title': 'Text',
             'description': 'This is a generic text',
             'type': 'string',
-            'minLength': 2,
-            'maxLength': 6
+            'maxLength': 50
          }
       },
       'required': [
@@ -48,25 +51,53 @@ export class StFormListDemoComponent {
    public form: FormGroup = new FormGroup({});
    public formArray: FormArray = new FormArray([]);
 
-   public model: Array<any> = [
-      { genericNumberInput: 8, genericTextInput: 'este es el ngmodel ' },
-      { genericNumberInput: 20, genericTextInput: 'fake text 2' }
+   public model1: Array<any> = [
+      { genericNumberInput: 1, genericTextInput: 'item 1 of model 1' },
+      { genericNumberInput: 2, genericTextInput: 'item 2 of model 1' }
+   ];
+
+   public model2: Array<any> = [
+      { genericNumberInput: 3, genericTextInput: 'item 1 of model 2' },
+   ];
+   public model3: Array<any> = [
+      { genericNumberInput: 4, genericTextInput: 'item 1 of model 3' },
+      { genericNumberInput: 5, genericTextInput: 'item 2 of model 3' },
+      { genericNumberInput: 6, genericTextInput: 'item 3 of model 3' },
    ];
 
    constructor() {
-      this.form.addControl('list', this.formArray);
+     this.reactiveForm = new FormGroup({ list: new FormControl() });
    }
 
-   onChangeDisabledForm(): void {
-      if (this.formArray.disabled) {
-         this.formArray.enable();
-
+   onChangeTemplateFormStatus(form: NgForm): void {
+      if (form.control.disabled) {
+         form.control.enable();
       } else {
-         this.formArray.disable();
+         form.control.disable();
       }
    }
 
-   onValueChange(value: any[]): void {
-      console.log('new value', value);
+   onChangeReactiveFormStatus(form: FormGroup): void {
+      if (form.disabled) {
+         form.enable();
+      } else {
+         form.disable();
+      }
+   }
+
+   onBlur(event: any): void {
+      console.log('onblur', event);
+   }
+
+   onAddItem(event: any): void {
+      console.log('onAddItem', event);
+   }
+
+   onRemoveItem(event: any): void {
+      console.log('onRemoveItem', event);
+   }
+
+   showStatus(): void {
+      console.log(this.templateDrivenForm);
    }
 }

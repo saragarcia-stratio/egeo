@@ -18,6 +18,20 @@
 * st-form-list: Now, it emits the events: add, remove, valueChange and blur
 
 
+## 8.3.2 (February 23, 2018)
+
+**Fixed bugs:**
+
+* st-form-list: Add a provisional solution to make it stateless
+
+
+## 8.3.1 (February 19, 2018)
+
+**Fixed bugs:**
+
+* st-form-list: Fixed model loading when it is initialized
+
+
 ## 8.3.0 (February 14, 2018)
 
 **New features:**

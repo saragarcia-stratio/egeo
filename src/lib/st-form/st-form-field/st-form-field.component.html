@@ -42,3 +42,16 @@
              [qaTag]="qaTag">
    {{schema.value.title}}
 </st-checkbox>
+
+<st-select *ngIf="hasType('select')"
+           #templateModel="ngModel"
+           [label]="label"
+           [tooltip]="description"
+           [name]="schema.key"
+           [placeholder]="placeholder"
+           [options]="getSelectOption()"
+           [ngModel]="innerValue"
+           (ngModelChange)="setValue($event)"
+           [required]="required"
+           [id]="qaTag">
+</st-select>

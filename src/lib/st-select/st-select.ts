@@ -88,6 +88,10 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor {
       this._isDisabled = value;
    }
 
+   get disabled(): boolean {
+      return this._isDisabled;
+   }
+
    @Input()
    set options(options: StDropDownMenuItem[] | StDropDownMenuGroup[]) {
       this._options = _cloneDeep(options);

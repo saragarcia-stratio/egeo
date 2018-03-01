@@ -29,8 +29,7 @@ import { StSwitchModule } from '../st-switch/st-switch.module';
       StInputModule,
       PipesModule,
       StSelectModule,
-      StFormDirectiveModule,
-      StSwitchModule
+      StFormDirectiveModule
    ],
    declarations: [StFormComponent],
    exports: [StFormComponent, StFormFieldModule]

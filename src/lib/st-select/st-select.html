@@ -21,8 +21,8 @@
    >
 
    <div (click)="onButtonClick()" (keypress)="onButtonKeyPress($event)" #button class="button-container">
-      <label
-         *ngIf="hasLabel"
+      <label *ngIf="hasLabel" [ngClass]="{disabled: disabled}"
+             st-label
          for="inputId"
          class="st-label"
          [attr.title]="tooltip"

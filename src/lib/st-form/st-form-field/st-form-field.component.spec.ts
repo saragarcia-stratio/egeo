@@ -19,6 +19,10 @@ import { StInputModule } from '../../st-input/st-input.module';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { StFormFieldModule } from './st-form-field.module';
 import { StCheckboxModule } from '../../st-checkbox/st-checkbox.module';
+import { StSelectModule } from '../../st-select/st-select.module';
+import { StTooltipModule } from '../../st-tooltip/st-tooltip.module';
+import { StDropdownMenuModule } from '../../st-dropdown-menu/st-dropdown-menu.module';
+import { By } from '@angular/platform-browser';
 
 let component: StFormFieldComponent;
 let fixture: ComponentFixture<StFormFieldComponent>;
@@ -28,7 +32,8 @@ describe('StFormFieldComponent', () => {
 
    beforeEach(async(() => {
       TestBed.configureTestingModule({
-         imports: [FormsModule, ReactiveFormsModule, StInputModule, StCheckboxModule, PipesModule, StFormDirectiveModule],
+         imports: [FormsModule, ReactiveFormsModule, StInputModule, StCheckboxModule, StSelectModule, PipesModule,
+            StTooltipModule, StFormDirectiveModule, StDropdownMenuModule],
          declarations: [StFormFieldComponent]
       })
          .overrideComponent(StFormFieldComponent, {
@@ -36,7 +41,6 @@ describe('StFormFieldComponent', () => {
          })
          .compileComponents();  // compile template and css
    }));
-
 
    beforeEach(() => {
       fixture = TestBed.createComponent(StFormFieldComponent);
@@ -238,12 +242,12 @@ describe('StFormFieldComponent', () => {
 
                fixture.detectChanges();
 
-               expect(fixture.nativeElement.querySelector('#genericIntegerInput').
-               parentNode.parentNode.querySelector('.st-input-error-layout span')).toBeNull();
+               expect(fixture.nativeElement.querySelector('#genericIntegerInput')
+                  .parentNode.parentNode.querySelector('.st-input-error-layout span')).toBeNull();
             });
          });
 
-         it ('When user leaves it, it emits an event', () => {
+         it('When user leaves it, it emits an event', () => {
             fixture.detectChanges();
             input = fixture.nativeElement.querySelector('#genericIntegerInput');
 
@@ -455,7 +459,7 @@ describe('StFormFieldComponent', () => {
             });
          });
 
-         it ('When user leaves it, it emits an event', () => {
+         it('When user leaves it, it emits an event', () => {
             spyOn(component.blur, 'emit');
             fixture.detectChanges();
 
@@ -570,7 +574,7 @@ describe('StFormFieldComponent', () => {
             expect(fixture.nativeElement.querySelector('.st-input-error-layout span')).toBeNull();
          });
 
-         it ('When user leaves it, it emits an event', () => {
+         it('When user leaves it, it emits an event', () => {
             spyOn(component.blur, 'emit');
 
             input.dispatchEvent(new Event('focus'));
@@ -627,13 +631,97 @@ describe('StFormFieldComponent', () => {
       });
    });
 
+   describe('should be able to render selects with their validations', () => {
+      let selectElement: HTMLSelectElement;
+      let selectProperty: any;
+
+      beforeEach(() => {
+         selectProperty = JSON_SCHEMA.properties.log_level;
+         component.schema = { key: 'log_level', value: selectProperty };
+         component.qaTag = 'log_level';
+
+         fixture.detectChanges();
+
+         selectElement = fixture.nativeElement.querySelector('#log_level');
+      });
+
+      it('properties of type string and with the attribute enum are rendered as selects', () => {
+         expect(selectElement.tagName).toEqual('ST-SELECT');
+      });
+
+      it('label is displayed', () => {
+         let label: HTMLElement = fixture.nativeElement.querySelector('label');
+         expect(label.innerHTML).toContain(selectProperty.title);
+      });
+
+      it('tooltip is displayed if description exits', () => {
+         let tooltip: HTMLElement = fixture.nativeElement.querySelector('.st-tooltip');
+         expect(tooltip.getAttribute('title')).toBe(selectProperty.description);
+      });
+
+      it('icon for opening tooltip is not displayed if description does not exit', () => {
+         fixture = TestBed.createComponent(StFormFieldComponent);
+         component = fixture.componentInstance;
+
+         component.schema = { key: 'log_level', value: { type: 'string', enum: [], description: undefined } };
+         fixture.detectChanges();
+
+         expect(fixture.nativeElement.querySelector('#log_level-label-tooltip')).toBeNull();
+      });
+
+      it('if schema contains a default value, select has to be initialized with it', () => {
+         fixture.whenStable().then(() => {
+            fixture.detectChanges();
+
+            expect(selectElement.value).toBe(selectProperty.default);
+         });
+      });
+
+      it('options have to be generated using the enum property and the first one to leave it empty', () => {
+         let enumValues = selectProperty.enum;
+         fixture.detectChanges();
+         (<HTMLInputElement> selectElement.querySelector('#log_level-input')).click();
+         fixture.detectChanges();
+
+         let options: NodeListOf<Element> = selectElement.querySelectorAll('.st-dropdown-menu-item');
+
+         expect(options.length).toBe(enumValues.length + 1);
+         expect((<HTMLLIElement> options[0]).innerText).toEqual('Select one option');
+
+         for (let i = 1; i < options.length; ++i) {
+            expect((<HTMLLIElement> options[i]).innerText).toEqual(enumValues[i - 1]);
+         }
+      });
+
+      it ('if user clicks on the first option, model is empty', () => {
+         fixture.nativeElement.querySelector('#log_level-input').click();
+         fixture.detectChanges();
+         let options: NodeListOf<Element> = fixture.nativeElement.querySelectorAll('.st-dropdown-menu-item');
+         (<HTMLLIElement> options[0]).click();
+         fixture.detectChanges();
+
+         expect(component.value).toBeUndefined();
+      });
+
+      it ('if model is empty, default value is not defined and placeholder is defined in schema, this placeholder is displayed', () => {
+         let fakePlaceholder: string = 'fake placeholder';
+         component.value = undefined;
+         component.schema = { key: 'log_level', value: { type: 'string', enum: [], placeholder: fakePlaceholder } };
+         fixture.detectChanges();
+
+         const input: HTMLElement = fixture.debugElement.query(By.css('input')).nativeElement;
+         expect(input.getAttribute('placeholder')).toContain(fakePlaceholder);
+      });
+
+   });
+
 });
 
 
 @Component({
    template: `
       <form [formGroup]="reactiveForm" novalidate>
-         <st-form-field [schema]="schema"  [qaTag]="qaTag" formControlName="formField">
+         <st-form-field [schema]="schema"  [qaTag]="qaTag" [ngModel]="model" formControlName="formField" [required]="required">
          </st-form-field>
       </form>
       `,
@@ -641,7 +729,9 @@ describe('StFormFieldComponent', () => {
 })
 class FormReactiveFormComponent {
    @Input() schema: any = { key: 'genericNumberInput', value: JSON_SCHEMA.properties.genericNumberInput };
+   @Input() required: boolean;
    @Input() qaTag: string;
+   @Input() model: any;
 
    public reactiveForm: FormGroup = new FormGroup({ 'formField': new FormControl() });
 }
@@ -653,7 +743,8 @@ describe('StFormFieldComponent in reactive form', () => {
 
    beforeEach(async(() => {
       TestBed.configureTestingModule({
-         imports: [FormsModule, CommonModule, ReactiveFormsModule, StFormFieldModule, PipesModule, StFormDirectiveModule],
+         imports: [FormsModule, CommonModule, ReactiveFormsModule, StFormFieldModule, PipesModule, StDropdownMenuModule,
+            StFormDirectiveModule],
          declarations: [FormReactiveFormComponent]
       })
          .overrideComponent(StFormFieldComponent, {
@@ -714,6 +805,65 @@ describe('StFormFieldComponent in reactive form', () => {
             expect(Boolean(checkBoxElement.checked)).toBe(!previousValue);
          });
       });
+   });
+
+   describe('select field', () => {
+      it('select can be disabled', async() => {
+         reactiveComp.schema = { key: 'log_level', value: JSON_SCHEMA.properties.log_level };
+         reactiveComp.qaTag = 'log_level';
+         reactiveFixture.detectChanges();
+
+         reactiveComp.reactiveForm.disable();
+
+         reactiveFixture.whenStable().then(() => {
+            reactiveFixture.detectChanges();
+            expect(reactiveFixture.nativeElement.querySelector('input').disabled).toBeTruthy();
+         });
+      });
+
+      describe('if a select field is required', () => {
+         beforeEach(() => {
+            reactiveComp.schema = { key: 'log_level', value: JSON_SCHEMA.properties.log_level };
+            reactiveComp.qaTag = 'log_level';
+            reactiveComp.required = true;
+            reactiveFixture.detectChanges();
+         });
+
+         it(' an option selected, form has to be valid', () => {
+            reactiveFixture.nativeElement.querySelector('#log_level-input').click();
+            reactiveFixture.detectChanges();
+            let options: NodeListOf<Element> = reactiveFixture.nativeElement.querySelectorAll('.st-dropdown-menu-item');
+            (<HTMLLIElement> options[1]).click();
+            reactiveFixture.detectChanges();
+
+            reactiveFixture.whenStable().then(() => {
+               reactiveFixture.detectChanges();
+
+               expect(reactiveComp.reactiveForm.invalid).toBeFalsy();
+            });
+         });
+
+         it(' an no option is selected, form has to be invalid', () => {
+            reactiveComp.model = undefined;
+            reactiveFixture.whenStable().then(() => {
+               reactiveFixture.detectChanges();
+               expect(reactiveComp.reactiveForm.invalid).toBeTruthy();
+            });
+         });
+
+      });
+
+      it('if select is not required, form is valid although model is empty', () => {
+         reactiveComp.required = false;
+         reactiveComp.model = undefined;
+
+         reactiveFixture.whenStable().then(() => {
+            reactiveFixture.detectChanges();
+
+            expect(reactiveComp.reactiveForm.invalid).toBeFalsy();
+         });
+      });
+
    });
 
 });

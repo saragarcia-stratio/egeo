@@ -13,7 +13,6 @@ import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { StFormComponent } from '../st-form.component';
 import { JSON_SCHEMA } from './resources/json-schema';
-
 import { PipesModule } from '../../pipes/pipes.module';
 import { StInputModule } from '../../st-input/st-input.module';
 import { StFormDirectiveModule } from '../../directives/form/form-directives.module';
@@ -79,14 +78,22 @@ describe('StFormComponent', () => {
       });
 
       it('controls are displayed with their default value and label', () => {
+         let element: any;
          fixture.whenStable().then(() => {
 
             for (let propertyId in JSON_SCHEMA.properties) {
                if (JSON_SCHEMA.properties.hasOwnProperty(propertyId)) {
                   let property: any = JSON_SCHEMA.properties[propertyId];
-                  let element: any = fixture.nativeElement.querySelector('#' + propertyId);
+
+                  if (property.enum) { // select field
+                     fixture.detectChanges();
+                     element = fixture.nativeElement.querySelector('#' + propertyId + '-input');
+                  } else {
+                     element = fixture.nativeElement.querySelector('#' + propertyId);
+                  }
+
                   if (property.default) {
-                        expect(element.value).toBe(property.default.toString());
+                     expect(element.value).toBe(property.default.toString());
                   }
                   expect(fixture.nativeElement.innerHTML).toContain(property.title);
                }

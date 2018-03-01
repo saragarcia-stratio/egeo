@@ -2,8 +2,11 @@
 
 ## 8.4.0 (upcoming)
 
+**New features:**
+
 * st-form: Adapt it to display checkboxes, integer and number inputs
 * st-checkbox: Allow to display a tooltip in its label
+* st-form: Add select fields
 
 **Fixed bugs:**
 

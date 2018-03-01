@@ -305,7 +305,7 @@ describe('StSelectComponent', () => {
       expect(comp.selected).toBeUndefined();
    });
 
-   it('Should set input disabled', () => {
+   it('Should set input and label as disabled', () => {
       spyOn(comp.expand, 'emit');
       const id: string = 'test-id';
       (fixture.elementRef.nativeElement as HTMLElement).id = id;
@@ -334,6 +334,8 @@ describe('StSelectComponent', () => {
       comp.onButtonClick();
       expect(comp.expandedMenu).toBeFalsy();
       expect(comp.expand.emit).not.toHaveBeenCalled();
+
+      expect(label.classList).toContain('disabled');
    });
 
    it('Should emit on change option', () => {
@@ -351,6 +353,33 @@ describe('StSelectComponent', () => {
       comp.onChangeOption(undefined);
       expect(comp.select.emit).toHaveBeenCalled();
       expect(comp.select.emit).toHaveBeenCalledWith(undefined);
+   });
+
+   it ('should display a tooltip if it has a label and tooltip input is introduced', () => {
+      comp.tooltip = 'fake tooltip text';
+      comp.label = 'Test';
+      fixture.detectChanges();
+
+      let label: DebugElement = fixture.debugElement.query(By.css('.st-label'));
+
+      expect(comp.hasLabel).toBeTruthy();
+      expect(label).toBeDefined();
+      expect(label.nativeElement).toBeDefined();
+      expect((label.nativeElement as HTMLLabelElement).textContent).toEqual(comp.label);
+      expect((label.nativeElement as HTMLLabelElement).title).toEqual(comp.tooltip);
+   });
+
+   it ('should not display a tooltip if it has a label but tooltip input is not introduced', () => {
+      comp.label = 'Test';
+      fixture.detectChanges();
+
+      let label: DebugElement = fixture.debugElement.query(By.css('.st-label'));
+
+      expect(comp.hasLabel).toBeTruthy();
+      expect(label).toBeDefined();
+      expect(label.nativeElement).toBeDefined();
+      expect((label.nativeElement as HTMLLabelElement).textContent).toEqual(comp.label);
+      expect((label.nativeElement as HTMLLabelElement).title).toBe('');
    });
 });
 

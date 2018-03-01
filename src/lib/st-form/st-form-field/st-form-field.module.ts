@@ -16,9 +16,10 @@ import { StFormFieldComponent } from './st-form-field.component';
 import { StInputModule } from '../../st-input/st-input.module';
 import { StFormDirectiveModule } from '../../directives/form/form-directives.module';
 import { StCheckboxModule } from '../../st-checkbox/st-checkbox.module';
+import { StSelectModule } from '../../st-select/st-select.module';
 
 @NgModule({
-   imports: [CommonModule, FormsModule, ReactiveFormsModule, StInputModule, StCheckboxModule, StFormDirectiveModule],
+   imports: [CommonModule, FormsModule, ReactiveFormsModule, StInputModule, StCheckboxModule, StSelectModule, StFormDirectiveModule],
    declarations: [StFormFieldComponent],
    exports: [StFormFieldComponent]
 })

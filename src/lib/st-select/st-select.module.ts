@@ -15,9 +15,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StDropdownMenuModule } from '../st-dropdown-menu/st-dropdown-menu.module';
 import { StSelectComponent } from './st-select';
 import { StCheckValidationsDirective } from './st-check-validations';
+import { StLabelModule } from '../st-label/st-label.module';
 
 @NgModule({
-   imports: [CommonModule, StDropdownMenuModule, FormsModule, ReactiveFormsModule],
+   imports: [CommonModule, StDropdownMenuModule, FormsModule, ReactiveFormsModule, StLabelModule],
    declarations: [StSelectComponent, StCheckValidationsDirective],
    exports: [StSelectComponent, StCheckValidationsDirective]
 })

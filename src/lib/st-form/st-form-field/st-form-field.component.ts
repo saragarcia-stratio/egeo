@@ -21,6 +21,7 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl, NG_VALIDATORS, NgModel } from '@angular/forms';
 import { StInputError } from '../../st-input/st-input.error.model';
 import { StEgeo, StRequired } from '../../decorators/require-decorators';
+import { StDropDownMenuItem } from '../../st-dropdown-menu/st-dropdown-menu.interface';
 
 @StEgeo()
 @Component({
@@ -73,7 +74,7 @@ export class StFormFieldComponent implements ControlValueAccessor, OnInit {
       setTimeout(() => {
          if (this.schema.value.default !== undefined && (this.innerValue === undefined || this.innerValue === null)) {
             this.innerValue = this.schema.value.default;
-            this.onChange(this.innerValue );
+            this.onChange(this.innerValue);
          }
       });
       if (!this.errorMessages) {
@@ -92,7 +93,11 @@ export class StFormFieldComponent implements ControlValueAccessor, OnInit {
    get type(): string {
       switch (this.schema.value.type) {
          case 'string':
-            return 'text';
+            if (!this.schema.value.enum) {
+               return 'text';
+            } else {
+               return 'select';
+            }
          case 'integer':
             return 'number';
          default:
@@ -173,6 +178,18 @@ export class StFormFieldComponent implements ControlValueAccessor, OnInit {
       } else {
          return '1';
       }
+   }
+
+   getSelectOption(): StDropDownMenuItem[] {
+      let options: StDropDownMenuItem[] = [];
+      if (this.schema.value.enum) {
+         options.push(<StDropDownMenuItem> {label: 'Select one option', value: undefined});
+         let enumValues: string[] = this.schema.value.enum;
+         enumValues.forEach((value) => {
+            options.push(<StDropDownMenuItem> { label: value, value: value });
+         });
+      }
+      return options;
    }
 
    onBlur(): void {

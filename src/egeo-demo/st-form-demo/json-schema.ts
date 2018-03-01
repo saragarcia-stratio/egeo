@@ -107,9 +107,19 @@ export const JSON_SCHEMA: any = {
       'noDescription': {
          'title': 'Property without description',
          'type': 'string'
+      },
+      'log_level': {
+         'title': 'Log Level',
+         'semantic_name': 'Log Level',
+         'description': 'Set the log level: TRACE,DEBUG,INFO,WARN,ERROR and FATAL',
+         'type': 'string',
+         'default': 'INFO',
+         'placeholder': 'Select a log level',
+         'enum': ['TRACE', 'DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL'],
+         'optional': true
       }
    },
    'required': [
-      'url', 'genericNumberInput', 'genericIntegerInput', 'requiredNumber', 'requiredText'
+      'url', 'genericNumberInput', 'genericIntegerInput', 'requiredNumber', 'requiredText', 'log_level'
    ]
 };

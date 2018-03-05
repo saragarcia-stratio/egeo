@@ -40,6 +40,6 @@ export class StMinValidator implements Validator, OnChanges {
    }
 
    private _createValidator(): void {
-      this._validator = Validators.min(parseInt(this.min, 0));
+      this._validator = Validators.min(Number(this.min));
    }
 }

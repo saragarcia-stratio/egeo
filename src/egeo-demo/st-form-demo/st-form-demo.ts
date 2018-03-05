@@ -8,9 +8,9 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { NgForm, FormGroup, FormControl } from '@angular/forms';
-import { StInputError } from '@stratio/egeo';
+import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
 
 import { JSON_SCHEMA } from './json-schema';
 
@@ -20,28 +20,19 @@ import { JSON_SCHEMA } from './json-schema';
 })
 export class StFormDemoComponent {
    public jsonSchema: any;
-   public model: any = {genericNumberInput: 2017};
-   public errors: StInputError;
+   public model: any = {};
 
    @ViewChild('templateDrivenForm') public templateDrivenForm: NgForm;
    @ViewChild('formModel') public formModel: NgForm;
 
-   constructor(private _cd: ChangeDetectorRef) {
+   constructor() {
       this.jsonSchema = JSON_SCHEMA;
-      this.errors = {
-         generic: 'Error',
-         required: 'This field is required',
-         minLength: 'The field min length is ' + this.jsonSchema.properties['genericNumberInput'].minLength,
-         maxLength: 'The field max length is ' + this.jsonSchema.properties['genericNumberInput'].maxLength,
-         min: 'The number has to be higher than ' + this.jsonSchema.properties['genericNumberInput'].min,
-         max: 'The number has to be minor than ' + this.jsonSchema.properties['genericNumberInput'].max,
-         pattern: 'Invalid value'
-      };
    }
 
    showFormStatus(): void {
       console.log(this.formModel.valid);
    }
+
       onChange(model: any): void {
       this.model = model;
    }

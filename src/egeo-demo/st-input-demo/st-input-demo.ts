@@ -27,7 +27,8 @@ export class StInputDemoComponent {
          name: new FormControl('', []),
          disabledField: new FormControl('', []),
          disabledFieldWithValue:  new FormControl('Disabled value', []),
-         requiredField: new FormControl('', [Validators.required])
+         requiredField: new FormControl('', [Validators.required]),
+         numberField: new FormControl()
       });
       this.myForm.controls.disabledField.disable();
       this.myForm.controls.disabledFieldWithValue.disable();

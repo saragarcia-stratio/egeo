@@ -62,6 +62,8 @@ describe('StFormFieldComponent', () => {
             minValue = numberInputProperty.minimum;
             maxValue = numberInputProperty.maximum;
             component.schema = { key: 'genericIntegerInput', value: numberInputProperty };
+            fixture.detectChanges();
+
          });
 
          it('should add a step of 0.1 to input', () => {
@@ -85,13 +87,12 @@ describe('StFormFieldComponent', () => {
          });
 
          it('required input', () => {
-            fixture.detectChanges();
             input = fixture.nativeElement.querySelector('#genericIntegerInput');
             component.required = true;
             fixture.detectChanges();
 
             input.focus();
-            input.value = '';
+            input.value = null;
             input.dispatchEvent(new Event('input'));
             input.blur();
 
@@ -119,7 +120,7 @@ describe('StFormFieldComponent', () => {
 
             fixture.detectChanges();
 
-            expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML).toBe('The number has to be higher than ' + minValue);
+            expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML).toBe('The number has to be higher than ' + (minValue - 1));
 
             input.value = minValue.toString();
             input.dispatchEvent(new Event('input'));
@@ -140,7 +141,7 @@ describe('StFormFieldComponent', () => {
             fixture.detectChanges();
 
             expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML)
-               .toBe('The number has to be minor than ' + maxValue);
+               .toBe('The number has to be minor than ' + (maxValue + 1));
 
             input.value = maxValue.toString();
             input.dispatchEvent(new Event('input'));
@@ -168,7 +169,7 @@ describe('StFormFieldComponent', () => {
 
 
                expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML)
-                  .toBe('The number has to be higher than ' + (minValue + 1));
+                  .toBe('The number has to be higher than ' + minValue);
 
                // equal to the minimum
                input.value = minValue.toString();
@@ -177,7 +178,7 @@ describe('StFormFieldComponent', () => {
                fixture.detectChanges();
 
                expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML)
-                  .toBe('The number has to be higher than ' + (minValue + 1));
+                  .toBe('The number has to be higher than ' + minValue);
             });
 
             it('if minimum is not exclusive, when user puts a value equal to the minimum, input will be valid', () => {
@@ -196,8 +197,17 @@ describe('StFormFieldComponent', () => {
 
                fixture.detectChanges();
 
-
                expect(fixture.nativeElement.querySelector('.st-input-error-layout span')).toBeNull();
+
+               input.value = (minValue - 2).toString();
+               input.dispatchEvent(new Event('input'));
+
+               input.blur();
+
+               fixture.detectChanges();
+
+               expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML)
+                  .toBe('The number has to be higher than ' + (minValue - 1));
             });
 
             it('if maximum is exclusive, when user puts a value equal or major than the maximum, validation error is displayed', () => {
@@ -215,16 +225,15 @@ describe('StFormFieldComponent', () => {
                fixture.detectChanges();
 
                expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML)
-                  .toBe('The number has to be minor than ' + (maxValue - 1));
+                  .toBe('The number has to be minor than ' + maxValue);
 
                // equal to the maximum
                input.value = maxValue.toString();
                input.dispatchEvent(new Event('input'));
                fixture.detectChanges();
 
-
                expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML)
-                  .toBe('The number has to be minor than ' + (maxValue - 1));
+                  .toBe('The number has to be minor than ' + maxValue);
             });
 
             it('if maximum is not exclusive, when user puts a value equal to the maximum, input will be valid', () => {
@@ -234,7 +243,7 @@ describe('StFormFieldComponent', () => {
 
                input.focus();
 
-               // minor than the minimum
+               // equal to the maximum
                input.value = maxValue.toString();
                input.dispatchEvent(new Event('input'));
 
@@ -244,6 +253,17 @@ describe('StFormFieldComponent', () => {
 
                expect(fixture.nativeElement.querySelector('#genericIntegerInput')
                   .parentNode.parentNode.querySelector('.st-input-error-layout span')).toBeNull();
+
+               // minor than the minimum
+               input.value = (maxValue + 1).toString();
+               input.dispatchEvent(new Event('input'));
+
+               input.blur();
+
+               fixture.detectChanges();
+
+               expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML)
+                  .toBe('The number has to be minor than ' + (maxValue + 1));
             });
          });
 
@@ -334,7 +354,7 @@ describe('StFormFieldComponent', () => {
             fixture.detectChanges();
 
             expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML)
-               .toBe('The number has to be higher than ' + minValue);
+               .toBe('The number has to be higher than ' + (minValue - 0.1));
 
             input.value = minValue.toString();
             input.dispatchEvent(new Event('input'));
@@ -355,7 +375,7 @@ describe('StFormFieldComponent', () => {
             fixture.detectChanges();
 
             expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML)
-               .toBe('The number has to be minor than ' + maxValue);
+               .toBe('The number has to be minor than ' + (maxValue + 0.1));
 
             input.value = maxValue.toString();
             input.dispatchEvent(new Event('input'));
@@ -382,7 +402,7 @@ describe('StFormFieldComponent', () => {
                fixture.detectChanges();
 
 
-               expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML).toBe('The number has to be higher than ' + (minValue + 1));
+               expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML).toBe('The number has to be higher than ' + minValue);
 
                // equal to the minimum
                input.value = minValue.toString();
@@ -390,7 +410,7 @@ describe('StFormFieldComponent', () => {
 
                fixture.detectChanges();
 
-               expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML).toBe('The number has to be higher than ' + (minValue + 1));
+               expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML).toBe('The number has to be higher than ' + minValue);
             });
 
             it('if minimum is not exclusive, when user puts a value equal to the minimum, input will be valid', () => {
@@ -428,7 +448,7 @@ describe('StFormFieldComponent', () => {
                fixture.detectChanges();
 
                expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML)
-                  .toBe('The number has to be minor than ' + (maxValue - 1));
+                  .toBe('The number has to be minor than ' + maxValue);
 
                // equal to the maximum
                input.value = maxValue.toString();
@@ -437,7 +457,7 @@ describe('StFormFieldComponent', () => {
 
 
                expect(fixture.nativeElement.querySelector('.st-input-error-layout span').innerHTML)
-                  .toBe('The number has to be minor than ' + (maxValue - 1));
+                  .toBe('The number has to be minor than ' + maxValue);
             });
 
             it('if maximum is not exclusive, when user puts a value equal to the maximum, input will be valid', () => {
@@ -693,7 +713,7 @@ describe('StFormFieldComponent', () => {
          }
       });
 
-      it ('if user clicks on the first option, model is empty', () => {
+      it('if user clicks on the first option, model is empty', () => {
          fixture.nativeElement.querySelector('#log_level-input').click();
          fixture.detectChanges();
          let options: NodeListOf<Element> = fixture.nativeElement.querySelectorAll('.st-dropdown-menu-item');
@@ -703,7 +723,7 @@ describe('StFormFieldComponent', () => {
          expect(component.value).toBeUndefined();
       });
 
-      it ('if model is empty, default value is not defined and placeholder is defined in schema, this placeholder is displayed', () => {
+      it('if model is empty, default value is not defined and placeholder is defined in schema, this placeholder is displayed', () => {
          let fakePlaceholder: string = 'fake placeholder';
          component.value = undefined;
          component.schema = { key: 'log_level', value: { type: 'string', enum: [], placeholder: fakePlaceholder } };

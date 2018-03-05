@@ -11,12 +11,16 @@
 
 -->
 <form #form="ngForm" *ngIf="innerValue" novalidate>
-      <st-form-field *ngFor="let property of schema.properties | stObjectToArray" class="form-field"
-                     [schema]="property"
-                     [name]="property.key"
-                     [ngModel]="innerValue[property.key]"
-                     (ngModelChange)="onChangeProperty($event, property.key)"
-                     [required]="isRequired(property.key)"
-                     [qaTag]="property.key">
-      </st-form-field>
+   <st-form-field *ngFor="let property of schema.properties | stObjectToArray" class="form-field"
+                  [schema]="property"
+                  [name]="property.key"
+                  [ngModel]="innerValue[property.key]"
+                  (ngModelChange)="onChangeProperty($event, property.key)"
+                  [required]="isRequired(property.key)"
+                  [ngClass]="{hidden: isOptionalField(property.key) && !showOptionalFields}"
+                  [qaTag]="property.key">
+   </st-form-field>
+   <button class="button button-link-primary optional-fields-button" *ngIf="hasOptionalFields()" (click)="onChangeOptionalFieldsVisibility()">
+      <span>{{getOptionalButtonLabel()}} <i [ngClass]="{'icon-arrow2_up': showOptionalFields, 'icon-arrow2_down': !showOptionalFields}"></i></span>
+   </button>
 </form>

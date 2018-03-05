@@ -2,7 +2,9 @@
 
 ## 8.5.0 (upcoming)
 
-* Pending changelog
+**New features:**
+
+*  st-form: Add functionality to hide and display optional fields
 
 ## 8.4.0 (March 05, 2018)
 

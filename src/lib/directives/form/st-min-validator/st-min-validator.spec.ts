@@ -54,6 +54,17 @@ describe('Directive: StMinValidator', () => {
          expect(validationErrors.min).toBeDefined();
          expect(validationErrors.min.min).toBe(allowedMin);
          expect(validationErrors.min.actual).toBe(10);
+
+         directive.min = String(10.6);
+         directive.ngOnChanges(simpleChanges);
+
+         formControl.patchValue(10);
+         validationErrors = directive.validate(formControl);
+
+         expect(validationErrors).not.toBeNull();
+         expect(validationErrors.min).toBeDefined();
+         expect(validationErrors.min.min).toBe(10.6);
+         expect(validationErrors.min.actual).toBe(10);
       });
 
       it('if number is equal to the allowed, it does not return any error', () => {

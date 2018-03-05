@@ -36,6 +36,9 @@ describe('StFormComponent', () => {
          .overrideComponent(StCheckboxComponent, {
             set: { changeDetection: ChangeDetectionStrategy.Default }
          })
+         .overrideComponent(StFormComponent, {
+            set: { changeDetection: ChangeDetectionStrategy.Default }
+         })
          .compileComponents();  // compile template and css
    }));
 
@@ -99,6 +102,48 @@ describe('StFormComponent', () => {
                }
             }
          });
+      });
+   });
+
+   it('if there is not any optional field, "show more" button is not displayed', () => {
+      expect(fixture.nativeElement.querySelector('button')).toBeNull();
+   });
+
+   describe('if there are some optional fields', () => {
+      beforeEach(() => {
+         component.schema.properties.genericNumberInput.optional = true;
+         component.schema.properties.log_level.optional = true;
+
+         fixture.detectChanges();
+      });
+
+      it('"show more" button is displayed', () => {
+         expect(fixture.nativeElement.querySelector('button')).not.toBeNull();
+         expect(fixture.nativeElement.querySelector('button').innerHTML).toContain('Show more');
+      });
+
+      it('these will be hidden until user clicks on button "show more"', () => {
+         expect(fixture.nativeElement.querySelector('#genericNumberInput').parentElement.parentElement.classList).toContain('hidden'); // form field element
+         expect(fixture.nativeElement.querySelector('#log_level').parentElement.classList).toContain('hidden'); // form field element
+
+         fixture.nativeElement.querySelector('button').click();
+         fixture.detectChanges();
+
+         expect(fixture.nativeElement.querySelector('#genericNumberInput').parentElement.parentElement.classList).not.toContain('hidden');
+         expect(fixture.nativeElement.querySelector('#log_level').parentElement.classList).not.toContain('hidden');
+      });
+
+      it('When user clicks on the button, it changes its text to hide again these fields', () => {
+         fixture.nativeElement.querySelector('button').click();
+         fixture.detectChanges();
+
+         expect(fixture.nativeElement.querySelector('button').innerHTML).toContain('Show less');
+
+         fixture.nativeElement.querySelector('button').click();
+         fixture.detectChanges();
+
+         expect(fixture.nativeElement.querySelector('#genericNumberInput').parentElement.parentElement.classList).toContain('hidden');
+         expect(fixture.nativeElement.querySelector('#log_level').parentElement.classList).toContain('hidden');
       });
    });
 });

@@ -8,22 +8,8 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import {
-   Component,
-   Input,
-   Output,
-   forwardRef,
-   ViewChild,
-   EventEmitter,
-   ChangeDetectionStrategy
-} from '@angular/core';
-import {
-   ControlValueAccessor,
-   NG_VALUE_ACCESSOR,
-   NgForm,
-   NG_VALIDATORS,
-   FormControl
-} from '@angular/forms';
+import { Component, Input, Output, forwardRef, ViewChild, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgForm, NG_VALIDATORS, FormControl } from '@angular/forms';
 
 @Component({
    selector: 'st-form',
@@ -44,6 +30,7 @@ export class StFormComponent implements ControlValueAccessor {
 
    @ViewChild('form') form: NgForm;
 
+   public showOptionalFields: boolean = false;
    public innerValue: any = {};
    private _value: any = {};
 
@@ -76,7 +63,31 @@ export class StFormComponent implements ControlValueAccessor {
       return propertyName && this.schema.required && this.schema.required.indexOf(propertyName) !== -1;
    }
 
-   // When value is received from outside
+   hasOptionalFields(): boolean {
+      for (let propertyName in this.schema.properties) {
+         if (this.schema.properties[propertyName].optional) {
+            return true;
+         }
+      }
+      return false;
+   }
+
+   getOptionalButtonLabel(): string {
+      if (!this.showOptionalFields) {
+         return 'Show more';
+      }
+      return 'Show less';
+   }
+
+   isOptionalField(propertyName: string): boolean {
+      return this.schema.properties[propertyName].optional;
+   }
+
+   onChangeOptionalFieldsVisibility(): void {
+      this.showOptionalFields = !this.showOptionalFields;
+   }
+
+   // When value is received from oustside
    writeValue(value: any): void {
       this.onChange(value);
       this.innerValue = value;

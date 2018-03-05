@@ -108,8 +108,7 @@ export const JSON_SCHEMA: any = {
       'boolean': {
          'title': 'Enable or disable this property',
          'description': 'You can enable or disable this property',
-         'type': 'boolean',
-         'default': true
+         'type': 'boolean'
       },
       'noDescription': {
          'title': 'Property without description',
@@ -121,8 +120,7 @@ export const JSON_SCHEMA: any = {
          'description': 'Set the log level: TRACE,DEBUG,INFO,WARN,ERROR and FATAL',
          'type': 'string',
          'default': 'INFO',
-         'enum': ['TRACE', 'DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL'],
-         'optional': true
+         'enum': ['TRACE', 'DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL']
       }
    },
    'required': [

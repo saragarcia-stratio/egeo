@@ -9,117 +9,88 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 export const JSON_SCHEMA: any = {
-   '$schema': 'http://json-schema.org/schema#',
-   'properties': {
-      'genericIntegerInput': {
-         'title': 'Generic number',
-         'description': 'Generic input description',
-         'type': 'integer',
-         'default': 8,
-         'minimum': 6,
-         'maximum': 10,
-         'exclusiveMinimum': false,
-         'exclusiveMaximum': false
+      'type': 'object',
+      'properties': {
+         'name': {
+            'title': 'Application name',
+            'description': 'The name of the Crossdata instance.',
+            'info': 'More additional information',
+            'type': 'string',
+            'default': 'crossdata-1',
+            'maxLength': 40,
+            'minLength': 5
+         },
+         'cores': {
+            'title': 'CPUs',
+            'description': 'CPU shares to allocate to each Crossdata instance.',
+            'type': 'number',
+            'default': 1.0,
+            'minimum': 0.5,
+            'maximum': 10.0,
+            'exclusiveMinimum': true
+         },
+         'cores2': {
+            'title': 'prueba',
+            'description': 'CPU shares to allocate to each Crossdata instance.',
+            'type': 'integer',
+            'default': 1.0,
+            'minimum': 0.5,
+            'maximum': 10.0
+         },
+         'memory': {
+            'title': 'Memory',
+            'description': 'Memory (MiB) to allocate to each Crossdata instance.',
+            'type': 'number',
+            'default': 2048.0,
+            'minimumExclusive': 1023.9,
+            'maximumExclusive': 51200
+         },
+         'instances': {
+            'title': 'Instances',
+            'description': 'Number of Crossdata instances to run.',
+            'type': 'integer',
+            'default': 1,
+            'minimum': 1,
+            'optional': true
+         },
+         'log_level': {
+            'title': 'Log Level',
+            'description': 'Set the log level: TRACE,DEBUG,INFO,WARN,ERROR and FATAL',
+            'type': 'string',
+            'default': 'INFO',
+            'enum': ['TRACE', 'DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL'],
+            'optional': true
+         },
+         'label_constraint': {
+            'title': 'Contraint label',
+            'description': 'Cluster label that will accept to launch Crossdata. (all, intelligence...)',
+            'type': 'string',
+            'default': '',
+            'optional': true
+         },
+         'accepted_resources_roles': {
+            'title': 'Accepted resources roles',
+            'description': 'Mesos roles that will accept Crossdata. (slave_public,slave_private...)',
+            'type': 'string',
+            'default': '',
+            'optional': true
+         },
+         'streams_parallelism': {
+            'title': 'Streams parallelism',
+            'description': 'Production parallelism of streams for responses',
+            'type': 'integer',
+            'default': 2,
+            'minimum': 1,
+            'optional': true
+         },
+         'federation': {
+            'title': 'Federation',
+            'description': 'Federation type',
+            'type': 'string',
+            'enum': ['LDAP', 'AD'],
+            'default': 'LDAP',
+            'optional': true
+         }
       },
-      'genericNumberInput': {
-         'title': 'Generic number',
-         'description': 'Generic input description',
-         'type': 'number',
-         'default': 1,
-         'minimum': 0.5,
-         'maximum': 10,
-         'exclusiveMinimum': false,
-         'exclusiveMaximum': false
-      },
-      'requiredNumber': {
-         'title': 'Required number',
-         'description': 'Required input description',
-         'type': 'integer',
-         'default': 5
-      },
-      'minNumber': {
-         'title': 'Min number',
-         'description': 'Min number input description',
-         'type': 'number',
-         'default': 8.6,
-         'minimum': 6
-      },
-      'maxNumber': {
-         'title': 'Max number',
-         'description': 'Max number input description',
-         'type': 'number',
-         'default': 5,
-         'maximum': 6
-      },
-      'minAndMaxNumber': {
-         'title': 'Number in a range',
-         'description': 'This number has to be between 7 and 19',
-         'type': 'number',
-         'default': 8.6,
-         'minimum': 6,
-         'maximum': 10,
-         'exclusiveMinimum': true,
-         'exclusiveMaximum': true
-      },
-      'genericTextInput': {
-         'title': 'Required text',
-         'description': 'This is a required text with a length of 2-6 characters and only the character a is valid',
-         'type': 'string',
-         'default': 'aa',
-         'minLength': 2,
-         'maxLength': 6,
-         'pattern': '(a)+'
-      },
-      'minLengthText': {
-         'title': 'Text with a max length',
-         'description': 'You have to type a text with 10 characters at least',
-         'type': 'string',
-         'default': '',
-         'minLength': 10
-      },
-      'maxLengthText': {
-         'title': 'Text with a max length',
-         'description': 'You have to type a text with less than 20 characters',
-         'type': 'string',
-         'default': '',
-         'maxLength': 20
-      },
-      'minAndMaxLengthText': {
-         'title': 'Text with a min and max length',
-         'description': 'You have to type a text with less than 20 and 10 characters at least',
-         'type': 'string',
-         'default': '',
-         'minLength': 10,
-         'maxLength': 20
-      },
-      'url': {
-         'title': 'URL',
-         'description': 'You have to type a valid url',
-         'type': 'string',
-         'pattern': '(https?:\\/\\/(?:www\\.|(?!www))[^\\s\\.]+\\.[^\\s]{2,}|www\\.[^\\s]+\\.[^\\s]{2,})'
-      },
-      'boolean': {
-         'title': 'Enable or disable this property',
-         'description': 'You can enable or disable this property',
-         'type': 'boolean',
-         'default': true
-      },
-      'noDescription': {
-         'title': 'Property without description',
-         'type': 'string'
-      },
-      'log_level': {
-         'title': 'Log Level',
-         'semantic_name': 'Log Level',
-         'description': 'Set the log level: TRACE,DEBUG,INFO,WARN,ERROR and FATAL',
-         'type': 'string',
-         'default': 'INFO',
-         'placeholder': 'Select a log level',
-         'enum': ['TRACE', 'DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL'],
-         'optional': true
-      }
-   },
-   'required': [
-      'url', 'genericNumberInput', 'genericIntegerInput', 'requiredNumber', 'requiredText', 'log_level'
-   ]
-};
+      'required': ['name', 'cores', 'memory']
+   }

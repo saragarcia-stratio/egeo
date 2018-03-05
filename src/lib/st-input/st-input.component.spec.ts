@@ -8,11 +8,13 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { Component, DebugElement, OnInit, ViewChild } from '@angular/core';
+import { Component, DebugElement, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators, FormControl } from '@angular/forms';
+import {
+   FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators, FormControl,
+   AbstractControl
+} from '@angular/forms';
 import { By } from '@angular/platform-browser';
-
 import { StInputComponent } from './st-input.component';
 import { StInputError } from './st-input.error.model';
 import { StInputModule } from './st-input.module';
@@ -69,7 +71,6 @@ describe('StInputComponent', () => {
       expect(input.value).toContain('name');
    });
 
-
    it('Input should be disabled', () => {
       fixture.detectChanges();
 
@@ -121,6 +122,13 @@ describe('StInputComponent', () => {
                   formControlName="description"
                   [fieldType]=fieldType
                ></st-input>
+                 <st-input
+                  label="Components"
+                  name="components"
+                  id="components-input"
+                  formControlName="components"
+                  fieldType="number"
+               ></st-input>
          </div>
       </form>
       `
@@ -152,7 +160,8 @@ class FormReactiveComponent implements OnInit {
 
    @ViewChild('input') input: StInputComponent;
 
-   constructor(private _fb: FormBuilder) { }
+   constructor(private _fb: FormBuilder) {
+   }
 
    ngOnInit(): void {
       this.reactiveForm = this._fb.group({
@@ -164,7 +173,8 @@ class FormReactiveComponent implements OnInit {
                Validators.maxLength(this.maxLength),
                Validators.pattern(this.pattern)
             ]
-         ]
+         ],
+         components: new FormControl()
       });
    }
 
@@ -177,7 +187,8 @@ class FormReactiveComponent implements OnInit {
    }
 
 
-   onSubmitReactiveForm(): void { }
+   onSubmitReactiveForm(): void {
+   }
 }
 
 let reactiveFixture: ComponentFixture<FormReactiveComponent>;
@@ -189,6 +200,9 @@ describe('StInputComponent in reactive form', () => {
          imports: [FormsModule, ReactiveFormsModule, StInputModule],
          declarations: [FormReactiveComponent]
       })
+         .overrideComponent(StInputComponent, {
+            set: { changeDetection: ChangeDetectionStrategy.Default }
+         })
          .compileComponents();  // compile template and css
    }));
 
@@ -430,7 +444,7 @@ describe('StInputComponent in reactive form', () => {
       expect((<HTMLSpanElement>errorMessage.nativeElement).textContent).toEqual('error');
    });
 
-   it ('if internal control is not defined, when event is listened and force validations is true it does not do anything', () => {
+   it('if internal control is not defined, when event is listened and force validations is true it does not do anything', () => {
       spyOn(reactiveComp.input, 'writeValue');
       reactiveComp.input.internalControl = undefined;
 
@@ -439,11 +453,21 @@ describe('StInputComponent in reactive form', () => {
 
       expect(reactiveComp.input.writeValue).not.toHaveBeenCalled();
 
-
       reactiveComp.input.internalControl = new FormControl();
       reactiveComp.input.ngOnChanges({});
 
       expect(reactiveComp.input.writeValue).toHaveBeenCalled();
+   });
+
+   it('if it is a number input, model emitted has to be a number', () => {
+      reactiveFixture.detectChanges();
+      let htmlInput: HTMLInputElement = reactiveFixture.nativeElement.querySelector('#components-input input');
+
+      htmlInput.value = '8.9';
+      htmlInput.dispatchEvent(new Event('input'));
+      reactiveFixture.detectChanges();
+
+      expect((<any> reactiveComp.reactiveForm.controls).components.value).toBe(8.9);
    });
 });
 

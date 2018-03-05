@@ -8,15 +8,10 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
+@import '../constants/fonts';
 
-.form-field {
-   display: block;
-   padding-bottom: 20px;
-   padding-right: 20px;
+
+.optional-fields-button i {
+   font-size: $egeo-font-size-xxxsmall;
+   padding-left: 1px;
 }
-
-.form-field.hidden {
-   visibility: hidden;
-   position: absolute;
-}
-

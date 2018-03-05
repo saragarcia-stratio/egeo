@@ -75,7 +75,7 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
    private sub: Subscription;
    private _value: any;
    private valueChangeSub: Subscription;
-   private internalInputModel: any = '';
+   private internalInputModel: any;
 
    constructor(private _cd: ChangeDetectorRef) {
    }
@@ -103,7 +103,9 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
 
    ngOnInit(): void {
       this.internalControl = new FormControl(this.internalInputModel);
-      this.valueChangeSub = this.internalControl.valueChanges.subscribe((value) => this.onChange(value));
+      this.valueChangeSub = this.internalControl.valueChanges.subscribe((value) => {
+         this.onChange(this.getTypedValue(value));
+      });
    }
 
    ngAfterViewInit(): void {
@@ -126,7 +128,7 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
    writeValue(value: any): void {
       this.internalInputModel = value;
       this._value = value;
-      this.internalControl.setValue(value);
+      this.internalControl.setValue(this.getTypedValue(value));
    }
 
    // Registry the change function to propagate internal model changes
@@ -211,5 +213,16 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
       return '';
    }
 
-
+   private getTypedValue(value: string): any {
+      switch (this.fieldType) {
+         case 'number':
+            if (!value || isNaN(Number(value))) {
+               return value;
+            } else {
+               return Number(value);
+            }
+         default:
+            return value;
+      }
+   }
 }

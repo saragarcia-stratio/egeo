@@ -55,6 +55,17 @@ describe('Directive: StMaxValidator', () => {
          expect(validationErrors.max).toBeDefined();
          expect(validationErrors.max.max).toBe(allowedMax);
          expect(validationErrors.max.actual).toBe(12);
+
+         directive.max = String(12.2);
+         directive.ngOnChanges(simpleChanges);
+
+         formControl.patchValue(12.3);
+         validationErrors = directive.validate(formControl);
+
+         expect(validationErrors).not.toBeNull();
+         expect(validationErrors.max).toBeDefined();
+         expect(validationErrors.max.max).toBe(12.2);
+         expect(validationErrors.max.actual).toBe(12.3);
       });
 
       it('if number is equal to the allowed, it does not return any error', () => {

@@ -18,10 +18,10 @@ import {
    EventEmitter,
    ViewChild
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl, NG_VALIDATORS, NgModel } from '@angular/forms';
-import { StInputError } from '../../st-input/st-input.error.model';
-import { StEgeo, StRequired } from '../../decorators/require-decorators';
-import { StDropDownMenuItem } from '../../st-dropdown-menu/st-dropdown-menu.interface';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl, NG_VALIDATORS, NgModel} from '@angular/forms';
+import {StInputError} from '../../st-input/st-input.error.model';
+import {StEgeo, StRequired} from '../../decorators/require-decorators';
+import {StDropDownMenuItem} from '../../st-dropdown-menu/st-dropdown-menu.interface';
 
 @StEgeo()
 @Component({
@@ -29,11 +29,11 @@ import { StDropDownMenuItem } from '../../st-dropdown-menu/st-dropdown-menu.inte
    templateUrl: './st-form-field.component.html',
    styleUrls: ['./st-form-field.component.scss'],
    providers: [
-      { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => StFormFieldComponent), multi: true },
-      { provide: NG_VALIDATORS, useExisting: forwardRef(() => StFormFieldComponent), multi: true }
+      {provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => StFormFieldComponent), multi: true},
+      {provide: NG_VALIDATORS, useExisting: forwardRef(() => StFormFieldComponent), multi: true}
    ],
    changeDetection: ChangeDetectionStrategy.OnPush,
-   host: { class: 'st-form-field' }
+   host: {class: 'st-form-field'}
 })
 
 export class StFormFieldComponent implements ControlValueAccessor, OnInit {
@@ -77,17 +77,23 @@ export class StFormFieldComponent implements ControlValueAccessor, OnInit {
             this.onChange(this.innerValue);
          }
       });
-      if (!this.errorMessages) {
-         this.errorMessages = {
-            generic: 'Error',
-            required: 'This field is required',
-            minLength: 'The field min length is ' + this.schema.value.minLength,
-            maxLength: 'The field max length is ' + this.schema.value.maxLength,
-            min: 'The number has to be higher than ' + this.min,
-            max: 'The number has to be minor than ' + this.max,
-            pattern: 'Invalid value'
-         };
+
+   }
+
+   get errors(): any {
+      if (this.errorMessages) {
+         return this.errorMessages;
       }
+
+      return {
+         generic: 'Error',
+         required: 'This field is required',
+         minLength: 'The field min length is ' + this.schema.value.minLength,
+         maxLength: 'The field max length is ' + this.schema.value.maxLength,
+         min: 'The number has to be higher than ' + (this.min - this.getInputStep()),
+         max: 'The number has to be minor than ' + (this.max + this.getInputStep()),
+         pattern: 'Invalid value'
+      };
    }
 
    get type(): string {
@@ -106,11 +112,11 @@ export class StFormFieldComponent implements ControlValueAccessor, OnInit {
    }
 
    get min(): number {
-      return this.schema.value.exclusiveMinimum ? this.schema.value.minimum + 1 : this.schema.value.minimum;
+      return this.schema.value.exclusiveMinimum ? this.schema.value.minimum + this.getInputStep() : this.schema.value.minimum;
    }
 
    get max(): number {
-      return this.schema.value.exclusiveMaximum ? this.schema.value.maximum - 1 : this.schema.value.maximum;
+      return this.schema.value.exclusiveMaximum ? this.schema.value.maximum - this.getInputStep() : this.schema.value.maximum;
    }
 
    get label(): string {
@@ -172,11 +178,11 @@ export class StFormFieldComponent implements ControlValueAccessor, OnInit {
       }
    }
 
-   getInputStep(): string {
+   getInputStep(): number {
       if (this.schema.value.type === 'number') {
-         return '0.1';
+         return 0.1;
       } else {
-         return '1';
+         return 1;
       }
    }
 
@@ -186,7 +192,7 @@ export class StFormFieldComponent implements ControlValueAccessor, OnInit {
          options.push(<StDropDownMenuItem> {label: 'Select one option', value: undefined});
          let enumValues: string[] = this.schema.value.enum;
          enumValues.forEach((value) => {
-            options.push(<StDropDownMenuItem> { label: value, value: value });
+            options.push(<StDropDownMenuItem> {label: value, value: value});
          });
       }
       return options;

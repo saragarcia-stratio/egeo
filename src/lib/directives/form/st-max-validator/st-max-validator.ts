@@ -40,6 +40,6 @@ export class StMaxValidator implements Validator, OnChanges {
    }
 
    private _createValidator(): void {
-      this._validator = Validators.max(parseInt(this.max, 0));
+      this._validator = Validators.max(Number(this.max));
    }
 }

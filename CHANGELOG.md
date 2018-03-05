@@ -5,6 +5,8 @@
 **New features:**
 
 *  st-form: Add functionality to hide and display optional fields
+*  st-form: Add functionality to render nested properties
+
 
 ## 8.4.0 (March 05, 2018)
 

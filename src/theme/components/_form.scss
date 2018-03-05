@@ -9,9 +9,18 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 @import '../constants/fonts';
+@import '../constants/colors';
 
+.st-form {
+   .optional-fields-button i {
+      font-size: $egeo-font-size-xxxsmall;
+      padding-left: 1px;
+   }
 
-.optional-fields-button i {
-   font-size: $egeo-font-size-xxxsmall;
-   padding-left: 1px;
+   .section-title {
+      font-size: $egeo-font-size-xlarge;
+      line-height: $egeo-line-height-xlarge;
+      color: $neutral-13;
+   }
+
 }

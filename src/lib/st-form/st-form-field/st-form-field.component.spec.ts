@@ -11,12 +11,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { cloneDeep as _cloneDeep } from 'lodash';
+
 import { PipesModule } from '../../pipes/pipes.module';
-import { JSON_SCHEMA } from '../spec/resources/json-schema';
 import { StFormDirectiveModule } from '../../directives/form/form-directives.module';
+import { JSON_SCHEMA } from '../spec/resources/json-schema';
 import { StFormFieldComponent } from './st-form-field.component';
 import { StInputModule } from '../../st-input/st-input.module';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { StFormFieldModule } from './st-form-field.module';
 import { StCheckboxModule } from '../../st-checkbox/st-checkbox.module';
 import { StSelectModule } from '../../st-select/st-select.module';
@@ -843,13 +845,13 @@ describe('StFormFieldComponent in reactive form', () => {
 
       describe('if a select field is required', () => {
          beforeEach(() => {
-            reactiveComp.schema = { key: 'log_level', value: JSON_SCHEMA.properties.log_level };
+            reactiveComp.schema = { key: 'log_level', value: _cloneDeep(JSON_SCHEMA.properties.log_level) };
             reactiveComp.qaTag = 'log_level';
             reactiveComp.required = true;
             reactiveFixture.detectChanges();
          });
 
-         it(' an option selected, form has to be valid', () => {
+         it('an option selected, form has to be valid', () => {
             reactiveFixture.nativeElement.querySelector('#log_level-input').click();
             reactiveFixture.detectChanges();
             let options: NodeListOf<Element> = reactiveFixture.nativeElement.querySelectorAll('.st-dropdown-menu-item');
@@ -863,12 +865,10 @@ describe('StFormFieldComponent in reactive form', () => {
             });
          });
 
-         it(' an no option is selected, form has to be invalid', () => {
+         it('no one option is selected, form has to be invalid', () => {
             reactiveComp.model = undefined;
-            reactiveFixture.whenStable().then(() => {
-               reactiveFixture.detectChanges();
-               expect(reactiveComp.reactiveForm.invalid).toBeTruthy();
-            });
+            reactiveFixture.detectChanges();
+            expect(reactiveComp.reactiveForm.invalid).toBeTruthy();
          });
 
       });

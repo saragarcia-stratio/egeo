@@ -10,11 +10,9 @@
  */
 import { Component, DebugElement, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {
-   FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators, FormControl,
-   AbstractControl
-} from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators, FormControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+
 import { StInputComponent } from './st-input.component';
 import { StInputError } from './st-input.error.model';
 import { StInputModule } from './st-input.module';
@@ -160,8 +158,7 @@ class FormReactiveComponent implements OnInit {
 
    @ViewChild('input') input: StInputComponent;
 
-   constructor(private _fb: FormBuilder) {
-   }
+   constructor(private _fb: FormBuilder) { }
 
    ngOnInit(): void {
       this.reactiveForm = this._fb.group({
@@ -187,8 +184,7 @@ class FormReactiveComponent implements OnInit {
    }
 
 
-   onSubmitReactiveForm(): void {
-   }
+   onSubmitReactiveForm(): void { }
 }
 
 let reactiveFixture: ComponentFixture<FormReactiveComponent>;

@@ -61,7 +61,6 @@ export const JSON_SCHEMA: any = {
          'exclusiveMinimum': true,
          'exclusiveMaximum': true
       },
-
       'genericTextInput': {
          'title': 'Required text',
          'description': 'This is a generic text',
@@ -115,12 +114,41 @@ export const JSON_SCHEMA: any = {
          'type': 'string'
       },
       'log_level': {
-         'semantic_name': 'Log Level',
          'title': 'Log Level',
          'description': 'Set the log level: TRACE,DEBUG,INFO,WARN,ERROR and FATAL',
          'type': 'string',
          'default': 'INFO',
          'enum': ['TRACE', 'DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL']
+      },
+      'executor': {
+         'title': 'Executor',
+         'type': 'object',
+         'description': 'Spark executor properties',
+         'optional': true,
+         'properties': {
+            'cores': {
+               'title': 'Cores',
+               'description': 'Number of per spark`s executor',
+               'type': 'integer',
+               'default': 4,
+               'minimumExclusive': 0,
+               'maximum': 8
+            },
+            'memory': {
+               'title': 'Memory',
+               'description': 'Spark executor memory',
+               'type': 'integer',
+               'default': 512,
+               'minimum': 512,
+               'maximum': 4096
+            },
+            'home': {
+               'title': 'Executor home',
+               'description': 'Set the directory in which Spark is installed on the executors in Mesos.',
+               'type': 'string',
+               'default': '/opt/spark/dist'
+            }
+         }
       }
    },
    'required': [

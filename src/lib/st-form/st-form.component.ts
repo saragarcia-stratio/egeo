@@ -15,6 +15,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgForm, NG_VALIDATORS, FormCon
    selector: 'st-form',
    templateUrl: './st-form.component.html',
    styleUrls: ['./st-form.component.scss'],
+   host: {class: 'st-form'},
    changeDetection: ChangeDetectionStrategy.OnPush,
    providers: [
       { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => StFormComponent), multi: true },
@@ -89,8 +90,10 @@ export class StFormComponent implements ControlValueAccessor {
 
    // When value is received from oustside
    writeValue(value: any): void {
-      this.onChange(value);
-      this.innerValue = value;
+      if (value) {
+         this.onChange(value);
+         this.innerValue = value;
+      }
    }
 
    onChangeProperty(value: any, property: string): void {

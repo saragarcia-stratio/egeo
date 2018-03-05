@@ -11,6 +11,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
+import { cloneDeep as _cloneDeep } from 'lodash';
+
 import { StFormComponent } from '../st-form.component';
 import { JSON_SCHEMA } from './resources/json-schema';
 import { PipesModule } from '../../pipes/pipes.module';
@@ -48,7 +50,7 @@ describe('StFormComponent', () => {
       });
       fixture = TestBed.createComponent(StFormComponent);
       component = fixture.componentInstance;
-      component.schema = Object.assign({}, JSON_SCHEMA);
+      component.schema = _cloneDeep(JSON_SCHEMA);
       fixture.detectChanges();
    });
 
@@ -67,13 +69,28 @@ describe('StFormComponent', () => {
             for (let propertyId in JSON_SCHEMA.properties) {
                if (JSON_SCHEMA.properties.hasOwnProperty(propertyId)) {
                   let property: any = JSON_SCHEMA.properties[propertyId];
-
-                  let label: HTMLElement = fixture.nativeElement.querySelector('#' + propertyId + '-label');
-
-                  if (property.description) {
-                     expect(label.title).toBe(property.description);
+                  if (property.type !== 'object') {
+                     let label: HTMLElement = fixture.nativeElement.querySelector('#' + propertyId + '-label');
+                     if (property.description) {
+                        expect(label.title).toBe(property.description);
+                     } else {
+                        expect(label.title).toBe('');
+                     }
                   } else {
-                     expect(label.title).toBe('');
+                     // properties of a section
+                     for (let sectionPropertyId in property.properties) {
+                        if (property.properties.hasOwnProperty(sectionPropertyId)) {
+                           let sectionProperty: any = property.properties[sectionPropertyId];
+                           let label: HTMLElement = fixture.nativeElement.querySelector('#' + sectionPropertyId + '-label');
+
+                           if (sectionProperty.description) {
+                              expect(label.title).toBe(sectionProperty.description);
+                           } else {
+                              expect(label.title).toBe('');
+                           }
+
+                        }
+                     }
                   }
                }
             }
@@ -106,11 +123,90 @@ describe('StFormComponent', () => {
    });
 
    it('if there is not any optional field, "show more" button is not displayed', () => {
+      component.schema = _cloneDeep(JSON_SCHEMA);
+      component.schema.properties.executor.optional = false;
+      fixture.detectChanges();
+
       expect(fixture.nativeElement.querySelector('button')).toBeNull();
    });
 
    describe('if there are some optional fields', () => {
       beforeEach(() => {
+         component.schema = _cloneDeep(JSON_SCHEMA);
+         component.schema.properties.genericNumberInput.optional = true;
+         component.schema.properties.log_level.optional = true;
+
+         fixture.detectChanges();
+      });
+
+      it('"show more" button is displayed', () => {
+         expect(fixture.nativeElement.querySelector('button')).not.toBeNull();
+         expect(fixture.nativeElement.querySelector('button').innerHTML).toContain('Show more');
+      });
+
+      it('these will be hidden until user clicks on button "show more"', () => {
+         expect(fixture.nativeElement.querySelector('#genericNumberInput').parentElement.parentElement.classList).toContain('hidden'); // form field element
+         expect(fixture.nativeElement.querySelector('#log_level').parentElement.classList).toContain('hidden'); // form field element
+
+         fixture.nativeElement.querySelector('button').click();
+         fixture.detectChanges();
+
+         expect(fixture.nativeElement.querySelector('#genericNumberInput').parentElement.parentElement.classList).not.toContain('hidden');
+         expect(fixture.nativeElement.querySelector('#log_level').parentElement.classList).not.toContain('hidden');
+      });
+
+      it('When user clicks on the button, it changes its text to hide again these fields', () => {
+         fixture.nativeElement.querySelector('button').click();
+         fixture.detectChanges();
+
+         expect(fixture.nativeElement.querySelector('button').innerHTML).toContain('Show less');
+
+         fixture.nativeElement.querySelector('button').click();
+         fixture.detectChanges();
+
+         expect(fixture.nativeElement.querySelector('#genericNumberInput').parentElement.parentElement.classList).toContain('hidden');
+         expect(fixture.nativeElement.querySelector('#log_level').parentElement.classList).toContain('hidden');
+      });
+   });
+
+   describe('It has to be able to render nested properties', () => {
+      let nestedProperty: any;
+      beforeEach(() => {
+         nestedProperty = JSON_SCHEMA.properties.executor;
+      });
+
+      it('A title has to be displayed for nested property', () => {
+         expect(fixture.nativeElement.querySelector('h1.section-title').innerHTML).toContain(nestedProperty.title);
+      });
+
+      it('properties of the nested property are rendered', () => {
+         let element: any;
+         fixture.whenStable().then(() => {
+
+            for (let propertyId in nestedProperty.properties) {
+               if (nestedProperty.properties.hasOwnProperty(propertyId)) {
+                  let property: any = nestedProperty.properties[propertyId];
+
+                  if (property.enum) { // select field
+                     fixture.detectChanges();
+                     element = fixture.nativeElement.querySelector('#' + propertyId + '-input');
+                  } else {
+                     element = fixture.nativeElement.querySelector('#' + propertyId);
+                  }
+
+                  if (property.default) {
+                     expect(element.value).toBe(property.default.toString());
+                  }
+                  expect(fixture.nativeElement.innerHTML).toContain(property.title);
+               }
+            }
+         });
+      });
+   });
+
+   describe('if there are some optional fields', () => {
+      beforeEach(() => {
+         component.schema = _cloneDeep(JSON_SCHEMA);
          component.schema.properties.genericNumberInput.optional = true;
          component.schema.properties.log_level.optional = true;
 
@@ -158,7 +254,7 @@ describe('StFormComponent', () => {
       `
 })
 class FormInTemplateDrivenFormComponent {
-   public schema: any = JSON_SCHEMA;
+   public schema: any = _cloneDeep(JSON_SCHEMA);
    public model: any = {};
    @ViewChild('formModel') public formModel: NgForm;
 }

@@ -26,7 +26,7 @@ describe('StSidebar', () => {
       })
       // remove this block when the issue #12313 of Angular is fixed
          .overrideComponent(StSidebarComponent, {
-            set: {changeDetection: ChangeDetectionStrategy.Default}
+            set: { changeDetection: ChangeDetectionStrategy.Default }
          })
          .compileComponents();  // compile template and css
 
@@ -53,16 +53,16 @@ describe('StSidebar', () => {
       expect(hostTag.classList).toContain('st-sidebar');
    });
 
-   it ('by default, first item is active if the active item is not introduced', () => {
+   it('by default, first item is active if the active item is not introduced', () => {
       expect(itemList[0].classList).toContain('item__active');
    });
 
-   it ('if active item is updated from outside, it has to be updated as active', () => {
+   it('if active item is updated from outside, it has to be updated as active', () => {
       // by default, first item is active
       expect(itemList[0].classList).toContain('item__active');
 
       // active is changed from outside
-      component.active =  component.items[4].id;
+      component.active = component.items[4].id;
       fixture.detectChanges();
 
       expect(itemList[4].classList).toContain('item__active');
@@ -104,5 +104,10 @@ describe('StSidebar', () => {
       });
    });
 
+   it('It should be able to add any class to an specific item', () => {
+      component.items[2].class = 'warning';
+      fixture.detectChanges();
 
+      expect(itemList[2].classList).toContain('warning');
+   });
 });

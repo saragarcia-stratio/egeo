@@ -20,7 +20,7 @@ import { StSidebarItem } from '@stratio/egeo';
 export class StSidebarDemoComponent {
    public items: StSidebarItem[] = [
       {id: 'vault-roles', label: 'Vault Roles'},
-      {id: 'identities', label: 'Identities'},
+      {id: 'identities', label: 'Identities', class: 'warning'},
       {id: 'masters', label: 'Masters'},
       {id: 'agents', label: 'Agents'},
       {id: 'roles', label: 'Roles'}

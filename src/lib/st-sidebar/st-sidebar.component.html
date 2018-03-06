@@ -13,6 +13,6 @@
 
 <h1 class="title"> {{title}}</h1>
 <ul class="item-list">
-   <li class="item" [ngClass]="{'item__active': isActive(item.id)}" *ngFor="let item of items" (click)="onSelectItem(item.id)">{{item.label}}
+   <li class="item {{item.class}}" [ngClass]="{'item__active': isActive(item.id)}" *ngFor="let item of items" (click)="onSelectItem(item.id)"><span>{{item.label}}</span>
    </li>
 </ul>

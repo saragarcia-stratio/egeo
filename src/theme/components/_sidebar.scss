@@ -49,6 +49,18 @@
             top: 0;
          }
       }
+
+      &.warning {
+         span:after {
+            content: '\E613';
+            font-family: $egeo-stratio-icons;
+            color: $status-critical-default;
+            font-size: $egeo-font-size-small;
+            position: relative;
+            padding-left: 10px;
+            vertical-align: text-top;
+         }
+      }
    }
 
 }

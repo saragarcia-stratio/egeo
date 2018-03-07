@@ -4,7 +4,7 @@
 
 * Pending changelog
 
-## 8.5.0 (upcoming)
+## 8.5.0 (March 07, 2018)
 
 **New features:**
 

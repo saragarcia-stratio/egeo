@@ -2,22 +2,34 @@
 
 ## 8.6.0 (upcoming)
 
-**Others**
+**Breaking changes:**
 
-* st-form: Allow to render read only fields
-*  st-tooltip: Apply new style
-
-
-**Others**
-
-*  st-pagination: Apply new style
-
+* st-form: Placeholder now is in 'examples' attribute of json schema
 
 **New features:**
 
-*  st-form: Add functionality to hide and display optional fields
-*  st-form: Add functionality to render nested properties
-*  st-sidebar: Allow to add classes to items
+* st-form: Allow to render read only fields
+
+**Others:**
+
+* st-tooltip: Apply new style
+* st-pagination: Apply new style
+
+
+## 8.5.1 (March 12, 2018)
+
+**Fixed bugs:**
+
+* st-form-list: Fixed the formArray refresh
+
+
+## 8.5.0 (March 07, 2018)
+
+**New features:**
+
+* st-form: Add functionality to hide and display optional fields
+* st-form: Add functionality to render nested properties
+* st-sidebar: Allow to add classes to items
 
 
 ## 8.4.0 (March 05, 2018)

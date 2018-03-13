@@ -10,10 +10,21 @@
 
 * st-form: Allow to render read only fields
 
+**Fixed bugs:**
+
+* st-sidebar: Fix bug when there are an active item and another with an added class
+
 **Others:**
 
 * st-tooltip: Apply new style
 * st-pagination: Apply new style
+
+
+## 8.5.2 (March 13, 2018)
+
+**Fixed bugs:**
+
+* st-sidebar: Fix bug when there are an active item and another with an added class
 
 
 ## 8.5.1 (March 12, 2018)
@@ -48,7 +59,7 @@
 **Breaking changes:**
 
 * st-form-list: Now, it emits the events: add, remove, valueChange and blur
-* st-form: Placeholder now is in 'examples' attribute of json schema
+
 
 ## 8.3.2 (February 23, 2018)
 

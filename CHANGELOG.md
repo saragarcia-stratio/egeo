@@ -1,6 +1,6 @@
 # Changelog
 
-## 8.6.1 (upcoming)
+## 8.6.1 (March 14, 2018)
 
 **Fixed bugs:**
 

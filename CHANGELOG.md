@@ -9,7 +9,11 @@
 * st-form: Add the possibility of displaying sections as accordion
 * st-form: Allow to force the validation of fields without any user interaction
 
-   
+**Fixed bugs:**
+ 
+* st-tooltip: It is not displayed when compiling to AOT
+
+ 
 ## 8.6.0 (March 14, 2018)
 
 **Breaking changes:**

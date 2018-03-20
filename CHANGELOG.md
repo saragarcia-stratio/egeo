@@ -1,5 +1,9 @@
 # Changelog
 
+## 8.8.0 (upcoming)
+
+* Pending changelog
+
 ## 8.7.0 (upcoming)
 
 **New features:**

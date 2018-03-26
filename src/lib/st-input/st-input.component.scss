@@ -17,15 +17,12 @@
    box-shadow: none;
 }
 
-.st-input-container .st-input-title {
-   display: block;
-   float: left;
-   padding: 0;
-   position: relative;
-   width: 100%;
-}
-
 .st-input {
    width: 100%;
    padding-bottom: 6px;
 }
+
+.input-container {
+   position: relative;
+}
+

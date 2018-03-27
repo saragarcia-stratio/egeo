@@ -400,8 +400,8 @@ describe('StSelectComponent', () => {
 
       beforeEach(() => {
          comp.label = 'Test';
-         comp.options = simpleItems;
-         fakeDefault = simpleItems[2].value;
+         comp.options = [<StDropDownMenuItem>{ label: 'select one', value: undefined }, ...simpleItems];
+         fakeDefault = comp.options[4].value;
          comp.default = fakeDefault;
          fixture.detectChanges();
          input = fixture.debugElement.query(By.css('input')).nativeElement;
@@ -414,7 +414,7 @@ describe('StSelectComponent', () => {
          items = fixture.debugElement.queryAll(By.css('st-dropdown-menu-item>li'));
 
          expect(fixture.nativeElement.querySelector('.st-form-control-reset-button')).toBeNull();
-         (items[0].nativeElement as HTMLElement).click();
+         (items[1].nativeElement as HTMLElement).click();
          fixture.detectChanges();
 
          input.click();
@@ -430,7 +430,7 @@ describe('StSelectComponent', () => {
          items = fixture.debugElement.queryAll(By.css('st-dropdown-menu-item>li'));
 
          expect(fixture.nativeElement.querySelector('.st-form-control-reset-button')).toBeNull();
-         (items[0].nativeElement as HTMLElement).click();
+         (items[1].nativeElement as HTMLElement).click();
          fixture.detectChanges();
 
          input.click();
@@ -451,7 +451,7 @@ describe('StSelectComponent', () => {
 
          items = fixture.debugElement.queryAll(By.css('st-dropdown-menu-item>li'));
 
-         (items[2].nativeElement as HTMLElement).click();  // select the default option
+         (items[4].nativeElement as HTMLElement).click();  // select the default option
          fixture.detectChanges();
 
          expect(fixture.nativeElement.querySelector('.st-form-control-reset-button')).toBeNull();
@@ -467,7 +467,26 @@ describe('StSelectComponent', () => {
          expect(fixture.nativeElement.querySelector('.st-form-control-reset-button')).toBeNull();
 
          label.click();
-         (items[0].nativeElement as HTMLElement).click();
+         (items[1].nativeElement as HTMLElement).click();
+         fixture.detectChanges();
+
+         label.click();
+         fixture.nativeElement.querySelector('.st-form-control-reset-button').click();
+         fixture.detectChanges();
+
+         expect(comp.selected.value).toEqual(fakeDefault);
+      });
+
+      it ('after user selects an empty option, he can return to the default', () => {
+         const label: HTMLLabelElement = fixture.debugElement.query(By.css('label')).nativeElement;
+         label.click();
+         fixture.detectChanges();
+         items = fixture.debugElement.queryAll(By.css('st-dropdown-menu-item>li'));
+
+         expect(fixture.nativeElement.querySelector('.st-form-control-reset-button')).toBeNull();
+
+         label.click();
+         (items[0].nativeElement as HTMLElement).click(); // empty option
          fixture.detectChanges();
 
          label.click();

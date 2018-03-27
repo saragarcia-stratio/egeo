@@ -60,11 +60,15 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor {
    expandedMenu: boolean = false;
 
    onChange: (_: any) => void;
-   onTouched: () => void;
 
    private _inputHTMLElement: HTMLInputElement | undefined = undefined;
    private _isDisabled: boolean = false;
    private _options: StDropDownMenuItem[] | StDropDownMenuGroup[] = [];
+   private _touched: boolean = false;
+
+   onTouched(): void {
+      this._touched = true;
+   }
 
    constructor(private _selectElement: ElementRef,
                private _injector: Injector,
@@ -192,12 +196,15 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor {
    }
 
    createResetButton(): boolean {
-      return this.default !== undefined && this.selected !== undefined
-         && this.selected.value !== this.default;
+      return this.default !== undefined && ((!this.selected  && this._touched) || (this.selected && this.selected.value !== this.default));
    }
 
    resetToDefault(): void {
       this.writeValue(this.default);
+      this.select.emit(this.default);
+      if (this.onChange) {
+         this.onChange(this.default);
+      }
       this._cd.markForCheck();
    }
 

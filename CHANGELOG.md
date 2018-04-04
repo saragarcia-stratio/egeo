@@ -11,6 +11,9 @@
 
 * Apply visual changes to several components for contrast improvements 
 
+**Fixed bugs:**
+
+* st-draggable-card: Fix delay and performance
 
 ## 8.8.0 (April 04, 2018)
 

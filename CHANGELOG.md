@@ -5,10 +5,11 @@
 **New features:**
 
 * st-form: Allow to display and hide fields according to the value of another fields
+* st-form: Display readonly fields as text
 
 **Others**
 
-* Apply visual changes to several components for contrast improvements
+* Apply visual changes to several components for contrast improvements 
 
 
 ## 8.8.0 (upcoming)

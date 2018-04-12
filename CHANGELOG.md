@@ -6,6 +6,10 @@
 
 * st-tree: Completely refactored
 
+**New features:**
+
+* st-select: Allow to propagate itemsBeforeScroll from select to dopdown
+
 **Others**
 
 * st-form: Remove e.g. from placeholders

@@ -31,10 +31,19 @@
       font-family: $egeo-nunito-sans-bold;
    }
 
+   .description {
+      font-size: $egeo-font-size-small;
+      line-height: $egeo-line-height-small;
+      width: 100%;
+      color: $neutral-11;
+      padding-bottom: 20px;
+   }
+
    .category {
       .title {
          font-size: $egeo-font-size-xxlarge;
          line-height: $egeo-line-height-xxlarge;
+         padding-bottom: 20px;
       }
       .form-field.parent-field {
          .st-switch {

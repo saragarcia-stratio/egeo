@@ -1,5 +1,9 @@
 # Changelog
 
+## 9.2.0 (upcoming)
+
+* Pending changelog
+
 ## 9.1.0 (upcoming)
 
 **New features:**

@@ -1,5 +1,9 @@
 # Changelog
 
+## 10.1.0 (upcoming)
+
+* Pending changelog
+
 ## 10.0.0 (upcoming)
 
 **Fixed bugs:**

@@ -1,6 +1,6 @@
 # Changelog
 
-## 10.0.0 (upcoming)
+## 10.0.0 (April 20, 2018)
 
 **Fixed bugs:**
 

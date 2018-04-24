@@ -7,6 +7,7 @@
 * st-form: Fix performance when there are fields with ui attribute 'visible'
 
 
+
 ## 10.0.0 (April 20, 2018)
 
 **Fixed bugs:**

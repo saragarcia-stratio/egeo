@@ -10,6 +10,8 @@ import { StFormFieldModule } from '../../st-form/st-form-field/st-form-field.mod
 import { StFormListModule } from '../st-form-list.module';
 import { StInputModule } from '../../st-input/st-input.module';
 import { StCheckboxModule } from '../../st-checkbox/st-checkbox.module';
+import { StFormFieldComponent } from '../../st-form/st-form-field/st-form-field.component';
+import { StInputComponent } from '../../st-input/st-input.component';
 
 let component: StFormListComponent;
 let fixture: ComponentFixture<StFormListComponent>;
@@ -17,6 +19,8 @@ let fakeModel: Array<any> = [
    { genericNumberInput: 8, genericTextInput: 'fake text 1' },
    { genericNumberInput: 20, genericTextInput: 'fake text 2' }
 ];
+
+let realSetTimeout: any = window.setTimeout;
 
 describe('[StFormList]', () => {
    beforeEach(async(() => {
@@ -32,6 +36,12 @@ describe('[StFormList]', () => {
       })
       // remove this block when the issue #12313 of Angular is fixed
          .overrideComponent(StFormListComponent, {
+            set: { changeDetection: ChangeDetectionStrategy.Default }
+         })
+         .overrideComponent(StFormFieldComponent, {
+            set: { changeDetection: ChangeDetectionStrategy.Default }
+         })
+         .overrideComponent(StInputComponent, {
             set: { changeDetection: ChangeDetectionStrategy.Default }
          })
          .compileComponents();  // compile template and css
@@ -93,7 +103,8 @@ describe('[StFormList]', () => {
 
    describe('user can add new items to list', () => {
 
-      it('item is loaded according to the json schema displaying with a default value if exists', () => {
+      it('item is loaded according to the json schema displaying with a default value if exists', (done) => {
+         window.setTimeout = realSetTimeout;
          component.value = [];
          component.schema = TWO_INPUTS_JSON_SCHEMA;
          fixture.detectChanges();
@@ -102,15 +113,19 @@ describe('[StFormList]', () => {
          fixture.detectChanges();
          fixture.whenStable().then(() => {
             fixture.detectChanges();
+            setTimeout(() => {
+               fixture.detectChanges();
 
-            let controls = fixture.nativeElement.querySelectorAll('input');
+               let controls = fixture.nativeElement.querySelectorAll('input');
 
-            expect(controls.length).toBe(Object.keys(TWO_INPUTS_JSON_SCHEMA.properties).length);
-            for (let i = 0; i < Object.keys(TWO_INPUTS_JSON_SCHEMA.properties).length; ++i) {
-               let property: string = Object.keys(TWO_INPUTS_JSON_SCHEMA.properties)[i];
-               expect(fixture.nativeElement.querySelector('#' + property + '-0')).not.toBeNull();
-               expect(controls[i].value).toEqual(String(TWO_INPUTS_JSON_SCHEMA.properties[property].default));
-            }
+               expect(controls.length).toBe(Object.keys(TWO_INPUTS_JSON_SCHEMA.properties).length);
+               for (let i = 0; i < Object.keys(TWO_INPUTS_JSON_SCHEMA.properties).length; ++i) {
+                  let property: string = Object.keys(TWO_INPUTS_JSON_SCHEMA.properties)[i];
+                  expect(fixture.nativeElement.querySelector('#' + property + '-0')).not.toBeNull();
+                  expect(fixture.nativeElement.querySelector('#' + property + '-0').value).toEqual(String(TWO_INPUTS_JSON_SCHEMA.properties[property].default));
+               }
+               done();
+            });
          });
       });
 

@@ -1,8 +1,11 @@
 # Changelog
 
-## 10.1.0 (upcoming)
+## 10.1.0 (April 24, 2018)
 
-* Pending changelog
+**Fixed bugs:**
+
+* st-form: Fix performance when there are fields with ui attribute 'visible'
+
 
 ## 10.0.0 (April 20, 2018)
 

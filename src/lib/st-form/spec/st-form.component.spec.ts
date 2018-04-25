@@ -38,8 +38,6 @@ let getParentElement = (element: HTMLElement, level: number): any => {
    return parent;
 };
 
-let realSetTimeout: any = window.setTimeout;
-
 describe('StFormComponent', () => {
 
    beforeEach(async(() => {
@@ -713,6 +711,25 @@ describe('StFormComponent', () => {
 
    });
 
+   describe('form can be configured to be able to enable or disable the visualization of tooltips through the input "showTooltips"', () => {
+      it ('by default, tooltips are displayed', () => {
+         expect(fixture.nativeElement.querySelector('label').title).toEqual(component.schema.properties.genericIntegerInput.description);
+      });
+
+      it ('if input is false, tooltips are not displayed', () => {
+         component.showTooltips = false;
+         fixture.detectChanges();
+
+         expect(fixture.nativeElement.querySelector('label').title).toEqual('');
+      });
+
+      it ('if input is true, tooltips are displayed in fields with description', () => {
+         component.showTooltips = true;
+         fixture.detectChanges();
+
+         expect(fixture.nativeElement.querySelector('label').title).toEqual(component.schema.properties.genericIntegerInput.description);
+      });
+   });
 });
 
 

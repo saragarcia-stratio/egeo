@@ -1,6 +1,13 @@
 # Changelog
 
-## 10.1.0 (April 24, 2018)
+## 10.1.0 (upcoming)
+
+**New features:**
+
+* st-form: Allow to enable or disable tooltips
+
+
+## 10.0.1 (April 24, 2018)
 
 **Fixed bugs:**
 

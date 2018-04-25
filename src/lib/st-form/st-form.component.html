@@ -37,6 +37,7 @@
                         [required]="isRequired(property.key)"
                         [hasDependencies]="isAParentField(property.key) || (isASwitchSection() && isTheFirstField(property.key))"
                         [ngClass]="getFieldClasses(property.key)"
+                        [showTooltip]="showTooltips"
                         [qaTag]="property.key">
          </st-form-field>
 
@@ -50,6 +51,7 @@
                (ngModelChange)="onChangeProperty($event, property.key)"
                [attr.id]="property.key + '-section'"
                [nestingLevel]="nestingLevel + 1"
+               [showTooltips]="showTooltips"
                [sectionDescriptionLevel]="sectionDescriptionLevel">
             </st-form>
          </div>

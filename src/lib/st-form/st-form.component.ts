@@ -71,6 +71,11 @@ export class StFormComponent implements AfterViewInit, AfterViewChecked, Control
     * By default, section descriptions are not displayed.
     */
    @Input() sectionDescriptionLevel: number = -1;
+
+   /** @Input {boolean} [showTooltips=-1] Enable or disable displaying of tooltips
+    * By default, tooltips are displayed
+    */
+   @Input() showTooltips: boolean = true;
    /** @Output {any} [valueChange=] Event emitted when value is changed. This emits the current form value */
    @Output() valueChange: EventEmitter<any> = new EventEmitter<any>();
 

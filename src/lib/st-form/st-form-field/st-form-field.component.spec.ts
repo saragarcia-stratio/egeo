@@ -823,7 +823,6 @@ describe('StFormFieldComponent', () => {
       });
    });
 
-
    describe('readOnly property', () => {
       it('if it is true, field can`t be edited and it is displayed as normal text', (done) => {
          let schema: any = _cloneDeep(JSON_SCHEMA.properties.genericIntegerInput);
@@ -855,7 +854,6 @@ describe('StFormFieldComponent', () => {
          });
       });
    });
-
 
    describe('should be able to render switches with their validations', () => {
       let switchElement: HTMLInputElement;
@@ -911,6 +909,18 @@ describe('StFormFieldComponent', () => {
             expect(fixture.nativeElement.querySelector('#security-input').checked).toBe(booleanProperty.default);
          });
       });
+   });
+
+   it('should be able to enable or disable the visualization of tooltips through the input "showTooltip"', () => {
+      component.schema = { key: 'genericIntegerInput', value: JSON_SCHEMA.properties.genericIntegerInput };
+      component.showTooltip = false;
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('label').title).toEqual('');
+
+      component.showTooltip = true;
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelector('label').title).toEqual(component.schema.value.description);
    });
 })
 ;

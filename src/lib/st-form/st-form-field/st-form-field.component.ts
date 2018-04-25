@@ -16,10 +16,10 @@ import {
    forwardRef,
    ChangeDetectionStrategy,
    EventEmitter,
-   ViewChild, HostBinding
+   ViewChild,
+   HostBinding
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl, NG_VALIDATORS, NgModel } from '@angular/forms';
-
 import { StInputError } from '../../st-input/st-input.error.model';
 import { StEgeo, StRequired } from '../../decorators/require-decorators';
 import { StDropDownMenuItem } from '../../st-dropdown-menu/st-dropdown-menu.interface';
@@ -48,6 +48,7 @@ export class StFormFieldComponent implements ControlValueAccessor, OnInit {
    @Input() value: any;
    @Input() hasDependencies: boolean;
    @Input() forceValidations: boolean;
+   @Input() showTooltip: boolean = true;
 
    @Output() valueChange: EventEmitter<any> = new EventEmitter<any>();
    @Output() blur: EventEmitter<any> = new EventEmitter<any>();
@@ -149,7 +150,11 @@ export class StFormFieldComponent implements ControlValueAccessor, OnInit {
    }
 
    get description(): string {
-      return this.schema.value.description;
+      if (this.showTooltip) {
+         return this.schema.value.description;
+      } else {
+         return undefined;
+      }
    }
 
    get minLength(): number {

@@ -4,7 +4,7 @@
 
 * Pending changelog
 
-## 10.1.0 (upcoming)
+## 10.1.0 (May 03, 2018)
 
 **New features:**
 

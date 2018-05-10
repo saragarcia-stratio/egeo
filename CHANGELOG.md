@@ -2,7 +2,10 @@
 
 ## 10.2.0 (upcoming)
 
-* Pending changelog
+**Others:**
+
+* Update stratio parent artifact to 0.10.0
+   
 
 ## 10.1.0 (May 03, 2018)
 

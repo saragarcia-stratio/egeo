@@ -1,11 +1,18 @@
 # Changelog
 
-## 10.2.0 (upcoming)
+## 11.0.0 (upcoming)
+
+**Fixed bugs:**
+
+* st-horizontal-tabs: Fix activeOption on init the component
+
+**Breaking changes:**
+
+* st-horizontal-tabs: Changed activeOption from string with the text for an option with the interface StHorizontalTab
 
 **Others:**
 
 * Update stratio parent artifact to 0.10.0
-   
 
 ## 10.1.0 (May 03, 2018)
 

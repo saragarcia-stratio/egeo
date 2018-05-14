@@ -14,7 +14,7 @@
    <a *ngFor="let option of options; let i = index;"
       class="tab"
       [style.width]="tabWidth"
-      (click)="activateOption(option, i)"
+      (click)="activateOption(option)"
       href="javascript:void(0)"
       [ngClass]="{'tab--active': isActive(option)}"
       [attr.id]="qaTag + '-tab-' + i">

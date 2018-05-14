@@ -25,4 +25,6 @@ export class StHorizontalTabsDemoComponent {
       {id: 'dashboard', text: 'Dashboard'},
       {id: 'nodes', text: 'Nodes'}
    ];
+
+   public active: StHorizontalTab = this.options[1];
 }

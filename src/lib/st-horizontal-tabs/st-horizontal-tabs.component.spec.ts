@@ -71,11 +71,11 @@ describe('StHorizontalTabsComponent', () => {
          component.ngOnInit();
 
          expect(component.isActive(fakeOptions[0])).toBeTruthy();
-         expect(component.activeOption).toBe(fakeOptions[0].text);
+         expect(component.activeOption).toBe(fakeOptions[0]);
       });
 
       it('if active option is defined, it will be used as the active option', () => {
-         component.activeOption = fakeOptions[1].text;
+         component.activeOption = fakeOptions[1];
          component.ngOnInit();
 
          expect(component.isActive(fakeOptions[1])).toBeTruthy();
@@ -86,19 +86,19 @@ describe('StHorizontalTabsComponent', () => {
       });
 
       it ('line is positioned below the active tab', () => {
-         component.activateOption(fakeOptions[1], 1);
+         component.activateOption(fakeOptions[1]);
 
          fixture.detectChanges();
 
          expect(component.linePosition).toBe(100 / fakeOptions.length + '%');
 
-         component.activateOption(fakeOptions[2], 2);
+         component.activateOption(fakeOptions[2]);
 
          fixture.detectChanges();
 
          expect(component.linePosition).toBe(2 * 100 / fakeOptions.length + '%');
 
-         component.activateOption(fakeOptions[0], 0);
+         component.activateOption(fakeOptions[0]);
 
          fixture.detectChanges();
 
@@ -107,7 +107,7 @@ describe('StHorizontalTabsComponent', () => {
    });
 
    it('should be able to return if an option is active', () => {
-      component.activeOption = fakeOptions[0].text;
+      component.activeOption = fakeOptions[0];
       fixture.detectChanges();
 
       expect(component.isActive(fakeOptions[1])).toBeFalsy();
@@ -116,37 +116,36 @@ describe('StHorizontalTabsComponent', () => {
 
    describe('should be able to activate an option', () => {
 
-      it('when active option is changed, active option name is updated', () => {
-         component.activateOption(fakeOptions[1], 1);
+      it('when active option is changed, active option is updated', () => {
+         component.activateOption(fakeOptions[1]);
          fixture.detectChanges();
 
-         expect(component.activeOption).toBe(fakeOptions[1].text);
+         expect(component.activeOption).toBe(fakeOptions[1]);
       });
 
-
-      it('when active option is changed, an event is emitted with the active option name', () => {
+      it('when active option is changed, an event is emitted with the active option', () => {
          spyOn(component.changedOption, 'emit');
 
-         component.activateOption(fakeOptions[0], 0);
+         component.activateOption(fakeOptions[0]);
          fixture.detectChanges();
 
          expect(component.changedOption.emit).toHaveBeenCalledWith(fakeOptions[0]);
       });
 
       it ('line is positioned below the active option', () => {
-         component.activateOption(fakeOptions[1], 1);
+         component.activateOption(fakeOptions[1]);
 
          fixture.detectChanges();
 
          expect(component.linePosition).toBe(100 / fakeOptions.length + '%');
 
-         component.activateOption(fakeOptions[2], 2);
+         component.activateOption(fakeOptions[2]);
 
          fixture.detectChanges();
 
          expect(component.linePosition).toBe(2 * 100 / fakeOptions.length + '%');
 
-         component.activateOption(fakeOptions[0], 0);
+         component.activateOption(fakeOptions[0]);
 
          fixture.detectChanges();
 

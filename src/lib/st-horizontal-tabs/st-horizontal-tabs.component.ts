@@ -11,6 +11,7 @@
 import {
    ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 } from '@angular/core';
+import { findIndex } from 'lodash';
 import { StHorizontalTab } from './st-horizontal-tabs.model';
 import { StEgeo, StRequired } from '../decorators/require-decorators';
 
@@ -42,8 +43,8 @@ import { StEgeo, StRequired } from '../decorators/require-decorators';
 
 @StEgeo()
 export class StHorizontalTabsComponent implements OnInit {
-   /** @Input {string} [activeOption=''] Current active option name */
-   @Input() activeOption: string;
+   /** @Input {StHorizontalTab} [activeOption=''] Current active option */
+   @Input() activeOption: StHorizontalTab;
    /** @Input {StHorizontalTab[]} [^options=''] An array of StHorizontalTab objects (see below) that defines the links
     * that will appear and that will be disabled
     */
@@ -56,11 +57,11 @@ export class StHorizontalTabsComponent implements OnInit {
    @Output() changedOption: EventEmitter<StHorizontalTab> = new EventEmitter<StHorizontalTab>();
 
    private _tabWidth: string;
-   private _activeTabPosition: number;
 
    ngOnInit(): void {
-      if (this.options && this.options.length > 0 && !this.activeOption) {
-         this.activateOption(this.options[0], 0);
+      if (this.options && this.options.length > 0) {
+         this.activeOption = this.activeOption || this.options[0];
+         this.activateOption(this.activeOption);
       }
 
       this._tabWidth = Number(100 / this.options.length) + '%';
@@ -71,16 +72,19 @@ export class StHorizontalTabsComponent implements OnInit {
    }
 
    get linePosition(): string {
-      return Number(this._activeTabPosition * 100 / this.options.length) + '%';
+      return Number(this.optionPosition(this.activeOption) * 100 / this.options.length) + '%';
    }
 
    isActive(option: StHorizontalTab): boolean {
-      return this.activeOption === option.text;
+      return this.activeOption === option;
    }
 
-   activateOption(option: StHorizontalTab, position: number): void {
-      this.activeOption = option.text;
-      this._activeTabPosition = position;
+   activateOption(option: StHorizontalTab): void {
+      this.activeOption = option;
       this.changedOption.emit(option);
+   }
+
+   private optionPosition(option: StHorizontalTab): number {
+      return findIndex(this.options, (o) => o.id === option.id);
    }
 }

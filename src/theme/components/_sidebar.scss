@@ -18,6 +18,21 @@
    border: solid 1px $neutral-03;
    text-transform: capitalize;
 
+   .item-list {
+      &--inner {
+         margin-top: 15px;
+
+         .item {
+            margin-bottom: 15px;
+         }
+
+         & > li:last-of-type {
+            margin-bottom: 0;
+         }
+
+      }
+   }
+
    .title {
       font-family: $egeo-nunito-sans-extraBold;
       font-size: $egeo-font-size-medium;
@@ -31,11 +46,11 @@
       font-size: $egeo-font-size-small;
       line-height: $egeo-line-height-small;
       color: $neutral-11;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       padding-left: 20px;
       position: relative;
 
-      &__active {
+      &--active {
          font-family: $egeo-nunito-sans-bold;
 
          &::before {
@@ -48,6 +63,10 @@
             left: 0;
             top: 0;
          }
+      }
+
+      &--has-active >  .item__label {
+         font-family: $egeo-nunito-sans-bold;
       }
 
       &.warning {

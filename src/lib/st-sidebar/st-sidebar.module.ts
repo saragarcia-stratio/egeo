@@ -12,10 +12,11 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { StSidebarComponent } from './st-sidebar.component';
+import { StSidebarItemListComponent } from './st-sidebar-item-list/st-sidebar-item-list.component';
 
 @NgModule({
    imports: [CommonModule],
-   declarations: [StSidebarComponent],
+   declarations: [StSidebarComponent, StSidebarItemListComponent],
    exports: [StSidebarComponent]
 })
 

@@ -294,6 +294,22 @@ describe('StFormListComponent in reactive form', () => {
             expect(reactiveFixture.nativeElement.querySelector('.button.button-link-primary')).toBeNull();
          });
       });
+
+      it ('can be enabled again', (done) => {
+         reactiveComp.reactiveForm.enable();
+         reactiveFixture.detectChanges();
+
+         let inputs: HTMLInputElement[] = reactiveFixture.nativeElement.querySelectorAll('input');
+
+         for (let i = 0; i < inputs.length; ++i) {
+            expect(inputs[i].disabled).toBeFalsy();
+         }
+         reactiveFixture.whenStable().then(() => {
+            reactiveFixture.detectChanges();
+            expect(reactiveFixture.nativeElement.querySelector('.button.button-link-primary')).not.toBeNull();
+            done();
+         });
+      });
    });
 
 });

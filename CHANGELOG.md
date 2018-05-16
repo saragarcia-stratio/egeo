@@ -2,6 +2,10 @@
 
 ## 11.0.0 (upcoming)
 
+**New features:**
+
+* st-sidebar: Allow to display more than one level
+
 **Fixed bugs:**
 
 * st-horizontal-tabs: Fix activeOption on init the component
@@ -17,6 +21,7 @@
 **Others:**
 
 * Update stratio parent artifact to 0.10.0
+
 
 ## 10.1.0 (May 03, 2018)
 

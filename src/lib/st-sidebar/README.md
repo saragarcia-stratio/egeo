@@ -1,4 +1,4 @@
-# Table (Component)
+# Sidebar (Component)
 
    The sidebar component has been designed to navigate through different sections of a web page.
 
@@ -7,8 +7,8 @@
 | Property | Type            | Req   | Description                         | Default |
 | -------- | --------------- | ----- | ----------------------------------- | ------- |
 | title    | String          | False | Title displayed on the top of menu  | ''      |
-| items    | StSidebarItem[] | False | List of items displayed on the menu | ''      |
 | active   | String          | False | The id of the current active item   | ''      |
+| items    | StSidebarItem[] | False | List of items displayed on the menu | ''      |
 
 ## Outputs
 
@@ -36,6 +36,7 @@ export interface StSidebarItem {
     id: string;
     label: string;
     class ? : string;
+    items ? : StSidebarItem[]
 }
 ```
 

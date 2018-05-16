@@ -11,8 +11,7 @@
 
 -->
 
-<h1 class="title"> {{title}}</h1>
+<h1 class="title" *ngIf="title"> {{title}}</h1>
 <ul class="item-list">
-   <li class="item" [ngClass]="getItemClasses(item)" *ngFor="let item of items" (click)="onSelectItem(item.id)"><span>{{item.label}}</span>
-   </li>
+   <st-sidebar-item-list [active]="active" [items]="items" (change)="onChange($event)"></st-sidebar-item-list>
 </ul>

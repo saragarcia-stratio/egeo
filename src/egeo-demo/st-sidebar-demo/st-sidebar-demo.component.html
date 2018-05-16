@@ -12,6 +12,6 @@
 -->
 
 <section class="container-liquid">
-   <st-sidebar class="sidebar" title="Mesos Manager" [items]="items" qaTag="sidebar-demo">
+   <st-sidebar class="sidebar" title="Mesos Manager" [items]="items" qaTag="sidebar-demo" [active]="activeItem" (change)="onChangeActive($event)">
    </st-sidebar>
 </section>

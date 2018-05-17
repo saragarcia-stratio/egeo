@@ -63,7 +63,7 @@ export class StSidebarItemListComponent implements OnInit {
    }
 
    ngOnInit(): void {
-      if (!this._active && this.items) {
+      if (!this._active && this.items && this.items.length > 0) {
          this._active = this.items[0].id;
       }
    }
@@ -77,7 +77,7 @@ export class StSidebarItemListComponent implements OnInit {
    getItemClasses(item: StSidebarItem, index: number): any {
       let classes: any = {};
       classes[item.class] = item.class;
-      classes['item--complex'] = item.items && item.items.length;
+      classes['item--complex'] = item.items && item.items.length > 0;
       classes['item--active'] = this.isActive(item.id);
       classes['item--expanded'] = this.expanded[index];
       classes['item--has-active'] = this.hasActiveChild(item);
@@ -86,7 +86,7 @@ export class StSidebarItemListComponent implements OnInit {
    }
 
    onSelectItem(item: StSidebarItem, position: number): void {
-      if (item.items) {
+      if (item.items && item.items.length > 0) {
          this.expanded[position] = !this.expanded[position];
       } else {
          if (item.id !== this._active) {
@@ -98,7 +98,7 @@ export class StSidebarItemListComponent implements OnInit {
    hasActiveChild(item: StSidebarItem): boolean {
       let found = false;
       let i = 0;
-      if (item.items) {
+      if (item.items && item.items.length > 0) {
          while (!found && i < item.items.length) {
             if (this.isActive(item.items[i].id)) {
                found = true;

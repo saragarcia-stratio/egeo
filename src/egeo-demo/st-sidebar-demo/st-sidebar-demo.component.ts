@@ -36,9 +36,13 @@ export class StSidebarDemoComponent {
       { id: 'roles', label: 'Roles' }
    ];
 
-   public activeItem: string;
+   public activeItem: StSidebarItem;
 
-   onChangeActive(item: string) {
+   onChangeActive(item: StSidebarItem) {
       this.activeItem = item;
+   }
+
+   constructor() {
+      this.activeItem = this.items[2].items[0].items[1]
    }
 }

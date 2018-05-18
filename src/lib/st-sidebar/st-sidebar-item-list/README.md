@@ -12,9 +12,9 @@
 
 ## Outputs
 
-| Property | Type   | Description                                    |
-| -------- | ------ | ---------------------------------------------- |
-| change   | String | Event emitted when the active item  is changed |
+| Property | Type          | Description                                                              |
+| -------- | ------------- | ------------------------------------------------------------------------ |
+| change   | StSidebarItem | Event emitted when the active item is changed. This emit the active item |
 
 ## Example
 
@@ -36,7 +36,7 @@ export interface StSidebarItem {
     id: string;
     label: string;
     class ? : string;
-    items ? : StSidebarItem[]
+    items ? : StSidebarItem[];
 }
 ```
 

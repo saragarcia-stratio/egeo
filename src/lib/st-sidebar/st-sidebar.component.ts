@@ -41,17 +41,17 @@ import { StSidebarItem } from './st-sidebar-item.interface';
 export class StSidebarComponent {
    /** @Input {string} [title=''] Title displayed on the top of menu */
    @Input() title: string = '';
-   /** @Input {string} [active=''] The id of the current active item */
-   @Input() active: string = '';
+   /** @Input {StSidebarItem} [active=''] The current active item */
+   @Input() active: StSidebarItem;
    /** @Input {StSidebarItem[]} [items=''] List of items displayed on the menu */
    @Input() items: StSidebarItem[] = [];
-   /** @Output {string} [change=''] Event emitted when the active item  is changed */
-   @Output() change: EventEmitter<string> = new EventEmitter<string>();
+   /** @Output {StSidebarItem} [change=''] Event emitted when the active item is changed. This emits the active item */
+   @Output() change: EventEmitter<StSidebarItem> = new EventEmitter<StSidebarItem>();
 
 
-   onChange(itemId: string): void {
-      if (this.active !== itemId) {
-         this.change.emit(itemId);
+   onChange(item: StSidebarItem): void {
+      if (!this.active || this.active.id !== item.id) {
+         this.change.emit(item);
       }
    }
 }

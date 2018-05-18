@@ -50,35 +50,38 @@ export class StSidebarItemListComponent implements OnInit {
    @Input() items: StSidebarItem[] = [];
    /** @Input {number} [deep=0] Deep of the item list in the sidebar */
    @Input() deep: number = 0;
-   /** @Output {string} [change=''] Event emitted when the active item  is changed */
-   @Output() change: EventEmitter<string> = new EventEmitter<string>();
+   /** @Output {StSidebarItem} [change=''] Event emitted when the active item is changed. This emit the active item */
+   @Output() change: EventEmitter<StSidebarItem> = new EventEmitter<StSidebarItem>();
 
    public expanded: boolean[] = [];
 
-   private _active: string;
+   private _active: StSidebarItem;
 
    /** @Input {string} [active=''] The id of the current active item */
-   @Input() get active(): string {
+   @Input() get active(): StSidebarItem {
       return this._active;
    }
 
    ngOnInit(): void {
-      if (!this._active && this.items && this.items.length > 0) {
-         this._active = this.items[0].id;
+      if (!this._active && this.items && this.items.length) {
+         this._active = this.items[0];
       }
+
+      this._updateStatus();
    }
 
-   set active(active: string) {
-      if (active !== this._active) {
+   set active(active: StSidebarItem) {
+      if (!this.isActive(active) ) {
          this._active = active;
+         this._updateStatus();
       }
    }
 
    getItemClasses(item: StSidebarItem, index: number): any {
       let classes: any = {};
       classes[item.class] = item.class;
-      classes['item--complex'] = item.items && item.items.length > 0;
-      classes['item--active'] = this.isActive(item.id);
+      classes['item--complex'] = item.items && item.items.length;
+      classes['item--active'] = this.isActive(item);
       classes['item--expanded'] = this.expanded[index];
       classes['item--has-active'] = this.hasActiveChild(item);
 
@@ -86,11 +89,11 @@ export class StSidebarItemListComponent implements OnInit {
    }
 
    onSelectItem(item: StSidebarItem, position: number): void {
-      if (item.items && item.items.length > 0) {
+      if (item.items && item.items.length) {
          this.expanded[position] = !this.expanded[position];
       } else {
-         if (item.id !== this._active) {
-            this.change.emit(item.id);
+         if (!this._active || this._active.id !== item.id ) {
+            this.change.emit(item);
          }
       }
    }
@@ -98,25 +101,49 @@ export class StSidebarItemListComponent implements OnInit {
    hasActiveChild(item: StSidebarItem): boolean {
       let found = false;
       let i = 0;
-      if (item.items && item.items.length > 0) {
+      if (item.items && item.items.length) {
          while (!found && i < item.items.length) {
-            if (this.isActive(item.items[i].id)) {
+            if (this.isActive(item.items[i])) {
                found = true;
             }
             ++i;
+         }
+         if (!found && item.items && item.items.length) {
+            return this._hasActiveChildInChildren(item.items);
          }
       }
       return found;
    }
 
-   onChange(itemId: string): void {
-      if (itemId !== this._active) {
-         this.change.emit(itemId);
+   onChange(item: StSidebarItem): void {
+      if (!this.isActive(item) ) {
+         this.change.emit(item);
       }
    }
 
-   private isActive(itemId: string): boolean {
-      return this._active && this._active === itemId;
+   private isActive(item: StSidebarItem): boolean {
+      return item && this._active && this._active.id === item.id;
+   }
+
+   private _updateStatus(): void {
+      this.items.forEach((item, i) => {
+         if ( this.hasActiveChild(item)) {
+            this.expanded[i] = true;
+         }
+      });
+   }
+
+   private _hasActiveChildInChildren(items: StSidebarItem[]): boolean {
+      let found = false;
+      let i = 0;
+      while (!found && i < items.length) {
+         if (this.hasActiveChild(items[i])) {
+            found = true;
+         }
+         ++i;
+      }
+
+      return found;
    }
 
 }

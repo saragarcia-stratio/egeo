@@ -13,10 +13,11 @@
 **Breaking changes:**
 
 * st-horizontal-tabs: Changed activeOption from string with the text for an option with the interface StHorizontalTab
+* st-sidebar: Changed active from string to the interface StSidebarItem
 
 **Fixed bugs:**
 
-* st-form-list: Fix  Select dropdown is not displayed
+* st-form-list: Fix select dropdown is not displayed
 
 **Others:**
 

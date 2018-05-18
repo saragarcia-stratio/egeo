@@ -32,7 +32,6 @@ describe('StSidebar', () => {
             set: { changeDetection: ChangeDetectionStrategy.Default }
          })
          .compileComponents();  // compile template and css
-
    }));
 
    beforeEach(() => {
@@ -47,7 +46,7 @@ describe('StSidebar', () => {
          {
             id: 'complex', label: 'Complex', items: [
             { id: 'child-1', label: 'Child 1' },
-            { id: 'child-2', label: 'Child 2' },
+            { id: 'child-2', label: 'Child 2', items: [  { id: 'child-2.1', label: 'Child 2.1' }] },
             { id: 'child-3', label: 'Child 3' }
          ]
          }
@@ -72,12 +71,22 @@ describe('StSidebar', () => {
       expect(itemList[0].classList).toContain('item--active');
 
       // active is changed from outside
-      component.active = component.items[4].id;
+      component.active = component.items[4];
       fixture.detectChanges();
 
       expect(itemList[4].classList).toContain('item--active');
       expect(itemList[0].classList).not.toContain('item--active');
+   });
 
+   it ('if active is a children of an item, all its branch is displayed with the class "item--has-active"', () => {
+      component.active = component.items[5].items[1].items[0];
+
+      fixture.detectChanges();
+
+      expect(itemList[5].classList).toContain('item--has-active');
+      expect(itemList[5].querySelectorAll('li')[0].classList).not.toContain('item--has-active');
+      expect(itemList[5].querySelectorAll('li')[1].classList).toContain('item--has-active');
+      expect(itemList[5].querySelectorAll('li')[1].querySelectorAll('li')[0].classList).toContain('item--active');
    });
 
    describe('When user clicks on a tab', () => {
@@ -88,10 +97,10 @@ describe('StSidebar', () => {
             spyOn(component.change, 'emit');
             (<HTMLSpanElement> itemList[2].querySelector('.item__label')).click();
 
-            expect(component.change.emit).toHaveBeenCalledWith(component.items[2].id);
+            expect(component.change.emit).toHaveBeenCalledWith(component.items[2]);
 
             (<jasmine.Spy> component.change.emit).calls.reset();
-            component.active = component.items[2].id;
+            component.active = component.items[2];
 
             (<HTMLSpanElement> itemList[2].querySelector('.item__label')).click();
 
@@ -103,11 +112,11 @@ describe('StSidebar', () => {
             fixture.detectChanges();
             fixture.changeDetectorRef.markForCheck();
 
-            expect(component.change.emit).toHaveBeenCalledWith(component.items[3].id);
+            expect(component.change.emit).toHaveBeenCalledWith(component.items[3]);
          });
 
          it('this tab is displayed as active one', () => {
-            component.active = component.items[2].id;
+            component.active = component.items[2];
             fixture.detectChanges();
 
             expect(itemList[2].classList).toContain('item--active');
@@ -158,7 +167,7 @@ describe('StSidebar', () => {
             fixture.detectChanges();
             const childrenElements = itemWithChildren.querySelectorAll('li');
 
-            component.active = component.items[5].items[0].id; // active the first child
+            component.active = component.items[5].items[0]; // active the first child
             fixture.detectChanges();
 
             expect(childrenElements[0].classList).toContain('item--active');

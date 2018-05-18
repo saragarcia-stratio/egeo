@@ -56,15 +56,14 @@ describe('StSidebarItemList', () => {
 
    it ('When it receives a change from a child of the active and it is different to the current active, it is emitted to its parent', () => {
       spyOn(component.change, 'emit');
-      component.active = component.items[1].id;
+      component.active = component.items[1];
       component.onChange(component.active);
 
       expect(component.change.emit).not.toHaveBeenCalled();
 
-      component.onChange(component.items[2].id);
+      component.onChange(component.items[2]);
 
-      expect(component.change.emit).toHaveBeenCalledWith(component.items[2].id);
+      expect(component.change.emit).toHaveBeenCalledWith(component.items[2]);
    });
-
 
 });

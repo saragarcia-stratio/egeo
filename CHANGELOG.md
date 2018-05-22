@@ -1,6 +1,6 @@
 # Changelog
 
-## 11.0.0 (upcoming)
+## 11.0.0 (May 22, 2018)
 
 **New features:**
 

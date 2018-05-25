@@ -298,4 +298,15 @@ describe('StTableComponent', () => {
          expect(fixture.nativeElement.querySelector('table').classList).not.toContain('st-table--fixed-header');
       });
    });
+
+   it ('Custom classes can be added to the table', () => {
+      let fakeClass = 'separated-rows';
+      expect(fixture.nativeElement.querySelector('table').classList).not.toContain(fakeClass);
+
+      component.customClasses = fakeClass;
+
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('table').classList).toContain('separated-rows');
+   });
 });

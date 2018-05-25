@@ -13,6 +13,7 @@
 | sortable      | Boolean         | False | Boolean to make sortable the table, To enable sorting of columns use the new "sortable" field inside stTableHeader model                                                      | true    |
 | selectableAll | Boolean         | False | Boolean to show or hide a checkbox in the header to select or deselect all rows                                                                                               | false   |
 | currentOrder  | Order           | False | It specifies what is the current order applied to the table                                                                                                                  | ''      |
+| customClasses | String          | False | Classes for adding styles to table tag from outside. These can be: separated-rows                                                                                            |         |
 | selectedAll   | Boolean         | False | It specifies if all rows are selected                                                                                                                                        | false   |
 | hasHoverMenu  | Boolean         | False | It specifies if a menu has to be displayed when user puts the mouse over the rows. Remember to add a cell with the selector st-table-row-hover for adding content to the menu | true    |
 

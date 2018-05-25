@@ -2,17 +2,16 @@
 
 ## 12.0.0 (upcoming)
 
-* Pending changelog
+**New features:**
+
+* st-table: Allow to add classes from egeo theme to table tag
+
 
 ## 11.0.0 (May 22, 2018)
 
 **New features:**
 
 * st-sidebar: Allow to display more than one level
-
-**Fixed bugs:**
-
-* st-horizontal-tabs: Fix activeOption on init the component
 
 **Breaking changes:**
 
@@ -21,6 +20,7 @@
 
 **Fixed bugs:**
 
+* st-horizontal-tabs: Fix activeOption on init the component
 * st-form-list: Fix select dropdown is not displayed
 
 **Others:**

@@ -84,6 +84,9 @@ export class StTableComponent {
    /** @Input {Order} [currentOrder=''] It specifies what is the current order applied to the table */
    @Input() currentOrder: Order;
 
+   /** @Input {string} [customClasses=] Classes for adding styles to table tag from outside. These can be: separated-rows */
+   @Input() customClasses: string;
+
    /** @Input {boolean} [selectedAll=false] It specifies if all rows are selected */
    @Input()
    get selectedAll(): boolean {
@@ -126,6 +129,14 @@ export class StTableComponent {
          }
          this.changeOrder.emit(this.currentOrder);
       }
+   }
+
+   public getClasses(): any {
+      let classes: any = {};
+      classes['st-table--fixed-header'] = this.fixedHeader;
+      classes[this.customClasses] = this.customClasses;
+
+      return classes;
    }
 
    public isSortable(field: StTableHeader): boolean {

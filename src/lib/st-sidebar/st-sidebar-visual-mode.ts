@@ -9,11 +9,4 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 
-export interface StSidebarItem {
-   id: string;
-   label: string;
-   class?: string;
-   items?: StSidebarItem[];
-   result?: string;
-   disabled?: boolean;
-}
+export enum StSidebarVisualMode { normal, complex }

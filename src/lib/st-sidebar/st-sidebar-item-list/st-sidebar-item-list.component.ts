@@ -8,15 +8,9 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import {
-   ChangeDetectionStrategy,
-   Component,
-   Input,
-   EventEmitter,
-   Output,
-   OnInit, ChangeDetectorRef
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, EventEmitter, Output, OnInit } from '@angular/core';
 import { StSidebarItem } from '../st-sidebar-item.interface';
+import { StSidebarVisualMode } from '../st-sidebar-visual-mode';
 
 /**
  * @description {Component} [SidebarItemList]
@@ -50,6 +44,8 @@ export class StSidebarItemListComponent implements OnInit {
    @Input() items: StSidebarItem[] = [];
    /** @Input {number} [deep=0] Deep of the item list in the sidebar */
    @Input() deep: number = 0;
+   /** @Input {StSidebarVisualMode} [visualMode='StSidebarVisualMode.normal'] Visual mode used to display the item list */
+   @Input() visualMode: StSidebarVisualMode = StSidebarVisualMode.normal;
    /** @Output {StSidebarItem} [change=''] Event emitted when the active item is changed. This emit the active item */
    @Output() change: EventEmitter<StSidebarItem> = new EventEmitter<StSidebarItem>();
 
@@ -71,7 +67,7 @@ export class StSidebarItemListComponent implements OnInit {
    }
 
    set active(active: StSidebarItem) {
-      if (!this.isActive(active) ) {
+      if (!this.isActive(active)) {
          this._active = active;
          this._updateStatus();
       }
@@ -84,16 +80,19 @@ export class StSidebarItemListComponent implements OnInit {
       classes['item--active'] = this.isActive(item);
       classes['item--expanded'] = this.expanded[index];
       classes['item--has-active'] = this.hasActiveChild(item);
+      classes['item--disabled'] = item.disabled;
 
       return classes;
    }
 
    onSelectItem(item: StSidebarItem, position: number): void {
-      if (item.items && item.items.length) {
-         this.expanded[position] = !this.expanded[position];
-      } else {
-         if (!this._active || this._active.id !== item.id ) {
-            this.change.emit(item);
+      if (!item.disabled) {
+         if (item.items && item.items.length) {
+            this.expanded[position] = !this.expanded[position];
+         } else {
+            if (!this._active || this._active.id !== item.id) {
+               this.change.emit(item);
+            }
          }
       }
    }
@@ -116,9 +115,13 @@ export class StSidebarItemListComponent implements OnInit {
    }
 
    onChange(item: StSidebarItem): void {
-      if (!this.isActive(item) ) {
+      if (!this.isActive(item)) {
          this.change.emit(item);
       }
+   }
+
+   displayAsComplexMode(): boolean {
+      return this.visualMode === StSidebarVisualMode.complex;
    }
 
    private isActive(item: StSidebarItem): boolean {
@@ -127,7 +130,7 @@ export class StSidebarItemListComponent implements OnInit {
 
    private _updateStatus(): void {
       this.items.forEach((item, i) => {
-         if ( this.hasActiveChild(item)) {
+         if (this.hasActiveChild(item)) {
             this.expanded[i] = true;
          }
       });

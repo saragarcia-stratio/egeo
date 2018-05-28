@@ -8,6 +8,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
+
 input {
    outline: none;
    border: none;
@@ -18,13 +19,14 @@ input {
 .st-search {
    position: relative;
    display: flex;
-   min-width: 245px;
+   min-width: 100%;
 
    & :invalid {
       box-shadow: none;
    }
 
    &-box {
+      display: flex;
       flex: 2 0;
    }
 

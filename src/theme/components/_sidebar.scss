@@ -21,6 +21,7 @@
    .item-list {
       &--inner {
          margin-top: 15px;
+         padding-left: 15px;
 
          .item {
             margin-bottom: 15px;
@@ -29,14 +30,71 @@
          & > li:last-of-type {
             margin-bottom: 0;
          }
+      }
 
+      & .item > .item__label {
+         vertical-align: top;
+      }
+
+      &:not(.complex-mode) {
+         & > .item > .item__label {
+            padding-left: 15px;
+         }
+      }
+
+      &.item-list--inner:not(.complex-mode) {
+         .item > .item__label {
+            padding-left: 15px;
+         }
+      }
+
+      &.item-list--inner.complex-mode {
+         padding-left: 23px;
+      }
+
+      &.complex-mode:not(.item-list--inner) {
+
+         & > .item--complex > .item__label {
+            padding-left: 0 !important;
+         }
+
+         & > .item {
+            margin-bottom: 15px;
+            position: relative;
+         }
+
+         &:not(.item-list--inner) > .item:after {
+            content: '';
+            padding-top: 15px;
+            display: block;
+            height: 0;
+            border-bottom: solid 1px $neutral-05;
+         }
+
+         &:not(.item-list--inner) .item--complex > .item__label:before {
+            content: '\E605';
+            font-family: $egeo-stratio-icons;
+            display: inline-block;
+            font-size: $egeo-font-size-small;
+            color: $neutral-07;
+            padding-right: 6px;
+            vertical-align: bottom;
+         }
+
+         &:not(.item-list--inner) .item--complex.item--expanded > .item__label:before {
+            content: '\E63F';
+         }
+
+         .item:not(.item--complex) > .item__label {
+            padding-left: 15px;
+         }
       }
    }
 
    .title {
       font-family: $egeo-nunito-sans-extraBold;
-      font-size: $egeo-font-size-medium;
-      line-height: $egeo-line-height-medium;
+      font-size: $egeo-font-size-large;
+      line-height: $egeo-line-height-large;
       color: $neutral-13;
       padding-bottom: 30px;
    }
@@ -47,7 +105,6 @@
       line-height: $egeo-line-height-small;
       color: $neutral-11;
       margin-bottom: 20px;
-      padding-left: 20px;
       position: relative;
 
       &--active {
@@ -65,12 +122,12 @@
          }
       }
 
-      &--has-active >  .item__label {
+      &--has-active > .item__label {
          font-family: $egeo-nunito-sans-bold;
       }
 
       &.warning {
-         span:after {
+         .item__label:after {
             content: '\E613';
             font-family: $egeo-stratio-icons;
             color: $status-critical-default;
@@ -79,6 +136,29 @@
             padding-left: 10px;
             vertical-align: text-top;
          }
+      }
+
+      & > .result {
+         &__box {
+            width: 40px;
+            height: 20px;
+            border-radius: 10px;
+            background-color: $neutral-05;
+            font-family: $egeo-nunito-sans;
+            font-size: $egeo-font-size-xxxsmall;
+            float: right;
+            .result__text {
+               color: $neutral-10;
+               text-align: center;
+               display: inline-block;
+               width: 100%;
+            }
+         }
+      }
+
+      &--disabled {
+         color: $neutral-07;
+         cursor: default !important;
       }
    }
 

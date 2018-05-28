@@ -10,8 +10,10 @@
  */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ChangeDetectionStrategy } from '@angular/core';
+
 import { StSidebarComponent } from './st-sidebar.component';
 import { StSidebarItemListComponent } from './st-sidebar-item-list/st-sidebar-item-list.component';
+import { StSearchModule } from '../st-search/st-search.module';
 
 describe('StSidebar', () => {
 
@@ -21,7 +23,7 @@ describe('StSidebar', () => {
 
    beforeEach(async(() => {
       TestBed.configureTestingModule({
-         imports: [],
+         imports: [StSearchModule],
          declarations: [StSidebarComponent, StSidebarItemListComponent]
       })
       // remove this block when the issue #12313 of Angular is fixed
@@ -37,6 +39,7 @@ describe('StSidebar', () => {
    beforeEach(() => {
       fixture = TestBed.createComponent(StSidebarComponent);
       component = fixture.componentInstance;
+
       component.items = [
          { id: 'vault-roles', label: 'Vault Roles' },
          { id: 'identities', label: 'Identities' },
@@ -46,7 +49,7 @@ describe('StSidebar', () => {
          {
             id: 'complex', label: 'Complex', items: [
             { id: 'child-1', label: 'Child 1' },
-            { id: 'child-2', label: 'Child 2', items: [  { id: 'child-2.1', label: 'Child 2.1' }] },
+            { id: 'child-2', label: 'Child 2', items: [{ id: 'child-2.1', label: 'Child 2.1' }] },
             { id: 'child-3', label: 'Child 3' }
          ]
          }
@@ -78,7 +81,7 @@ describe('StSidebar', () => {
       expect(itemList[0].classList).not.toContain('item--active');
    });
 
-   it ('if active is a children of an item, all its branch is displayed with the class "item--has-active"', () => {
+   it('if active is a children of an item, all its branch is displayed with the class "item--has-active"', () => {
       component.active = component.items[5].items[1].items[0];
 
       fixture.detectChanges();
@@ -181,5 +184,45 @@ describe('StSidebar', () => {
       fixture.detectChanges();
 
       expect(itemList[2].classList).toContain('warning');
+   });
+
+   describe('Should be able to activate the search mode', () => {
+      beforeEach(() => {
+         spyOn(component.search, 'emit');
+      });
+
+      it('by default, search mode is not activated', () => {
+         expect(component.searchMode).toBeFalsy();
+      });
+
+      it('a search input is displayed only if search mode is activated', () => {
+         component.searchMode = true;
+         fixture.detectChanges();
+
+         expect(fixture.nativeElement.querySelector('st-search')).not.toBeNull();
+
+         component.searchMode = false;
+         fixture.detectChanges();
+
+         expect(fixture.nativeElement.querySelector('st-search')).toBeNull();
+      });
+
+      it('When user interacts with the search input, an event is emitted with the introduced text', (done) => {
+         const fakeSearchText: string = 'fake search';
+         component.searchMode = true;
+         fixture.detectChanges();
+
+         const searchInput: HTMLInputElement = fixture.nativeElement.querySelector('.st-search-input');
+
+         fixture.detectChanges();
+
+         searchInput.value = fakeSearchText;
+         searchInput.dispatchEvent(new Event('input'));
+
+         setTimeout(() => {
+            expect(component.search.emit).toHaveBeenCalledWith(fakeSearchText);
+            done();
+         }, 0);
+      });
    });
 });

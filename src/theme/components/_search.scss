@@ -13,11 +13,16 @@
 @import '../utils/forms';
 
 .sth-search {
-   .st-search-filter.disabled  {
+   .st-search-filter.disabled {
       .arrow {
          background-color: $neutral-00;
       }
    }
+
+   .st-search-box > st-pop {
+      width: 100%;
+   }
+
 }
 
 .sth-search::placeholder {

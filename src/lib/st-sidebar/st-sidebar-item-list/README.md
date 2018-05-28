@@ -4,11 +4,12 @@
 
 ## Inputs
 
-| Property | Type            | Req   | Description                          | Default |
-| -------- | --------------- | ----- | ------------------------------------ | ------- |
-| items    | StSidebarItem[] | False | List of items displayed on the menu  | ''      |
-| deep     | Number          | False | Deep of the item list in the sidebar | 0       |
-| active   | String          | False | The id of the current active item    | ''      |
+| Property   | Type                | Req   | Description                               | Default                      |
+| ---------- | ------------------- | ----- | ----------------------------------------- | ---------------------------- |
+| items      | StSidebarItem[]     | False | List of items displayed on the menu       | ''                           |
+| deep       | Number              | False | Deep of the item list in the sidebar      | 0                            |
+| visualMode | StSidebarVisualMode | False | Visual mode used to display the item list | 'StSidebarVisualMode.normal' |
+| active     | String              | False | The id of the current active item         | ''                           |
 
 ## Outputs
 
@@ -37,6 +38,7 @@ export interface StSidebarItem {
     label: string;
     class ? : string;
     items ? : StSidebarItem[];
+    result ? : string;
 }
 ```
 

@@ -190,6 +190,7 @@ export { StSelectModule } from './st-select/st-select.module';
 // Sidebar
 export { StSidebarModule } from './st-sidebar/st-sidebar.module';
 export { StSidebarItem } from './st-sidebar/st-sidebar-item.interface';
+export { StSidebarVisualMode } from './st-sidebar/st-sidebar-visual-mode';
 
 // Spinner
 export { StSpinnerModule } from './st-spinner/st-spinner.module';

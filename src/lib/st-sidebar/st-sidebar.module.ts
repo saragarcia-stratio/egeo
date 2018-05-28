@@ -13,9 +13,10 @@ import { NgModule } from '@angular/core';
 
 import { StSidebarComponent } from './st-sidebar.component';
 import { StSidebarItemListComponent } from './st-sidebar-item-list/st-sidebar-item-list.component';
+import { StSearchModule } from '../st-search/st-search.module';
 
 @NgModule({
-   imports: [CommonModule],
+   imports: [CommonModule, StSearchModule],
    declarations: [StSidebarComponent, StSidebarItemListComponent],
    exports: [StSidebarComponent]
 })

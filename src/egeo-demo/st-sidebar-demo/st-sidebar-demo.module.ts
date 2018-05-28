@@ -10,13 +10,14 @@
  */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StDemoGeneratorModule, StSidebarModule } from '@stratio/egeo';
+import { StDemoGeneratorModule, StSidebarModule, StSwitchModule } from '@stratio/egeo';
 import { StSidebarDemoComponent } from './st-sidebar-demo.component';
 
 @NgModule({
    imports: [
       CommonModule,
       StSidebarModule,
+      StSwitchModule,
       StDemoGeneratorModule.withComponents({
          components: [StSidebarDemoComponent]
       })

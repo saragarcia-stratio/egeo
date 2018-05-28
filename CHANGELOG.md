@@ -5,6 +5,7 @@
 **New features:**
 
 * st-table: Allow to add classes from egeo theme to table tag
+* st-sidebar: Add functionality to display as a complex mode, disabled items and a search mode
 
 
 ## 11.0.0 (May 22, 2018)

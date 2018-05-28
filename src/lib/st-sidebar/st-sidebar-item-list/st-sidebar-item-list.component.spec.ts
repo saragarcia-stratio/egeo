@@ -10,7 +10,6 @@
  */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ChangeDetectionStrategy } from '@angular/core';
-
 import { StSidebarItemListComponent } from './st-sidebar-item-list.component';
 
 describe('StSidebarItemList', () => {
@@ -37,8 +36,8 @@ describe('StSidebarItemList', () => {
       component = fixture.componentInstance;
       component.items = [
          { id: 'vault-roles', label: 'Vault Roles' },
-         { id: 'identities', label: 'Identities' },
-         { id: 'masters', label: 'Masters' },
+         { id: 'identities', label: 'Identities', result: '56' },
+         { id: 'masters', label: 'Masters', disabled: true },
          { id: 'agents', label: 'Agents' },
          { id: 'roles', label: 'Roles' },
          {
@@ -54,7 +53,7 @@ describe('StSidebarItemList', () => {
       itemList = fixture.nativeElement.querySelectorAll('li');
    });
 
-   it ('When it receives a change from a child of the active and it is different to the current active, it is emitted to its parent', () => {
+   it('When it receives a change from a child of the active and it is different to the current active, it is emitted to its parent', () => {
       spyOn(component.change, 'emit');
       component.active = component.items[1];
       component.onChange(component.active);
@@ -64,6 +63,27 @@ describe('StSidebarItemList', () => {
       component.onChange(component.items[2]);
 
       expect(component.change.emit).toHaveBeenCalledWith(component.items[2]);
+   });
+
+   it('only if item has result, it is displayed', () => {
+      expect(fixture.nativeElement.querySelectorAll('.result__box').length).toBe(1);
+      expect(fixture.nativeElement.querySelectorAll('.result__box')[0].innerHTML).toContain(component.items[1].result);
+   });
+
+   it('if an item is disabled, user can not click on it', () => {
+      spyOn(component.change, 'emit');
+
+      expect(itemList[2].classList).toContain('item--disabled');
+
+      (<HTMLSpanElement> itemList[2].querySelector('.item__label')).click();
+      fixture.detectChanges();
+
+      expect(component.change.emit).not.toHaveBeenCalled();
+
+      (<HTMLSpanElement> itemList[1].querySelector('.item__label')).click();
+      fixture.detectChanges();
+
+      expect(component.change.emit).toHaveBeenCalled();
    });
 
 });

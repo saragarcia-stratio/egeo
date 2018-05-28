@@ -67,7 +67,7 @@ export class StSidebarItemListComponent implements OnInit {
    }
 
    set active(active: StSidebarItem) {
-      if (!this.isActive(active)) {
+      if (!this._isActive(active)) {
          this._active = active;
          this._updateStatus();
       }
@@ -75,11 +75,13 @@ export class StSidebarItemListComponent implements OnInit {
 
    getItemClasses(item: StSidebarItem, index: number): any {
       let classes: any = {};
+      const active: boolean = this._isActive(item);
+      const activeChild: boolean = this.hasActiveChild(item);
       classes[item.class] = item.class;
       classes['item--complex'] = item.items && item.items.length;
-      classes['item--active'] = this.isActive(item);
+      classes['item--active'] = active;
       classes['item--expanded'] = this.expanded[index];
-      classes['item--has-active'] = this.hasActiveChild(item);
+      classes['item--has-active'] = activeChild;
       classes['item--disabled'] = item.disabled;
 
       return classes;
@@ -102,7 +104,7 @@ export class StSidebarItemListComponent implements OnInit {
       let i = 0;
       if (item.items && item.items.length) {
          while (!found && i < item.items.length) {
-            if (this.isActive(item.items[i])) {
+            if (this._isActive(item.items[i])) {
                found = true;
             }
             ++i;
@@ -115,7 +117,7 @@ export class StSidebarItemListComponent implements OnInit {
    }
 
    onChange(item: StSidebarItem): void {
-      if (!this.isActive(item)) {
+      if (!this._isActive(item)) {
          this.change.emit(item);
       }
    }
@@ -124,7 +126,7 @@ export class StSidebarItemListComponent implements OnInit {
       return this.visualMode === StSidebarVisualMode.complex;
    }
 
-   private isActive(item: StSidebarItem): boolean {
+   private _isActive(item: StSidebarItem): boolean {
       return item && this._active && this._active.id === item.id;
    }
 

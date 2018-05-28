@@ -133,7 +133,9 @@ export class StTableComponent {
 
    public getClasses(): any {
       let classes: any = {};
-      classes['st-table--fixed-header'] = this.fixedHeader;
+      if ( this.fixedHeader) {
+         classes['st-table--fixed-header'] = true;
+      }
       classes[this.customClasses] = this.customClasses;
 
       return classes;

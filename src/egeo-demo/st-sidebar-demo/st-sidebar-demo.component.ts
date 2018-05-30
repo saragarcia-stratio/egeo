@@ -34,7 +34,7 @@ export class StSidebarDemoComponent {
          }, { id: 'sub-item2', label: 'Subitem 2' }]
       },
       {
-         id: 'agents', label: 'Agents',
+         id: 'agents', label: 'So long section name', result: '25',
          items: [
             { id: 'agents.1', label: 'Subitem 1.1', result: '25' },
             { id: 'agents.2', label: 'Subitem 1.2' }]

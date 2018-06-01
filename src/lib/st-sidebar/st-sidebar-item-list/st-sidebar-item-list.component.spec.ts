@@ -68,6 +68,7 @@ describe('StSidebarItemList', () => {
    it('only if item has result, it is displayed', () => {
       expect(fixture.nativeElement.querySelectorAll('.result__box').length).toBe(1);
       expect(fixture.nativeElement.querySelectorAll('.result__box')[0].innerHTML).toContain(component.items[1].result);
+      expect(fixture.nativeElement.querySelectorAll('.item__label')[1].classList).toContain('item__label--with-results');
    });
 
    it('if an item is disabled, user can not click on it', () => {

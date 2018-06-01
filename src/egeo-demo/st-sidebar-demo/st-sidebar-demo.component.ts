@@ -39,6 +39,12 @@ export class StSidebarDemoComponent {
             { id: 'agents.1', label: 'Subitem 1.1', result: '25' },
             { id: 'agents.2', label: 'Subitem 1.2' }]
       },
+      {
+         id: 'agents2', label: 'So long section name 2 without results',
+         items: [
+            { id: 'agents2.1.1', label: 'Subitem 1.1.1', result: '25' },
+            { id: 'agents2.1.2', label: 'Subitem 1.1.2' }]
+      },
       { id: 'without-children', label: 'No children' },
       {
          id: 'sectionA', label: 'Section A',

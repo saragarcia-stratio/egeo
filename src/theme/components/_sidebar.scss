@@ -34,12 +34,15 @@
 
       & .item > .item__label {
          vertical-align: top;
-         max-width: calc(100% - 40px);
-         white-space: nowrap;
          overflow: hidden;
          display: inline-block;
          text-overflow: ellipsis;
-         padding-right: 10px;
+
+         &--with-results {
+            max-width: calc(100% - 40px);
+            padding-right: 10px;
+            white-space: nowrap;
+         }
       }
 
       &:not(.complex-mode) {
@@ -85,6 +88,8 @@
             color: $neutral-07;
             padding-right: 6px;
             vertical-align: bottom;
+            height: 22px;
+            float: left;
          }
 
          &:not(.item-list--inner) .item--complex.item--expanded > .item__label:before {

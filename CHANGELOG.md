@@ -2,7 +2,10 @@
 
 ## 11.2.0 (upcoming)
 
-* Pending changelog
+**New features:**
+
+* st-sidebar: Add functionality to close the expanded items when active item changes
+
 
 ## 11.1.0 (June 04, 2018)
 

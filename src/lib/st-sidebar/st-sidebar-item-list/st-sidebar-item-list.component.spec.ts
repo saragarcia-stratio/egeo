@@ -41,11 +41,20 @@ describe('StSidebarItemList', () => {
          { id: 'agents', label: 'Agents' },
          { id: 'roles', label: 'Roles' },
          {
-            id: 'complex', label: 'Complex', items: [
-            { id: 'child-1', label: 'Child 1' },
-            { id: 'child-2', label: 'Child 2' },
-            { id: 'child-3', label: 'Child 3' }
-         ]
+            id: 'complex', label: 'Complex',
+            items: [
+               { id: 'child-complex-1', label: 'Child 1' },
+               { id: 'child-complex-2', label: 'Child 2', items: [{ id: 'child-2.1', label: 'Child 2.1' }] },
+               { id: 'child-complex-3', label: 'Child 3' }
+            ]
+         },
+         {
+            id: 'complex2', label: 'Complex2',
+            items: [
+               { id: 'child-complex21', label: 'Child Complex 2 1' },
+               { id: 'child-complex22', label: 'Child Complex 2 2' },
+               { id: 'child-complex23', label: 'Child Complex 2 3' }
+            ]
          }
       ];
 
@@ -87,4 +96,19 @@ describe('StSidebarItemList', () => {
       expect(component.change.emit).toHaveBeenCalled();
    });
 
+   it('When active item changes, the rest of them are closed', () => {
+      let firstClicked = fixture.nativeElement.querySelector('#complex2');
+      let secondClicked = itemList[0];
+
+      firstClicked.querySelector('.item__label').click();
+      fixture.detectChanges();
+
+      fixture.nativeElement.querySelector('#child-complex21 .item__label').click();
+      fixture.detectChanges();
+      (<HTMLSpanElement> secondClicked.querySelector('.item__label')).click();
+      fixture.detectChanges();
+
+      expect(secondClicked.classList).toContain('item--active');
+      expect(fixture.nativeElement.querySelector('#complex2').classList).not.toContain('item--expanded');
+   });
 });

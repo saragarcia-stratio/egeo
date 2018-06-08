@@ -8,7 +8,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { Component, Input, EventEmitter, Output, ElementRef } from '@angular/core';
+import {Component, Input, EventEmitter, Output, ElementRef, OnInit} from '@angular/core';
 
 @Component({
    selector: 'st-foreground-notifications',
@@ -33,7 +33,7 @@ import { Component, Input, EventEmitter, Output, ElementRef } from '@angular/cor
  * ```
  */
 
-export class StForegroundNotificationsComponent {
+export class StForegroundNotificationsComponent implements OnInit {
 
 
    /** @Input {bollean} [visible=flase] When true the notification is shown */
@@ -53,12 +53,20 @@ export class StForegroundNotificationsComponent {
    /** @Input {NotificationStatus} [status='NotificationStatus.default'] Defines the criticality level of the notification */
    @Input() status: string = 'default';
 
+   /** @Input {autoCloseTime} [autoCloseTime='1000'] Defines the time in milliseconds for autoclose the notification */
+   @Input() autoCloseTime: number;
+
    @Output() visibleChange: EventEmitter<boolean> = new EventEmitter();
 
    private _visible: boolean = false;
 
    constructor() { }
 
+   ngOnInit(): void {
+      if (this.autoCloseTime) {
+         setTimeout(() => this.onClose(), this.autoCloseTime);
+      }
+   }
 
    onClose(): void {
       this.visible = false;

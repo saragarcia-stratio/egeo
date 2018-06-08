@@ -22,6 +22,7 @@ import { StForegroundNotificationsModule } from './st-foreground-notifications.m
          [status]="status"
          [text]="text"
          [visible]="visible"
+         [autoCloseTime]="autoCloseTime"
          id="tes-id">
       </st-foreground-notifications>`
 })
@@ -29,6 +30,7 @@ class TestStFNComponent {
    status: string;
    text: string;
    visible: boolean;
+   autoCloseTime: number;
    @ViewChild('notification') dropdownItem: StForegroundNotificationsComponent;
 }
 
@@ -131,6 +133,20 @@ describe('StForegroundNotificationsComponent', () => {
          expect(nativeElement.querySelector('st-foreground-notifications').classList).toContain('visible');
 
          closeButton.click();
+         fixture.detectChanges();
+
+         expect(nativeElement.querySelector('st-foreground-notifications').classList).not.toContain('visible');
+
+
+
+      }));
+
+      it('when the property autoCloseTime is set the element should fade out and then hidden in the time set', fakeAsync(() => {
+         comp.autoCloseTime = 1000;
+         comp.visible = true;
+         fixture.detectChanges();
+         expect(nativeElement.querySelector('st-foreground-notifications').classList).toContain('visible');
+         tick(2000);
          fixture.detectChanges();
 
          expect(nativeElement.querySelector('st-foreground-notifications').classList).not.toContain('visible');

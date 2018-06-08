@@ -5,7 +5,7 @@
 **New features:**
 
 * st-sidebar: Add functionality to close the expanded items when active item changes
-
+* st-foregrounds-notifications: Add property autoclose for notifications.
 
 ## 11.1.0 (June 04, 2018)
 

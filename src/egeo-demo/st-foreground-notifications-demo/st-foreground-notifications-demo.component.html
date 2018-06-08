@@ -18,7 +18,7 @@
          <div class="button button-primary" (click)="toggleNotifications(i)" >
             <span>Toggle notification</span>
          </div>
-         <st-foreground-notifications [status]="item.status" [text]="item.text" [(visible)]="item.visible"></st-foreground-notifications>
+         <st-foreground-notifications [status]="item.status" [text]="item.text" [(visible)]="item.visible" [autoCloseTime]="item.autoCloseTime"></st-foreground-notifications>
       </div>
    </div>
 

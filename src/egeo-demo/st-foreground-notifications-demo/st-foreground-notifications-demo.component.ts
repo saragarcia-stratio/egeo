@@ -34,6 +34,12 @@ export class StForegroundNotificationsDemoComponent {
          text : 'This is a critical error feedback notification',
          status: 'critical',
          visible: true
+      },
+      {
+         text : 'This is a critical error feedback notification with autoclose',
+         status: 'critical',
+         visible: true,
+         autoCloseTime: 1000
       }
     ];
   public toggleNotifications(index: number): void {

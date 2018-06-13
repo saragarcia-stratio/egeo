@@ -30,22 +30,16 @@ import { PipesModule } from '../pipes/pipes.module';
 import { StSearchModule } from '../st-search/st-search.module';
 import { StCheckboxModule } from '../st-checkbox/st-checkbox.module';
 
-// Mdel
-import { StTwoListSelectionConfig, StTwoListSelectionElement } from './st-two-list-selection.model';
+// Model
+import { StTwoListSelectionElement } from './st-two-list-selection.model';
 
 let comp: StTwoListSelectionComponent;
 let fixture: ComponentFixture<StTwoListSelectionComponent>;
-let de: DebugElement;
 
-let config: StTwoListSelectionConfig = {
-   allElementsListTitle: 'All',
-   allElementsSearchPlaceholder: 'Search all',
-   selectedElementsListTitle: 'Selected',
-   selectedElementsSearchPlaceholder: 'Search selected'
-};
+
 let qaTag: string = 'st-two-list-test';
 
-function generateData(numData: number): StTwoListSelectionElement[] {
+function generateData(): StTwoListSelectionElement[] {
    return _times(10, (i) => {
       return {
          id: i,
@@ -54,7 +48,7 @@ function generateData(numData: number): StTwoListSelectionElement[] {
    });
 }
 
-let allElements: StTwoListSelectionElement[] = generateData(10);
+let allElements: StTwoListSelectionElement[] = generateData();
 let selectedElements: StTwoListSelectionElement[] = _cloneDeep(allElements.slice(0, 2));
 
 describe('StTwoListSelectionComponent', () => {

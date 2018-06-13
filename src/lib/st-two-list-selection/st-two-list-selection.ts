@@ -51,13 +51,13 @@ export class StTwoListSelection {
    }
 
    // Update search filter
-   onSearchOverAll(search: string): void {
-      this.allSearch = search;
+   onSearchOverAll(search: {text: string}): void {
+      this.allSearch = search.text;
    }
 
    // Update search filter
-   onSearchOverSelected(search: string): void {
-      this.selectedSearch = search;
+   onSearchOverSelected(search: {text: string}): void {
+      this.selectedSearch = search.text;
    }
 
    // Move from all to selected

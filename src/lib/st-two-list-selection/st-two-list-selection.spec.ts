@@ -20,7 +20,7 @@ import { StTwoListSelectionElement } from './st-two-list-selection.model';
 let cd;
 let changeEmitter;
 
-function generateData(numData: number): StTwoListSelectionElement[] {
+function generateData(): StTwoListSelectionElement[] {
    return _times(10, (i) => {
       return {
          id: i,
@@ -29,7 +29,7 @@ function generateData(numData: number): StTwoListSelectionElement[] {
    });
 }
 
-let originalAllElements: StTwoListSelectionElement[] = generateData(20);
+let originalAllElements: StTwoListSelectionElement[] = generateData();
 let selectedElements: StTwoListSelectionElement[] = [];
 
 describe('[StTwoListSelection]', () => {
@@ -119,14 +119,14 @@ describe('[StTwoListSelection]', () => {
          expect(twoListSelection.allSearch).toEqual('');
          expect(twoListSelection.selectedSearch).toEqual('');
 
-         let searchText: string = 'test';
-         twoListSelection.onSearchOverAll(searchText);
-         expect(twoListSelection.allSearch).toEqual(searchText);
+         let searchData: any = {text: 'test'};
+         twoListSelection.onSearchOverAll(searchData);
+         expect(twoListSelection.allSearch).toEqual(searchData.text);
          expect(twoListSelection.selectedSearch).toEqual('');
 
-         twoListSelection.onSearchOverSelected(searchText);
-         expect(twoListSelection.allSearch).toEqual(searchText);
-         expect(twoListSelection.selectedSearch).toEqual(searchText);
+         twoListSelection.onSearchOverSelected(searchData);
+         expect(twoListSelection.allSearch).toEqual(searchData.text);
+         expect(twoListSelection.selectedSearch).toEqual(searchData.text);
       });
 
       it('Should move to selected', () => {
@@ -179,7 +179,6 @@ describe('[StTwoListSelection]', () => {
          expect(twoListSelection.copySelectedElements[0].selected).toBe(true);
 
          let newAllList = _cloneDeep(allElements);
-         let newSelectedList = [];
 
          // Update all List
          newAllList.push({
@@ -191,8 +190,8 @@ describe('[StTwoListSelection]', () => {
          expect(twoListSelection.copyAllElement).toEqual(newAllList.slice(1));
 
          // Update selected List
-         newSelectedList = _cloneDeep(allElements.slice(0, 2));
-         let expectedResult = _cloneDeep(allElements.slice(0, 2));
+         const newSelectedList = _cloneDeep(allElements.slice(0, 2));
+         const expectedResult = _cloneDeep(allElements.slice(0, 2));
          expectedResult[0].selected = true;
          change = { selectedElements: new SimpleChange(twoListSelection.copySelectedElements, newSelectedList, true) };
          twoListSelection.checkChanges(change, 'allElements', 'selectedElements');

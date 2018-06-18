@@ -4,7 +4,7 @@
 
 * Pending changelog
 
-## 11.2.0 (upcoming)
+## 11.2.0 (June 18, 2018)
 
 **New features:**
 

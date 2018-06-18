@@ -1,5 +1,9 @@
 # Changelog
 
+## 11.3.0 (upcoming)
+
+* Pending changelog
+
 ## 11.2.0 (upcoming)
 
 **New features:**

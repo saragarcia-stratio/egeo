@@ -2,7 +2,10 @@
 
 ## 11.3.0 (upcoming)
 
-* Pending changelog
+**Fixed bugs:**
+
+* st-fullscreen-layout: Avoid to display scroll of the previous page when fullscreen is being displayed
+
 
 ## 11.2.0 (June 18, 2018)
 

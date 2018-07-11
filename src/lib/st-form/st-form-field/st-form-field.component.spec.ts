@@ -637,7 +637,7 @@ describe('StFormFieldComponent', () => {
          });
       });
 
-      it('if input has a default value and user interacts with input, he will be able to reset to the default value', () => {
+      it('if input has a default value and user interacts with input, he will be able to reset to the default value', (done) => {
          let fakeDefault: string = 'test default';
          component.schema = { key: 'genericTextInput', value: JSON_SCHEMA.properties.genericTextInput };
          component.qaTag = 'genericTextInput';
@@ -658,13 +658,13 @@ describe('StFormFieldComponent', () => {
             input.dispatchEvent(new Event('input'));
             fixture.detectChanges();
 
-            expect(fixture.nativeElement.querySelector('.st-input-reset-button')).not.toBeNull();
+            expect(fixture.nativeElement.querySelector('.st-form-control-reset-button')).not.toBeNull();
 
-            fixture.nativeElement.querySelector('.st-input-reset-button').click();
+            fixture.nativeElement.querySelector('.st-form-control-reset-button').click();
             fixture.detectChanges();
 
-            expect(component.value).toEqual(fakeDefault);
-
+            expect(input.value).toEqual(fakeDefault);
+            done();
          });
       });
    });

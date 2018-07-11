@@ -94,10 +94,9 @@ export class StFormComponent implements AfterViewInit, AfterViewChecked, Control
    }
 
    ngAfterViewInit(): void {
-      setTimeout(() => {
-         this.form.form.markAsPristine();
-      }, 0);
-
+      if (!this.forceValidations) {
+            this.form.form.markAsPristine();
+      }
    }
 
    ngAfterViewChecked(): void {

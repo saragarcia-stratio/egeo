@@ -2,14 +2,17 @@
 
 ## 11.4.0 (upcoming)
 
-* Pending changelog
+**Fixed bugs:**
+
+* st-form: Form is marked as pristine only if forceValidation input is false
+* st-tag-input: Put needed position relative in order to display autocompleted menu correctly
+
 
 ## 11.3.0 (June 27, 2018)
 
 **New features:**
 
 * st-pop-over: Set as optional the arrow icon and header is only displayed if settings button is displayed or title is not empty
-
 
 **Fixed bugs:**
 

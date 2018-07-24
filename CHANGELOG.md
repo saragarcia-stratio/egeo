@@ -1,5 +1,9 @@
 # Changelog
 
+## 11.6.0 (upcoming)
+
+* Pending changelog
+
 ## 11.5.0 (upcoming)
 
 **Others**

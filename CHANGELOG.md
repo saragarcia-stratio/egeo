@@ -4,7 +4,7 @@
 
 * Pending changelog
 
-## 11.5.0 (upcoming)
+## 11.5.0 (July 25, 2018)
 
 **Others**
 

@@ -5,6 +5,7 @@
 **New features:**
 
 * st-bubble: Create component
+* st-button: Add small button style
 
 **Others**
 

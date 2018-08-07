@@ -5,6 +5,7 @@
 **New features:**
 
 * st-bubble: Create component
+* st-input, st-textarea, st-select, st-radio-button, st-checkbox, st-tag-input: Change disabled style
 
 **Others**
 

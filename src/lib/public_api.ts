@@ -48,6 +48,9 @@ export { StAlertLink, STALERT_SEVERITY } from './st-alerts/st-alerts.model';
 export { StAlertsService } from './st-alerts/st-alerts.service';
 
 // Breadcrumb
+export {
+   StBreadCrumbItem
+} from './st-breadcrumbs/st-breadcrumbs.interface';
 export { StBreadcrumbsModule } from './st-breadcrumbs/st-breadcrumbs.module';
 
 // Bubble

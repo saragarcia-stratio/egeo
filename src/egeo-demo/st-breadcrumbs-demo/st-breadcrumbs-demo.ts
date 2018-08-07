@@ -13,6 +13,7 @@ import { clone as _clone } from 'lodash';
 
 import { StDemoLoggerSeverity } from '../shared/st-demo-logger/st-demo-loger.model';
 import { StDemoLoggerService } from '../shared/st-demo-logger/st-demo-logger.service';
+import { StBreadCrumbItem } from '@stratio/egeo';
 
 @Component({
    selector: 'st-breadcrumbs-demo',
@@ -20,13 +21,34 @@ import { StDemoLoggerService } from '../shared/st-demo-logger/st-demo-logger.ser
 })
 export class StBreadcrumbsDemoComponent {
    public output: string;
-   public options: string[] = [];
+   public options: StBreadCrumbItem[] = [];
 
-   private originalOptions: string[] = ['Home'];
+   private originalOptions: StBreadCrumbItem[] = [{ label: 'Home', icon: 'icon-home2' }];
+   private otherOptions: StBreadCrumbItem[] = [{ icon: 'icon-home2' },
+      { icon: 'icon-corner-down-left' },
+      { icon: 'icon-corner-down-right' },
+      { icon: 'icon-corner-left-down' },
+      { icon: 'icon-corner-left-up' },
+      { icon: 'icon-corner-right-down' },
+      { icon: 'icon-corner-right-up' },
+      { icon: 'icon-corner-up-left' },
+      { icon: 'icon-corner-up-right' }
+   ];
+
+   private otherOptions2: StBreadCrumbItem[] = [{ icon: 'icon-home2' },
+      { label: 'icon-corner-down-left' },
+      { icon: 'icon-corner-down-right' },
+      { label: 'icon-corner-left-down' },
+      { icon: 'icon-corner-left-up' },
+      { label: 'icon-corner-right-down' },
+      { icon: 'icon-corner-right-up' },
+      { label: 'icon-corner-up-left' },
+      { icon: 'icon-corner-up-right' }
+   ];
 
    constructor(private _logger: StDemoLoggerService) {
       for (let i = 1; i < 15; i++) {
-         this.originalOptions.push('level' + i);
+         this.originalOptions.push({label: 'level' + i, icon: 'icon-check'});
       }
       this.reset();
       this._logger.maxMessages = 15;

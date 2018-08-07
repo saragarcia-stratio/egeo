@@ -7,6 +7,10 @@
 * st-bubble: Create component
 * st-button: Add small button style
 
+**Breaking changes:**
+
+* st-bread-crumb: Changed options from string to object with label and icon to allow icons
+
 **Others**
 
 * Update version of the Stratio Icon Font

@@ -34,13 +34,14 @@
       }
       &:disabled {
          border-color: $neutral-06;
-         background-color: $neutral-01;
-         color: $neutral-08;
+         background-color: $neutral-14;
+         color: $neutral-07;
          overflow: auto;
          resize: none;
+         cursor: not-allowed;
       }
       &:disabled:placeholder {
-         color: $neutral-08;
+         color: $neutral-07;
       }
    }
 

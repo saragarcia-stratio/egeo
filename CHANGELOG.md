@@ -11,6 +11,8 @@
 **Breaking changes:**
 
 * st-bread-crumb: Changed options from string to object with label and icon to allow icons
+* st-two-list: Includes checkbox all button in list-scroll component. Emits new event with number of elements selected.
+
 
 **Others**
 

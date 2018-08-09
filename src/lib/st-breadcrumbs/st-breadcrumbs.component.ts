@@ -29,7 +29,7 @@ import { StBreadCrumbItem } from './st-breadcrumbs.interface';
  *
  * @model
  *
- *   [Optional label and icon of an option] {./st-breadcrumbs.interface.ts#StBreadcrumbs}
+ *   [Id, optional label and icon of an option] {./st-breadcrumbs.interface.ts#StBreadcrumbs}
  *
  * @example
  *
@@ -82,10 +82,16 @@ export class StBreadCrumbsComponent implements OnInit, OnChanges {
          this.select.emit(toEmit);
       }
    }
-   public getLabel(index: number): String {
+
+   public getId(index: number): string {
+      return this.options[index].id;
+   }
+
+   public getLabel(index: number): string {
       return index > -1 ? this.options[index].label : '...';
    }
-   public getIcon(index: number): String {
+
+   public getIcon(index: number): string {
       return index > -1 ? this.options[index].icon : '';
    }
 

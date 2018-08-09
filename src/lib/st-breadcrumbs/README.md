@@ -28,7 +28,7 @@
 
 ## Models
 
-*Optional label and icon of an option* (StBreadcrumbs)
+*Id, optional label and icon of an option* (StBreadcrumbs)
 
 ```typescript
 

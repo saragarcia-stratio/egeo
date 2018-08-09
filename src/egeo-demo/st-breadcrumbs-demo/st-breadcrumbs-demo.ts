@@ -23,32 +23,32 @@ export class StBreadcrumbsDemoComponent {
    public output: string;
    public options: StBreadCrumbItem[] = [];
 
-   private originalOptions: StBreadCrumbItem[] = [{ label: 'Home', icon: 'icon-home2' }];
-   private otherOptions: StBreadCrumbItem[] = [{ icon: 'icon-home2' },
-      { icon: 'icon-corner-down-left' },
-      { icon: 'icon-corner-down-right' },
-      { icon: 'icon-corner-left-down' },
-      { icon: 'icon-corner-left-up' },
-      { icon: 'icon-corner-right-down' },
-      { icon: 'icon-corner-right-up' },
-      { icon: 'icon-corner-up-left' },
-      { icon: 'icon-corner-up-right' }
+   private originalOptions: StBreadCrumbItem[] = [{id: 'home', label: 'Home', icon: 'icon-home2' }];
+   private otherOptions: StBreadCrumbItem[] = [{ id: 'home', icon: 'icon-home2' },
+      { id: 'downLeft', icon: 'icon-corner-down-left' },
+      { id: 'downRight', icon: 'icon-corner-down-right' },
+      { id: 'leftDown', icon: 'icon-corner-left-down' },
+      { id: 'leftUp', icon: 'icon-corner-left-up' },
+      { id: 'rightDown', icon: 'icon-corner-right-down' },
+      { id: 'rightUp', icon: 'icon-corner-right-up' },
+      { id: 'upLeft', icon: 'icon-corner-up-left' },
+      { id: 'upRight', icon: 'icon-corner-up-right' }
    ];
 
-   private otherOptions2: StBreadCrumbItem[] = [{ icon: 'icon-home2' },
-      { label: 'icon-corner-down-left' },
-      { icon: 'icon-corner-down-right' },
-      { label: 'icon-corner-left-down' },
-      { icon: 'icon-corner-left-up' },
-      { label: 'icon-corner-right-down' },
-      { icon: 'icon-corner-right-up' },
-      { label: 'icon-corner-up-left' },
-      { icon: 'icon-corner-up-right' }
+   private otherOptions2: StBreadCrumbItem[] = [{ id: 'home', icon: 'icon-home2' },
+      { id: 'downLeft', label: 'icon-corner-down-left' },
+      { id: 'downRight', icon: 'icon-corner-down-right' },
+      { id: 'leftDown', label: 'icon-corner-left-down' },
+      { id: 'leftUp', icon: 'icon-corner-left-up' },
+      { id: 'rightDown', label: 'icon-corner-right-down' },
+      { id: 'rightUp', icon: 'icon-corner-right-up' },
+      { id: 'upLeft', label: 'icon-corner-up-left' },
+      { id: 'upRight', icon: 'icon-corner-up-right' }
    ];
 
    constructor(private _logger: StDemoLoggerService) {
       for (let i = 1; i < 15; i++) {
-         this.originalOptions.push({label: 'level' + i, icon: 'icon-check'});
+         this.originalOptions.push({id: 'level_' + i, label: 'level' + i, icon: 'icon-check'});
       }
       this.reset();
       this._logger.maxMessages = 15;

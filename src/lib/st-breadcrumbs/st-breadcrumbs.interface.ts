@@ -10,6 +10,7 @@
  */
 
 export class StBreadCrumbItem {
+   id: string;
    label?: string;
    icon?: string;
 }

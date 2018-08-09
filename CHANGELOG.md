@@ -7,6 +7,7 @@
 * st-bubble: Create component
 * st-button: Add small button style
 * st-input, st-textarea, st-select, st-radio-button, st-checkbox, st-tag-input: Change disabled style
+* st-modal: Set default max and min width
 
 **Breaking changes:**
 

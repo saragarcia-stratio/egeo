@@ -59,7 +59,7 @@ export class StTwoListSelection {
    // Check selected element
    onSelectSelectedElement(selection: StTwoListSelectionElement): void {
       if (this.hasCheckboxSelectedList && selection.itemAll) {
-         this.copyAllElement = _.cloneDeep(this.changeSelectedItemList(this.copySelectedElements, !selection.selected));
+         this.copySelectedElements = _.cloneDeep(this.changeSelectedItemList(this.copySelectedElements, !selection.selected));
          selection.selected = !selection.selected;
       } else {
          if (this.canSelect(selection, this.copySelectedElements)) {
@@ -132,7 +132,7 @@ export class StTwoListSelection {
    }
 
    private changeSelectedItemList(list: StTwoListSelectionElement[], selected: boolean): StTwoListSelectionElement[] {
-      return list.map((elem) => {
+      return _.cloneDeep(list).map((elem) => {
          elem.selected = selected;
          return elem;
       });

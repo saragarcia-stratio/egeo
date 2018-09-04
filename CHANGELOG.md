@@ -6,6 +6,10 @@
 
 * st-spinner: Apply new style and behaviour according to UX specifications
 
+**Fixed bugs:**
+
+* st-bubble: Fix visible style
+
 **Others**
 
 * st-dropdown-menu: Put cursor pointer to items

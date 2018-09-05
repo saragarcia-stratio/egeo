@@ -57,12 +57,24 @@ export class StTwoListSelectionViewComponent {
       return this.config && this.config.allElementsListTitle || '';
    }
 
+   get allSubtitle(): string {
+      return this.config && this.config.allElementsListSubtitle || '';
+   }
+
    get allPlaceholder(): string {
       return this.config && this.config.allElementsSearchPlaceholder || '';
    }
 
+   get orderPlaceholder(): string {
+      return this.config && this.config.orderPlaceholder || '';
+   }
+
    get selectedTitle(): string {
       return this.config && this.config.selectedElementsListTitle || '';
+   }
+
+   get selectedSubtitle(): string {
+      return this.config && this.config.selectedElementsListSubtitle || '';
    }
 
    get allQaTag(): string {

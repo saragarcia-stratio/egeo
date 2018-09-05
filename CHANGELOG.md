@@ -2,6 +2,10 @@
 
 ## 13.0.0 (upcoming)
 
+**New features:**
+
+* st-two-list: Added click listener only to checkbox and 'check all' button is only displayed when it has elements. Apply new style and behaviour according to UX specifications
+
 **Breaking changes:**
 
 * st-spinner: Apply new style and behaviour according to UX specifications

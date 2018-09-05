@@ -91,6 +91,7 @@ export class StTwoListSelectionComponent extends StTwoListSelection implements O
    @Output() selectedElementsChange: EventEmitter<StTwoListSelectionElement[]> = new EventEmitter<StTwoListSelectionElement[]>();
    @Output() selectExtraLabelAll: EventEmitter<StTwoListSelectExtraLabelAction> = new EventEmitter<StTwoListSelectExtraLabelAction>();
    @Output() selectExtraLabelSelected: EventEmitter<StTwoListSelectExtraLabelAction> = new EventEmitter<StTwoListSelectExtraLabelAction>();
+   @Output() change: EventEmitter<any> = new EventEmitter<any>();
 
    constructor(private cd: ChangeDetectorRef) {
       super(cd);
@@ -110,6 +111,7 @@ export class StTwoListSelectionComponent extends StTwoListSelection implements O
 
    ngOnChanges(changes: SimpleChanges): void {
       this.checkChanges(changes, 'allElements', 'selectedElements');
+      this.change.emit();
    }
 
    get allList(): StTwoListSelectionElement[] {

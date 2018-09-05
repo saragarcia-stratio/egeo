@@ -32,9 +32,19 @@ export class StTwoListSelectionDemoComponent {
 
    config: StTwoListSelectionConfig = {
       allElementsListTitle: 'All element',
-      allElementsSearchPlaceholder: 'Search in all',
+      allElementsSearchPlaceholder: 'Search...',
       selectedElementsListTitle: 'Selected elements',
-      selectedElementsSearchPlaceholder: 'Search in selected'
+      selectedElementsSearchPlaceholder: 'Search...'
+   };
+
+   configWithCheckAll: StTwoListSelectionConfig = {
+      allElementsListTitle: 'All element',
+      allElementsListSubtitle: '0 users',
+      allElementsSearchPlaceholder: 'Search...',
+      selectedElementsListTitle: 'Selected elements',
+      selectedElementsListSubtitle: '0 users',
+      selectedElementsSearchPlaceholder: 'Search...',
+      orderPlaceholder: 'Order by alphabet'
    };
 
    public orderOptions: Array<StDropDownMenuItem> = [
@@ -52,8 +62,26 @@ export class StTwoListSelectionDemoComponent {
       this.fillLists();
    }
 
+   onChange(event: Event): void {
+      if (this.completeUserList.length === 0) {
+         this.configWithCheckAll.allElementsListSubtitle = `0 users`;
+      } else {
+         this.configWithCheckAll.allElementsListSubtitle = `0/${this.completeUserList.length} users selected`;
+      }
+
+      if (this.selectedUserList.length === 0) {
+         this.configWithCheckAll.selectedElementsListSubtitle = `0 users`;
+      } else {
+         this.configWithCheckAll.selectedElementsListSubtitle = `0/${this.selectedUserList.length} users selected`;
+      }
+   }
+
+   onNumItemsAll(event: Event): void {
+      this.configWithCheckAll.allElementsListSubtitle = `${event}/${this.completeUserList.length} users selected`;
+   }
+
    onNumItemsSelected(event: Event): void {
-      console.log('Number of elements selected', event);
+      this.configWithCheckAll.selectedElementsListSubtitle = `${event}/${this.selectedUserList.length} users selected`;
    }
 
    showSelectedElements(): void {
@@ -70,7 +98,7 @@ export class StTwoListSelectionDemoComponent {
    }
 
    private fillLists(): void {
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 300; i++) {
 
             this.completeUserList.push({ id: i, name: `User-${i}` });
             if (i % 4 === 0) {

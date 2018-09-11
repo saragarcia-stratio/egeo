@@ -2,7 +2,10 @@
 
 ## 14.0.0 (upcoming)
 
-* Pending changelog
+**Others:**
+
+* Update to angular 6 (angular, angular-cli, rxjs, typescript)
+
 
 ## 13.0.0 (September 06, 2018)
 

@@ -2,6 +2,10 @@
 
 ## 14.0.0 (upcoming)
 
+**New features:**
+
+* st-button: Add small toolbar button style
+
 **Others:**
 
 * Update to angular 6 (angular, angular-cli, rxjs, typescript)

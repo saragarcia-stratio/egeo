@@ -39,7 +39,8 @@
                         [hasDependencies]="isAParentField(property.key) || (isASwitchSection() && isTheFirstField(property.key))"
                         [ngClass]="getFieldClasses(property.key)"
                         [showTooltip]="showTooltips"
-                        [qaTag]="property.key">
+                        [qaTag]="property.key"
+                        [attr.id]="property.key + '-form-field'">
          </st-form-field>
 
          <div *ngIf="property.value.type === 'object' && fieldHasToBeCreated(property.key)">

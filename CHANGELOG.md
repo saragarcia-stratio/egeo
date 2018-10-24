@@ -10,7 +10,11 @@
 
 * st-horizontal-tabs: Apply new design according to UX specifications
 
+## 13.2.2 (upcoming)
 
+**Fixed bugs:**
+   * st-two-list: fix bad behavior if user is searching something and click checkbox all (it must be select only filtered list)
+   
 ## 13.2.1 (October 17, 2018)
 
 **Others:**

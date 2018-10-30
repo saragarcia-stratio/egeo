@@ -11,10 +11,20 @@
 * st-two-list: fix bad behavior if user is searching something and click checkbox all (it must be select only filtered list)
 * st-select: When select is in a form, user still has to click two times to select an option
 * st-select: Close select when user clicks outside
+* st-file-button: Add id to input
 
 **Others:**
 
 * st-horizontal-tabs: Apply new design according to UX specifications
+
+
+## 13.2.2 (October 24, 2018)
+
+**Fixed bugs:**
+
+* st-two-list: fix bad behavior if user is searching something and click checkbox all (it must be select only filtered list)
+* st-select: When select is in a form, user still has to click two times to select an option
+* st-select: Close select when user clicks outside
 
 
 ## 13.2.1 (October 17, 2018)

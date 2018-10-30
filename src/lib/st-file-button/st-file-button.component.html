@@ -10,5 +10,5 @@
     SPDX-License-Identifier: Apache-2.0.
 
 -->
-<input type="file" name="file" id="file" class="input-file" accept="{{accepted}}" (change)="onChange($event)"/>
-<label class="button {{buttonClass}}" for="file">{{text}}</label>
+<input type="file" [name]="id" [id]="id" class="input-file" accept="{{accepted}}" (change)="onChange($event)"/>
+<label class="button {{buttonClass}}" [for]="id">{{text}}</label>

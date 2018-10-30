@@ -40,9 +40,11 @@ export class StFileButtonComponent implements OnInit {
    @Input() buttonClass: string = 'button-primary';
    /** @Input {string} [accepted=''] The allowed extensions */
    @Input() accepted: string = '';
-   /** @Input {File} [selected=''] Event emitted when a file is selected */
+   /** @Input {string} [id=''] Identifier for input */
+   @Input() id: string;
+   /** @Output {File} [selected=''] Event emitted when a file is selected */
    @Output() selected: EventEmitter<any> = new EventEmitter();
-   /** @Input {Error} [error=''] Event emitted when an invalid file is selected */
+   /** @Output {Error} [error=''] Event emitted when an invalid file is selected */
    @Output() error: EventEmitter<any> = new EventEmitter();
 
    private _accepted: Array<string>;

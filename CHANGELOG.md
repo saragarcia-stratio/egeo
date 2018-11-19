@@ -11,6 +11,10 @@
 * st-two-list: Improve st-two-list to show spinner when scroll down in lists.
 * st-pagination: Emits new  event when user interacts with some of the elements in the selector of items displayed per page.
 
+**Fixed bugs:**
+
+* st-text-area: fix error style
+
 ## 13.3.0 (October 30, 2018)
 
 **New features:**

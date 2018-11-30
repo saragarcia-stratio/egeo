@@ -8,7 +8,9 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import {Component, Input, EventEmitter, Output, ElementRef, OnInit} from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Input, EventEmitter, Output, ElementRef, OnInit, Renderer2 } from '@angular/core';
+
+import { StatusNotification, StNotificationElement } from './st-foreground-notifications.model';
 
 @Component({
    selector: 'st-foreground-notifications',
@@ -28,13 +30,13 @@ import {Component, Input, EventEmitter, Output, ElementRef, OnInit} from '@angul
  * {html}
  *
  * ```
- * <st-foreground-notifications status="success" text="text" [visible]="isVisible"></st-foreground-notifications>
+ * <st-foreground-notifications [notifications]="notifications" [(visible)]="true" [autoCloseTime]="1000"></st-foreground-notifications>
  *
  * ```
  */
 
-export class StForegroundNotificationsComponent implements OnInit {
 
+export class StForegroundNotificationsComponent implements AfterViewInit, OnInit {
 
    /** @Input {bollean} [visible=flase] When true the notification is shown */
    @Input()
@@ -48,28 +50,97 @@ export class StForegroundNotificationsComponent implements OnInit {
       return this._visible;
    }
 
-   /** @Input {string} [text=''] Displayed text */
-   @Input() text: string;
-   /** @Input {NotificationStatus} [status='NotificationStatus.default'] Defines the criticality level of the notification */
-   @Input() status: string = 'default';
-
-   /** @Input {autoCloseTime} [autoCloseTime='1000'] Defines the time in milliseconds for autoclose the notification */
+   /** @Input {autoCloseTime} [autoCloseTime='1000'] Defines the time in milliseconds for autoclose the notification.
+    *  The autoclose only applies if only have one notification and status is success
+    */
    @Input() autoCloseTime: number;
 
+   /** @Input {StNotificationElement []} [notifications='[]'] Array of notifications */
+   @Input() notifications?: StNotificationElement[] = [];
+
+    /** @output {clickLinkTemplate} [click] Event emitted when user click in a href link */
+   @Output() clickLinkTemplate: EventEmitter<any> = new EventEmitter();
+
+   /** @output {visibleChange} [click] Event emitted when set param visible */
    @Output() visibleChange: EventEmitter<boolean> = new EventEmitter();
 
-   private _visible: boolean = false;
+   public currentNotification: number = 1;
+   public showLinkMore: boolean = false;
+   public status: string = 'default';
 
-   constructor() { }
+   private _visible: boolean = false;
+   private listStatusNotifications: Array<StatusNotification> = [];
+
+   constructor(private cd: ChangeDetectorRef, private elemRef: ElementRef, private renderer: Renderer2) { }
 
    ngOnInit(): void {
       if (this.autoCloseTime) {
-         setTimeout(() => this.onClose(), this.autoCloseTime);
+         if ( this.notifications.length === 1 && this.notifications[0].status === 'success') {
+            setTimeout(() => this.onClose(), this.autoCloseTime);
+         }
+      }
+      this.status = this.notifications[this.getIndexCurrentNotification()].status;
+
+      this.notifications.forEach(() => {
+         this.listStatusNotifications.push(new StatusNotification(false, false));
+      });
+   }
+
+   ngAfterViewInit(): void {
+      let htmlElement = this.elemRef.nativeElement.querySelector('.foreground-notification__html');
+      if (htmlElement !== null) {
+         this.addStyleLinks(htmlElement);
+      }
+      this.checkOneLine();
+      this.cd.detectChanges();
+   }
+
+   addStyleLinks(htmlElement: any): void {
+      let links = htmlElement.querySelectorAll('a');
+      if (links.constructor !== Array) {
+         links = (<any>Object).values(links);
+      }
+      links.forEach((element: any, index: any) => {
+         let nameEventEmitter = (this.notifications[this.getIndexCurrentNotification()]).nameEvents[index];
+         if (nameEventEmitter) {
+            element.addEventListener('click', this.onClickLinkHtmlTemplate.bind(this, nameEventEmitter));
+            this.renderer.setStyle(element, 'text-decoration', 'underline');
+            this.renderer.setStyle(element, 'cursor', 'pointer');
+         }
+      });
+   }
+
+   checkOneLine(): void {
+      let element = this.elemRef.nativeElement.querySelectorAll('.foreground-notification__content');
+      let currentIndex = this.getIndexCurrentNotification();
+
+      if (element[currentIndex].offsetHeight > 40) {
+         if (!this.listStatusNotifications[currentIndex].completeText) {
+            this.listStatusNotifications[currentIndex].showMore = true;
+         }
+         if (this.listStatusNotifications[currentIndex].showMore) {
+            this.listStatusNotifications[currentIndex].completeText = false;
+            this.renderer.addClass(element[currentIndex], 'limit-one-line');
+         }
+      } else {
+         this.listStatusNotifications[currentIndex].completeText = true;
+         if (!this.listStatusNotifications[currentIndex].showMore) {
+            this.removeStyleNotification();
+         }
       }
    }
 
-   onClose(): void {
-      this.visible = false;
+   decrementPage(): void {
+      this.currentNotification = this.getIndexCurrentNotification();
+      setTimeout(() => {
+         this.checkOneLine();
+         this.cd.detectChanges();
+      });
+      this.status = this.notifications[this.getIndexCurrentNotification()].status;
+   }
+
+   getIndexCurrentNotification(): number {
+      return this.currentNotification - 1;
    }
 
    getStatus(): string {
@@ -77,12 +148,63 @@ export class StForegroundNotificationsComponent implements OnInit {
          case 'success':
          case 'warning':
          case 'critical':
+         case 'running':
             return this.status;
          default:
             return 'default';
       }
    }
 
+   getStatusIcon(): string {
+      switch (this.status) {
+         case 'success':
+            return 'icon-circle-check';
+         case 'warning':
+            return 'icon-alert';
+         case 'critical':
+            return 'icon-info1';
+         case 'running':
+            return 'icon-info1';
+         default:
+            return 'default';
+      }
+   }
+
+   getStatusNotifications(): string {
+      return (this.notifications.length > 1) ? 'more-lines' : '';
+   }
+
+   incrementPage(): void {
+      this.currentNotification = this.currentNotification + 1;
+      setTimeout(() => {
+         this.checkOneLine();
+         this.cd.detectChanges();
+      });
+      this.status = this.notifications[this.getIndexCurrentNotification()].status;
+   }
+
+   onClickLinkHtmlTemplate(event: string): void {
+      this.clickLinkTemplate.emit(event);
+   }
+
+   onClose(): void {
+      this.visible = false;
+      this.cd.markForCheck();
+   }
+
+   removeStyleNotification(): void {
+      let element = this.elemRef.nativeElement.querySelectorAll('.foreground-notification__content');
+      this.renderer.removeClass(element[this.getIndexCurrentNotification()], 'limit-one-line');
+      this.cd.markForCheck();
+   }
+
+   showTextComplete(): void {
+      let currentIndex = this.getIndexCurrentNotification();
+      this.listStatusNotifications[currentIndex].showMore = false;
+      this.listStatusNotifications[currentIndex].completeText = true;
+      this.removeStyleNotification();
+      this.cd.markForCheck();
+   }
 }
 
 

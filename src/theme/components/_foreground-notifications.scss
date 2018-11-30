@@ -16,7 +16,7 @@
    box-shadow: 0 1px 4px 1px rgba(124, 124, 124, 0.15);
    &.default {
          background-color: $neutral-00;
-         color: $action-primary-default;
+         color: $neutral-13;
 
          .close {
             color: $neutral-09;
@@ -25,20 +25,26 @@
 
       &.critical {
          border-color: $status-critical-hover;
-         background-color: $status-critical-light;
-         color: $status-critical-hover;
+         background-color: $status-critical-default;
+         color: $neutral-00;
       }
 
       &.success {
          border-color: $status-success-hover;
-         background-color: $status-success-light;
-         color: $status-success-hover;
+         background-color: $status-success-default;
+         color: $neutral-00;
       }
 
       &.warning {
          border-color: $status-warning-hover;
-         background-color: $status-warning-light;
-         color: $status-warning-hover;
+         background-color: $status-warning-default;
+         color: $neutral-00;
+      }
+
+      &.running {
+         border-color: $action-primary-hover;
+         background-color: $action-primary-default;
+         color: $neutral-00;
       }
    }
 

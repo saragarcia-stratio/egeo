@@ -103,6 +103,10 @@ export { StFormModule } from './st-form/st-form.module';
 export { StFormFieldModule } from './st-form/st-form-field/st-form-field.module';
 export { StFormListModule } from './st-form-list/st-form-list.module';
 
+// Foreground notifications
+
+export {StNotificationElement} from './st-foreground-notifications/st-foreground-notifications.model';
+
 // Fullscreen layout
 export { StFullscreenLayoutModule } from './st-fullscreen-layout/st-fullscreen-layout.module';
 

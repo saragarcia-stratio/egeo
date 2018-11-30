@@ -1,8 +1,9 @@
 # Changelog
 
-## 13.5.0 (upcoming)
+## 14.0.0 (upcoming)
 
-* Pending changelog
+**Breaking changes:**
+* st-foreground-notifications: allow to control multiple notifications
 
 ## 13.4.0 (November 19, 2018)
 

@@ -10,7 +10,27 @@
     SPDX-License-Identifier: Apache-2.0.
 
 -->
-<div class="foreground-notification" [ngClass]="getStatus()">
-   <p class="foreground-notification__text">{{text}}</p>
-   <i class="close icon-cross" (click)="onClose()"></i>
+<div class="foreground-notification__component">
+   <div class="foreground-notification__pagination" [ngClass]="getStatus()" *ngIf="notifications.length > 1">
+      <button class="decrement-notification" [disabled]="currentNotification === 1" (click)="decrementPage()"><i class="icon-arrow2_left"></i></button>
+      <span>{{currentNotification}}</span>
+      <span>of</span>
+      <span>{{notifications.length}}</span>
+      <button class="increment-notification" [disabled]="currentNotification === notifications.length " (click)="incrementPage()"><i class="icon-arrow2_right"></i></button>
+   </div>
+
+   <div *ngIf="notifications.length >= 0" class="foreground-notification" [ngClass]="getStatus()">
+      <div class="foreground-notification__container" [ngClass]="getStatusNotifications()">
+         <i class="status" [ngClass]="getStatusIcon()"></i>
+         <div class="foreground-notification__content" *ngFor="let notification of notifications; let index=index">
+            <span class="foreground-notification__html" *ngIf="notification.html && index === getIndexCurrentNotification()" [innerHtml]="notifications[getIndexCurrentNotification()].html"></span>
+            <span  *ngIf="!notification.html && index === getIndexCurrentNotification()">
+               {{notifications[getIndexCurrentNotification()].text}}
+            </span>
+            <a class="link-more" *ngIf="listStatusNotifications[index].showMore && index === getIndexCurrentNotification()" (click)="showTextComplete()">...More</a>
+         </div>
+      </div>
+
+      <i class="close icon-cross" (click)="onClose()"></i>
+   </div>
 </div>

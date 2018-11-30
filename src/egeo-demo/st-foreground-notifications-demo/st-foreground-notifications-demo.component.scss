@@ -8,15 +8,25 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-.st-fn-demo-container{
+
+@import '../../theme/constants/index';
+
+.st-fn-demo-container {
    width: 614px;
 
-   st-foreground-notifications{
+   st-foreground-notifications {
       margin-bottom: 15px;
    }
 }
 
-.button{
+.button {
    width: 210px;
    margin-bottom: 30px;
+}
+
+:host() {
+   .header-container {
+      width: 100%;
+   }
+
 }

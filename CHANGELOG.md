@@ -9,6 +9,8 @@
 **Breaking changes:**
 
 * st-foreground-notifications: allow to control multiple notifications
+* st-fullscreen-layout: Allow to customize title
+
 
 **Fixed bugs:**
 

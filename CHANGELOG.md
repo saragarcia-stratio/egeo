@@ -15,6 +15,7 @@
 **Fixed bugs:**
 
 * st-select: Disable html native autocomplete
+* st-foreground-notifications: must admit an empty list.
 
 ## 13.4.0 (November 19, 2018)
 

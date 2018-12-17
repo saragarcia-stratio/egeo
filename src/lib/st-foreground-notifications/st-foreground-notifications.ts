@@ -8,7 +8,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { AfterViewInit, ChangeDetectorRef, Component, Input, EventEmitter, Output, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Input, EventEmitter, Output, ElementRef, OnInit, Renderer2, OnChanges } from '@angular/core';
 
 import { StatusNotification, StNotificationElement } from './st-foreground-notifications.model';
 
@@ -36,7 +36,7 @@ import { StatusNotification, StNotificationElement } from './st-foreground-notif
  */
 
 
-export class StForegroundNotificationsComponent implements AfterViewInit, OnInit {
+export class StForegroundNotificationsComponent implements AfterViewInit, OnChanges, OnInit {
 
    /** @Input {bollean} [visible=flase] When true the notification is shown */
    @Input()
@@ -79,11 +79,7 @@ export class StForegroundNotificationsComponent implements AfterViewInit, OnInit
             setTimeout(() => this.onClose(), this.autoCloseTime);
          }
       }
-      this.status = this.notifications[this.getIndexCurrentNotification()].status;
-
-      this.notifications.forEach(() => {
-         this.listStatusNotifications.push(new StatusNotification(false, false));
-      });
+      this.fillStatusNotifications();
    }
 
    ngAfterViewInit(): void {
@@ -91,8 +87,15 @@ export class StForegroundNotificationsComponent implements AfterViewInit, OnInit
       if (htmlElement !== null) {
          this.addStyleLinks(htmlElement);
       }
-      this.checkOneLine();
+      if ( this.notifications && this.notifications.length > 0) {
+         this.checkOneLine();
+      }
+
       this.cd.detectChanges();
+   }
+
+   ngOnChanges(): void {
+      this.fillStatusNotifications();
    }
 
    addStyleLinks(htmlElement: any): void {
@@ -137,6 +140,16 @@ export class StForegroundNotificationsComponent implements AfterViewInit, OnInit
          this.cd.detectChanges();
       });
       this.status = this.notifications[this.getIndexCurrentNotification()].status;
+   }
+
+   fillStatusNotifications(): void {
+      if (this.notifications && this.notifications.length > 0) {
+         this.status = this.notifications[this.getIndexCurrentNotification()].status;
+      }
+
+      this.notifications.forEach(() => {
+         this.listStatusNotifications.push(new StatusNotification(false, false));
+      });
    }
 
    getIndexCurrentNotification(): number {

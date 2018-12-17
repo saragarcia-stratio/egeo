@@ -8,7 +8,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, AfterViewInit } from '@angular/core';
 
 import { StNotificationElement} from '@stratio/egeo';
 
@@ -17,7 +17,7 @@ import { StNotificationElement} from '@stratio/egeo';
    templateUrl: './st-foreground-notifications-demo.component.html',
    styleUrls: ['./st-foreground-notifications-demo.component.scss']
 })
-export class StForegroundNotificationsDemoComponent {
+export class StForegroundNotificationsDemoComponent implements AfterViewInit {
    items: any[] = [
       [{
          status: 'critical',
@@ -51,6 +51,9 @@ export class StForegroundNotificationsDemoComponent {
          visible: true,
          autoCloseTime: 3000
       }]
+   ];
+
+   itemsEmpty: any[] = [
    ];
 
    multiLine: StNotificationElement[] = [
@@ -100,6 +103,20 @@ export class StForegroundNotificationsDemoComponent {
    ];
    public toggleNotifications(index: number): void {
       this.items[index].visible = !this.items[index].visible;
+   }
+
+   constructor(private cd: ChangeDetectorRef) {}
+
+   ngAfterViewInit(): void {
+      setTimeout(() => {
+
+         this.itemsEmpty = [{
+            text: 'The server couldn’t be reached on port 8080, change it to another value.',
+            status: 'warning',
+            visible: true
+         }];
+         this.cd.markForCheck();
+      }, 5000);
    }
 
    doCheckDatabase(): void {

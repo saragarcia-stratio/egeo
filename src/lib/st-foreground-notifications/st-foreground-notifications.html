@@ -19,7 +19,7 @@
       <button class="increment-notification" [disabled]="currentNotification === notifications.length " (click)="incrementPage()"><i class="icon-arrow2_right"></i></button>
    </div>
 
-   <div *ngIf="notifications.length >= 0" class="foreground-notification" [ngClass]="getStatus()">
+   <div *ngIf="notifications.length > 0" class="foreground-notification" [ngClass]="getStatus()">
       <div class="foreground-notification__container" [ngClass]="getStatusNotifications()">
          <i class="status" [ngClass]="getStatusIcon()"></i>
          <div class="foreground-notification__content" *ngFor="let notification of notifications; let index=index">

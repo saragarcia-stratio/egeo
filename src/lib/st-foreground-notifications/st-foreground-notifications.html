@@ -27,7 +27,7 @@
             <span  *ngIf="!notification.html && index === getIndexCurrentNotification()">
                {{notifications[getIndexCurrentNotification()].text}}
             </span>
-            <a class="link-more" *ngIf="listStatusNotifications[index].showMore && index === getIndexCurrentNotification()" (click)="showTextComplete()">...More</a>
+            <a class="link-more" *ngIf="listStatusNotifications[index] && listStatusNotifications[index].showMore && index === getIndexCurrentNotification()" (click)="showTextComplete()">...More</a>
          </div>
       </div>
 

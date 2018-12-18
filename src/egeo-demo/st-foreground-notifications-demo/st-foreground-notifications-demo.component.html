@@ -22,7 +22,7 @@
       understandable to the user and allows a better experience in case the user has some kind of color blindness. That icon should reflect the
       nature of the notification, that can be an error, a warning, a success or completed action or an information.</p>
    <div *ngFor="let item of items, let i = index">
-      <st-foreground-notifications [notifications]="item" [(visible)]="item[0].visible" [autoCloseTime]="item[0].autoCloseTime" (clickLinkTemplate)="onClickLinkTemplate($event)"></st-foreground-notifications>
+      <st-foreground-notifications [notifications]="item" [visible]="true" (clickLinkTemplate)="onClickLinkTemplate($event)"></st-foreground-notifications>
       <br>
    </div>
    <h1 class="title">Multiple notifications</h1>
@@ -86,7 +86,7 @@
             </svg>
          </div>
       </st-header>
-      <st-foreground-notifications [notifications]="itemsEmpty" [visible]="true"></st-foreground-notifications>
+      <st-foreground-notifications [notifications]="itemsEmpty" [visible]="true" (visibleChange)="onVisibleChange($event)"></st-foreground-notifications>
    </div>
    <br>
 

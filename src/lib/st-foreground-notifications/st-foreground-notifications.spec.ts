@@ -41,7 +41,6 @@ class TestStFNComponent {
       return [
          {
             html: `<p>The request is understood <a>Check the database</a> <a>Check the database2</a>  </p>`,
-            visible: true,
             nameEvents: ['doCheckDatabase', 'doCheckDatabaseTwo']
          }];
    }
@@ -49,8 +48,7 @@ class TestStFNComponent {
    generateSimpleNotifications(): StNotificationElement[] {
       return [
          {
-            text: `The request is understood`,
-            visible: true
+            text: `The request is understood`
          }];
    }
 
@@ -61,8 +59,7 @@ class TestStFNComponent {
          This code is used when requests are being denied due to update limits . Other reasons for this status being returned are listed
          alongside the error codes in the table below.The request is understood, but it has been refused or access is not allowed.
          An accompanying error message will explain why. This code is used when requests are being denied due to update limits .`,
-         status: 'success',
-         visible: true
+         status: 'success'
       },
       {
          text: `Stratio audit failed to connect to Postgres database / second page.The request is understood, but it has been refused
@@ -70,21 +67,18 @@ class TestStFNComponent {
          This code is used when requests are being denied due to update limits . Other reasons for this status being returned are listed
          alongside the error codes in the table below.The request is understood, but it has been refused or access is not allowed.
          An accompanying error message will explain why. This code is used when requests are being denied due to update limits .`,
-         status: 'running',
-         visible: true
+         status: 'running'
       }];
    }
 
    generatePaginationNotification(): StNotificationElement[] {
       return [{
          text: `notification one`,
-         status: 'success',
-         visible: true
+         status: 'success'
       },
       {
          text: `notification two`,
-         status: 'running',
-         visible: true
+         status: 'running'
       }];
    }
 }
@@ -180,14 +174,14 @@ describe('StForegroundNotificationsComponent', () => {
       it('And user click on the close icon, the element should fade out and then hidden', fakeAsync(() => {
          fixture.detectChanges();
          let closeButton: HTMLElement = fixture.debugElement.query(By.css('.close')).nativeElement;
+         comp.notifications[0].status = 'success';
          comp.visible = true;
          fixture.detectChanges();
-
          expect(nativeElement.querySelector('st-foreground-notifications').classList).toContain('visible');
 
          closeButton.click();
+         comp.notifications = [];
          fixture.detectChanges();
-
          expect(nativeElement.querySelector('st-foreground-notifications').classList).not.toContain('visible');
       }));
 
@@ -199,6 +193,7 @@ describe('StForegroundNotificationsComponent', () => {
             fixture.detectChanges();
             expect(nativeElement.querySelector('st-foreground-notifications').classList).toContain('visible');
             tick(2000);
+            comp.notifications = [];
             fixture.detectChanges();
 
             expect(nativeElement.querySelector('st-foreground-notifications').classList).not.toContain('visible');

@@ -95,6 +95,12 @@ export class StForegroundNotificationsComponent implements AfterViewInit, OnChan
    }
 
    ngOnChanges(): void {
+
+      if (this.notifications && this.notifications.length > 0 && this.visible !== undefined && !this.visible ) {
+         this._visible = true;
+         this.cd.detectChanges();
+      }
+     this.listStatusNotifications = [];
       this.fillStatusNotifications();
    }
 
@@ -117,18 +123,19 @@ export class StForegroundNotificationsComponent implements AfterViewInit, OnChan
       let element = this.elemRef.nativeElement.querySelectorAll('.foreground-notification__content');
       let currentIndex = this.getIndexCurrentNotification();
 
-      if (element[currentIndex].offsetHeight > 40) {
-         if (!this.listStatusNotifications[currentIndex].completeText) {
-            this.listStatusNotifications[currentIndex].showMore = true;
-         }
-         if (this.listStatusNotifications[currentIndex].showMore) {
-            this.listStatusNotifications[currentIndex].completeText = false;
-            this.renderer.addClass(element[currentIndex], 'limit-one-line');
-         }
-      } else {
-         this.listStatusNotifications[currentIndex].completeText = true;
-         if (!this.listStatusNotifications[currentIndex].showMore) {
-            this.removeStyleNotification();
+      if (this.listStatusNotifications && this.listStatusNotifications.length > 0) {
+         if (element[currentIndex].offsetHeight > 40) {
+            this.listStatusNotifications[currentIndex].showMore = !this.listStatusNotifications[currentIndex].completeText;
+
+            if (this.listStatusNotifications[currentIndex].showMore) {
+               this.listStatusNotifications[currentIndex].completeText = false;
+               this.renderer.addClass(element[currentIndex], 'limit-one-line');
+            }
+         } else {
+            this.listStatusNotifications[currentIndex].completeText = true;
+            if (!this.listStatusNotifications[currentIndex].showMore) {
+               this.removeStyleNotification();
+            }
          }
       }
    }
@@ -213,8 +220,10 @@ export class StForegroundNotificationsComponent implements AfterViewInit, OnChan
 
    showTextComplete(): void {
       let currentIndex = this.getIndexCurrentNotification();
-      this.listStatusNotifications[currentIndex].showMore = false;
-      this.listStatusNotifications[currentIndex].completeText = true;
+      if (this.listStatusNotifications && this.listStatusNotifications.length > 0) {
+         this.listStatusNotifications[currentIndex].showMore = false;
+         this.listStatusNotifications[currentIndex].completeText = true;
+      }
       this.removeStyleNotification();
       this.cd.markForCheck();
    }

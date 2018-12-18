@@ -3,8 +3,6 @@ export interface StNotificationElement {
    text?: string;
    html?: string;
    status?: string;
-   visible?: boolean;
-   autoCloseTime?: number;
    nameEvents?: string [];
 }
 

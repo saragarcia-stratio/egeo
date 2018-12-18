@@ -21,35 +21,28 @@ export class StForegroundNotificationsDemoComponent implements AfterViewInit {
    items: any[] = [
       [{
          status: 'critical',
-         visible: true,
          html: '<p>Stratio audit failed to connect to Postgres database.  <a part="some-box">Check the database</a> <a part="some-box">Check the database 2</a></p>',
          nameEvents: ['doCheckDatabase', 'doCheckDatabaseSecond']
       }],
       [{
          text: 'The server couldn’t be reached on port 8080, change it to another value.',
-         status: 'warning',
-         visible: true
+         status: 'warning'
       }],
       [{
          text: 'The connection has been sucessful.',
-         status: 'success',
-         visible: true
+         status: 'success'
       }],
       [{
          text: 'The process is still running.',
-         status: 'running',
-         visible: true
+         status: 'running'
       }],
       [{
          text: 'This is a neutral informational notification',
-         status: '',
-         visible: true
+         status: ''
       }],
       [{
          text: 'This is a success error feedback notification with autoclose',
-         status: 'success',
-         visible: true,
-         autoCloseTime: 3000
+         status: 'success'
       }]
    ];
 
@@ -66,8 +59,7 @@ export class StForegroundNotificationsDemoComponent implements AfterViewInit {
                The request is understood, but it has been refused or access is not allowed. An accompanying error message will explain why.
                This code is used when requests are being denied due to update limits . Other reasons for this status being returned are
                listed alongside the error codes in the table below.`,
-         status: 'success',
-         visible: true
+         status: 'success'
       }];
 
    multiNotification: StNotificationElement[] = [
@@ -80,25 +72,21 @@ export class StForegroundNotificationsDemoComponent implements AfterViewInit {
                The request is understood, but it has been refused or access is not allowed. An accompanying error message will explain why.
                This code is used when requests are being denied due to update limits . Other reasons for this status being returned are
                listed alongside the error codes in the table below.`,
-         status: 'success',
-         visible: true
+         status: 'success'
       },
       {
          text: `Stratio audit failed to connect to Postgres database / second page.The request is understood, but it has been refused or access is not allowed. An accompanying error message will explain why.
          This code is used when requests are being denied due to update limits . Other reasons for this status being returned are listed
          alongside the error codes in the table below.The request is understood, but it has been refused or access is not allowed.
          An accompanying error message will explain why. This code is used when requests are being denied due to update limits .`,
-         status: 'critical',
-         visible: true
+         status: 'critical'
       },
       {
          text: 'Stratio audit failed to connect to Postgres database / third page',
-         status: 'warning',
-         visible: true
+         status: 'warning'
       },
       {
-         text: 'Stratio audit failed to connect to Postgres database / fourth page',
-         visible: true
+         text: 'Stratio audit failed to connect to Postgres database / fourth page'
       }
    ];
    public toggleNotifications(index: number): void {
@@ -112,8 +100,7 @@ export class StForegroundNotificationsDemoComponent implements AfterViewInit {
 
          this.itemsEmpty = [{
             text: 'The server couldn’t be reached on port 8080, change it to another value.',
-            status: 'warning',
-            visible: true
+            status: 'warning'
          }];
          this.cd.markForCheck();
       }, 5000);
@@ -138,5 +125,18 @@ export class StForegroundNotificationsDemoComponent implements AfterViewInit {
          default:
             break;
       }
+   }
+   onVisibleChange(event: any): void {
+
+      setTimeout(() => {
+         this.itemsEmpty = [];
+         this.cd.markForCheck();
+         this.itemsEmpty = [{
+            text: 'The server couldn’t be reached on port 8080, change it to another value.',
+            status: 'success',
+            visible: true
+         }];
+         this.cd.markForCheck();
+      }, 5000);
    }
 }

@@ -1,5 +1,9 @@
 # Changelog
 
+## 15.0.0 (upcoming)
+
+* Pending changelog
+
 ## 14.0.0 (upcoming)
 
 **New features:**

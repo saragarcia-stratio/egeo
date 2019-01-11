@@ -25,6 +25,8 @@
 
          .item {
             margin-bottom: 15px;
+            text-overflow: ellipsis;
+            overflow: hidden;
          }
 
          & > li:last-of-type {

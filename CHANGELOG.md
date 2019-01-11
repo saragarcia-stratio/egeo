@@ -12,6 +12,10 @@
 
 * st-table: Remove 'fixedHeader' input. It is changed to 'maxHeight' in order to specify the maximum height to table
 
+**Fixed bugs:**
+
+* st-sidebar: Fix minor style bug
+
 **Others:**
 
 * Web:  Show the examples source code in Egeo Web

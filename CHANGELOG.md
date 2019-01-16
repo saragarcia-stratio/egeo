@@ -1,5 +1,19 @@
 # Changelog
 
+## 16.0.0 (upcoming)
+
+**Fixed bugs:**
+
+* st-breadcrumb: Fix style bug when a long text displays displaced section
+
+
+## 15.0.2 (January 16, 2019)
+
+**Fixed bugs:**
+
+* st-table: Remove transition for all attributes in order to prevent a wrong behaviour
+
+
 ## 15.0.1 (January 14, 2019)
 
 **New features:**

@@ -4,7 +4,7 @@
 
 **Fixed bugs:**
 
-* st-breadcrumb: Fix style bug when a long text displays displaced section
+* st-breadcrumb, st-modal: Fix style bug when a long text displays displaced section
 
 
 ## 15.0.2 (January 16, 2019)

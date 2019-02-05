@@ -36,7 +36,7 @@
       }
 
       .editor-title {
-         font-family: $egeo-nunito-sans-bold;
+         font-weight: bold;
          font-size: $egeo-font-size-xlarge;
          font-style: normal;
          font-stretch: normal;
@@ -50,7 +50,7 @@
 
    .schema-error {
       color: $status-critical-default;
-      font-family: $egeo-nunito-sans-light;
+      font-weight: 100;
       font-size: $egeo-font-size-xsmall;
       width: 100%;
    }
@@ -71,12 +71,12 @@
       background-color: $neutral-01;
       padding: 5px 20px 20px;
       margin-top: 20px;
-      font-family: $egeo-nunito-sans-light;
+      font-weight: 100;
       font-size: $egeo-font-size-xxsmall;
       line-height: $egeo-font-size-medium;
 
       h2 {
-         font-family: $egeo-nunito-sans-bold;
+         font-weight: bold;
          font-size: $egeo-font-size-small;
          font-style: normal;
          font-stretch: normal;

@@ -23,7 +23,7 @@
 }
 
 .st-table__header-text {
-   font-family: $egeo-nunito-sans-bold;
+   font-weight: bold;
    font-size: $egeo-font-size-xxsmall;
    line-height: $egeo-line-height-xxsmall;
    text-align: left;
@@ -41,7 +41,7 @@
 }
 
 .st-table__order-arrow {
-   font-family: $egeo-nunito-sans-bold;
+   font-weight: bold;
    font-size: $egeo-font-size-xxxsmall;
    line-height: $egeo-line-height-xxxsmall;
    color: $neutral-10;
@@ -49,7 +49,7 @@
 
 // row theme
 .st-table-row {
-   font-family: $egeo-nunito-sans;
+   font-weight: 400;
    font-size: $egeo-font-size-xsmall;
    line-height: $egeo-line-height-xsmall;
    text-align: left;

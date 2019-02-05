@@ -13,9 +13,8 @@
 
 .sth-item-list {
    &__title {
-      font-family: $egeo-nunito-sans;
+      font-weight: normal;
       font-size: $egeo-font-size-small;
-      font-weight: 600;
       color: $neutral-08;
    }
    &.themeA {
@@ -29,7 +28,7 @@
 
 .sth-item-list__item {
    border-top: 1px solid $neutral-04;
-   font-family: $egeo-nunito-sans;
+   font-weight: 400;
    font-size: $egeo-font-size-xxsmall;
    color: $neutral-08;
    &:hover {

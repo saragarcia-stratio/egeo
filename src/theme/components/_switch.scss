@@ -12,13 +12,13 @@
 @import '../constants/colors';
 
 .st-switch {
-   font-family: $egeo-nunito-sans;
+   font-weight: 400;
 
    & > label {
       line-height: $egeo-line-height-xsmall;
       color: $action-secondary-07;
       font-size: $egeo-font-size-xsmall;
-      font-family: $egeo-nunito-sans;
+      font-weight: 400;
    }
 }
 

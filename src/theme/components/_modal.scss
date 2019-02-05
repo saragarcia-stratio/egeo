@@ -48,7 +48,7 @@
 
          .title {
             text-align: left;
-            font-family: $egeo-nunito-sans-extraBold;
+            font-weight: 900;
             font-size: $egeo-font-size-medium;
             line-height: $egeo-line-height-medium;
             color: $neutral-13;
@@ -72,17 +72,16 @@
       .st-modal-body {
          padding: 30px;
          .st-modal-message-plain-title {
-            font-family: $egeo-nunito-sans-light;
+            font-weight: 100;
             font-size: $egeo-font-size-xxlarge;
             line-height: $egeo-line-height-xxxlarge;
             text-align: left;
             color: $action-secondary-07;
             margin-bottom: 15px;
-            font-weight: 300;
             word-break: break-all;
          }
          .st-modal-message-plain-message {
-            font-family: $egeo-nunito-sans;
+            font-weight: normal;
             font-size: $egeo-font-size-small;
             line-height: $egeo-line-height-small;
             text-align: left;

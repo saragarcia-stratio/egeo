@@ -14,7 +14,7 @@
 
 %checkbox-default {
    color: $action-secondary-07;
-   font-family: $egeo-nunito-sans;
+   font-weight: 400;
    font-size: $egeo-font-size-xsmall;
    line-height: $egeo-font-size-large;
 }
@@ -60,7 +60,7 @@
    &.st-label {
       font-size: $egeo-font-size-xsmall;
       line-height: $egeo-line-height-xsmall;
-      font-family: $egeo-nunito-sans;
+      font-weight: 400;
    }
 
    &:not(.disabled).st-label {

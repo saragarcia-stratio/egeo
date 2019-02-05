@@ -13,7 +13,7 @@
 
 
 h1 {
-   font-family: $egeo-nunito-sans-bold;
+   font-weight: bold;
    font-size: 20px;
    margin-bottom: 20px;
    padding: 0;
@@ -29,7 +29,7 @@ h1 {
    li {
       border-bottom: 1px solid #dedede;
       font-size: 14px;
-      font-family: $egeo-nunito-sans;
+      font-weight: 400;
       padding: 5px;
    }
 }

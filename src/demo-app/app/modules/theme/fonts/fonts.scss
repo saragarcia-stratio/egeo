@@ -45,7 +45,7 @@
        align-items: center;
        flex-wrap: nowrap;
        box-shadow: 0 1px 4px 1px rgba(124, 124, 124, 0.15);
-       font-family: $egeo-nunito-sans;
+       font-weight: 400;
        font-size: $egeo-font-size-xsmall;
        text-align: center;
        justify-content: center;
@@ -82,7 +82,7 @@
    margin-bottom: 20px;
 
    .subtitle {
-      font-family: $egeo-nunito-sans;
+      font-weight: 400;
       font-size: $egeo-font-size-xlarge;
       color: $neutral-11;
       text-transform: capitalize;

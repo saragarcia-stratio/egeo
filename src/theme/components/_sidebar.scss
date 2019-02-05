@@ -105,7 +105,7 @@
    }
 
    .title {
-      font-family: $egeo-nunito-sans-extraBold;
+      font-weight: 900;
       font-size: $egeo-font-size-large;
       line-height: $egeo-line-height-large;
       color: $neutral-13;
@@ -113,7 +113,7 @@
    }
 
    .item {
-      font-family: $egeo-nunito-sans;
+      font-weight: 400;
       font-size: $egeo-font-size-small;
       line-height: $egeo-line-height-small;
       color: $neutral-11;
@@ -121,7 +121,7 @@
       position: relative;
 
       &--active {
-         font-family: $egeo-nunito-sans-bold;
+         font-weight: bold;
 
          &::before {
             content: '';
@@ -136,7 +136,7 @@
       }
 
       &--has-active > .item__label {
-         font-family: $egeo-nunito-sans-bold;
+         font-weight: bold;
       }
 
       &.warning {
@@ -157,7 +157,7 @@
             height: 20px;
             border-radius: 10px;
             background-color: $neutral-05;
-            font-family: $egeo-nunito-sans;
+            font-weight: 400;
             font-size: $egeo-font-size-xxxsmall;
             float: right;
             display: inline-block;

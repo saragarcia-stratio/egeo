@@ -14,7 +14,7 @@
 .st-footer {
    background-color: $neutral-00;
    background: $action-secondary-07;
-   font-family: $egeo-nunito-sans-light;
+   font-weight: 100;
    font-size: $egeo-font-size-xxsmall;
    color: $neutral-00;
 
@@ -32,7 +32,7 @@
 .st-footer-links {
    cursor: pointer;
    color: $neutral-00;
-   font-family: $egeo-nunito-sans;
+   font-weight: normal;
    font-size: $egeo-font-size-xxsmall;
 
    span {

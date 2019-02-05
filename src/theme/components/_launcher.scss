@@ -14,7 +14,7 @@
 .st-launcher {
 
    &__group {
-      font-family: $egeo-nunito-sans;
+      font-weight: normal;
       font-size: $egeo-font-size-small;
       line-height: $egeo-line-height-medium;
       color: $neutral-12;
@@ -32,7 +32,7 @@
       }
 
       &--count {
-         font-family: $egeo-nunito-sans;
+         font-weight: normal;
          font-size: $egeo-font-size-xsmall;
          line-height: $egeo-line-height-small;
          color: $neutral-10;
@@ -45,7 +45,7 @@
    }
 
    &__item {
-      font-family: $egeo-nunito-sans;
+      font-weight: normal;
       font-size: $egeo-font-size-xsmall;
       line-height: $egeo-line-height-small;
       color: $neutral-11;
@@ -59,7 +59,7 @@
    }
 
    &__more {
-      font-family: $egeo-nunito-sans;
+      font-weight: normal;
       font-size: $egeo-font-size-xxsmall;
       line-height: $egeo-line-height-small;
       color: $action-primary-default;

@@ -13,13 +13,13 @@
 
  %select-dropdown-menu-title {
     color: $neutral-08;
-    font-family: $egeo-nunito-sans-bold;
+    font-weight: bold;
     font-size: $egeo-font-size-xxsmall;
     line-height: $egeo-line-height-xxxsmall;
  }
  %select-dropdown-menu-default {
     color: $action-secondary-07;
-    font-family: $egeo-nunito-sans;
+    font-weight: 400;
     font-size: $egeo-font-size-xsmall;
     line-height: $egeo-line-height-xsmall;
  }
@@ -51,7 +51,7 @@
     .st-dropdown-menu-item {
        padding: 9px 15px;
        color: $action-secondary-07;
-       font-family: $egeo-nunito-sans;
+       font-weight: 400;
        font-size: $egeo-font-size-xsmall;
        line-height: $egeo-line-height-xsmall;
        cursor: pointer;

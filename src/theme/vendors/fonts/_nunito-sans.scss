@@ -12,6 +12,8 @@
 // Regular
 @font-face {
    font-family: 'Nunito Sans';
+   font-weight: 400;
+   font-style: normal;
    src: url($egeo-fontface-src + '/nunito-sans/NunitoSans-Regular.eot');
    src: url($egeo-fontface-src + '/nunito-sans/NunitoSans-Regular.eot?#iefix') format('embedded-opentype'),
         url($egeo-fontface-src + '/nunito-sans/NunitoSans-Regular.woff') format('woff'),
@@ -21,7 +23,9 @@
 
 // Italic
 @font-face {
-   font-family: 'Nunito Sans Italic';
+   font-family: 'Nunito Sans';
+   font-weight: 400;
+   font-style: italic;
    src: url($egeo-fontface-src + '/nunito-sans/NunitoSans-Italic.eot');
    src: url($egeo-fontface-src + '/nunito-sans/NunitoSans-Italic.eot?#iefix') format('embedded-opentype'),
         url($egeo-fontface-src + '/nunito-sans/NunitoSans-Italic.woff') format('woff'),
@@ -31,7 +35,9 @@
 
 // Light
 @font-face {
-   font-family: 'Nunito Sans Light';
+   font-family: 'Nunito Sans';
+   font-weight: 100;
+   font-style: normal;
    src: url($egeo-fontface-src + '/nunito-sans/NunitoSans-Light.eot');
    src: url($egeo-fontface-src + '/nunito-sans/NunitoSans-Light.eot?#iefix') format('embedded-opentype'),
         url($egeo-fontface-src + '/nunito-sans/NunitoSans-Light.woff') format('woff'),
@@ -41,7 +47,9 @@
 
 // Light Italic
 @font-face {
-   font-family: 'Nunito Sans Light Italic';
+   font-family: 'Nunito Sans';
+   font-weight: 100;
+   font-style: italic;
    src: url($egeo-fontface-src + '/nunito-sans/NunitoSans-LightItalic.eot');
    src: url($egeo-fontface-src + '/nunito-sans/NunitoSans-LightItalic.eot?#iefix') format('embedded-opentype'),
         url($egeo-fontface-src + '/nunito-sans/NunitoSans-LightItalic.woff') format('woff'),
@@ -51,7 +59,9 @@
 
 // Semibold
 @font-face {
-   font-family: 'Nunito Sans SemiBold';
+   font-family: 'Nunito Sans';
+   font-weight: 600;
+   font-style: normal;
    src: url($egeo-fontface-src + '/nunito-sans/NunitoSans-SemiBold.eot');
    src: url($egeo-fontface-src + '/nunito-sans/NunitoSans-SemiBold.eot?#iefix') format('embedded-opentype'),
         url($egeo-fontface-src + '/nunito-sans/NunitoSans-SemiBold.woff') format('woff'),
@@ -61,7 +71,9 @@
 
 // Semibold Italic
 @font-face {
-   font-family: 'Nunito Sans SemiBold Italic';
+   font-family: 'Nunito Sans';
+   font-weight: 600;
+   font-style: italic;
    src: url($egeo-fontface-src + '/nunito-sans/NunitoSans-SemiBoldItalic.eot');
    src: url($egeo-fontface-src + '/nunito-sans/NunitoSans-SemiBoldItalic.eot?#iefix') format('embedded-opentype'),
         url($egeo-fontface-src + '/nunito-sans/NunitoSans-SemiBoldItalic.woff') format('woff'),
@@ -71,7 +83,9 @@
 
 // Bold
 @font-face {
-   font-family: 'Nunito Sans Bold';
+   font-family: 'Nunito Sans';
+   font-weight: 700;
+   font-style: normal;
    src: url($egeo-fontface-src + '/nunito-sans/NunitoSans-Bold.eot');
    src: url($egeo-fontface-src + '/nunito-sans/NunitoSans-Bold.eot?#iefix') format('embedded-opentype'),
         url($egeo-fontface-src + '/nunito-sans/NunitoSans-Bold.woff') format('woff'),
@@ -81,7 +95,9 @@
 
 // Bold Italic
 @font-face {
-   font-family: 'Nunito Sans Bold Italic';
+   font-family: 'Nunito Sans';
+   font-weight: 700;
+   font-style: italic;
    src: url($egeo-fontface-src + '/nunito-sans/NunitoSans-BoldItalic.eot');
    src: url($egeo-fontface-src + '/nunito-sans/NunitoSans-BoldItalic.eot?#iefix') format('embedded-opentype'),
         url($egeo-fontface-src + '/nunito-sans/NunitoSans-BoldItalic.woff') format('woff'),
@@ -91,7 +107,9 @@
 
 // Extra Bold
 @font-face {
-   font-family: 'Nunito Sans ExtraBold';
+   font-family: 'Nunito Sans';
+   font-weight: 900;
+   font-style: normal;
    src: url($egeo-fontface-src + '/nunito-sans/NunitoSans-ExtraBold.eot');
    src: url($egeo-fontface-src + '/nunito-sans/NunitoSans-ExtraBold.eot?#iefix') format('embedded-opentype'),
         url($egeo-fontface-src + '/nunito-sans/NunitoSans-ExtraBold.woff') format('woff'),
@@ -101,7 +119,9 @@
 
 // Extra Bold Italic
 @font-face {
-   font-family: 'Nunito Sans ExtraBold Italic';
+   font-family: 'Nunito Sans';
+   font-weight: 900;
+   font-style: italic;
    src: url($egeo-fontface-src + '/nunito-sans/NunitoSans-ExtraBoldItalic.eot');
    src: url($egeo-fontface-src + '/nunito-sans/NunitoSans-ExtraBoldItalic.eot?#iefix') format('embedded-opentype'),
         url($egeo-fontface-src + '/nunito-sans/NunitoSans-ExtraBoldItalic.woff') format('woff'),

@@ -6,6 +6,10 @@
 
 * st-breadcrumb, st-modal: Fix style bug when a long text displays displaced section
 
+**Breaking changes:**
+
+* theme: Nunito sans font refactor.
+
 
 ## 15.0.2 (January 16, 2019)
 

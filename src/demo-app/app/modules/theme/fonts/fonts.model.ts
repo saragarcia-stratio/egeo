@@ -21,16 +21,7 @@ export const FONTS: Font[][] = [
 
    // Font family
    [
-      { category: CATEGORY.FONT_FAMILY, name: '$egeo-nunito-sans', value: 'Nunito Sans' },
-      { category: CATEGORY.FONT_FAMILY, name: '$egeo-nunito-sans-italic', value: 'Nunito Sans Italic' },
-      { category: CATEGORY.FONT_FAMILY, name: '$egeo-nunito-sans-light', value: 'Nunito Sans Light' },
-      { category: CATEGORY.FONT_FAMILY, name: '$egeo-nunito-sans-light-italic', value: 'Nunito Sans Light Italic' },
-      { category: CATEGORY.FONT_FAMILY, name: '$egeo-nunito-sans-semiBold', value: 'Nunito Sans SemiBold' },
-      { category: CATEGORY.FONT_FAMILY, name: '$egeo-nunito-sans-semiBold-italic', value: 'Nunito Sans SemiBold Italic' },
-      { category: CATEGORY.FONT_FAMILY, name: '$egeo-nunito-sans-bold', value: 'Nunito Sans Bold' },
-      { category: CATEGORY.FONT_FAMILY, name: '$egeo-nunito-sans-bold-italic', value: 'Nunito Sans Bold Italic' },
-      { category: CATEGORY.FONT_FAMILY, name: '$egeo-nunito-sans-extraBold', value: 'Nunito Sans ExtraBold' },
-      { category: CATEGORY.FONT_FAMILY, name: '$egeo-nunito-sans-extraBold-italic', value: 'Nunito Sans ExtraBold Italic' }
+      { category: CATEGORY.FONT_FAMILY, name: '$egeo-nunito-sans', value: 'Nunito Sans' }
    ],
 
    // Font size

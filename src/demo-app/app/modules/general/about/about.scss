@@ -15,13 +15,13 @@
    flex-direction: column;
    height: 100%;
    color: $neutral-10;
-   font-family: $egeo-nunito-sans-light;
+   font-weight: 100;
    font-size: $egeo-font-size-large;
 }
 
 a {
    color: $brand;
-   font-family: $egeo-nunito-sans-bold;
+   font-weight: bold;
    &:hover {
       text-decoration: underline;
    }

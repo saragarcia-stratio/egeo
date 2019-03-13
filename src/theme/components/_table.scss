@@ -12,6 +12,7 @@
 @import '../constants/colors';
 
 .st-table__header {
+   font-family: $egeo-nunito-sans;
    background-color: $neutral-03;
    height: 50px;
 }

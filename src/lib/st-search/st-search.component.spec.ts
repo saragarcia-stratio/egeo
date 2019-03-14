@@ -12,12 +12,15 @@ import { ChangeDetectionStrategy, DebugElement, SimpleChange, SimpleChanges } fr
 import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+
 import { StSearchComponent } from './st-search.component';
 import { StDropdownMenuModule } from '../st-dropdown-menu/st-dropdown-menu.module';
 import { StDropDownMenuItem } from '../st-dropdown-menu/st-dropdown-menu.interface';
 import { StSelectModule } from '../st-select/st-select.module';
 import { StInputModule } from '../st-input/st-input.module';
 import { StSearchEventOrigin } from './st-search.model';
+import { StSelectComponent } from '../st-select/st-select';
+import { StInputComponent } from '../st-input/st-input.component';
 
 // Component
 
@@ -38,6 +41,12 @@ describe('StSearchComponent', () => {
       })
       // remove this block when the issue #12313 of Angular is fixed
          .overrideComponent(StSearchComponent, {
+            set: { changeDetection: ChangeDetectionStrategy.Default }
+         })
+         .overrideComponent(StSelectComponent, {
+            set: { changeDetection: ChangeDetectionStrategy.Default }
+         })
+         .overrideComponent(StInputComponent, {
             set: { changeDetection: ChangeDetectionStrategy.Default }
          })
          .compileComponents();  // compile template and css
@@ -412,6 +421,22 @@ describe('StSearchComponent', () => {
       fixture.detectChanges();
       dropdownItems = fixture.debugElement.queryAll(By.css('st-dropdown-menu-item'));
       expect(dropdownItems.length).toEqual(finalList.length);
+   }));
+
+   it('should be able to open autocomplete list when user clicks on input', fakeAsync(() => {
+      component.autocompleteList =  [{ value: '1', label: '1' }, { value: '2', label: '2' }];
+      component.withAutocomplete = true;
+      fixture.detectChanges();
+
+      const input: HTMLInputElement = fixture.debugElement.query(By.css('.st-search-input')).nativeElement;
+
+      input.value = 'te';
+      input.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      tick(1);
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('.st-dropdown-menu.active')).not.toBeNull();
    }));
 
    describe('Should be able to allow a filtered search', () => {

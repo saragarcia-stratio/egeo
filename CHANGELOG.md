@@ -5,11 +5,15 @@
 **New features:**
 
 * st-search: Allow to differentiate search events by its origin
+* st-dropdown-menu: Allow to display texts with HTML tags 
 
 **Fixed bugs:**
 
 * st-breadcrumb, st-modal: Fix style bug when a long text displays displaced section
 * st-two-list: Searcher disappears when user is typing and introduces a text without results
+* st-search: Display autocomplete list when user clicks on input after leaving it
+* st-search: Display empty message when autocomplete list does not have any item
+
 
 **Breaking changes:**
 

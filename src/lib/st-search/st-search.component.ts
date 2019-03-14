@@ -191,6 +191,16 @@ export class StSearchComponent extends EventWindowManager implements OnChanges, 
       this.emitValue(true, StSearchEventOrigin.INPUT);
    }
 
+   public showAutoCompleteMenu(): void {
+      if (this.withAutocomplete && !this.isActive) {
+         this.openElement();
+      }
+      if (this.searchBox.value === '') {
+         this.closeElement();
+      }
+      this.cd.markForCheck();
+   }
+
    private emitValue(force: boolean, origin: StSearchEventOrigin): void {
       if (this.isEqualPrevious(force)) {
          this.lastEmittedText = this.searchBox.value;
@@ -202,15 +212,7 @@ export class StSearchComponent extends EventWindowManager implements OnChanges, 
       }
    }
 
-   private showAutoCompleteMenu(): void {
-      if (this.withAutocomplete && !this.isActive) {
-         this.openElement();
-      }
-      if (this.searchBox.value === '') {
-         this.closeElement();
-      }
-      this.cd.markForCheck();
-   }
+
 
    private checkDisabled(): void {
       if (this.disabled) {

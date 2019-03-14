@@ -80,6 +80,14 @@
           white-space: nowrap;
        }
     }
+
+    .st-dropdown-menu-without-results {
+       padding: 20px;
+       font-family: $egeo-nunito-sans;
+       font-size: $egeo-font-size-xxsmall;
+       font-weight: 300;
+       color: $neutral-09;
+    }
  }
 
  .st-dropdown-menu.menu-list {

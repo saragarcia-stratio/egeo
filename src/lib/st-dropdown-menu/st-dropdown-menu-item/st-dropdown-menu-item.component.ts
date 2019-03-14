@@ -9,6 +9,7 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import { StDropDownMenuItem } from '../st-dropdown-menu.interface';
 
@@ -24,6 +25,10 @@ export class StDropdownMenuItemComponent {
 
    @Output() change: EventEmitter<StDropDownMenuItem> = new EventEmitter<StDropDownMenuItem>();
 
+   constructor(private sanitizer: DomSanitizer) {
+
+   }
+
    onChangeItem(): void {
       this.change.emit(this.item);
    }
@@ -35,6 +40,10 @@ export class StDropdownMenuItemComponent {
 
    get icon(): string {
       return this.hasIcon ? this.item.icon : '';
+   }
+
+   get html(): SafeHtml {
+      return this.item && this.item.label ? this.sanitizer.bypassSecurityTrustHtml(this.item.label) : '';
    }
 
    get hasIcon(): boolean {

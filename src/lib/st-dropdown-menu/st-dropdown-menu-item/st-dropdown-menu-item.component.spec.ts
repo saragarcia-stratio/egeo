@@ -201,4 +201,16 @@ describe('StDropdownMenuItemComponent', () => {
       expect(comp.change.emit).toHaveBeenCalled();
       expect(comp.change.emit).toHaveBeenCalledWith(comp.item);
    });
+
+   it('should be able to render safe html if it has html in its label', () => {
+      comp.item = {
+         label: '<b>A</b> M<b>a</b>n <b>a</b>nd <b>a</b> Wom<b>a</b>n',
+         value: 'fake value',
+         hasHtml: true
+      };
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('.st-dropdown-menu-item > div').innerText).toEqual('A Man and a Woman');
+      expect(fixture.nativeElement.querySelector('.st-dropdown-menu-item > div').innerHTML).toEqual(comp.item.label);
+   });
 });

@@ -17,6 +17,7 @@
    (click)="onChangeItem()"
    (keyup.enter)="onChangeItem()"
    *ngIf="hasItem">
-      <i *ngIf="hasIcon" [ngClass]="icon"></i>
-      <span>{{item.label}}</span>
+   <i *ngIf="hasIcon" [ngClass]="icon"></i>
+   <span *ngIf="!item.hasHtml">{{item.label}}</span>
+   <div *ngIf="item.hasHtml" [innerHTML]="html"></div>
 </li>

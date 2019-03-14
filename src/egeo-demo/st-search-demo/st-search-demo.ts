@@ -32,37 +32,32 @@ export class StSearchDemoComponent {
    public menu: StDropDownMenuItem[] = [
       { label: 'China', value: 'CN' },
       { label: 'Russia', value: 'RU' },
-      { label: 'China', value: 'CN' },
       { label: 'United States', value: 'US' },
       { label: 'Egypt', value: 'EG' },
-      { label: 'Panama', value: 'PA' },
+      { label: 'Pa<b>na</b>ma', value: 'PA', hasHtml: true },
       { label: 'Canada', value: 'CA' },
       { label: 'Indonesia', value: 'ID' },
       { label: 'North Korea', value: 'KP' },
-      { label: 'China', value: 'CN' },
-      { label: 'Indonesia', value: 'ID' },
+      { label: 'Chi<b>na</b>', value: 'CN', hasHtml: true },
       { label: 'France', value: 'FR' },
       { label: 'Burundi', value: 'BI' },
       { label: 'Poland', value: 'PL' },
-      { label: 'Russia', value: 'RU' },
       { label: 'Vanuatu', value: 'VU' },
       { label: 'Venezuela', value: 'VE' },
-      { label: 'France', value: 'FR' },
-      { label: 'Indonesia', value: 'ID' },
-      { label: 'Indonesia', value: 'ID' }
+      { label: 'Indo<b>ne</b>sia', value: 'ID', hasHtml: true }
    ];
 
    public filteredMenu: StDropDownMenuItem[] = [];
 
-   onSearchResult(value: {filter: string, text: string}): void {
+   onSearchResult(value: { filter: string, text: string }): void {
       this.searched = value.text;
    }
 
-   filter(filterValue: {text: string, filter: string}): void {
+   filter(filterValue: { text: string, filter: string }): void {
       this.filteredMenu = _cloneDeep(this.menu.filter(country => country.label.toLowerCase().search(filterValue.text.toLowerCase()) > -1));
    }
 
-   searchWithAutocompleteSearch(searchValue: {text: string, filter: string}): void {
+   searchWithAutocompleteSearch(searchValue: { text: string, filter: string }): void {
       this.searchedAutocomplete = searchValue.text;
       this.filter(searchValue);
    }

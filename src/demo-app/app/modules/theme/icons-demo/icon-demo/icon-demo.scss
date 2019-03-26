@@ -15,7 +15,6 @@
    display: flex;
 }
 
-
 .icon-demo {
    padding: 20px;
    color: $neutral-10;
@@ -40,6 +39,7 @@
 
    .name {
       font-weight: 400;
+      font-family: $egeo-nunito-sans;
       font-size: $egeo-font-size-xsmall;
       align-self: center;
       white-space: pre-wrap;

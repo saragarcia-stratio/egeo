@@ -6,6 +6,10 @@
 
 * st-dropdown-menu: Allow user to move through options using the keyboard arrows 
 
+**Others:**
+
+* Update icon font
+
 
 ## 16.0.0 (March 18, 2019)
 

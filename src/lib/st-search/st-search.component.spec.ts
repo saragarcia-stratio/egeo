@@ -355,7 +355,7 @@ describe('StSearchComponent', () => {
       component.changeOption(component.autocompleteList[0]);
       expect(component.search.emit).toHaveBeenCalled();
       expect(component.search.emit).toHaveBeenCalledTimes(1);
-      expect(component.search.emit).toHaveBeenCalledWith({ text: component.autocompleteList[0].label, origin: StSearchEventOrigin.LIST });
+      expect(component.search.emit).toHaveBeenCalledWith({ text: component.autocompleteList[0].value, origin: StSearchEventOrigin.LIST });
    });
 
    it('should be able to search with autocomplete', fakeAsync(() => {

@@ -14,10 +14,10 @@
 * st-search: Display autocomplete list when user clicks on input after leaving it
 * st-search: Display empty message when autocomplete list does not have any item
 
-
 **Breaking changes:**
 
 * theme: Nunito sans font refactor.
+* st-search: When user selects an option from the autocomplete list, input is updated with the value of the selected option
 
 
 ## 15.0.2 (January 16, 2019)

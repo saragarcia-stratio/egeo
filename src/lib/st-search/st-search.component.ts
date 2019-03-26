@@ -177,7 +177,7 @@ export class StSearchComponent extends EventWindowManager implements OnChanges, 
    public changeOption(item: StDropDownMenuItem): void {
       if (item && item.label) {
          this.subscriptionSearch.unsubscribe();
-         this.searchBox.setValue(item.label);
+         this.searchBox.setValue(item.value);
          this.cd.markForCheck();
          this.closeElement();
          this.emitValue(true, StSearchEventOrigin.LIST);

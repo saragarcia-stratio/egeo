@@ -1,5 +1,12 @@
 # Changelog
 
+## 16.1.0 (upcoming)
+
+**New features:**
+
+* st-dropdown-menu: Allow user to move through options using the keyboard arrows 
+
+
 ## 16.0.0 (March 18, 2019)
 
 **New features:**

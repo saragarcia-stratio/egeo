@@ -10,6 +10,7 @@
  */
 import { TranslateableElement } from '../utils/egeo-resolver/egeo-resolve-model';
 
+export enum ARROW_KEY_CODE {ARROW_UP = 38, ARROW_DOWN = 40}
 export class StDropDownMenuItem {
    label: string;
    value: any;

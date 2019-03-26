@@ -17,14 +17,17 @@ import {
    EventEmitter,
    HostListener,
    Input,
-   Output,
    OnChanges,
+   OnDestroy,
+   OnInit,
+   Output,
+   Renderer2,
    SimpleChanges,
    ViewChild
 } from '@angular/core';
 
-import { StPopPlacement, StPopOffset } from '../st-pop/st-pop.model';
-import { StDropDownMenuGroup, StDropDownMenuItem, StDropDownVisualMode } from './st-dropdown-menu.interface';
+import { StPopOffset, StPopPlacement } from '../st-pop/st-pop.model';
+import { ARROW_KEY_CODE, StDropDownMenuGroup, StDropDownMenuItem, StDropDownVisualMode } from './st-dropdown-menu.interface';
 
 /**
  * @description {Component} [Dropdown Menu]
@@ -50,7 +53,7 @@ import { StDropDownMenuGroup, StDropDownMenuItem, StDropDownVisualMode } from '.
    templateUrl: './st-dropdown-menu.component.html',
    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StDropdownMenuComponent implements AfterViewInit, OnChanges {
+export class StDropdownMenuComponent implements AfterViewInit, OnInit, OnChanges, OnDestroy {
 
    /** @Input {boolean} [active=false] Show or hide list */
    @Input() active: boolean = false;
@@ -63,11 +66,11 @@ export class StDropdownMenuComponent implements AfterViewInit, OnChanges {
    @Input() emptyListMessage: string = '';
    /** @Input {StDropDownMenuItem | undefined} [selectedItem=undefined] Define selected item without passing as property */
    @Input() selectedItem: StDropDownMenuItem = undefined;
-   /** @Input {StDropDownMenuItem | undefined} [selectedItem=undefined] Define selected item without passing as property */
+   /** @Input {StDropDownMenuItem | undefined} [itemsBeforeScroll=undefined] Define selected item without passing as property */
    @Input() itemsBeforeScroll: number = 8;
-   /** @Input {boolean} [styleSelected=true] If true, move selected item to top in menu when open */
+   /** @Input {boolean} [moveSelected=true] If true, move selected item to top in menu when open */
    @Input() moveSelected: boolean = true;
-   /** @Input {boolean} [moveSelected=true] If true, apply class selected to selected item */
+   /** @Input {boolean} [styleSelected=true] If true, apply class selected to selected item */
    @Input() styleSelected: boolean = true;
    /** @Input {StPopOffset} [offset={x: 0 , y: 0}] For position with offset in x o y axis */
    @Input() offset: StPopOffset = { x: 0, y: 0 };
@@ -75,6 +78,10 @@ export class StDropdownMenuComponent implements AfterViewInit, OnChanges {
     *  By default is displayed as a normal option list
     */
    @Input() visualMode: StDropDownVisualMode = StDropDownVisualMode.OPTION_LIST;
+   /** @Input {boolean} [keyBoardMove=false] It is needed to activate navigation through options using the keyboard
+    */
+   @Input() keyBoardMove: boolean = false;
+
    /** @output {StDropDownMenuItem} [change] Event emitted when user select an item */
    @Output() change: EventEmitter<StDropDownMenuItem> = new EventEmitter<StDropDownMenuItem>();
 
@@ -84,8 +91,17 @@ export class StDropdownMenuComponent implements AfterViewInit, OnChanges {
    widthMenu: string = '0px';
 
    private _itemHeight: number = 42;
+   private _focusedOptionPos: number = -1;
+   private _focusListenerFn: () => void;
 
-   constructor(private el: ElementRef, private cd: ChangeDetectorRef) { }
+   constructor(private el: ElementRef, private cd: ChangeDetectorRef, private renderer: Renderer2) {
+   }
+
+   ngOnInit(): void {
+      if (this.keyBoardMove) {
+         this._focusListenerFn = this.renderer.listen('document', 'keydown', this.arrowKeyListener.bind(this));
+      }
+   }
 
    get componentId(): string | null {
       const id = (this.el.nativeElement as HTMLElement).getAttribute('id');
@@ -105,7 +121,7 @@ export class StDropdownMenuComponent implements AfterViewInit, OnChanges {
    }
 
    get listClasses(): any {
-      return {'st-dropdown-menu': true, 'active': this.active, 'menu-list': this.displayAsMenuList()};
+      return { 'st-dropdown-menu': true, 'active': this.active, 'menu-list': this.displayAsMenuList() };
    }
 
    getItemId(value: any | undefined): string | null {
@@ -134,6 +150,10 @@ export class StDropdownMenuComponent implements AfterViewInit, OnChanges {
                }
             }
          }, 0);
+      } else {
+         if (changes && changes.active && !changes.active.currentValue) {
+            this._focusedOptionPos = -1;
+         }
       }
    }
 
@@ -145,13 +165,21 @@ export class StDropdownMenuComponent implements AfterViewInit, OnChanges {
    @HostListener('window:load')
    updateWidth(): void {
       const button: HTMLElement = this.buttonElement.nativeElement;
+      setTimeout(() => {
+         if (button.children && button.children.length > 0) {
+            this.widthMenu = button.children[0].getBoundingClientRect().width + 'px';
+         } else {
+            this.widthMenu = button.getBoundingClientRect().width + 'px';
+         }
+         this.cd.markForCheck();
+      });
 
-      if (button.children && button.children.length > 0) {
-         this.widthMenu = button.children[0].getBoundingClientRect().width + 'px';
-      } else {
-         this.widthMenu = button.getBoundingClientRect().width + 'px';
+   }
+
+   ngOnDestroy(): void {
+      if (this._focusListenerFn) {
+         this._focusListenerFn();
       }
-      this.cd.markForCheck();
    }
 
    private displayAsMenuList(): boolean {
@@ -160,5 +188,48 @@ export class StDropdownMenuComponent implements AfterViewInit, OnChanges {
 
    private getItemValueMerged(value: any): string {
       return value.toString().replace(/\s+/g, '_');
+   }
+
+   private getSelectedItemPosition(): number {
+      if (this.selectedItem && this.items) {
+         let _items: StDropDownMenuItem[] = [];
+         if (this.isDropDownGroup(this.items)) {
+            this.items.forEach((item: StDropDownMenuItem | StDropDownMenuGroup) => {
+               if ((<StDropDownMenuGroup> item).items) {
+                  _items.push(...(<StDropDownMenuGroup> item).items);
+               } else {
+                  _items.push((<StDropDownMenuItem> item));
+               }
+            });
+         } else {
+            _items = this.items;
+         }
+         return _items.findIndex(item => item.value === this.selectedItem.value);
+      } else {
+         return -1;
+      }
+   }
+
+   private arrowKeyListener(e: KeyboardEvent): void {
+      const selectedItemPosition = this.getSelectedItemPosition();
+      if (selectedItemPosition > -1) {
+         this._focusedOptionPos = selectedItemPosition;
+      }
+      let nextFocus: number;
+      if (e.keyCode === ARROW_KEY_CODE.ARROW_DOWN || e.keyCode === ARROW_KEY_CODE.ARROW_UP) {
+         event.preventDefault();
+         const options: HTMLLIElement[] = this.el.nativeElement.querySelectorAll('.st-dropdown-menu-item');
+         nextFocus = e.keyCode === ARROW_KEY_CODE.ARROW_DOWN || this._focusedOptionPos === -1 ? 1 : -1;
+         this._focusedOptionPos = this._focusedOptionPos + nextFocus;
+         if (this._focusedOptionPos < 0) {
+            this._focusedOptionPos = options.length - 1;
+         } else if (this._focusedOptionPos > options.length - 1) {
+            this._focusedOptionPos = 0;
+         }
+         if (options[this._focusedOptionPos]) {
+            options[this._focusedOptionPos].focus();
+         }
+      }
+      this.cd.markForCheck();
    }
 }

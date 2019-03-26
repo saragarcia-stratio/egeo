@@ -8,14 +8,15 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { DebugElement, NO_ERRORS_SCHEMA, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DebugElement, NO_ERRORS_SCHEMA, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { StDropdownMenuComponent } from './st-dropdown-menu.component';
 import { StPopPlacement } from '../st-pop/st-pop.model';
 import { StDropdownMenuModule } from './st-dropdown-menu.module';
-import { StDropDownMenuItem, StDropDownMenuGroup, StDropDownVisualMode } from './st-dropdown-menu.interface';
+import { StDropDownMenuGroup, StDropDownMenuItem, StDropDownVisualMode } from './st-dropdown-menu.interface';
+import { StDropdownMenuItemComponent } from './st-dropdown-menu-item/st-dropdown-menu-item.component';
 
 const simpleItems: StDropDownMenuItem[] = [
    { label: 'example 1', value: 1 },
@@ -54,18 +55,19 @@ const defaultRowHeight: number = 42;
 @Component({
    changeDetection: ChangeDetectionStrategy.OnPush,
    template: `
-         <st-dropdown-menu #dropdown
-            [items]="items"
-            [active]="active"
-            [selectedItem]="selected"
-            [visualMode]="visualMode"
-            id="test-id"
-            (change)="onChange($event)">
-            <button class="button button-primary" [style.width]="dropdownWidth" (click)="onChangeMenuVisibility()">Show</button>
-            <span dropdown-header><span>TEST HEADER</span></span>
-            <span dropdown-footer>TEST FOOTER</span>
-         </st-dropdown-menu>
-      `
+      <st-dropdown-menu #dropdown
+                        [items]="items"
+                        [active]="active"
+                        [selectedItem]="selected"
+                        [visualMode]="visualMode"
+                        [keyBoardMove]="keyBoardMove"
+                        id="test-id"
+                        (change)="onChange($event)">
+         <button class="button button-primary" [style.width]="dropdownWidth" (click)="onChangeMenuVisibility()">Show</button>
+         <span dropdown-header><span>TEST HEADER</span></span>
+         <span dropdown-footer>TEST FOOTER</span>
+      </st-dropdown-menu>
+   `
 })
 class TestDropdownComponent {
    items: StDropDownMenuItem[];
@@ -74,6 +76,7 @@ class TestDropdownComponent {
    @ViewChild('dropdown') dropdownItem: StDropdownMenuComponent;
    dropdownWidth: string = '300px';
    visualMode: StDropDownVisualMode = StDropDownVisualMode.OPTION_LIST;
+   keyBoardMove: boolean = false;
 
    onChange(item: StDropDownMenuItem): void {
       this.selected = item;
@@ -92,9 +95,15 @@ describe('StDropdownMenu', () => {
 
       beforeEach(async(() => {
          TestBed.configureTestingModule({
-            declarations: [StDropdownMenuComponent],
+            declarations: [StDropdownMenuComponent, StDropdownMenuItemComponent],
             schemas: [NO_ERRORS_SCHEMA]
          })
+            .overrideComponent(StDropdownMenuItemComponent, {
+               set: { changeDetection: ChangeDetectionStrategy.Default }
+            })
+            .overrideComponent(StDropdownMenuComponent, {
+               set: { changeDetection: ChangeDetectionStrategy.Default }
+            })
             .compileComponents();  // compile template and css
       }));
 
@@ -170,7 +179,7 @@ describe('StDropdownMenu', () => {
          (fixture.elementRef.nativeElement as HTMLElement).id = id;
          fixture.detectChanges();
 
-         let items: DebugElement[] = fixture.debugElement.queryAll(By.css('st-dropdown-menu-item'));
+         let items: DebugElement[] = fixture.debugElement.queryAll(By.css('.st-dropdown-menu-item'));
          expect(items).toBeDefined();
          expect(items.length).toBeDefined();
          expect(items.length).toEqual(0);
@@ -178,7 +187,7 @@ describe('StDropdownMenu', () => {
          comp.active = true;
          fixture.detectChanges();
 
-         items = fixture.debugElement.queryAll(By.css('st-dropdown-menu-item'));
+         items = fixture.debugElement.queryAll(By.css('.st-dropdown-menu-item'));
          expect(items).toBeDefined();
          expect(items.length).toBeDefined();
          expect(items.length).toEqual(comp.items.length);
@@ -233,7 +242,7 @@ describe('StDropdownMenu', () => {
          const totalItems: number = groupedItems.reduce((count, act) => count + act.items.length, 0);
          fixture.detectChanges();
 
-         let items: DebugElement[] = fixture.debugElement.queryAll(By.css('st-dropdown-menu-item'));
+         let items: DebugElement[] = fixture.debugElement.queryAll(By.css('.st-dropdown-menu-item'));
          expect(items).toBeDefined();
          expect(items.length).toBeDefined();
          expect(items.length).toEqual(0);
@@ -241,9 +250,8 @@ describe('StDropdownMenu', () => {
          comp.active = true;
          fixture.detectChanges();
 
-         items = fixture.debugElement.queryAll(By.css('st-dropdown-menu-item'));
+         items = fixture.debugElement.queryAll(By.css('.st-dropdown-menu-item'));
          expect(items).toBeDefined();
-         expect(items.length).toBeDefined();
          expect(items.length).toEqual(totalItems);
       });
 
@@ -280,6 +288,159 @@ describe('StDropdownMenu', () => {
             expect(comp.change.emit).toHaveBeenCalledWith(simpleItems[0]);
          });
       });
+
+      describe('Should be able to active keyboard listeners to move between options', () => {
+         it('If input keyBoardMove is false, listener is not added', () => {
+            comp.active = true;
+            comp.items = simpleItems;
+            comp.keyBoardMove = false;
+
+            fixture.detectChanges();
+            comp.ngOnInit();
+
+            spyOn(HTMLLIElement.prototype, 'focus');
+
+            const keyboardEvent = new Event('keydown');
+            (<any> keyboardEvent).keyCode = 40;
+            document.dispatchEvent(keyboardEvent);
+
+            expect(HTMLLIElement.prototype.focus).not.toHaveBeenCalled();
+         });
+
+         describe('If input keyBoardMove is true, listener is added', () => {
+            let options: HTMLLIElement[];
+            beforeEach(() => {
+               comp.active = true;
+               comp.items = simpleItems;
+               fixture.detectChanges();
+               comp.keyBoardMove = true;
+
+               comp.ngOnInit();
+               options = fixture.nativeElement.querySelectorAll('.st-dropdown-menu-item');
+               for (let i = 0; i < options.length; ++i) {
+                  spyOn(options[i], 'focus');
+               }
+            });
+
+            it('If user presses key down and there isn´t an option selected, first option is focused', () => {
+               const keyboardEvent = new Event('keydown');
+               (<any> keyboardEvent).keyCode = 40;
+
+               document.dispatchEvent(keyboardEvent);
+
+               expect(options[0].focus).toHaveBeenCalledTimes(1);
+               for (let i = 1; i < options.length; ++i) {
+                  expect(options[i].focus).not.toHaveBeenCalled();
+               }
+            });
+
+            it('If user presses key down and there is an option selected, next option is focused', () => {
+               comp.ngOnDestroy();
+               comp.selectedItem = (<StDropDownMenuItem> comp.items[3]);
+               comp.ngOnInit();
+               for (let i = 0; i < options.length; ++i) {
+                  (<jasmine.Spy> options[i].focus).calls.reset();
+               }
+
+               const keyboardEvent = new Event('keydown');
+               (<any> keyboardEvent).keyCode = 40;
+               document.dispatchEvent(keyboardEvent);
+
+               expect(options[4].focus).toHaveBeenCalledTimes(1);
+               for (let i = 0; i < options.length; ++i) {
+                  if (i !== 4) {
+                     expect(options[i].focus).not.toHaveBeenCalled();
+                  }
+               }
+            });
+
+            it('If user presses key down and current focused options is the last, first option is focused', () => {
+               comp.ngOnDestroy();
+               comp.selectedItem = (<StDropDownMenuItem> comp.items[comp.items.length - 1]);
+               comp.ngOnInit();
+               for (let i = 0; i < options.length; ++i) {
+                  (<jasmine.Spy> options[i].focus).calls.reset();
+               }
+
+               const keyboardEvent = new Event('keydown');
+               (<any> keyboardEvent).keyCode = 40;
+               document.dispatchEvent(keyboardEvent);
+
+               expect(options[0].focus).toHaveBeenCalledTimes(1);
+               for (let i = 1; i < options.length; ++i) {
+                  expect(options[i].focus).not.toHaveBeenCalled();
+               }
+            });
+
+            it('If user presses key up and there isn´t an option selected, first option is focused', () => {
+               const keyboardEvent = new Event('keydown');
+               (<any> keyboardEvent).keyCode = 38;
+               document.dispatchEvent(keyboardEvent);
+
+               expect(options[0].focus).toHaveBeenCalledTimes(1);
+               for (let i = 1; i < options.length; ++i) {
+                  expect(options[i].focus).not.toHaveBeenCalled();
+               }
+            });
+
+            it('If user presses key up and there is an option selected, previous option is focused', () => {
+               comp.ngOnDestroy();
+               comp.selectedItem = (<StDropDownMenuItem> comp.items[3]);
+               comp.ngOnInit();
+               for (let i = 0; i < options.length; ++i) {
+                  (<jasmine.Spy> options[i].focus).calls.reset();
+               }
+
+               const keyboardEvent = new Event('keydown');
+               (<any> keyboardEvent).keyCode = 38;
+               document.dispatchEvent(keyboardEvent);
+
+               expect(options[2].focus).toHaveBeenCalledTimes(1);
+               for (let i = 0; i < options.length; ++i) {
+                  if (i !== 2) {
+                     expect(options[i].focus).not.toHaveBeenCalled();
+                  }
+               }
+            });
+
+            it('If user presses key up and current focused options is the first, last option is focused', () => {
+               comp.ngOnDestroy();
+               comp.selectedItem = (<StDropDownMenuItem> comp.items[0]);
+               comp.ngOnInit();
+               for (let i = 0; i < options.length; ++i) {
+                  (<jasmine.Spy> options[i].focus).calls.reset();
+               }
+
+               const keyboardEvent = new Event('keydown');
+               (<any> keyboardEvent).keyCode = 38;
+               document.dispatchEvent(keyboardEvent);
+
+               expect(options[comp.items.length - 1].focus).toHaveBeenCalledTimes(1);
+               for (let i = 0; i < options.length - 1; ++i) {
+                  expect(options[i].focus).not.toHaveBeenCalled();
+               }
+            });
+
+            it('When user presses enter key when an option is focused, this is selected', () => {
+               comp.ngOnDestroy();
+               comp.selectedItem = (<StDropDownMenuItem> comp.items[2]);
+               comp.ngOnInit();
+               const keyboardEvent = new Event('keydown');
+
+               (<any> keyboardEvent).keyCode = 40;
+               document.dispatchEvent(keyboardEvent);
+               spyOn(comp.change, 'emit');
+
+               const enterEvent = new Event('keyup');
+               (<any> enterEvent).key = 'Enter';
+
+               options[3].dispatchEvent(enterEvent);
+
+               expect(comp.change.emit).toHaveBeenCalledWith(<StDropDownMenuItem> comp.items[3]);
+            });
+         });
+      });
+
    });
 
    describe('Instance', () => {
@@ -330,12 +491,16 @@ describe('StDropdownMenu', () => {
          expect(instanceTestFixture.nativeElement.querySelector('.st-dropdown-menu').classList).toContain('menu-list');
       });
 
-      it('Should adjust to button width when have button element', () => {
+      it('Should adjust to button width when have button element', (done) => {
          instanceTestComp.items = simpleItems;
          instanceTestComp.active = false;
          instanceTestFixture.detectChanges();
 
-         expect(instanceTestComp.dropdownItem.widthMenu).toEqual(instanceTestComp.dropdownWidth);
+         instanceTestFixture.whenStable().then(() => {
+
+            expect(instanceTestComp.dropdownItem.widthMenu).toEqual(instanceTestComp.dropdownWidth);
+            done();
+         });
       });
 
       it('Should have scroll to 0 in menu when without it\'s selected', () => {
@@ -368,12 +533,12 @@ describe('StDropdownMenu', () => {
       });
 
       it('Should emit the same object as input on select (Extra parameters)', () => {
-         const itemsWithExtraParamas: StDropDownMenuItem[] = [
+         const itemsWithExtraParams: StDropDownMenuItem[] = [
             { label: 'example 1', value: 1, extraparam: 'test' },
             { label: 'example 2', value: 2, extraparam: true, extraparam2: 'data' },
             { label: 'example 3', value: 3, extraparam: { test: 'test' } }
          ];
-         instanceTestComp.items = itemsWithExtraParamas;
+         instanceTestComp.items = itemsWithExtraParams;
          spyOn(instanceTestComp, 'onChange');
          instanceTestComp.active = true;
          instanceTestFixture.detectChanges();
@@ -385,17 +550,17 @@ describe('StDropdownMenu', () => {
          (items[0].nativeElement as HTMLElement).click();
          instanceTestFixture.detectChanges();
          expect(instanceTestComp.onChange).toHaveBeenCalled();
-         expect(instanceTestComp.onChange).toHaveBeenCalledWith(itemsWithExtraParamas[0]);
+         expect(instanceTestComp.onChange).toHaveBeenCalledWith(itemsWithExtraParams[0]);
 
          (items[1].nativeElement as HTMLElement).click();
          instanceTestFixture.detectChanges();
          expect(instanceTestComp.onChange).toHaveBeenCalled();
-         expect(instanceTestComp.onChange).toHaveBeenCalledWith(itemsWithExtraParamas[1]);
+         expect(instanceTestComp.onChange).toHaveBeenCalledWith(itemsWithExtraParams[1]);
 
          (items[2].nativeElement as HTMLElement).click();
          instanceTestFixture.detectChanges();
          expect(instanceTestComp.onChange).toHaveBeenCalled();
-         expect(instanceTestComp.onChange).toHaveBeenCalledWith(itemsWithExtraParamas[2]);
+         expect(instanceTestComp.onChange).toHaveBeenCalledWith(itemsWithExtraParams[2]);
       });
    });
 });

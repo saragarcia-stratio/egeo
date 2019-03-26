@@ -53,6 +53,7 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor, O
    @Input() default: any;
    @Input() itemsBeforeScroll: number = 8;
    @Input() search: boolean = false;
+   @Input() keyBoardMove: boolean = false;
 
    @Output() expand: EventEmitter<boolean> = new EventEmitter<boolean>();
    @Output() select: EventEmitter<any> = new EventEmitter<any>();
@@ -255,6 +256,7 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor, O
          this.onTouched();
       }
       this.select.emit(value);
+      this.onClickOutside();
       this._cd.markForCheck();
    }
 

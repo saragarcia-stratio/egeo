@@ -35,6 +35,9 @@
     ul {
        list-style: none;
        overflow-y: auto;
+       &:focus {
+          outline: none;
+       }
     }
 
     h3 span {
@@ -61,8 +64,9 @@
           outline: none;
        }
 
-       &:hover {
-          background-color: $action-primary-light;
+       &:hover, &:focus {
+          background-color: $action-secondary-01;
+          outline: none;
        }
 
        &.selected {

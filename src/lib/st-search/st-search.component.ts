@@ -105,6 +105,9 @@ export class StSearchComponent extends EventWindowManager implements OnChanges, 
     * the text typed by the user and the filter value selected (only if filter is displayed)
     */
    @Output() search: EventEmitter<StSearchEvent> = new EventEmitter<StSearchEvent>();
+   /** @Input {boolean} [keyBoardMove=false] It is needed to activate navigation through options using the keyboard
+    */
+   @Input() keyBoardMove: boolean = false;
 
    public searchBox: FormControl = new FormControl();
    public showClear: boolean;

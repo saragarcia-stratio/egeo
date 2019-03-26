@@ -24,7 +24,8 @@
 
    <st-dropdown-menu [items]="autocompleteList" [attr.id]="menuId" class="st-search-box" (change)="changeOption($event)"
                      [active]="isActive && (autocompleteList && autocompleteList.length || emptyAutocompleteListMessage !== '')"
-                     [placement]="'bottom-start'" [emptyListMessage]="emptyAutocompleteListMessage">
+                     [placement]="'bottom-start'" [emptyListMessage]="emptyAutocompleteListMessage"
+                     [keyBoardMove]="keyBoardMove">
       <div #buttonId>
          <input [attr.id]="qaTag" [formControl]="searchBox" [placeholder]="placeholder" (keypress)="onKeyPress($event)"
                 (focus)="showAutoCompleteMenu()"

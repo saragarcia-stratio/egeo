@@ -53,6 +53,8 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor, O
    @Input() default: any;
    @Input() itemsBeforeScroll: number = 8;
    @Input() search: boolean = false;
+
+   @Input() placeholderSearch?: string = 'Search...';
    @Input() keyBoardMove: boolean = false;
 
    @Output() expand: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -62,9 +64,12 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor, O
    @ViewChild('button') buttonElement: ElementRef;
 
    @HostBinding('class.st-select-opened')
-   expandedMenu: boolean = false;
-   searchInput: FormControl = new FormControl();
-   filteredOptions: StDropDownMenuItem[] | StDropDownMenuGroup[];
+
+   public expandedMenu: boolean = false;
+   public filteredOptions: StDropDownMenuItem[] | StDropDownMenuGroup[];
+   public searched: FormControl = new FormControl();
+   public searchInput: FormControl = new FormControl();
+   public showClear: boolean;
 
    onChange: (_: any) => void;
 
@@ -156,8 +161,8 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor, O
     */
 
    getOptions(): void {
-      if (this.selected) {
-         this.onSearch(this.selected.label);
+      if (this.searchInput.value) {
+         this.onSearch(this.searchInput.value);
       }
    }
 
@@ -166,6 +171,11 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor, O
          option.label.toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) > -1
       ) : this.options;
       this._cd.markForCheck();
+   }
+
+   onSearchClick(event: Event): void {
+      event.preventDefault();
+      event.stopPropagation();
    }
 
    // Set the function to be called when the control receives a change event.
@@ -205,7 +215,10 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor, O
 
    ngOnInit(): void {
       if (this.search) {
-         this._searchInputSubscription = this.searchInput.valueChanges.subscribe(this.onSearch.bind(this));
+         this._searchInputSubscription = this.searchInput.valueChanges.subscribe((val) => {
+            this.onSearch(val);
+            this.showClear = (val && val.length > 0);
+         });
       }
    }
 
@@ -226,6 +239,10 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor, O
          this.toggleButton();
          this.expandedMenu ? this._inputHTMLElement.focus() : this._inputHTMLElement.blur();
       }
+   }
+
+   clearInput(): void {
+      this.searchInput.setValue('');
    }
 
    createResetButton(): boolean {

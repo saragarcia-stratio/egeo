@@ -5,6 +5,7 @@
 **New features:**
 
 * st-dropdown-menu: Allow user to move through options using the keyboard arrows 
+* st-select: new design for the search of elements.
 
 **Others:**
 

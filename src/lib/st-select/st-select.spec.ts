@@ -62,10 +62,10 @@ describe('StSelectComponent', () => {
       })
       // remove this block when the issue #12313 of Angular is fixed
          .overrideComponent(StSelectComponent, {
-            set: { changeDetection: ChangeDetectionStrategy.Default }
+            set: { changeDetection: ChangeDetectionStrategy.OnPush }
          })
          .overrideComponent(StDropdownMenuComponent, {
-            set: { changeDetection: ChangeDetectionStrategy.Default }
+            set: { changeDetection: ChangeDetectionStrategy.OnPush }
          })
          .compileComponents();  // compile template and css
    }));
@@ -510,6 +510,7 @@ describe('StSelectComponent', () => {
             stCheckValidations
             formControlName="option"
             placeholder="placeholder"
+            placeholderSearch="'search..."
             name="option"
             label="Test"
             tooltip="Test Help"
@@ -546,9 +547,10 @@ describe('StSelectComponent', () => {
       let comp: StSelectTestReactiveComponent;
       let compSelect: StSelectComponent;
       let input: HTMLInputElement;
+      let inputSearch: HTMLInputElement;
       beforeEach(async(() => {
          TestBed.configureTestingModule({
-            imports: [FormsModule, ReactiveFormsModule, StSelectModule],
+            imports: [FormsModule, ReactiveFormsModule, StDropdownMenuModule, StSelectModule],
             declarations: [StSelectTestReactiveComponent]
          })
             .compileComponents();  // compile template and css
@@ -568,13 +570,20 @@ describe('StSelectComponent', () => {
       it('Should filter list on search', () => {
          comp.search = true;
          compSelect.expandedMenu = false;
+         compSelect.searchInput.setValue('example 4');
          fixture.detectChanges();
          comp.options = [<StDropDownMenuItem>{ label: 'select one', value: undefined }, ...simpleItems];
          comp.selected = comp.options[4];
          fixture.detectChanges();
          input.click();
          input.focus();
+         fixture.detectChanges();
 
+         inputSearch = fixture.debugElement.query(By.css('.search-input input')).nativeElement;
+         inputSearch.click();
+         inputSearch.focus();
+         compSelect.searchInput.setValue('example 4');
+         fixture.detectChanges();
          expect(comp.selected).toEqual(<StDropDownMenuItem>compSelect.filteredOptions[0]);
 
          const label: DebugElement = fixture.debugElement.query(By.css('label'));
@@ -590,6 +599,27 @@ describe('StSelectComponent', () => {
          expect(compSelect.selectedValue).toEqual('');
       });
 
+      it('Should clean search input on mousedown cross button', () => {
+         comp.search = true;
+         compSelect.expandedMenu = false;
+         compSelect.searchInput.setValue('example 4');
+         fixture.detectChanges();
+         comp.options = [<StDropDownMenuItem>{ label: 'select one', value: undefined }, ...simpleItems];
+         comp.selected = comp.options[4];
+         fixture.detectChanges();
+         input.click();
+         input.focus();
+         fixture.detectChanges();
+
+         inputSearch = fixture.debugElement.query(By.css('.search-input input')).nativeElement;
+         inputSearch.click();
+         inputSearch.focus();
+         compSelect.searchInput.setValue('example 4');
+         fixture.detectChanges();
+         const iconCross: DebugElement = fixture.debugElement.query(By.css('.icon-cross'));
+         iconCross.triggerEventHandler('mousedown', {pageX: 50, pageY: 40});
+         expect(compSelect.searchInput.value).toEqual('');
+      });
       it('Should be possible to set disabled', () => {
          comp.options = simpleItems;
          fixture.detectChanges();

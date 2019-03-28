@@ -56,6 +56,7 @@
        color: $action-secondary-07;
        font-weight: 400;
        font-size: $egeo-font-size-xsmall;
+       font-family: $egeo-nunito-sans;
        line-height: $egeo-line-height-xsmall;
        cursor: pointer;
        display: flex;
@@ -106,6 +107,7 @@
       padding: 10px 30px;
       font-size: $egeo-font-size-small;
       line-height: $egeo-line-height-small;
+      font-family: $egeo-nunito-sans;
       color: $neutral-11;
 
       &:hover {

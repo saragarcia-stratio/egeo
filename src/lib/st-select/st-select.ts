@@ -273,7 +273,10 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor, O
          this.onTouched();
       }
       this.select.emit(value);
-      this.onClickOutside();
+
+      if (value || (option && option.hasOwnProperty('value') && !option.value)) {
+        this.onClickOutside();
+      }
       this._cd.markForCheck();
    }
 

@@ -33,8 +33,9 @@
 
 .sth-search .sth-search-input {
    @extend %st-form-control;
-   font-weight: normal;
+   font-family: $egeo-nunito-sans;
    font-size: $egeo-font-size-xsmall;
+   font-weight: normal;
    background-color: $neutral-00;
    border-radius: 4px;
 }

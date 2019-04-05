@@ -15,6 +15,7 @@
 | disabled                     | Boolean              | False | Boolean to enable or disable the search                                                               | false    |
 | withAutocomplete             | Boolean              | False | Enable or disable the autocomplete list when user is typing                                           | false    |
 | autocompleteList             | StDropDownMenuItem[] | False | List of items displayed in the autocomplete list when user is typing                                  | ''       |
+| showIcon                     | Boolean              | False | Boolean to hide/show the loupe icon                                                                   | true     |
 | emptyAutocompleteListMessage | String               | False | Message displayed when the autocomplete list is enabled but there are not any item with the typed text | ''       |
 | filterOptions                | StDropDownMenuItem[] | False | Options displayed at the filter select. If it is not introduced,filter will not be displayed          | ''       |
 | keyBoardMove                 | Boolean              | False | It is needed to activate navigation through options using the keyboard                                | false    |

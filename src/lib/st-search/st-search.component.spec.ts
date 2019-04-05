@@ -481,4 +481,27 @@ describe('StSearchComponent', () => {
          expect(component.search.emit).toHaveBeenCalledWith({ text: '', filter: component.filterOptions[1].value, origin: StSearchEventOrigin.FILTER });
       });
    });
+
+   describe ('should be able to hide or show the loupe icon to the right of the search box', () => {
+
+      it ('by default, it is shown', () => {
+         fixture.detectChanges();
+
+         expect(fixture.nativeElement.querySelector('.st-search-icon.icon-search')).not.toBeNull();
+      });
+
+      it ('if showIcon is true, it is shown', () => {
+         component.showIcon = true;
+         fixture.detectChanges();
+
+         expect(fixture.nativeElement.querySelector('.st-search-icon.icon-search')).not.toBeNull();
+      });
+
+      it ('if showIcon is true, it is shown', () => {
+         component.showIcon = false;
+         fixture.detectChanges();
+
+         expect(fixture.nativeElement.querySelector('.st-search-icon.icon-search')).toBeNull();
+      });
+   });
 });

@@ -91,6 +91,9 @@ export class StSearchComponent extends EventWindowManager implements OnChanges, 
    /** @Input {StDropDownMenuItem[]} [autocompleteList=''] List of items displayed in the autocomplete list when user is typing */
    @Input() autocompleteList: StDropDownMenuItem[] = [];
 
+   /** @Input {boolean} [showIcon=true] Boolean to hide/show the loupe icon */
+   @Input() showIcon: boolean =  true;
+
    /** @Input {string} [emptyAutocompleteListMessage=''] Message displayed when the autocomplete list is enabled but
     * there are not any item with the typed text
     */

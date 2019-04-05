@@ -20,6 +20,10 @@
          </div>
 
          <div class="search-example">
+            <h3>Search without icon:</h3>
+            <st-search [placeholder]="placeholder" [showIcon]="false" [qaTag]="qaTag" [value]="searched" [debounce]="debounceTime" [minLength]="minLength" (search)="onSearchResult($event)"></st-search>
+         </div>
+         <div class="search-example">
             <h3>With filter select:</h3>
             <st-search [placeholder]="placeholder" [qaTag]="qaTag" [value]="searched" [debounce]="debounceTime" [minLength]="minLength"
                 [filterOptions]="[

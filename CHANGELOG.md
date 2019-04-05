@@ -1,5 +1,9 @@
 # Changelog
 
+## 16.2.0 (upcoming)
+
+* Pending changelog
+
 ## 16.1.0 (upcoming)
 
 **New features:**

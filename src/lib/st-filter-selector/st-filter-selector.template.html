@@ -14,7 +14,6 @@
 <st-dropdown-menu
    class="st-filter-selector"
    [items]="filterList"
-   attr.id="filterListId"
    [offset]="{x: 0, y: 10}"
    [active]="openFilter"
    [visualMode]="sectionMenuVisualMode"
@@ -22,6 +21,6 @@
    (clickOutside)="onCloseFilter()">
    <div (click)="onChangeFilterVisibility()" class="filter-title">
       <span>{{ selected?.label }}</span>
-      <i class="icon-arrow2_down arrow" [ngClass]="{'icon-arrow2_up': openFilter, 'icon-arrow2_down': !openFilter}" ></i>
+      <i class="icon-arrow2_down arrow"></i>
    </div>
 </st-dropdown-menu>

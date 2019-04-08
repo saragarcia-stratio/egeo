@@ -24,7 +24,7 @@
 ```html
 <st-filter-selector [filterList]="filter"
       [openFilter]="openFilter"
-      [selected]="selectedFilters[index]"
+      [selected]="selectedFilter"
       (clickFilter)="onFilter($event)"
       (changeFilterVisibility)="onChangeFilterVisibility()"
       (closeFilter)="onCloseFilter()">

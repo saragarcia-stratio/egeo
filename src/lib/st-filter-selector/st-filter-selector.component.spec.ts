@@ -8,7 +8,7 @@
  * nor reverse engineered, disassembled or decompiled, without express
  * written authorization from Stratio Big Data Inc., Sucursal en España.
  */
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { ChangeDetectionStrategy, NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StFilterSelectorComponent } from './st-filter-selector.component';
@@ -39,6 +39,10 @@ describe('FilterSelectorComponent', () => {
          declarations: [StFilterSelectorComponent],
          schemas: [NO_ERRORS_SCHEMA]
       })
+      // remove this block when the issue #12313 of Angular is fixed
+         .overrideComponent(StFilterSelectorComponent, {
+            set: { changeDetection: ChangeDetectionStrategy.Default }
+         })
          .compileComponents();
    }));
 
@@ -56,13 +60,16 @@ describe('FilterSelectorComponent', () => {
       });
    });
 
-   it('If there is not any selected filter, it should emit and event to select the first option', () => {
+   it('If there is not any selected filter, it should emit and event to select the first option', (done) => {
       spyOn(component.clickFilter, 'emit');
       component.selected = undefined;
       component.ngOnInit();
-      fixture.detectChanges();
 
-      expect(component.clickFilter.emit).toHaveBeenCalledWith(fakeFilters[0]);
+      fixture.whenStable().then(() => {
+         fixture.detectChanges();
+         expect(component.clickFilter.emit).toHaveBeenCalledWith(fakeFilters[0]);
+         done();
+      });
    });
 
    it('Should display the filters', () => {

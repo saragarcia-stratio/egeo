@@ -9,7 +9,7 @@
  * written authorization from Stratio Big Data Inc., Sucursal en España.
  */
 
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { StDropDownMenuItem, StDropDownVisualMode } from '../st-dropdown-menu/st-dropdown-menu.interface';
 
 /**
@@ -36,14 +36,15 @@ import { StDropDownMenuItem, StDropDownVisualMode } from '../st-dropdown-menu/st
 @Component({
    selector: 'st-filter-selector',
    templateUrl: './st-filter-selector.template.html',
-   styleUrls: ['./st-filter-selector.style.scss']
+   styleUrls: ['./st-filter-selector.style.scss'],
+   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class StFilterSelectorComponent implements OnInit {
    /** @Input {boolean} [openFilter=false] This boolean is needed to specify the status of the filter (open or closed) */
    @Input() openFilter: boolean = false;
    /** @Input {StDropDownMenuItem[]} [filterList=] List of options */
-   @Input() filterList: StDropDownMenuItem[] = [];
+   @Input() filterList: StDropDownMenuItem[];
    /** @Input {StDropDownMenuItem} [selected=] Selected option */
    @Input() selected: StDropDownMenuItem;
    /** @Output {StDropDownMenuItem} [clickFilter=] Event emitted when an option is selected */
@@ -56,9 +57,11 @@ export class StFilterSelectorComponent implements OnInit {
    public readonly sectionMenuVisualMode: StDropDownVisualMode = StDropDownVisualMode.MENU_LIST;
 
    ngOnInit(): void {
-      if (!this.selected) {
-         this.clickFilter.emit(this.filterList[0]);
-      }
+      setTimeout(() => {
+         if (!this.selected && this.filterList && this.filterList.length) {
+            this.clickFilter.emit(this.filterList[0]);
+         }
+      });
    }
 
    onClickFilter(selectedFilter: StDropDownMenuItem): void {

@@ -2,7 +2,10 @@
 
 ## 16.2.0 (upcoming)
 
-* Pending changelog
+**New features:**
+
+* st-filter-selector: Do not change the arrow icon when menu is open
+
 
 ## 16.1.0 (April 05, 2019)
 

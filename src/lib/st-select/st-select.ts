@@ -24,7 +24,7 @@ import {
    ViewChild
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { has as _has, flatten as _flatten, cloneDeep as _cloneDeep } from 'lodash';
+import { cloneDeep as _cloneDeep, flatten as _flatten, has as _has } from 'lodash';
 import { Subscription } from 'rxjs';
 
 import { StCheckValidationsDirective } from './st-check-validations';
@@ -48,11 +48,12 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor, O
    @Input() name: string = '';
    @Input() label: string = '';
    @Input() tooltip: string | null = null;
-   @Input() errorMessage: string | undefined = undefined;
+   @Input() errorMessage: string;
    @Input() selected: StDropDownMenuItem = undefined;
    @Input() default: any;
    @Input() itemsBeforeScroll: number = 8;
    @Input() search: boolean = false;
+   @Input() forceValidations: boolean = false;
 
    @Input() placeholderSearch?: string = 'Search...';
    @Input() keyBoardMove: boolean = false;
@@ -67,21 +68,19 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor, O
 
    public expandedMenu: boolean = false;
    public filteredOptions: StDropDownMenuItem[] | StDropDownMenuGroup[];
-   public searched: FormControl = new FormControl();
    public searchInput: FormControl = new FormControl();
+   public inputFormControl: FormControl = new FormControl();
+
    public showClear: boolean;
 
    onChange: (_: any) => void;
+   onTouched: () => void;
 
    private _inputHTMLElement: HTMLInputElement | undefined = undefined;
    private _isDisabled: boolean = false;
    private _options: StDropDownMenuItem[] | StDropDownMenuGroup[] = [];
-   private _touched: boolean = false;
    private _searchInputSubscription: Subscription;
 
-   onTouched(): void {
-      this._touched = true;
-   }
 
    constructor(private _selectElement: ElementRef,
                private _injector: Injector,
@@ -99,6 +98,7 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor, O
    @Input()
    set disabled(value: boolean) {
       this._isDisabled = value;
+      this._cd.markForCheck();
    }
 
    get disabled(): boolean {
@@ -152,8 +152,8 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor, O
       return this.label !== undefined && this.label !== null && this.label.length > 0;
    }
 
-   get hasError(): boolean {
-      return this.errorMessage !== undefined;
+   showError(): boolean {
+      return this.errorMessage && this.errorMessage.length && (this.inputFormControl.touched || this.forceValidations) && !this._isDisabled;
    }
 
    /*
@@ -246,7 +246,7 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor, O
    }
 
    createResetButton(): boolean {
-      return this.default !== undefined && ((!this.selected && this._touched) || (this.selected && this.selected.value !== this.default));
+      return this.default !== undefined && ((!this.selected && this.inputFormControl.touched) || (this.selected && this.selected.value !== this.default));
    }
 
    resetToDefault(): void {
@@ -275,7 +275,7 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor, O
       this.select.emit(value);
 
       if (value || (option && option.hasOwnProperty('value') && !option.value)) {
-        this.onClickOutside();
+         this.onClickOutside();
       }
       this._cd.markForCheck();
    }

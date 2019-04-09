@@ -8,13 +8,13 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { DebugElement, NO_ERRORS_SCHEMA, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, DebugElement, NO_ERRORS_SCHEMA, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { cloneDeep as _cloneDeep } from 'lodash';
 
-import { StDropDownMenuItem, StDropDownMenuGroup } from '../st-dropdown-menu/st-dropdown-menu.interface';
+import { StDropDownMenuGroup, StDropDownMenuItem } from '../st-dropdown-menu/st-dropdown-menu.interface';
 import { StSelectComponent } from './st-select';
 import { StSelectModule } from './st-select.module';
 import { StDropdownMenuModule } from '../st-dropdown-menu/st-dropdown-menu.module';
@@ -56,7 +56,7 @@ describe('StSelectComponent', () => {
 
    beforeEach(async(() => {
       TestBed.configureTestingModule({
-         imports: [StDropdownMenuModule],
+         imports: [StDropdownMenuModule, FormsModule, ReactiveFormsModule],
          declarations: [StSelectComponent, StClickOutside],
          schemas: [NO_ERRORS_SCHEMA]
       })
@@ -92,7 +92,7 @@ describe('StSelectComponent', () => {
       expect(comp.selectedValue).toEqual('');
       expect(comp.disableValue).toBeNull();
       expect(comp.hasLabel).toBeFalsy();
-      expect(comp.hasError).toBeFalsy();
+      expect(comp.showError()).toBeFalsy();
 
       expect(comp.selectId).toBeNull();
       expect(comp.inputId).toBeNull();
@@ -480,7 +480,7 @@ describe('StSelectComponent', () => {
          expect(comp.selected.value).toEqual(fakeDefault);
       });
 
-      it ('after user selects an empty option, he can return to the default', () => {
+      it('after user selects an empty option, he can return to the default', () => {
          const label: HTMLLabelElement = fixture.debugElement.query(By.css('label')).nativeElement;
          label.click();
          fixture.detectChanges();
@@ -501,28 +501,69 @@ describe('StSelectComponent', () => {
 
    });
 
+   describe('Error message should be displayed', () => {
+      beforeEach(() => {
+         comp.disabled = false;
+         comp.inputFormControl.markAsTouched();
+         comp.errorMessage = 'fake error message';
+      });
+
+      it('If it has been touched, error message is defined and it is not disabled', () => {
+         fixture.detectChanges();
+
+         expect(comp.showError()).toBeTruthy();
+         expect(fixture.nativeElement.querySelector('.st-input-error-message').innerHTML).toContain(comp.errorMessage);
+      });
+
+      it('If it is disabled, error is not displayed', () => {
+         comp.disabled = true;
+
+         fixture.detectChanges();
+
+         expect(comp.showError()).toBeFalsy();
+         expect(fixture.nativeElement.querySelector('.st-input-error-message')).toBeNull();
+      });
+
+      it('If error is empty, error is not displayed', () => {
+         comp.errorMessage = '';
+
+         fixture.detectChanges();
+
+         expect(comp.showError()).toBeFalsy();
+         expect(fixture.nativeElement.querySelector('.st-input-error-message')).toBeNull();
+      });
+
+      it('If error is not touched, error is not displayed', () => {
+         comp.inputFormControl.markAsUntouched();
+
+         fixture.detectChanges();
+
+         expect(comp.showError()).toBeFalsy();
+         expect(fixture.nativeElement.querySelector('.st-input-error-message')).toBeNull();
+      });
+   });
 });
 
 @Component({
    template: `
       <form [formGroup]="reactiveForm" novalidate autocomplete="off">
          <st-select #select
-            stCheckValidations
-            formControlName="option"
-            placeholder="placeholder"
-            placeholderSearch="'search..."
-            name="option"
-            label="Test"
-            tooltip="Test Help"
-            [options]="options"
-            [errorMessage]="errorMessage"
-            [selected]="selected"
-            [itemsBeforeScroll]="itemsBeforeScroll"
-            [search]="search"
-            class="st-form-field">
+                    stCheckValidations
+                    formControlName="option"
+                    placeholder="placeholder"
+                    placeholderSearch="'search..."
+                    name="option"
+                    label="Test"
+                    tooltip="Test Help"
+                    [options]="options"
+                    [errorMessage]="errorMessage"
+                    [selected]="selected"
+                    [itemsBeforeScroll]="itemsBeforeScroll"
+                    [search]="search"
+                    class="st-form-field">
          </st-select>
       </form>
-      `
+   `
 })
 class StSelectTestReactiveComponent {
    itemsBeforeScroll: number = null;
@@ -617,7 +658,7 @@ describe('StSelectComponent', () => {
          compSelect.searchInput.setValue('example 4');
          fixture.detectChanges();
          const iconCross: DebugElement = fixture.debugElement.query(By.css('.icon-cross'));
-         iconCross.triggerEventHandler('mousedown', {pageX: 50, pageY: 40});
+         iconCross.triggerEventHandler('mousedown', { pageX: 50, pageY: 40 });
          expect(compSelect.searchInput.value).toEqual('');
       });
       it('Should be possible to set disabled', () => {
@@ -697,21 +738,21 @@ describe('StSelectComponent', () => {
    template: `
       <form #templateDrivenForm="ngForm" novalidate autocomplete="off">
          <st-select #select
-            stCheckValidations
-            class="st-form-field"
-            id="test"
-            placeholder="placeholder"
-            name="model"
-            label="Test"
-            tooltip="Test Help"
-            required
-            [options]="options"
-            [(ngModel)]="model"
-            (select)="onSelect($event)"
+                    stCheckValidations
+                    class="st-form-field"
+                    id="test"
+                    placeholder="placeholder"
+                    name="model"
+                    label="Test"
+                    tooltip="Test Help"
+                    required
+                    [options]="options"
+                    [(ngModel)]="model"
+                    (select)="onSelect($event)"
          >
          </st-select>
       </form>
-      `
+   `
 })
 class StSelectTestTemplateComponent {
    errorMessage: string | undefined = null;

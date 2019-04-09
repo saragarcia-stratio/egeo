@@ -12,7 +12,8 @@
 -->
 <st-docs [htmlFile]="configDoc.html" [tsFile]="configDoc.ts" [componentFile]="configDoc.component">
    <section class="container-liquid">
-      <st-select placeholder="Select option" [options]="options" [disabled]="disabled"  [keyBoardMove]="true" [default]="options[2].value">
+      <st-select placeholder="Select option" [options]="options" [disabled]="disabled" [keyBoardMove]="true"
+                 [default]="options[2].value">
       </st-select>
 
       <div class="separator"></div>
@@ -26,16 +27,20 @@
       <form #templateDrivenForm="ngForm" novalidate autocomplete="off" class="col-md-3">
          <div class="form-group">
 
-            <st-select stCheckValidations label="Option 1" tooltip="Prueba" placeholder="Select option" [options]="options" [(ngModel)]="model.option1"
-                name="option1" required id="test" (select)="onSelect($event)" class="st-form-field">
+            <st-select stCheckValidations errorMessage="This field is required" label="Option 1"
+                       [forceValidations]="true" [formControl]="formControl" tooltip="Prueba"
+                       placeholder="Select option" [options]="options" name="option1" required id="test"
+                       (select)="onSelect($event)" class="st-form-field">
             </st-select>
             <div class="separator"></div>
 
 
             Disabled select
 
-            <st-select stCheckValidations label="Option 1" tooltip="Prueba" placeholder="Select option" [options]="options" [(ngModel)]="model.option1"
-                name="option1" required [disabled]="true" id="disabled-test" (select)="onSelect($event)" class="st-form-field">
+            <st-select stCheckValidations label="Option 1" tooltip="Prueba" placeholder="Select option"
+                       [options]="options" [(ngModel)]="model.option1"
+                       name="option1" required [disabled]="true" id="disabled-test" (select)="onSelect($event)"
+                       class="st-form-field">
             </st-select>
 
             <button class="button button-primary"><span>Submit</span></button>
@@ -43,7 +48,8 @@
             <div class="separator"></div>
 
             <p>Form value: {{ templateDrivenForm.value | json }}</p>
-            <p>Form status: {{ templateDrivenForm.disabled ? 'DISABLED' : templateDrivenForm.valid ? 'VALID' : 'INVALID' }}</p>
+            <p>Form status: {{ templateDrivenForm.disabled ? 'DISABLED' : templateDrivenForm.valid ? 'VALID' : 'INVALID'
+               }}</p>
          </div>
       </form>
 
@@ -55,7 +61,8 @@
       <form [formGroup]="reactiveForm" novalidate autocomplete="off" class="col-md-3">
          <div class="form-group">
 
-            <st-select stCheckValidations formControlName="option1" placeholder="Select option" [options]="options" class="st-form-field">
+            <st-select stCheckValidations formControlName="option1" placeholder="Select option" [options]="options"
+                       class="st-form-field">
             </st-select>
          </div>
 
@@ -79,7 +86,8 @@
       <div class="separator"></div>
       <div class="separator"></div>
       <h1>SEARCH OPTION EXAMPLE</h1>
-      <st-select [search]="true" placeholder="Select option"  placeholderSearch="Search..." [options]="options" [disabled]="disabled">
+      <st-select [search]="true" placeholder="Select option" placeholderSearch="Search..." [options]="options"
+                 [disabled]="disabled">
       </st-select>
 
       <div class="separator"></div>

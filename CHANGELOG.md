@@ -6,13 +6,17 @@
 
 * st-filter-selector: Do not change the arrow icon when menu is open
 
+**Fixed bugs:**
+
+* st-select: Fix error message format
+
 
 ## 16.1.0 (April 05, 2019)
 
 **New features:**
 
 * st-dropdown-menu: Allow user to move through options using the keyboard arrows 
-* st-select: new design for the search of elements.
+* st-select: new design for the search of elements
 * st-search: Allow to hide or show loupe icon
 
 **Others:**

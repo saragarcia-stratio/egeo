@@ -23,17 +23,17 @@
 >
    <div (click)="onButtonClick()" (keypress)="onButtonKeyPress($event)"  #button class="button-container" (clickOutside)="onClickOutside()">
       <div>
-         <label *ngIf="hasLabel" [ngClass]="{disabled: disabled}"
+         <label *ngIf="hasLabel" [ngClass]="{disabled: disabled, error: showError()}"
              st-label
              for="inputId"
              class="st-label"
              [attr.title]="tooltip"
              [attr.id]="labelId"
-             [ngClass]="{error: hasError}"
              [attr.disabled]="disableValue">{{label}}</label>
          <div class="input-container">
             <input
                #input
+               [formControl]="inputFormControl"
                autocomplete="off"
                aria-haspopup="true"
                class="st-input"
@@ -76,6 +76,7 @@
    </div>
 
 </st-dropdown-menu>
-<div *ngIf="hasError">
-   {{errorMessage}}
+
+<div class="st-input-error-layout" *ngIf="showError()">
+   <span class="st-input-error-message">{{errorMessage}}</span>
 </div>

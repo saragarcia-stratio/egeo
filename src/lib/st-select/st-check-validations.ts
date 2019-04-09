@@ -9,13 +9,14 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 
-import { Directive, OnInit, OnDestroy } from '@angular/core';
+import { Directive, OnInit, OnDestroy, Input } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 
 @Directive({ selector: '[stCheckValidations]' })
 export class StCheckValidationsDirective implements OnInit, OnDestroy {
+   @Input() errorMessage: string;
 
    onChange: (_: any) => void;
 
@@ -42,7 +43,7 @@ export class StCheckValidationsDirective implements OnInit, OnDestroy {
       if (this.control.valid && this.onChange) {
          this.onChange(null);
       } else if (this.onChange) {
-         this.onChange('ERROR');
+         this.onChange(this.errorMessage);
       }
    }
 }

@@ -12,6 +12,10 @@
 * st-table: Put pointer cursor to clickable cell´s children and not to entire cell
 * st-breadcrumbs: Do not display capitalized text
 
+**Others:**
+
+* Upgrade lodash to 4.17.11
+
 
 ## 16.1.0 (April 05, 2019)
 

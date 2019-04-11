@@ -60,7 +60,6 @@
    transition: background-color ease-in-out 0.3s;
 
    &:hover {
-      td.clickable,
       td.clickable > * {
          cursor: pointer;
          color: $action-primary-default;

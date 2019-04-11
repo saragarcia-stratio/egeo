@@ -9,6 +9,7 @@
 **Fixed bugs:**
 
 * st-select: Fix error message format
+* st-table: Put pointer cursor to clickable cell´s children and not to entire cell
 
 
 ## 16.1.0 (April 05, 2019)

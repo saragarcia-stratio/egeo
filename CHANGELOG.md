@@ -4,7 +4,7 @@
 
 * Pending changelog
 
-## 16.2.0 (upcoming)
+## 16.2.0 (April 12, 2019)
 
 **New features:**
 

@@ -56,7 +56,7 @@
    line-height: $egeo-line-height-xsmall;
    text-align: left;
    color: $neutral-13;
-   border-bottom: 1px solid $neutral-04;
+   box-shadow: inset 0 -1px 0 0 $neutral-04;
    transition: background-color ease-in-out 0.3s;
 
    &:hover {

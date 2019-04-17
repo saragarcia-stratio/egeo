@@ -2,7 +2,10 @@
 
 ## 16.3.0 (upcoming)
 
-* Pending changelog
+**Fixed bugs:**
+
+* st-table: Border disappears when user puts the mouse over the row
+
 
 ## 16.2.0 (April 12, 2019)
 

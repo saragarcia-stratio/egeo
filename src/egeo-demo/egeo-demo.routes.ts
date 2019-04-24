@@ -65,6 +65,7 @@ export const EGEO_DEMO_MENU: EgeoDemoMenu[] = [
    { id: 'st-tree', name: 'Tree', path: 'tree-demo', moduleLazyLoad: 'StTreeDemoModule' },
    { id: 'st-two-list-selection', name: 'Two List Selection', path: 'two-list-selection-demo', moduleLazyLoad: 'StTwoListSelectionDemoModule' },
    { id: 'st-vertical-tabs', name: 'Vertical Tabs', path: 'vertical-tabs-demo', moduleLazyLoad: 'StVerticalTabsDemoModule' },
+   { id: 'st-zero-page', name: 'Zero page', path: 'zero-page-demo', moduleLazyLoad: 'StZeroPageDemoModule' },
    { id: 'st-widget', name: 'Widget', path: 'widget-demo', moduleLazyLoad: 'StWidgetDemoModule' }
 ];
 
@@ -115,6 +116,7 @@ const routes: Routes = [
    { path: 'tree-demo', loadChildren: './st-tree-demo/st-tree-demo.module#StTreeDemoModule' },
    { path: 'two-list-selection-demo', loadChildren: './st-two-list-selection-demo/st-two-list-selection-demo.module#StTwoListSelectionDemoModule' },
    { path: 'vertical-tabs-demo', loadChildren: './st-vertical-tabs-demo/st-vertical-tabs-demo.module#StVerticalTabsDemoModule' },
+   { path: 'zero-page-demo', loadChildren: './st-zero-page-demo/st-zero-page-demo.module#StZeroPageDemoModule' },
    { path: 'widget-demo', loadChildren: './st-widget-demo/st-widget-demo.module#StWidgetDemoModule' }
 ];
 // tslint:enable

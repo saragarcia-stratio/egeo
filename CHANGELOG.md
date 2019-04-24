@@ -2,6 +2,10 @@
 
 ## 16.3.0 (upcoming)
 
+**New features:**
+
+* st-zero-page: Create component
+
 **Fixed bugs:**
 
 * st-table: Border disappears when user puts the mouse over the row

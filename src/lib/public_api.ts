@@ -288,6 +288,9 @@ export { StVerticalTabsModule } from './st-vertical-tabs/st-vertical-tabs.module
 // Widget
 export { StWidgetModule } from './st-widget/st-widget.module';
 
+// Zero page
+export { StZeroPageModule } from './st-zero-page/st-zero-page.module';
+
 
 export { StPopModule } from './st-pop/st-pop.module';
 export { StPopOffset, StPopPlacement } from './st-pop/st-pop.model';

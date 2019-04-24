@@ -11,6 +11,11 @@
 * st-table: Border disappears when user puts the mouse over the row
 
 
+**Others:**
+
+* Update icon font
+
+
 ## 16.2.0 (April 12, 2019)
 
 **New features:**

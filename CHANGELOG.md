@@ -10,10 +10,10 @@
 
 * st-table: Border disappears when user puts the mouse over the row
 
-
 **Others:**
 
 * Update icon font
+* st-table: Align cell content to the top when texts are so long
 
 
 ## 16.2.0 (April 12, 2019)

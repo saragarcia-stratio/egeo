@@ -37,7 +37,6 @@ export const EGEO_DEMO_MENU: EgeoDemoMenu[] = [
    { id: 'st-header', name: 'Header', path: 'header-demo', moduleLazyLoad: 'StHeaderDemoModule' },
    { id: 'st-help', name: 'Help', path: 'help-demo', moduleLazyLoad: 'StHelpDemoModule' },
    { id: 'st-horizontal-tabs', name: 'Horizontal Tabs', path: 'horizontal-tabs-demo', moduleLazyLoad: 'StHorizontalTabsModule' },
-   { id: 'st-info-box', name: 'Info Box', path: 'info-box-demo', moduleLazyLoad: 'StInfoBoxDemoModule' },
    { id: 'st-info-card', name: 'Info Card', path: 'info-card-demo', moduleLazyLoad: 'StInfoCardDemoModule' },
    { id: 'st-input', name: 'Input', path: 'input', moduleLazyLoad: 'StInputDemoModule' },
    { id: 'st-item-list', name: 'Item List', path: 'item-list-demo', moduleLazyLoad: 'StItemListDemoModule' },

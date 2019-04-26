@@ -14,6 +14,7 @@
 
 * Update icon font
 * st-table: Align cell content to the top when texts are so long
+* Remove st-info-box from demo.
 
 
 ## 16.2.0 (April 12, 2019)

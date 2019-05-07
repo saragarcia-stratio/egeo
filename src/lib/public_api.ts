@@ -165,6 +165,12 @@ export {
 export { StModalService } from './st-modal/st-modal.service';
 export { StModalModule } from './st-modal/st-modal.module';
 
+// Modal2
+
+export {
+   StModal2Module
+} from './st-modal2/st-modal2.module';
+
 // Page Title
 export { StPageTitleModule } from './st-page-title/st-page-title.module';
 

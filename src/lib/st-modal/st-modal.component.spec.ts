@@ -1,4 +1,3 @@
-import { StWindowRefService } from '../utils/window-service';
 /*
  * © 2017 Stratio Big Data Inc., Sucursal en España.
  *
@@ -14,6 +13,7 @@ import { Component, EventEmitter, Input, Output, ComponentFactoryResolver, NO_ER
 import { async, ComponentFixture, fakeAsync, TestBed, tick, inject } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
+import { StWindowRefService } from '../utils/window-service';
 
 // Component
 import { StModalComponent } from './st-modal.component';

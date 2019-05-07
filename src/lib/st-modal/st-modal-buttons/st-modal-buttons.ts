@@ -10,7 +10,7 @@
  */
 import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 
-import { StModalButton, StModalResponse, StModalButtonResponse } from '../st-modal.model';
+import { StModalButton, StModalButtonResponse } from '../st-modal.model';
 
 @Component({
    selector: 'st-modal-buttons',

@@ -5,6 +5,7 @@
 **New features:**
 
 * st-zero-page: Create component
+* st-modal2: New modal component
 
 **Fixed bugs:**
 

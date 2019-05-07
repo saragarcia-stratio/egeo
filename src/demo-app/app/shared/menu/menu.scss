@@ -20,6 +20,7 @@
    height: calc(100vh - 60px);
    overflow-y: hidden;
    position: fixed;
+   z-index: $header-z-index;
    top: 60px;
    left: 0;
    background-color: $neutral-02;

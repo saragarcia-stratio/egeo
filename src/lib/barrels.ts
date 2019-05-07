@@ -30,6 +30,7 @@ import { StItemListModule } from './st-item-list/st-item-list.module';
 import { StLabelModule } from './st-label/index';
 import { StLauncherModule } from './st-launcher/st-launcher.module';
 import { StModalModule } from './st-modal/st-modal.module';
+import { StModal2Module } from './st-modal2/st-modal2.module';
 import { StPageTitleModule } from './st-page-title/st-page-title.module';
 import { StPaginationModule } from './st-pagination/st-pagination.module';
 import { StPopModule } from './st-pop/st-pop.module';
@@ -80,6 +81,7 @@ export const DECLARATIONS: any[] = [
    StLabelModule,
    StLauncherModule,
    StModalModule,
+   StModal2Module,
    StPageTitleModule,
    StPaginationModule,
    StPopModule,

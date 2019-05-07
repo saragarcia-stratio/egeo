@@ -23,10 +23,8 @@ import { StFormModule } from './st-form/st-form.module';
 import { StFormListModule } from './st-form-list/st-form-list.module';
 import { StFullscreenLayoutModule } from './st-fullscreen-layout/st-fullscreen-layout.module';
 import { StHeaderModule } from './st-header/st-header.module';
-import { StHelpModule } from './st-help/st-help.module';
 import { StHorizontalTabsModule } from './st-horizontal-tabs/st-horizontal-tabs.module';
 import { StInfoBoxModule } from './st-info-box/st-info-box.module';
-import { StInfoCardModule } from './st-info-card/st-info-card.module';
 import { StInputModule } from './st-input/st-input.module';
 import { StItemListModule } from './st-item-list/st-item-list.module';
 import { StLabelModule } from './st-label/index';
@@ -45,14 +43,11 @@ import { StSelectModule } from './st-select/st-select.module';
 import { StSidebarModule } from './st-sidebar/st-sidebar.module';
 import { StSpinnerModule } from './st-spinner/st-spinner.module';
 import { StSwitchModule } from './st-switch/st-switch.module';
-import { StTabBoxModule } from './st-tab-box/st-tab-box.module';
 import { StTableModule } from './st-table/st-table.module';
 import { StTagInputModule } from './st-tag-input/st-tag-input.module';
 import { StTextareaModule } from './st-textarea/st-textarea.module';
-import { StTipModule } from './st-tip/st-tip.module';
 import { StToggleButtonsModule } from './st-toggle-buttons/st-toggle-buttons.module';
 import { StTooltipModule } from './st-tooltip/st-tooltip.module';
-import { StTreeModule } from './st-tree/st-tree.module';
 import { StTwoListSelectionModule } from './st-two-list-selection/st-two-list-selection.module';
 import { StVerticalTabsModule } from './st-vertical-tabs/st-vertical-tabs.module';
 import { StWidgetModule } from './st-widget/st-widget.module';
@@ -78,10 +73,8 @@ export const DECLARATIONS: any[] = [
    StFormListModule,
    StFullscreenLayoutModule,
    StHeaderModule,
-   StHelpModule,
    StHorizontalTabsModule,
    StInfoBoxModule,
-   StInfoCardModule,
    StInputModule,
    StItemListModule,
    StLabelModule,
@@ -100,14 +93,11 @@ export const DECLARATIONS: any[] = [
    StSidebarModule,
    StSpinnerModule,
    StSwitchModule,
-   StTabBoxModule,
    StTableModule,
    StTagInputModule,
    StTextareaModule,
-   StTipModule,
    StToggleButtonsModule,
    StTooltipModule,
-   StTreeModule,
    StTwoListSelectionModule,
    StVerticalTabsModule,
    StWidgetModule,

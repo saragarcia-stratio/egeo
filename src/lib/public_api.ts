@@ -104,9 +104,6 @@ export {
 } from './st-header/st-header.model';
 export { StHeaderModule } from './st-header/st-header.module';
 
-// Help
-export { StHelpModule } from './st-help/st-help.module';
-
 // Dynamic form
 export { StFormModule } from './st-form/st-form.module';
 export { StFormFieldModule } from './st-form/st-form-field/st-form-field.module';
@@ -131,9 +128,6 @@ export {
 
 // Info box
 export { StInfoBoxModule } from './st-info-box/st-info-box.module';
-
-// Info card
-export { StInfoCardModule } from './st-info-card/st-info-card.module';
 
 // Input
 export { StInputModule } from './st-input/st-input.module';
@@ -229,10 +223,6 @@ export { StSpinnerModule } from './st-spinner/st-spinner.module';
 // Switch
 export { StSwitchModule } from './st-switch/st-switch.module';
 
-// Tab box
-export { StTab, StTabSchema } from './st-tab-box/st-tab-box.interface';
-export { StTabBoxModule } from './st-tab-box/st-tab-box.module';
-
 // Table
 export { StTableModule } from './st-table/st-table.module';
 export { StTableHeader } from './st-table/shared/table-header.interface';
@@ -248,9 +238,6 @@ export {
 } from './st-textarea/st-textarea.error.model';
 export { StTextareaModule } from './st-textarea/st-textarea.module';
 
-// Tip
-export { StTipModule } from './st-tip/st-tip.module';
-
 // Toogle buttons
 export {
    StToggleButton,
@@ -262,10 +249,6 @@ export {
 
 // Tooltip
 export { StTooltipModule } from './st-tooltip/st-tooltip.module';
-
-// Tree
-export { StTreeModule } from './st-tree/st-tree.module';
-export { StTreeNode, StTreeEvent } from './st-tree/st-tree.model';
 
 // Two list selection
 export {

@@ -28,16 +28,20 @@
 // Styleguide 4.1
 // sass-lint:disable indentation, no-duplicate-properties, no-vendor-prefixes, class-name-format, leading-zero, no-color-literals
 @font-face {
-   font-family: 'ico_stratio';
-   src: url($egeo-fontface-src + '/stratio-fonticon/ico_stratio.eot');
-   src: url($egeo-fontface-src + '/stratio-fonticon/ico_stratio.eot') format('embedded-opentype'), url($egeo-fontface-src + '/stratio-fonticon/ico_stratio.ttf') format('truetype'), url($egeo-fontface-src + '/stratio-fonticon/ico_stratio.woff') format('woff'), url($egeo-fontface-src + '/stratio-fonticon/ico_stratio.svg') format('svg');
+   font-family: "ico_stratio";
+   src: url($egeo-fontface-src+"/stratio-fonticon/ico_stratio.eot");
+   src: url($egeo-fontface-src+"/stratio-fonticon/ico_stratio.eot") format("embedded-opentype"),
+      url($egeo-fontface-src+"/stratio-fonticon/ico_stratio.ttf") format("truetype"),
+      url($egeo-fontface-src+"/stratio-fonticon/ico_stratio.woff") format("woff"),
+      url($egeo-fontface-src+"/stratio-fonticon/ico_stratio.svg") format("svg");
    font-weight: normal;
    font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="icon-"],
+[class*=" icon-"] {
    /* use !important to prevent issues with browser extensions that change fonts */
-   font-family: 'ico_stratio' !important;
+   font-family: "ico_stratio" !important;
    speak: none;
    font-style: normal;
    font-weight: normal;
@@ -52,7 +56,7 @@
 
 i {
    /* use !important to prevent issues with browser extensions that change fonts */
-   font-family: 'ico_stratio' !important;
+   font-family: "ico_stratio" !important;
    speak: none;
    font-style: normal;
    font-weight: normal;
@@ -65,6 +69,21 @@ i {
    -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-literal:before {
+   content: "\e9ce";
+}
+.icon-duplicate-column:before {
+   content: "\e9cd";
+}
+.icon-case:before {
+   content: "\e9c9";
+}
+.icon-formatter:before {
+   content: "\e9ca";
+}
+.icon-pivot:before {
+   content: "\e9cb";
+}
 .icon-square-chevron-down:before {
    content: "\e9be";
 }
@@ -203,6 +222,9 @@ i {
 .icon-file:before {
    content: "\e124";
 }
+.icon-structured-data:before {
+   content: "\e9c3";
+}
 .icon-filesystem:before {
    content: "\e95e";
 }
@@ -220,6 +242,9 @@ i {
 }
 .icon-csv2:before {
    content: "\e647";
+}
+.icon-file-dictionary:before {
+   content: "\e9cc";
 }
 .icon-print:before {
    content: "\e64a";
@@ -271,6 +296,9 @@ i {
 }
 .icon-policy-2:before {
    content: "\e961";
+}
+.icon-scissors:before {
+   content: "\e9c7";
 }
 .icon-edit:before {
    content: "\e63c";
@@ -358,6 +386,15 @@ i {
 }
 .icon-clear-nulls:before {
    content: "\e922";
+}
+.icon-case-letter:before {
+   content: "\e9c4";
+}
+.icon-if:before {
+   content: "\e9c5";
+}
+.icon-comma-delimiter:before {
+   content: "\e9c6";
 }
 .icon-sql-builder:before {
    content: "\e932";
@@ -497,11 +534,17 @@ i {
 .icon-grid-2:before {
    content: "\e103";
 }
+.icon-table-view:before {
+   content: "\e9c2";
+}
 .icon-columns:before {
    content: "\e104";
 }
 .icon-rename-column:before {
    content: "\e923";
+}
+.icon-trim:before {
+   content: "\e9c8";
 }
 .icon-ban:before {
    content: "\e107";

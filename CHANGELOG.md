@@ -2,7 +2,7 @@
 
 ## 16.4.0 (upcoming)
 
-* Pending changelog
+* Update icon font
 
 ## 16.3.0 (May 08, 2019)
 

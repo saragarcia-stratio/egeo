@@ -8,16 +8,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import {
-   Component,
-   ElementRef,
-   AfterViewInit,
-   Input,
-   ChangeDetectionStrategy,
-   OnChanges,
-   SimpleChanges,
-   HostListener
-} from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 import { StPopOffset, StPopPlacement } from './st-pop.model';
 
@@ -47,23 +38,35 @@ type StCoords = { x: number, y: number, z: number };
    templateUrl: './st-pop.component.html',
    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StPopComponent implements AfterViewInit, OnChanges {
+export class StPopComponent implements AfterViewInit {
 
    /** @Input {StPopPlacement} [placement=StPopPlacement.BOTOM_START] Define position of content relative to button */
    @Input() placement: StPopPlacement = StPopPlacement.BOTTOM_START;
 
    /** @Input {StPopOffset} [offset={x: 0 , y: 0}] For position with offset in x o y axis */
    @Input() offset: StPopOffset = { x: 0, y: 0 };
-   /** @Input {boolean} [openToLeft=false] For calculate all position from right corner */
+   /** @Input {boolean} [openToLeft=false] For calculating all positions from the right corner */
    @Input() openToLeft: boolean = false;
-   /** @Input {boolean} [hidden=true] TRUE: show pop content, FALSE: hide pop content */
-   @Input() hidden: boolean = true;
 
+   private _hidden: boolean = true;
 
-   private button: ClientRect;
-   private content: ElementRef;
+   /** @Input {boleean} [hidden=true]  TRUE: show pop content, FALSE: hide pop content  */
+   @Input()
+   set hidden(value: boolean) {
+      setTimeout(() => {
+         if (!value) {
+            this.calculatePosition();
+         }
+         this._hidden = value;
+         this._cd.markForCheck();
+      });
+   }
 
-   constructor(private el: ElementRef) {
+   get hidden(): boolean {
+      return this._hidden;
+   }
+
+   constructor(private _el: ElementRef, private _cd: ChangeDetectorRef) {
    }
 
    ngAfterViewInit(): void {
@@ -75,11 +78,11 @@ export class StPopComponent implements AfterViewInit, OnChanges {
    }
 
    private getContentElement(): HTMLElement {
-      return this.el.nativeElement.querySelector('[pop-content]');
+      return this._el.nativeElement.querySelector('[pop-content]');
    }
 
    private calculatePosition(): void {
-      const buttonParentEl: HTMLElement = this.el.nativeElement.querySelector('[pop-button]');
+      const buttonParentEl: HTMLElement = this._el.nativeElement.querySelector('[pop-button]');
       const contentEl: HTMLElement = this.getContentElement();
       const buttonEl: Element | undefined = buttonParentEl && buttonParentEl.firstElementChild ?
          buttonParentEl.firstElementChild : undefined;

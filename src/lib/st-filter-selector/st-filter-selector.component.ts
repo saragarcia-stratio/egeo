@@ -11,6 +11,7 @@
 
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { StDropDownMenuItem, StDropDownVisualMode } from '../st-dropdown-menu/st-dropdown-menu.interface';
+import { StPopPlacement } from '../st-pop/st-pop.model';
 
 /**
  * @description {Component} [Filter selector]
@@ -47,6 +48,8 @@ export class StFilterSelectorComponent implements OnInit {
    @Input() filterList: StDropDownMenuItem[];
    /** @Input {StDropDownMenuItem} [selected=] Selected option */
    @Input() selected: StDropDownMenuItem;
+   /** @Input {boolean} [menuAlignedToRight=false] Boolean to indicate if menu has to be displayed aligned to the right */
+   @Input() menuAlignedToRight: boolean = false;
    /** @Output {StDropDownMenuItem} [clickFilter=] Event emitted when an option is selected */
    @Output() clickFilter: EventEmitter<StDropDownMenuItem> = new EventEmitter<StDropDownMenuItem>();
    /** @Output {boolean} [changeFilterVisibility=] Event emitted when visibility of options changes */
@@ -55,8 +58,10 @@ export class StFilterSelectorComponent implements OnInit {
    @Output() closeFilter: EventEmitter<boolean> = new EventEmitter<boolean>();
 
    public readonly sectionMenuVisualMode: StDropDownVisualMode = StDropDownVisualMode.MENU_LIST;
+   public menuPlacement: StPopPlacement;
 
    ngOnInit(): void {
+      this.menuPlacement = this.menuAlignedToRight ? StPopPlacement.BOTTOM_END : StPopPlacement.BOTTOM_START;
       setTimeout(() => {
          if (!this.selected && this.filterList && this.filterList.length) {
             this.clickFilter.emit(this.filterList[0]);

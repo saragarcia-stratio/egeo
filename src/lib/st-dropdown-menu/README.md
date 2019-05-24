@@ -15,6 +15,7 @@
 | moveSelected      | Boolean                                       | False | If true, move selected item to top in menu when open                                                   | true                             |
 | styleSelected     | Boolean                                       | False | If true, apply class selected to selected item                                                         | true                             |
 | offset            | StPopOffset                                   | False | For position with offset in x o y axis                                                                 | {x: 0 , y: 0}                    |
+| openToLeft        | Boolean                                       | False | For calculating all positions from the right corner                                                    | false                            |
 | visualMode        | StDropdownVisualMode                          | False | It is needed to specify the styles applied to the list.By default is displayed as a normal option list | StDropDownVisualMode.OPTION_LIST |
 | keyBoardMove      | Boolean                                       | False | It is needed to activate navigation through options using the keyboard                                 | false                            |
 

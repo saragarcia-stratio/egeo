@@ -14,8 +14,9 @@
 <st-dropdown-menu
    class="st-filter-selector"
    [items]="filterList"
-   [offset]="{x: 0, y: 10}"
    [active]="openFilter"
+   [placement]="menuPlacement"
+   [openToLeft]="menuAlignedToRight"
    [visualMode]="sectionMenuVisualMode"
    (change)="onClickFilter($event)"
    (clickOutside)="onCloseFilter()">

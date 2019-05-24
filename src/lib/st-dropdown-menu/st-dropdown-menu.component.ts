@@ -74,6 +74,8 @@ export class StDropdownMenuComponent implements AfterViewInit, OnInit, OnChanges
    @Input() styleSelected: boolean = true;
    /** @Input {StPopOffset} [offset={x: 0 , y: 0}] For position with offset in x o y axis */
    @Input() offset: StPopOffset = { x: 0, y: 0 };
+   /** @Input {boolean} [openToLeft=false] For calculating all positions from the right corner */
+   @Input() openToLeft: boolean = false;
    /** @Input {StDropdownVisualMode} [visualMode=StDropDownVisualMode.OPTION_LIST] It is needed to specify the styles applied to the list.
     *  By default is displayed as a normal option list
     */

@@ -9,7 +9,7 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 import { ChangeDetectionStrategy, DebugElement, SimpleChange, SimpleChanges } from '@angular/core';
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
@@ -378,7 +378,6 @@ describe('StSearchComponent', () => {
       dropdownItems = fixture.debugElement.queryAll(By.css('st-dropdown-menu-item'));
       expect(dropdownItems.length).toEqual(2);
 
-
       input.value = '';
       input.dispatchEvent(new Event('input'));
       fixture.detectChanges();
@@ -386,6 +385,7 @@ describe('StSearchComponent', () => {
       fixture.detectChanges();
       dropdownItems = fixture.debugElement.queryAll(By.css('st-dropdown-menu-item'));
       expect(dropdownItems.length).toEqual(0);
+      flush();
    }));
 
    it('should be able to change autocomplete list', fakeAsync(() => {
@@ -421,6 +421,7 @@ describe('StSearchComponent', () => {
       fixture.detectChanges();
       dropdownItems = fixture.debugElement.queryAll(By.css('st-dropdown-menu-item'));
       expect(dropdownItems.length).toEqual(finalList.length);
+      flush();
    }));
 
    it('should be able to open autocomplete list when user clicks on input', fakeAsync(() => {
@@ -437,6 +438,7 @@ describe('StSearchComponent', () => {
       fixture.detectChanges();
 
       expect(fixture.nativeElement.querySelector('.st-dropdown-menu.active')).not.toBeNull();
+      flush();
    }));
 
    describe('Should be able to allow a filtered search', () => {

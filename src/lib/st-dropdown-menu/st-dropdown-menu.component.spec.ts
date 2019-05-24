@@ -466,14 +466,20 @@ describe('StDropdownMenu', () => {
          instanceTestFixture.destroy();
       });
 
-      it('It should be able to add some content before and after the menu', () => {
+      it('It should be able to add some content before and after the menu', (done) => {
          instanceTestComp.active = true;
          instanceTestFixture.detectChanges();
 
-         expect(instanceTestFixture.nativeElement.querySelector('[dropdown-header]')).not.toBeNull();
-         expect(instanceTestFixture.nativeElement.querySelector('span[dropdown-header]').innerText).toContain('TEST HEADER');
-         expect(instanceTestFixture.nativeElement.querySelector('[dropdown-footer]')).not.toBeNull();
-         expect(instanceTestFixture.nativeElement.querySelector('span[dropdown-footer]').innerText).toContain('TEST FOOTER');
+         instanceTestFixture.whenStable().then(() => {
+            instanceTestFixture.detectChanges();
+
+            expect(instanceTestFixture.nativeElement.querySelector('[dropdown-header]')).not.toBeNull();
+            expect(instanceTestFixture.nativeElement.querySelector('span[dropdown-header]').innerText).toContain('TEST HEADER');
+            expect(instanceTestFixture.nativeElement.querySelector('[dropdown-footer]')).not.toBeNull();
+            expect(instanceTestFixture.nativeElement.querySelector('span[dropdown-footer]').innerText).toContain('TEST FOOTER');
+            done();
+         });
+
       });
 
       it('If visual mode is OPTION_LIST, class "menu-list" is not added to the list', () => {

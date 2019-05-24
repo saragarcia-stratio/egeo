@@ -5,6 +5,7 @@
 **New features:**
 
 * st-horizontal-tabs: Allow to insert content from outside after tabs
+* st-filter-selector: Allow to display menu aligned to the right
 
 **Others:**
 

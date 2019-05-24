@@ -4,11 +4,12 @@
 
 ## Inputs
 
-| Property   | Type                 | Req   | Description                                                                 | Default |
-| ---------- | -------------------- | ----- | --------------------------------------------------------------------------- | ------- |
-| openFilter | Boolean              | False | This boolean is needed to specify the status of the filter (open or closed) | false   |
-| filterList | StDropDownMenuItem[] | False | List of options                                                             |         |
-| selected   | StDropDownMenuItem   | False | Selected option                                                             |         |
+| Property           | Type                 | Req   | Description                                                                 | Default |
+| ------------------ | -------------------- | ----- | --------------------------------------------------------------------------- | ------- |
+| openFilter         | Boolean              | False | This boolean is needed to specify the status of the filter (open or closed) | false   |
+| filterList         | StDropDownMenuItem[] | False | List of options                                                             |         |
+| selected           | StDropDownMenuItem   | False | Selected option                                                             |         |
+| menuAlignedToRight | Boolean              | False | Boolean to indicate if menu has to be displayed aligned to the right        | false   |
 
 ## Outputs
 

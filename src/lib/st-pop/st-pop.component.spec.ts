@@ -71,7 +71,7 @@ describe('StPopComponent', () => {
       expect(fixture.debugElement.nativeElement.querySelector('[hidden]')).toBeDefined();
    });
 
-   it('should get correct coords', () => {
+   it('should get correct coordinates', () => {
       component.hidden = false;
 
       component.placement = StPopPlacement.TOP;

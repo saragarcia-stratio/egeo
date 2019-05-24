@@ -19,6 +19,14 @@
          dependent on its label. To ensure that all tabs appear in the container, avoid using more than seven tabs and
          limit labels to one or two words.</p>
       <st-horizontal-tabs class="demo" [options]="options" [activeOption]="active" qaTag="horizontal-tabs-demo">
+         <st-filter-selector class="filter"
+                             [filterList]="filterList"
+                             [selected]="selectedFilter"
+                             (clickFilter)="onChangeFilter($event)"
+                             [openFilter]="openFilter"
+                             (changeFilterVisibility)="openFilter = !openFilter"
+                             (closeFilter)="openFilter = false">
+         </st-filter-selector>
       </st-horizontal-tabs>
       <span class="separator"></span>
       <h1 class="title">Usage and best practices</h1>

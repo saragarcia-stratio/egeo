@@ -9,7 +9,7 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 import { Component } from '@angular/core';
-import { StHorizontalTab, StHorizontalTabStatus } from '@stratio/egeo';
+import { StDropDownMenuItem, StHorizontalTab, StHorizontalTabStatus } from '@stratio/egeo';
 
 @Component({
    selector: 'st-horizontal-tabs-demo',
@@ -31,4 +31,17 @@ export class StHorizontalTabsDemoComponent {
    ];
 
    public active: StHorizontalTab = this.options[1];
+   public openFilter: boolean = false;
+   public filterList: StDropDownMenuItem[] = [
+      { label: 'Any', icon: 'icon-activity', value: 'any' },
+      { label: 'Last updated', icon: 'icon-timer', value: 'updated' },
+      { label: 'Modified date', icon: 'icon-datetime', value: 'modified' },
+      { label: 'Size', icon: 'icon-code', value: 'size' }
+   ];
+   public selectedFilter: StDropDownMenuItem = this.filterList[0];
+
+   public onChangeFilter(selectedFilter: StDropDownMenuItem): void {
+      this.selectedFilter = selectedFilter;
+      this.openFilter = false;
+   }
 }

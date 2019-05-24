@@ -2,11 +2,14 @@
 
 ## 16.4.0 (upcoming)
 
-* Update icon font
+**New features:**
 
-**Refactor:**
+* st-horizontal-tabs: Allow to insert content from outside after tabs
+
+**Others:**
 
 * Fix method calls from templates
+* Update icon font
 
 ## 16.3.0 (May 08, 2019)
 

@@ -17,4 +17,5 @@
       href="javascript:void(0)"
       [ngClass]="{'tab--active': isActive(option)}"
       [attr.id]="qaTag + '-tab-' + i">{{option.text}}</a>
+   <ng-content></ng-content>
 </nav>

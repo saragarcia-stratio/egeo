@@ -9,7 +9,7 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { StToggleButton } from './st-toggle-buttons.interface';
+import { StToggleButton, StParsedToggleButton } from './st-toggle-buttons.interface';
 
 @Component({
    selector: 'st-toggle-buttons',
@@ -18,16 +18,26 @@ import { StToggleButton } from './st-toggle-buttons.interface';
    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StToggleButtonsComponent {
-   @Input() tabs: StToggleButton[] = [];
+
    @Input() description: string;
    @Input() qaTag: string;
    @Output() select: EventEmitter<StToggleButton> = new EventEmitter<StToggleButton>();
 
+   public parsedTabs: StParsedToggleButton[];
+
+   @Input() set tabs(tabs: StToggleButton[]) {
+      this.parsedTabs = tabs
+      .map(
+         ({ label, ...props }) => ({ ...props, label, trimLabel: label.replace(/[^a-zA-Z0-9]/g, '') })
+      );
+   }
+
    onClick(selectedTab: StToggleButton): void {
-      for (let tab of this.tabs) {
+      for (let tab of this.parsedTabs) {
          tab.active = false;
       }
       selectedTab.active = true;
       this.select.emit(selectedTab);
    }
+
 }

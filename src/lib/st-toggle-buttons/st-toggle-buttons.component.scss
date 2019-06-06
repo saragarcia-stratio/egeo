@@ -8,18 +8,38 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-.st-toggle-buttons__description {
-   display: inline-block;
-   height: 35px;
-   line-height: 35px;
-   padding-right: 10px;
+
+.st-toggle-buttons {
+   list-style: none;
+
+   li {
+      display: inline-block;
+   }
+
+   .st-toggle-buttons__description {
+      display: inline-block;
+      height: 35px;
+      line-height: 35px;
+      padding-right: 10px;
+   }
+
+   .st-toggle-buttons__buttons {
+      display: inline-block;
+      border-width: 1px;
+      border-style: solid;
+      border-radius: 4px;
+   }
+
+   .st-toggle-buttons__button {
+      display: inline-block;
+      padding: 11px 21px;
+      cursor: pointer;
+      box-shadow: none;
+
+      &:focus {
+         outline: none;
+      }
+   }
+
 }
 
-.st-toggle-buttons__tabs {
-   display: inline-block;
-}
-
-.st-toggle-buttons__tab {
-   display: inline-block;
-   padding: 11px 14px;
-}

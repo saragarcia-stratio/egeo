@@ -11,24 +11,29 @@
 @import '../constants/fonts';
 @import '../constants/colors';
 
-.sth-toggle-buttons__description {
-   font-size: $egeo-font-size-xxsmall;
-}
+.st-toggle-buttons {
 
-.sth-toggle-buttons__tab {
-   color: $neutral-09;
-   background: $neutral-03;
-   cursor: pointer;
-   font-size: $egeo-font-size-xxsmall;
-}
+   .sth-toggle-buttons__description {
+      font-size: $egeo-font-size-xxsmall;
+   }
 
-.sth-toggle-buttons__tab:hover {
-   background: $neutral-04;
-}
+   .sth-toggle-buttons__buttons {
+      border-color: $action-secondary-03;
+   }
 
-.sth-toggle-buttons__tab--active,
-.sth-toggle-buttons__tab--active:hover {
-   color: $neutral-00;
-   background: $neutral-08;
-   cursor: default;
+   .sth-toggle-buttons__button {
+      color: $neutral-12;
+      background: $neutral-00;
+      font-size: $egeo-font-size-xxsmall;
+   }
+
+   .sth-toggle-buttons__button:hover {
+      background: $action-primary-light;
+   }
+
+   .sth-toggle-buttons__button--active,
+   .sth-toggle-buttons__button--active:hover {
+      background: $action-primary-light;
+      cursor: default;
+   }
 }

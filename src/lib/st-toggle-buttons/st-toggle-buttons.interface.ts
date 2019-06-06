@@ -23,3 +23,7 @@ export interface StToggleButtonSchema {
    number?: number;
    active?: boolean;
 }
+
+export interface StParsedToggleButton extends StToggleButton {
+   trimLabel: string;
+}

@@ -6,6 +6,7 @@
 
 * st-horizontal-tabs: Allow to insert content from outside after tabs
 * st-filter-selector: Allow to display menu aligned to the right
+* st-toggle-buttons: New styles
 
 **Others:**
 

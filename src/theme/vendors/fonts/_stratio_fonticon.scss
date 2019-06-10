@@ -53,10 +53,9 @@
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
 }
-
 i {
    /* use !important to prevent issues with browser extensions that change fonts */
-   font-family: "ico_stratio" !important;
+   font-family: 'ico_stratio' !important;
    speak: none;
    font-style: normal;
    font-weight: normal;
@@ -69,21 +68,6 @@ i {
    -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-literal:before {
-   content: "\e9ce";
-}
-.icon-duplicate-column:before {
-   content: "\e9cd";
-}
-.icon-case:before {
-   content: "\e9c9";
-}
-.icon-formatter:before {
-   content: "\e9ca";
-}
-.icon-pivot:before {
-   content: "\e9cb";
-}
 .icon-square-chevron-down:before {
    content: "\e9be";
 }
@@ -242,9 +226,6 @@ i {
 }
 .icon-csv2:before {
    content: "\e647";
-}
-.icon-file-dictionary:before {
-   content: "\e9cc";
 }
 .icon-print:before {
    content: "\e64a";
@@ -1389,4 +1370,16 @@ i {
 }
 .icon-lego:before {
    content: "\e941";
+}
+.icon-rotate-ccw1:before {
+   content: "\e9c9";
+}
+.icon-reload21:before {
+   content: "\e9c9";
+}
+.icon-back1:before {
+   content: "\e9c9";
+}
+.icon-xdata:before {
+   content: "\e9ca";
 }

@@ -384,7 +384,7 @@ export class StTagInputComponent implements ControlValueAccessor, Validator, OnI
    }
 
    showError(): boolean {
-      return this.errorMessage !== undefined && (!this.isPristine || this.forceValidations) && !this._focus && !this.disabled;
+      return typeof this.errorMessage === 'string' && (!this.isPristine || this.forceValidations) && !this._focus && !this.disabled;
    }
 
    private addTag(tag: string): void {

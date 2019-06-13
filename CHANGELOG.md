@@ -12,6 +12,10 @@
 * st-filter-selector: Allow to display menu aligned to the right
 * st-toggle-buttons: New styles
 
+**Fixed bugs:**
+
+* st-tag-input: Input shows error when user create a tag and click out
+
 **Others:**
 
 * Fix method calls from templates

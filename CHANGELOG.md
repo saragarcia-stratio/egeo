@@ -6,6 +6,9 @@
 
 * st-color-picker: Create component
 
+**Fixed bugs:**
+
+* st-table: Fixed error with selectableAll and sortable columns
 
 ## 16.4.0 (June 10, 2019)
 

@@ -13,6 +13,9 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 import { StEgeo, StRequired } from '../../decorators/require-decorators';
 import { StTwoListSelectionElement, StTwoListSelectExtraLabelAction } from '../st-two-list-selection.model';
 
+import { StDropDownMenuItem, StDropDownVisualMode } from '../../st-dropdown-menu/st-dropdown-menu.interface';
+import { StPopPlacement } from '../../st-pop/st-pop.model';
+
 @Component({
    selector: 'list-item',
    templateUrl: './list-item.component.html',
@@ -27,9 +30,17 @@ export class ListItemComponent {
    @Input() editable: boolean = false;
    @Input() mode: 'compact' | 'normal' = 'normal';
    @Input() disabled: boolean = false;
+   @Input() menuOptionList?: StDropDownMenuItem[];
 
    @Output() selectItem: EventEmitter<StTwoListSelectionElement> = new EventEmitter<StTwoListSelectionElement>();
+   @Output() selectItemNonEditable: EventEmitter<StTwoListSelectionElement> = new EventEmitter<StTwoListSelectionElement>();
    @Output() selectExtraLabel: EventEmitter<StTwoListSelectExtraLabelAction> = new EventEmitter<StTwoListSelectExtraLabelAction>();
+
+
+   public hoverRow: boolean = false;
+   public menuVisualMode: StDropDownVisualMode = StDropDownVisualMode.MENU_LIST;
+   public placement: StPopPlacement = StPopPlacement.BOTTOM_END;
+   public showActionList: boolean;
 
    constructor() { }
 
@@ -60,9 +71,37 @@ export class ListItemComponent {
          'item-compact sth-two-list-selection__item-compact';
    }
 
+   emitOnClickNonEditable(event: Event): void {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      this.selectItemNonEditable.emit(this.item);
+   }
+
    emitOnSelect(event: Event): void {
       event.preventDefault();
       event.stopImmediatePropagation();
       this.selectItem.emit(this.item);
+   }
+
+   mouseHoverRow(): void {
+      this.hoverRow = true;
+   }
+
+   mouseLeftRow(): void {
+      this.hoverRow = false;
+   }
+
+   onCloseActionMenu(): void {
+      if (this.showActionList) {
+         this.showActionList = false;
+      }
+   }
+
+   onChangeOption(option: StDropDownMenuItem): void {
+      this.emitOnClickNonEditable(new CustomEvent('selectItem', { bubbles: true, cancelable: true, detail: Object.assign(this.item, option)}));
+   }
+
+   onEllipsisClick(): void {
+      this.showActionList = !this.showActionList;
    }
 }

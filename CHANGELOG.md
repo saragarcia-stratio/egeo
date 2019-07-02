@@ -11,6 +11,10 @@
 
 * st-table: Fixed error with selectableAll and sortable columns
 
+**Others:**
+
+* st-breadcrumbs: changed 'title mode' links color to default
+
 ## 16.4.0 (June 10, 2019)
 
 **New features:**
@@ -68,7 +72,7 @@
 
 **New features:**
 
-* st-dropdown-menu: Allow user to move through options using the keyboard arrows 
+* st-dropdown-menu: Allow user to move through options using the keyboard arrows
 * st-select: new design for the search of elements
 * st-search: Allow to hide or show loupe icon
 
@@ -82,7 +86,7 @@
 **New features:**
 
 * st-search: Allow to differentiate search events by its origin
-* st-dropdown-menu: Allow to display texts with HTML tags 
+* st-dropdown-menu: Allow to display texts with HTML tags
 
 **Fixed bugs:**
 
@@ -147,7 +151,7 @@
 
 **New features:**
 
-* st-tag-input: Allow to be configured to display an option list without typing anything 
+* st-tag-input: Allow to be configured to display an option list without typing anything
 * st-tag-input: Allow to be configured to allow or avoid to type a free text
 * Replace deprecated dependency with ngx-virtual-scroller.
 * st-tag-input: Allow to force validations
@@ -420,7 +424,7 @@
 
 **Others**
 
-* Apply visual changes to several components for contrast improvements 
+* Apply visual changes to several components for contrast improvements
 
 **Fixed bugs:**
 
@@ -451,10 +455,10 @@
 * st-form: Allow to force the validation of fields without any user interaction
 
 **Fixed bugs:**
- 
+
 * st-tooltip: It is not displayed when compiling to AOT
 
- 
+
 ## 8.6.0 (March 14, 2018)
 
 **Breaking changes:**
@@ -542,7 +546,7 @@
 
 **Fixed bugs:**
 
-* Add missing class to 'icon-move-to-folder' icon 
+* Add missing class to 'icon-move-to-folder' icon
 * st-form-list: Remove duplicated ids
 
 
@@ -554,10 +558,10 @@
 
 **Fixed bugs:**
 
-* st-header: Fix z-index 
+* st-header: Fix z-index
 * st-tag-input: Fix tag input bug when user types more than one line of values
-* st-input: Fix error when forceValidations is true and form control is not defined yet 
- 
+* st-input: Fix error when forceValidations is true and form control is not defined yet
+
 **Others**
 
 * Update version of the Stratio Icon Font
@@ -600,7 +604,7 @@
 **Fixed bugs:**
 
 * st-pagination: Update per page value when it is updated from outside
-* st-alert: Fix alerts displayed behind the page title 
+* st-alert: Fix alerts displayed behind the page title
 
 **New features:**
 
@@ -646,9 +650,9 @@
 **New features:**
 
 * st-modal: Added new function showBasicModal to show Info, Confirmation and Delete Modals
-* st-header: New input "navigateByDefault" for prevent navigation when click 
+* st-header: New input "navigateByDefault" for prevent navigation when click
 * st-header: Add new parameter "external" to model to define external links
-* st-header: Add new parameter "openInNewPage" to model to define if open new tab when navigate to link 
+* st-header: Add new parameter "openInNewPage" to model to define if open new tab when navigate to link
 * st-progress-bar: create component
 * st-widget: Implement loading state
 * st-foreground-notifications: create component
@@ -672,7 +676,7 @@
 * st-modal: New parameter closeOnClick in StModalButton, for close modal when click this button
 * st-modal: New parameter leftIcon and rightIcon in StModalButton to add icons to buttons
 * st-modal: New parameter response in StModalButton to pass a callback function to one button
-* st-sidebar: Create component to navigate through different sections 
+* st-sidebar: Create component to navigate through different sections
 * st-launcher: Create component to display and launch different instances
 * st-pop: Add offset input to move floating component
 * st-pop: Change placement type to define with enum
@@ -744,7 +748,7 @@
 * st-header: Change general behaviour and design
 * st-input-adjustable: Rename directive 'StInputAdjustable' to st-input-adjustable
 * st-switch: Remove labelPosition input, label always are dispayed at the left
-* st-horizontal-tabs: Event emitted when active tabs changes, now sends the option of type StHorizontalTab 
+* st-horizontal-tabs: Event emitted when active tabs changes, now sends the option of type StHorizontalTab
 * st-horizontal-tabs: Removed functionality to display disabled tabs
 * st-button: Removed component now use native tag and classes
 * st-select: Output emitted when select is changed is now the value of the option instead of the entire option
@@ -789,7 +793,7 @@
 
 **Fixed bugs:**
 
-* st-button: Update internal text value when change input 
+* st-button: Update internal text value when change input
 
 ## 3.0.1 (September 01, 2017)
 

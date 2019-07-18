@@ -51,36 +51,4 @@ describe('StZeroPageComponent', () => {
       expect(fixture.nativeElement.querySelector('.st-zero-page__info').innerText).toEqual(component.info);
    });
 
-   describe('Button can be displayed or not', () => {
-      describe('It should display a button if showButton is true', () => {
-         beforeEach(() => {
-            component.showButton = true;
-            fixture.detectChanges();
-         });
-
-         it('Button is displayed with the label specified by input', () => {
-            component.buttonLabel = 'New item';
-
-            fixture.detectChanges();
-
-            expect(fixture.nativeElement.querySelector('button').innerHTML).toContain(component.buttonLabel);
-         });
-
-         it('When user clicks on the button, it should emmit an event', () => {
-            spyOn(component.buttonClick, 'emit');
-
-            fixture.nativeElement.querySelector('button').click();
-
-            expect(component.buttonClick.emit).toHaveBeenCalled();
-         });
-      });
-   });
-
-   it('If showButton is false, button is not displayed', () => {
-      component.showButton = false;
-      fixture.detectChanges();
-
-      expect(fixture.nativeElement.querySelector('button')).toBeNull();
-   });
-
 });

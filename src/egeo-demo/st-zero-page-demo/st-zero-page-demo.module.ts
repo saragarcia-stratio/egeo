@@ -10,7 +10,7 @@
  */
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { StDemoGeneratorModule, StDocsModule, StWidgetModule, StZeroPageModule } from '@stratio/egeo';
+import { StDemoGeneratorModule, StDocsModule, StZeroPageModule } from '@stratio/egeo';
 
 import { StZeroPageDemoComponent } from './st-zero-page-demo.component';
 

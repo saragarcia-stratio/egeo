@@ -23,8 +23,4 @@ export class StZeroPageDemoComponent {
       ts: 'demo/st-zero-page-demo/st-zero-page-demo.component.ts',
       component: 'lib/st-zero-page/st-zero-page.component.ts'
    };
-
-   onClickButton(): void {
-      console.log('button clicked!');
-   }
 }

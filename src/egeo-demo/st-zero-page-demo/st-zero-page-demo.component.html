@@ -19,22 +19,19 @@
       </p>
       <span class="separator"></span>
 
-      <h1 class="title">Zero page with button</h1>
-      <st-zero-page class="zero-page-example"
-                    title="There are no Variables created yet "
-                    info="Variables help you to have consistent values through your Quality Rules, Attributes…"
-                    [showButton]="true"
-                    buttonLabel="Create a new Variable"
-                    (buttonClick)="onClickButton()"
-                    imageSource="assets/images/variable-icon.svg">
-      </st-zero-page>
-
-      <h1 class="title">Zero page without button</h1>
+      <h1 class="title">Zero page without content</h1>
       <st-zero-page class="zero-page-example"
                     title="Ups! There are no results for this search."
                     info="Try with other terms."
-                    [showButton]="false"
                     imageSource="assets/images/empty-box-icon.svg">
+      </st-zero-page>
+
+      <h1 class="title">Zero page with button in content</h1>
+      <st-zero-page class="zero-page-example"
+                    title="There are no Variables created yet "
+                    info="Variables help you to have consistent values through your Quality Rules, Attributes…"
+                    imageSource="assets/images/variable-icon.svg">
+                    <button class="button button-primary">Create Variable</button>
       </st-zero-page>
    </section>
 </st-docs>

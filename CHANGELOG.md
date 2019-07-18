@@ -11,6 +11,10 @@
 
 * st-table: Fix error with selectableAll and sortable columns
 
+**Breaking changes:**
+
+* st-zero-page: Added ng-content to be able to display one or mote buttons
+
 **Others:**
 
 * st-breadcrumbs: change 'title mode' links color to default

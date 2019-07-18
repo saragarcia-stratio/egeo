@@ -13,4 +13,4 @@
 <span class="image-container"><img [attr.src]="imageSource"></span>
 <h1 class="st-zero-page__title">{{title}}</h1>
 <span class="st-zero-page__info">{{info}}</span>
-<button *ngIf="showButton" class="button button-primary" (click)="onClick()">{{buttonLabel}}</button>
+<ng-content></ng-content>

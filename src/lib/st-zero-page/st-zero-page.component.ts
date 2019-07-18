@@ -9,7 +9,7 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 /**
  * @description {Component} [Zero Page]
@@ -24,9 +24,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
  *      <st-zero-page class="zero-page-example"
  *      title="There are no Variables created yet "
  *      info="Variables help you to have consistent values through your Quality Rules, Attributes…"
- *      [showButton]="true"
- *      buttonLabel="Create a new Variable"
- *      (buttonClick)="onClickButton()"
  *      imageSource="assets/images/variable-icon.svg">
  *      </st-zero-page>
  * ```
@@ -44,14 +41,4 @@ export class StZeroPageComponent {
    @Input() info: string;
    /** @Input {string} [imageSource=''] Image source path */
    @Input() imageSource: string;
-   /** @Input {string} [buttonLabel=''] Button label */
-   @Input() buttonLabel: string;
-   /** @Input {boolean} [showButton=] Boolean to show or hide button */
-   @Input() showButton: boolean;
-   /** @Output {any} [buttonClick] Event emitted when button is clicked  */
-   @Output() buttonClick: EventEmitter<any> = new EventEmitter();
-
-   public onClick(): void {
-      this.buttonClick.emit();
-   }
 }

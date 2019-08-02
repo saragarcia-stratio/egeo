@@ -18,7 +18,7 @@ const gulp = require('gulp');
 
 import { buildConfig, sequenceTask } from 'build-tools';
 
-const { outputDir, packagesDir } = buildConfig;
+const { outputDir, packagesDir, packagesDemoDir } = buildConfig;
 
 task('demo-app:create-dist', (done) => {
    mkdirpSync(outputDir);
@@ -37,19 +37,18 @@ task('demo-app:replace:assets', (done) => {
 });
 
 task('demo-app:copy:sourcecode:demo', () => {
-   const destinyDemoPath: string = join(packagesDir, 'demo-app/assets');
-   const originPath: string = join(packagesDir, 'egeo-demo');
-
-   return gulp.src([`${originPath}/**/*.html`, `${originPath}/**/*.ts`], {
+   const destinyDemoPath: string = join(packagesDemoDir, 'assets');
+   const originPath: string = join(packagesDemoDir, 'app/demos');
+   return gulp.src([`${originPath}/**/*.html`, `${originPath}/**/*.ts`, `!${originPath}/**/*.d.ts`], {
        base: originPath
        }).pipe(gulp.dest(`${destinyDemoPath}/source-code/demo`));
 });
 
 task('demo-app:copy:sourcecode:lib', () => {
-   const destinyDemoPath: string = join(packagesDir, 'demo-app/assets');
+   const destinyDemoPath: string = join(packagesDemoDir, 'assets');
    const originPath: string = join(packagesDir, 'lib');
 
-   return gulp.src([`${originPath}/**/*.ts`, `${originPath}/**/*.module.ts`], {
+   return gulp.src([`${originPath}/**/*.ts`, `${originPath}/**/*.module.ts`, `!${originPath}/**/*.d.ts`], {
        base: originPath
        }).pipe(gulp.dest(`${destinyDemoPath}/source-code/lib`));
 });

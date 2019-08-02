@@ -7,6 +7,9 @@
 * st-color-picker: Create component
 * st-two-list-selection: Allow to show dropdown menu options  if it is a non-editable list.
 * st-dropdown-menu: Allow to custom label and icon colors
+* st-two-list-selection: allow to show dropdown menu options  if it is a non-editable list.
+* Construction tasks refactor
+* Egeo Demo AOT compilation
 
 **Fixed bugs:**
 

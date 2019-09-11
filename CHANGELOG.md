@@ -16,6 +16,14 @@
 * Egeo Demo AOT compilation
 * Included 'xs' breakpoint into grid system
 
+## 16.4.2 (upcoming)
+
+**Fixed bugs:**
+
+* st-foreground-notifications: Fix refreshing notification statuses
+
+## 16.4.1 (September 04, 2019)
+
 **Fixed bugs:**
 
 * st-table: Fix error with selectableAll and sortable columns

@@ -2,7 +2,9 @@
 
 ## 18.0.0 (upcoming)
 
-* Pending changelog
+**Fixed bugs:**
+
+* st-foreground-notifications: Fix refreshing notification statuses
 
 ## 17.0.0 (September 10, 2019)
 

@@ -8,7 +8,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm, FormControl } from '@angular/forms';
 import { StDropDownMenuItem } from '@stratio/egeo';
 
@@ -34,10 +34,11 @@ export class SelectDemoComponent {
    reactiveForm: FormGroup; // our model driven form
 
    disabled: boolean = false;
+   isLoading: boolean = false;
 
    formControl: FormControl = new FormControl('', [Validators.required]);
 
-   constructor(private _fb: FormBuilder) {
+   constructor(private _fb: FormBuilder, private _cd: ChangeDetectorRef) {
       this.formControl.markAsDirty();
       this.options.push({label: 'Select an option', value: undefined});
       for (let i: number = 0; i < 10; i++) {
@@ -72,6 +73,23 @@ export class SelectDemoComponent {
          this.templateDrivenForm.controls[controlName].enable();
       }
    }
+
+   onScrollAtBottom(): void {
+      this.isLoading = true;
+      setTimeout(() => {
+         this.options = [...this.options, ...this.generateOptions(this.options.length)];
+         this.isLoading = false;
+         this._cd.markForCheck();
+      }, 2000);
+   }
+
+   generateOptions(optionsLength: number = 0): StDropDownMenuItem[] {
+      return Array.from(Array<StDropDownMenuItem>(10)).map((_value, i) => ({
+         label: `Option ${optionsLength + i}`,
+         value: `option-${optionsLength + i}`
+      }));
+   }
+
 
    onSubmitReactiveForm(): void {
       this.model.option1 = this.reactiveForm.value.option1;

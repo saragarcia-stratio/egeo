@@ -28,6 +28,9 @@ import {
 
 import { StPopOffset, StPopPlacement } from '../st-pop/st-pop.model';
 import { ARROW_KEY_CODE, StDropDownMenuGroup, StDropDownMenuItem, StDropDownVisualMode } from './st-dropdown-menu.interface';
+import { throttle as _throttle } from 'lodash';
+import { fromEvent, Subject } from 'rxjs';
+import { auditTime, takeUntil } from 'rxjs/operators';
 
 /**
  * @description {Component} [Dropdown Menu]
@@ -72,6 +75,8 @@ export class StDropdownMenuComponent implements AfterViewInit, OnInit, OnChanges
    @Input() moveSelected: boolean = true;
    /** @Input {boolean} [styleSelected=true] If true, apply class selected to selected item */
    @Input() styleSelected: boolean = true;
+   /** @Input {boolean} [isLoading=true] If true, show loader at the end of the list */
+   @Input() isLoading: boolean = false;
    /** @Input {StPopOffset} [offset={x: 0 , y: 0}] For position with offset in x o y axis */
    @Input() offset: StPopOffset = { x: 0, y: 0 };
    /** @Input {boolean} [openToLeft=false] For calculating all positions from the right corner */
@@ -87,6 +92,9 @@ export class StDropdownMenuComponent implements AfterViewInit, OnInit, OnChanges
    /** @output {StDropDownMenuItem} [change] Event emitted when user select an item */
    @Output() change: EventEmitter<StDropDownMenuItem> = new EventEmitter<StDropDownMenuItem>();
 
+   /** @output {any} [scrollAtBottom] Event emitted when scroll reach the end of the list */
+   @Output() scrollAtBottom: EventEmitter<any> = new EventEmitter<any>();
+
    @ViewChild('buttonId') buttonElement: ElementRef;
    @ViewChild('itemList') itemListElement: ElementRef;
 
@@ -94,6 +102,7 @@ export class StDropdownMenuComponent implements AfterViewInit, OnInit, OnChanges
 
    private _itemHeight: number = 42;
    private _focusedOptionPos: number = -1;
+   private _disableScroll$: Subject<void> = new Subject();
    private _focusListenerFn: () => void;
 
    constructor(private el: ElementRef, private cd: ChangeDetectorRef, private renderer: Renderer2) {
@@ -139,6 +148,13 @@ export class StDropdownMenuComponent implements AfterViewInit, OnInit, OnChanges
    }
 
    ngOnChanges(changes: SimpleChanges): void {
+      if (changes && changes.active) {
+         if (changes.active.currentValue) {
+            setTimeout(() => this._handleScroll());
+         } else {
+            this._disableScroll$.next();
+         }
+      }
       if (changes && changes.active && changes.active.currentValue && this.selectedItem && this.moveSelected) {
          // Only can do this functionality with timeout because we need to wait for angular to load new DOM
          // with items before move scroll
@@ -158,6 +174,8 @@ export class StDropdownMenuComponent implements AfterViewInit, OnInit, OnChanges
          }
       }
    }
+
+
 
    onChange(value: StDropDownMenuItem): void {
       this.change.emit(value);
@@ -182,6 +200,7 @@ export class StDropdownMenuComponent implements AfterViewInit, OnInit, OnChanges
       if (this._focusListenerFn) {
          this._focusListenerFn();
       }
+      this._disableScroll$.next();
    }
 
    private displayAsMenuList(): boolean {
@@ -190,6 +209,19 @@ export class StDropdownMenuComponent implements AfterViewInit, OnInit, OnChanges
 
    private getItemValueMerged(value: any): string {
       return value.toString().replace(/\s+/g, '_');
+   }
+
+   private _handleScroll(): void {
+      if (this.itemListElement) {
+         fromEvent(this.itemListElement.nativeElement, 'scroll').pipe(auditTime(200))
+         .pipe(takeUntil(this._disableScroll$))
+         .subscribe(() => {
+            const element = this.itemListElement.nativeElement;
+            if (element.scrollHeight - element.scrollTop === element.clientHeight && !this.isLoading) {
+               this.scrollAtBottom.emit();
+            }
+         });
+      }
    }
 
    private getSelectedItemPosition(): number {

@@ -6,6 +6,7 @@
 
 * st-dropdown-menu: Allow to display a text info below label
 * st-bubble: Allow to disable or enable animation and small theme and added functionality to open to left or right
+* st-select, st-dropdown-menu: Allow to show a spinner and capture event when scroll reaches the end
 
 **Fixed bugs:**
 

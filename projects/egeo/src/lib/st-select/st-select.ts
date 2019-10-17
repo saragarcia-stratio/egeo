@@ -53,6 +53,7 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor, O
    @Input() default: any;
    @Input() itemsBeforeScroll: number = 8;
    @Input() search: boolean = false;
+   @Input() isLoading: boolean = false;
    @Input() forceValidations: boolean = false;
 
    @Input() placeholderSearch?: string = 'Search...';
@@ -60,6 +61,7 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor, O
 
    @Output() expand: EventEmitter<boolean> = new EventEmitter<boolean>();
    @Output() select: EventEmitter<any> = new EventEmitter<any>();
+   @Output() scrollAtBottom: EventEmitter<any> = new EventEmitter<any>();
 
    @ViewChild('input') inputElement: ElementRef;
    @ViewChild('button') buttonElement: ElementRef;
@@ -278,6 +280,10 @@ export class StSelectComponent implements AfterViewInit, ControlValueAccessor, O
          this.onClickOutside();
       }
       this._cd.markForCheck();
+   }
+
+   onScrollAtBottom(): void {
+      this.scrollAtBottom.emit();
    }
 
    /*

@@ -9,14 +9,15 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 import { CommonModule } from '@angular/common';
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import { StDropdownMenuItemComponent } from './st-dropdown-menu-item/st-dropdown-menu-item.component';
 import { StDropdownMenuComponent } from './st-dropdown-menu.component';
 import { StPopModule } from '../st-pop/st-pop.module';
+import { StSpinnerModule } from '../st-spinner/st-spinner.module';
 
 @NgModule({
-   imports: [CommonModule, StPopModule],
+   imports: [CommonModule, StPopModule, StSpinnerModule],
    declarations: [StDropdownMenuComponent, StDropdownMenuItemComponent],
    exports: [StDropdownMenuComponent]
 })

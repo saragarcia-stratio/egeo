@@ -8,7 +8,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { StDropDownMenuGroup, StDropDownMenuItem, StDropDownVisualMode } from '@stratio/egeo';
 
 import { StDemoLoggerService } from '../shared/st-demo-logger/st-demo-logger.service';
@@ -30,9 +30,10 @@ export class StDropdownMenuDemoComponent {
    public active: boolean[] = [];
    public selectedValue: (StDropDownMenuItem | undefined)[] = [];
    public visualMode: StDropDownVisualMode = StDropDownVisualMode.MENU_LIST;
+   public isLoading: boolean = false;
 
-   constructor(private _logger: StDemoLoggerService) {
-      const menus: number = 5;
+   constructor(private _logger: StDemoLoggerService, private _cd: ChangeDetectorRef) {
+      const menus: number = 6;
       this.active = Array.from(Array<boolean>(menus)).map(() => false);
       this.selectedValue = Array.from(Array<StDropDownMenuItem>(menus)).map(() => undefined);
 
@@ -43,6 +44,7 @@ export class StDropdownMenuDemoComponent {
       this.menus.push(this.generateLargeText());
       this.menus.push(this.generateGroup());
       this.menus.push(this.generateGroupWithScroll());
+      this.menus.push(this.generateWithScroll());
    }
 
    changeActive(position: number): void {
@@ -58,6 +60,15 @@ export class StDropdownMenuDemoComponent {
 
    getVisualMode(menuId: number): StDropDownVisualMode {
       return menuId % 2 ? StDropDownVisualMode.OPTION_LIST : StDropDownVisualMode.MENU_LIST;
+   }
+
+   onScrollAtBottom(): void {
+      this.isLoading = true;
+      setTimeout(() => {
+         this.menus[1].push.apply(this.menus[5], this.generateWithScroll(this.menus[5].length));
+         this.isLoading = false;
+         this._cd.markForCheck();
+      }, 2000);
    }
 
    private generateNormal(): StDropDownMenuItem[] {
@@ -85,10 +96,10 @@ export class StDropdownMenuDemoComponent {
          ];
    }
 
-   private generateWithScroll(): StDropDownMenuItem[] {
+   private generateWithScroll(length: number = 0): StDropDownMenuItem[] {
       return Array.from(Array<StDropDownMenuItem>(20)).map((_value, i) => ({
-         label: `Option ${i}`,
-         value: `option-${i}`
+         label: `Option ${length + i}`,
+         value: `option-${length + i}`
       }));
    }
 

@@ -91,5 +91,11 @@
       </st-select>
 
       <div class="separator"></div>
+      <h1>SCROLL WITH SPINNER OPTION</h1>
+      <st-select [search]="true" placeholder="Select option" placeholderSearch="Search..." [options]="options"
+                 [disabled]="disabled" [isLoading]="isLoading" (scrollAtBottom)="onScrollAtBottom()">
+      </st-select>
+
+      <div class="separator"></div>
    </section>
 </st-docs>

@@ -19,6 +19,8 @@
    [keyBoardMove]="keyBoardMove"
    [selectedItem]="selected"
    (change)="onChangeOption($event)"
+   (scrollAtBottom)="onScrollAtBottom()"
+   [isLoading]="isLoading"
    [itemsBeforeScroll]="itemsBeforeScroll"
 >
    <div (click)="onButtonClick()" (keypress)="onButtonKeyPress($event)"  #button class="button-container" (clickOutside)="onClickOutside()">

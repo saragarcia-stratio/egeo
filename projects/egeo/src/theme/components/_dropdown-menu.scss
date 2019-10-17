@@ -38,6 +38,19 @@
        &:focus {
           outline: none;
        }
+
+      .spinner-container {
+         width: 100%;
+
+         .spinner {
+            display: block;
+            margin: auto;
+            width: 20px;
+            height: 20px;
+            margin-bottom: 14px;
+            margin-top: 20px;
+         }
+      }
     }
 
     h3 span {

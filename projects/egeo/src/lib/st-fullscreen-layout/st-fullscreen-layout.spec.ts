@@ -58,6 +58,6 @@ describe('StFullscreenLayoutComponent', () => {
 
       fixture.detectChanges();
 
-      expect(fixture.nativeElement.querySelector('.container').classList).toContain('full-width');
+      expect(fixture.nativeElement.querySelector('.st-fullscreen-layout').classList).toContain('full-width');
    });
 });

@@ -35,10 +35,23 @@
 
    .container.full-width {
       max-width: 100%;
+      background-color: $neutral-00;
    }
 }
 
 .st-fullscreen-layout-content {
    display: flex;
    width: 100%;
+}
+
+
+.st-fullscreen-layout.full-width {
+   background-color: $neutral-00;
+   .st-fullscreen-layout-header {
+      border-bottom: 1px solid $action-secondary-03;
+   }
+
+   .container { 
+      max-width: 100%;
+   }
 }

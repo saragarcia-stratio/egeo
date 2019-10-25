@@ -1,6 +1,6 @@
 # Changelog
 
-## 17.2.0 (upcoming)
+## 17.2.0 (October 25, 2019)
 
 **New features:**
 

@@ -32,13 +32,32 @@
          white-space: nowrap;
       }
    }
-
-   .container.full-width {
-      max-width: 100%;
+   .st-fullscreen-layout-container {
+      padding-top: 100px;
    }
+
 }
 
 .st-fullscreen-layout-content {
    display: flex;
    width: 100%;
+}
+
+
+.st-fullscreen-layout.full-width {
+   background-color: $neutral-00;
+   .st-fullscreen-layout-header {
+      border-bottom: 1px solid $action-secondary-03;
+   }
+   .st-fullscreen-layout-container {
+      padding-top: 70px;
+
+      .container {
+         padding: 0px;
+      }
+   }
+
+   .container {
+      max-width: 100%;
+   }
 }

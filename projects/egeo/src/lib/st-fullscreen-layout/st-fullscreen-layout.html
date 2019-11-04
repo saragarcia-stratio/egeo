@@ -10,9 +10,9 @@
     SPDX-License-Identifier: Apache-2.0.
 
 -->
-<div class="st-fullscreen-layout">
+<div class="st-fullscreen-layout" [ngClass]="{'full-width': fullWidth}">
    <div class="st-fullscreen-layout-header">
-      <div class="container" [ngClass]="{'full-width': fullWidth}">
+      <div class="container">
          <ng-content select=".st-fullscreen-layout-title"></ng-content>
 
          <div class="buttons">
@@ -21,7 +21,7 @@
       </div>
    </div>
    <div class="st-fullscreen-layout-container">
-      <div  class="container"  [ngClass]="{'full-width': fullWidth}">
+      <div  class="container">
          <ng-content select=".st-fullscreen-layout-content"></ng-content>
       </div>
    </div>

@@ -7,12 +7,14 @@
 * Update icon font to 1.24
 
 
+
 ## 17.2.0 (October 25, 2019)
 
 **New features:**
 
 * st-fullscreen-layout: Allow to display it on full width
 * Update icon font to 1.22
+
 
 ## 17.1.0 (October 18, 2019)
 
@@ -25,6 +27,7 @@
 **Fixed bugs:**
 
 * st-foreground-notifications: Fix refreshing notification statuses
+
 
 ## 17.0.0 (September 10, 2019)
 

@@ -13,10 +13,10 @@
  $egeo-grid---cols: 12 !default;
  $egeo-grid---gutter-width: 1.875rem !default;
  $egeo-grid---half-gutter-width: $egeo-grid---gutter-width / 2;
- $egeo-grid---outer-margin: $egeo-grid---half-gutter-width !default;
+ $egeo-grid---outer-margin: $egeo-grid---gutter-width !default;
 
  $egeo-grid---min: 0 !default;
- $egeo-grid---max: 78.125rem !default;
+ $egeo-grid---max: var(--egeo-grid---max, 78.125rem);
 
  $egeo-grid---xs-viewport: 0 !default;
  $egeo-grid---sm-viewport: 48 !default;

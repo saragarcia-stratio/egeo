@@ -9,7 +9,8 @@
 
 **New features:**
 
-* st-menu: Create component 
+* st-menu: Create component
+* grid: Allow to customize max-width with a css variable
 
 ## 17.2.0 (October 25, 2019)
 

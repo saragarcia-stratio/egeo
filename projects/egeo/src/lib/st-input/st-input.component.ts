@@ -12,18 +12,46 @@ import {
    ChangeDetectionStrategy,
    ChangeDetectorRef,
    Component,
+   EventEmitter,
    forwardRef,
+   HostBinding,
    Input,
    OnChanges,
    OnDestroy,
    OnInit,
-   ViewChildren,
-   EventEmitter,
-   Output
+   Output,
+   ViewChildren
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subscription } from 'rxjs';
+
 import { StInputError } from './st-input.error.model';
+import { StDropDownMenuGroup, StDropDownMenuItem } from '..';
+
+/**
+ * @description {Component} Input
+ *
+ * This component specifies an input field where the user can enter data.
+ *
+ * @model
+ *
+ *   [Error messages] {./st-input.error.model.ts#StInputError}
+ *
+ * @example
+ *
+ * {html}
+ *
+ * ```
+ * <st-input class="st-form-field"
+ *    type="text"
+ *    formControlName="name"
+ *    placeholder="Enter your name"
+ *    label="Field"
+ *    default="default name"
+ *    contextualHelp="This is a normal field">
+ * </st-input>
+ * ```
+ */
 
 @Component({
    selector: 'st-input',
@@ -37,22 +65,42 @@ import { StInputError } from './st-input.error.model';
 })
 
 export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit, OnDestroy {
-
+   /** @input {string} [placeholder=null] The text that appears as placeholder of the input. It is empty by default */
    @Input() placeholder: string = '';
+   /** @input {string} [name=''] Input name */
    @Input() name: string = '';
+   /** @input {string} [label=''] Label to show over the input. It is empty by default */
    @Input() label: string = '';
+   /** @input {'text' | 'number' | 'password'} [fieldType='text'] Input type */
    @Input() fieldType: 'text' | 'number' | 'password' = 'text';
+   /** @input {StInputError} [errors=] Customized error messages */
    @Input() errors: StInputError;
+   /** @Input {string} [qaTag=''] Id value for qa test */
    @Input() qaTag: string;
+   /** @Input {boolean} [forceValidations=false] If you specify it to 'true', the input checks the errors before being modified by user */
    @Input() forceValidations: boolean = false;
+   /** @Input {string} [contextualHelp=''] It will be displayed when user clicks on the info button */
    @Input() contextualHelp: string;
+   /** @Input {string} [maxLength=''] Define a max-length for input field */
    @Input() maxLength: number;
+   /** @Input {string} [min=''] Define a minimum number for number inputs */
    @Input() min: number;
+   /** @Input {string} [max=''] Define a maximum number for number inputs */
    @Input() max: number;
+   /** @Input {boolean} [isFocused=false] If true, the input will be focused on view init. */
    @Input() isFocused: boolean = false;
+   /** @Input {boolean} [readonly=''] This parameter disables the input and it can not be modified by the user */
    @Input() readonly: boolean = false;
+   /** @Input {string} [step=''] It specifies the interval between legal numbers in the input field */
    @Input() step: string;
+   /** @Input {string} [default=] Default value of input */
    @Input() default: any;
+   /** @input {(StDropDownMenuItem | StDropDownMenuGroup)[]} [autocompleteList=Array()] List to be used for autocomplete feature. It is empty by default */
+   @Input() autocompleteList: (StDropDownMenuItem | StDropDownMenuGroup)[] = [];
+   /** @input {number} [charsToShowAutocompleteList=1] Number of characters before displaying autocomplete list. By default is 1 */
+   @Input() charsToShowAutocompleteList: number = 1;
+
+   /** @Input {any} [value=''] Value of the input */
 
    @Input()
    get value(): any {
@@ -74,11 +122,13 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
    public internalControl: FormControl;
    public errorMessage: string = undefined;
    public showErrorValue: boolean = false;
+   public expandedMenu: boolean = false;
 
    private sub: Subscription;
    private _value: any;
    private valueChangeSub: Subscription;
    private internalInputModel: any;
+
 
    constructor(private _cd: ChangeDetectorRef) {
    }
@@ -89,6 +139,10 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
    onTouched = () => {
    }
 
+   @HostBinding('class.st-input--autocomplete')
+   get showAutocompleteList(): boolean {
+      return this.expandedMenu && this.autocompleteList && this.autocompleteList.length > 0;
+   }
 
    validate(control: FormControl): any {
       if (this.sub) {
@@ -107,6 +161,7 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
       this.internalControl = new FormControl(this.internalInputModel);
       this.valueChangeSub = this.internalControl.valueChanges.subscribe((value) => {
          this.onChange(this.getTypedValue(value));
+         this.showAutocompleteMenu();
          this.showErrorValue = this.showError();
          this.displayResetButtonValue = this.displayResetButton();
       });
@@ -172,10 +227,29 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
       this._cd.markForCheck();
    }
 
+   /**  Autocomplete list actions */
+
+   onListSelect(data: StDropDownMenuItem): void {
+      if (data && data.value && data.value.length) {
+         this.writeValue(data.value);
+      } else {
+         this.writeValue('');
+      }
+      this.expandedMenu = false;
+      this._cd.markForCheck();
+   }
+
+   onClickOutside(event: Event): void {
+      if (this.expandedMenu) {
+         this.expandedMenu = false;
+      }
+   }
+
    /** Style functions */
    onFocus(event: Event): void {
       this.focus = true;
       this.showErrorValue = this.showError();
+      this.showAutocompleteMenu();
    }
 
    onFocusOut(event: Event, emitEvent: boolean): void {
@@ -240,4 +314,10 @@ export class StInputComponent implements ControlValueAccessor, OnChanges, OnInit
             return value;
       }
    }
+
+   private showAutocompleteMenu(): void {
+      this.expandedMenu = this.focus && this.internalControl && this.charsToShowAutocompleteList <= (this.internalControl.value || '').length;
+      this._cd.markForCheck();
+   }
+
 }

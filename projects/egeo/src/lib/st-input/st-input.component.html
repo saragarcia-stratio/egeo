@@ -11,11 +11,12 @@
 
 -->
 
-<label *ngIf="label" st-label class="st-input__label" [ngClass]="{error: showErrorValue, active: focus, disabled: disabled}" name="name"
+<label *ngIf="label" st-label class="st-input__label"
+       [ngClass]="{error: showErrorValue, active: focus, disabled: disabled}" name="name"
        [attr.id]="labelQaTag" [attr.title]="contextualHelp">
    {{label}}
 </label>
-<div class="input-container">
+<div class="input-container"  (clickOutside)="onClickOutside($event)">
    <input #input class="st-input" (focus)="onFocus($event)"
           (focusout)="onFocusOut($event, false)"
           (blur)="onFocusOut($event, true)"
@@ -26,10 +27,19 @@
           [attr.max]="max"
           [value]="value || null" [readonly]="readonly" [ngClass]="{error: showErrorValue}">
    <span *ngIf="displayResetButtonValue" class="st-form-control-reset-button" (click)="resetToDefault()"
-         [style.opacity] = "focus ? 1 : 0">
+         [style.opacity]="focus ? 1 : 0">
       <i class="icon-reload2"></i>
    </span>
+
+   <st-dropdown-menu *ngIf="autocompleteList"
+      [attr.id]="labelQaTag + '-list'"
+      [items]="autocompleteList"
+      [placement]="'bottom-start'"
+      [active]="showAutocompleteList"
+      (change)="onListSelect($event)">
+   </st-dropdown-menu>
 </div>
+
 <div class="st-input-error-layout" *ngIf="showErrorValue">
    <span class="st-input-error-message">{{errorMessage}}</span>
 </div>

@@ -31,6 +31,7 @@ import { StInputComponent } from '../../st-input/st-input.component';
 import { StDropdownMenuComponent } from '../../st-dropdown-menu/st-dropdown-menu.component';
 import { StTextareaModule } from '../../st-textarea/st-textarea.module';
 import { StTextareaComponent } from '../../st-textarea/st-textarea.component';
+import { getParentElement } from '../spec/st-form.component.spec';
 
 let component: StFormFieldComponent;
 let fixture: ComponentFixture<StFormFieldComponent>;
@@ -1055,7 +1056,7 @@ describe('StFormFieldComponent', () => {
 
          fixture.whenStable().then(() => {
             expect(fixture.nativeElement.querySelector('input').disabled).toBeTruthy();
-            expect(fixture.nativeElement.querySelector('input').parentElement.parentElement.parentElement.classList).toContain('read-only');
+            expect(getParentElement(fixture.nativeElement.querySelector('input'), 3).classList).toContain('read-only');
             done();
          });
       });

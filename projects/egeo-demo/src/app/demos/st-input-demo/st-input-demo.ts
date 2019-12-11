@@ -10,7 +10,7 @@
  */
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { StInputError } from '@stratio/egeo';
+import { StDropDownMenuItem, StInputError } from '@stratio/egeo';
 
 @Component({
    selector: 'st-input-demo',
@@ -26,6 +26,21 @@ export class StInputDemoComponent {
    public myForm: FormGroup;
    public requiredError: StInputError = { required: 'This field is required' };
    public disabled: boolean = false;
+   public autocompleteList: StDropDownMenuItem[] = [
+      { label: 'China', value: 'CN' },
+      { label: 'Russia', value: 'RU' },
+      { label: 'United States', value: 'US' },
+      { label: 'Egypt', value: 'EG' },
+      { label: 'Panama', value: 'PA' },
+      { label: 'Canada', value: 'CA' },
+      { label: 'Indonesia', value: 'ID' },
+      { label: 'North Korea', value: 'KP' },
+      { label: 'France', value: 'FR' },
+      { label: 'Burundi', value: 'BI' },
+      { label: 'Poland', value: 'PL' },
+      { label: 'Vanuatu', value: 'VU' },
+      { label: 'Venezuela', value: 'VE' }
+   ];
 
    constructor(private fb: FormBuilder) {
       this.myForm = fb.group({
@@ -33,7 +48,8 @@ export class StInputDemoComponent {
          disabledField: new FormControl('', []),
          disabledFieldWithValue:  new FormControl('Disabled value', []),
          requiredField: new FormControl('', [Validators.required]),
-         numberField: new FormControl()
+         numberField: new FormControl(),
+         autocompletedField: new FormControl()
       });
       this.myForm.controls.disabledField.disable();
       this.myForm.controls.disabledFieldWithValue.disable();

@@ -28,7 +28,8 @@ import { StInputComponent } from '../../st-input/st-input.component';
 
 let component: StFormComponent;
 let fixture: ComponentFixture<StFormComponent>;
-let getParentElement = (element: HTMLElement, level: number): any => {
+
+export let getParentElement = (element: HTMLElement, level: number): any => {
    let i: number = 0;
    let parent: HTMLElement = element;
    while (i < level && level > 0) {

@@ -8,15 +8,18 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { Component, DebugElement, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DebugElement, OnInit, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { StInputComponent } from './st-input.component';
 import { StInputError } from './st-input.error.model';
 import { StInputModule } from './st-input.module';
 import { StLabelModule } from '../st-label/st-label.module';
+import { StDropdownMenuModule } from '../st-dropdown-menu/st-dropdown-menu.module';
+import { StDropDownMenuItem } from '../st-dropdown-menu/st-dropdown-menu.interface';
+import { StClickOutsideModule } from '../directives/st-click-outside/st-click-outside.module';
 
 
 let component: StInputComponent;
@@ -26,7 +29,7 @@ let input: HTMLInputElement;
 describe('StInputComponent', () => {
    beforeEach(async(() => {
       TestBed.configureTestingModule({
-         imports: [FormsModule, ReactiveFormsModule, StLabelModule],
+         imports: [FormsModule, ReactiveFormsModule, StLabelModule, StDropdownMenuModule, StClickOutsideModule],
          declarations: [StInputComponent]
       })
          .overrideComponent(StInputComponent, {
@@ -200,32 +203,110 @@ describe('StInputComponent', () => {
 
       expect(fixture.nativeElement.querySelector('.reset-button')).toBeNull();
    });
+
+   describe('It should be able to active the autocomplete function', () => {
+      let htmlInput: HTMLInputElement;
+
+      beforeEach(() => {
+         htmlInput = fixture.debugElement.query(By.css('input')).nativeElement;
+         htmlInput.dispatchEvent(new Event('focus'));
+         fixture.detectChanges();
+      });
+
+      it('Should display autocomplete list with autocomplete if it is active and after user has typed the required number of characters', () => {
+         component.autocompleteList = [{ value: '1', label: '1' }, { value: '2', label: '2' }];
+         fixture.detectChanges();
+
+         expect(component.expandedMenu).toBeFalsy();
+
+         component.autocompleteList = [{ value: 'first', label: 'first' }, { value: 'second', label: 'second' },
+            { value: 'thrid', label: 'thrid' }, { value: 'fourth', label: 'fourth' }, {
+               value: 'fifth',
+               label: 'fifth'
+            }];
+
+         component.charsToShowAutocompleteList = 3;
+         htmlInput.value = 'fo';
+         htmlInput.dispatchEvent(new Event('input'));
+         fixture.detectChanges();
+
+         expect(component.expandedMenu).toBeFalsy();
+
+         htmlInput.value = 'fourth';
+         htmlInput.dispatchEvent(new Event('input'));
+         fixture.detectChanges();
+
+         expect(component.expandedMenu).toBeTruthy();
+
+         htmlInput.value = '';
+         htmlInput.dispatchEvent(new Event('input'));
+         fixture.detectChanges();
+
+         expect(component.expandedMenu).toBeFalsy();
+      });
+
+      it('Should add text from autocomplete list ', () => {
+         component.autocompleteList = [{ value: '1', label: '1' }, { value: '2', label: '2' }];
+         fixture.detectChanges();
+
+         expect(component.value).toBeUndefined();
+
+         component.onListSelect(<StDropDownMenuItem> component.autocompleteList[0]);
+         fixture.detectChanges();
+
+         expect(component.value).toEqual((<StDropDownMenuItem> component.autocompleteList[0]).value);
+      });
+
+      it('If autocomplete list is expanded and user clicks outside, it is hidden', () => {
+         component.autocompleteList = [{ value: '1', label: '1' }, { value: '2', label: '2' }];
+         component.expandedMenu = true;
+         fixture.detectChanges();
+
+         window.document.dispatchEvent(new Event('click'));
+         fixture.detectChanges();
+
+         expect(component.expandedMenu).toBeFalsy();
+      });
+
+      it('If number of chars before displaying the autocomplete list is 0, autocomplete list has to be displayed when input has focus', () => {
+         component.charsToShowAutocompleteList = 0;
+         component.autocompleteList = [{ value: '1', label: '1' }, { value: '2', label: '2' }];
+         fixture.detectChanges();
+         expect(component.expandedMenu).toBeFalsy();
+
+         htmlInput.dispatchEvent(new Event('focus'));
+         fixture.detectChanges();
+
+         expect(component.expandedMenu).toBeTruthy();
+      });
+   });
+
 });
 
 @Component({
    template: `
       <form [formGroup]="reactiveForm" novalidate autocomplete="off" (ngSubmit)="onSubmitReactiveForm()" class="col-md-6">
          <div class="form-group">
-           <st-input #input
-                  label="Description"
-                  placeholder="Module description"
-                  [forceValidations]="forceValidations"
-                  [errors]="errors"
-                  name="description"
-                  qaTag="description-input"
-                  formControlName="description"
-                  [fieldType]=fieldType
-               ></st-input>
-                 <st-input
-                  label="Components"
-                  name="components"
-                  id="components-input"
-                  formControlName="components"
-                  fieldType="number"
-               ></st-input>
+            <st-input #input
+                      label="Description"
+                      placeholder="Module description"
+                      [forceValidations]="forceValidations"
+                      [errors]="errors"
+                      name="description"
+                      qaTag="description-input"
+                      formControlName="description"
+                      [fieldType]=fieldType
+            ></st-input>
+            <st-input
+               label="Components"
+               name="components"
+               id="components-input"
+               formControlName="components"
+               fieldType="number"
+            ></st-input>
          </div>
       </form>
-      `
+   `
 })
 class FormReactiveComponent implements OnInit {
    public fieldType: string = 'string';

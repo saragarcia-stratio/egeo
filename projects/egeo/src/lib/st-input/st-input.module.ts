@@ -15,10 +15,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StInputComponent } from './st-input.component';
 import { StLabelModule } from '../st-label/st-label.module';
 import { StFormDirectiveModule } from '../directives/form/form-directives.module';
+import { StDropdownMenuModule } from '../st-dropdown-menu/st-dropdown-menu.module';
+import { StClickOutsideModule } from '../directives/st-click-outside/st-click-outside.module';
 
 @NgModule({
-   imports: [CommonModule, FormsModule, ReactiveFormsModule, StLabelModule, StFormDirectiveModule],
+   imports: [CommonModule, FormsModule, ReactiveFormsModule, StLabelModule, StFormDirectiveModule, StDropdownMenuModule, StClickOutsideModule],
    declarations: [StInputComponent],
    exports: [StInputComponent]
 })
-export class StInputModule { }
+export class StInputModule {
+}

@@ -31,8 +31,8 @@
       "@angular/router": "~4.4.3"
    },
    "dependencies": {
-      "ngx-virtual-scroller": "^1.0.11",
-      "lodash": "4.17.11",
+      "ngx-virtual-scroller": "3.0.2",
+      "lodash": "4.17.13",
       "reflect-metadata": "0.1.10",
       "tslib": "1.7.1"
    },

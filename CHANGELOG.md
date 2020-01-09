@@ -3,12 +3,13 @@
 ## 17.3.0 (upcoming)
 
 **New features:**
- 
+
 * st-input: Allow to display an autocomplete list in order to select a predefined text
 
 **Others:**
 
 * Update icon font to 1.26
+* Remove min-width in bubble component
 
 **New features:**
 

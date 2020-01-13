@@ -5,17 +5,16 @@
 **New features:**
 
 * st-input: Allow to display an autocomplete list in order to select a predefined text
+* st-menu: Create component
+* grid: Allow to customize max-width with a css variable
+* st-progress-bar: Option for a bigger progress-bar
 
 **Others:**
 
 * Update icon font to 1.26
 * Remove min-width in bubble component
+* st-dropdown-menu: Allow to display dropdown items in several lines when container's width is smaller
 
-**New features:**
-
-* st-menu: Create component
-* grid: Allow to customize max-width with a css variable
-* progress-bar: Option for a bigger progress-bar
 
 ## 17.2.0 (October 25, 2019)
 

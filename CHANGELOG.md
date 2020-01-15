@@ -1,6 +1,6 @@
 # Changelog
 
-## 17.3.0 (upcoming)
+## 18.0.0 (upcoming)
 
 **New features:**
 
@@ -9,6 +9,10 @@
 * grid: Allow to customize max-width with a css variable
 * st-progress-bar: Option for a bigger progress-bar
 * st-search: New Output when select another filter
+
+**Breaking changes:**
+
+* st-select: Renamed input 'search' to 'enabledSearcher' and change all internal search logic by event emitted to outside.
 
 **Others:**
 

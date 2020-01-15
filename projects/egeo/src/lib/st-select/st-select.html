@@ -12,7 +12,7 @@
 -->
 <st-dropdown-menu
    class="st-select-menu"
-   [items]="filteredOptions ? filteredOptions : options"
+   [items]="options"
    [attr.id]="optionsId"
    [active]="expandedMenu"
    [placement]="'bottom-start'"
@@ -23,15 +23,16 @@
    [isLoading]="isLoading"
    [itemsBeforeScroll]="itemsBeforeScroll"
 >
-   <div (click)="onButtonClick()" (keypress)="onButtonKeyPress($event)"  #button class="button-container" (clickOutside)="onClickOutside()">
+   <div (click)="onButtonClick()" (keypress)="onButtonKeyPress($event)" #button class="button-container"
+        (clickOutside)="onClickOutside()">
       <div>
          <label *ngIf="hasLabel" [ngClass]="{disabled: disabled, error: showError()}"
-             st-label
-             for="inputId"
-             class="st-label"
-             [attr.title]="tooltip"
-             [attr.id]="labelId"
-             [attr.disabled]="disableValue">{{label}}</label>
+                st-label
+                for="inputId"
+                class="st-label"
+                [attr.title]="tooltip"
+                [attr.id]="labelId"
+                [attr.disabled]="disableValue">{{label}}</label>
          <div class="input-container">
             <input
                #input
@@ -57,23 +58,26 @@
          </div>
       </div>
    </div>
-   <div  dropdown-header  *ngIf="search" (click)="onSearchClick($event)" (keypress)="onButtonKeyPress($event)"  class="search-input">
-         <input
-            id="searchInput"
-            autocomplete="off"
-            aria-haspopup="true"
-            class="st-input"
-            type="text"
-            [attr.aria-expanded]="expandedMenu"
-            [attr.disabled]="disableValue"
-            [attr.id]="searchInput"
-            [placeholder]="placeholderSearch"
-            [formControl]="searchInput"
-            (focus)="search && getOptions()"
-         />
-         <i class="st-search-icon sth-search-icon icon-search" tabindex="0" *ngIf="!showClear"></i>
-         <i class="st-search-icon sth-search-icon icon-cross" tabindex="0" *ngIf="showClear" (mousedown)="clearInput()"
-               (keyup.enter)="clearInput()"></i>
+   <div dropdown-header *ngIf="enabledSearcher"
+        (click)="onSearchClick($event)"
+        class="search-input">
+      <input
+         id="searchInput"
+         autocomplete="off"
+         aria-haspopup="true"
+         class="st-input"
+         type="text"
+         [attr.aria-expanded]="expandedMenu"
+         [attr.disabled]="disableValue"
+         [attr.id]="searchInput"
+         [placeholder]="placeholderSearch"
+         [formControl]="searchInput"
+         (focus)="enabledSearcher"
+         (input)="onSearch()"
+      />
+      <i class="st-search-icon sth-search-icon icon-search" tabindex="0" *ngIf="!searchInput.value?.length"></i>
+      <i class="st-search-icon sth-search-icon icon-cross" tabindex="0" *ngIf="searchInput.value?.length"
+         (click)="clearSearchInput()" (keyup.enter)="clearSearchInput()"></i>
    </div>
 
 </st-dropdown-menu>

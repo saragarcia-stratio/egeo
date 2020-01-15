@@ -15,7 +15,7 @@ import { By } from '@angular/platform-browser';
 import { StDropdownMenuComponent } from './st-dropdown-menu.component';
 import { StPopPlacement } from '../st-pop/st-pop.model';
 import { StDropdownMenuModule } from './st-dropdown-menu.module';
-import { StDropDownMenuGroup, StDropDownMenuItem, StDropDownVisualMode } from './st-dropdown-menu.interface';
+import { ARROW_KEY_CODE, StDropDownMenuGroup, StDropDownMenuItem, StDropDownVisualMode } from './st-dropdown-menu.interface';
 import { StDropdownMenuItemComponent } from './st-dropdown-menu-item/st-dropdown-menu-item.component';
 
 const simpleItems: StDropDownMenuItem[] = [
@@ -301,7 +301,7 @@ describe('StDropdownMenu', () => {
             spyOn(HTMLLIElement.prototype, 'focus');
 
             const keyboardEvent = new Event('keydown');
-            (<any> keyboardEvent).keyCode = 40;
+            (<any> keyboardEvent).code = ARROW_KEY_CODE.ARROW_DOWN;
             document.dispatchEvent(keyboardEvent);
 
             expect(HTMLLIElement.prototype.focus).not.toHaveBeenCalled();
@@ -324,7 +324,7 @@ describe('StDropdownMenu', () => {
 
             it('If user presses key down and there isn´t an option selected, first option is focused', () => {
                const keyboardEvent = new Event('keydown');
-               (<any> keyboardEvent).keyCode = 40;
+               (<any> keyboardEvent).code = ARROW_KEY_CODE.ARROW_DOWN;
 
                document.dispatchEvent(keyboardEvent);
 
@@ -343,7 +343,7 @@ describe('StDropdownMenu', () => {
                }
 
                const keyboardEvent = new Event('keydown');
-               (<any> keyboardEvent).keyCode = 40;
+               (<any> keyboardEvent).code = ARROW_KEY_CODE.ARROW_DOWN;
                document.dispatchEvent(keyboardEvent);
 
                expect(options[4].focus).toHaveBeenCalledTimes(1);
@@ -363,7 +363,7 @@ describe('StDropdownMenu', () => {
                }
 
                const keyboardEvent = new Event('keydown');
-               (<any> keyboardEvent).keyCode = 40;
+               (<any> keyboardEvent).code = ARROW_KEY_CODE.ARROW_DOWN;
                document.dispatchEvent(keyboardEvent);
 
                expect(options[0].focus).toHaveBeenCalledTimes(1);
@@ -374,7 +374,7 @@ describe('StDropdownMenu', () => {
 
             it('If user presses key up and there isn´t an option selected, first option is focused', () => {
                const keyboardEvent = new Event('keydown');
-               (<any> keyboardEvent).keyCode = 38;
+               (<any> keyboardEvent).code = ARROW_KEY_CODE.ARROW_UP;
                document.dispatchEvent(keyboardEvent);
 
                expect(options[0].focus).toHaveBeenCalledTimes(1);
@@ -392,7 +392,7 @@ describe('StDropdownMenu', () => {
                }
 
                const keyboardEvent = new Event('keydown');
-               (<any> keyboardEvent).keyCode = 38;
+               (<any> keyboardEvent).code = ARROW_KEY_CODE.ARROW_UP;
                document.dispatchEvent(keyboardEvent);
 
                expect(options[2].focus).toHaveBeenCalledTimes(1);
@@ -412,7 +412,7 @@ describe('StDropdownMenu', () => {
                }
 
                const keyboardEvent = new Event('keydown');
-               (<any> keyboardEvent).keyCode = 38;
+               (<any> keyboardEvent).code = ARROW_KEY_CODE.ARROW_UP;
                document.dispatchEvent(keyboardEvent);
 
                expect(options[comp.items.length - 1].focus).toHaveBeenCalledTimes(1);
@@ -427,7 +427,7 @@ describe('StDropdownMenu', () => {
                comp.ngOnInit();
                const keyboardEvent = new Event('keydown');
 
-               (<any> keyboardEvent).keyCode = 40;
+               (<any> keyboardEvent).code = ARROW_KEY_CODE.ARROW_DOWN;
                document.dispatchEvent(keyboardEvent);
                spyOn(comp.change, 'emit');
 

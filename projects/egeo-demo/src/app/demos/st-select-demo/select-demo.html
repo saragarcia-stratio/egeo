@@ -20,15 +20,13 @@
       <button class="button button-primary" (click)="changeOptions()">Change options</button>
 
       <div class="separator"></div>
-      <div class="separator"></div>
-      <div class="separator"></div>
 
       <h1>TEMPLATE DRIVEN EXAMPLE</h1>
       <form #templateDrivenForm="ngForm" novalidate autocomplete="off" class="col-md-3">
          <div class="form-group">
 
             <st-select stCheckValidations errorMessage="This field is required" label="Option 1"
-                       [forceValidations]="true" [formControl]="formControl" tooltip="Prueba"
+                       [forceValidations]="true" [formControl]="formControl" tooltip="This field is required"
                        placeholder="Select option" [options]="options" name="option1" required id="test"
                        (select)="onSelect($event)" class="st-form-field">
             </st-select>
@@ -37,7 +35,7 @@
 
             Disabled select
 
-            <st-select stCheckValidations label="Option 1" tooltip="Prueba" placeholder="Select option"
+            <st-select stCheckValidations label="Option 1" tooltip="Disabled field" placeholder="Select option"
                        [options]="options" [(ngModel)]="model.option1"
                        name="option1" required [disabled]="true" id="disabled-test" (select)="onSelect($event)"
                        class="st-form-field">
@@ -83,17 +81,20 @@
       <button class="button button-primary" (click)="changeDisabled()">Change disable</button>
 
       <div class="separator"></div>
-      <div class="separator"></div>
-      <div class="separator"></div>
+
       <h1>SEARCH OPTION EXAMPLE</h1>
-      <st-select [search]="true" placeholder="Select option" placeholderSearch="Search..." [options]="options"
-                 [disabled]="disabled">
+
+      <st-select [enabledSearcher]="true" placeholder="Select option" placeholderSearch="Search..."
+                 [options]="filteredOptions"
+                 [disabled]="disabled"
+                 (search)="onSearch($event)">
       </st-select>
 
       <div class="separator"></div>
+
       <h1>SCROLL WITH SPINNER OPTION</h1>
-      <st-select [search]="true" placeholder="Select option" placeholderSearch="Search..." [options]="options"
-                 [disabled]="disabled" [isLoading]="isLoading" (scrollAtBottom)="onScrollAtBottom()">
+      <st-select [enabledSearcher]="true" placeholder="Select option" placeholderSearch="Search..." [options]="filteredOptions"
+                 [disabled]="disabled" [isLoading]="isLoading" (scrollAtBottom)="onScrollAtBottom()" (search)="onSearch($event)">
       </st-select>
 
       <div class="separator"></div>

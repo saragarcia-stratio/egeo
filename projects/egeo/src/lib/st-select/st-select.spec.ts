@@ -52,7 +52,8 @@ const groupOptions: StDropDownMenuGroup[] = [
 
 describe('StSelectComponent', () => {
    let fixture: ComponentFixture<StSelectComponent>;
-   let comp: StSelectComponent;
+   let component: StSelectComponent;
+   const id: string = 'test-id';
 
    beforeEach(async(() => {
       TestBed.configureTestingModule({
@@ -72,60 +73,59 @@ describe('StSelectComponent', () => {
 
    beforeEach(() => {
       fixture = TestBed.createComponent(StSelectComponent);
-      comp = fixture.componentInstance;
+      component = fixture.componentInstance;
    });
 
    it('Should init correctly', () => {
       (fixture.elementRef.nativeElement as HTMLElement).id = null;
       fixture.detectChanges();
 
-      expect(comp.placeholder).toEqual('');
-      expect(comp.name).toEqual('');
-      expect(comp.label).toEqual('');
-      expect(comp.tooltip).toBeNull();
-      expect(comp.errorMessage).toBeUndefined();
-      expect(comp.selected).toBeUndefined();
-      expect(comp.expandedMenu).toBeFalsy();
+      expect(component.placeholder).toEqual('');
+      expect(component.name).toEqual('');
+      expect(component.label).toEqual('');
+      expect(component.tooltip).toBeNull();
+      expect(component.errorMessage).toBeUndefined();
+      expect(component.selected).toBeUndefined();
+      expect(component.expandedMenu).toBeFalsy();
 
-      expect(comp.disabled).toBeFalsy();
-      expect(comp.options).toEqual([]);
-      expect(comp.selectedValue).toEqual('');
-      expect(comp.disableValue).toBeNull();
-      expect(comp.hasLabel).toBeFalsy();
-      expect(comp.showError()).toBeFalsy();
+      expect(component.disabled).toBeFalsy();
+      expect(component.options).toEqual([]);
+      expect(component.selectedValue).toEqual('');
+      expect(component.disableValue).toBeNull();
+      expect(component.hasLabel).toBeFalsy();
+      expect(component.showError()).toBeFalsy();
 
-      expect(comp.selectId).toBeNull();
-      expect(comp.inputId).toBeNull();
-      expect(comp.labelId).toBeNull();
-      expect(comp.optionsId).toBeNull();
-      expect(comp.inputName).toBeNull();
+      expect(component.selectId).toBeNull();
+      expect(component.inputId).toBeNull();
+      expect(component.labelId).toBeNull();
+      expect(component.optionsId).toBeNull();
+      expect(component.inputName).toBeNull();
 
    });
 
    it('Should propagate id to internal elements', () => {
-      const id: string = 'test-id';
       (fixture.elementRef.nativeElement as HTMLElement).id = id;
-      comp.label = 'Test Label';
+      component.label = 'Test Label';
       fixture.detectChanges();
 
       const input: HTMLElement = fixture.debugElement.query(By.css('input')).nativeElement;
       const label: HTMLElement = fixture.debugElement.query(By.css('label')).nativeElement;
       const dropdownMenu: HTMLElement = fixture.debugElement.query(By.css('st-dropdown-menu')).nativeElement;
 
-      expect(comp.selectId).toEqual(id);
+      expect(component.selectId).toEqual(id);
 
-      expect(comp.inputId).toEqual(`${id}-input`);
+      expect(component.inputId).toEqual(`${id}-input`);
       expect(input.getAttribute('id')).toEqual(`${id}-input`);
 
-      expect(comp.labelId).toEqual(`${id}-label`);
+      expect(component.labelId).toEqual(`${id}-label`);
       expect(label.getAttribute('id')).toEqual(`${id}-label`);
 
-      expect(comp.optionsId).toEqual(`${id}-options`);
+      expect(component.optionsId).toEqual(`${id}-options`);
       expect(dropdownMenu.getAttribute('id')).toEqual(`${id}-options`);
    });
 
    it('Should have a placeholder', () => {
-      comp.placeholder = 'Placeholder sample';
+      component.placeholder = 'Placeholder sample';
       fixture.detectChanges();
 
       const input: HTMLElement = fixture.debugElement.query(By.css('input')).nativeElement;
@@ -133,148 +133,142 @@ describe('StSelectComponent', () => {
    });
 
    it('Should set a name', () => {
-      comp.name = 'test-name';
+      component.name = 'test-name';
       fixture.detectChanges();
 
       const input: HTMLElement = fixture.debugElement.query(By.css('input')).nativeElement;
-      expect(comp.inputName).toContain(comp.name);
-      expect(input.getAttribute('name')).toContain(comp.name);
+      expect(component.inputName).toContain(component.name);
+      expect(input.getAttribute('name')).toContain(component.name);
    });
 
    it('Should not have a label', () => {
       fixture.detectChanges();
       let label: DebugElement = fixture.debugElement.query(By.css('label'));
       expect(label).toBeNull();
-      expect(comp.hasLabel).toBeFalsy();
+      expect(component.hasLabel).toBeFalsy();
    });
 
    it('Should have a label and tooltip', () => {
-      comp.label = 'test label';
-      comp.tooltip = 'Test help';
+      component.label = 'test label';
+      component.tooltip = 'Test help';
       fixture.detectChanges();
 
       const label: DebugElement = fixture.debugElement.query(By.css('label'));
 
-      expect(comp.hasLabel).toBeTruthy();
+      expect(component.hasLabel).toBeTruthy();
       expect(label).toBeDefined();
       expect(label.nativeElement).toBeDefined();
-      expect((label.nativeElement as HTMLLabelElement).textContent).toEqual(comp.label);
-      expect((label.nativeElement as HTMLLabelElement).title).toEqual(comp.tooltip);
+      expect((label.nativeElement as HTMLLabelElement).textContent).toEqual(component.label);
+      expect((label.nativeElement as HTMLLabelElement).title).toEqual(component.tooltip);
    });
 
    it('Should change active on click on label', () => {
-      spyOn(comp.expand, 'emit');
-      const id: string = 'test-id';
+      spyOn(component.expand, 'emit');
       (fixture.elementRef.nativeElement as HTMLElement).id = id;
-      comp.options = simpleItems;
-      comp.label = 'Test';
+      component.options = simpleItems;
+      component.label = 'Test';
       fixture.detectChanges();
 
-      expect(comp.expandedMenu).toBeFalsy();
-      expect(comp.expand.emit).not.toHaveBeenCalled();
+      expect(component.expandedMenu).toBeFalsy();
+      expect(component.expand.emit).not.toHaveBeenCalled();
       const label: DebugElement = fixture.debugElement.query(By.css('label'));
       (label.nativeElement as HTMLLabelElement).click();
       fixture.detectChanges();
-      expect(comp.expandedMenu).toBeTruthy();
-      expect(comp.expand.emit).toHaveBeenCalled();
+      expect(component.expandedMenu).toBeTruthy();
+      expect(component.expand.emit).toHaveBeenCalled();
    });
 
    it('Should change active on click on input', () => {
-      spyOn(comp.expand, 'emit');
-      const id: string = 'test-id';
+      spyOn(component.expand, 'emit');
       (fixture.elementRef.nativeElement as HTMLElement).id = id;
-      comp.options = simpleItems;
+      component.options = simpleItems;
       fixture.detectChanges();
 
-      expect(comp.expandedMenu).toBeFalsy();
-      expect(comp.expand.emit).not.toHaveBeenCalled();
+      expect(component.expandedMenu).toBeFalsy();
+      expect(component.expand.emit).not.toHaveBeenCalled();
       const input: DebugElement = fixture.debugElement.query(By.css('input'));
       (input.nativeElement as HTMLInputElement).click();
       fixture.detectChanges();
-      expect(comp.expandedMenu).toBeTruthy();
-      expect(comp.expand.emit).toHaveBeenCalled();
+      expect(component.expandedMenu).toBeTruthy();
+      expect(component.expand.emit).toHaveBeenCalled();
    });
 
    it('Should change active on click on arrow', () => {
-      spyOn(comp.expand, 'emit');
-      const id: string = 'test-id';
+      spyOn(component.expand, 'emit');
       (fixture.elementRef.nativeElement as HTMLElement).id = id;
-      comp.options = simpleItems;
+      component.options = simpleItems;
       fixture.detectChanges();
 
-      expect(comp.expandedMenu).toBeFalsy();
-      expect(comp.expand.emit).not.toHaveBeenCalled();
+      expect(component.expandedMenu).toBeFalsy();
+      expect(component.expand.emit).not.toHaveBeenCalled();
       const icon: DebugElement = fixture.debugElement.query(By.css('i'));
       (icon.nativeElement as HTMLElement).click();
       fixture.detectChanges();
-      expect(comp.expandedMenu).toBeTruthy();
-      expect(comp.expand.emit).toHaveBeenCalled();
+      expect(component.expandedMenu).toBeTruthy();
+      expect(component.expand.emit).toHaveBeenCalled();
    });
 
    it('Should change active on press enter', () => {
-      spyOn(comp.expand, 'emit');
-      const id: string = 'test-id';
+      spyOn(component.expand, 'emit');
       (fixture.elementRef.nativeElement as HTMLElement).id = id;
-      comp.options = simpleItems;
+      component.options = simpleItems;
       fixture.detectChanges();
 
-      expect(comp.expandedMenu).toBeFalsy();
-      expect(comp.expand.emit).not.toHaveBeenCalled();
+      expect(component.expandedMenu).toBeFalsy();
+      expect(component.expand.emit).not.toHaveBeenCalled();
       const div: DebugElement = fixture.debugElement.query(By.css('.button-container'));
 
-      div.triggerEventHandler('keypress', { keyCode: 13 });
+      div.triggerEventHandler('keypress', { code: 'Enter' });
       fixture.detectChanges();
-      expect(comp.expandedMenu).toBeTruthy();
-      expect(comp.expand.emit).toHaveBeenCalled();
+      expect(component.expandedMenu).toBeTruthy();
+      expect(component.expand.emit).toHaveBeenCalled();
 
-      div.triggerEventHandler('keypress', { keyCode: 24 });
+      div.triggerEventHandler('keypress', { code: 'Space' });
       fixture.detectChanges();
-      expect(comp.expandedMenu).toBeTruthy();
-      expect(comp.expand.emit).toHaveBeenCalled();
-      expect(comp.expand.emit).toHaveBeenCalledTimes(1);
+      expect(component.expandedMenu).toBeTruthy();
+      expect(component.expand.emit).toHaveBeenCalled();
+      expect(component.expand.emit).toHaveBeenCalledTimes(1);
    });
 
    it('Should change active on click outside', () => {
-      spyOn(comp.expand, 'emit');
-      const id: string = 'test-id';
+      spyOn(component.expand, 'emit');
       (fixture.elementRef.nativeElement as HTMLElement).id = id;
-      comp.options = simpleItems;
+      component.options = simpleItems;
       fixture.detectChanges();
 
-      expect(comp.expandedMenu).toBeFalsy();
-      expect(comp.expand.emit).not.toHaveBeenCalled();
+      expect(component.expandedMenu).toBeFalsy();
+      expect(component.expand.emit).not.toHaveBeenCalled();
       const input: HTMLInputElement = fixture.debugElement.query(By.css('input')).nativeElement;
       input.click();
       fixture.detectChanges();
-      expect(comp.expandedMenu).toBeTruthy();
-      expect(comp.expand.emit).toHaveBeenCalled();
-      expect(comp.expand.emit).toHaveBeenCalledWith(true);
+      expect(component.expandedMenu).toBeTruthy();
+      expect(component.expand.emit).toHaveBeenCalled();
+      expect(component.expand.emit).toHaveBeenCalledWith(true);
 
       input.parentElement.parentElement.click();
-      expect(comp.expandedMenu).toBeFalsy();
-      expect(comp.expand.emit).toHaveBeenCalled();
-      expect(comp.expand.emit).toHaveBeenCalledTimes(2);
-      expect(comp.expand.emit).toHaveBeenCalledWith(false);
+      expect(component.expandedMenu).toBeFalsy();
+      expect(component.expand.emit).toHaveBeenCalled();
+      expect(component.expand.emit).toHaveBeenCalledTimes(2);
+      expect(component.expand.emit).toHaveBeenCalledWith(false);
    });
 
    it('Should change input focus on click on label', () => {
       const input: HTMLInputElement = fixture.debugElement.query(By.css('input')).nativeElement;
       spyOn(input, 'focus');
       spyOn(input, 'blur');
-      const id: string = 'test-id';
       (fixture.elementRef.nativeElement as HTMLElement).id = id;
-      comp.label = 'Test';
-      comp.options = simpleItems;
+      component.label = 'Test';
+      component.options = simpleItems;
       fixture.detectChanges();
 
-      expect(comp.expandedMenu).toBeFalsy();
+      expect(component.expandedMenu).toBeFalsy();
       expect(input.focus).not.toHaveBeenCalled();
       expect(input.blur).not.toHaveBeenCalled();
 
       const label: HTMLLabelElement = fixture.debugElement.query(By.css('label')).nativeElement;
       label.click();
       fixture.detectChanges();
-      expect(comp.expandedMenu).toBeTruthy();
+      expect(component.expandedMenu).toBeTruthy();
       expect(input.focus).toHaveBeenCalled();
       expect(input.blur).not.toHaveBeenCalled();
 
@@ -284,113 +278,109 @@ describe('StSelectComponent', () => {
    });
 
    it('Should preselect an option with selected property', () => {
-      const id: string = 'test-id';
       (fixture.elementRef.nativeElement as HTMLElement).id = id;
       const options: StDropDownMenuItem[] = _cloneDeep(simpleItems);
       options[3].selected = true;
-      comp.options = options;
+      component.options = options;
       fixture.detectChanges();
 
-      expect(comp.selected).toEqual(comp.options[3]); // Select element
-      expect(comp.options[3].selected).toBeFalsy(); // Remove selected
+      expect(component.selected).toEqual(component.options[3]); // Select element
+      expect(component.options[3].selected).toBeFalsy(); // Remove selected
    });
 
    it('Should preselect an option of group with selected property', () => {
-      const id: string = 'test-id';
       (fixture.elementRef.nativeElement as HTMLElement).id = id;
       const options: StDropDownMenuGroup[] = _cloneDeep(groupOptions);
       options[0].items[3].selected = true;
-      comp.options = options;
+      component.options = options;
       fixture.detectChanges();
 
-      expect(comp.selected).toEqual(comp.options[0].items[3]); // Select element
-      expect(comp.options[0].items[3].selected).toBeFalsy(); // Remove selected
+      expect(component.selected).toEqual(component.options[0].items[3]); // Select element
+      expect(component.options[0].items[3].selected).toBeFalsy(); // Remove selected
    });
 
    it('Should try to select an unknown type of option', () => {
-      const id: string = 'test-id';
       (fixture.elementRef.nativeElement as HTMLElement).id = id;
       const options: any = { test: 'a', selected: true };
-      comp.options = options;
+      component.options = options;
       fixture.detectChanges();
 
-      expect(comp.selected).toBeUndefined();
+      expect(component.selected).toBeUndefined();
    });
 
    it('Should set input and label as disabled', () => {
-      spyOn(comp.expand, 'emit');
-      const id: string = 'test-id';
+      spyOn(component.expand, 'emit');
       (fixture.elementRef.nativeElement as HTMLElement).id = id;
-      comp.options = simpleItems;
-      comp.label = 'Test';
-      comp.disabled = true;
+      component.options = simpleItems;
+      component.label = 'Test';
+      component.disabled = true;
       fixture.detectChanges();
 
-      expect(comp.expandedMenu).toBeFalsy();
+      expect(component.expandedMenu).toBeFalsy();
       const input: HTMLInputElement = fixture.debugElement.query(By.css('input')).nativeElement;
       const label: HTMLLabelElement = fixture.debugElement.query(By.css('label')).nativeElement;
       const icon: HTMLElement = fixture.debugElement.query(By.css('i')).nativeElement;
 
       input.click();
       fixture.detectChanges();
-      expect(comp.expandedMenu).toBeFalsy();
+      expect(component.expandedMenu).toBeFalsy();
 
       label.click();
       fixture.detectChanges();
-      expect(comp.expandedMenu).toBeFalsy();
+      expect(component.expandedMenu).toBeFalsy();
 
       icon.click();
       fixture.detectChanges();
-      expect(comp.expandedMenu).toBeFalsy();
+      expect(component.expandedMenu).toBeFalsy();
 
-      comp.onButtonClick();
-      expect(comp.expandedMenu).toBeFalsy();
-      expect(comp.expand.emit).not.toHaveBeenCalled();
+      component.onButtonClick();
+      expect(component.expandedMenu).toBeFalsy();
+      expect(component.expand.emit).not.toHaveBeenCalled();
 
       expect(label.classList).toContain('disabled');
    });
 
    it('Should emit on change option', () => {
-      spyOn(comp.select, 'emit');
-      comp.options = simpleItems;
-      comp.label = 'Test';
+      spyOn(component.select, 'emit');
+      component.options = simpleItems;
+      component.label = 'Test';
 
       fixture.detectChanges();
-      expect(comp.select.emit).not.toHaveBeenCalled();
+      expect(component.select.emit).not.toHaveBeenCalled();
 
-      comp.onChangeOption(simpleItems[1]);
-      expect(comp.select.emit).toHaveBeenCalled();
-      expect(comp.select.emit).toHaveBeenCalledWith(simpleItems[1].value);
+      component.onChangeOption(simpleItems[1]);
+      expect(component.select.emit).toHaveBeenCalled();
+      expect(component.select.emit).toHaveBeenCalledWith(simpleItems[1].value);
 
-      comp.onChangeOption(undefined);
-      expect(comp.select.emit).toHaveBeenCalled();
-      expect(comp.select.emit).toHaveBeenCalledWith(undefined);
+      component.onChangeOption(undefined);
+      expect(component.select.emit).toHaveBeenCalled();
+      expect(component.select.emit).toHaveBeenCalledWith(undefined);
    });
 
    it('should display a tooltip if it has a label and tooltip input is introduced', () => {
-      comp.tooltip = 'fake tooltip text';
-      comp.label = 'Test';
+      component.tooltip = 'fake tooltip text';
+      component.label = 'Test';
       fixture.detectChanges();
 
       let label: DebugElement = fixture.debugElement.query(By.css('.st-label'));
 
-      expect(comp.hasLabel).toBeTruthy();
+      expect(component.hasLabel).toBeTruthy();
       expect(label).toBeDefined();
       expect(label.nativeElement).toBeDefined();
-      expect((label.nativeElement as HTMLLabelElement).textContent).toEqual(comp.label);
-      expect((label.nativeElement as HTMLLabelElement).title).toEqual(comp.tooltip);
+      expect((label.nativeElement as HTMLLabelElement).textContent).toEqual(component.label);
+      expect((label.nativeElement as HTMLLabelElement).title).toEqual(component.tooltip);
    });
 
    it('should not display a tooltip if it has a label but tooltip input is not introduced', () => {
-      comp.label = 'Test';
+      component.label = 'Test';
       fixture.detectChanges();
 
       let label: DebugElement = fixture.debugElement.query(By.css('.st-label'));
 
-      expect(comp.hasLabel).toBeTruthy();
+      expect(component.hasLabel).toBeTruthy();
       expect(label).toBeDefined();
       expect(label.nativeElement).toBeDefined();
-      expect((label.nativeElement as HTMLLabelElement).textContent).toEqual(comp.label);
+      expect((label.nativeElement as HTMLLabelElement).textContent).toEqual(component.label);
       expect((label.nativeElement as HTMLLabelElement).title).toBe('');
    });
 
@@ -400,10 +390,10 @@ describe('StSelectComponent', () => {
       let items: DebugElement[];
 
       beforeEach(() => {
-         comp.label = 'Test';
-         comp.options = [<StDropDownMenuItem>{ label: 'select one', value: undefined }, ...simpleItems];
-         fakeDefault = comp.options[4].value;
-         comp.default = fakeDefault;
+         component.label = 'Test';
+         component.options = [<StDropDownMenuItem>{ label: 'select one', value: undefined }, ...simpleItems];
+         fakeDefault = component.options[4].value;
+         component.default = fakeDefault;
          fixture.detectChanges();
          input = fixture.debugElement.query(By.css('input')).nativeElement;
       });
@@ -477,7 +467,7 @@ describe('StSelectComponent', () => {
          fixture.nativeElement.querySelector('.st-form-control-reset-button').click();
          fixture.detectChanges();
 
-         expect(comp.selected.value).toEqual(fakeDefault);
+         expect(component.selected.value).toEqual(fakeDefault);
       });
 
       it('after user selects an empty option, he can return to the default', () => {
@@ -496,49 +486,49 @@ describe('StSelectComponent', () => {
          fixture.nativeElement.querySelector('.st-form-control-reset-button').click();
          fixture.detectChanges();
 
-         expect(comp.selected.value).toEqual(fakeDefault);
+         expect(component.selected.value).toEqual(fakeDefault);
       });
 
    });
 
    describe('Error message should be displayed', () => {
       beforeEach(() => {
-         comp.disabled = false;
-         comp.inputFormControl.markAsTouched();
-         comp.errorMessage = 'fake error message';
+         component.disabled = false;
+         component.inputFormControl.markAsTouched();
+         component.errorMessage = 'fake error message';
       });
 
       it('If it has been touched, error message is defined and it is not disabled', () => {
          fixture.detectChanges();
 
-         expect(comp.showError()).toBeTruthy();
-         expect(fixture.nativeElement.querySelector('.st-input-error-message').innerHTML).toContain(comp.errorMessage);
+         expect(component.showError()).toBeTruthy();
+         expect(fixture.nativeElement.querySelector('.st-input-error-message').innerHTML).toContain(component.errorMessage);
       });
 
       it('If it is disabled, error is not displayed', () => {
-         comp.disabled = true;
+         component.disabled = true;
 
          fixture.detectChanges();
 
-         expect(comp.showError()).toBeFalsy();
+         expect(component.showError()).toBeFalsy();
          expect(fixture.nativeElement.querySelector('.st-input-error-message')).toBeNull();
       });
 
       it('If error is empty, error is not displayed', () => {
-         comp.errorMessage = '';
+         component.errorMessage = '';
 
          fixture.detectChanges();
 
-         expect(comp.showError()).toBeFalsy();
+         expect(component.showError()).toBeFalsy();
          expect(fixture.nativeElement.querySelector('.st-input-error-message')).toBeNull();
       });
 
       it('If error is not touched, error is not displayed', () => {
-         comp.inputFormControl.markAsUntouched();
+         component.inputFormControl.markAsUntouched();
 
          fixture.detectChanges();
 
-         expect(comp.showError()).toBeFalsy();
+         expect(component.showError()).toBeFalsy();
          expect(fixture.nativeElement.querySelector('.st-input-error-message')).toBeNull();
       });
    });
@@ -559,7 +549,7 @@ describe('StSelectComponent', () => {
                     [errorMessage]="errorMessage"
                     [selected]="selected"
                     [itemsBeforeScroll]="itemsBeforeScroll"
-                    [search]="search"
+                    [enabledSearcher]="enabledSearcher"
                     class="st-form-field">
          </st-select>
       </form>
@@ -570,7 +560,7 @@ class StSelectTestReactiveComponent {
    errorMessage: string | undefined = null;
    selected: StDropDownMenuItem = null;
    options: StDropDownMenuItem[];
-   search: boolean = false;
+   enabledSearcher: boolean = false;
    reactiveForm: FormGroup;
    model: any = { option: undefined };
    @ViewChild('select') select: StSelectComponent;
@@ -585,7 +575,7 @@ class StSelectTestReactiveComponent {
 describe('StSelectComponent', () => {
    describe('Reactive form instance', () => {
       let fixture: ComponentFixture<StSelectTestReactiveComponent>;
-      let comp: StSelectTestReactiveComponent;
+      let component: StSelectTestReactiveComponent;
       let compSelect: StSelectComponent;
       let input: HTMLInputElement;
       let inputSearch: HTMLInputElement;
@@ -599,8 +589,8 @@ describe('StSelectComponent', () => {
 
       beforeEach(() => {
          fixture = TestBed.createComponent(StSelectTestReactiveComponent);
-         comp = fixture.componentInstance;
-         compSelect = comp.select;
+         component = fixture.componentInstance;
+         compSelect = component.select;
          input = fixture.debugElement.query(By.css('input')).nativeElement;
       });
 
@@ -608,85 +598,81 @@ describe('StSelectComponent', () => {
          fixture.destroy();
       });
 
-      it('Should filter list on search', () => {
-         comp.search = true;
-         compSelect.expandedMenu = false;
-         compSelect.searchInput.setValue('example 4');
-         fixture.detectChanges();
-         comp.options = [<StDropDownMenuItem>{ label: 'select one', value: undefined }, ...simpleItems];
-         comp.selected = comp.options[4];
-         fixture.detectChanges();
-         input.click();
-         input.focus();
-         fixture.detectChanges();
+      describe('Should be able to enable a search box', () => {
 
-         inputSearch = fixture.debugElement.query(By.css('.search-input input')).nativeElement;
-         inputSearch.click();
-         inputSearch.focus();
-         compSelect.searchInput.setValue('example 4');
-         fixture.detectChanges();
-         expect(comp.selected).toEqual(<StDropDownMenuItem>compSelect.filteredOptions[0]);
+         it('If "enabledSearcher" is true, a search box is displayed on top and event is emitted when user types something on it', () => {
+            spyOn(component.select.search, 'emit');
+            component.enabledSearcher = true;
+            compSelect.expandedMenu = false;
+            compSelect.searchInput.setValue('example 4');
+            fixture.detectChanges();
+            component.options = [<StDropDownMenuItem>{ label: 'select one', value: undefined }, ...simpleItems];
+            component.selected = component.options[4];
+            fixture.detectChanges();
+            input.click();
+            input.focus();
+            fixture.detectChanges();
 
-         const label: DebugElement = fixture.debugElement.query(By.css('label'));
-         (label.nativeElement as HTMLLabelElement).click();
-         fixture.detectChanges();
-         expect(compSelect.selectedValue).toEqual('example 4');
+            inputSearch = fixture.debugElement.query(By.css('.search-input input')).nativeElement;
+            inputSearch.click();
+            inputSearch.focus();
+            compSelect.searchInput.setValue('example 4');
+            inputSearch.dispatchEvent(new Event('input'));
+            fixture.detectChanges();
 
-         comp.selected = undefined;
-         fixture.detectChanges();
-         input.click();
-         (label.nativeElement as HTMLLabelElement).click();
-         fixture.detectChanges();
-         expect(compSelect.selectedValue).toEqual('');
+            expect(component.select.search.emit).toHaveBeenCalledWith('example 4');
+         });
+
+         it('Should clean search input when user clicks on cross button', () => {
+            component.enabledSearcher = true;
+            compSelect.expandedMenu = false;
+            compSelect.searchInput.setValue('example 4');
+            fixture.detectChanges();
+            component.options = [<StDropDownMenuItem>{ label: 'select one', value: undefined }, ...simpleItems];
+            component.selected = component.options[4];
+            fixture.detectChanges();
+            input.click();
+            input.focus();
+            fixture.detectChanges();
+
+            inputSearch = fixture.debugElement.query(By.css('.search-input input')).nativeElement;
+            inputSearch.click();
+            inputSearch.focus();
+            compSelect.searchInput.setValue('example 4');
+            fixture.detectChanges();
+            (<HTMLElement> fixture.nativeElement.querySelector('.icon-cross')).click();
+            fixture.detectChanges();
+
+            expect(compSelect.searchInput.value).toEqual('');
+         });
       });
 
-      it('Should clean search input on mousedown cross button', () => {
-         comp.search = true;
-         compSelect.expandedMenu = false;
-         compSelect.searchInput.setValue('example 4');
-         fixture.detectChanges();
-         comp.options = [<StDropDownMenuItem>{ label: 'select one', value: undefined }, ...simpleItems];
-         comp.selected = comp.options[4];
-         fixture.detectChanges();
-         input.click();
-         input.focus();
-         fixture.detectChanges();
-
-         inputSearch = fixture.debugElement.query(By.css('.search-input input')).nativeElement;
-         inputSearch.click();
-         inputSearch.focus();
-         compSelect.searchInput.setValue('example 4');
-         fixture.detectChanges();
-         const iconCross: DebugElement = fixture.debugElement.query(By.css('.icon-cross'));
-         iconCross.triggerEventHandler('mousedown', { pageX: 50, pageY: 40 });
-         expect(compSelect.searchInput.value).toEqual('');
-      });
       it('Should be possible to set disabled', () => {
-         comp.options = simpleItems;
+         component.options = simpleItems;
          fixture.detectChanges();
          expect(compSelect.disableValue).toBeNull();
-         comp.reactiveForm.get('option').disable();
+         component.reactiveForm.get('option').disable();
          expect(compSelect.disableValue).toEqual('');
       });
 
       it('Should change value from formControl', () => {
-         comp.options = simpleItems;
+         component.options = simpleItems;
          fixture.detectChanges();
          expect(compSelect.selected).toBeUndefined();
 
-         comp.reactiveForm.get('option').setValue(simpleItems[1].value);
+         component.reactiveForm.get('option').setValue(simpleItems[1].value);
          fixture.detectChanges();
          expect(compSelect.selected).toEqual(simpleItems[1]);
 
-         comp.reactiveForm.get('option').setValue(simpleItems[1].value);
+         component.reactiveForm.get('option').setValue(simpleItems[1].value);
          fixture.detectChanges();
          expect(compSelect.selected).toEqual(simpleItems[1]);
       });
 
       it('Should change model when select', () => {
          const responseFunction = jasmine.createSpy('response');
-         comp.options = simpleItems;
-         comp.reactiveForm.get('option').valueChanges.subscribe(responseFunction);
+         component.options = simpleItems;
+         component.reactiveForm.get('option').valueChanges.subscribe(responseFunction);
          fixture.detectChanges();
 
          // Open menu and select option 3
@@ -706,7 +692,7 @@ describe('StSelectComponent', () => {
          expect(compSelect.expandedMenu).toBeFalsy();
 
          expect(compSelect.selected).toEqual(simpleItems[itemToClick]);
-         expect(comp.reactiveForm.get('option').value).toEqual(simpleItems[itemToClick].value);
+         expect(component.reactiveForm.get('option').value).toEqual(simpleItems[itemToClick].value);
          expect(responseFunction).toHaveBeenCalled();
          expect(responseFunction).toHaveBeenCalledWith(simpleItems[itemToClick].value);
 
@@ -716,16 +702,16 @@ describe('StSelectComponent', () => {
       });
 
       it('Should validate required status', () => {
-         comp.options = simpleItems;
+         component.options = simpleItems;
          fixture.detectChanges();
 
-         comp.reactiveForm.get('option').setValue(undefined);
+         component.reactiveForm.get('option').setValue(undefined);
          fixture.detectChanges();
          const select: HTMLElement = fixture.debugElement.query(By.css('st-select')).nativeElement;
          expect(select.classList).toContain('ng-invalid');
       });
       it('Propagate itemsBeforeScroll variable to dropdownmenu', () => {
-         comp.itemsBeforeScroll = 4;
+         component.itemsBeforeScroll = 4;
          fixture.detectChanges();
          const dropdownElement = fixture.nativeElement.querySelector('.st-select-menu');
          expect(dropdownElement.getAttribute('ng-reflect-items-before-scroll')).toEqual('4');
@@ -770,7 +756,7 @@ class StSelectTestTemplateComponent {
 describe('StSelectComponent', () => {
    describe('Template form instance', () => {
       let fixture: ComponentFixture<StSelectTestTemplateComponent>;
-      let comp: StSelectTestTemplateComponent;
+      let component: StSelectTestTemplateComponent;
       let compSelect: StSelectComponent;
       const optionName: string = 'model';
 
@@ -783,8 +769,8 @@ describe('StSelectComponent', () => {
 
       beforeEach(() => {
          fixture = TestBed.createComponent(StSelectTestTemplateComponent);
-         comp = fixture.componentInstance;
-         compSelect = comp.select;
+         component = fixture.componentInstance;
+         compSelect = component.select;
       });
 
       afterEach(() => {
@@ -792,27 +778,27 @@ describe('StSelectComponent', () => {
       });
 
       it('Should be possible to set disabled', async(() => {
-         comp.options = simpleItems;
+         component.options = simpleItems;
          fixture.detectChanges();
          fixture.whenStable().then(() => { // Form generation it's asynchronous
-            comp.templateDrivenForm.form.updateValueAndValidity();
+            component.templateDrivenForm.form.updateValueAndValidity();
             expect(compSelect.disableValue).toBeNull();
-            comp.templateDrivenForm.form.get(optionName).disable();
+            component.templateDrivenForm.form.get(optionName).disable();
             expect(compSelect.disableValue).toEqual('');
          });
       }));
 
       it('Should change value from formControl', async(() => {
-         comp.options = simpleItems;
+         component.options = simpleItems;
          fixture.detectChanges();
          fixture.whenStable().then(() => { // Form generation it's asynchronous
             expect(compSelect.selected).toBeUndefined();
 
-            comp.templateDrivenForm.form.get(optionName).setValue(simpleItems[1].value);
+            component.templateDrivenForm.form.get(optionName).setValue(simpleItems[1].value);
             fixture.detectChanges();
             expect(compSelect.selected).toEqual(simpleItems[1]);
 
-            comp.templateDrivenForm.form.get(optionName).setValue(simpleItems[1].value);
+            component.templateDrivenForm.form.get(optionName).setValue(simpleItems[1].value);
             fixture.detectChanges();
             expect(compSelect.selected).toEqual(simpleItems[1]);
          });
@@ -820,11 +806,11 @@ describe('StSelectComponent', () => {
 
       it('Should change model when select', async(() => {
          const responseFunction = jasmine.createSpy('response');
-         comp.options = simpleItems;
+         component.options = simpleItems;
          fixture.detectChanges();
 
          fixture.whenStable().then(() => { // Form generation it's asynchronous
-            comp.templateDrivenForm.form.get(optionName).valueChanges.subscribe(responseFunction);
+            component.templateDrivenForm.form.get(optionName).valueChanges.subscribe(responseFunction);
             // Open menu and select option 3
             const itemToClick: number = 2;
             expect(compSelect.expandedMenu).toBeFalsy();
@@ -842,17 +828,17 @@ describe('StSelectComponent', () => {
             expect(compSelect.expandedMenu).toBeFalsy();
 
             expect(compSelect.selected).toEqual(simpleItems[itemToClick]);
-            expect(comp.templateDrivenForm.form.get(optionName).value).toEqual(simpleItems[itemToClick].value);
+            expect(component.templateDrivenForm.form.get(optionName).value).toEqual(simpleItems[itemToClick].value);
             expect(responseFunction).toHaveBeenCalled();
             expect(responseFunction).toHaveBeenCalledWith(simpleItems[itemToClick].value);
          });
       }));
 
       it('Should validate required status', async(() => {
-         comp.options = simpleItems;
+         component.options = simpleItems;
          fixture.detectChanges();
          fixture.whenStable().then(() => { // Form generation it's asynchronous
-            comp.templateDrivenForm.form.get(optionName).setValue(undefined);
+            component.templateDrivenForm.form.get(optionName).setValue(undefined);
             fixture.detectChanges();
             const select: HTMLElement = fixture.debugElement.query(By.css('st-select')).nativeElement;
             expect(select.classList).toContain('ng-invalid');

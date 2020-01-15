@@ -25,11 +25,10 @@ import {
    SimpleChanges,
    ViewChild
 } from '@angular/core';
+import { fromEvent, Subject } from 'rxjs';
 
 import { StPopOffset, StPopPlacement } from '../st-pop/st-pop.model';
 import { ARROW_KEY_CODE, StDropDownMenuGroup, StDropDownMenuItem, StDropDownVisualMode } from './st-dropdown-menu.interface';
-import { throttle as _throttle } from 'lodash';
-import { fromEvent, Subject } from 'rxjs';
 import { auditTime, takeUntil } from 'rxjs/operators';
 
 /**
@@ -167,15 +166,13 @@ export class StDropdownMenuComponent implements AfterViewInit, OnInit, OnChanges
                   parent.scrollTop = target.offsetTop - parent.offsetTop;
                }
             }
-         }, 0);
+         });
       } else {
          if (changes && changes.active && !changes.active.currentValue) {
             this._focusedOptionPos = -1;
          }
       }
    }
-
-
 
    onChange(value: StDropDownMenuItem): void {
       this.change.emit(value);
@@ -250,10 +247,10 @@ export class StDropdownMenuComponent implements AfterViewInit, OnInit, OnChanges
          this._focusedOptionPos = selectedItemPosition;
       }
       let nextFocus: number;
-      if (e.keyCode === ARROW_KEY_CODE.ARROW_DOWN || e.keyCode === ARROW_KEY_CODE.ARROW_UP) {
+      if (e.code === ARROW_KEY_CODE.ARROW_DOWN || e.code === ARROW_KEY_CODE.ARROW_UP) {
          event.preventDefault();
          const options: HTMLLIElement[] = this.el.nativeElement.querySelectorAll('.st-dropdown-menu-item');
-         nextFocus = e.keyCode === ARROW_KEY_CODE.ARROW_DOWN || this._focusedOptionPos === -1 ? 1 : -1;
+         nextFocus = e.code === ARROW_KEY_CODE.ARROW_DOWN || this._focusedOptionPos === -1 ? 1 : -1;
          this._focusedOptionPos = this._focusedOptionPos + nextFocus;
          if (this._focusedOptionPos < 0) {
             this._focusedOptionPos = options.length - 1;

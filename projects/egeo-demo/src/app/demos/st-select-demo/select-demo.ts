@@ -8,9 +8,11 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
-import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, NgForm, FormControl } from '@angular/forms';
+import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { cloneDeep as _cloneDeep } from 'lodash';
 import { StDropDownMenuItem } from '@stratio/egeo';
+
 
 @Component({
    selector: 'select-demo',
@@ -28,6 +30,8 @@ export class SelectDemoComponent {
    };
 
    options: StDropDownMenuItem[] = [];
+   filteredOptions: StDropDownMenuItem[] = [];
+
    model: any = {
       option1: null
    };
@@ -40,7 +44,7 @@ export class SelectDemoComponent {
 
    constructor(private _fb: FormBuilder, private _cd: ChangeDetectorRef) {
       this.formControl.markAsDirty();
-      this.options.push({label: 'Select an option', value: undefined});
+      this.options.push({ label: 'Select an option', value: undefined });
       for (let i: number = 0; i < 10; i++) {
          this.options.push({
             label: `option-${i}`,
@@ -50,7 +54,7 @@ export class SelectDemoComponent {
       this.model.option1 = 3;
 
       this.options[5].selected = true;
-
+      this.filteredOptions = _cloneDeep(this.options);
       this.reactiveForm = this._fb.group({
          option1: [this.model.option1, Validators.required]
       });
@@ -90,10 +94,13 @@ export class SelectDemoComponent {
       }));
    }
 
-
-   onSubmitReactiveForm(): void {
-      this.model.option1 = this.reactiveForm.value.option1;
-      this.model.option2 = this.reactiveForm.value.option2;
+   onSearch(search: string): void {
+      this.filteredOptions = _cloneDeep(this.options);
+      this.filteredOptions.forEach(option => option.selected = false);
+      if (search) {
+         this.filteredOptions = this.filteredOptions.filter(option => option.label.indexOf(search) !== -1);
+      }
+      this._cd.markForCheck();
    }
 
    changeOptions(): void {

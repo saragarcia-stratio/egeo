@@ -91,6 +91,7 @@
        .label {
           @extend %select-dropdown-menu-default;
           display: inline-flex;
+          word-break: break-word;
        }
 
        & .text-info {

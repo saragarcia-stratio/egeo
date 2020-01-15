@@ -8,6 +8,7 @@
 * st-menu: Create component
 * grid: Allow to customize max-width with a css variable
 * st-progress-bar: Option for a bigger progress-bar
+* st-search: New Output when select another filter
 
 **Others:**
 

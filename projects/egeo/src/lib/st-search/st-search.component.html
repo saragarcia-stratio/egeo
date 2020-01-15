@@ -17,7 +17,7 @@
       [(ngModel)]="filter"
       [disabled]="disabled"
       name="search-filter"
-      (select)="onChangeFilter()"
+      (select)="onChangeFilter($event)"
       class="sth-search-filter st-search-filter"
       [ngClass]="{'disabled': disabled}"
    ></st-select>

@@ -108,6 +108,12 @@ export class StSearchComponent extends EventWindowManager implements OnChanges, 
     * the text typed by the user and the filter value selected (only if filter is displayed)
     */
    @Output() search: EventEmitter<StSearchEvent> = new EventEmitter<StSearchEvent>();
+
+   /** @Output {any} [value=''] Event emitted when filter is changed. It contains
+    * the filter value selected
+    */
+   @Output() selectFilter: EventEmitter<any> = new EventEmitter<any>();
+
    /** @Input {boolean} [keyBoardMove=false] It is needed to activate navigation through options using the keyboard
     */
    @Input() keyBoardMove: boolean = false;
@@ -150,7 +156,8 @@ export class StSearchComponent extends EventWindowManager implements OnChanges, 
       this.checkAutoCompleteMenuChange(changes);
    }
 
-   public onChangeFilter(): void {
+   public onChangeFilter(value: any): void {
+      this.selectFilter.emit(value);
       this.emitValue(false, StSearchEventOrigin.FILTER);
    }
 

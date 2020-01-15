@@ -10,6 +10,10 @@
 * st-progress-bar: Option for a bigger progress-bar
 * st-search: New Output when select another filter
 
+**Fixed bugs:**
+
+* st-select: Fix bug in scroll listener. Sometimes when user does scroll it wasn't called 
+
 **Breaking changes:**
 
 * st-select: Renamed input 'search' to 'enabledSearcher' and change all internal search logic by event emitted to outside.

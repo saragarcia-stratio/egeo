@@ -22,7 +22,8 @@
          <ng-content select=[dropdown-header]></ng-content>
          <ul *ngIf="!isItemGroup && ((items && items.length) || emptyListMessage)" [attr.aria-hidden]="!active"
              aria-label="submenu" [style.maxHeight]="menuMaxHeight"
-             [attr.id]="menuId" #itemList>
+             [attr.id]="menuId" #itemList
+            (scroll)="onHandleScroll()">
             <st-dropdown-menu-item
                *ngFor="let item of items; let i = index"
                [attr.id]="getItemId(item.value)"
@@ -35,7 +36,7 @@
             <div *ngIf="isLoading" class="spinner-container">
                <st-spinner class="spinner"></st-spinner>
             </div>
-            <div *ngIf="!items || items.length === 0" class="without-results st-dropdown-menu-without-results"
+            <div *ngIf="!items || !items.length" class="without-results st-dropdown-menu-without-results"
                  [style.maxWidth]='widthMenu'>
                {{emptyListMessage}}
             </div>
@@ -60,7 +61,7 @@
                      </st-dropdown-menu-item>
 
                      <div class="without-results st-dropdown-menu-without-results" [style.maxWidth]='widthMenu'
-                          *ngIf="!group || !group.items || group.items.length === 0">
+                          *ngIf="!group || !group.items || !group.items.length">
                         {{emptyListMessage}}
                      </div>
                   </ul>

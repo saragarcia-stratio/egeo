@@ -25,11 +25,9 @@ import {
    SimpleChanges,
    ViewChild
 } from '@angular/core';
-import { fromEvent, Subject } from 'rxjs';
 
 import { StPopOffset, StPopPlacement } from '../st-pop/st-pop.model';
 import { ARROW_KEY_CODE, StDropDownMenuGroup, StDropDownMenuItem, StDropDownVisualMode } from './st-dropdown-menu.interface';
-import { auditTime, takeUntil } from 'rxjs/operators';
 
 /**
  * @description {Component} [Dropdown Menu]
@@ -101,7 +99,6 @@ export class StDropdownMenuComponent implements AfterViewInit, OnInit, OnChanges
 
    private _itemHeight: number = 42;
    private _focusedOptionPos: number = -1;
-   private _disableScroll$: Subject<void> = new Subject();
    private _focusListenerFn: () => void;
 
    constructor(private el: ElementRef, private cd: ChangeDetectorRef, private renderer: Renderer2) {
@@ -147,13 +144,6 @@ export class StDropdownMenuComponent implements AfterViewInit, OnInit, OnChanges
    }
 
    ngOnChanges(changes: SimpleChanges): void {
-      if (changes && changes.active) {
-         if (changes.active.currentValue) {
-            setTimeout(() => this._handleScroll());
-         } else {
-            this._disableScroll$.next();
-         }
-      }
       if (changes && changes.active && changes.active.currentValue && this.selectedItem && this.moveSelected) {
          // Only can do this functionality with timeout because we need to wait for angular to load new DOM
          // with items before move scroll
@@ -178,6 +168,13 @@ export class StDropdownMenuComponent implements AfterViewInit, OnInit, OnChanges
       this.change.emit(value);
    }
 
+   onHandleScroll(): void {
+      const element = this.itemListElement.nativeElement;
+      if (element.scrollHeight - element.scrollTop === element.clientHeight && !this.isLoading) {
+         this.scrollAtBottom.emit();
+      }
+   }
+
    @HostListener('window:resize')
    @HostListener('window:load')
    updateWidth(): void {
@@ -197,7 +194,6 @@ export class StDropdownMenuComponent implements AfterViewInit, OnInit, OnChanges
       if (this._focusListenerFn) {
          this._focusListenerFn();
       }
-      this._disableScroll$.next();
    }
 
    private displayAsMenuList(): boolean {
@@ -206,19 +202,6 @@ export class StDropdownMenuComponent implements AfterViewInit, OnInit, OnChanges
 
    private getItemValueMerged(value: any): string {
       return value.toString().replace(/\s+/g, '_');
-   }
-
-   private _handleScroll(): void {
-      if (this.itemListElement) {
-         fromEvent(this.itemListElement.nativeElement, 'scroll').pipe(auditTime(200))
-         .pipe(takeUntil(this._disableScroll$))
-         .subscribe(() => {
-            const element = this.itemListElement.nativeElement;
-            if (element.scrollHeight - element.scrollTop === element.clientHeight && !this.isLoading) {
-               this.scrollAtBottom.emit();
-            }
-         });
-      }
    }
 
    private getSelectedItemPosition(): number {

@@ -4,7 +4,7 @@
 
 * Pending changelog
 
-## 18.0.0 (upcoming)
+## 18.0.0 (January 16, 2020)
 
 **New features:**
 

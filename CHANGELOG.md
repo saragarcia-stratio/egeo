@@ -2,7 +2,10 @@
 
 ## 19.0.0 (upcoming)
 
-* Pending changelog
+**Fixed bugs:**
+
+* st-dropdown-menu: Do not diplay dropdown items in several lines with menu list visualization
+
 
 ## 18.0.0 (January 16, 2020)
 

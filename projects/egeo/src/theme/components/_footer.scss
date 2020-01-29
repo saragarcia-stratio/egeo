@@ -12,11 +12,11 @@
 @import '../constants/colors';
 
 .st-footer {
-   background-color: $neutral-00;
-   background: $action-secondary-07;
+   background-color: $neutral-full;
+   background: $space-110;
    font-weight: 100;
    font-size: $egeo-font-size-xxsmall;
-   color: $neutral-00;
+   color: $neutral-full;
 
    .st-footer-container {
       margin: 0 auto;
@@ -31,7 +31,7 @@
 
 .st-footer-links {
    cursor: pointer;
-   color: $neutral-00;
+   color: $neutral-full;
    font-weight: normal;
    font-size: $egeo-font-size-xxsmall;
 
@@ -43,7 +43,7 @@
       font-stretch: normal;
       line-height: normal;
       letter-spacing: normal;
-      color: $neutral-00;
+      color: $neutral-full;
       margin-left: 15px;
    }
 }

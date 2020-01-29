@@ -58,7 +58,7 @@
 
       &__pagination {
          border-bottom-left-radius: 4px;
-         color: $neutral-00;
+         color: $neutral-full;
          display: flex;
          align-items: center;
          padding: 5px;
@@ -66,22 +66,22 @@
          height: 40px;
 
          &.critical {
-            background-color: $status-critical-hover;
+            background-color: $error-120;
          }
          &.success {
-            background-color: $status-success-hover;
+            background-color: $success-120;
          }
 
          &.warning {
-            background-color: $status-warning-hover;
+            background-color: $warning;
          }
 
          &.running {
-            background-color: $action-primary-hover;
+            background-color: $action-120;
          }
 
          &.default {
-            color: $neutral-13;
+            color: $neutral;
             border: 0px;
             box-shadow: 0 1px 4px 1px rgba(124, 124, 124, 0.15);
          }

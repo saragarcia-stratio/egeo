@@ -20,25 +20,25 @@
    }
 
    .arrow {
-      background-color: $neutral-00;
+      background-color: $neutral-full;
    }
 
    .arrow[disabled] {
-      color: $neutral-07;
+      color: $neutral-30;
       background-color: $neutral-14;
       cursor: not-allowed;
    }
 
    .st-input:focus::placeholder {
-      color: $neutral-07;
+      color: $neutral-30;
    }
 
    &.st-select-opened {
       .st-label {
-         color: $action-primary-default;
+         color: $action;
       }
       .arrow {
-         color: $action-primary-default;
+         color: $action;
       }
       .st-input {
          border-bottom-left-radius: 0;

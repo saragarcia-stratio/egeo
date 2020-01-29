@@ -28,7 +28,7 @@ li {
    list-style: none;
    padding: 0 25px;
    cursor: pointer;
-   color: $neutral-07;
+   color: $neutral-30;
    font-size: $egeo-font-size-medium;
    line-height: $egeo-line-height-xxsmall;
    font-weight: normal;
@@ -39,7 +39,7 @@ li {
 
 
    &:hover {
-      color: $action-primary-light;
+      color: $action-10;
    }
 
    &.active {

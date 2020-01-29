@@ -18,22 +18,22 @@
 
 .sth-alert-box {
    width: 100%;
-   color: $neutral-00;
+   color: $neutral-full;
    font-weight: 400;
    min-height: 100px;
    display: block;
    position: relative;
 
    &-success {
-      background: $status-success-default;
+      background: $success;
    }
 
    &-warning {
-      background: $status-warning-hover;
+      background: $warning;
    }
 
    &-error {
-      background: $status-critical-hover;
+      background: $error-120;
    }
 
    .sth-alert-box-close-button {

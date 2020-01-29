@@ -10,47 +10,61 @@
  */
 
 // brand:
-$brand: #37b5e4 !default;
+$brand: #37B5E4 !default;
 
 // action:
-$action-primary-default:#128bde !default;
-$action-primary-hover:  #0979c4 !default;
-$action-primary-light:  #e7f3fb !default;
-$action-secondary-01:   #f3f6f8 !default;
-$action-secondary-02:   #eaeff5 !default;
-$action-secondary-03:   #cdd6df !default;
-$action-secondary-04:   #aab7c4 !default;
-$action-secondary-05:   #8898a7 !default;
-$action-secondary-06:   #6c7b8b !default;
-$action-secondary-07:   #0f1b27 !default;
+$action: #0776DF !default;
+$action-10: #E6F1FC !default;
+$action-40: #9CC8F2 !default;
+$action-60: #6AADEC !default;
+$action-80: #3991E5 !default;
+$action-120: #065EB2 !default;
+$action-150: #033B70 !default;
 
-// status:
-$status-success-default:   #2cce93 !default;
-$status-success-light:     #d4f9ea !default;
-$status-success-hover:     #0baa70 !default;
-$status-warning-default:   #fa932f !default;
-$status-warning-light:     #fff1e3 !default;
-$status-warning-hover:     #ed7e13 !default;
-$status-critical-default:  #ec445c !default;
-$status-critical-light:    #ffe8eb !default;
-$status-critical-hover:    #c9253c !default;
+// space:
+$space: #27323D !default;
+$space-5: #F3F6F8 !default;
+$space-10: #EAEFF5 !default;
+$space-20: #CDD6DF !default;
+$space-30: #AAB7C4 !default;
+$space-50: #8898A7 !default;
+$space-70: #6C7B8B !default;
+$space-80: #566574 !default;
+$space-110: #0F1B27 !default;
+
+// success:
+$success: #0CAA70 !default;
+$success-10: #E7F7F1 !default;
+$success-120: #0A885A !default;
+$success-140: #076643 !default;
+
+// warning:
+$warning: #EC7E13 !default;
+$warning-10: #FDF2E7 !default;
+$warning-120: #BD650F !default;
+$waning-140: #8E4C0B !default;
+
+// error:
+$error: #DF2935 !default;
+$error-10: #FCEAEB !default;
+$error-120: #B2212A !default;
+$error-140: #861920 !default;
 
 // neutral:
-$neutral-00: #ffffff !default;
-$neutral-01: #fafafa !default;
-$neutral-02: #f4f4f4 !default;
-$neutral-03: #ededed !default;
-$neutral-04: #e5e5e5 !default;
-$neutral-05: #dedede !default;
-$neutral-06: #cbcbcb !default;
-$neutral-07: #b5b5b5 !default;
-$neutral-08: #999999 !default;
-$neutral-09: #777777 !default;
-$neutral-10: #555555 !default;
-$neutral-11: #3c3c3c !default;
-$neutral-12: #242424 !default;
-$neutral-13: #111111 !default;
-$neutral-14: #f0f0f0 !default;
+$neutral: #111111 !default;
+$neutral-2: #FAFAFA !default;
+$neutral-4: #F5F5F5 !default;
+$neutral-8: #ECECEC !default;
+$neutral-10: #E7E7E7 !default;
+$neutral-15: #DBDBDB !default;
+$neutral-20: #CFCFCF !default;
+$neutral-30: #B8B8B8 !default;
+$neutral-40: #A0A0A0 !default;
+$neutral-50: #888888 !default;
+$neutral-60: #707070 !default;
+$neutral-70: #585858 !default;
+$neutral-80: #414141 !default;
+$neutral-full: #FFFFFF !default;
 
 // misc:
 $misc-coral:            #fa7167 !default;
@@ -70,6 +84,8 @@ $misc-viking-light:     #cde3f8 !default;
 $misc-lavender:         #cd89d2 !default;
 $misc-lavender-light:   #f5daf7 !default;
 
-// inputs:
-$input-field-onfocus:   #88c5ee !default;
-$input-field-error:     #f59ea9 !default;
+// deprecated:
+$status-warning-default: #fa932f !default;
+$neutral-14: #f0f0f0 !default;
+$input-field-onfocus: #88c5ee !default;
+$input-field-error: #f59ea9 !default;

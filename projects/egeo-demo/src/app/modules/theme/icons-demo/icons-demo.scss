@@ -22,7 +22,7 @@
    align-items: center;
    left: 0;
    width: 100%;
-   background-color: $neutral-00;
+   background-color: $neutral-full;
 
    .header-container {
       display: flex;
@@ -37,8 +37,8 @@
       height: 40px;
       width: 614px;
       border-radius: 5px;
-      background-color: $neutral-00;
-      color: $action-primary-default;
+      background-color: $neutral-full;
+      color: $action;
       display: flex;
       align-items: center;
       flex-wrap: nowrap;
@@ -55,7 +55,7 @@
          position: absolute;
          right: 20px;
          top: 10px;
-         color: $neutral-06;
+         color: $neutral-20;
          font-size: $egeo-font-size-large;
       }
    }

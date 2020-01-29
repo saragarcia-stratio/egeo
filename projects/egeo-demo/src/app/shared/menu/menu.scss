@@ -23,7 +23,7 @@
    width: 100%;
    overflow-y: hidden;
    z-index: $header-z-index;
-   background-color: $neutral-02;
+   background-color: $neutral-4;
 
    &:hover {
       overflow-y: auto;
@@ -32,19 +32,19 @@
    &::-webkit-scrollbar-track
    {
       border-radius: 10px;
-      background-color: $neutral-00;
+      background-color: $neutral-full;
    }
 
    &::-webkit-scrollbar
    {
       width: 6px;
-      background-color: $neutral-00;
+      background-color: $neutral-full;
    }
 
    &::-webkit-scrollbar-thumb
    {
       border-radius: 8px;
-      background-color: $neutral-06;
+      background-color: $neutral-20;
    }
 }
 
@@ -55,7 +55,7 @@ ul {
    height: 100%;
    width: 100%;
    padding: 30px 0;
-   background-color: $neutral-02;
+   background-color: $neutral-4;
 }
 
 li {
@@ -65,14 +65,14 @@ li {
    font-weight: 400;
    font-size: $egeo-font-size-xsmall;
    line-height: $egeo-line-height-large;
-   color: $action-secondary-06;
+   color: $space-70;
    margin-bottom: 15px;
    white-space: nowrap;
    position: relative;
    cursor: pointer;
 
    &.active {
-      color: $action-secondary-07;
+      color: $space-110;
       &:before {
          content: '';
          position: absolute;

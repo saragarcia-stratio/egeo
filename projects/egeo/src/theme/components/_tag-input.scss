@@ -14,11 +14,11 @@
 
    &__label {
       &.error {
-         color: $status-critical-default;
+         color: $error;
       }
 
       &.active {
-         color: $action-primary-default;
+         color: $action;
       }
    }
 
@@ -28,28 +28,28 @@
       height: 100% !important;
 
       &.error {
-         border-color: $status-critical-default;
+         border-color: $error;
       }
 
       &.active {
          border-color: $input-field-onfocus;
          .remove-tag-button {
-            color: $neutral-12;
+            color: $neutral-80;
          }
       }
 
       &[disabled] {
          pointer-events: none;
-         border-color: $neutral-06;
+         border-color: $neutral-20;
          background-color: $neutral-14;
       }
    }
 
    &__item {
-      background-color: $action-secondary-02;
+      background-color: $space-10;
       border-radius: 4px;
       padding: 5px 10px;
-      color: $action-secondary-07;
+      color: $space-110;
       &:focus {
          background-color: $input-field-onfocus;
       }
@@ -57,20 +57,20 @@
 
    &__text {
       &:focus {
-         background-color: $action-secondary-02;
+         background-color: $space-10;
          border-radius: 4px;
       }
 
       &.error {
-         color: $status-critical-default;
+         color: $error;
       }
    }
 
    &__placeholder {
-      color: $neutral-09;
+      color: $neutral-50;
 
       &[disabled] {
-         color: $neutral-07;
+         color: $neutral-30;
       }
    }
 
@@ -96,17 +96,17 @@
       font-stretch: normal;
       line-height: $egeo-line-height-xxsmall;
       letter-spacing: normal;
-      color: $neutral-10;
+      color: $neutral-60;
    }
 
    .remove-tag-button {
       font-size: $egeo-font-size-xxxsmall;
       line-height: $egeo-line-height-xxxsmall;
-      color: $action-secondary-05;
+      color: $space-50;
       margin-left: 10px;
       cursor: pointer;
       &:hover {
-         color: $neutral-13;
+         color: $neutral;
       }
    }
 }

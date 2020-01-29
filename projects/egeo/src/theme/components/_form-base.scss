@@ -22,9 +22,9 @@
 
 .st-form-field {
    .st-label {
-      color: $neutral-10;
+      color: $neutral-60;
       &.active {
-         color: $action-primary-default;
+         color: $action;
       }
    }
 
@@ -34,25 +34,25 @@
          border-color: $input-field-onfocus;
       }
       &:disabled {
-         border-color: $neutral-06;
+         border-color: $neutral-20;
          background-color: $neutral-14;
-         color: $neutral-07;
+         color: $neutral-30;
          overflow: auto;
          resize: none;
          cursor: not-allowed;
       }
       &:disabled:placeholder {
-         color: $neutral-07;
+         color: $neutral-30;
       }
    }
 
    &.ng-invalid:not(.ng-pristine) {
       .st-label {
-         color: $status-critical-default;
+         color: $error;
       }
       input,
       textarea {
-         border-color: $status-critical-default;
+         border-color: $error;
       }
    }
 }
@@ -66,9 +66,9 @@
    height: 100%;
    cursor: pointer;
    font-size: $egeo-font-size-medium;
-   color: $neutral-09;
+   color: $neutral-50;
 
    &:hover {
-      color: $neutral-11;
+      color: $neutral-70;
    }
 }

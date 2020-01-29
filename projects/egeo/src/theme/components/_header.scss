@@ -22,7 +22,7 @@
    display: flex;
    flex-direction: row;
    flex-wrap: nowrap;
-   background-color: $action-secondary-07;
+   background-color: $space-110;
    z-index: $header-z-index;
 
    .sth-header-container {
@@ -85,7 +85,7 @@
 }
 
 .sth-header-menu-option {
-   color: $neutral-07;
+   color: $neutral-30;
    font-weight: 400;
    font-family: $egeo-nunito-sans;
    font-size: $egeo-font-size-medium;
@@ -96,11 +96,11 @@
    align-items: flex-end;
 
    &:hover {
-      color: $neutral-00;
+      color: $neutral-full;
    }
 
    &.active {
-      color: $neutral-00;
+      color: $neutral-full;
    }
    .sth-header-menu-option-name {
       display: flex;

@@ -20,35 +20,35 @@
 
 .st-form-field {
    .st-label {
-      color: $neutral-08;
+      color: $neutral-40;
       &:focus {
-         color: $action-primary-default;
+         color: $action;
       }
       &[disabled] {
-         color: $neutral-06;
+         color: $neutral-20;
       }
    }
 
    input,
    text-area {
       &:focus {
-         border-color: $action-primary-default;
+         border-color: $action;
       }
       &:disabled {
-         border-color: $neutral-06;
+         border-color: $neutral-20;
       }
       &:disabled:placeholder {
-         color: $neutral-05;
+         color: $neutral-15;
       }
    }
 
    &.ng-invalid:not(.ng-pristine) {
       .st-label {
-         color: $status-critical-default;
+         color: $error;
       }
       input,
       text-area {
-         border-color: $status-critical-default;
+         border-color: $error;
 
       }
    }

@@ -14,7 +14,7 @@
 .st-breadcrumbs {
    &__item {
       font-weight: 600;
-      color: $action-primary-default;
+      color: $action;
       font-family: $egeo-nunito-sans;
       font-size: $egeo-font-size-xsmall;
 
@@ -22,14 +22,14 @@
          font-family: $egeo-stratio-icons;
          content: "\E605";
          font-size: $egeo-font-size-xxxsmall;
-         color: $neutral-10;
+         color: $neutral-60;
       }
 
       &--text {
          padding: 4px 6px;
 
          &:hover {
-            color: $action-primary-hover;
+            color: $action-120;
          }
 
          i + span {
@@ -39,7 +39,7 @@
 
       .last & {
          &--text {
-            color: $neutral-13;
+            color: $neutral;
             padding-right: 0;
          }
       }

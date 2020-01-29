@@ -18,12 +18,12 @@
 }
 
 .st-modal-container {
-   background-color: rgba($neutral-13, 0.3);
+   background-color: rgba($neutral, 0.3);
    z-index: $modal-z-index;
 
    .st-modal {
-      background-color: $neutral-00;
-      box-shadow: 0 1px 10px 0 rgba($neutral-10, 0.8);
+      background-color: $neutral-full;
+      box-shadow: 0 1px 10px 0 rgba($neutral-60, 0.8);
       border-radius: 4px;
       display: flex;
       flex-direction: column;
@@ -36,13 +36,13 @@
          border-radius: 0;
          .st-modal-header {
             border-radius: 0;
-            background-color: $neutral-00;
+            background-color: $neutral-full;
          }
-         background-color: $neutral-02;
+         background-color: $neutral-4;
       }
 
       .st-modal-header {
-         background-color: $neutral-02;
+         background-color: $neutral-4;
          padding: 0 30px;
          border-radius: 4px 4px 0 0;
 
@@ -51,14 +51,14 @@
             font-weight: 900;
             font-size: $egeo-font-size-medium;
             line-height: $egeo-line-height-medium;
-            color: $neutral-13;
+            color: $neutral;
             white-space: nowrap;
          }
 
          .close-button {
             font-family: $egeo-stratio-icons;
             font-size: $egeo-font-size-large;
-            color: $neutral-13;
+            color: $neutral;
             font-weight: normal;
             font-style: normal;
             font-stretch: normal;
@@ -76,7 +76,7 @@
             font-size: $egeo-font-size-xxlarge;
             line-height: $egeo-line-height-xxxlarge;
             text-align: left;
-            color: $action-secondary-07;
+            color: $space-110;
             margin-bottom: 15px;
             word-break: break-all;
          }
@@ -85,7 +85,7 @@
             font-size: $egeo-font-size-small;
             line-height: $egeo-line-height-small;
             text-align: left;
-            color: $neutral-11;
+            color: $neutral-70;
          }
       }
 

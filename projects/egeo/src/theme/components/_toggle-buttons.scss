@@ -18,22 +18,22 @@
    }
 
    .sth-toggle-buttons__buttons {
-      border-color: $action-secondary-03;
+      border-color: $space-20;
    }
 
    .sth-toggle-buttons__button {
-      color: $neutral-12;
-      background: $neutral-00;
+      color: $neutral-80;
+      background: $neutral-full;
       font-size: $egeo-font-size-xxsmall;
    }
 
    .sth-toggle-buttons__button:hover {
-      background: $action-primary-light;
+      background: $action-10;
    }
 
    .sth-toggle-buttons__button--active,
    .sth-toggle-buttons__button--active:hover {
-      background: $action-primary-light;
+      background: $action-10;
       cursor: default;
    }
 }

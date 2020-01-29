@@ -15,9 +15,9 @@
    font-weight: 400;
    font-size: $egeo-font-size-xsmall;
    line-height: $egeo-line-height-xsmall;
-   color: $action-secondary-07;
-   background-color: $neutral-00;
-   border: 1px solid $neutral-07;
+   color: $space-110;
+   background-color: $neutral-full;
+   border: 1px solid $neutral-30;
    padding: 10px 17px 10px 15px;
    border-radius: 4px;
    vertical-align: bottom;
@@ -28,19 +28,19 @@
       min-height: $egeo-line-height-xsmall;
    }
    &::placeholder {
-      color: $neutral-09;
+      color: $neutral-50;
    }
 
    &:focus {
-      border-color: $action-primary-default;
+      border-color: $action;
    }
 
    &:disabled {
-      border-color: $neutral-06;
-      color: $neutral-01;
+      border-color: $neutral-20;
+      color: $neutral-2;
 
       &::placeholder {
-         color: $neutral-08;
+         color: $neutral-40;
       }
    }
 }

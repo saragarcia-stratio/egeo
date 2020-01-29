@@ -19,7 +19,7 @@ $egeo-fontface-src: '/assets/fonts';
 @import '~prismjs/themes/prism.css';
 
 body {
-   color: $neutral-08;
+   color: $neutral-40;
    font-weight: 400;
    font-size: 16px;
    font-family: $egeo-nunito-sans;
@@ -36,7 +36,7 @@ main {
 .page-title {
    border-bottom: 2px solid;
    border-color: $brand;
-   color: $action-secondary-07;
+   color: $space-110;
    display: inline-block;
    font-size: $egeo-font-size-xxlarge;
    font-weight: normal;
@@ -100,7 +100,7 @@ main {
    st-prism-highlight {
       pre {
          margin: 0px;
-         background-color: $neutral-00;
+         background-color: $neutral-full;
       }
    }
 }
@@ -114,7 +114,7 @@ main {
       font-stretch: normal;
       line-height: $egeo-line-height-xxxlarge;
       letter-spacing: normal;
-      color: $neutral-13;
+      color: $neutral;
       height: 100px;
    }
 
@@ -125,7 +125,7 @@ main {
       font-stretch: normal;
       line-height: $egeo-line-height-xlarge;
       letter-spacing: normal;
-      color: $neutral-13;
+      color: $neutral;
       padding: 26px 0;
       display: inline-block;
    }
@@ -137,7 +137,7 @@ main {
       font-stretch: normal;
       line-height: $egeo-line-height-large;
       letter-spacing: normal;
-      color: $neutral-13;
+      color: $neutral;
       padding: 26px 0;
       display: inline-block;
    }
@@ -149,7 +149,7 @@ main {
       font-stretch: normal;
       line-height: $egeo-line-height-medium;
       letter-spacing: normal;
-      color: $neutral-13;
+      color: $neutral;
       padding-bottom: 20px;
    }
 
@@ -165,7 +165,7 @@ main {
       font-weight: 400;
       font-size: $egeo-font-size-small;
       line-height: $egeo-line-height-large;
-      color: $neutral-11;
+      color: $neutral-70;
       padding-left: 25px;
    }
 

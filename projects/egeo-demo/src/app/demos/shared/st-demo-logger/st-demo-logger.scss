@@ -29,8 +29,8 @@
 }
 
 .st-logger-tab {
-   background-color: $neutral-00;
-   box-shadow: 0px 2px 14px 0 $neutral-05;
+   background-color: $neutral-full;
+   box-shadow: 0px 2px 14px 0 $neutral-15;
    position: relative;
    border-radius: 0 0 0 5px;
    position: absolute;
@@ -38,7 +38,7 @@
    &:after {
       height: 100%;
       width: 5px;
-      background-color: $neutral-00;
+      background-color: $neutral-full;
       content: '';
       display: block;
       position: absolute;
@@ -59,14 +59,14 @@
 .st-logger-container {
    height: 100%;
    padding: 30px;
-   box-shadow: 0 2px 14px 0 $neutral-05;
+   box-shadow: 0 2px 14px 0 $neutral-15;
    border-left: solid 1px rgb(246, 246, 246);
-   background-color: $neutral-00;
+   background-color: $neutral-full;
    overflow-y: auto;
    flex-grow: 1;
 
    p:first-child {
-      border-top: solid 1px $neutral-04;
+      border-top: solid 1px $neutral-10;
    }
 }
 
@@ -74,12 +74,12 @@
 .warning,
 .critical,
 .debug {
-   color: $neutral-10;
+   color: $neutral-60;
    font-weight: 400;
    font-size: $egeo-font-size-xsmall;
    line-height: $egeo-line-height-xxsmall;
    display: inline-flex;
-   border-bottom: solid 1px $neutral-04;
+   border-bottom: solid 1px $neutral-10;
    padding: 3px;
    width: 100%;
    &:before {
@@ -91,21 +91,21 @@
 }
 
 .info {
-   color: $action-primary-hover;
+   color: $action-120;
    &:before {
       content: '\e615';
    }
 }
 
 .warning {
-   color: $status-warning-hover;
+   color: $warning;
    &:before {
       content: '\e613';
    }
 }
 
 .critical {
-   color: $status-critical-default;
+   color: $error;
    &:before {
       content: '\e043';
    }

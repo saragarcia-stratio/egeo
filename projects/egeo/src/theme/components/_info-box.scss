@@ -12,24 +12,24 @@
 @import '../constants/colors';
 
 .sth-info-box {
-   background-color: $neutral-02;
-   border-bottom: 1px solid $neutral-04;
+   background-color: $neutral-4;
+   border-bottom: 1px solid $neutral-10;
 }
 
 .sth-info-box__header {
-   background-color: $neutral-03;
+   background-color: $neutral-8;
 }
 
 .sth-info-box__header__icon {
    text-align: center;
    font-family: $egeo-stratio-icons;
    font-size: $egeo-font-size-large;
-   color: $neutral-09;
+   color: $neutral-50;
 }
 
 .sth-info-box__header__text {
    text-align: center;
-   color: $neutral-09;
+   color: $neutral-50;
    text-transform: uppercase;
    font-weight: normal;
 }

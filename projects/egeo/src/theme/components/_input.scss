@@ -42,11 +42,11 @@
 }
 
 .st-input::placeholder {
-   color: $neutral-07;
+   color: $neutral-30;
 }
 
 .st-input-error-message {
    font-size: 13px;
-   color: $status-critical-default;
+   color: $error;
 }
 

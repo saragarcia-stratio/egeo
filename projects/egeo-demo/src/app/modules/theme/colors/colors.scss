@@ -19,7 +19,7 @@
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
-    background-color: $neutral-00;
+    background-color: $neutral-full;
     width: 100%;
 
     .header-container {
@@ -35,8 +35,8 @@
        height: 40px;
        width: 614px;
        border-radius: 5px;
-       background-color: $neutral-00;
-       color: $action-primary-default;
+       background-color: $neutral-full;
+       color: $action;
        display: flex;
        align-items: center;
        flex-wrap: nowrap;
@@ -53,7 +53,7 @@
           position: absolute;
           right: 20px;
           top: 10px;
-          color: $neutral-06;
+          color: $neutral-20;
           font-size: $egeo-font-size-large;
        }
     }
@@ -80,7 +80,7 @@
    .subtitle {
       font-weight: 400;
       font-size: $egeo-font-size-xlarge;
-      color: $neutral-11;
+      color: $neutral-70;
       text-transform: capitalize;
       margin-bottom: 5px;
    }

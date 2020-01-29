@@ -16,26 +16,26 @@
 
    & > label {
       line-height: $egeo-line-height-xsmall;
-      color: $action-secondary-07;
+      color: $space-110;
       font-size: $egeo-font-size-xsmall;
       font-weight: 400;
    }
 }
 
 .st-switch__circle {
-   background-color: $neutral-00;
+   background-color: $neutral-full;
 }
 
 .st-switch--on {
    .st-switch__box {
-      background-color: $action-primary-default;
+      background-color: $action;
    }
 }
 
 .st-switch--off {
    .st-switch__box {
-      background-color: $neutral-06;
-      border: solid 1px $neutral-06;
+      background-color: $neutral-20;
+      border: solid 1px $neutral-20;
    }
 }
 

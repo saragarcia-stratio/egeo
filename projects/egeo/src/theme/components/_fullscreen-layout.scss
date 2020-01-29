@@ -14,12 +14,12 @@
 
 .st-fullscreen-layout {
    border-radius: 0;
-   background-color: $neutral-01;
+   background-color: $neutral-2;
    z-index: $fullscreen-z-index;
 
    .st-fullscreen-layout-header {
       border-radius: 0;
-      background-color: $neutral-00;
+      background-color: $neutral-full;
       z-index: $fullscreen-z-index + 1;
 
       .st-fullscreen-layout-title {
@@ -28,7 +28,7 @@
          font-family: $egeo-nunito-sans;
          font-size: $egeo-font-size-medium;
          line-height: $egeo-line-height-medium;
-         color: $neutral-13;
+         color: $neutral;
          white-space: nowrap;
       }
    }
@@ -45,9 +45,9 @@
 
 
 .st-fullscreen-layout.full-width {
-   background-color: $neutral-00;
+   background-color: $neutral-full;
    .st-fullscreen-layout-header {
-      border-bottom: 1px solid $action-secondary-03;
+      border-bottom: 1px solid $space-20;
    }
    .st-fullscreen-layout-container {
       padding-top: 70px;

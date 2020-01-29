@@ -15,20 +15,20 @@
 $hover: '&:not([disabled]):hover';
 
 %button-label-small {
-   color:         $neutral-00;
+   color:         $neutral-full;
    font-family:   $egeo-nunito-sans;
    font-weight:   600;
    font-size:     $egeo-font-size-xxsmall;
    line-height:   $egeo-line-height-xxsmall;
    height:        25px;
    &[disabled] {
-      color:      $neutral-06;
+      color:      $neutral-20;
       cursor:     not-allowed;
 
    }
 }
 %button-label-small-secondary {
-   color:         $action-primary-default;
+   color:         $action;
    font-family:   $egeo-nunito-sans;
    font-weight:   600;
    font-size:     $egeo-font-size-xxsmall;
@@ -37,43 +37,43 @@ $hover: '&:not([disabled]):hover';
 }
 /// tipography EXTENDS (@extend %button-label-regular;):
 %button-label-regular {
-   color:         $neutral-00;
+   color:         $neutral-full;
    font-family:   $egeo-nunito-sans;
    font-weight:   600;
    font-size:     $egeo-font-size-small;
    line-height:   $egeo-line-height-small;
    height:        40px;
    &[disabled] {
-      color:      $neutral-06;
+      color:      $neutral-20;
       cursor:     not-allowed;
    }
 }
 %button-label-regular-secondary {
-   color:         $action-primary-default;
+   color:         $action;
    font-family:   $egeo-nunito-sans;
    font-weight:   600;
    font-size:     $egeo-font-size-small;
    line-height:   $egeo-line-height-small;
    height:        40px;
    &[disabled] {
-      color:      $neutral-06;
+      color:      $neutral-20;
       cursor:     not-allowed;
    }
 }
 %button-label-large {
-   color:         $neutral-00;
+   color:         $neutral-full;
    font-family:   $egeo-nunito-sans;
    font-weight:   600;
    font-size:     $egeo-font-size-medium;
    line-height:   $egeo-line-height-medium;
    height:        50px;
    &[disabled] {
-      color:      $neutral-06;
+      color:      $neutral-20;
       cursor:     not-allowed;
    }
 }
 %button-label-large-secondary {
-   color:         $action-primary-default;
+   color:         $action;
    font-family:   $egeo-nunito-sans;
    font-weight:   600;
    font-size:     $egeo-font-size-medium;
@@ -81,17 +81,17 @@ $hover: '&:not([disabled]):hover';
    height:        50px;
 }
 %button-toolbar-ico-default {
-   color:         $neutral-10;
+   color:         $neutral-60;
    font-family:   $egeo-stratio-icons;
    font-size:     $egeo-font-size-medium;
    line-height:   $egeo-line-height-medium;
    &[disabled] {
-      color:      $neutral-06;
+      color:      $neutral-20;
       cursor:     not-allowed;
    }
 }
 .button-link-primary {
-   color:         $action-primary-default;
+   color:         $action;
    font-family:   $egeo-nunito-sans;
    font-weight:   normal;
    font-size:     $egeo-font-size-small;
@@ -101,7 +101,7 @@ $hover: '&:not([disabled]):hover';
       cursor:     not-allowed;
    }
    &:not([disabled]):hover {
-      color:      $action-primary-hover;
+      color:      $action-120;
    }
 
    &.small {
@@ -110,18 +110,18 @@ $hover: '&:not([disabled]):hover';
    }
 }
 .button-link-secondary {
-   color:         $neutral-09;
+   color:         $neutral-50;
    font-family:   $egeo-nunito-sans;
    font-weight:   normal;
    font-size:     $egeo-font-size-small;
    line-height:   $egeo-line-height-small;
    text-decoration: underline;
    &[disabled] {
-      color:      $neutral-06;
+      color:      $neutral-20;
       cursor:     not-allowed;
    }
    &:not([disabled]):hover {
-      color:      $neutral-10;
+      color:      $neutral-60;
    }
    &.small {
       font-size:     $egeo-font-size-xxsmall;
@@ -178,53 +178,53 @@ $hover: '&:not([disabled]):hover';
    }
 
    &.button-primary {
-      background-color: $action-primary-default;
+      background-color: $action;
 
       #{$hover} {
-         background-color: $action-primary-hover;
+         background-color: $action-120;
       }
    }
 
    &.button-secondary-line {
       @extend %button-label-regular-secondary;
-      background-color: $neutral-00;
-      border: solid $action-primary-default 1px;
+      background-color: $neutral-full;
+      border: solid $action 1px;
       padding: .625rem 1.8125rem;
-      color: $action-primary-default;
+      color: $action;
 
       #{$hover} {
-         color: $action-primary-hover;
-         border-color: $action-primary-hover;
+         color: $action-120;
+         border-color: $action-120;
       }
 
       &[disabled] {
-         background-color: $neutral-00;
-         border-color: $neutral-06;
+         background-color: $neutral-full;
+         border-color: $neutral-20;
       }
 
       &.large {
-         color: $action-primary-default;
+         color: $action;
          padding: .875rem 2.4375rem;
       }
       &.small {
-         color: $action-primary-default;
+         color: $action;
          padding: 0.2rem 1rem;
       }
    }
 
    &.button-secondary-gray {
-      background-color: $action-secondary-04;
+      background-color: $space-30;
 
       #{$hover} {
-         background-color: $action-secondary-05;
+         background-color: $space-50;
       }
    }
 
    &.button-critical {
-      background-color: $status-critical-default;
+      background-color: $error;
 
       #{$hover} {
-         background-color: $status-critical-hover;
+         background-color: $error-120;
       }
    }
 
@@ -232,27 +232,27 @@ $hover: '&:not([disabled]):hover';
       background-color: $status-warning-default;
 
       #{$hover} {
-         background-color: $status-warning-hover;
+         background-color: $warning;
       }
    }
 
    &.button-success {
-      background-color: $status-success-default;
+      background-color: $success;
 
       #{$hover} {
-         background-color: $status-success-hover;
+         background-color: $success-120;
       }
    }
 
    &.button-toolbar {
       @extend %button-toolbar-ico-default;
       border-radius: 4px;
-      border:solid 1px $neutral-03;
+      border:solid 1px $neutral-8;
       background-color: white;
 
       &[disabled] {
          border: none;
-         background-color: $neutral-03;
+         background-color: $neutral-8;
       }
 
       &.small {
@@ -262,7 +262,7 @@ $hover: '&:not([disabled]):hover';
       }
 
       #{$hover} {
-         border:solid 1px $neutral-07;
+         border:solid 1px $neutral-30;
       }
 
       i {

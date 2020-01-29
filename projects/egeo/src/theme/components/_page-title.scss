@@ -12,7 +12,7 @@
 @import '../constants/colors';
 
 .sth-page-title {
-   border-bottom: 2px solid $neutral-06;
+   border-bottom: 2px solid $neutral-20;
 }
 
 .sth-page-title-main-title {
@@ -21,28 +21,28 @@
 }
 
 .sth-page-title-title {
-  color: $neutral-11;
+  color: $neutral-70;
   text-transform: uppercase;
 }
 
 .sth-page-title-pre-title {
-   color: $neutral-07;
+   color: $neutral-30;
    text-transform: uppercase;
 }
 
 .sth-page-title-button-box {
-   border-right: 2px solid $neutral-06;
+   border-right: 2px solid $neutral-20;
 
    .st-temporal-button-style {
       border-radius: 100%;
-      border: 2px solid $neutral-08;
+      border: 2px solid $neutral-40;
       height: 30px;
       width: 30px;
       &:active {
          box-shadow: 0 0 0 2px $brand;
       }
       &:hover {
-         border: 2px solid $neutral-09 !important;
+         border: 2px solid $neutral-50 !important;
       }
       & i {
          padding: 0;
@@ -53,22 +53,22 @@
 
 
 .sth-error {
-   border-color: $status-critical-default !important;
+   border-color: $error !important;
 }
 
 .sth-error-text {
    font-size: 13px;
-   color: $status-critical-default;
+   color: $error;
 }
 
 .sth-button-edit {
-   color: $neutral-08;
+   color: $neutral-40;
 }
 
 .sth-editable {
    .sth-page-title-title {
       &:hover {
-         border-color: $neutral-04
+         border-color: $neutral-10
       }
    }
 }

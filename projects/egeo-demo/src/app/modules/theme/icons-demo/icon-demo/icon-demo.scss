@@ -17,8 +17,8 @@
 
 .icon-demo {
    padding: 20px;
-   color: $neutral-10;
-   background-color: $neutral-00;
+   color: $neutral-60;
+   background-color: $neutral-full;
    display: flex;
    flex-direction: column;
    width: 120px;
@@ -26,8 +26,8 @@
    margin: 2px;
 
    &:hover {
-      background-color: rgba($action-primary-hover, 0.8);
-      color: $action-primary-light;
+      background-color: rgba($action-120, 0.8);
+      color: $action-10;
    }
 
    .glyph {

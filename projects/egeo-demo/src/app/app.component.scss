@@ -28,10 +28,10 @@
    right: 5px;
    padding: 5px 15px;
    font-weight: bold;
-   color: $neutral-01;
+   color: $neutral-2;
    background-color: $status-warning-default;
 
    &:hover {
-      background-color: $status-warning-hover;
+      background-color: $warning;
    }
 }

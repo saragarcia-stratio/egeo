@@ -12,11 +12,11 @@
 @import '../constants/colors';
 
 .st-horizontal-tabs {
-   border-bottom: solid 1px $neutral-06;
+   border-bottom: solid 1px $neutral-20;
 }
 
 .tab {
-   color: $action-primary-default;
+   color: $action;
    text-decoration: none;
    font-family: $egeo-nunito-sans;
    font-weight: 600;
@@ -49,21 +49,21 @@
 
    &.error {
       &:after {
-         color: $status-critical-default;
+         color: $error;
       }
    }
 }
 
 .tab--active {
-   border-bottom: solid 2px $neutral-13;
+   border-bottom: solid 2px $neutral;
 
    &:focus {
       text-decoration: none;
       outline: none;
    }
-   color: $neutral-13 !important;
+   color: $neutral !important;
 }
 
 .line {
-   border-top: solid 2px $neutral-13;
+   border-top: solid 2px $neutral;
 }

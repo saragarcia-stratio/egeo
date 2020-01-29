@@ -13,9 +13,9 @@
 
 .st-sidebar {
    padding: 30px;
-   background-color: $neutral-00;
-   box-shadow: 2px 2px 5px 0 $neutral-03;
-   border: solid 1px $neutral-03;
+   background-color: $neutral-full;
+   box-shadow: 2px 2px 5px 0 $neutral-8;
+   border: solid 1px $neutral-8;
    text-transform: capitalize;
    font-family: $egeo-nunito-sans;
 
@@ -80,7 +80,7 @@
             padding-top: 15px;
             display: block;
             height: 0;
-            border-bottom: solid 1px $neutral-05;
+            border-bottom: solid 1px $neutral-15;
          }
 
          &:not(.item-list--inner) .item--complex > .item__label:before {
@@ -88,7 +88,7 @@
             font-family: $egeo-stratio-icons;
             display: inline-block;
             font-size: $egeo-font-size-small;
-            color: $neutral-07;
+            color: $neutral-30;
             padding-right: 6px;
             vertical-align: bottom;
             height: 22px;
@@ -109,7 +109,7 @@
       font-weight: 900;
       font-size: $egeo-font-size-large;
       line-height: $egeo-line-height-large;
-      color: $neutral-13;
+      color: $neutral;
       padding-bottom: 30px;
    }
 
@@ -117,7 +117,7 @@
       font-weight: 400;
       font-size: $egeo-font-size-small;
       line-height: $egeo-line-height-small;
-      color: $neutral-11;
+      color: $neutral-70;
       margin-bottom: 20px;
       position: relative;
 
@@ -144,7 +144,7 @@
          .item__label:after {
             content: '\E613';
             font-family: $egeo-stratio-icons;
-            color: $status-critical-default;
+            color: $error;
             font-size: $egeo-font-size-small;
             position: relative;
             padding-left: 10px;
@@ -157,13 +157,13 @@
             width: 40px;
             height: 20px;
             border-radius: 10px;
-            background-color: $neutral-05;
+            background-color: $neutral-15;
             font-weight: 400;
             font-size: $egeo-font-size-xxxsmall;
             float: right;
             display: inline-block;
             .result__text {
-               color: $neutral-10;
+               color: $neutral-60;
                text-align: center;
                display: inline-block;
                width: 100%;
@@ -172,7 +172,7 @@
       }
 
       &--disabled {
-         color: $neutral-07;
+         color: $neutral-30;
          cursor: default !important;
       }
    }

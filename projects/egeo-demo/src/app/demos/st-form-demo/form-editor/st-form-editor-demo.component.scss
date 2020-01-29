@@ -20,18 +20,18 @@
          font-family: monospace;
          font-size: 14px;
          line-height: 1.6em;
-         color: $neutral-10;
+         color: $neutral-60;
          width: 100%;
-         border: 1px solid $neutral-06;
+         border: 1px solid $neutral-20;
          padding: 20px;
-         background-color: $neutral-01;
+         background-color: $neutral-2;
          position: absolute;
          top: 70px;
          right: 0;
          bottom: 0;
 
          &.error {
-            color: $status-critical-default;
+            color: $error;
          }
       }
 
@@ -42,14 +42,14 @@
          font-stretch: normal;
          line-height: $egeo-line-height-xlarge;
          letter-spacing: normal;
-         color: $neutral-13;
+         color: $neutral;
          padding: 26px 0;
          display: inline-block;
       }
    }
 
    .schema-error {
-      color: $status-critical-default;
+      color: $error;
       font-weight: 100;
       font-size: $egeo-font-size-xsmall;
       width: 100%;
@@ -68,7 +68,7 @@
    }
 
    .form-output {
-      background-color: $neutral-01;
+      background-color: $neutral-2;
       padding: 5px 20px 20px;
       margin-top: 20px;
       font-weight: 100;
@@ -82,7 +82,7 @@
          font-stretch: normal;
          line-height: $egeo-font-size-small;
          letter-spacing: normal;
-         color: $neutral-10;
+         color: $neutral-60;
          padding-bottom: 15px;
          padding-top: 15px;
       }

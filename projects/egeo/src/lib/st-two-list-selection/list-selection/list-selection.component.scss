@@ -18,23 +18,23 @@
    height: 100%;
 
    &__rectangle {
-      background-color: $neutral-01;
+      background-color: $neutral-2;
       padding: 22px;
       border-bottom-width: 1px;
-      border-bottom-color: $neutral-05;
+      border-bottom-color: $neutral-15;
    }
 
    &__rectangle.bottom {
       border-bottom-width: 0px;
       border-top-width: 1px;
-      border-top-color: $neutral-05;
+      border-top-color: $neutral-15;
    }
 
    &__list-item-all{
       padding: 5px 22px 5px 22px;
       margin-bottom: 5px;
       border-bottom-width: 1px;
-      border-bottom-color: $neutral-05;
+      border-bottom-color: $neutral-15;
    }
 }
 
@@ -44,12 +44,12 @@
    padding: 0;
    font-weight: 400;
    font-size: $egeo-font-size-xsmall;
-   color: $neutral-11;
+   color: $neutral-70;
 }
 
 .subtitle{
    font-size: $egeo-font-size-xxsmall;
-   color: $neutral-11;
+   color: $neutral-70;
    font-weight: normal;
    font-style: normal;
    font-stretch: normal;

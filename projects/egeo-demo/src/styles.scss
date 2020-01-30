@@ -123,7 +123,7 @@ main {
       font-size: $egeo-font-size-xlarge;
       font-style: normal;
       font-stretch: normal;
-      line-height: $egeo-line-height-xlarge;
+      line-height: $egeo-line-height-26;
       letter-spacing: normal;
       color: $neutral;
       padding: 26px 0;
@@ -132,10 +132,10 @@ main {
 
    .subtitle {
       font-weight: 400;
-      font-size: $egeo-font-size-large;
+      font-size: $egeo-font-size-20;
       font-style: normal;
       font-stretch: normal;
-      line-height: $egeo-line-height-large;
+      line-height: $egeo-line-height-24;
       letter-spacing: normal;
       color: $neutral;
       padding: 26px 0;
@@ -144,10 +144,10 @@ main {
 
    .paragraph {
       font-weight: normal;
-      font-size: $egeo-font-size-medium;
+      font-size: $egeo-font-size-18;
       font-style: normal;
       font-stretch: normal;
-      line-height: $egeo-line-height-medium;
+      line-height: $egeo-line-height-22;
       letter-spacing: normal;
       color: $neutral;
       padding-bottom: 20px;
@@ -163,8 +163,8 @@ main {
 
    .list {
       font-weight: 400;
-      font-size: $egeo-font-size-small;
-      line-height: $egeo-line-height-large;
+      font-size: $egeo-font-size-16;
+      line-height: $egeo-line-height-24;
       color: $neutral-70;
       padding-left: 25px;
    }

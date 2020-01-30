@@ -26,16 +26,16 @@ export const FONTS: Font[][] = [
 
    // Font size
    [
-      { category: CATEGORY.FONT_SIZE, name: '$egeo-font-size-giant', value: '2rem', pixels: '32px' },
+      { category: CATEGORY.FONT_SIZE, name: '$egeo-font-size-32', value: '2rem', pixels: '32px' },
       { category: CATEGORY.FONT_SIZE, name: '$egeo-font-size-xxxlarge', value: '1.813rem', pixels: '29px' },
       { category: CATEGORY.FONT_SIZE, name: '$egeo-font-size-xxlarge', value: '1.563rem', pixels: '25px' },
       { category: CATEGORY.FONT_SIZE, name: '$egeo-font-size-xlarge', value: '1.375rem', pixels: '22px' },
-      { category: CATEGORY.FONT_SIZE, name: '$egeo-font-size-large', value: '1.25rem', pixels: '20px' },
-      { category: CATEGORY.FONT_SIZE, name: '$egeo-font-size-medium', value: '1.125rem', pixels: '18px' },
-      { category: CATEGORY.FONT_SIZE, name: '$egeo-font-size-small', value: '1rem', pixels: '16px' },
+      { category: CATEGORY.FONT_SIZE, name: '$egeo-font-size-20', value: '1.25rem', pixels: '20px' },
+      { category: CATEGORY.FONT_SIZE, name: '$egeo-font-size-18', value: '1.125rem', pixels: '18px' },
+      { category: CATEGORY.FONT_SIZE, name: '$egeo-font-size-16', value: '1rem', pixels: '16px' },
       { category: CATEGORY.FONT_SIZE, name: '$egeo-font-size-xsmall', value: '0.938rem', pixels: '15px' },
-      { category: CATEGORY.FONT_SIZE, name: '$egeo-font-size-xxsmall', value: '0.875rem', pixels: '14px' },
-      { category: CATEGORY.FONT_SIZE, name: '$egeo-font-size-xxxsmall', value: '0.75rem', pixels: '12px' }
+      { category: CATEGORY.FONT_SIZE, name: '$egeo-font-size-14', value: '0.875rem', pixels: '14px' },
+      { category: CATEGORY.FONT_SIZE, name: '$egeo-font-size-12', value: '0.75rem', pixels: '12px' }
    ],
 
    // Line height:
@@ -43,12 +43,12 @@ export const FONTS: Font[][] = [
       { category: CATEGORY.LINE_HEIGHT, name: '$egeo-line-height-giant', value: '2.375rem', pixels: '38px' },
       { category: CATEGORY.LINE_HEIGHT, name: '$egeo-line-height-xxxlarge', value: '2.125rem', pixels: '34px' },
       { category: CATEGORY.LINE_HEIGHT, name: '$egeo-line-height-xxlarge', value: '1.875rem', pixels: '30px' },
-      { category: CATEGORY.LINE_HEIGHT, name: '$egeo-line-height-xlarge', value: '1.625rem', pixels: '26px' },
-      { category: CATEGORY.LINE_HEIGHT, name: '$egeo-line-height-large', value: '1.5rem', pixels: '24px' },
-      { category: CATEGORY.LINE_HEIGHT, name: '$egeo-line-height-medium', value: '1.375rem', pixels: '22px' },
+      { category: CATEGORY.LINE_HEIGHT, name: '$egeo-line-height-26', value: '1.625rem', pixels: '26px' },
+      { category: CATEGORY.LINE_HEIGHT, name: '$egeo-line-height-24', value: '1.5rem', pixels: '24px' },
+      { category: CATEGORY.LINE_HEIGHT, name: '$egeo-line-height-22', value: '1.375rem', pixels: '22px' },
       { category: CATEGORY.LINE_HEIGHT, name: '$egeo-line-height-small', value: '1.313rem', pixels: '21px' },
-      { category: CATEGORY.LINE_HEIGHT, name: '$egeo-line-height-xsmall', value: '1.25rem', pixels: '20px' },
-      { category: CATEGORY.LINE_HEIGHT, name: '$egeo-line-height-xxsmall', value: '1.125rem', pixels: '18px' },
+      { category: CATEGORY.LINE_HEIGHT, name: '$egeo-line-height-20', value: '1.25rem', pixels: '20px' },
+      { category: CATEGORY.LINE_HEIGHT, name: '$egeo-line-height-18', value: '1.125rem', pixels: '18px' },
       { category: CATEGORY.LINE_HEIGHT, name: '$egeo-line-height-xxxsmall', value: '1.063rem', pixels: '17px' }
    ]
 ];

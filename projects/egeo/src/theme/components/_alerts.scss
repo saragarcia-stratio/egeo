@@ -58,7 +58,7 @@
       padding: 20px 50px 30px 40px;
       text-align: left;
       &-header {
-         font-size: $egeo-font-size-small;
+         font-size: $egeo-font-size-16;
          font-weight: 600;
          margin-bottom: 10px;
          &-title {
@@ -67,7 +67,7 @@
          }
       }
       &-body {
-         font-size: $egeo-font-size-xxsmall;
+         font-size: $egeo-font-size-14;
          line-height: 1.29;
       }
       &-footer {

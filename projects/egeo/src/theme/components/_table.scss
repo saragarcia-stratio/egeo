@@ -27,8 +27,8 @@
 
    &__header-text {
       font-weight: bold;
-      font-size: $egeo-font-size-xxsmall;
-      line-height: $egeo-line-height-xxsmall;
+      font-size: $egeo-font-size-14;
+      line-height: $egeo-line-height-18;
       text-align: left;
       color: $neutral-60;
       padding: 0 35px;
@@ -51,7 +51,7 @@
 
    &__order-arrow {
       font-weight: bold;
-      font-size: $egeo-font-size-xxxsmall;
+      font-size: $egeo-font-size-12;
       line-height: $egeo-line-height-xxxsmall;
       color: $neutral-60;
    }

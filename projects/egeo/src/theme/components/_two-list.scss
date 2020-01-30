@@ -17,7 +17,7 @@
 
 .sth-two-list__list-title {
    font-weight: normal;
-   font-size: $egeo-font-size-small;
+   font-size: $egeo-font-size-16;
    color: $neutral-40;
    &.sth-two-list__important-title {
       color: $neutral-50;
@@ -43,9 +43,9 @@
 }
 
 .sth-two-list-selection__item-normal {
-   font-size: $egeo-font-size-xxsmall;
+   font-size: $egeo-font-size-14;
 }
 
 .sth-two-list-selection__item-compact {
-   font-size: $egeo-font-size-xxxsmall;
+   font-size: $egeo-font-size-12;
 }

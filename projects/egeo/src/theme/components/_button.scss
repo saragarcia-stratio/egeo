@@ -18,8 +18,8 @@ $hover: '&:not([disabled]):hover';
    color:         $neutral-full;
    font-family:   $egeo-nunito-sans;
    font-weight:   600;
-   font-size:     $egeo-font-size-xxsmall;
-   line-height:   $egeo-line-height-xxsmall;
+   font-size:     $egeo-font-size-14;
+   line-height:   $egeo-line-height-18;
    height:        25px;
    &[disabled] {
       color:      $neutral-20;
@@ -31,8 +31,8 @@ $hover: '&:not([disabled]):hover';
    color:         $action;
    font-family:   $egeo-nunito-sans;
    font-weight:   600;
-   font-size:     $egeo-font-size-xxsmall;
-   line-height:   $egeo-line-height-xxsmall;
+   font-size:     $egeo-font-size-14;
+   line-height:   $egeo-line-height-18;
    height:        25px;
 }
 /// tipography EXTENDS (@extend %button-label-regular;):
@@ -40,7 +40,7 @@ $hover: '&:not([disabled]):hover';
    color:         $neutral-full;
    font-family:   $egeo-nunito-sans;
    font-weight:   600;
-   font-size:     $egeo-font-size-small;
+   font-size:     $egeo-font-size-16;
    line-height:   $egeo-line-height-small;
    height:        40px;
    &[disabled] {
@@ -52,7 +52,7 @@ $hover: '&:not([disabled]):hover';
    color:         $action;
    font-family:   $egeo-nunito-sans;
    font-weight:   600;
-   font-size:     $egeo-font-size-small;
+   font-size:     $egeo-font-size-16;
    line-height:   $egeo-line-height-small;
    height:        40px;
    &[disabled] {
@@ -64,8 +64,8 @@ $hover: '&:not([disabled]):hover';
    color:         $neutral-full;
    font-family:   $egeo-nunito-sans;
    font-weight:   600;
-   font-size:     $egeo-font-size-medium;
-   line-height:   $egeo-line-height-medium;
+   font-size:     $egeo-font-size-18;
+   line-height:   $egeo-line-height-22;
    height:        50px;
    &[disabled] {
       color:      $neutral-20;
@@ -76,15 +76,15 @@ $hover: '&:not([disabled]):hover';
    color:         $action;
    font-family:   $egeo-nunito-sans;
    font-weight:   600;
-   font-size:     $egeo-font-size-medium;
-   line-height:   $egeo-line-height-medium;
+   font-size:     $egeo-font-size-18;
+   line-height:   $egeo-line-height-22;
    height:        50px;
 }
 %button-toolbar-ico-default {
    color:         $neutral-60;
    font-family:   $egeo-stratio-icons;
-   font-size:     $egeo-font-size-medium;
-   line-height:   $egeo-line-height-medium;
+   font-size:     $egeo-font-size-18;
+   line-height:   $egeo-line-height-22;
    &[disabled] {
       color:      $neutral-20;
       cursor:     not-allowed;
@@ -94,7 +94,7 @@ $hover: '&:not([disabled]):hover';
    color:         $action;
    font-family:   $egeo-nunito-sans;
    font-weight:   normal;
-   font-size:     $egeo-font-size-small;
+   font-size:     $egeo-font-size-16;
    line-height:   $egeo-line-height-small;
    &[disabled] {
       opacity:    0.4;
@@ -105,15 +105,15 @@ $hover: '&:not([disabled]):hover';
    }
 
    &.small {
-      font-size:     $egeo-font-size-xxsmall;
-      line-height:   $egeo-line-height-xxsmall;
+      font-size:     $egeo-font-size-14;
+      line-height:   $egeo-line-height-18;
    }
 }
 .button-link-secondary {
    color:         $neutral-50;
    font-family:   $egeo-nunito-sans;
    font-weight:   normal;
-   font-size:     $egeo-font-size-small;
+   font-size:     $egeo-font-size-16;
    line-height:   $egeo-line-height-small;
    text-decoration: underline;
    &[disabled] {
@@ -124,8 +124,8 @@ $hover: '&:not([disabled]):hover';
       color:      $neutral-60;
    }
    &.small {
-      font-size:     $egeo-font-size-xxsmall;
-      line-height:   $egeo-line-height-xxsmall;
+      font-size:     $egeo-font-size-14;
+      line-height:   $egeo-line-height-18;
    }
 }
 

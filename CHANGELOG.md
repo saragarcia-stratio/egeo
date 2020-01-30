@@ -9,6 +9,7 @@
 **Others:**
 
 * Update icon palette
+* Update font size variables
 
 
 ## 18.0.0 (January 16, 2020)

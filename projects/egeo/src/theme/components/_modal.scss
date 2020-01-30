@@ -49,15 +49,15 @@
          .title {
             text-align: left;
             font-weight: 900;
-            font-size: $egeo-font-size-medium;
-            line-height: $egeo-line-height-medium;
+            font-size: $egeo-font-size-18;
+            line-height: $egeo-line-height-22;
             color: $neutral;
             white-space: nowrap;
          }
 
          .close-button {
             font-family: $egeo-stratio-icons;
-            font-size: $egeo-font-size-large;
+            font-size: $egeo-font-size-20;
             color: $neutral;
             font-weight: normal;
             font-style: normal;
@@ -82,7 +82,7 @@
          }
          .st-modal-message-plain-message {
             font-weight: normal;
-            font-size: $egeo-font-size-small;
+            font-size: $egeo-font-size-16;
             line-height: $egeo-line-height-small;
             text-align: left;
             color: $neutral-70;

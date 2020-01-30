@@ -21,7 +21,7 @@
       &:after {
          font-family: $egeo-stratio-icons;
          content: "\E605";
-         font-size: $egeo-font-size-xxxsmall;
+         font-size: $egeo-font-size-12;
          color: $neutral-60;
       }
 
@@ -64,7 +64,7 @@
       font-weight: bold;
    }
    .st-breadcrumbs__item:after {
-      font-size: $egeo-font-size-small;
+      font-size: $egeo-font-size-16;
    }
 }
 

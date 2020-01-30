@@ -88,7 +88,7 @@
    color: $neutral-30;
    font-weight: 400;
    font-family: $egeo-nunito-sans;
-   font-size: $egeo-font-size-medium;
+   font-size: $egeo-font-size-18;
    text-align: left;
    display: flex;
    flex-direction: row;
@@ -113,7 +113,7 @@
       .sth-header-menu-option-icon {
          width: 15px;
          height: 15px;
-         font-size: $egeo-font-size-xxsmall;
+         font-size: $egeo-font-size-14;
          line-height: 15px;
          text-align: left;
          margin-right: 8px;
@@ -133,7 +133,7 @@
       width: 10px;
       height: 15px;
       font-family: $egeo-stratio-icons;
-      font-size: $egeo-font-size-xxxsmall;
+      font-size: $egeo-font-size-12;
       line-height: 15px;
       text-align: left;
       align-self: flex-end;

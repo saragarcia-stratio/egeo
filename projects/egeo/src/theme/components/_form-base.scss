@@ -15,8 +15,8 @@
    display: inline-block;
    font-weight: 400;
    font-family: $egeo-nunito-sans;
-   font-size: $egeo-font-size-xxsmall;
-   line-height: $egeo-line-height-xxsmall;
+   font-size: $egeo-font-size-14;
+   line-height: $egeo-line-height-18;
    margin-bottom: 5px;
 }
 
@@ -65,7 +65,7 @@
    line-height: 45px;
    height: 100%;
    cursor: pointer;
-   font-size: $egeo-font-size-medium;
+   font-size: $egeo-font-size-18;
    color: $neutral-50;
 
    &:hover {

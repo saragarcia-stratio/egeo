@@ -40,7 +40,7 @@
          font-size: $egeo-font-size-xlarge;
          font-style: normal;
          font-stretch: normal;
-         line-height: $egeo-line-height-xlarge;
+         line-height: $egeo-line-height-26;
          letter-spacing: normal;
          color: $neutral;
          padding: 26px 0;
@@ -72,15 +72,15 @@
       padding: 5px 20px 20px;
       margin-top: 20px;
       font-weight: 100;
-      font-size: $egeo-font-size-xxsmall;
-      line-height: $egeo-font-size-medium;
+      font-size: $egeo-font-size-14;
+      line-height: $egeo-font-size-18;
 
       h2 {
          font-weight: bold;
-         font-size: $egeo-font-size-small;
+         font-size: $egeo-font-size-16;
          font-style: normal;
          font-stretch: normal;
-         line-height: $egeo-font-size-small;
+         line-height: $egeo-font-size-16;
          letter-spacing: normal;
          color: $neutral-60;
          padding-bottom: 15px;

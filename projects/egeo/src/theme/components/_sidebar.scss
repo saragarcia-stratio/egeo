@@ -87,7 +87,7 @@
             content: '\E605';
             font-family: $egeo-stratio-icons;
             display: inline-block;
-            font-size: $egeo-font-size-small;
+            font-size: $egeo-font-size-16;
             color: $neutral-30;
             padding-right: 6px;
             vertical-align: bottom;
@@ -107,15 +107,15 @@
 
    .title {
       font-weight: 900;
-      font-size: $egeo-font-size-large;
-      line-height: $egeo-line-height-large;
+      font-size: $egeo-font-size-20;
+      line-height: $egeo-line-height-24;
       color: $neutral;
       padding-bottom: 30px;
    }
 
    .item {
       font-weight: 400;
-      font-size: $egeo-font-size-small;
+      font-size: $egeo-font-size-16;
       line-height: $egeo-line-height-small;
       color: $neutral-70;
       margin-bottom: 20px;
@@ -145,7 +145,7 @@
             content: '\E613';
             font-family: $egeo-stratio-icons;
             color: $error;
-            font-size: $egeo-font-size-small;
+            font-size: $egeo-font-size-16;
             position: relative;
             padding-left: 10px;
             vertical-align: text-top;
@@ -159,7 +159,7 @@
             border-radius: 10px;
             background-color: $neutral-15;
             font-weight: 400;
-            font-size: $egeo-font-size-xxxsmall;
+            font-size: $egeo-font-size-12;
             float: right;
             display: inline-block;
             .result__text {

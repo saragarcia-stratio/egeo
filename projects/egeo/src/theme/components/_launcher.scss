@@ -15,8 +15,8 @@
 
    &__group {
       font-weight: normal;
-      font-size: $egeo-font-size-small;
-      line-height: $egeo-line-height-medium;
+      font-size: $egeo-font-size-16;
+      line-height: $egeo-line-height-22;
       color: $neutral-80;
       background-color: $neutral-full;
       padding: 30px;
@@ -60,7 +60,7 @@
 
    &__more {
       font-weight: normal;
-      font-size: $egeo-font-size-xxsmall;
+      font-size: $egeo-font-size-14;
       line-height: $egeo-line-height-small;
       color: $action;
       background-color: $neutral-2;

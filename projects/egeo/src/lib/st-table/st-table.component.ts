@@ -157,7 +157,7 @@ export class StTableComponent implements OnInit {
 
    public getHeaderItemClass(field: StTableHeader): string {
       let isOrderAsc = this.isSortedByFieldAndDirection(field, this.orderTypes.ASC);
-      return isOrderAsc ? 'icon-arrow4_up' : 'icon-arrow4_down';
+      return isOrderAsc ? 'icon-arrow-up' : 'icon-arrow-down';
    }
 
    public isSortedByField(field: StTableHeader): boolean {

@@ -88,7 +88,6 @@ export class StTableDemoComponent {
    ];
    public sortedData: Array<{ id: string, name: string, lastName: string, phone: number, company: string, completedProfile: string }>;
    public selectedCheckboxes: boolean[][] = [[], []];
-   public visibleCheckboxes: boolean[][] = [[], []];
 
 
    constructor() {
@@ -99,18 +98,6 @@ export class StTableDemoComponent {
 
    public onSelectRow(event: any, rowIndex: number, selected: Array<boolean>): void {
       selected[rowIndex] = event.checked;
-   }
-
-   public changeCheckBoxVisibility(visible: boolean, tableNumber: number, position: number): void {
-      this.visibleCheckboxes[tableNumber][position] = visible;
-   }
-
-   public isCheckBoxVisible(tablePosition: number, position: number): boolean {
-      return this.visibleCheckboxes[tablePosition][position] || this.selectedCheckboxes[tablePosition].indexOf(true) > -1;
-   }
-
-   public thereAreSomeCheckboxesChecked(tablePosition: number): boolean {
-      return this.selectedCheckboxes[tablePosition].indexOf(true) > -1;
    }
 
    public onSelectAll(selected: boolean, tablePosition: number): void {

@@ -6,6 +6,10 @@
 
 * st-dropdown-menu: Do not diplay dropdown items in several lines with menu list visualization
 
+**Breaking changes:**
+
+* st-table: Apply new UX specifications and remove custom theme 'white'
+
 **Others:**
 
 * Update icon palette

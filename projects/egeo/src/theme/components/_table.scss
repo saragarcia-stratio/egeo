@@ -11,63 +11,74 @@
 @import '../constants/fonts';
 @import '../constants/colors';
 
-.st-table{
+.st-table {
+   th, td:not(.hover-menu) {
+      padding: 9px 20px 9px 20px;
+   }
+
    &__header {
       font-family: $egeo-nunito-sans;
-      background-color: $neutral-8;
-      height: 50px;
+      border-bottom: 1px solid $space-50;
+      color: $space-80;
    }
 
    &__checkbox {
-      position: absolute;
-      left: 10px;
       height: 20px;
-      z-index: 1;
+      margin-right: 15px;
    }
 
    &__header-text {
-      font-weight: bold;
-      font-size: $egeo-font-size-14;
-      line-height: $egeo-line-height-18;
       text-align: left;
-      color: $neutral-60;
-      padding: 0 35px;
+      font-size: $egeo-font-size-12;
+      font-weight: 600;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: $space-80;
+      display: inline-block;
    }
 
    &__header-item {
+      text-align: left;
+
       .st-table__checkbox {
-         top: 12px;
+         display: inline-block;
       }
-      &--selected {
-         & > .st-table__header-text {
-            color: $neutral;
-            & .st-table__order-arrow {
-               color: $neutral;
-            }
-         }
+
+      &--sortable {
+         cursor: pointer;
       }
    }
 
-
    &__order-arrow {
+      position: absolute;
+      left: -20px;
+      bottom: 4px;
       font-weight: bold;
       font-size: $egeo-font-size-12;
-      line-height: $egeo-line-height-xxxsmall;
-      color: $neutral-60;
+      color: $space-80;
+      vertical-align: middle;
    }
 }
 
 // row theme
 .st-table-row {
-   font-weight: 400;
    font-family: $egeo-nunito-sans;
-   font-size: $egeo-font-size-xsmall;
-   line-height: $egeo-line-height-xxlarge;
    text-align: left;
    vertical-align: top;
-   color: $neutral;
-   box-shadow: inset 0 -1px 0 0 $neutral-10;
+   box-shadow: inset 0 -1px 0 0 $space-20;
    transition: background-color ease-in-out 0.3s;
+   font-weight: normal;
+   font-stretch: normal;
+   font-style: normal;
+   letter-spacing: normal;
+   font-size: $egeo-font-size-14;
+   color: $space-110;
+
+   td {
+      font-size: $egeo-font-size-14;
+   }
 
    &:hover {
       td.clickable > * {
@@ -77,9 +88,12 @@
    }
 }
 
-.st-table-row.selected,
 .st-table-row:hover {
-   background-color: rgba(18, 139, 221, 0.05);
+   background-color: $action-10;
+}
+
+.st-table-row.selected {
+   background-color: $space-5;
 }
 
 .st-table--fixed-header tbody {
@@ -106,10 +120,13 @@
    border-collapse: separate;
 }
 
-.st-table.white {
-   .st-table__header {
-      border-top: 1px solid $neutral-20;
-      border-bottom: 1px solid $neutral-20;
-      background-color: transparent;
+.st-table-hover {
+   display: flex;
+   justify-content: flex-end;
+   color: $space-50;
+   padding: 0 25px 0 20px;
+
+   &:hover {
+      color: $space;
    }
 }

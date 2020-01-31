@@ -20,12 +20,16 @@ import { StCheckboxModule } from '../st-checkbox/st-checkbox.module';
 
 let fixture: ComponentFixture<StTableComponent>;
 let component: StTableComponent;
-let fakeFields: StTableHeader[] = [{id: 'id', label: 'ID', sortable: true}, {
-   id: 'name',
-   label: 'Name',
-   sortable: false
-},
-   {id: 'lastName', label: 'Last name'}, {id: 'phone', label: 'Phone', sortable: true}];
+let fakeFields: StTableHeader[] = [
+   { id: 'id', label: 'ID', sortable: true },
+   {
+      id: 'name',
+      label: 'Name',
+      sortable: false
+   },
+   { id: 'lastName', label: 'Last name' },
+   { id: 'phone', label: 'Phone', sortable: true }
+];
 
 describe('StTableComponent', () => {
 
@@ -36,7 +40,7 @@ describe('StTableComponent', () => {
       })
       // remove this block when the issue #12313 of Angular is fixed
          .overrideComponent(StTableComponent, {
-            set: {changeDetection: ChangeDetectionStrategy.Default}
+            set: { changeDetection: ChangeDetectionStrategy.Default }
          })
          .compileComponents();  // compile template and css
    }));
@@ -65,16 +69,16 @@ describe('StTableComponent', () => {
       });
    });
 
-   it('if table is sortable but there are fields not sortable, arrow is only displayed for sortable fields', () => {
+   it('if table is sortable but there are fields not sortable, sortable class is only added to sortable fields', () => {
       component.sortable = true;
       fixture.detectChanges();
       let headerItems: HTMLTableHeaderCellElement[] = fixture.nativeElement.querySelectorAll('.st-table__header-item');
 
 
-      expect(headerItems[0].querySelector('.st-table__order-arrow').classList).toContain('icon-arrow4_down');
-      expect(headerItems[1].querySelector('.st-table__order-arrow')).toBeNull();
-      expect(headerItems[2].querySelector('.st-table__order-arrow').classList).toContain('icon-arrow4_down');
-      expect(headerItems[3].querySelector('.st-table__order-arrow').classList).toContain('icon-arrow4_down');
+      expect(headerItems[0].classList).toContain('st-table__header-item--sortable');
+      expect(headerItems[1].classList).not.toContain('st-table__header-item--sortable');
+      expect(headerItems[2].classList).toContain('st-table__header-item--sortable');
+      expect(headerItems[3].classList).toContain('st-table__header-item--sortable');
    });
 
    it('if table is not sortable but there are fields sortable, arrow is displayed for sortable fields', () => {
@@ -82,10 +86,10 @@ describe('StTableComponent', () => {
       fixture.detectChanges();
       let headerItems: HTMLTableHeaderCellElement[] = fixture.nativeElement.querySelectorAll('.st-table__header-item');
 
-      expect(headerItems[0].querySelector('.st-table__order-arrow').classList).toContain('icon-arrow4_down');
-      expect(headerItems[1].querySelector('.st-table__order-arrow')).toBeNull();
-      expect(headerItems[2].querySelector('.st-table__order-arrow')).toBeNull();
-      expect(headerItems[3].querySelector('.st-table__order-arrow').classList).toContain('icon-arrow4_down');
+      expect(headerItems[0].classList).toContain('st-table__header-item--sortable');
+      expect(headerItems[1].classList).not.toContain('st-table__header-item--sortable');
+      expect(headerItems[2].classList).not.toContain('st-table__header-item--sortable');
+      expect(headerItems[3].classList).toContain('st-table__header-item--sortable');
    });
 
    it('If fields input is not introduced, it throws an error', () => {
@@ -98,36 +102,51 @@ describe('StTableComponent', () => {
       }
    });
 
+   it('only is displayed an arrow next to header of the field over which current filter is applied', () => {
+      component.sortable = true;
+      component.currentOrder = undefined;
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('thead .st-table__order-arrow')).toBeNull();
+
+      component.currentOrder = new Order(fakeFields[3].id, ORDER_TYPE.ASC);
+      fixture.detectChanges();
+
+      let headerItems: HTMLTableHeaderCellElement[] = fixture.nativeElement.querySelectorAll('.st-table__header-item');
+
+      expect(fixture.nativeElement.querySelectorAll('thead .icon-arrow-up').length).toBe(1);
+      expect(headerItems[3].querySelector('.icon-arrow-up')).not.toBeNull();
+      expect(headerItems[3].classList).toContain('st-table__header-item--sortable');
+   });
+
    describe('Should return the class name for header items according to the current order and direction', () => {
       beforeEach(() => {
          fixture.detectChanges();
       });
 
-      it('if current order is not defined yet, the sortable fields will be displayed with a down arrow', () => {
+      it('if current order is not defined yet, no one arrow is displayed', () => {
          component.currentOrder = undefined;
          fixture.detectChanges();
-         let headerItems: HTMLTableHeaderCellElement[] = fixture.nativeElement.querySelectorAll('.st-table__header-item');
 
-         expect(headerItems[0].querySelector('.st-table__order-arrow').classList).toContain('icon-arrow4_down');
-         expect(headerItems[headerItems.length - 1].querySelector('.st-table__order-arrow').classList).toContain('icon-arrow4_down');
+         expect(fixture.nativeElement.querySelector('thead st-table__order-arrow')).toBeNull();
       });
 
-      it('if table is sort by the field but not in ascending direction, it returns icon-arrow4_down', () => {
+      it('if table is sort by the field but not in ascending direction, it returns icon-arrow-down', () => {
          component.currentOrder = new Order(fakeFields[0].id, ORDER_TYPE.DESC);
 
-         expect(component.getHeaderItemClass(fakeFields[0])).toBe('icon-arrow4_down');
+         expect(component.getHeaderItemClass(fakeFields[0])).toBe('icon-arrow-down');
       });
 
-      it('if table is sort in ascending direction but not by the introduced field, it returns icon-arrow4_down', () => {
+      it('if table is sort in ascending direction but not by the introduced field, it returns icon-arrow-down', () => {
          component.currentOrder = new Order(fakeFields[1].id, ORDER_TYPE.ASC);
 
-         expect(component.getHeaderItemClass(fakeFields[0])).toBe('icon-arrow4_down');
+         expect(component.getHeaderItemClass(fakeFields[0])).toBe('icon-arrow-down');
       });
 
-      it('if table is sort by that field and in ascending direction, it returns icon-arrow4_up', () => {
+      it('if table is sort by that field and in ascending direction, it returns icon-arrow-up', () => {
          component.currentOrder = new Order(fakeFields[0].id, ORDER_TYPE.ASC);
 
-         expect(component.getHeaderItemClass(fakeFields[0])).toBe('icon-arrow4_up');
+         expect(component.getHeaderItemClass(fakeFields[0])).toBe('icon-arrow-up');
       });
 
    });
@@ -152,7 +171,7 @@ describe('StTableComponent', () => {
          fixture.changeDetectorRef.markForCheck();
          fixture.detectChanges();
 
-         expect(Array.from(headerItem.querySelector('.st-table__order-arrow').classList)[1]).toBe('icon-arrow4_up');
+         expect(Array.from(headerItem.querySelector('.st-table__order-arrow').classList)[1]).toBe('icon-arrow-up');
          expect(component.changeOrder.emit).toHaveBeenCalledWith(component.currentOrder);
       });
 
@@ -166,7 +185,7 @@ describe('StTableComponent', () => {
          expect(component.currentOrder.orderBy).toBe(fakeFields[0].id);
          expect(component.currentOrder.type).toBe(ORDER_TYPE.DESC);
          // also order arrow is updated
-         expect(Array.from(headerItem.querySelector('.st-table__order-arrow').classList)[1]).toBe('icon-arrow4_down');
+         expect(Array.from(headerItem.querySelector('.st-table__order-arrow').classList)[1]).toBe('icon-arrow-down');
 
          expect(component.changeOrder.emit).toHaveBeenCalledWith(component.currentOrder);
 
@@ -178,7 +197,7 @@ describe('StTableComponent', () => {
          expect(component.currentOrder.orderBy).toBe(fakeFields[0].id);
          expect(component.currentOrder.type).toBe(ORDER_TYPE.ASC);
          // also order arrow is updated
-         expect(Array.from(headerItem.querySelector('.st-table__order-arrow').classList)[1]).toBe('icon-arrow4_up');
+         expect(Array.from(headerItem.querySelector('.st-table__order-arrow').classList)[1]).toBe('icon-arrow-up');
 
          expect(component.changeOrder.emit).toHaveBeenCalledWith(component.currentOrder);
       });
@@ -280,19 +299,19 @@ describe('StTableComponent', () => {
    });
 
 
-   describe ('it should fix its header in order to be displayed although page scrolling', () => {
-      it ('if input "fixedHeader" is not specified, header is not fixed', () => {
+   describe('it should fix its header in order to be displayed although page scrolling', () => {
+      it('if input "fixedHeader" is not specified, header is not fixed', () => {
          expect(fixture.nativeElement.querySelector('table').classList).not.toContain('st-table--fixed-header');
       });
 
-      it ('if input "fixedHeader" is true, header is fixed', () => {
+      it('if input "fixedHeader" is true, header is fixed', () => {
          component.fixedHeader = true;
          fixture.detectChanges();
 
          expect(fixture.nativeElement.querySelector('table').classList).toContain('st-table--fixed-header');
       });
 
-      it ('if input "fixedHeader" is false, header is not fixed', () => {
+      it('if input "fixedHeader" is false, header is not fixed', () => {
          component.fixedHeader = false;
          fixture.detectChanges();
 
@@ -300,7 +319,7 @@ describe('StTableComponent', () => {
       });
    });
 
-   it ('Custom classes can be added to the table', () => {
+   it('Custom classes can be added to the table', () => {
       let fakeClass = 'separated-rows';
       expect(fixture.nativeElement.querySelector('table').classList).not.toContain(fakeClass);
 

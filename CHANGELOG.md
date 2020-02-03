@@ -21,6 +21,7 @@
 
 * Update icon palette
 * Update font size variables
+* st-select: Apply new UX font size and color in forms
 
 
 ## 18.0.0 (January 16, 2020)
@@ -35,7 +36,7 @@
 
 **Fixed bugs:**
 
-* st-select: Fix bug in scroll listener. Sometimes when user does scroll it wasn't called 
+* st-select: Fix bug in scroll listener. Sometimes when user does scroll it wasn't called
 
 **Breaking changes:**
 

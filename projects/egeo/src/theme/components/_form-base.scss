@@ -15,14 +15,14 @@
    display: inline-block;
    font-weight: 400;
    font-family: $egeo-nunito-sans;
-   font-size: $egeo-font-size-14;
+   font-size: $egeo-font-size-12;
    line-height: $egeo-line-height-18;
    margin-bottom: 5px;
 }
 
 .st-form-field {
    .st-label {
-      color: $neutral-60;
+      color: $space-70;
       &.active {
          color: $action;
       }

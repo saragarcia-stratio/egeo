@@ -64,8 +64,8 @@ describe('StTableComponent', () => {
          expect(component.sortable).toBeTruthy();
       });
 
-      it('hover menu is displayed by default', () => {
-         expect(component.hasHoverMenu).toBeTruthy();
+      it('hover menu is not displayed by default', () => {
+         expect(component.hasHoverMenu).toBeFalsy();
       });
    });
 

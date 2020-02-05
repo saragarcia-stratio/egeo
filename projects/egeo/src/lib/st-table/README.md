@@ -15,7 +15,7 @@
 | customClasses | String          | False | Classes for adding styles to table tag from outside. These can be: separated-rows                                                                                             |         |
 | fixedHeader   | Boolean         | False | Boolean to fix the table header                                                                                                                                               | false   |
 | selectedAll   | Boolean         | False | It specifies if all rows are selected                                                                                                                                         | false   |
-| hasHoverMenu  | Boolean         | False | It specifies if a menu has to be displayed when user puts the mouse over the rows. Remember to add a cell with the selector st-table-row-hover for adding content to the menu | true    |
+| hasHoverMenu  | Boolean         | False | It specifies if a menu has to be displayed when user puts the mouse over the rows. Remember to add a cell with the selector st-table-row-hover for adding content to the menu | false   |
 
 ## Outputs
 

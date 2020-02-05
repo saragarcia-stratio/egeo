@@ -97,7 +97,7 @@ export class StTableComponent implements OnInit {
       this._selectedAll = newValue;
    }
 
-   /** @Input {boolean} [hasHoverMenu=true] It specifies if a menu has to be displayed when user puts the mouse over
+   /** @Input {boolean} [hasHoverMenu=false] It specifies if a menu has to be displayed when user puts the mouse over
     * the rows. Remember to add a cell with the selector st-table-row-hover for adding content to the menu
     */
    @Input()
@@ -119,7 +119,7 @@ export class StTableComponent implements OnInit {
    public orderTypes: any = ORDER_TYPE;
 
    private _selectedAll: boolean;
-   private _hasHoverMenu: boolean = true;
+   private _hasHoverMenu: boolean = false;
 
 
    ngOnInit(): void {

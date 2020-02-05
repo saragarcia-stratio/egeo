@@ -10,6 +10,7 @@
 **Breaking changes:**
 
 * st-table: Apply new UX specifications and remove custom theme 'white'
+* st-table: Change hasHoverMenu to false by default
 * buttons: Changed button styles and renamed button classes:\
     button-secondary-gray -> button-borderless\
     button-secondary-line -> button-secondary\

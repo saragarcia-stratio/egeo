@@ -5,6 +5,7 @@
 **Fixed bugs:**
 
 * st-dropdown-menu: Do not diplay dropdown items in several lines with menu list visualization
+* st-modal: Do not break words
 
 **Breaking changes:**
 

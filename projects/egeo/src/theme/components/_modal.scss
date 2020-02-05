@@ -71,6 +71,11 @@
 
       .st-modal-body {
          padding: 30px;
+
+         .message {
+            width: 100%;
+         }
+
          .st-modal-message-plain-title {
             font-weight: 100;
             font-size: $egeo-font-size-xxlarge;
@@ -78,7 +83,7 @@
             text-align: left;
             color: $space-110;
             margin-bottom: 15px;
-            word-break: break-all;
+            overflow-wrap: break-word;
          }
          .st-modal-message-plain-message {
             font-weight: normal;
@@ -86,6 +91,7 @@
             line-height: $egeo-line-height-small;
             text-align: left;
             color: $neutral-70;
+            overflow-wrap: break-word;
          }
       }
 

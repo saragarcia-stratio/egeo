@@ -1,5 +1,9 @@
 # Changelog
 
+## 20.0.0 (upcoming)
+
+* Pending changelog
+
 ## 19.0.0 (upcoming)
 **New features:**
 * st-two-list-selection: allows to show and control movement of disabled items

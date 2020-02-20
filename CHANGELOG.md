@@ -10,7 +10,7 @@
 
 * Update icon font to 1.27
 
-## 19.0.0 (upcoming)
+## 19.0.0 (February 20, 2020)
 
 **New features:**
 

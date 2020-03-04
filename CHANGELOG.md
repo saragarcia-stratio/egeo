@@ -9,6 +9,8 @@
 **Others:**
 
 * Update icon font to 1.27
+* st-button: Set cursor pointer to button class
+
 
 ## 19.0.0 (February 20, 2020)
 

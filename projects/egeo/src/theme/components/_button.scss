@@ -8,60 +8,54 @@
  *
  * SPDX-License-Identifier: Apache-2.0.
  */
- @import '../constants/colors';
- @import '../constants/fonts';
+@import '../constants/colors';
+@import '../constants/fonts';
 
 /// tipography EXTENDS (@extend %button-label-regular;):
 %button-label-regular {
-   color:         $neutral-full;
-   font-family:   $egeo-nunito-sans;
-   font-weight:   normal;
-   font-size:     $egeo-font-size-14;
-   line-height:   $egeo-line-height-18;
-   height:        40px;
-   &[disabled] {
-      cursor:     not-allowed;
-   }
+   color: $neutral-full;
+   font-family: $egeo-nunito-sans;
+   font-weight: normal;
+   font-size: $egeo-font-size-14;
+   line-height: $egeo-line-height-18;
+   height: 40px;
 }
 
 %button-label-small {
-   font-family:   $egeo-nunito-sans;
-   font-weight:   normal;
-   font-size:     $egeo-font-size-14;
-   line-height:   $egeo-line-height-18;
-   height:        25px;
+   font-family: $egeo-nunito-sans;
+   font-weight: normal;
+   font-size: $egeo-font-size-14;
+   line-height: $egeo-line-height-18;
+   height: 25px;
 }
 
 %button-label-large {
-   color:         $neutral-full;
-   font-family:   $egeo-nunito-sans;
-   font-weight:   normal;
-   line-height:   $egeo-line-height-22;
-   height:        50px;
+   color: $neutral-full;
+   font-family: $egeo-nunito-sans;
+   font-weight: normal;
+   line-height: $egeo-line-height-22;
+   height: 50px;
    &[disabled] {
-      color:      $neutral-20;
-      cursor:     not-allowed;
+      color: $neutral-20;
    }
 }
 
 %button-toolbar-ico-default {
-   color:         $neutral-60;
-   font-family:   $egeo-stratio-icons;
-   font-size:     $egeo-font-size-18;
-   line-height:   $egeo-line-height-22;
+   color: $neutral-60;
+   font-family: $egeo-stratio-icons;
+   font-size: $egeo-font-size-18;
+   line-height: $egeo-line-height-22;
    &[disabled] {
-      color:      $neutral-20;
-      cursor:     not-allowed;
+      color: $neutral-20;
    }
 }
 
 .button-link {
-   color:         $action;
-   font-family:   $egeo-nunito-sans;
-   font-weight:   normal;
-   font-size:     $egeo-font-size-14;
-   line-height:   $egeo-line-height-20;
-   cursor:        pointer;
+   color: $action;
+   font-family: $egeo-nunito-sans;
+   font-weight: normal;
+   font-size: $egeo-font-size-14;
+   line-height: $egeo-line-height-20;
 
    &:hover {
       color: $action-120;
@@ -72,26 +66,31 @@
    }
 
    &[disabled] {
-      opacity:    0.4;
-      cursor:     not-allowed;
+      opacity: 0.4;
    }
 
    &.small {
-      font-size:     $egeo-font-size-12;
-      line-height:   $egeo-line-height-18;
+      font-size: $egeo-font-size-12;
+      line-height: $egeo-line-height-18;
    }
 }
 
 /// STYLES:
 .button {
-   & {
-      box-sizing: border-box;
-      border-radius: 4px;
-      outline: none;
-      white-space: nowrap;
-      overflow: hidden;
-      max-width: 100%;
-      vertical-align: middle;
+   box-sizing: border-box;
+   border-radius: 4px;
+   outline: none;
+   white-space: nowrap;
+   overflow: hidden;
+   max-width: 100%;
+   vertical-align: middle;
+
+   &:not([disabled]) {
+      cursor: pointer;
+   }
+
+   &[disabled] {
+      cursor: not-allowed;
    }
 
    &.button-primary,
@@ -99,12 +98,11 @@
    &.button-borderless,
    &.button-critical {
       @extend %button-label-regular;
-      padding:0.857rem 1.875rem;
+      padding: 0.857rem 1.875rem;
       text-overflow: ellipsis;
-      cursor: pointer;
 
       &.block {
-         width:100%;
+         width: 100%;
       }
 
       &.large {
@@ -117,7 +115,7 @@
       }
 
       i {
-         margin-top:2px;
+         margin-top: 2px;
       }
    }
 
@@ -181,7 +179,6 @@
       }
    }
 
-
    &.button-borderless {
       background-color: $space-5;
       color: $space-80;
@@ -210,9 +207,8 @@
    &.button-toolbar {
       @extend %button-toolbar-ico-default;
       border-radius: 4px;
-      border:solid 1px $neutral-8;
+      border: solid 1px $neutral-8;
       background-color: white;
-      cursor: pointer;
 
       &.small {
          & i {
@@ -221,13 +217,12 @@
       }
 
       &:hover {
-         border:solid 1px $neutral-30;
+         border: solid 1px $neutral-30;
       }
 
       &[disabled] {
          border: none;
          background-color: $neutral-8;
-         cursor:     not-allowed;
       }
 
       i {

@@ -10,6 +10,7 @@
 
 * Update icon font to 1.27
 * st-button: Set cursor pointer to button class
+* Color palette: Add color space-40
 
 
 ## 19.0.0 (February 20, 2020)

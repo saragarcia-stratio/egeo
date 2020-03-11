@@ -27,5 +27,5 @@
 .text {
    display: block;
    text-align: center;
-   white-space: nowrap;
+   overflow-wrap: break-word;
 }

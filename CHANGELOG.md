@@ -2,13 +2,14 @@
 
 ## 20.0.0 (upcoming)
 
-**Breaking changes:**
-
-* st-header: Include new UX defined styles to header
-
 **New features:**
 
 * st-table: Includes new field 'filterable' to apply filters by column.
+* st-bubble: Allow to add a min width from outside and cut words when there are longer than width
+
+**Breaking changes:**
+
+* st-header: Include new UX defined styles to header
 
 **Others:**
 

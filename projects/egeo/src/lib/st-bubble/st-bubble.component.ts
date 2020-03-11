@@ -33,7 +33,7 @@ import { StPopOffset, StPopPlacement } from '../st-pop/st-pop.model';
 })
 export class StBubbleComponent {
 
-   /** @input {string}  Text of the bubble */
+   /** @Input {string} [text=] Text of the bubble */
    @Input() text: string;
    /** @input {boolean} [hidden=false] Show or hide the bubble */
    @Input() hidden: boolean = false;
@@ -45,8 +45,10 @@ export class StBubbleComponent {
    @Input() animation?: boolean = true;
    /** @Input {boolean} [openToLeft=true] when true, bubble is displayed with the arrow to the right  */
    @Input() openToLeft?: boolean = true;
-   /** @Input {boolean} [animation=false] when true, bubble is displayed with theme small  */
+   /** @Input {boolean} [small=false] when true, bubble is displayed with theme small  */
    @Input() small?: boolean = false;
+   /** @Input {boolean} [minWidth=string] min width for bubble  */
+   @Input() minWidth?: string;
 
    public placement: StPopPlacement = StPopPlacement.BOTTOM;
 

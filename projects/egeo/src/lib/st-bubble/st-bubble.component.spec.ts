@@ -122,4 +122,11 @@ describe('StBubbleComponent', () => {
          expect(fixture.nativeElement.querySelector('.st-bubble__content').classList).toContain('st-bubble__content--to-right');
       });
    });
+
+   it ('if min width is defined as input, it is applied to bubble container', () => {
+      component.minWidth = '400px';
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('.st-bubble__content').style['min-width']).toEqual('400px');
+   });
 });
